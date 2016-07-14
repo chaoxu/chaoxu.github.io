@@ -87,8 +87,6 @@ mathCompiler = getResourceBody >>= mathDoc
 idPages = ["favicon.ico",
            "mathjax_conf.js",
            "googled46bf4e1cd540289.html",
-           ".gitignore",
-           ".gitattributes",
            "CNAME"]
 
 htmlTitleField :: Context String
