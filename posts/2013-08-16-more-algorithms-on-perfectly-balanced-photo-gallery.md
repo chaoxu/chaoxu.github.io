@@ -87,7 +87,7 @@ There is a standard technique on totally monotone matrices that can reduce the c
     A matrix is totally monotone if for every $i<i'$ and $j<j'$, $a_{i,j} > a_{i',j} \implies a_{i,j'} > a_{i',j'}$. 
 
 ![totally monotone](/files/totallymonotone.jpg)
-<br /><sup>Image Credit: [Vanessa Li](http://codesandmaze.tumblr.com/).</sup>
+<br /><sup>Image Credit: [Vanessa Li](http://vanessa.li).</sup>
 
 {Remark}
     

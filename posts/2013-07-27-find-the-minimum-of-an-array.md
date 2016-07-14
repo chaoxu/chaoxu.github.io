@@ -20,7 +20,7 @@ First, we present a lemma.
     If there exist a index $i < j < k$, such that $a[i]=a[j]=a[k]$, then at least $\min(j-i,k-j)$ positions in the array has the same value as $a[i]$.
 
 ![The specified positions](/files/decinc.png)
-<br /><sup>Image Credit: [Vanessa Li](http://codesandmaze.tumblr.com/).</sup>
+<br /><sup>Image Credit: [Vanessa Li](http://vanessa.li).</sup>
 
 Consider we want to find the minima from index $l$ to $r$ (not including $r$), and $r-l>3$. Let $m_1=l+\lfloor \frac{r-l}{3} \rfloor$ and $m_2=r-\lfloor \frac{r-l}{3} \rfloor$ such that $l < m_1 < m_2 < r$. 
     
