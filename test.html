@@ -9,25 +9,6 @@
         <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
         <title>test</title>
         <script type="text/javascript">
-                  var canvas = document.createElement("canvas");
-                  var context = canvas.getContext("2d");
-                  var text = "abcdefghijklmnopqrstuvwxyz0123456789";
-                  context.font = "72px monospace";
-                  var baselineSize = context.measureText(text).width;
-                  context.font = "72px STIXGeneral, monospace";
-                  var newSize = context.measureText(text).width;
-                  delete canvas;
-                  if (newSize != baselineSize) {
-                    document.documentElement.className  += " stix";
-                  } else {
-                    var fileref=document.createElement("link");
-                    fileref.setAttribute("rel", "stylesheet");
-                    fileref.setAttribute("type", "text/css");
-                    fileref.setAttribute("href", "/css/mathjax_fonts.css");
-                    document.getElementsByTagName("head")[0].appendChild(fileref);
-                  }
-        </script>
-        <script type="text/javascript">
           var _gaq = _gaq || [];
           _gaq.push(['_setAccount', 'UA-4171915-2']);
           _gaq.push(['_trackPageview']);
@@ -38,9 +19,8 @@
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
           })();
           </script>
-        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML,http://www.chaoxuprime.com/mathjax_conf.js">
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML,https://chaoxu.github.io/mathjax_conf.js">
         </script>
-        <script type="text/javascript" src="/files/hyphenate.js"></script>
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="stylesheet" href="/css/default.css" />
   <!--[if lt IE 9]>
@@ -56,7 +36,7 @@
               <ul>
                   <li><a href="/">Home</a></li>
                   <li><a href="/about.html">About</a></li>
-                  <li><a href="/cv">CV</a></li>
+                  <li><a href="http://web.engr.illinois.edu/~chaoxu3/cv.pdf">CV</a></li>
                   <li><a href="http://web.engr.illinois.edu/~chaoxu3/">Publications</a></li>
                   <li><a href="/tools.html">Tools</a></li>
               </ul>

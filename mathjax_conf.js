@@ -21,8 +21,8 @@ MathJax.Hub.Config({
     },
   "HTML-CSS": {
     availableFonts: ["STIX","TeX"],
-    preferredFont: "TeX",
-    webFont: "TeX"
+    preferredFont: "STIX",
+    webFont: "STIX"
   },
   TeX: { 
     Macros: { 
@@ -40,4 +40,4 @@ MathJax.Hub.Config({
      } 
     }
 });
-MathJax.Ajax.loadComplete("http://www.chaoxuprime.com/mathjax_conf.js");
+MathJax.Ajax.loadComplete("https://chaoxu.github.io/mathjax_conf.js");
