@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="The Art Gallery Guardian">
+        <meta name="author" content="Chao Xu">
+        <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+        <title>README</title>
+        <script type="text/javascript">
+                  var canvas = document.createElement("canvas");
+                  var context = canvas.getContext("2d");
+                  var text = "abcdefghijklmnopqrstuvwxyz0123456789";
+                  context.font = "72px monospace";
+                  var baselineSize = context.measureText(text).width;
+                  context.font = "72px STIXGeneral, monospace";
+                  var newSize = context.measureText(text).width;
+                  delete canvas;
+                  if (newSize != baselineSize) {
+                    document.documentElement.className  += " stix";
+                  } else {
+                    var fileref=document.createElement("link");
+                    fileref.setAttribute("rel", "stylesheet");
+                    fileref.setAttribute("type", "text/css");
+                    fileref.setAttribute("href", "/css/mathjax_fonts.css");
+                    document.getElementsByTagName("head")[0].appendChild(fileref);
+                  }
+        </script>
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-4171915-2']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+          </script>
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML,http://www.chaoxuprime.com/mathjax_conf.js">
+        </script>
+        <script type="text/javascript" src="/files/hyphenate.js"></script>
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="/css/default.css" />
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+    </head>
+    <body class="tex2jax_ignore">
+      <header class="hide-on-print">
+          <div id="blog-title">
+              <a href="/">The Art Gallery Guardian</a>
+          </div>
+          <nav>
+              <ul>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/about.html">About</a></li>
+                  <li><a href="/cv">CV</a></li>
+                  <li><a href="http://web.engr.illinois.edu/~chaoxu3/">Publications</a></li>
+                  <li><a href="/tools.html">Tools</a></li>
+              </ul>
+          </nav>
+      </header>
+      <article>
+          <h1 id="article-title">README</h1>
+          <p>I chose to make this blog because I want to use <a href="http://www.haskell.org/">Haskell</a> and save some hosting money by not hosting a <a href="http://drupal.org/">Drupal</a> on <a href="http://www.a2hosting.com/">A2 Hosting</a>.</p>
+<h1 id="technology"><span class="header-section-number">1</span> Technology</h1>
+<ol type="1">
+<li>The source of the blog is on a <a href="https://github.com/Mgccl/blog">git repository</a>.</li>
+<li>html files are hosted on <a href="http://www.site44.com/">site44</a>.</li>
+<li>Using site44's rewrite system to direct all <code>/files</code> request to <a href="http://aws.amazon.com/s3/">amazon s3</a>, see <a href="/redirects.site44.txt"><code>/redirects.site44.txt</code></a>. Also the mimetypes texts are useful. See <a href="/mimetypes.site44.txt"><code>/mimetypes.site44.txt</code></a></li>
+<li>The blog source is compiled by <a href="http://jaspervdj.be/hakyll/">hakyll</a>.</li>
+<li>The content is written use my variation of <a href="http://johnmacfarlane.net/pandoc/README.html#pandocs-markdown">Pandoc's Markdown</a>, I call it <a href="https://github.com/Mgccl/blog/blob/master/MathDoc.hs">Xu's MathDoc</a>.</li>
+<li>A simple rsync to sync compiled data to the blog. Something like <code>rsync -r ~/blog/_site/ ~/Dropbox/Apps/site44/www.chaoxuprime.com/ --checksum</code></li>
+<li>site44 doesn't support top level domains. Use <a href="http://wwwizer.com/naked-domain-redirect">wwwizer</a> to emulate the effect.</li>
+<li>Coded most of the things in <a href="http://www.sublimetext.com/2">Sublime Text 2</a>.</li>
+<li>The theme is <a href="http://tarskitheme.com/">Tarski</a> with few changes.</li>
+<li>The math are shown with <a href="http://www.mathjax.org">MathJax</a>.</li>
+<li>The heading themes are similar to <a href="http://www.amazon.com/gp/product/0199205272/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0199205272&amp;linkCode=as2&amp;tag=fighterempire-20">Connections in Combinatorial Optimization</a>, and the remaining themes are similar to <a href="http://www.amazon.com/gp/product/0387984038/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0387984038&amp;linkCode=as2&amp;tag=fighterempire-20">Categories for the Working Mathematician</a>. The symbols are of <a href="http://www.stixfonts.org/">STIX fonts</a>, or mathjax's own.</li>
+<li>Uses <a href="http://www.kirupa.com/html5/detect_whether_font_is_installed.htm">Detect Whether a Font is Installed</a> to fall back on mathjax webfont if STIX is not installed.</li>
+<li><a href="https://code.google.com/p/hyphenator/">Hyphenator.js</a> to make the it look even more latex like.</li>
+<li>To compile just <code>MathDoc.hs</code>, you need <code>pandoc</code> and <code>pandoc-citeproc</code>. To compile the <code>site.hs</code>, additionally you need <code>hakyll</code>(obviously...).</li>
+</ol>
+<h1 id="todo"><span class="header-section-number">2</span> Todo</h1>
+<ul>
+<li>Able to simulate <code>\label</code> and <code>\ref</code>.</li>
+</ul>
+<h1 id="notes"><span class="header-section-number">3</span> Notes</h1>
+<ul>
+<li>Under mac, MathDoc require you to <code>export LANG=C</code> for it to work, I have no idea why.</li>
+<li>Remember to set cache to amazon s3 . Say, set <code>Cache-Control</code> to <code>public, max-age=31536000</code></li>
+<li>I made an <a href="https://gist.github.com/chaoxu/195ce33124f384a2f4e4">syntax highlighting file</a> for sublime 3, so in Markdown it can also highlight latex codes.</li>
+</ul>
+<h1 id="bibliography" class="unnumbered">References</h1>
+<div id="refs" class="references">
+
+</div>
+
+      </article>
+      <footer class="hide-on-print">© 2010 - <script>document.write(new Date().getFullYear())</script> Chao Xu. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+
+
+      <script type="text/javascript">
+      var clicky_site_ids = clicky_site_ids || [];
+      clicky_site_ids.push(100956820);
+      (function() {
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = '//static.getclicky.com/js';
+        ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+      })();
+      </script>
+      <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100956820ns.gif" /></p></noscript>
+
+    </body>
+</html>
+
+</html>

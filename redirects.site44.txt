@@ -1,0 +1,10 @@
+/files/cv.pdf http://web.engr.illinois.edu/~chaoxu3/cv.pdf
+/files http://s3.amazonaws.com/chaoxu_files/files
+about about.html
+research research.html
+links links.html
+works works.html
+problems problems.html
+cv http://web.engr.illinois.edu/~chaoxu3/cv.pdf
+/2012/11/cache-aduni-videos-now-on-google-video http://adunivids.neocities.org/
+/posts/2008-04-06-cache-aduni-videos-now-on-google-video.html http://adunivids.neocities.org/
