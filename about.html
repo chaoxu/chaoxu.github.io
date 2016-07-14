@@ -9,6 +9,25 @@
         <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
         <title>About</title>
         <script type="text/javascript">
+                  var canvas = document.createElement("canvas");
+                  var context = canvas.getContext("2d");
+                  var text = "abcdefghijklmnopqrstuvwxyz0123456789";
+                  context.font = "72px monospace";
+                  var baselineSize = context.measureText(text).width;
+                  context.font = "72px STIXGeneral, monospace";
+                  var newSize = context.measureText(text).width;
+                  delete canvas;
+                  if (newSize != baselineSize) {
+                    document.documentElement.className  += " stix";
+                  } else {
+                    var fileref=document.createElement("link");
+                    fileref.setAttribute("rel", "stylesheet");
+                    fileref.setAttribute("type", "text/css");
+                    fileref.setAttribute("href", "/css/mathjax_fonts.css");
+                    document.getElementsByTagName("head")[0].appendChild(fileref);
+                  }
+        </script>
+        <script type="text/javascript">
           var _gaq = _gaq || [];
           _gaq.push(['_setAccount', 'UA-4171915-2']);
           _gaq.push(['_trackPageview']);
@@ -19,8 +38,9 @@
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
           })();
           </script>
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML,https://chaoxu.github.io/mathjax_conf.js">
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML,http://www.chaoxuprime.com/mathjax_conf.js">
         </script>
+        <script type="text/javascript" src="/files/hyphenate.js"></script>
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="stylesheet" href="/css/default.css" />
   <!--[if lt IE 9]>
@@ -36,7 +56,7 @@
               <ul>
                   <li><a href="/">Home</a></li>
                   <li><a href="/about.html">About</a></li>
-                  <li><a href="http://web.engr.illinois.edu/~chaoxu3/cv.pdf">CV</a></li>
+                  <li><a href="/cv">CV</a></li>
                   <li><a href="http://web.engr.illinois.edu/~chaoxu3/">Publications</a></li>
                   <li><a href="/tools.html">Tools</a></li>
               </ul>
@@ -48,15 +68,15 @@
 <p>I'm mainly interested in theoretical computer science, mathematics and problem solving. Algorithms, computational geometry and discrete mathematics are my favorite topics.</p>
 <p>My undergrad was at <a href="http://www.stonybrook.edu">Stony Brook University</a>. Major in mathematics and applied mathematics. Minor in computer science.</p>
 <p>Email: chaoxu3 [at] illinois [dot] edu</p>
-<p>Here is my <a href="http://web.engr.illinois.edu/~chaoxu3/cv.pdf">CV</a> and my <a href="http://web.engr.illinois.edu/~chaoxu3/resume.pdf">resume</a>.</p>
+<p>Here is my <a href="/cv">CV</a> and my <a href="/files/resume.pdf">resume</a>.</p>
 <p>I offer consulting on algorithm problems.</p>
 <div style="float:right">
 <p><a href="http://cstheory.stackexchange.com/users/314/chao-xu"> <img src="http://cstheory.stackexchange.com/users/flair/314.png" width="208" height="58" alt="profile for Chao Xu at Theoretical Computer Science Stack Exchange, Q&amp;A for theoretical computer scientists and researchers in related fields" title="profile for Chao Xu at Theoretical Computer Science Stack Exchange, Q&amp;A for theoretical computer scientists and researchers in related fields"> </a></p>
 </div>
 <p>Here is <a href="http://vanessa.li">my wife's website</a>.</p>
-<!-- 
-Timeline of some things about me.
-<iframe src="/timeline.html" width="800px" height="800px" frameborder="0" scrolling="no" marginwidth="0px" marginheight="0px"></iframe> -->
+<p>Timeline of some things about me.</p>
+<iframe src="/timeline.html" width="800px" height="800px" frameborder="0" scrolling="no" marginwidth="0px" marginheight="0px">
+</iframe>
 <h1 id="bibliography" class="unnumbered">References</h1>
 <div id="refs" class="references">
 
@@ -64,6 +84,21 @@ Timeline of some things about me.
 
       </article>
       <footer class="hide-on-print">© 2010 - <script>document.write(new Date().getFullYear())</script> Chao Xu. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+
+
+      <script type="text/javascript">
+      var clicky_site_ids = clicky_site_ids || [];
+      clicky_site_ids.push(100956820);
+      (function() {
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = '//static.getclicky.com/js';
+        ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+      })();
+      </script>
+      <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100956820ns.gif" /></p></noscript>
+
     </body>
 </html>
 
