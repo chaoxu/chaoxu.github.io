@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="The Art Gallery Guardian">
+        <meta name="author" content="Chao Xu">
+        <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+        <title>Reconstructing edge-disjoint paths, a tighter analysis</title>
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-4171915-2']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+          </script>
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML,http://chaoxuprime.com/mathjax_conf.js">
+        </script>
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="/css/default.css" />
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+    </head>
+    <body class="tex2jax_ignore">
+      <header class="hide-on-print">
+          <div id="blog-title">
+              <a href="/">The Art Gallery Guardian</a>
+          </div>
+          <nav>
+              <ul>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="http://web.engr.illinois.edu/~chaoxu3/">About</a></li>
+                  <li><a href="http://web.engr.illinois.edu/~chaoxu3/cv.pdf">CV</a></li>
+                  <li><a href="/tools.html">Tools</a></li>
+              </ul>
+          </nav>
+      </header>
+      <article>
+          <h1 id="article-title">Reconstructing edge-disjoint paths, a tighter analysis</h1>
+          <br />
+<div>
+<p>This is a small improvement of the analysis of <span class="citation" data-cites="Conforti2003">[<a href="#ref-Conforti2003">1</a>]</span>, this assume you already read that paper.</p>
+<section class="theorem-environment Problem" id="Problem-1">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
+<p>Given a simple undirected graph of <span class="math inline">\(n\)</span> vertices and <span class="math inline">\(m\)</span> edges, construct a data structure such that we can query two vertices <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span>, and it returns the maximum edge disjoint paths between <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span>.</p>
+</section>
+<p>We let <span class="math inline">\(MF(n,m)\)</span> to be the time to compute <span class="math inline">\(st\)</span>-maximum flow on a undirected unit capacity graph.</p>
+<p>The current state of art in the article is:</p>
+<ol type="1">
+<li>Proprocessing time <span class="math inline">\(O(nMF(n,m))\)</span>.</li>
+<li><span class="math inline">\(O(n^3)\)</span> space.</li>
+<li><span class="math inline">\(O(\alpha(n)\lambda(u,v)n)\)</span> query time.</li>
+</ol>
+<p>We can improve this by having a tighter analysis.</p>
+<p>First, if <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> be <span class="math inline">\(k\)</span>-edge disjoint path from <span class="math inline">\(x\)</span> to <span class="math inline">\(y\)</span> and <span class="math inline">\(y\)</span> to <span class="math inline">\(z\)</span> respectively. Let <span class="math inline">\(m\)</span> be the number of edges in <span class="math inline">\(f\cup g\)</span>, then there exist an algorithm to output <span class="math inline">\(k\)</span>-edge disjoint path from <span class="math inline">\(x\)</span> to <span class="math inline">\(z\)</span> in <span class="math inline">\(O(m)\)</span> time. One can see this by update section <span class="math inline">\(2\)</span> of their paper by using a stable matching algorithm without the dummy edges, because this is just stable matching with incomplete lists<span class="citation" data-cites="iwama">[<a href="#ref-iwama">2</a>]</span>.</p>
+<p>Second, acyclic flow of value <span class="math inline">\(f\)</span> uses only <span class="math inline">\(O(\sqrt{f}n)\)</span> edges(Theorem 3.1 in <span class="citation" data-cites="Karger1998">[<a href="#ref-Karger1998">3</a>]</span>), therefore we do not have to store any non-acyclic flows. This also speed up all computations because the number of edges are smaller.</p>
+<p>Third, we can use <span class="math inline">\(O(n^{2.5}\log n)\)</span> space and get a query time of <span class="math inline">\(O(\sqrt{\lambda(u,v)}n)\)</span>. In fact there is a time space trade off <span class="citation" data-cites="Alon87optimalpreprocessing">[<a href="#ref-Alon87optimalpreprocessing">4</a>]</span>.</p>
+<p>Thus finally, we get</p>
+<ol type="1">
+<li>Proprocessing time <span class="math inline">\(O(nMF(n,m))\)</span>.</li>
+<li><span class="math inline">\(O(n^{2.5}\log n)\)</span> space.</li>
+<li><span class="math inline">\(O(\sqrt{\lambda(u,v)}n)\)</span> query time.</li>
+</ol>
+<h1 id="references" class="unnumbered">References</h1>
+<div id="refs" class="references">
+<div id="ref-Conforti2003">
+<p>[1] M. Conforti, R. Hassin, R. Ravi, <strong>Reconstructing edge-disjoint paths</strong>, Operations Research Letters. 31 (2003) 273–276 <a href="https://doi.org/10.1016/S0167-6377(03)00022-1">10.1016/S0167-6377(03)00022-1</a>.</p>
+</div>
+<div id="ref-iwama">
+<p>[2] K. Iwama, S. Miyazaki, Y. Morita, D. Manlove, Stable marriage with incomplete lists and ties, in: J. Wiedermann, P. van Emde Boas, M. Nielsen (Eds.), Automata, Languages and Programming, Springer Berlin Heidelberg, 1999: pp. 443–452 <a href="https://doi.org/10.1007/3-540-48523-6_41">10.1007/3-540-48523-6_41</a>.</p>
+</div>
+<div id="ref-Karger1998">
+<p>[3] D.R. Karger, M.S. Levine, <strong>Finding maximum flows in undirected graphs seems easier than bipartite matching</strong>, Proceedings of the Thirtieth Annual ACM Symposium on Theory of Computing - STOC ’98. (1998) 69–78 <a href="https://doi.org/10.1145/276698.276714">10.1145/276698.276714</a>.</p>
+</div>
+<div id="ref-Alon87optimalpreprocessing">
+<p>[4] N. Alon, B. Schieber, <strong>Optimal preprocessing for answering on-line product queries</strong>, Tel Aviv University, 1987.</p>
+</div>
+</div>
+
+</div>
+<div class="info">Posted by Chao Xu on 2014-11-02. </div>
+<div class="hide-on-print">
+<div class="info">Tags: connectivity. <a href="/drafts/2014-11-02-reconstructing-edge-disjoint-paths.md">Source</a>.</div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'chaoxu'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+      </article>
+      <footer class="hide-on-print">© 2010 - <script>document.write(new Date().getFullYear())</script> Chao Xu. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+
+    </body>
+</html>
+
+</html>
