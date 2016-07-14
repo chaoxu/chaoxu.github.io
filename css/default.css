@@ -9,15 +9,12 @@ html, body {
 /* Main structure
 ----------------------------------------------- */
 body {
-    font-family: MathJax_Main, Verdana, Helvetica, Arial, sans-serif;
+    font-family: STIXGeneral, Verdana, Helvetica, Arial, sans-serif;
     font-size: 100%;
     line-height: 120%;
     margin: auto;
     background-color: #fff;
     min-width: 840px;
-}
-.stix body {
-    font-family: STIXGeneral, MathJax_Main, Verdana, Helvetica, Arial, sans-serif;
 }
 
 header, article {
