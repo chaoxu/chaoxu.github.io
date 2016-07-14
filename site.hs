@@ -83,12 +83,12 @@ mathCompiler = getResourceBody >>= mathDoc
 --mathCompiler = getResourceString >>= mathDoc
 
 idPages = ["favicon.ico",
-           "redirects.site44.txt",
-           "timeline.html",
            "mathjax_conf.js",
-           "mimetypes.site44.txt",
-           "googled46bf4e1cd540289.html"]
-----
+           "googled46bf4e1cd540289.html",
+           ".gitignore",
+           ".gitattributes",
+           "CNAME"]
+
 htmlTitleField :: Context String
 htmlTitleField = Context $ \k _ i -> 
     if (k /= "htmltitle")
