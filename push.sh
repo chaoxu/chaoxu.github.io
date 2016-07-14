@@ -15,7 +15,7 @@ git checkout -b master --track origin/master
 
 # Overwrite existing files with new files
 rsync -a --filter='P _site/' --filter='P _cache/' --filter='P .git/' --filter='P .gitignore' --delete-excluded _site/ .
-rm -r _site/drafts
+rm -r drafts
 
 # Commit
 git add -A

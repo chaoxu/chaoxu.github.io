@@ -46,7 +46,9 @@ main = hakyll $ do
     match "posts/*" $ version "raw" $ do
         route   idRoute
         compile copyFileCompiler
-    
+    match "files/*" $ version "raw" $ do
+        route   idRoute
+        compile copyFileCompiler
     {-
     create ["archive.html"] $ do
         route idRoute
