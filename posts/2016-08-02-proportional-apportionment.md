@@ -11,7 +11,7 @@ I saw a interview problem about assigning identical processors to embarrassingly
 
 If there is no integral requirement on $x_i$'s, then the problem is easy. Let $A=\sum_{i} a_i$. There is a closed solution of $x_i = k \frac{a_i}{A}$, and $\theta = A / k$.
 
-Otherwise, it's easy to check if $\theta'>0$ is a feasible solution. $\theta'$ is feasible iff $ \sum_{i} \lceil a_i/\theta' \rceil \leq k$. Therefore one can apply binary search, and get the result in $O(n\log k)$ time.
+Otherwise, it's easy to check if $\theta'>0$ is a feasible solution. $\theta'$ is feasible iff $\sum_{i} \lceil a_i/\theta' \rceil \leq k$. Therefore one can apply binary search, and get the result in $O(n\log k)$ time.
 
 One can also get a $O(n\log n)$ time algorithm, by first compute $y_i = \lceil k \frac{a_i}{A} \rceil$. Greedily find $i$ such that $a_i/y_i$ is maximized, and decrease $y_i$ by $1$. Until we have $\sum_{i} y_i=k$. This can be supported in $O(\log n)$ per operation using a binary search tree. 
 
