@@ -57,10 +57,6 @@
 <p>Here is an algorithm that make sure this can be done in linear time. The idea is to separate the numbers into two bins. <span class="math inline">\((v_i,i)\)</span> is in the large bin if <span class="math inline">\(v_i &gt; 1\)</span>, and it is in the small bin otherwise. The idea is always pick two elements, one in large bin one in small bin, say <span class="math inline">\((x,i)\)</span> and <span class="math inline">\((y,j)\)</span>, where <span class="math inline">\(x\leq 1&lt; y\)</span>. Now we create a set <span class="math inline">\(\{(x,i),(1-x,j)\}\)</span>, and put <span class="math inline">\((y-(1-x),j)\)</span> back into the bins.</p>
 <p>If we can always prove that there is an element in the small bin during the execution of the algorithm, then we find an linear time algorithm for this problem. This is clear by simple induction.</p>
 <p>This problem come up in order to implement the alias method. I recommend a good read on this topic <a href="http://www.keithschwarz.com/darts-dice-coins/">Darts, Dice, and Coins: Sampling from a Discrete Distribution</a> by <a href="http://www.keithschwarz.com">Keith Schwarz</a>.</p>
-<h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references">
-
-</div>
 
 </div>
 <div class="info">Posted by Chao Xu on 2014-10-12. </div>

@@ -54,10 +54,6 @@
 <p>It's easy to see the recursion gets us <span class="math inline">\(O(m+\log (\frac{n}{m}))=O(m+\log n)\)</span>. So the only problem comes from how do we find the first valley that contains the local minima. Let <span class="math inline">\(0 &lt; k &lt; n\)</span> If <span class="math inline">\(b_0 &gt; b_k\)</span>, then <span class="math inline">\(b_0,b_k,b_n\)</span> is a valley. If <span class="math inline">\(b_0 &lt; b_k\)</span>, then <span class="math inline">\(b_k,b_n,b_{k+n}\)</span> is a valley. So we pick 3 possible <span class="math inline">\(k\)</span> that is <span class="math inline">\(n/4\)</span> apart, and either one of them allow us to construct a valley, or at least <span class="math inline">\(n/4\)</span> of the points have the same value, and we use linear search.</p>
 <script src="https://gist.github.com/chaoxu/6263718.js"></script>
 <p>This algorithm is basically the simplified version of the algorithm in <a href="http://www.sciencedirect.com/science/article/pii/0885064X8990006X">Boris Veroy's paper</a> that can handles repeats.</p>
-<h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references">
-
-</div>
 
 </div>
 <div class="info">Posted by Chao Xu on 2013-08-18. </div>

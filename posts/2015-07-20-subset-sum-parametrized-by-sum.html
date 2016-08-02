@@ -48,10 +48,6 @@
 <p>We assume the input of the subset sum problem is a sequence of <span class="math inline">\(n\)</span> positive integers that sums to <span class="math inline">\(\sigma\)</span>. We are interested if there is a subsequence sums to <span class="math inline">\(t\)</span>.</p>
 <p>In this case, the subset sum problem can be solved in <span class="math inline">\(O(\sigma \log^2 \sigma)\)</span> time. In fact, it output all possible subset sums in the same running time.</p>
 <p>Consider we partition the input into two subsequences, each have sum in between <span class="math inline">\(\sigma/4\)</span> and <span class="math inline">\(3\sigma/4\)</span>, and solve each recursively then take the Minkowski sum. One can analyze this and get <span class="math inline">\(O(\sigma \log^2 \sigma)\)</span> running time. Notice if at some point, such partition cannot be found, then there is a side with a single huge element, and hence can be solved in constant time.</p>
-<h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references">
-
-</div>
 
 </div>
 <div class="info">Posted by Chao Xu on 2015-07-20. </div>

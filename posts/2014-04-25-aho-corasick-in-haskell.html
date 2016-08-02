@@ -85,10 +85,6 @@ match&#39; pat <span class="fu">=</span> match (buildAutomaton <span class="fu">
 
 <span class="ot">isInfixOf&#39; ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
 isInfixOf&#39; xs ys <span class="fu">=</span> getAll <span class="fu">$</span> mconcat <span class="fu">$</span> match (buildAutomaton [(xs, <span class="dt">All</span> <span class="dt">True</span>)]) ys</code></pre></div>
-<h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references">
-
-</div>
 
 </div>
 <div class="info">Posted by Chao Xu on 2014-04-25. </div>

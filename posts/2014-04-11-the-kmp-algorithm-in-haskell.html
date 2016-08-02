@@ -119,10 +119,6 @@ buildAutomaton (x<span class="fu">:</span>xs) <span class="fu">=</span> automato
          <span class="fu">|</span> otherwise    <span class="fu">=</span> newS      <span class="ot">`nextNode`</span> s
          <span class="kw">where</span> nextNode a b <span class="fu">=</span> <span class="dt">Node</span> x (build xs a) b (null xs)
                newS         <span class="fu">=</span> success <span class="fu">$</span> until (\s<span class="ot">-&gt;</span>isNull s <span class="fu">||</span> x <span class="fu">==</span> value s) failure s</code></pre></div>
-<h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references">
-
-</div>
 
 </div>
 <div class="info">Posted by Chao Xu on 2014-04-11. </div>
