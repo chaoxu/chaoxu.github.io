@@ -6,8 +6,10 @@ git stash
 git checkout develop
 
 # Build new files
+mv /tmp/.stack-work .stack-work
 stack exec chaosite clean
 stack exec chaosite build
+mv .stack-work/ /tmp/
 
 # Get previous files
 git fetch --all
