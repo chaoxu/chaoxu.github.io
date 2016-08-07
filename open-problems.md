@@ -13,7 +13,7 @@ Here are some problems that are either open to the best of my knowledge, or aske
 {Problem}
     Given $a_1,\ldots,a_n$ and $b_1,\ldots,b_n$. Find a permutation such that
     \[ 
-    \frac{\sum_{i=1}^n a_{\pi(i)}a_{\pi(i+1)}}{b_{\pi(i)}b_{\pi(i+1)}}
+    \frac{\sum_{i=1}^n a_{\pi(i)}a_{\pi(i+1)}}{\sum_{i=1}^n b_{\pi(i)}b_{\pi(i+1)}}
     \]
     is minimized, where we define $\pi(n+1)=\pi(1)$.
     Is this problem NP-hard? Can we find approximation algorithm for this? 
