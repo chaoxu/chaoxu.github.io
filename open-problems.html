@@ -62,7 +62,7 @@
 </section>
 <section class="theorem-environment Problem" id="Problem-4">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">4</span></span>
-<p>Given <span class="math inline">\(n\)</span> sets <span class="math inline">\(S_1,\ldots,S_n\)</span>. For a set <span class="math inline">\(T\subset [n]\)</span>, Define <span class="math inline">\(f_T(i) = \max(0,|\{j| i\in S_j\}|)\)</span>. Find a set <span class="math inline">\(T\)</span> that maximizes <span class="math inline">\(\sum_{i} f_T(i)\)</span> under the constraint that <span class="math inline">\(|T|=k\)</span>.</p>
+<p>Given <span class="math inline">\(n\)</span> sets <span class="math inline">\(S_1,\ldots,S_n\)</span>. For a set <span class="math inline">\(T\subset [n]\)</span>, Define <span class="math inline">\(f_T(i) = \max(0,|\{j| i\in S_j, j\in T\}|)\)</span>. Find a set <span class="math inline">\(T\)</span> that maximizes <span class="math inline">\(\sum_{i} f_T(i)\)</span> under the constraint that <span class="math inline">\(|T|=k\)</span>.</p>
 </section>
 <section class="theorem-environment Problem" id="Problem-5">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">5</span></span>
@@ -76,11 +76,12 @@ g(k) &amp; \text{if } |\{i|k\in A_i\}| &lt; c \end{cases} \]</span> Find <span c
 </section>
 <p>This problem comes from trying to save money using amazon subscribe and save.</p>
 <h1 id="in-p"><span class="header-section-number">2</span> In P</h1>
+<p>Let <span class="math inline">\(k\)</span>-shortest path from <span class="math inline">\(s\)</span> to <span class="math inline">\(t\)</span> to be <span class="math inline">\(k\)</span> edge disjoint paths with minimum total weight.</p>
 <section class="theorem-environment Problem" id="Problem-6">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">6</span></span>
 <p>For a constant <span class="math inline">\(k\)</span>, find the <span class="math inline">\(k\)</span>-shortest paths from <span class="math inline">\(s\)</span> to every vertex <span class="math inline">\(v\)</span> in a directed graph.</p>
 </section>
-<p>Let <span class="math inline">\(T(m,n)\)</span> be the running time of Dijkstra's algorithm on graph of <span class="math inline">\(m\)</span> edges and <span class="math inline">\(n\)</span> vertices. For <span class="math inline">\(k=1,2\)</span>, it can be done in <span class="math inline">\(O(T(m,n))\)</span> time, see <a href="http://www.eecs.yorku.ca/course_archive/2007-08/F/6590/Notes/surballe_alg.pdf">this</a>. For arbitrary <span class="math inline">\(k\)</span>, it can be solved through <span class="math inline">\(O(n)\)</span> times min-cost flow of value <span class="math inline">\(k\)</span>, which can be done in <span class="math inline">\(O(nk T(m,n))\)</span> time using Ford–Fulkerson while updating the weights. The question is can one do it in <span class="math inline">\(O(f(k)T(m,n))\)</span>. It's interesting even for <span class="math inline">\(k=3\)</span>.</p>
+<p>Let <span class="math inline">\(T(m,n)\)</span> be the running time of Dijkstra's algorithm on graph of <span class="math inline">\(m\)</span> edges and <span class="math inline">\(n\)</span> vertices. For <span class="math inline">\(k=1,2\)</span>, it can be done in <span class="math inline">\(O(T(m,n))\)</span> time, see <a href="http://www.eecs.yorku.ca/course_archive/2007-08/F/6590/Notes/surballe_alg.pdf">this</a>. For arbitrary <span class="math inline">\(k\)</span>, it can be solved through <span class="math inline">\(O(n)\)</span> times min-cost flow of value <span class="math inline">\(k\)</span>, which can be done in <span class="math inline">\(O(nk T(m,n))\)</span> time using successive shortest path algorithm for min-cost flow. The question is can one do it in <span class="math inline">\(O(f(k)T(m,n))\)</span> for some function <span class="math inline">\(f\)</span>. It's interesting even for <span class="math inline">\(k=3\)</span>.</p>
 <section class="theorem-environment Problem" id="Problem-7">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">7</span></span>
 <p>Solve the <a href="http://www.cs.umd.edu/projects/gas/">The gas station problem</a> faster?</p>
