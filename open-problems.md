@@ -26,7 +26,7 @@ Motivation: One want to permute the axis of a radar chart to maximize the ratio 
 
 
 {Problem}
-    Given $n$ sets $S_1,\ldots,S_n$. For a set $T\subset [n]$, Define $f_T(i) = \max(0,|\{j| i\in S_j\}|)$. Find a set $T$ that maximizes $\sum_{i} f_T(i)$ under the constraint that $|T|=k$. 
+    Given $n$ sets $S_1,\ldots,S_n$. For a set $T\subset [n]$, Define $f_T(i) = \max(0,|\{j| i\in S_j, j\in T\}|)$. Find a set $T$ that maximizes $\sum_{i} f_T(i)$ under the constraint that $|T|=k$. 
 
 {Problem}
     Let $d_1,\ldots,d_n$, $p_1,\ldots,p_n$ and $q$ and $c$ be the input. 
@@ -43,10 +43,12 @@ This problem comes from trying to save money using amazon subscribe and save.
 
 # In P
 
-{Problem}
-    For a constant $k$, find the $k$-shortest paths from $s$ to every vertex $v$ in a directed graph. 
+Let $k$-shortest path from $s$ to $t$ to be $k$ edge disjoint paths with minimum total weight.
 
-Let $T(m,n)$ be the running time of Dijkstra's algorithm on graph of $m$ edges and $n$ vertices. For $k=1,2$, it can be done in $O(T(m,n))$ time, see [this](http://www.eecs.yorku.ca/course_archive/2007-08/F/6590/Notes/surballe_alg.pdf). For arbitrary $k$, it can be solved through $O(n)$ times min-cost flow of value $k$, which can be done in $O(nk T(m,n))$ time using Ford–Fulkerson while updating the weights. The question is can one do it in $O(f(k)T(m,n))$. It's interesting even for $k=3$.
+{Problem}
+    For a constant $k$, find the $k$-shortest paths from $s$ to every vertex $v$ in a directed graph.
+
+Let $T(m,n)$ be the running time of Dijkstra's algorithm on graph of $m$ edges and $n$ vertices. For $k=1,2$, it can be done in $O(T(m,n))$ time, see [this](http://www.eecs.yorku.ca/course_archive/2007-08/F/6590/Notes/surballe_alg.pdf). For arbitrary $k$, it can be solved through $O(n)$ times min-cost flow of value $k$, which can be done in $O(nk T(m,n))$ time using successive shortest path algorithm for min-cost flow. The question is can one do it in $O(f(k)T(m,n))$ for some function $f$. It's interesting even for $k=3$.
 
 {Problem}
     Solve the [The gas station problem](http://www.cs.umd.edu/projects/gas/) faster? 
