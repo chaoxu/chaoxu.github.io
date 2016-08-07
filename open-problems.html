@@ -47,60 +47,66 @@
 <h1 id="probably-np-hard"><span class="header-section-number">1</span> Probably NP-hard</h1>
 <section class="theorem-environment Problem" id="Problem-1">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
-<p>Given a directed graph <span class="math inline">\(G\)</span> and a vertex <span class="math inline">\(v\)</span>, what's the minimum number of vertices has to be removed such that there exist a vertex <span class="math inline">\(u\)</span> such that there is no path from <span class="math inline">\(v\)</span> to <span class="math inline">\(u\)</span> or <span class="math inline">\(u\)</span> to <span class="math inline">\(v\)</span>.</p>
+<p><a href="http://cs.stackexchange.com/questions/12441/is-it-np-hard-to-fill-up-bins-with-minimum-moves">This one</a>.</p>
 </section>
 <section class="theorem-environment Problem" id="Problem-2">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">2</span></span>
-<p><a href="http://cs.stackexchange.com/questions/12441/is-it-np-hard-to-fill-up-bins-with-minimum-moves">This one</a>.</p>
+<p>Given <span class="math inline">\(a_1,\ldots,a_n\)</span> and <span class="math inline">\(b_1,\ldots,b_n\)</span>. Find a permutation such that <span class="math display">\[ 
+\frac{\sum_{i=1}^n a_{\pi(i)}a_{\pi(i+1)}}{b_{\pi(i)}b_{\pi(i+1)}}
+\]</span> is minimized, where we define <span class="math inline">\(\pi(n+1)=\pi(1)\)</span>. Is this problem NP-hard? Can we find approximation algorithm for this?</p>
 </section>
+<p>Motivation: One want to permute the axis of a radar chart to maximize the ratio of the areas of two data sets.</p>
 <section class="theorem-environment Problem" id="Problem-3">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">3</span></span>
-<p>Given <span class="math inline">\(a_1,\ldots,a_n\)</span> and <span class="math inline">\(b_1,\ldots,b_n\)</span>. Does there exist a permutation such that <span class="math display">\[ 
-\sum_{i=1}^n a_{\pi(i)}a_{\pi(i+1)} - b_{\pi(i)}b_{\pi(i+1)} &lt; 0
-\]</span>, where we define <span class="math inline">\(\pi(n+1)=\pi(1)\)</span>. Is this problem NP-hard?</p>
-</section>
-<p>Note this is basically traveling salesman problem such that the distance between two vertices is the difference of two symmetric product matrix, where a matrix <span class="math inline">\(M\)</span> is a product matrix of vector <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> if <span class="math inline">\(M_{ij}=x_iy_j\)</span>.</p>
-<section class="theorem-environment Problem" id="Problem-4">
-<span class="theorem-header"><span class="type">Problem</span><span class="index">4</span></span>
 <p>There are <span class="math inline">\(n\)</span> people sitting on a circle of <span class="math inline">\(n\)</span> seats. Out of the <span class="math inline">\(n\)</span> people, there are <span class="math inline">\(k\)</span> couples(<span class="math inline">\(2k\)</span> people). You can swap any two people. Find an algorithm that swap the least amount of times such that all the couples are sitting with his/her partner.</p>
 </section>
-<h1 id="easy-problem"><span class="header-section-number">2</span> Easy problem</h1>
-<p>It comes from the game <a href="http://www.ftlgame.com/">FTL: Faster Than Light</a>. The beam weapons attacks a entire line segment. The damage is proportional to the total number of rooms hit by the line segment.</p>
+<section class="theorem-environment Problem" id="Problem-4">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">4</span></span>
+<p>Given <span class="math inline">\(n\)</span> sets <span class="math inline">\(S_1,\ldots,S_n\)</span>. For a set <span class="math inline">\(T\subset [n]\)</span>, Define <span class="math inline">\(f_T(i) = \max(0,|\{j| i\in S_j\}|)\)</span>. Find a set <span class="math inline">\(T\)</span> that maximizes <span class="math inline">\(\sum_{i} f_T(i)\)</span> under the constraint that <span class="math inline">\(|T|=k\)</span>.</p>
+</section>
 <section class="theorem-environment Problem" id="Problem-5">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">5</span></span>
-<p>Input is the length <span class="math inline">\(l\)</span> and polygons on the plane. Find a segment of length <span class="math inline">\(l\)</span> that intersects the most number of polygons.</p>
+<p>Let <span class="math inline">\(d_1,\ldots,d_n\)</span>, <span class="math inline">\(p_1,\ldots,p_n\)</span> and <span class="math inline">\(q\)</span> and <span class="math inline">\(c\)</span> be the input. For <span class="math inline">\(a_1,\ldots,a_n\)</span>, we define the following:</p>
+<ol type="1">
+<li><span class="math inline">\(A_i = \{a_i+m d_i| m\in \N\}\)</span>.</li>
+<li><span class="math inline">\(g(k) = \sum_{k\in A_i} p_i\)</span>.</li>
+<li><span class="math display">\[f(k)  = \begin{cases} q g(k) &amp;\text{if } |\{i|k\in A_i\}|\geq c\\
+g(k) &amp; \text{if } |\{i|k\in A_i\}| &lt; c \end{cases} \]</span> Find <span class="math inline">\(a_1,\ldots,a_n\geq 0\)</span> so <span class="math display">\[\lim_{t\to \infty} \frac{\sum_{i=1}^t f(i)}{\sum_{i=1}^t g(i)}\]</span> is minimized.</li>
+</ol>
 </section>
-<p>Variations: Allow weights, can we do it faster if polygons are all axis-aligned rectangles and pairwise disjoint?</p>
-<p>This problem doesn't seem hard. Common computational geometry technique should handle it well.</p>
+<p>This problem comes from trying to save money using amazon subscribe and save.</p>
+<h1 id="in-p"><span class="header-section-number">2</span> In P</h1>
 <section class="theorem-environment Problem" id="Problem-6">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">6</span></span>
-<p>Hypergraph minimum cut in near linear time?</p>
+<p>For a constant <span class="math inline">\(k\)</span>, find the <span class="math inline">\(k\)</span>-shortest paths from <span class="math inline">\(s\)</span> to every vertex <span class="math inline">\(v\)</span> in a directed graph.</p>
 </section>
-<h1 id="connectivity"><span class="header-section-number">3</span> Connectivity</h1>
+<p>Let <span class="math inline">\(T(m,n)\)</span> be the running time of Dijkstra's algorithm on graph of <span class="math inline">\(m\)</span> edges and <span class="math inline">\(n\)</span> vertices. For <span class="math inline">\(k=1,2\)</span>, it can be done in <span class="math inline">\(O(T(m,n))\)</span> time, see <a href="http://www.eecs.yorku.ca/course_archive/2007-08/F/6590/Notes/surballe_alg.pdf">this</a>. For arbitrary <span class="math inline">\(k\)</span>, it can be solved through <span class="math inline">\(O(n)\)</span> times min-cost flow of value <span class="math inline">\(k\)</span>, which can be done in <span class="math inline">\(O(nk T(m,n))\)</span> time using Ford–Fulkerson while updating the weights. The question is can one do it in <span class="math inline">\(O(f(k)T(m,n))\)</span>. It's interesting even for <span class="math inline">\(k=3\)</span>.</p>
 <section class="theorem-environment Problem" id="Problem-7">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">7</span></span>
-<p>Given a simple unit edge capacity undirected graph <span class="math inline">\(G=(V,E)\)</span> with a subset of vertices <span class="math inline">\(T\)</span> with unit capacity, and remaining vertices with infinite capacity. Can one find a <span class="math inline">\(st\)</span>-maximum flow in deterministic <span class="math inline">\(O(n^{2.5})\)</span> time?</p>
+<p>Solve the <a href="http://www.cs.umd.edu/projects/gas/">The gas station problem</a> faster?</p>
 </section>
+<p>There are many weakening of the problem that might be doable. I need some time to organize the notes I already have on it.</p>
+<h1 id="not-algorithms"><span class="header-section-number">3</span> Not algorithms</h1>
 <section class="theorem-environment Problem" id="Problem-8">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">8</span></span>
-<p>Let <span class="math inline">\(G\)</span> be a directed graph with a source vertex <span class="math inline">\(s\)</span>, how fast can one find <span class="math inline">\(\min_{t\in T} \lambda(s,t)\)</span>?</p>
+<p>Define <span class="math inline">\(AB = \{ab|a\in A, b\in B\}\)</span>. Let <span class="math inline">\([\ell]=\{1,\ldots,\ell\}\)</span>. Define <span class="math inline">\(f(n,\ell)\)</span> to be the smallest number <span class="math inline">\(k\)</span>, such that there exist a size <span class="math inline">\(k\)</span> set <span class="math inline">\(X\subset \mathbb{Z}_n\)</span>, such that <span class="math inline">\([\ell]X = \mathbb{Z}_n\)</span>. What are nice bounds on <span class="math inline">\(f(n,\ell)\)</span>, and how do we find <span class="math inline">\(X\)</span> with size close to <span class="math inline">\(f(n,\ell)\)</span>?</p>
 </section>
+<p><span class="math inline">\(\sigma_0(n)\)</span> is the number of divisors of <span class="math inline">\(n\)</span> and <span class="math inline">\(\sigma_1(n)\)</span> is sum of the divisors of <span class="math inline">\(n\)</span>. Current we have <span class="math inline">\(f(n,\ell)\leq \frac{\sigma_1(n) \ln n}{\ell}+\sigma_0(n)\)</span>. See <a href="https://www.overleaf.com/read/hnqpncgrhpbv">this</a>.</p>
+<h1 id="probably-very-difficult-open-problem"><span class="header-section-number">4</span> Probably very difficult open problem</h1>
 <section class="theorem-environment Problem" id="Problem-9">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">9</span></span>
-<p><a href="http://cstheory.stackexchange.com/questions/25531/maximum-local-edge-connectivity">Maximum local edge connectivity</a></p>
+<p>Let <span class="math inline">\(G\)</span> be a directed graph with a source vertex <span class="math inline">\(s\)</span>, how fast can one find <span class="math inline">\(\min_{t\in T} \lambda(s,t)\)</span>?</p>
 </section>
 <section class="theorem-environment Problem" id="Problem-10">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">10</span></span>
-<p>There are disjoint sets of red vertices <span class="math inline">\(R\)</span> and blue vertices <span class="math inline">\(B\)</span>. Let <span class="math inline">\(V=R\cup B\)</span>. <span class="math inline">\(|R|,|B|\)</span> are odd.</p>
-<p>Consider any submodular function <span class="math inline">\(f:2^V\to \mathbb{R}\)</span>, such that <span class="math inline">\(f(V)\leq f(Y)\)</span> for all <span class="math inline">\(Y\)</span>, where <span class="math inline">\(|Y\cap R|\)</span> and <span class="math inline">\(|Y\cap B|\)</span> are odd.</p>
-<p>Show that there exist <span class="math inline">\(r\in R\)</span> and <span class="math inline">\(b\in B\)</span>, s.t. for any set <span class="math inline">\(S\)</span> where <span class="math inline">\(r,b\in S\)</span>, we have <span class="math inline">\(f(S)\geq f(V)\)</span>.</p>
+<p>Let <span class="math inline">\(G\)</span> be a directed graph with a source vertex <span class="math inline">\(s\)</span>, how fast can one <a href="http://cstheory.stackexchange.com/questions/25268/sparse-subgraph-preserving-rooted-edge-connectivity-up-to-k">find a <span class="math inline">\(r\)</span>-rooted-<span class="math inline">\(k\)</span>-sparsifier</a>?</p>
 </section>
-<h1 id="other-problems"><span class="header-section-number">4</span> Other problems</h1>
+<p>One way to do it is find flow of value <span class="math inline">\(k\)</span> from <span class="math inline">\(r\)</span> to <span class="math inline">\(v\)</span>. Delete all in-edges incident to <span class="math inline">\(v\)</span> but not in the flow. Repeat. But this is slow. Anything with running time <span class="math inline">\(O(km)\)</span> is good. For undirected graphs, <span class="math inline">\(O(m)\)</span> time is possible.</p>
 <section class="theorem-environment Problem" id="Problem-11">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">11</span></span>
-<p>How fast can we <a href="http://cstheory.stackexchange.com/questions/21533/faster-pseudo-polynomial-time-algorithm-for-subset-sum">improve the pseudo-polytime algorithm for subset sum</a>?</p>
+<p><a href="http://cstheory.stackexchange.com/questions/25531/maximum-local-edge-connectivity">Maximum local edge connectivity</a></p>
 </section>
-<p>Interesting to think about but probably can't be improved easily.</p>
+<p>This problem is not important at all, but looks fairly difficult.</p>
 
       </article>
       <footer class="hide-on-print">© 2010 - <script>document.write(new Date().getFullYear())</script> Chao Xu. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
