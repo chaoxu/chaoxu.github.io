@@ -35,8 +35,8 @@
           <nav>
               <ul>
                   <li><a href="/">Home</a></li>
-                  <li><a href="http://web.engr.illinois.edu/~chaoxu3/">About</a></li>
-                  <li><a href="http://web.engr.illinois.edu/~chaoxu3/cv.pdf">CV</a></li>
+                  <li><a href="http://chaoxu3.web.engr.illinois.edu/">About</a></li>
+                  <li><a href="http://chaoxu3.web.engr.illinois.edu/cv.pdf">CV</a></li>
                   <li><a href="/tools.html">Tools</a></li>
               </ul>
           </nav>
@@ -71,7 +71,7 @@
 <li>All other edges are uncapacited. Namely lower bound and upper bound are <span class="math inline">\(-\infty\)</span> and <span class="math inline">\(\infty\)</span> respectively.</li>
 </ol>
 <p>Edge Costs: <span class="math inline">\(v_{i-1}v_i\)</span> has cost function <span class="math inline">\(c_i(x)=w_i |a_i-x|\)</span>. Cost function on other edges are <span class="math inline">\(0\)</span>.</p>
-<p>A function <span class="math inline">\(f\)</span> is called a circulation if <span class="math inline">\(\sum_{e\in \delta^+(v)} f(e)-\sum_{e\in \delta^-(v)} f(e)=0\)</span> for all vertex <span class="math inline">\(v\)</span>. It is feasible if <span class="math inline">\(f(e)\)</span> is within the capacity. It is min-cost if <span class="math inline">\(\sum_{e} c(f(e))\)</span> is minimized.</p>
+<p>A function <span class="math inline">\(f\)</span> is called a circulation if <span class="math inline">\(\sum_{e\in \delta^+(v)} f(e)-\sum_{e\in \delta^-(v)} f(e)=0\)</span> for all vertex <span class="math inline">\(v\)</span>. It is feasible if <span class="math inline">\(f(e)\)</span> is within the capacity. It is min-cost if <span class="math inline">\(\sum_{e} c_e(f(e))\)</span> is minimized.</p>
 <p>Solving the min-cost circulation problem would give us the desired <span class="math inline">\(x_i\)</span> by setting <span class="math inline">\(x_i=f(v_{i-1}v_i)\)</span>.</p>
 <h1 id="min-cost-circulation-on-series-parallel-graphs"><span class="header-section-number">3</span> min-cost circulation on series-parallel graphs</h1>
 <p>Notice this graph is a two terminal <a href="http://en.wikipedia.org/wiki/Series-parallel_graph">series-parallel graph</a>!</p>

@@ -34,7 +34,7 @@ Edge Capacity:
 
 Edge Costs: $v_{i-1}v_i$ has cost function $c_i(x)=w_i |a_i-x|$. Cost function on other edges are $0$.
 
-A function $f$ is called a circulation if $\sum_{e\in \delta^+(v)} f(e)-\sum_{e\in \delta^-(v)} f(e)=0$ for all vertex $v$. It is feasible if $f(e)$ is within the capacity. It is min-cost if $\sum_{e} c(f(e))$ is minimized. 
+A function $f$ is called a circulation if $\sum_{e\in \delta^+(v)} f(e)-\sum_{e\in \delta^-(v)} f(e)=0$ for all vertex $v$. It is feasible if $f(e)$ is within the capacity. It is min-cost if $\sum_{e} c_e(f(e))$ is minimized. 
 
 Solving the min-cost circulation problem would give us the desired $x_i$ by setting $x_i=f(v_{i-1}v_i)$.
 
