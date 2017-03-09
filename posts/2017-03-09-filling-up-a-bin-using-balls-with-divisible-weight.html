@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="The Art Gallery Guardian">
+        <meta name="author" content="Chao Xu">
+        <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+        <title>Filling up a bin using balls with divisible weights</title>
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-4171915-2']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+          </script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML,http://chaoxuprime.com/mathjax_conf.js">
+        </script>
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="/css/default.css" />
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+    </head>
+    <body class="tex2jax_ignore">
+      <header class="hide-on-print">
+          <div id="blog-title">
+              <a href="/">The Art Gallery Guardian</a>
+          </div>
+          <nav>
+              <ul>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="http://chaoxu3.web.engr.illinois.edu/">About</a></li>
+                  <li><a href="http://chaoxu3.web.engr.illinois.edu/cv.pdf">CV</a></li>
+                  <li><a href="/tools.html">Tools</a></li>
+              </ul>
+          </nav>
+      </header>
+      <article>
+          <h1 id="article-title">Filling up a bin using balls with divisible weights</h1>
+          <br />
+<div>
+<p>This post shows how the special case for <a href="http://cs.stackexchange.com/questions/12441/is-it-np-hard-to-fill-up-bins-with-minimum-moves">this problem</a> where there is exactly one bin, and each ball have weight a power of <span class="math inline">\(2\)</span>. It is one of the <a href="http://cs.stackexchange.com/unanswered">most popular unanswered problem on cs.stackexchange</a> as of writing.</p>
+<section class="theorem-environment Problem" id="Problem-1">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
+We are interested in solving the following integer program,
+<span class="math">\begin{align*}
+\text{Minimize:} & \sum_{i=1}^n |x_i-a_i| \\
+\text{subject to:} & \sum_{i=1}^n w_i x_i = c\\
+& 0\leq x_i \leq b_i \text{ for all } 1\leq i \leq n\\
+\end{align*}</span>
+<p>where each <span class="math inline">\(w_i\)</span> is a power of <span class="math inline">\(2\)</span> for all <span class="math inline">\(1\leq i\leq n\)</span>. Assume <span class="math inline">\(w_i\leq w_{i+1}\)</span>.</p>
+</section>
+<p>In fact, we don't require power of <span class="math inline">\(2\)</span>s, we can still establish polynomial time as long as <span class="math inline">\(w_{i+1}/w_i\)</span> is bounded by a polynomial in terms of the input size for all <span class="math inline">\(i\)</span>. However, for simplicity of exposition, assume it's power of <span class="math inline">\(2\)</span>. If <span class="math inline">\(w_{i+1}/w_i\)</span> it is not unbounded, then we are not sure.</p>
+<p>Let's consider a more natural problem without the absolute values.</p>
+<section class="theorem-environment Problem" id="Problem-2">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">2</span><span class="name"><span class="math inline">\(0\)</span>-<span class="math inline">\(1\)</span> exact knapsack problem with divisible weights</span></span>
+We are interested in solving the following integer program,
+<span class="math">\begin{align*}
+\text{Minimize:} & \sum_{i=1}^n c_i x_i \\
+\text{subject to:} & \sum_{i=1}^n w_i x_i = t\\
+& x_i \in \{0,1\} \text{ for all } 1\leq i \leq n\\
+\end{align*}</span>
+<p>where <span class="math inline">\(w_i|w_{i+1}\)</span> for all <span class="math inline">\(1\leq i\leq n\)</span>. <span class="math inline">\(w_i\)</span> can be negative.</p>
+</section>
+<p>There are two things we have to show. We must show <a href="#Problem-1">Problem 1</a> reduces to <a href="#Problem-2">Problem 2</a> with polynomial blow up, and <a href="#Problem-2">Problem 2</a> can be solved in polynomial time.</p>
+<h1 id="reduction"><span class="header-section-number">1</span> Reduction</h1>
+<p>The reduction goes through a few steps. We start with the integer program in <a href="#Problem-1">Problem 1</a>, and let <span class="math inline">\(y_i = a_i-x_i\)</span>, and we get</p>
+<span class="math">\begin{align*}
+\text{Minimize:} & \sum_{i=1}^n |y_i| \\
+\text{subject to:} & \sum_{i=1}^n w_i y_i = \sum_{i=1}^n w_i a_i - c\\
+& a_i-b_i\leq y_i \leq a_i \text{ for all } 1\leq i \leq n\\
+\end{align*}</span>
+<p>Hence, let <span class="math inline">\(c&#39; = \sum_{i=1}^n w_ia_i -c\)</span>, and <span class="math inline">\(l_i = a_i-b_i\)</span> and <span class="math inline">\(u_i = a_i\)</span>.</p>
+<span class="math">\begin{align*}
+\text{Minimize:} & \sum_{i=1}^n |y_i| \\
+\text{subject to:} & \sum_{i=1}^n w_i y_i = c'\\
+& l_i \leq y_i \leq u_i \text{ for all } 1\leq i \leq n\\
+\end{align*}</span>
+<p>Now, let <span class="math inline">\(y_i=y_i^+ - y_i^-\)</span>, where <span class="math inline">\(y_i^-,y_i^+\geq 0\)</span>, we can remove the absolute value.</p>
+<span class="math">\begin{align*}
+\text{Minimize:} & \sum_{i=1}^n y_i^+ + y_i^- \\
+\text{subject to:} & \sum_{i=1}^n w_i y_i^+ + \sum_{i=1}^n -w_i y_i^- = c'\\
+& l_i \leq y_i^+- y_i^- \leq u_i \text{ for all } 1\leq i \leq n\\
+& y_i^-, y_i^+\geq 0 \text{ for all } 1\leq i \leq n\\
+\end{align*}</span>
+<p>Observe we can separate the inequalities involving <span class="math inline">\(y_i^+ - y_i^-\)</span>, because there is always an optimal solution where <span class="math inline">\(y_i^-\)</span> or <span class="math inline">\(y_i^+\)</span> is <span class="math inline">\(0\)</span>.</p>
+<section class="theorem-environment Remark" id="Remark-">
+<span class="theorem-header"><span class="type">Remark</span></span>
+<p>This observation fails when the number of bins is more than <span class="math inline">\(1\)</span>.</p>
+</section>
+<span class="math">\begin{align*}
+\text{Minimize:} & \sum_{i=1}^n y_i^+ + y_i^- \\
+\text{subject to:} & \sum_{i=1}^n w_i y_i^+ + \sum_{i=1}^n -w_i y_i^- = c'\\
+& 0 \leq y_i^+ \leq u_i \text{ for all } 1\leq i \leq n\\
+& 0 \leq y_i^- \leq -l_i \text{ for all } 1\leq i \leq n\\
+\end{align*}</span>
+<p>This is an integer program is in the following form as a bounded exact knapsack problem.</p>
+<span class="math">\begin{align*}
+\text{Minimize:} & \sum_{i=1}^n x_i \\
+\text{subject to:} & \sum_{i=1}^n w_i x_i = c\\
+& 0 \leq x_i \leq b_i \text{ for all } 1\leq i \leq n\\
+\end{align*}</span>
+<p>Finally, apply the standard technique that rewrites a bounded knapsack problem to <span class="math inline">\(0\)</span>-<span class="math inline">\(1\)</span>-knapsack problem (say, see Section 7.1.1 of <span class="citation" data-cites="9783540402862">[<a href="#ref-9783540402862">1</a>]</span>). Note the blow up is at most a factor of <span class="math inline">\(O(\log \max_i b_i)\)</span>. We can get the integer program in <a href="#Problem-2">Problem 2</a>, and also the weights are all powers of <span class="math inline">\(2\)</span>. The reduction runs in polynomial time with respect to input size.</p>
+<h1 id="solving-problem-2"><span class="header-section-number">2</span> Solving <a href="#Problem-2">Problem 2</a></h1>
+<p><a href="http://sevenkplus.com/">Yuzhou Gu</a> noted that the integer program in <a href="#Problem-2">Problem 2</a> could be solved by dynamic programming.</p>
+<p>Let <span class="math inline">\(D[m,k]\)</span> to be the optimal value to the following problem</p>
+<span class="math">\begin{align*}
+\text{Minimize:} & \sum_{j=1}^m c_j x_j \\
+\text{subject to:} & \sum_{j=1}^m w_j x_j = k |w_m| + t \bmod |w_m|\\
+& x_j \in \{0,1\} \text{ for all } 1\leq j \leq m\\
+\end{align*}</span>
+<p>The claim is that <span class="math inline">\(D[m,k]\)</span> can be expressed by the following recurrence relation.</p>
+<p><span class="math display">\[
+D[m,k] = \min_{x_m\in \{0,1\}} D\left[m-1,\frac{|w_m|k- w_m x_m+(t\bmod |w_m| - t\bmod |w_{m-1}|)}{|w_{m-1}|}\right]
+\]</span></p>
+<p>Note that <span class="math inline">\(|k|\)</span> is at most <span class="math inline">\(m\)</span>. Therefore the table has at most <span class="math inline">\(O(n^2)\)</span> entries. To obtain the solution to the original equation, we just have to find the minimum overall <span class="math inline">\(D[n, k]\)</span>. Clearly, this runs in polynomial time.</p>
+<h1 id="bibliography" class="unnumbered">References</h1>
+<div id="refs" class="references">
+<div id="ref-9783540402862">
+<p>[1] H. Kellerer, U. Pferschy, D. Pisinger, <strong>Knapsack problems</strong>, Springer, 2004.</p>
+</div>
+</div>
+
+</div>
+<div class="info">Posted by Chao Xu on 2017-03-09. </div>
+<div class="hide-on-print">
+<div class="info">Tags: optimization, integer. <a href="/posts/2017-03-09-filling-up-a-bin-using-balls-with-divisible-weight.md">Source</a>.</div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'chaoxu'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+      </article>
+      <footer class="hide-on-print">© 2010 - <script>document.write(new Date().getFullYear())</script> Chao Xu. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+
+    </body>
+</html>
+
+</html>
