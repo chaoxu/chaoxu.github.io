@@ -15,7 +15,7 @@
 # resolver:
 #  name: custom-snapshot
 #  location: "./custom-snapshot.yaml"
-resolver: lts-6.20
+resolver: lts-8.9
 
 # User packages to be built.
 # Various formats can be used as shown in the example below.
@@ -39,7 +39,7 @@ packages:
 - '.'
 # Dependency packages to be pulled from upstream that are not in the resolver
 # (e.g., acme-missiles-0.3)
-extra-deps: [hakyll-4.8.3.2, pandoc-citeproc-0.10.1, pandoc-1.17.1, aeson-pretty-0.8.1]
+extra-deps: []
 
 # Override default flag values for local packages and extra-deps
 flags: {}
