@@ -67,6 +67,8 @@
             heapq.heappush(h,((u<span class="op">-</span>x[b])<span class="op">+</span>x[b<span class="op">+</span><span class="dv">1</span>],b<span class="op">+</span><span class="dv">1</span>))
     <span class="cf">return</span> output</code></pre></div>
 <p>If we want to output the sets themselves, not just the values, does the running time change? If a set <span class="math inline">\(I\)</span> is in the output, then all subsets of <span class="math inline">\(I\)</span> must also be in the output. Hence the largest set we can ever output has size <span class="math inline">\(O(\log k)\)</span>. Therefore the total output length is at most <span class="math inline">\(O(k\log k)\)</span>.</p>
+<p>This is also a lower bound. Consider when <span class="math inline">\(x_i=2^i\)</span>, then we will output all subsets of <span class="math inline">\(\{x_1,\ldots,x_{\log k}}\}\)</span>, and we know that <span class="math inline">\(\sum_{i=1}^{\log k} i{\log k\choose i} = \Omega(\log k)\)</span>.</p>
+<p>It is open if <span class="math inline">\(\Omega(k\log k)\)</span> is a lower bound if we don't have to list the smallest <span class="math inline">\(k\)</span> subset sum values in order.</p>
 <h1 id="acknowledgements" class="unnumbered">Acknowledgements</h1>
 <p>I would like to thank Tana Wattanawaroon for helpful discussions and taking an interest in this problem.</p>
 
