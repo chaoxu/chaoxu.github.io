@@ -47,11 +47,11 @@
 <div>
 <section class="theorem-environment Problem" id="Problem-1">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
-<p>Given a set of positive reals <span class="math inline">\(\set{x_1,\ldots,x_n}\)</span> where <span class="math inline">\(x_1&lt;x_2&lt;\ldots&lt;x_n\)</span>, find the smallest <span class="math inline">\(k\)</span> subset sums.</p>
+<p>Given a set of positive reals <span class="math inline">\(\{x_1,\ldots,x_n\}\)</span> where <span class="math inline">\(x_1&lt;x_2&lt;\ldots&lt;x_n\)</span>, find the smallest <span class="math inline">\(k\)</span> subset sums.</p>
 </section>
 <p>Torsten Gross and Nils Blüthgen posted <a href="https://arxiv.org/abs/1704.05795">a <span class="math inline">\(O(k^2)\)</span> time solution on arXiv</a>.</p>
 <p>We show a <span class="math inline">\(O(k\log k)\)</span> time algorithm, which is optimal if we want to output the numbers in order.</p>
-<p>The idea is that we list sums one by one, and maintain what sum to pick next through a priority queue. We start with the empty set. Assume that we added the sum induced by <span class="math inline">\(I\subset [n]\)</span> (that is, <span class="math inline">\(\sum_{i\in I} x_i\)</span>) into the output, let <span class="math inline">\(j=1+\max I\)</span>. Now we can consider two possibilities by extending the current solution: the sum induced by <span class="math inline">\(I\cup \set{j}\)</span> will be in the output, the sum induced by <span class="math inline">\(I\cup \set{k}\)</span> where <span class="math inline">\(k&gt;j\)</span> will be in the output. We will add both possibilities to the queue so that one can check them later. Also, there is no need actually to store the sets, only the values.</p>
+<p>The idea is that we list sums one by one, and maintain what sum to pick next through a priority queue. We start with the empty set. Assume that we added the sum induced by <span class="math inline">\(I\subset [n]\)</span> (that is, <span class="math inline">\(\sum_{i\in I} x_i\)</span>) into the output, let <span class="math inline">\(j=1+\max I\)</span>. Now we can consider two possibilities by extending the current solution: the sum induced by <span class="math inline">\(I\cup \{j\}\)</span> will be in the output, the sum induced by <span class="math inline">\(I\cup \{k\}\)</span> where <span class="math inline">\(k&gt;j\)</span> will be in the output. We will add both possibilities to the queue so that one can check them later. Also, there is no need actually to store the sets, only the values.</p>
 <p>Here is a quick python implementation.</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> first_k_subset_sums(x,k):
     n <span class="op">=</span> <span class="bu">len</span>(x)
@@ -65,7 +65,7 @@
             heapq.heappush(h,(u<span class="op">+</span>x[b<span class="op">+</span><span class="dv">1</span>],b<span class="op">+</span><span class="dv">1</span>))
             heapq.heappush(h,((u<span class="op">-</span>x[b])<span class="op">+</span>x[b<span class="op">+</span><span class="dv">1</span>],b<span class="op">+</span><span class="dv">1</span>))
     <span class="cf">return</span> output</code></pre></div>
-<h1 id="acknowledgements"><span class="header-section-number">1</span> Acknowledgements</h1>
+<h1 id="acknowledgements" class="unnumbered">Acknowledgements</h1>
 <p>I would like to thank Tana Wattanawaroon for helpful discussions and taking an interest in this problem.</p>
 
 </div>
