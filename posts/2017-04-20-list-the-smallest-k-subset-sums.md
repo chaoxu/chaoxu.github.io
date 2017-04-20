@@ -8,6 +8,8 @@ tags: algorithm
     Given a set of positive reals $\{x_1,\ldots,x_n\}$ where $x_1<x_2<\ldots<x_n$, 
     find the smallest $k$ subset sums.
 
+We can assume $n\leq k$, as there is no need to use $x_j$ where $j>k$. 
+
 Torsten Gross and Nils Blüthgen posted [a $O(k^2)$ time solution on arXiv](https://arxiv.org/abs/1704.05795).
 
 We show a $O(k\log k)$ time algorithm, which is optimal if we want to output the numbers in order.
@@ -31,6 +33,8 @@ def first_k_subset_sums(x,k):
             heapq.heappush(h,((u-x[b])+x[b+1],b+1))
     return output
 ```
+
+If we want to output the sets themselves, not just the values, does the running time change? If a set $I$ is in the output, then all subsets of $I$ must also be in the output. Hence the largest set we can ever output has size $O(\log k)$. Therefore the total output length is at most $O(k\log k)$.
 
 # Acknowledgements {-}
 
