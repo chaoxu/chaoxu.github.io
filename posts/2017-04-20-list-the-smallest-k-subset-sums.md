@@ -36,7 +36,7 @@ def first_k_subset_sums(x,k):
 
 If we want to output the sets themselves, not just the values, does the running time change? If a set $I$ is in the output, then all subsets of $I$ must also be in the output. Hence the largest set we can ever output has size $O(\log k)$. Therefore the total output length is at most $O(k\log k)$.
 
-This is also a lower bound. Consider when $x_i=2^i$, then we will output all subsets of $\{x_1,\ldots,x_{\log k}}\}$, and we know that $\sum_{i=1}^{\log k} i{\log k\choose i} = \Omega(\log k)$.
+This is also a lower bound. Consider when $x_i=2^i$, then we will output all subsets of $\{x_1,\ldots,x_{\log k}\}$, and we know that $\sum_{i=1}^{\log k} i{\log k\choose i} = \Omega(\log k)$.
 
 It is open if $\Omega(k\log k)$ is a lower bound if we don't have to list the smallest $k$ subset sum values in order.
 
