@@ -57,7 +57,7 @@
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> first_k_subset_sums(x,k):
     n <span class="op">=</span> <span class="bu">len</span>(x)
     h <span class="op">=</span> []
-    output <span class="op">=</span> []
+    output <span class="op">=</span> [<span class="dv">0</span>] <span class="co"># need to account for the empty set</span>
     heapq.heappush(h,(x[<span class="dv">0</span>],<span class="dv">0</span>))
     <span class="cf">while</span> h <span class="kw">and</span> <span class="bu">len</span>(output)<span class="op">&lt;</span>k:
         (u,b) <span class="op">=</span> heapq.heappop(h)
