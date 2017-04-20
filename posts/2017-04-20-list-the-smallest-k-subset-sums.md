@@ -23,7 +23,7 @@ Here is a quick python implementation.
 def first_k_subset_sums(x,k):
     n = len(x)
     h = []
-    output = []
+    output = [0] # need to account for the empty set
     heapq.heappush(h,(x[0],0))
     while h and len(output)<k:
         (u,b) = heapq.heappop(h)
