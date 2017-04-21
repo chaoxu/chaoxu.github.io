@@ -38,7 +38,9 @@ If we want to output the sets themselves, not just the values, does the running 
 
 This is also a lower bound. Consider when $x_i=2^i$, then we will output all subsets of $\{x_1,\ldots,x_{\log k}\}$, and we know that $\sum_{i=1}^{\log k} i{\log k\choose i} = \Omega(\log k)$.
 
-It is open if $\Omega(k\log k)$ is a lower bound if we don't have to list the smallest $k$ subset sum values in order.
+If we don't have to list the smallest $k$ subset sum values in order, then $O(k)$ is possible, see [this mathoverflow answer](https://mathoverflow.net/a/222341/6886) by [David Eppstein](https://www.ics.uci.edu/~eppstein/).
+
+If instead, we ask for the smallest $k$ distinct subset sum. I don't know of any algorithm that performs better than $O(nk)$, even if we know that $n=\Omega(k)$.
 
 # Acknowledgements {-}
 
