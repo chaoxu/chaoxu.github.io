@@ -10,13 +10,8 @@ MathJax.Hub.Config({
       //inlineMath: [['$','$'], ['\\(','\\)']],
       //displayMath: [['$$','$$'], ['\\[','\\]']]
     },
-  //"HTML-CSS": {
-  //  availableFonts: ["STIX","TeX"],
-  //  preferredFont: "STIX",
-  //  webFont: "STIX"
-  //},
   TeX: { 
-    //extensions: ["AMSmath.js","AMSsymbols.js"],
+    extensions: ["AMSmath.js","AMSsymbols.js"],
     Macros: { 
         R: '{\\mathbb{R}}', 
         N: '{\\mathbb{N}}', 
