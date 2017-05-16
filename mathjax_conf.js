@@ -9,7 +9,7 @@ MathJax.Hub.Config({
       processClass: "math"
     },
   TeX: { 
-    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
+    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js","autobold.js"],
     Macros: { 
         R: '{\\mathbb{R}}', 
         N: '{\\mathbb{N}}', 
