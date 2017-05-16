@@ -9,7 +9,7 @@ html, body {
 /* Main structure
 ----------------------------------------------- */
 body {
-    font-family: STIXGeneral, Verdana, Helvetica, Arial, sans-serif;
+/*    font-family: STIXGeneral; */
     font-size: 100%;
     line-height: 120%;
     margin: auto;

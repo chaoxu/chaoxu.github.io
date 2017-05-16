@@ -1,16 +1,7 @@
-MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
-  var HTMLCSS = MathJax.OutputJax["HTML-CSS"],
-      MBASE = MathJax.ElementJax.mml.mbase.prototype;
-  HTMLCSS.Augment({
-    initHTML: function (math,span) {
-      this.em = MBASE.em = this.em/this.scale;
-      this.linebreakwidth *= this.scale;
-      this.scale = 1; span.style.fontSize = "100%";
-    }
-  });
-});
 MathJax.Hub.Config({
   showMathMenu: false,
+  jax: ["input/TeX","output/CommonHTML"],
+  extensions: ["tex2jax.js"],
   messageStyle: "none",
     tex2jax: {
       processEscapes: true,
@@ -19,12 +10,13 @@ MathJax.Hub.Config({
       //inlineMath: [['$','$'], ['\\(','\\)']],
       //displayMath: [['$$','$$'], ['\\[','\\]']]
     },
-  "HTML-CSS": {
-    availableFonts: ["STIX","TeX"],
-    preferredFont: "STIX",
-    webFont: "STIX"
-  },
+  //"HTML-CSS": {
+  //  availableFonts: ["STIX","TeX"],
+  //  preferredFont: "STIX",
+  //  webFont: "STIX"
+  //},
   TeX: { 
+    //extensions: ["AMSmath.js","AMSsymbols.js"],
     Macros: { 
         R: '{\\mathbb{R}}', 
         N: '{\\mathbb{N}}', 
