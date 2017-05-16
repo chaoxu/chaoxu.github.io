@@ -1,5 +1,30 @@
+/* MathJax Font */
+@font-face {
+  font-family: "MJXc-TeX";
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff") format("woff"), url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "MJXc-TeX";
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff") format("woff"), url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf") format("opentype");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "MJXc-TeX";
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff") format("woff"), url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf") format("opentype");
+  font-style: italic;
+}
+@font-face {
+  font-family: "MJXc-TeX";
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Math-BoldItalic.woff") format("woff"), url("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Math-BoldItalic.otf") format("opentype");
+  font-weight: bold;
+  font-style: italic;
+}
+
 /* Initial cleanup
 ----------------------------------------------- */
+
 html, body {
     padding: 0;
     display: table;
@@ -9,7 +34,7 @@ html, body {
 /* Main structure
 ----------------------------------------------- */
 body {
-/*    font-family: STIXGeneral; */
+    font-family: MJXc-TeX;
     font-size: 100%;
     line-height: 120%;
     margin: auto;
