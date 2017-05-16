@@ -6,12 +6,10 @@ MathJax.Hub.Config({
     tex2jax: {
       processEscapes: true,
       ignoreClass: "tex2jax_ignore",
-      processClass: "math"//,
-      //inlineMath: [['$','$'], ['\\(','\\)']],
-      //displayMath: [['$$','$$'], ['\\[','\\]']]
+      processClass: "math"
     },
   TeX: { 
-    extensions: ["AMSmath.js","AMSsymbols.js"],
+    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
     Macros: { 
         R: '{\\mathbb{R}}', 
         N: '{\\mathbb{N}}', 
