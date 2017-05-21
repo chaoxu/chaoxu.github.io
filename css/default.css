@@ -30,7 +30,9 @@ html, body {
     display: table;
     margin: auto;
 }
-
+* {
+    box-sizing: border-box;
+}
 /* Main structure
 ----------------------------------------------- */
 body {
@@ -39,7 +41,7 @@ body {
     line-height: 120%;
     margin: auto;
     background-color: #fff;
-    min-width: 840px;
+    /*min-width: 840px;*/
 }
 
 header, article {
@@ -52,7 +54,7 @@ footer, #theme-info, #footer-include {
     clear: both;
 }
 article {
-    width:840px;
+   max-width:840px;
 }
 /* Positioning
 ----------------------------------------------- */
@@ -205,11 +207,10 @@ img {
 #blog-title {
     font-size: 2.5em;
     font-weight: normal;
-    height: 60px;
     margin: 0;
     border: none;
     padding: 0;
-    line-height: 200%;
+    line-height: 100%;
     text-align:center;
 }
 /* The headers tries to emulate the format of
@@ -316,7 +317,7 @@ a:hover {
   font-size: 75%;
 }
 table.postindex{
-  width: 100%;
+  max-width: 840px;
 }
 .info {
   margin-top: 20px;
