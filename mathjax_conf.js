@@ -22,7 +22,12 @@ MathJax.Hub.Config({
         lcm: '{\\mathop{\\operatorname{lcm}}}',
         bigtriangleright: '{\\mathop{\\Large \\triangleright}}',
         bigtriangleleft: '{\\mathop{\\Large \\triangleleft}}',
+        set: ['\\left\\{ #1 \\right\\}',1],
+        floor: ['\\left\\lfloor #1 \\right\\rfloor',1],
+        ceil:  ['\\left\\lceil #1 \\right\\rceil',1],
+        abs:  ['\\left| #1 \\right|',1]
      } 
     }
 });
+
 MathJax.Ajax.loadComplete("http://chaoxuprime.com/mathjax_conf.js");
