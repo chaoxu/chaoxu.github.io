@@ -3,11 +3,9 @@ title: Small $L_1$ norm solution to a linear Diophantine equation
 tags: number theory
 ---
 
-Let $a=(a_1,\ldots,a_n)$ be $n$ integers with $\gcd(a_1,\ldots,a_n)=1$. It is known that there exist a integral vector $x=(x_1,\ldots,x_n)$, such that $\sum_{i=1}^n x_ia_i = 1$.
+Let $a=(a_1,\ldots,a_n)$ be $n$ integers with $\gcd(a_1,\ldots,a_n)=1$. There exist a integral vector $x=(x_1,\ldots,x_n)$, such that $\sum_{i=1}^n x_ia_i = 1$. How large is the solution $x$? By [Bézout's lemma](https://en.wikipedia.org/wiki/Bézout%27s_identity), when $n=2$, we can obtain that $\|x\|\leq \|a\|$. Here $\|\cdot \|$ is the $L_1$ norm. 
 
-It is well known that by [Bézout's lemma](https://en.wikipedia.org/wiki/Bézout%27s_identity), that in the case $n=2$, we can obtain that $\|x\|\leq \|a\|$. Here $\|\cdot \|$ is the $L_1$ norm. 
-
-However, I could not a general bound of $\|x\|$. Here we prove that the bound on $\|x\|$ is true in general. Before that, we first introduce a lemma from [@Ford1996].
+However, I could not find a general bound of $\|x\|$ anywhere. Here we prove that the bound on $\|x\|$ is true in general. Before that, we first introduce a lemma from [@Ford1996].
 
 {Lemma}
 
@@ -22,20 +20,18 @@ However, I could not a general bound of $\|x\|$. Here we prove that the bound on
     and $|x_n|\leq \frac{\max(a_1,\ldots,a_{n-1})}{2}$.
 
 {Theorem}
-    Let $a$ be a vector of positive integers such that $\gcd(a)=1$, then there exist a integral solution to $x \cdot a=1$ such that $\|x\|$ is at most the sum of the smallest and the largest element in $a$.
+    Let $a$ be a vector of positive integers such that $\gcd(a)=1$, then there exist a integral solution to $x \cdot a=1$ such that $\|x\|\leq \frac{1}{2}(\min(a)+\max(a))$.
 
 {Proof}
 
     Let $a=(a_1,\ldots,a_n)$. Let $a_n=m=\min(a)$ and $M=\max(a)$. We can assume $1$ is not in $a$, otherwise we can find $x$ such that $\|x\|=1$. We define $g_i = \gcd(a_i,\ldots,a_n)$. Hence $g_n = m$. We consider a solution to $\sum_{i=1}^n x_ia_i = 1$ satisfies [Lemma 1]. 
-    Let $I = \set{i | g_{i+1}\geq 2g_{i}, i\leq n-1}$. Using the fact $m\geq 2$, we have $|I|\leq \lfloor \log_2 m \rfloor \leq m/2$.
-
-    Define $I_1 = \set{ i| i\in I, |x_i|=1}$, so $|x_i|\geq 2$ for all $i\in I\setminus I_1$.
+    Let $I = \set{i | g_{i+1}\geq 2g_{i}, i\leq n-1}$ and $j=\min(I)$. 
+    One can algebraically check that $a/b\leq a-b$ holds if both $a\geq 2b$ and $b\geq 2$. In particular, we have $\frac{g_{i+1}}{g_i} \leq g_{i+1}-g_i$ for all $i\in I\setminus \set{j}$.
     \[
-    \sum_{i\in I\setminus I_1} |x_i| \leq \prod_{i\in I\setminus I_1} |x_i| \leq \prod_{i\in I} |x_i| \leq \prod_{i\in I} \frac{g_{i+1}}{2g_i} \leq \prod_{i\in I} \frac{g_{i+1}}{g_i}  \leq \prod_{i=1}^{n-1} \frac{g_{i+1}}{g_i} = \frac{g_n}{g_1} = g_n = m.
+    \sum_{i\in I} |x_i| \leq \frac{1}{2} \sum_{i\in I} \frac{g_{i+1}}{g_i} \leq \frac{g_{j+1}}{2} + \frac{1}{2} \sum_{i\in I, i\neq j} g_{i+1} - g_i \leq \frac{g_{j+1}}{2} + \frac{1}{2} \sum_{i=j+1}^{n-1} g_{i+1}-g_i = \frac{1}{2}g_n = \frac{m}{2}.
     \]
 
-    Together this shows 
-    \[\|x\| = \sum_{i=1}^n |x_i| = |x_n| + \sum_{i\in I_1} |x_i| + \sum_{i\in I\setminus I_1} |x_i| \leq \frac{M}{2} + \frac{m}{2} + m \leq m+M.\]
+    Together this shows $\|x\|\leq \frac{m+M}{2}$.
 
 {Corollary}
     
