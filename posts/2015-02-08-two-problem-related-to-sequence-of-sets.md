@@ -18,9 +18,7 @@ Since we just want to find a pair $\set{i,j}$ where $|S_i\cap S_j|\geq k$. We ca
 
 Together, the running time become $O(\min(nm,k n^2+m))$.
 
-One can improve the running time when $n$ is large by reduce it to a problem similar to [finding rectangles](/posts/2015-02-02-rectangle-in-point-set.html).
-
-Together, the final running time is $O(\min(nm,m^{3/2},k n^2+m))$.
+For $k=2$. One can improve the running time when $n$ is large by reduce it to a problem similar to [finding rectangles](/posts/2015-02-02-rectangle-in-point-set.html). Together, the final running time for $k=2$ is $O(\min(nm,m^{3/2},k n^2+m))$.
 
 {Problem}
     Given a sequence of sets $S_1,\ldots,S_n$ with a total of $m$ elements. Partition $[n]$, such that if $i,j$ is in the same partition, then $S_i = S_j$.
