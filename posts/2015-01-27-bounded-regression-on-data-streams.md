@@ -1,11 +1,11 @@
 ---
 title: Bounded regression on data streams
+tag: flow, circulation, algorithms
 ---
-
 
 # Bounded Regression on Data Streams
 
-Recently [Hsien-Chih](http://web.engr.illinois.edu/~hchang17/) sent me [this problem](http://www.careercup.com/question?id=5207197178920960) ([similar problem has been asked on Quora](http://www.quora.com/Given-an-integer-array-what-is-the-algorithmic-approach-to-find-minimum-adjustments-such-that-the-absolute-difference-between-the-adjacent-elements-is-within-target-value)), and noticed it might be solved in near linear time using min-cost circulation. It's easy to generalize it to the following problem. 
+[Hsien-Chih](http://web.engr.illinois.edu/~hchang17/) sent me [this problem](http://www.careercup.com/question?id=5207197178920960). [Similar problem has been asked on Quora](http://www.quora.com/Given-an-integer-array-what-is-the-algorithmic-approach-to-find-minimum-adjustments-such-that-the-absolute-difference-between-the-adjacent-elements-is-within-target-value). He noticed it might be solved in near linear time using min-cost circulation. Here we show a generalization.
 
 {Problem}(Bounded Regression on Data Stream)
     Given 
@@ -18,7 +18,7 @@ Recently [Hsien-Chih](http://web.engr.illinois.edu/~hchang17/) sent me [this pro
 
 # Reduce the problem to min-cost circulation
 
-It's natural[^1] to model this problem as variations of min-cost circulation problem on a graph.
+It's natural to model this problem as variations of min-cost circulation problem on a graph.
 
 The graph $G=(V,E)$ with vertices $V=\{s,v_0,\ldots,v_n\}$.
 
@@ -40,32 +40,29 @@ Solving the min-cost circulation problem would give us the desired $x_i$ by sett
 
 # min-cost circulation on series-parallel graphs
 
-Notice this graph is a two terminal [series-parallel graph](http://en.wikipedia.org/wiki/Series-parallel_graph)!
+The constructed graph is a two terminal [series-parallel graph](http://en.wikipedia.org/wiki/Series-parallel_graph). There is a simple procedure to solve min-cost flow problem on series-parallel graphs. Consider a series connection of two edges, each with cost function $f$ and $g$. We can replace it with an edge with cost function $f + g$. If it is a parallel connection, then we can replace it with one edge and a cost function $f~\square~g$, where $\square$ is the infimal convolution: $(f~\square~g)(x)= \inf_y f(x-y) + g(y)$. 
 
-There is a simple procedure to solve min-cost flow problem on series-parallel graphs. Consider a series connection of two edges, each with cost function $f$ and $g$. Then we can just replace it with an edge with cost function $f + g$. If it is parallel connection, then we can replace it with one edge and cost function $f~\square~g$, where $\square$ is the infimal convolution: $(f~\square~g)(x)= \inf_y f(x-y) + g(y)$. 
-
-The cost function in our problem is nice enough that once we have a good data structure to represent the costs, we can reduce the graph to one single edge easily, and find the minimum cost circulation. In particular, if the cost are continuous, convex and piecewise linear in a interval and $\infty$ everywhere else, and the total number of breakpoints is $n$, then Booth and Tarjan has an algorithm that runs in $O(n\log n)$ time[@Booth1993416].
+Once we have a good data structure to represent the costs, we can reduce the graph to one single edge easily, and find the minimum cost circulation. In particular, if the cost are continuous, convex and piecewise linear in a interval and $\infty$ everywhere else, and the total number of breakpoints is $n$, then Booth and Tarjan has an algorithm that runs in $O(n\log n)$ time [@Booth1993416].
 
 Because all edge has a cost function with at most $1$ breakpoint. The bounded regression problem can be solved in $O(n\log n)$ time. 
 
 # Isotonic regression
 
-We can try to minimize $\sqrt{\sum_{i=1}^n w_i (a_i-x_i)^2}$ instead($L_2$ error). Note in that case, it is basically a generalization of the lipschitz isotonic regression problem [@ISI:000279661700033] when $l_i=0$ and $u_i=u$ for some constant $u$. We can even ask to minimize the $L_\infty$ error.
+We can try to minimize $\sqrt{\sum_{i=1}^n w_i (a_i-x_i)^2}$ instead ($L_2$ error). It is a generalization of the lipschitz isotonic regression problem [@ISI:000279661700033] when $l_i=0$ and $u_i=u$ for some constant $u$. We can also ask to minimize the $L_\infty$ error.
 
-For the further special case where the upper bounds are $\infty$, then this problem is called the isotonic regression problem. [^2]: Express all these problems in min-cost circulation formulation and getting the same time bound as the current best algorithm would implies there is something larger going on behind the scene. Here is what we have.
+If the upper bounds are $\infty$ and all lower bounds are $0$, then the problem is called the isotonic regression problem. I have solved [a interesting problem using isotonic regression](http://cs.stackexchange.com/questions/41519/efficient-algorithm-for-this-optimization-problem-dynamic-programming/).
+
+We can express all the problems as min-cost circulation problem on a appropriate graph. If the min-cost circulation algorithm on those graphs have the same running time as current best algorithm, it would imply something more general is acting in the background. 
+
+Here is what we know.
 
 1. $L_1$ error: This post shows it can be solved in $O(n\log n)$ time using the min-cost circulation formulation. It matches the running time of specialized algorithms.
-2. $L_2$ error: Currently, the best algorithm can solve it in $O(n)$ time, but doesn't come from the quadratic cost min-cost circulation formulation!
-3. $L_\infty$ error: It can be solved in $O(n)$ time. However, it doesn't come from the minimax circulation problem(when the cost is the largest edge cost incurred by the circulation).
+2. $L_2$ error: It can be solved in $O(n)$ time, but doesn't come from the quadratic cost min-cost circulation formulation. 
+3. $L_\infty$ error: It can be solved in $O(n)$ time. However, it doesn't come from the minimax circulation problem. (In the minimax circulation, the cost is the largest edge cost incurred by the circulation).
 
 This prompt the following two natural problems: 
 
 1. *Can min-cost circulation with quadratic cost on series parallel graph have $O(n)$ time solution?*
-   This is in fact possible when all edges have no capacity[@Zohar2007691]! But with capacity, even for a edge with a lower bound of $0$ and $0$ cost, we don't know.
+   This is in fact possible when all edges have no capacity[@Zohar2007691]. But with capacity, even for a edge with a lower bound of $0$ and $0$ cost, we don't know.
 
 2. *What about minimax circulation?* We can't find any study of minimax circulation on series-parallel graphs. 
-
-
-
-[^1]: For a sufficiently general definition of "natural".
-[^2]: [A interesting problem solved using isotonic regression](http://cs.stackexchange.com/questions/41519/efficient-algorithm-for-this-optimization-problem-dynamic-programming/).

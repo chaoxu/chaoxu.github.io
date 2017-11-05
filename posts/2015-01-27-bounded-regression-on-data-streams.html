@@ -46,7 +46,7 @@
           <br />
 <div>
 <h1 id="bounded-regression-on-data-streams"><span class="header-section-number">1</span> Bounded Regression on Data Streams</h1>
-<p>Recently <a href="http://web.engr.illinois.edu/~hchang17/">Hsien-Chih</a> sent me <a href="http://www.careercup.com/question?id=5207197178920960">this problem</a> (<a href="http://www.quora.com/Given-an-integer-array-what-is-the-algorithmic-approach-to-find-minimum-adjustments-such-that-the-absolute-difference-between-the-adjacent-elements-is-within-target-value">similar problem has been asked on Quora</a>), and noticed it might be solved in near linear time using min-cost circulation. It's easy to generalize it to the following problem.</p>
+<p><a href="http://web.engr.illinois.edu/~hchang17/">Hsien-Chih</a> sent me <a href="http://www.careercup.com/question?id=5207197178920960">this problem</a>. <a href="http://www.quora.com/Given-an-integer-array-what-is-the-algorithmic-approach-to-find-minimum-adjustments-such-that-the-absolute-difference-between-the-adjacent-elements-is-within-target-value">Similar problem has been asked on Quora</a>. He noticed it might be solved in near linear time using min-cost circulation. Here we show a generalization.</p>
 <section class="theorem-environment Problem" id="Problem-1">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">1</span><span class="name">Bounded Regression on Data Stream</span></span>
 <p>Given</p>
@@ -58,7 +58,7 @@
 <p>Output <span class="math inline">\((x_1,\ldots,x_n)\in \R^n\)</span> such that <span class="math inline">\(l_i \leq x_{i+1}-x_i\leq u_i\)</span> for all <span class="math inline">\(1\leq i&lt;n\)</span>, and minimize <span class="math inline">\(\sum_{i=1}^n w_i |a_i-x_i|\)</span>.</p>
 </section>
 <h1 id="reduce-the-problem-to-min-cost-circulation"><span class="header-section-number">2</span> Reduce the problem to min-cost circulation</h1>
-<p>It's natural<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> to model this problem as variations of min-cost circulation problem on a graph.</p>
+<p>It's natural to model this problem as variations of min-cost circulation problem on a graph.</p>
 <p>The graph <span class="math inline">\(G=(V,E)\)</span> with vertices <span class="math inline">\(V=\{s,v_0,\ldots,v_n\}\)</span>.</p>
 <p>Edges:</p>
 <ol type="1">
@@ -74,21 +74,22 @@
 <p>A function <span class="math inline">\(f\)</span> is called a circulation if <span class="math inline">\(\sum_{e\in \delta^+(v)} f(e)-\sum_{e\in \delta^-(v)} f(e)=0\)</span> for all vertex <span class="math inline">\(v\)</span>. It is feasible if <span class="math inline">\(f(e)\)</span> is within the capacity. It is min-cost if <span class="math inline">\(\sum_{e} c_e(f(e))\)</span> is minimized.</p>
 <p>Solving the min-cost circulation problem would give us the desired <span class="math inline">\(x_i\)</span> by setting <span class="math inline">\(x_i=f(v_{i-1}v_i)\)</span>.</p>
 <h1 id="min-cost-circulation-on-series-parallel-graphs"><span class="header-section-number">3</span> min-cost circulation on series-parallel graphs</h1>
-<p>Notice this graph is a two terminal <a href="http://en.wikipedia.org/wiki/Series-parallel_graph">series-parallel graph</a>!</p>
-<p>There is a simple procedure to solve min-cost flow problem on series-parallel graphs. Consider a series connection of two edges, each with cost function <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span>. Then we can just replace it with an edge with cost function <span class="math inline">\(f + g\)</span>. If it is parallel connection, then we can replace it with one edge and cost function <span class="math inline">\(f~\square~g\)</span>, where <span class="math inline">\(\square\)</span> is the infimal convolution: <span class="math inline">\((f~\square~g)(x)= \inf_y f(x-y) + g(y)\)</span>.</p>
-<p>The cost function in our problem is nice enough that once we have a good data structure to represent the costs, we can reduce the graph to one single edge easily, and find the minimum cost circulation. In particular, if the cost are continuous, convex and piecewise linear in a interval and <span class="math inline">\(\infty\)</span> everywhere else, and the total number of breakpoints is <span class="math inline">\(n\)</span>, then Booth and Tarjan has an algorithm that runs in <span class="math inline">\(O(n\log n)\)</span> time<span class="citation" data-cites="Booth1993416">[<a href="#ref-Booth1993416">1</a>]</span>.</p>
+<p>The constructed graph is a two terminal <a href="http://en.wikipedia.org/wiki/Series-parallel_graph">series-parallel graph</a>. There is a simple procedure to solve min-cost flow problem on series-parallel graphs. Consider a series connection of two edges, each with cost function <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span>. We can replace it with an edge with cost function <span class="math inline">\(f + g\)</span>. If it is a parallel connection, then we can replace it with one edge and a cost function <span class="math inline">\(f~\square~g\)</span>, where <span class="math inline">\(\square\)</span> is the infimal convolution: <span class="math inline">\((f~\square~g)(x)= \inf_y f(x-y) + g(y)\)</span>.</p>
+<p>Once we have a good data structure to represent the costs, we can reduce the graph to one single edge easily, and find the minimum cost circulation. In particular, if the cost are continuous, convex and piecewise linear in a interval and <span class="math inline">\(\infty\)</span> everywhere else, and the total number of breakpoints is <span class="math inline">\(n\)</span>, then Booth and Tarjan has an algorithm that runs in <span class="math inline">\(O(n\log n)\)</span> time <span class="citation" data-cites="Booth1993416">[<a href="#ref-Booth1993416">1</a>]</span>.</p>
 <p>Because all edge has a cost function with at most <span class="math inline">\(1\)</span> breakpoint. The bounded regression problem can be solved in <span class="math inline">\(O(n\log n)\)</span> time.</p>
 <h1 id="isotonic-regression"><span class="header-section-number">4</span> Isotonic regression</h1>
-<p>We can try to minimize <span class="math inline">\(\sqrt{\sum_{i=1}^n w_i (a_i-x_i)^2}\)</span> instead(<span class="math inline">\(L_2\)</span> error). Note in that case, it is basically a generalization of the lipschitz isotonic regression problem <span class="citation" data-cites="ISI:000279661700033">[<a href="#ref-ISI:000279661700033">2</a>]</span> when <span class="math inline">\(l_i=0\)</span> and <span class="math inline">\(u_i=u\)</span> for some constant <span class="math inline">\(u\)</span>. We can even ask to minimize the <span class="math inline">\(L_\infty\)</span> error.</p>
-<p>For the further special case where the upper bounds are <span class="math inline">\(\infty\)</span>, then this problem is called the isotonic regression problem.:<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> Express all these problems in min-cost circulation formulation and getting the same time bound as the current best algorithm would implies there is something larger going on behind the scene. Here is what we have.</p>
+<p>We can try to minimize <span class="math inline">\(\sqrt{\sum_{i=1}^n w_i (a_i-x_i)^2}\)</span> instead (<span class="math inline">\(L_2\)</span> error). It is a generalization of the lipschitz isotonic regression problem <span class="citation" data-cites="ISI:000279661700033">[<a href="#ref-ISI:000279661700033">2</a>]</span> when <span class="math inline">\(l_i=0\)</span> and <span class="math inline">\(u_i=u\)</span> for some constant <span class="math inline">\(u\)</span>. We can also ask to minimize the <span class="math inline">\(L_\infty\)</span> error.</p>
+<p>If the upper bounds are <span class="math inline">\(\infty\)</span> and all lower bounds are <span class="math inline">\(0\)</span>, then the problem is called the isotonic regression problem. I have solved <a href="http://cs.stackexchange.com/questions/41519/efficient-algorithm-for-this-optimization-problem-dynamic-programming/">a interesting problem using isotonic regression</a>.</p>
+<p>We can express all the problems as min-cost circulation problem on a appropriate graph. If the min-cost circulation algorithm on those graphs have the same running time as current best algorithm, it would imply something more general is acting in the background.</p>
+<p>Here is what we know.</p>
 <ol type="1">
 <li><span class="math inline">\(L_1\)</span> error: This post shows it can be solved in <span class="math inline">\(O(n\log n)\)</span> time using the min-cost circulation formulation. It matches the running time of specialized algorithms.</li>
-<li><span class="math inline">\(L_2\)</span> error: Currently, the best algorithm can solve it in <span class="math inline">\(O(n)\)</span> time, but doesn't come from the quadratic cost min-cost circulation formulation!</li>
-<li><span class="math inline">\(L_\infty\)</span> error: It can be solved in <span class="math inline">\(O(n)\)</span> time. However, it doesn't come from the minimax circulation problem(when the cost is the largest edge cost incurred by the circulation).</li>
+<li><span class="math inline">\(L_2\)</span> error: It can be solved in <span class="math inline">\(O(n)\)</span> time, but doesn't come from the quadratic cost min-cost circulation formulation.</li>
+<li><span class="math inline">\(L_\infty\)</span> error: It can be solved in <span class="math inline">\(O(n)\)</span> time. However, it doesn't come from the minimax circulation problem. (In the minimax circulation, the cost is the largest edge cost incurred by the circulation).</li>
 </ol>
 <p>This prompt the following two natural problems:</p>
 <ol type="1">
-<li><p><em>Can min-cost circulation with quadratic cost on series parallel graph have <span class="math inline">\(O(n)\)</span> time solution?</em> This is in fact possible when all edges have no capacity<span class="citation" data-cites="Zohar2007691">[<a href="#ref-Zohar2007691">3</a>]</span>! But with capacity, even for a edge with a lower bound of <span class="math inline">\(0\)</span> and <span class="math inline">\(0\)</span> cost, we don't know.</p></li>
+<li><p><em>Can min-cost circulation with quadratic cost on series parallel graph have <span class="math inline">\(O(n)\)</span> time solution?</em> This is in fact possible when all edges have no capacity<span class="citation" data-cites="Zohar2007691">[<a href="#ref-Zohar2007691">3</a>]</span>. But with capacity, even for a edge with a lower bound of <span class="math inline">\(0\)</span> and <span class="math inline">\(0\)</span> cost, we don't know.</p></li>
 <li><p><em>What about minimax circulation?</em> We can't find any study of minimax circulation on series-parallel graphs.</p></li>
 </ol>
 <h1 id="bibliography" class="unnumbered">References</h1>
@@ -103,13 +104,6 @@
 <p>[3] R. Zohar, D. Geiger, <strong>Estimation of flows in flow networks</strong>, European Journal of Operational Research. 176 (2007) 691–706 <a href="https://doi.org/10.1016/j.ejor.2005.08.009">10.1016/j.ejor.2005.08.009</a>.</p>
 </div>
 </div>
-<section class="footnotes">
-<hr />
-<ol>
-<li id="fn1"><p>For a sufficiently general definition of &quot;natural&quot;.<a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p><a href="http://cs.stackexchange.com/questions/41519/efficient-algorithm-for-this-optimization-problem-dynamic-programming/">A interesting problem solved using isotonic regression</a>.<a href="#fnref2">↩</a></p></li>
-</ol>
-</section>
 
 </div>
 <div class="info">Posted by Chao Xu on 2015-01-27. </div>
