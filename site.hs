@@ -43,10 +43,12 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" postCtx
         --    >>= relativizeUrls
     -- raw posts
-    match "posts/*" $ version "raw" $ do
+    {-match "posts/*" $ version "raw" $ do
         route   idRoute
         compile copyFileCompiler
-    match "files/*" $ version "raw" $ do
+    -}
+    -- raw files
+    match "files/**" $ version "raw" $ do
         route   idRoute
         compile copyFileCompiler
     {-
