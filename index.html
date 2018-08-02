@@ -1,7 +1,575 @@
----
-title: Posts
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<table class="postindex">
-$posts$
-</table> 
+  <title>Chao Xu</title>
+
+  <style type="text/css">
+    @media (min-width: 1200px) {
+      .container {
+        width: 700px;
+      }
+    }
+    @media (min-width: 992px) {
+      .container {
+        width: 700px;
+      }
+    }
+    .abstract {
+       display:none;
+       border-style: solid;
+       border-top-width:1px;
+       border-bottom-width:1px;
+       border-left-width:0px;
+       border-right-width:0px;
+       border-color:#ddd;
+       margin:2px;
+       color:#777;
+       padding: 20px;
+    }
+    .pubtypeheader{
+      font-size: 18px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-weight: 500;
+      line-height: 1.1;
+      display: block;
+    }
+    td:first-child{
+      vertical-align: top;
+    }
+    table td + td {
+      vertical-align: top;
+      padding-right:10px;
+    }
+    .paper-title {
+      font-weight:bold;
+    }
+    figcaption {
+      text-align: center;
+      font-size: small;
+      color:#000;
+    }
+  </style>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$']]},
+  CommonHTML: {
+    scale: 100
+  }
+});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+  <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4171915-3', 'auto');
+  ga('send', 'pageview');
+
+function toggle(elementID){
+  var obj = $('#'+elementID)
+  if (obj.css("display") == 'none') {
+    obj.css("display",'block');
+  } else {
+    obj.css("display",'none');
+  }
+
+  var obj = $('#'+elementID+'-expand')
+  obj.toggleClass('glyphicon-plus glyphicon-minus')
+}
+
+</script>
+</head>
+<body>
+<div class="container">
+
+        
+<div class="row">
+  <h1 class="text-center">Chao Xu | 许超</h1>
+  <div class="col-md-5">
+    <img class="center-block img-circle" width="270" height="270" src="files/chao/chaoxu6.jpg" style="padding:10px;margin-top:20px" title="Lord Chao of the House Xu, the First of His Name, Guardian of the Art Gallery" alt="Photo of Chao Xu"/>
+  </div>
+  <div class="col-md-7">
+        <h3>Research Scientist <small>at <a href="https://research.yahoo.com/">Yahoo! Research</a></small></h3>
+
+      <ul class="list-unstyled">
+        <li><strong>Research interests:</strong> 
+          <ul class="list-inline">
+          <li>Algorithms</li>
+          <li>Combinatorial optimization</li>
+          <li>Computational geometry</li>
+          </ul>
+        </li>
+
+        <!--<li><strong>Office:</strong> #3238A Siebel Center</li>-->
+        <li><strong>Email:</strong> <samp><a href="mailto:chao.xu@oath.com">chao.xu@oath.com</a></samp></li>
+        <!--<li><strong>Advisors:</strong> <a href="http://karthik.ise.illinois.edu/">Karthik Chandrasekaran</a> and <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a></li>-->
+        <li>
+          <ul class="list-inline">
+            <li><strong><a href="files/cv.pdf">CV</a></strong></li>
+            <!--<li><strong><a href="http://chaoxuprime.com">blog</a></strong></li>-->
+            <li><strong><a href="https://github.com/chaoxu/">github</a></strong></li>
+            <!--<li><strong><a href="https://www.linkedin.com/in/chaoxu3">LinkedIn</a></strong></li>-->
+            <li><strong><a href="http://cstheory.stackexchange.com/users/314/chao-xu">cstheory</a></strong></li>
+            <li><strong><a href="files/research_statement.pdf">Research Statement</a></strong></li>
+            <li><strong><a href="blog.html">Blog</a></strong></li>
+          </ul>
+        </li>
+        <li>PhD in Computer Science from <a href="http://illinois.edu">UIUC</a>. Co-advised by <a href="http://karthik.ise.illinois.edu/">Karthik Chandrasekaran</a> and <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a>.
+        </li>
+      </ul></div>
+  </div>
+      
+
+      <!--<div class="alert alert-info alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <strong>News:</strong> I'm looking for a postdoc/faculty position.
+      </div>-->
+
+      <!-- <h4>Recent Manuscripts</h4> -->
+      <table>
+        <tbody>
+
+      <tr>
+        <td colspan="3"><span class="pubtypeheader">Recent Manuscripts</span></td>
+      </tr>
+
+        <tr>
+          <td><a href="https://arxiv.org/abs/1807.08248"><span class="glyphicon glyphicon-file"></span></a></td>
+          <td></td>
+          <td>
+            <p>
+              <span class="paper-title">Subset Sum Made Simple</span> <a href="javascript:toggle('sumbset-sum-simple');"><span id='sumbset-sum-simple-expand' class="glyphicon glyphicon-plus"></span></a>
+              <br />
+              (with <a href="http://koiliaris.com/">Konstantinos Koiliaris</a>)
+              <br />
+              2018
+            </p>
+              <div class='abstract' id='sumbset-sum-simple'>
+                Subset Sum is a classical optimization problem taught to undergraduates as an
+                example of an NP-hard problem, which is amenable to dynamic programming,
+                yielding polynomial running time if the input numbers are relatively small.
+                Formally, given a set $S$ of $n$ positive integers and a target integer $t$,
+                the Subset Sum problem is to decide if there is a subset of $S$ that sums up to
+                $t$. Dynamic programming yields an algorithm with running time $O(nt)$.
+                Recently, the authors [<a href="https://doi.org/10.1137/1.9781611974782.68">Koiliaris & Xu SODA '17</a>] improved the running time to
+                $\tilde{O}\bigl(\sqrt{n}t\bigr)$, and it was further improved to
+                $\tilde{O}\bigl(n+t\bigr)$ by a somewhat involved randomized algorithm by
+                Bringmann [<a href="https://doi.org/10.1137/1.9781611974782.69">Bringmann SODA '17</a>], where $\tilde{O}$ hides polylogarithmic factors.
+                <br />Here, we present a new and significantly simpler algorithm with running time
+                $\tilde{O}\bigl(\sqrt{n}t\bigr)$. While not the fastest, we believe the new
+                algorithm and analysis are simple enough to be presented in an algorithms
+                class, as a striking example of a divide-and-conquer algorithm that uses FFT to
+                a problem that seems (at first) unrelated. In particular, the algorithm and its
+                analysis can be described in full detail in two pages (see pages 3-5).
+              </div>
+            
+          </td>
+        </tr>
+
+        
+      <tr>
+        <td colspan="3"><span class="pubtypeheader">Conference Publications</span></td>
+      </tr>
+
+      <tr>
+        <td><a href="files/papers/hypergraph_k_cut.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
+        <td><a href="files/presentations/hypergraph-k-cut.pdf"><span class="glyphicon glyphicon-blackboard"></span></a></td>
+        <td>
+          <p>
+            <span class="paper-title">Hypergraph $k$-Cut in Randomized Polynomial Time</span> <a href="javascript:toggle('hypergraph-k-cut');"><span id='hypergraph-k-cut-expand' class="glyphicon glyphicon-plus"></span></a><br /> 
+            (with
+            <a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a> and <a href="http://xilinyu2.web.engr.illinois.edu">Xilin Yu</a>)<br />
+            <i><a href="https://www.siam.org/meetings/da18/">SODA 2018</a></i>. 
+          </p>
+            <div class='abstract' id='hypergraph-k-cut'>
+              <p>
+                In the hypergraph $k$-cut problem, the input is a hypergraph, and the goal is to find a smallest subset of hyperedges whose removal ensures that the remaining hypergraph has at least $k$ connected components. This problem is known to be at least as hard as the densest $k$-subgraph problem when k is part of the input (<a href="http://chekuri.cs.illinois.edu/papers/hypergraph-kcut.pdf">Chekuri-Li, 2015</a>). We present a randomized polynomial time algorithm to solve the hypergraph $k$-cut problem for constant $k$.
+              </p>
+              <p>
+                Our algorithm solves the more general hedge $k$-cut problem when the subgraph induced by every hedge has a constant number of connected components. In the hedge $k$-cut problem, the input is a hedgegraph specified by a vertex set and a disjoint set of hedges, where each hedge is a subset of edges defined over the vertices. The goal is to find a smallest subset of hedges whose removal ensures that the number of connected components in the remaining underlying (multi-)graph is at least $k$.
+              </p>
+              <p>
+                Our algorithm is based on random contractions akin to Karger's min cut algorithm. Our main technical contribution is a distribution over the hedges (hyperedges) so that random contraction of hedges (hyperedges) chosen from the distribution succeeds in returning an optimum solution with large probability.
+              </p>
+            </div>
+        </td>
+      </tr>
+
+      <tr id="global_cuts_digraphs_main">
+        <td><a href="files/papers/global_cuts_digraphs.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
+        <td></td>
+        <td>
+          <p>
+            <span class="paper-title">Global and fixed-terminal cuts in digraphs</span>  <a href="javascript: toggle('global_cuts_digraphs');"><span id='global_cuts_digraphs-expand' class="glyphicon glyphicon-plus"></span></a>
+            <br />
+            (with
+            <a href="http://www.cs.elte.hu/~berkri/">Kristóf Bérczi</a>, <a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a>, <a href="http://www.cs.elte.hu/~tkiraly/">Tamás Király</a> and <a href="http://www.cs.cmu.edu/~euiwoonl/">Euiwoong Lee</a>)
+            <br />
+            <i><a href="http://cui.unige.ch/tcs/random-approx/2017/index.php">APPROX 2017</a></i>. 
+            <br />
+            <em><small>Note: The results on global bicut was serialized as the <a href="#global_bicut_main">  Beating the 2-approximation factor for global bicut</a> in Mathematical Programming.</small></em>
+          </p>
+            
+            <div class='abstract' id='global_cuts_digraphs'>
+                The computational complexity of multicut-like problems may vary significantly depending on whether the terminals are fixed or not. In this work we present a comprehensive study of this phenomenon in two types of cut problems in directed graphs: double cut and bicut.
+              <ol>
+                <li>The fixed-terminal edge-weighted double cut is known to be solvable efficiently. We show a tight approximability factor of $2$ for the fixed-terminal node-weighted double cut. We show that the global node-weighted double cut cannot be approximated to a factor smaller than $\frac{3}{2}$ under the Unique Games Conjecture (UGC). </li>
+                <li>The fixed-terminal edge-weighted bicut is known to have a tight approximability factor of $2$. We show that the global edge-weighted bicut is approximable to a factor strictly better than $2$, and that the global node-weighted bicut cannot be approximated to a factor smaller than $\frac{3}{2}$ under UGC. </li>
+                <li>In relation to these investigations, we also prove two results on undirected graphs which are of independent interest. First, we show NP-completeness and a tight inapproximability bound of $\frac{4}{3}$ for the node-weighted $3$-cut problem. Second, we show that for constant $k$, there exists an efficient algorithm to solve the minimum $\{s,t\}$-separating $k$-cut problem. </li>
+              </ol>
+              Our techniques for the algorithms are combinatorial, based on LPs and based on enumeration of approximate min-cuts. Our hardness results are based on combinatorial reductions and integrality gap instances.
+              <figure class="figure">
+                <img src="files/papers_page/global_cuts_digraphs.png" class="img-responsive center-block" alt=""/>
+                <figcaption>This image was used to prove some bold claim...</figcaption>
+              </figure>
+            </div>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td><a href="files/papers/subset_sum.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
+        <td><a href="files/presentations/subset-sum.pdf"><span class="glyphicon glyphicon-blackboard"></span></a></td>
+        
+        <td>
+          <p>
+          <span class="paper-title">A Faster Pseudopolynomial Time Algorithm for Subset Sum</span> <a href="javascript: toggle('subset-sum');"><span id='subset-sum-expand' class="glyphicon glyphicon-plus"></span></a>
+          <br />
+          (with <a href="http://koiliaris.com/">Konstantinos Koiliaris</a>)
+          <br />
+          <i><a href="https://www.siam.org/meetings/da17/">SODA 2017</a></i>.
+          <br /><em><small>Note: Not practical. <a href="https://gist.github.com/chaoxu/c9350bcdd4d7f44ca1a1d7e9c8c905d9">Discussion/implementation</a>.</small></em>
+          </p>
+          <div class='abstract' id='subset-sum'>
+            Given a multiset $S$ of $n$ positive integers and a target integer $t$, the subset sum problem is to decide if there is a subset of $S$ that sums up to $t$. We present a new divide-and-conquer algorithm that computes all the realizable subset sums up to an integer $u$ in $\tilde{O}\left(\min\{n\sqrt{u},u^{4/3},\sigma\}\right)$, where $\sigma$ is the sum of all elements in $S$ and $\tilde{O}$ hides polylogarithmic factors. This result improves upon the standard dynamic programming algorithm that runs in $O(nu)$ time. To the best of our knowledge, the new algorithm is the fastest general algorithm for this problem. We also present a modified algorithm for cyclic groups, which computes all the realizable subset sums within the group in $\tilde{O}\left(\min\{n\sqrt{m},m^{5/4}\}\right)$ time, where m is the order of the group.
+            <figure class="figure">
+              <img src="files/papers_page/subset-sum.png" class="img-responsive center-block" alt=""/>
+              <figcaption>Covering $\mathbb{Z}^*_{11}$ with segments of length $3$.</figcaption>
+            </figure>
+
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td><a href="files/papers/hypergraph.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
+        <td><a href="files/presentations/computing-min-cuts.pdf"><span class="glyphicon glyphicon-blackboard"></span></a></td>
+        <td>
+          <p>
+            <span class="paper-title">Computing minimum cuts in hypergraphs</span>  <a href="javascript: toggle('hypergraph-min-cut');"><span id='hypergraph-min-cut-expand' class="glyphicon glyphicon-plus"></span></a>
+            <br />
+            (with
+            <a href="http://chekuri.cs.illinois.edu">Chandra Chekuri</a>)
+            <br />
+            <i><a href="https://www.siam.org/meetings/da17/">SODA 2017</a></i>.
+            <br /><em><small>Note: The SODA camera ready version has a bug in the sparsification section that is fixed in the arXiv update.</small></em>
+          </p>
+          <div class='abstract' id='hypergraph-min-cut'>
+            We study algorithmic and structural aspects of connectivity in hypergraphs. Given a hypergraph $H=(V,E)$ with $n=|V|$, $m=|E|$ and $p=\sum_{e\in E}|e|$ the best known algorithm to compute a global minimum cut in $H$ runs in time $O(np)$ for the uncapacitated case and in $O(np+n^2\log n)$ time for the capacitated case. We show the following new results. 
+            <ol>
+              <li>Given an uncapacitated hypergraph $H$ and an integer $k$ we describe an algorithm that runs in $O(p)$ time to find a subhypergraph $H'$ with sum of degrees $O(kn)$ that preserves all edge-connectivities up to $k$ (a $k$-sparsifier). This generalizes the corresponding result of Nagamochi and Ibaraki from graphs to hypergraphs. Using this sparsification we obtain an $O(p+\lambda n^2)$ time algorithm for computing a global minimum cut of $H$ where $\lambda$ is the minimum cut value. </li>
+              <li>We generalize Matula's argument for graphs to hypergraphs and obtain a $(2+\epsilon)$-approximation to the global minimum cut in a capacitated hypergraph in $O(\frac{1}{\epsilon}(p+n \log n)\log n)$ time. </li>
+              <li>We show that a hypercactus representation of all the global minimum cuts of a capacitated hypergraph can be computed in $O(np+n^2\log n)$ time and $O(p)$ space. </li>
+            </ol>
+            We utilize vertex ordering based ideas to obtain our results. Unlike graphs we observe that there are several different orderings for hypergraphs which yield different insights.
+            <figure class="figure">
+              <img src="files/papers_page/hypergraph.png" class="img-responsive center-block" alt=""/>
+              <figcaption>Example of hyperedge insertion operation on vertex $v$.</figcaption>
+            </figure>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td><a href="files/papers/elem-connectivity.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
+        <td></td>
+        <td>
+          <p>
+          <span class="paper-title">On Element-Connectivity Preserving Graph Simplification</span> <a href="javascript: toggle('elem-connectivity');"><span id='elem-connectivity-expand' class="glyphicon glyphicon-plus"></span></a>
+          <br />
+          (with
+          <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a> and 
+          Thapanapong Rukkanchanunt)
+          <br />
+          <i><a href="http://algo2015.upatras.gr/esa/">ESA 2015</a></i>.
+          </p>
+          <div class='abstract' id='elem-connectivity'>
+            The notion of <i>element-connectivity</i> has found several important applications in network design and routing problems. We focus on a reduction step that preserves the element-connectivity, which when applied repeatedly allows one to reduce the original graph to a simpler one. This pre-processing step is a crucial ingredient in several applications. In this paper we revisit this reduction step and provide a new proof via the use of setpairs. Our main contribution is algorithmic results for several basic problems on element-connectivity including the problem of achieving the aforementioned graph simplification. We utilize the underlying submodularity properties of element-connectivity to derive faster algorithms.
+            <figure class="figure">
+              <img src="files/papers_page/elem-connectivity.png" class="img-responsive center-block" alt=""/>
+              <figcaption>
+                The black vertices are the terminals. The left image shows $4$ element-disjoint $st$-paths. The right image shows removing $4$ elements disconnects $s$ and $t$. $\kappa(s,t) = 4$.
+              </figcaption>
+            </figure>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td><a href="files/papers/wspolygon.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
+        <td></td>
+        <td>
+          <p>
+            <span class="paper-title">Detecting Weakly Simple Polygons</span>  <a href="javascript: toggle('wspolygon');"><span id='wspolygon-expand' class="glyphicon glyphicon-plus"></span></a>
+            <br />
+            (with
+            <a href="http://jeffe.cs.illinois.edu">Jeff Erickson</a> and 
+            <a href="http://web.engr.illinois.edu/~hchang17/">Hsien-Chih Chang</a>)
+            <br />
+            <i><a href="https://www.siam.org/meetings/da15/">SODA 2015</a></i>.
+          </p>
+          
+          <div class='abstract' id='wspolygon'>
+            A closed curve in the plane is weakly simple if it is the limit (in the Fréchet metric) of a sequence of simple closed curves. We describe an algorithm to determine whether a closed walk of length n in a simple plane graph is weakly simple in $O(n \log n)$ time, improving an earlier $O(n^3)$-time algorithm of <a href="http://www.sciencedirect.com/science/article/pii/S0012365X07010680">Cortese et al.</a>. As an immediate corollary, we obtain the first efficient algorithm to determine whether an arbitrary n-vertex polygon is weakly simple; our algorithm runs in $O(n^2 \log n)$ time. We also describe algorithms that detect weak simplicity in $O(n \log n)$ time for two interesting classes of polygons. Finally, we discuss subtle errors in several previously published definitions of weak simplicity.
+
+            <p class="text-center">Dedicated with thanks to our colleague <a href="http://dccg.upc.edu/people/ferran/">Ferran Hurtado</a> (1951–2014).</p>
+
+            <figure class="figure">
+              <img src="files/papers_page/wspolygon.png" class="img-responsive center-block" alt=""/>
+              <figcaption>A polygon $(a, b, c, a, b, c, a, x, y, z, x, y, z, x)$ that is not
+              weakly simple, even though its rotation number is $1$ and every pair of
+              vertices splits the polygon into two paths that do not cross.</figcaption>
+            </figure>
+            
+
+          </div>
+        </td>
+      </tr>
+
+
+        <tr>
+          <td colspan="3"><span class="pubtypeheader">Journal Publications</span></td>
+        </tr>
+
+
+        <tr>
+          <td><a href="files/papers/kinship.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
+          <td></td>
+          <td>
+            <p>
+              <span class="paper-title">The shortest kinship description problem</span> <a href="javascript:toggle('kinship');"><span id='kinship-expand' class="glyphicon glyphicon-plus"></span></a>
+              <br />
+              (with <a href="http://qianzhang.me/">Qian Zhang</a>)
+              <br />
+              <i><a href="https://www.journals.elsevier.com/information-processing-letters">Information Processing Letters</a></i>, 138 (2018), pp. 61-66.
+            </p>
+              <div class='abstract' id='kinship'>
+                  We consider a problem in descriptive kinship systems, namely finding the shortest sequence of terms that describes the kinship between a person and his/her relatives. The problem reduces to finding the minimum weight path in a labeled graph where the label of the path comes from a regular language. The running time of the algorithm is $O(n^3+s)$, where $n$ and $s$ are the input size and the output size of the algorithm, respectively.
+                <p class="text-center">To the memories of Jiaqi Zhao(1994–2016).</p>
+                  <figure class="figure">
+                    <img src="files/papers_page/kinship.png" class="img-responsive center-block" alt=""/>
+                  </figure>
+              </div>
+            
+          </td>
+        </tr>
+
+        <tr id='global_bicut_main'>
+          <td><a href="files/papers/global_bicut.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
+          <td></td>
+          <td>
+            <p>
+              <span class="paper-title">Beating the 2-approximation factor for global bicut</span> <a href="javascript: toggle('global_bicut');"><span id='global_bicut-expand' class="glyphicon glyphicon-plus"></span></a>
+              <br />
+              (with
+            <a href="http://www.cs.elte.hu/~berkri/">Kristóf Bérczi</a>, <a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a>, <a href="http://www.cs.elte.hu/~tkiraly/">Tamás Király</a> and <a href="http://www.cs.cmu.edu/~euiwoonl/">Euiwoong Lee</a>)
+              <br />
+              <i><a href="https://link.springer.com/journal/10107">Mathematical Programming</a></i>, (2018).
+              <br />
+              <em><small>Note: The preliminary version <a href="#global_cuts_digraphs_main">Global and fixed-terminal cuts in digraphs</a> appeared in APPROX 2017</a>.</small></em>
+            </p>
+              <div class='abstract' id='global_bicut'>
+                In the fixed-terminal bicut problem, the input is a directed graph with two specified nodes s and t and the goal is to find a smallest subset of edges whose removal ensures that s cannot reach t and t cannot reach s. In the global bicut problem, the input is a directed graph and the goal is to find a smallest subset of edges whose removal ensures that there exist two nodes s and t such that s cannot reach t and t cannot reach s. Fixed-terminal bicut and global bicut are natural extensions of  $\{s,t\}$-min cut and global min-cut respectively, from undirected graphs to directed graphs. Fixed-terminal bicut is NP-hard, admits a simple $2$-approximation, and does not admit a  $(2−\epsilon)$-approximation for any constant  $\epsilon>0$ assuming the unique games conjecture. In this work, we show that global bicut admits a $(2−1/448)$-approximation, thus improving on the approximability of the global variant in comparison to the fixed-terminal variant.
+              </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td><a href="files/papers/edgedisjoint.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
+          <td></td>
+          <td>
+            <p>
+              <span class="paper-title">Reconstructing edge-disjoint paths faster</span> <a href="javascript: toggle('edgedisjoint');"><span id='edgedisjoint-expand' class="glyphicon glyphicon-plus"></span></a>
+              <br />
+              <i><a href="http://www.journals.elsevier.com/operations-research-letters">Operations Research Letters</a></i>, 44 (2) (2016), pp. 174-176.
+            </p>
+              <div class='abstract' id='edgedisjoint'>
+                For a simple undirected graph with $n$ vertices and $m$ edges, we consider a data structure that given a query of a pair of vertices $u$, $v$ and an integer $k\geq 1$, it returns $k$ edge-disjoint $uv$-paths. The data structure takes $\tilde{O}(n^{3.375})$ time to build, using $O(mn^{1.5}\log n)$ space, and each query takes $O(kn)$ time, which is optimal and beats the previous query time of $O(kn\alpha(n))$.
+              </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td><a href="files/papers/spider.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
+          <td></td>
+          <td>
+              <p>
+                <span class="paper-title">Champion spiders in the game of Graph Nim</span> <a href="javascript: toggle('spider');"><span id='spider-expand' class="glyphicon glyphicon-plus"></span></a>
+                <br />
+                (with
+                <a href="http://www.math.clemson.edu/~calkin/">Neil J. Calkin</a> and 
+                <a href="http://www.ces.clemson.edu/~janoski/">Janine E. Janoski</a> and 
+                Allison Nelson and Sydney Ryan)
+                <br />
+                <i><a href="http://www.combinatorics.net/journals/congress.html">Congr. Numer.</a></i>, 218:5-19, 2013.
+              </p>
+
+                <div class='abstract' id='spider'>
+                  In the game of Graph Nim, players take turns removing one or more edges incident
+                  to a chosen vertex in a graph. The player that removes the last edge in the graph
+                  wins. A spider graph is a champion if it has a Sprague-Grundy number equal to the
+                  number of edges in the graph. We investigate the the Sprague-Grundy numbers of
+                  various spider graphs when the number of paths or length of paths increase.
+                  <figure class="figure">
+                    <img src="files/papers_page/spider.png" class="img-responsive center-block" alt=""/>
+                    <figcaption>A spider graph.</figcaption>
+                  </figure>
+
+                </div>
+          </td>
+        </tr>
+
+
+      
+
+        <tr>
+          <td colspan="3"><span class="pubtypeheader">Manuscripts</span></td>
+        </tr>
+
+        <tr>
+          <td><a href="https://arxiv.org/abs/1703.03849"><span class="glyphicon glyphicon-file"></span></a></td>
+          <td></td>
+          <td>
+            <p>
+              <span class="paper-title">A note on approximate strengths of edges in a hypergraph</span> <a href="javascript:toggle('approx-strength');"><span id='approx-strength-expand' class="glyphicon glyphicon-plus"></span></a>
+              <br />
+              (with
+              <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a>)
+              <br />
+              2017
+            </p>
+              <div class='abstract' id='approx-strength'>
+                Let $H=(V,E)$ be an edge-weighted hypergraph of rank $r$. Kogan and Krauthgamer extended Benczúr and Karger's random sampling scheme for cut sparsification from graphs to hypergraphs. The sampling requires an algorithm for computing the approximate strengths of edges. In this note we extend the algorithm for graphs to hypergraphs and describe a near-linear time algorithm to compute approximate strengths of edges; we build on a sparsification result for hypergraphs from our recent work. Combined with prior results we obtain faster algorithms for finding $(1+\epsilon)$-approximate mincuts when the rank of the hypergraph is small.
+              </div>
+            
+          </td>
+        </tr>
+
+        <tr>
+          <td><a href="https://arxiv.org/abs/1503.09057"><span class="glyphicon glyphicon-file"></span></a></td>
+          <td></td>
+          <td>
+            <p>
+              <span class="paper-title">Marking Streets to Improve Parking Density</span> <a href="javascript:toggle('street-marking');"><span id='street-marking-expand' class="glyphicon glyphicon-plus"></span></a>
+              <br />
+              (with
+               <a href="http://www3.cs.stonybrook.edu/~skiena/">Steven Skiena</a>)
+              <br />
+              2015
+            </p> 
+              <div class='abstract' id='street-marking'>
+                Street parking spots for automobiles are a scarce commodity in most urban environments. The heterogeneity of car sizes makes it inefficient to rigidly define fixed-sized spots. Instead, unmarked streets in cities like New York leave placement decisions to individual drivers, who have no direct incentive to maximize street utilization. 
+                In this paper, we explore the effectiveness of two different behavioral interventions designed to encourage better parking, namely (1) educational campaigns to encourage parkers to "kiss the bumper" and reduce the distance between themselves and their neighbors, or (2) painting appropriately-spaced markings on the street and urging drivers to "hit the line". Through analysis and simulation, we establish that the greatest densities are achieved when lines are painted to create spots roughly twice the length of average-sized cars. Kiss-the-bumper campaigns are in principle more effective than hit-the-line for equal degrees of compliance, although we believe that the visual cues of painted lines induce better parking behavior.
+                  <figure class="figure">
+                    <img src="files/papers_page/street-marking.png" class="img-responsive center-block" alt=""/>
+                    <figcaption>Representative street landscapes for random/Rényi (top), kiss-the-bumper (center), and
+                                hit-the-line (bottom) for a street of length $l = 20$ with the optimal line spacing of $k = 2$, for $α$ values of 0, 0.5, and 0.5 respectively.</figcaption>
+                  </figure>
+              </div>
+            
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="3"><span class="pubtypeheader">Thesis</span></td>
+        </tr>
+
+        <tr>
+          <td><a href="files/papers/thesis.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
+          <td></td>
+          <td>
+            <p>
+              <span class="paper-title">Cuts and Connectivity in Graphs and Hypergraphs</span> <a href="javascript:toggle('thesis');"><span id='thesis-expand' class="glyphicon glyphicon-plus"></span></a>
+              <br />
+              2018
+            </p>
+              <div class='abstract' id='thesis'>
+                In this thesis, we consider cut and connectivity problems on graphs, digraphs, hypergraphs and hedgegraphs.
+                The main results are the following:
+                <ul>
+                  <li>We introduce a faster algorithm for finding the reduced graph in element-connectivity computations. We also show its application to node separation.</li>
+                  <li>We present several results on hypergraph cuts, including (a) a near linear time algorithm for finding a (2 + ε)-approximate min-cut, (b) an algorithm to find a representation of all min-cuts in the same time as finding a single min-cut, (c) a sparse subgraph that preserves connectivity for hypergraphs and (d) a near linear-time hypergraph cut sparsifier.</li>
+                  <li>We design the first randomized polynomial time algorithm for the hypergraph $k$-cut problem whose complexity has been open for over 20 years. The algorithm generalizes to hedgegraphs with constant span.</li>
+                  <li>We address the complexity gap between global vs. fixed-terminal cuts problems in digraphs by presenting a $2-\frac{1}{448}$ approximation algorithm for the global bicut problem.</li>
+                </ul>
+
+<p class="text-center">Co-advised by <a href="http://karthik.ise.illinois.edu/">Karthik Chandrasekaran</a> and <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri.</p>
+              </div>
+            
+          </td>
+        </tr>
+
+
+        <!--
+        <tr>
+          <td colspan="3"><span class="pubtypeheader">Working Papers</span></td>
+        </tr>
+
+        -->
+        </tbody>
+      </table>
+      <!--
+      <h2>Talks Given</h2>
+      <p>
+        Hypergraph $k$-cut in randomized polynomial time 
+        Nov 7, 2017 UIUC Theory Seminar.
+        Jan 8, 2018 SODA 2018.
+      </p>
+      <p>
+        Minimum violation vertex maps and their applications to cut problems. 
+        Oct 9, 2017 UIUC theory seminar
+        Aug 2, 2017 Osaka University
+        Jul 19, 2017 Kyoto University
+      </p>
+      <p>
+        A Faster Pseudopolynomial Time Algorithm for Subset Sum 
+        June 6, 2017 Tsinghua University
+        Jun 30, 2015 Boise State University
+        Jan 17, 2017 SODA
+      </p>
+      <p>
+      Computing minimum cuts in hypergraphs
+        Jul 18, 2017 RIMS
+        Jul 4, 2017 University of Tokyo
+        Jun 1, 2017 Huazhong University of Science and Technology
+        Jan 17, 2017 SODA
+        Jan 5, 2017 <a href="http://www.ccse.uestc.edu.cn/view?type=11&id=6590">University of Electronic Science and Technology of China</a>
+        Jan 10, 2017 <a href="http://itcs.shufe.edu.cn/index.php/computing-minimum-cuts-in-hypergraphs-chao-xu/">SHUFE, ITCS</a>
+      </p>
+      <p>
+        Small k-certificate in hypergraphs and representing all min-cuts 
+        Apr 25, 2017. Graph Theory and Combinatorics Seminar. 
+      </p>
+      <p>
+        On Element-Connectivity Preserving Graph Simplification
+        Sep 15, 2015 ESA
+      </p>
+      <p>
+        Detecting Weakly Simple Polygons
+        Jan 16, 2015 SODA
+      </p>
+      -->
+</div>
+</body>
+</html>

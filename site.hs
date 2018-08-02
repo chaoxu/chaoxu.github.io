@@ -65,7 +65,7 @@ main = hakyll $ do
                 >>= relativizeUrls
     -}
     -- Index
-    match "index.html" $ do
+    match "blog.html" $ do
         route idRoute
         compile $ do
             let indexCtx = field "posts" $ \_ ->
