@@ -19,7 +19,7 @@
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
           })();
           </script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=http://chaoxuprime.com/mathjax_conf.js">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=http://chaoxuprime.com/mathjax_conf.js">
         </script>
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="stylesheet" href="/css/default.css" />
@@ -34,106 +34,12 @@
           </div>
           <nav>
               <ul>
-                  <li><a href="/">Home</a></li>
-                  <li><a href="http://chaoxu3.web.engr.illinois.edu/">About</a></li>
-                  <li><a href="http://chaoxu3.web.engr.illinois.edu/cv.pdf">CV</a></li>
+                  <li><a href="/">About</a></li>
+                  <li><a href="/blog.html">Blog</a></li>
+                  <li><a href="/files/cv.pdf">CV</a></li>
                   <li><a href="/tools.html">Tools</a></li>
               </ul>
           </nav>
       </header>
       <article>
-          <h1 id="article-title">A generalization of the art gallery theorem with reflection and a cool problem</h1>
-          <br />
-<div>
-<p>When I was the TA for AMS 345(Computational Geometry) last year, I have encountered problems where I don't know if there exist a answer. Therefore I used those problem as a toy example of what a &quot;research&quot; could be like.</p>
-<p>First I will demonstrate a theorem that generalize art gallery theorem. It's the first interesting theorem I discovered. :) I'm sure someone else have found it before.</p>
-<p>The definition of guard, visibility, etc. are defined in the wiki for the <a href="http://en.wikipedia.org/wiki/Art_gallery_problem">art gallery problem</a>.</p>
-<p>One want to generalize the notion of guarding a polygon. Instead of walls, the edges become mirrors. The light loses intensity every time it get reflected on the mirror. Therefore after <span class="math inline">\(k\)</span> reflections, it become indistinguishable to a guard.</p>
-<section class="theorem-environment Definition" id="Definition-1">
-<span class="theorem-header"><span class="type">Definition</span><span class="index">1</span><span class="name"><span class="math inline">\(k\)</span>-reflection visible</span></span>
-<p>Given polygon <span class="math inline">\(P\)</span>. <span class="math inline">\(p,q\in P\)</span>. <span class="math inline">\(p\)</span> is called <em><span class="math inline">\(k\)</span>-reflection visible</em> to <span class="math inline">\(q\)</span> if and only if there is a ray of light from <span class="math inline">\(p\)</span> to <span class="math inline">\(q\)</span>, such that it reflects at most <span class="math inline">\(k\)</span> times on the boundary of the polygon. Each reflection follows the law of reflection. (angle of incidence = angle of reflection.)</p>
-</section>
-<section class="theorem-environment Definition" id="Definition-2">
-<span class="theorem-header"><span class="type">Definition</span><span class="index">2</span><span class="name"><span class="math inline">\(k\)</span>-reflection guard</span></span>
-<p>A <em><span class="math inline">\(k\)</span>-reflection guard</em> is a guard that can see all the points that are <span class="math inline">\(k\)</span>-reflection visible from himself.</p>
-</section>
-<section class="theorem-environment Theorem" id="Theorem-3">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">3</span></span>
-<p>If <span class="math inline">\(G_k(n)\)</span> is the minimal number of <span class="math inline">\(k\)</span>-reflection guard required to guard any polygon of <span class="math inline">\(n\)</span> vertices. Then <span class="math inline">\(G_k(n)=\lfloor \frac{n}{3} \rfloor\)</span>.</p>
-</section>
-<section class="theorem-environment Proof" id="Proof-">
-<span class="theorem-header"><span class="type">Proof</span></span>
-<p>By the art gallery theorem, we know <span class="math inline">\(G_0(n)\leq \lfloor \frac{n}{3} \rfloor\)</span>. <span class="math inline">\(G_k(n)\leq G_j(n)\)</span> if <span class="math inline">\(j\leq k\)</span>. Since a guards can only become stronger when they can see more reflections. <span class="math inline">\(G_k(n)\leq \lfloor \frac{n}{3} \rfloor\)</span></p>
-<p>The lower bound can be proved with a Chvátal's comb with very thin teeth. A Chvátal's comb with 3 teeth is shown below.</p>
-<figure>
-<img src="/files/chvatals_comb.png" alt="Chvátal&#39;s comb" /><figcaption>Chvátal's comb</figcaption>
-</figure>
-<p>Since for each teeth, the result is symmetric. We only have to consider one teeth. Suppose we pick <span class="math inline">\(p\)</span> to be the teeth vertex. A ray can behave in 2 cases: Case 1: The ray escape the teeth after the first reflection, and bounce between the parallel lines for <span class="math inline">\(k-1\)</span> times. It's easy to see the furthest distance this ray can travel from the teeth is bounded by the angle of the teeth and the distance between the lines. One can always find a polygon, such that the distance between teeth is large enough, such that no visible region from case 1 can overlap.</p>
-<p>Case 2: The ray went into the teeth after the first reflection. One can construct a teeth such that rays will bounce inside the teeth for at least <span class="math inline">\(k-1\)</span> times. If <span class="math inline">\(\alpha\)</span> is the angle of the teeth, the amount of times the ray hit the teeth is at least <span class="math inline">\(\frac{\pi}{2\alpha}\)</span> times. Convince yourself this is true by reflect entire teeth along it's edge repeatedly. The ray has to hit at least all the reflections lies between a <span class="math inline">\(\frac{\pi}{2}\)</span> sector. One can make <span class="math inline">\(\alpha\)</span> small enough, so <span class="math inline">\(\frac{\pi}{2\alpha}\geq k-1\)</span>. Thus all the rays in this case has to stay in the teeth, therefore it can't overlap with visible regions of other teeth.</p>
-<figure>
-<img src="/files/artgallery_proof.png" alt="proof" /><figcaption>proof</figcaption>
-</figure>
-<p>Each visible region is independent. There are <span class="math inline">\(\lfloor \frac{n}{3} \rfloor\)</span> visibility regions. This gives us the desired result <span class="math inline">\(\lfloor \frac{n}{3} \rfloor \leq G_k(n)\leq \lfloor \frac{n}{3} \rfloor\)</span>, <span class="math inline">\(G_k(n) = \lfloor \frac{n}{3} \rfloor\)</span>.</p>
-</section>
-<p>Just for fun. Here is another toy problem from last year's AMS 345 homework.</p>
-<section class="theorem-environment Problem" id="Problem-4">
-<span class="theorem-header"><span class="type">Problem</span><span class="index">4</span></span>
-<p>Let <span class="math inline">\(P\)</span> be a simple polygon with <span class="math inline">\(n = 3k\)</span> vertices, for a positive integer <span class="math inline">\(k\)</span>. Starting with a vertex, color the vertices alternately around the polygon: red, blue, green, red, blue, green, etc. Find a counterexample to the following claim: There exist a monochromatic guard set.</p>
-</section>
-<p>Back then, the best known counterexample has 15 vertices(<span class="math inline">\(k=5\)</span>). Professor Mitchell asked if it was the smallest counterexample. I start to work on the following problem:</p>
-<section class="theorem-environment Problem" id="Problem-5">
-<span class="theorem-header"><span class="type">Problem</span><span class="index">5</span></span>
-<p>Find the smallest counterexample, and prove it's the smallest.</p>
-</section>
-<p>A counterexample with <span class="math inline">\(k=3\)</span>. The colored region are the area can't be seen by vertices of that color.</p>
-<figure>
-<img src="/files/cg_counterexample.png" alt="counterexample" /><figcaption>counterexample</figcaption>
-</figure>
-<p>It is indeed the smallest possible.</p>
-<section class="theorem-environment Lemma" id="Lemma-6">
-<span class="theorem-header"><span class="type">Lemma</span><span class="index">6</span></span>
-<p>Any 2 vertices on a quadrilateral can guard the quadrilateral.</p>
-</section>
-<section class="theorem-environment Proof" id="Proof-">
-<span class="theorem-header"><span class="type">Proof</span></span>
-<p>There are only 2 cases, draw them and convince yourself.</p>
-</section>
-<section class="theorem-environment Theorem" id="Theorem-7">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">7</span></span>
-<p>There exist no counterexample for <span class="math inline">\(k=2\)</span>.</p>
-</section>
-<section class="theorem-environment Proof" id="Proof-">
-<span class="theorem-header"><span class="type">Proof</span></span>
-<p>Suppose there exist a polygon <span class="math inline">\(P\)</span> such that <span class="math inline">\(k=2\)</span> and it is a counterexample to the original conjecture. The vertices of <span class="math inline">\(P\)</span> are <span class="math inline">\(RGBrgb\)</span>.</p>
-<p>Any triangulation of the polygon result 4 triangles. Since no color exist in all triangles(else that color guards <span class="math inline">\(P\)</span>), there is a triangle composed of only 2 colors. Therefore one side of that triangle have the same colored end points. It must be a diagonal because no edge of <span class="math inline">\(P\)</span> have the same colored end points.</p>
-<p>wlog, let the diagonal be <span class="math inline">\(Rr\)</span>. Then <span class="math inline">\(P\)</span> is partitioned to 2 quadrilaterals <span class="math inline">\(RGBr\)</span> and <span class="math inline">\(rgbR\)</span>. Using the lemma, we see <span class="math inline">\(R\)</span> and <span class="math inline">\(r\)</span> can guard both quadrilaterals. It implies <span class="math inline">\(R\)</span> and <span class="math inline">\(r\)</span> guards <span class="math inline">\(P\)</span>. A contradiction.</p>
-</section>
-
-</div>
-<div class="info">Posted by Chao Xu on 2011-06-06. </div>
-<div class="hide-on-print">
-<div class="info">Tags: computational geometry, discrete geometry. <!--<a href="/posts/2011-06-06-a-generalization-of-the-art-gallery-theorem-with-reflection-and-a-cool-problem.md">Source</a>.--></div>
-
-<!--    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'chaoxu'; // required: replace example with your forum shortname
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
--->
-</div>
-      </article>
-      <footer class="hide-on-print">© 2010 - <script>document.write(new Date().getFullYear())</script> Chao Xu. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
-
-    </body>
-</html>
-
-</html>
+          <h1 id="a
