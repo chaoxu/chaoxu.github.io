@@ -5,6 +5,11 @@ git stash
 # Verify correct branch
 git checkout develop
 
+# useful for no reason on MAC
+# related to regex I used
+export LANG=C
+export LC_CTYPE=C
+
 # Build new files
 mv ~/tmp/.stack-work .stack-work
 stack exec chaosite clean
