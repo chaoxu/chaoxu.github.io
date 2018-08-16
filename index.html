@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <title>Chao Xu</title>
@@ -65,7 +65,7 @@ MathJax.Hub.Config({
   }
 });
 </script>
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML"></script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
 
 <script type="text/javascript">
 function toggle(elementID){
@@ -122,10 +122,10 @@ function toggle(elementID){
   </div>
       
 
-      <!--<div class="alert alert-info alert-dismissable">
+      <div class="alert alert-info alert-dismissable">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-        <strong>News:</strong> I'm looking for a postdoc/faculty position.
-      </div>-->
+        <strong>News:</strong> The scalable machine learning group is looking for 2019 summer interns.
+      </div>
 
       <!-- <h4>Recent Manuscripts</h4> -->
       <table>
@@ -134,9 +134,52 @@ function toggle(elementID){
       <tr>
         <td colspan="3"><span class="pubtypeheader">Recent Manuscripts</span></td>
       </tr>
+        <tr>
+          <td><a href="files/papers/kcut-revisited.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
+          <td></td>
+          <td>
+            <p>
+              <span class="paper-title">$k$-Cut Revisited</span> <a href="javascript:toggle('k-cut-revisited');"><span id='k-cut-revisited-expand' class="glyphicon glyphicon-plus"></span></a>
+              <br />
+              (with <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a>
+              and   <a href="http://web.engr.illinois.edu/~quanrud2/">Kent Quanrud</a>)
+              <br />
+              2018
+            </p>
+              <div class='abstract' id='k-cut-revisited'>
+                Karger used spanning tree packings to derive a near
+                linear-time randomized algorithm for the global minimum cut problem
+                as well as a bound on the number of approximate minimum cuts. This
+                is a different approach from his well-known random contraction
+                algorithm. Thorup developed a fast
+                deterministic algorithm for the minimum $k$-cut
+                problem via greedy <em>recursive</em> tree packings.
+                <br />
+                In this paper we revisit properties of an LP relaxation for $k$-cut
+                proposed by Naor and Rabani, and analyzed by
+                Chekuri, Guha and Naor.  We show that the dual of the LP yields a tree
+                packing, that when combined with an upper bound on the integrality
+                gap for the LP, easily and transparently extends Karger's analysis
+                for mincut to the $k$-cut problem. In addition to the simplicity of
+                the algorithm and its analysis, this allows us to improve the
+                running time of Thorup's algorithm by a factor of $n$. We also
+                improve the bound on the number of $\alpha$-approximate
+                $k$-cuts. Second, we give a simple proof that the integrality gap of
+                the LP is $2(1-1/n)$. Third, we show that an optimum solution to the
+                LP relaxation, for all values of $k$, is fully determined by the
+                principal sequence of partitions of the input graph. This allows us
+                to relate the LP relaxation to the Lagrangean relaxation approach of
+                Barahona and Ravi and Sinha; it also shows
+                that the idealized recursive tree packing considered by Thorup gives
+                an optimum dual solution to the LP. This work arose from an effort
+                to understand and simplify the results of Thorup.
+              </div>
+            
+          </td>
+        </tr>
 
         <tr>
-          <td><a href="https://arxiv.org/abs/1807.08248"><span class="glyphicon glyphicon-file"></span></a></td>
+          <td><a href="files/papers/subset_sum_simple.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
           <td></td>
           <td>
             <p>
@@ -168,7 +211,6 @@ function toggle(elementID){
           </td>
         </tr>
 
-        
       <tr>
         <td colspan="3"><span class="pubtypeheader">Conference Publications</span></td>
       </tr>
