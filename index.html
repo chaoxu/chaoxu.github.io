@@ -55,6 +55,32 @@
       font-size: small;
       color:#000;
     }
+    /* Tooltip container */
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+    }
+
+    /* Tooltip text */
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+     
+        /* Position the tooltip text - see examples below! */
+        position: absolute;
+        z-index: 1;
+    }
+
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
   </style>
 
 <script type="text/x-mathjax-config">
@@ -127,12 +153,12 @@ function toggle(elementID){
         <strong>News:</strong> Our group is looking for 2019 summer interns. <a href="mailto:chao.xu@oath.com">Contact me for more info</a>.
       </div>
 
+
       <!-- <h4>Recent Manuscripts</h4> -->
       <table>
         <tbody>
-
       <tr>
-        <td colspan="3"><span class="pubtypeheader">Recent Manuscripts</span></td>
+        <td colspan="3"><span class="pubtypeheader">Recent Manuscripts</span><span class="tooltip"><sup>*</sup><span class="tooltiptext">Some manuscript might be available upon request.</span></span></td>
       </tr>
         <!-- LP Relaxation and Tree Packing for Minimum $k$-cuts -->
         <tr>
@@ -257,7 +283,9 @@ function toggle(elementID){
             </p>
           </td>
         </tr>
-
+<div class="tooltip">Hover over me
+  <span class="tooltiptext">Tooltip text</span>
+</div>
       <tr>
         <td colspan="3"><span class="pubtypeheader">Conference Publications</span></td>
       </tr>
@@ -283,6 +311,7 @@ function toggle(elementID){
                 <p>
                   Our algorithm is based on random contractions akin to Karger's min cut algorithm. Our main technical contribution is a distribution over the hedges (hyperedges) so that random contraction of hedges (hyperedges) chosen from the distribution succeeds in returning an optimum solution with large probability.
                 </p>
+                <em><small>Note: Journal version under submission.</small></em>
               </div>
           </td>
         </tr>
@@ -341,6 +370,7 @@ function toggle(elementID){
               </figure>
 
             </div>
+            <em><small>Note: Journal version under submission.</small></em>
           </td>
         </tr>
 
@@ -370,6 +400,7 @@ function toggle(elementID){
                 <img src="files/papers_page/hypergraph.png" class="img-responsive center-block" alt=""/>
                 <figcaption>Example of hyperedge insertion operation on vertex $v$.</figcaption>
               </figure>
+              <em><small>Note: Journal version under submission.</small></em>
             </div>
           </td>
         </tr>
