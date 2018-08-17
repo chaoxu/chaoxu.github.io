@@ -55,32 +55,6 @@
       font-size: small;
       color:#000;
     }
-    /* Tooltip container */
-    .tooltip {
-        position: relative;
-        display: inline-block;
-        border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-    }
-
-    /* Tooltip text */
-    .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 120px;
-        background-color: black;
-        color: #fff;
-        text-align: center;
-        padding: 5px 0;
-        border-radius: 6px;
-     
-        /* Position the tooltip text - see examples below! */
-        position: absolute;
-        z-index: 1;
-    }
-
-    /* Show the tooltip text when you mouse over the tooltip container */
-    .tooltip:hover .tooltiptext {
-        visibility: visible;
-    }
   </style>
 
 <script type="text/x-mathjax-config">
@@ -90,6 +64,10 @@ MathJax.Hub.Config({
     scale: 100
   }
 });
+</script>
+<script src="https://unpkg.com/tippy.js@2.5.4/dist/tippy.all.min.js"></script>
+<script type="text/javascript">
+  tippy('.tooltip')
 </script>
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
 
@@ -158,7 +136,7 @@ function toggle(elementID){
       <table>
         <tbody>
       <tr>
-        <td colspan="3"><span class="pubtypeheader">Recent Manuscripts</span><span class="tooltip"><sup>*</sup><span class="tooltiptext">Some manuscript might be available upon request.</span></span></td>
+        <td colspan="3"><span class="pubtypeheader">Recent Manuscripts<span class="tooltip" title="Some manuscripts are available upon request."><sup>*</sup></span></span></td>
       </tr>
         <!-- LP Relaxation and Tree Packing for Minimum $k$-cuts -->
         <tr>
