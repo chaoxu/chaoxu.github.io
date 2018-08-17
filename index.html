@@ -65,10 +65,7 @@ MathJax.Hub.Config({
   }
 });
 </script>
-<script src="https://unpkg.com/tippy.js@2.5.4/dist/tippy.all.min.js"></script>
-<script type="text/javascript">
-  tippy('.tooltip')
-</script>
+
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
 
 <script type="text/javascript">
@@ -84,6 +81,33 @@ function toggle(elementID){
   obj.toggleClass('glyphicon-plus glyphicon-minus')
 }
 </script>
+
+<style>
+.tip {
+    position: relative;
+    display: inline-block;
+    color: #337ab7;
+}
+
+.tip .tiptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: black;
+    color: #fff;
+    font-size: small;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tip:hover .tiptext {
+    visibility: visible;
+}
+</style>
 </head>
 <body>
 <div class="container">
@@ -136,7 +160,13 @@ function toggle(elementID){
       <table>
         <tbody>
       <tr>
-        <td colspan="3"><span class="pubtypeheader">Recent Manuscripts<span class="tooltip" title="Some manuscripts are available upon request."><sup>*</sup></span></span></td>
+        <td colspan="3">
+        <span class="pubtypeheader">Recent Manuscripts<span class="tip">
+            *
+            <span class="tiptext">Some manuscripts are available upon request.</span>
+          </span>
+        </span>
+</td>
       </tr>
         <!-- LP Relaxation and Tree Packing for Minimum $k$-cuts -->
         <tr>
@@ -261,9 +291,6 @@ function toggle(elementID){
             </p>
           </td>
         </tr>
-<div class="tooltip">Hover over me
-  <span class="tooltiptext">Tooltip text</span>
-</div>
       <tr>
         <td colspan="3"><span class="pubtypeheader">Conference Publications</span></td>
       </tr>
