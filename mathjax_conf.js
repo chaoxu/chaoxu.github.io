@@ -30,4 +30,4 @@ MathJax.Hub.Config({
     }
 });
 
-MathJax.Ajax.loadComplete("http://chaoxuprime.com/mathjax_conf.js");
+MathJax.Ajax.loadComplete("https://chaoxuprime.com/mathjax_conf.js");
