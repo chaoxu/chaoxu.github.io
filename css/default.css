@@ -44,17 +44,18 @@ body {
     /*min-width: 840px;*/
 }
 
-header, article {
+/*header, article {
     margin-bottom: 2em;
     padding-left: 20px;
     padding-right: 20px;
-}
+}*/
 
 footer, #theme-info, #footer-include {
     clear: both;
 }
 article {
    max-width:840px;
+   float: left;
 }
 /* Positioning
 ----------------------------------------------- */
