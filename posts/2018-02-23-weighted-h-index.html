@@ -53,25 +53,25 @@
 <p>Define <span class="math inline">\(f(t) = \sum_{i:a_i\geq t} w_i\)</span>. We want to find the largest <span class="math inline">\(t\)</span> such that <span class="math inline">\(f(t)\geq t\)</span>. First, we can find the median of <span class="math inline">\(a_1,\ldots,a_n\)</span>, say <span class="math inline">\(t\)</span>. If <span class="math inline">\(f(t) &lt; t\)</span>, then we recurse on <span class="math inline">\(\set{(w_i-f(t),a_i) \mid a_i&lt; t}\)</span>. Assume the optimum in the recursed solution is <span class="math inline">\(t&#39;\)</span>, we return <span class="math inline">\(t&#39;+f(t)\)</span> as the solution. If <span class="math inline">\(f(t)\geq t\)</span>, then we recurse and output the solution with input <span class="math inline">\(\set{(w_i,a_i) \mid a_i\geq t}\)</span>. The running time satisfies <span class="math inline">\(T(n)=T(n/2)+O(n)\)</span>, which is <span class="math inline">\(O(n)\)</span>.</p>
 
 </div>
-<div class="info">Posted by Chao Xu on 2018-02-23. </div>
 <div class="hide-on-print">
-<div class="info">Tags: algorithms. <!--<a href="/posts/2018-02-23-weighted-h-index.md">Source</a>.--></div>
+    <div class="info">Posted by Chao Xu on 2018-02-23. </div>
+    <div class="info">Tags: algorithms. <!--<a href="/posts/2018-02-23-weighted-h-index.md">Source</a>.--></div>
 
-<!--    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'chaoxu'; // required: replace example with your forum shortname
+    <!--    <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'chaoxu'; // required: replace example with your forum shortname
 
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
--->
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    -->
 </div>
       </article>
     </main>
