@@ -1,39 +1,40 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="The Art Gallery Guardian">
-        <meta name="author" content="Chao Xu">
-        <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
-        <title>Divide and conquer over cyclic groups</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <title>Divide and conquer over cyclic groups</title>
 
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js">
-        </script>
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="/css/default.css" />
-  <!--[if lt IE 9]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-    </head>
-    <body class="tex2jax_ignore">
-      <header class="hide-on-print">
-          <div id="blog-title">
-              <a href="/blog.html">The Art Gallery Guardian</a>
-          </div>
-          <nav>
-              <ul>
-                  <li><a href="/">About</a></li>
-                  <li><a href="/blog.html">Blog</a></li>
-                  <li><a href="/files/cv.pdf">CV</a></li>
-                  <li><a href="/tools.html">Tools</a></li>
-              </ul>
-          </nav>
-      </header>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js">
+    </script>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/default.css" />
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="tex2jax_ignore">
+    <header class="hide-on-print">
+        <div id="blog-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
       <article>
-          <h1 id="article-title">Divide and conquer over cyclic groups</h1>
-          <br />
+        <h1 id="article-title">Divide and conquer over cyclic groups</h1>
+        <br />
 <div>
 <p>Recently we found a divide and conquer algorithm over <span class="math inline">\(\Z_m\)</span>. We have an efficient algorithm for the case where all the elements <span class="math inline">\(S\)</span> are in <span class="math inline">\(\Z_m^*\)</span>, the set of units.</p>
 <p>Our divide and conquer algorithm basically partition the numbers by throwing them into different subgroups. Assume <span class="math inline">\(m\)</span> has distinct prime factors <span class="math inline">\(p_1 &lt; \ldots &lt; p_k\)</span>, and for simplicity, define <span class="math inline">\(p_0=1\)</span>. We partition <span class="math inline">\(S\)</span> to <span class="math inline">\(S_0,\ldots,S_k\)</span>, where <span class="math inline">\(S_i\)</span> contain all the elements that's divisible by <span class="math inline">\(p_i\)</span> but not <span class="math inline">\(p_j\)</span> for any <span class="math inline">\(j&gt;i\)</span>. We recursively apply our algorithm to each <span class="math inline">\(S_i/p_i\)</span> in <span class="math inline">\(\Z_{m/p_i}\)</span> and combine the solution.</p>
@@ -119,9 +120,9 @@ f_k(x) = x \prod_{i=1}^{k} \left(1+\frac{1}{p_j-1}\right)
 -->
 </div>
       </article>
-      <footer class="hide-on-print">© 2010 - <script>document.write(new Date().getFullYear())</script> Chao Xu. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
-      
-      <script type="text/javascript">
+    </main>
+    <footer class="hide-on-print">© 2010 - <script>document.write(new Date().getFullYear())</script> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+    <script type="text/javascript">
       var clicky_site_ids = clicky_site_ids || [];
       clicky_site_ids.push(100956820);
       (function() {
@@ -131,8 +132,7 @@ f_k(x) = x \prod_{i=1}^{k} \left(1+\frac{1}{p_j-1}\right)
         s.src = '//static.getclicky.com/js';
         ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
       })();
-      </script>
-      <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100956820ns.gif" /></p></noscript>
-    </body>
-</html>
+    </script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100956820ns.gif" /></p></noscript>
+  </body>
 </html>

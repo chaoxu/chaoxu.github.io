@@ -1,39 +1,40 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="The Art Gallery Guardian">
-        <meta name="author" content="Chao Xu">
-        <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
-        <title>Formal Definition of Sequence Alignment</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <title>Formal Definition of Sequence Alignment</title>
 
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js">
-        </script>
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="/css/default.css" />
-  <!--[if lt IE 9]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-    </head>
-    <body class="tex2jax_ignore">
-      <header class="hide-on-print">
-          <div id="blog-title">
-              <a href="/blog.html">The Art Gallery Guardian</a>
-          </div>
-          <nav>
-              <ul>
-                  <li><a href="/">About</a></li>
-                  <li><a href="/blog.html">Blog</a></li>
-                  <li><a href="/files/cv.pdf">CV</a></li>
-                  <li><a href="/tools.html">Tools</a></li>
-              </ul>
-          </nav>
-      </header>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js">
+    </script>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/default.css" />
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="tex2jax_ignore">
+    <header class="hide-on-print">
+        <div id="blog-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
       <article>
-          <h1 id="article-title">Formal Definition of Sequence Alignment</h1>
-          <br />
+        <h1 id="article-title">Formal Definition of Sequence Alignment</h1>
+        <br />
 <div>
 <p>Consider an alphabet <span class="math inline">\(\Sigma\)</span> and two sequences <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span> on <span class="math inline">\(\Sigma\)</span>. Let <span class="math inline">\(\bar{\Sigma} = \Sigma\cup \{\diamond\}\)</span> where <span class="math inline">\(\diamond\)</span> is some symbol not in <span class="math inline">\(\Sigma\)</span>, it's called the gap symbol. <span class="math inline">\(M:\bar{\Sigma}\times \bar{\Sigma}\to \Z\)</span>. We have a gap penalties functions <span class="math inline">\(g_s,g_t:\N\to \Z\)</span>. The functions are monotonic and are <span class="math inline">\(0\)</span> at <span class="math inline">\(0\)</span>. The four boundary gap penalty coefficient <span class="math inline">\(b_s,b_t,e_s,e_t\in \{0,1\}\)</span>. We want to find the alignment score between the two sequences.</p>
 <p>A gap is the maximal substring consist of only <span class="math inline">\(\diamond\)</span>'s. The gap sequence of a string is a sequence of lengths of each gap. Define <span class="math inline">\(s_\diamond\)</span> be the gap sequence of string <span class="math inline">\(s\)</span>.</p>
@@ -79,9 +80,9 @@ A(u,v) = \sum_{i=1}^{|u|} M(u_i,v_i) + G(b_s,g_s,e_s,u_\diamond) + G(b_t,g_t,e_t
 -->
 </div>
       </article>
-      <footer class="hide-on-print">© 2010 - <script>document.write(new Date().getFullYear())</script> Chao Xu. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
-      
-      <script type="text/javascript">
+    </main>
+    <footer class="hide-on-print">© 2010 - <script>document.write(new Date().getFullYear())</script> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+    <script type="text/javascript">
       var clicky_site_ids = clicky_site_ids || [];
       clicky_site_ids.push(100956820);
       (function() {
@@ -91,8 +92,7 @@ A(u,v) = \sum_{i=1}^{|u|} M(u_i,v_i) + G(b_s,g_s,e_s,u_\diamond) + G(b_t,g_t,e_t
         s.src = '//static.getclicky.com/js';
         ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
       })();
-      </script>
-      <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100956820ns.gif" /></p></noscript>
-    </body>
-</html>
+    </script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100956820ns.gif" /></p></noscript>
+  </body>
 </html>

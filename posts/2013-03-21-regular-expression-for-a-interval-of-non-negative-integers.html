@@ -1,39 +1,40 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="The Art Gallery Guardian">
-        <meta name="author" content="Chao Xu">
-        <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
-        <title>Regular expression for a interval of non-negative integers</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <title>Regular expression for a interval of non-negative integers</title>
 
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js">
-        </script>
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="/css/default.css" />
-  <!--[if lt IE 9]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-    </head>
-    <body class="tex2jax_ignore">
-      <header class="hide-on-print">
-          <div id="blog-title">
-              <a href="/blog.html">The Art Gallery Guardian</a>
-          </div>
-          <nav>
-              <ul>
-                  <li><a href="/">About</a></li>
-                  <li><a href="/blog.html">Blog</a></li>
-                  <li><a href="/files/cv.pdf">CV</a></li>
-                  <li><a href="/tools.html">Tools</a></li>
-              </ul>
-          </nav>
-      </header>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js">
+    </script>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/default.css" />
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="tex2jax_ignore">
+    <header class="hide-on-print">
+        <div id="blog-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
       <article>
-          <h1 id="article-title">Regular expression for a interval of non-negative integers</h1>
-          <br />
+        <h1 id="article-title">Regular expression for a interval of non-negative integers</h1>
+        <br />
 <div>
 <p>Let <span class="math inline">\(m,n \in \N\)</span> and <span class="math inline">\(m\leq n\)</span>. I wrote <a href="https://gist.github.com/chaoxu/5210853">a program in Haskell that generate a regular expression that matches all decimal representation of some number in between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> inclusive</a>. The regular expression would have length <span class="math inline">\(O(\log n \log \log n)\)</span>. I also included a simple version, which shows how the algorithm is done.</p>
 <p>The code was made for the decimal system, but of course it can be generalized to any base.</p>
@@ -69,9 +70,9 @@
 -->
 </div>
       </article>
-      <footer class="hide-on-print">© 2010 - <script>document.write(new Date().getFullYear())</script> Chao Xu. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
-      
-      <script type="text/javascript">
+    </main>
+    <footer class="hide-on-print">© 2010 - <script>document.write(new Date().getFullYear())</script> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+    <script type="text/javascript">
       var clicky_site_ids = clicky_site_ids || [];
       clicky_site_ids.push(100956820);
       (function() {
@@ -81,8 +82,7 @@
         s.src = '//static.getclicky.com/js';
         ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
       })();
-      </script>
-      <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100956820ns.gif" /></p></noscript>
-    </body>
-</html>
+    </script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100956820ns.gif" /></p></noscript>
+  </body>
 </html>
