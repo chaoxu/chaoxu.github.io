@@ -363,7 +363,7 @@ function toggle(elementID){
         </tr>
 
         <!-- Computing minimum cuts in hypergraphs -->
-        <tr>
+        <tr id="hypergraph-min-cut_main">
           <td><a href="files/papers/hypergraph.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
           <td><a href="files/presentations/computing-min-cuts.pdf"><span class="glyphicon glyphicon-blackboard"></span></a></td>
           <td>
@@ -376,7 +376,7 @@ function toggle(elementID){
               <i><a href="https://www.siam.org/meetings/da17/">SODA 2017</a></i>.
               <br /><em><small>Note: The SODA camera ready version has a bug in the sparsification section that is fixed in the arXiv update.</small></em>
               <br />
-              <em><small>Note: Journal version under submission.</small></em>
+              <em><small>Note: The journal version with more even more results was serialized as <a href="#hypergraph_cut_journal_main">Minimum cuts and sparsification in hypergraphs</a> in SICOMP.</small></em>
             </p>
             <div class='abstract' id='hypergraph-min-cut'>
               We study algorithmic and structural aspects of connectivity in hypergraphs. Given a hypergraph $H=(V,E)$ with $n=|V|$, $m=|E|$ and $p=\sum_{e\in E}|e|$ the best known algorithm to compute a global minimum cut in $H$ runs in time $O(np)$ for the uncapacitated case and in $O(np+n^2\log n)$ time for the capacitated case. We show the following new results. 
@@ -456,6 +456,65 @@ function toggle(elementID){
       <tr>
         <td colspan="3"><span class="pubtypeheader">Journal Publications</span></td>
       </tr>
+        <!-- Minimum cuts and sparsification in hypergraphs -->
+        <tr id="hypergraph_cut_journal_main">
+          <td><a href="files/papers/hypergraph_cut_journal.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
+          <td></td>
+          <td>
+            <p>
+              <span class="paper-title">Minimum cuts and sparsification in hypergraphs</span> <a href="javascript:toggle('hypergraph_cut_journal');"><span id='hypergraph_cut_journal' class="glyphicon glyphicon-plus"></span></a>
+              <br />
+              (with <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a>)
+              <br />
+              Accepted for publication in <i><a href="https://www.siam.org/Publications/Journals/SIAM-Journal-on-Computing-SICOMP">SIAM Journal on Computing</a></i><br />
+              <em><small>Note: The paper is a combination of <a href="#hypergraph-min-cut_main">Computing minimum cuts in hypergraphs</a> appeared in SODA 2017</a> and <a href="https://arxiv.org/abs/1703.03849">A note on approximate strengths of edges in a hypergraph</a>.</small></em>
+            </p>
+              <div class='abstract' id='hypergraph_cut_journal'>
+                  We study algorithmic and structural aspects of connectivity in
+                  hypergraphs. Given a hypergraph $H=(V,E)$ with $n = |V|$, $m = |E|$
+                  and $p = \sum_{e \in E} |e|$ the fastest known algorithm to compute a
+                  global minimum cut in $H$ runs in $O(np)$ time for the uncapacitated
+                  case, and in $O(np + n^2 \log n)$ time for the capacitated case. We show
+                  the following new results.
+                  <ul>
+                    <li>
+                      Given an uncapacitated hypergraph $H$ and an integer $k$ we
+                        describe an algorithm that runs in $O(p)$ time to find a (trimmed)
+                        subhypergraph $H'$ with sum of degrees $O(kn)$ that preserves all
+                        edge-connectivities up to $k$ (a $k$-sparse certificate). This
+                        generalizes the corresponding result of Nagamochi and Ibaraki from
+                        graphs to hypergraphs. Using this sparsification we obtain an $O(p +
+                        \lambda n^2)$ time algorithm for computing a global minimum cut of
+                        $H$ where $\lambda$ is the minimum cut value.
+                    </li>
+                    <li>We show that a hypercactus representation of <em>all</em> the
+                        global minimum cuts of a capacitated hypergraph can be computed in
+                        $O(np + n^2 \log n)$ time and $O(p)$ space matching the asymptotic
+                        time to find a single minimum cut.
+                    </li>
+                    <li>
+                        We obtain a $(2+\e)$-approximation to the global minimum cut
+                        of a capacitated hypergraph in $O(\frac{1}{\e} (p \log n + n \log^2 n))$
+                        time, and for uncapacitated hypergraphs in $O(p/\e)$ time.
+                        We achieve this by generalizing Matula's algorithm for
+                        graphs to hypergraphs.
+                    </li>
+                    <li>We describe an algorithm to compute approximate strengths of
+                    all the edges of a hypergraph in $O(p \log^2 n \log p)$ time. This
+                    gives a near linear time algorithm for finding a $(1+\e)$-cut
+                    sparsifier based on the work of Kogan and Krauthgamer. As a
+                    byproduct we obtain faster algorithms for various cut and flow
+                    problems in hypergraphs of small rank.
+                    </li>
+                  </ul>
+                  Our results build upon properties of vertex orderings that were
+                  inspired by the maximum adjacency ordering for graphs due to
+                  Nagamochi and Ibaraki.  Unlike graphs we observe that there are
+                  several orderings for hypergraphs and these yield different
+                  insights.
+              </div>
+          </td>
+        </tr>
 
         <!-- The shortest kinship description problem -->
         <tr>
@@ -554,26 +613,6 @@ function toggle(elementID){
       <tr>
         <td colspan="3"><span class="pubtypeheader">Manuscripts</span></td>
       </tr>
-
-        <!-- A note on approximate strengths of edges in a hypergraph -->
-        <tr>
-          <td><a href="https://arxiv.org/abs/1703.03849"><span class="glyphicon glyphicon-file"></span></a></td>
-          <td></td>
-          <td>
-            <p>
-              <span class="paper-title">A note on approximate strengths of edges in a hypergraph</span> <a href="javascript:toggle('approx-strength');"><span id='approx-strength-expand' class="glyphicon glyphicon-plus"></span></a>
-              <br />
-              (with
-              <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a>)
-              <br />
-              2017
-            </p>
-              <div class='abstract' id='approx-strength'>
-                Let $H=(V,E)$ be an edge-weighted hypergraph of rank $r$. Kogan and Krauthgamer extended Benczúr and Karger's random sampling scheme for cut sparsification from graphs to hypergraphs. The sampling requires an algorithm for computing the approximate strengths of edges. In this note we extend the algorithm for graphs to hypergraphs and describe a near-linear time algorithm to compute approximate strengths of edges; we build on a sparsification result for hypergraphs from our recent work. Combined with prior results we obtain faster algorithms for finding $(1+\epsilon)$-approximate mincuts when the rank of the hypergraph is small.
-              </div>
-            
-          </td>
-        </tr>
 
         <!-- Marking Streets to Improve Parking Density -->
         <tr>
