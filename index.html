@@ -149,51 +149,6 @@ function toggle(elementID){
         </span>
 </td>
       </tr>
-        <!-- LP Relaxation and Tree Packing for Minimum $k$-cuts -->
-        <tr>
-          <td><a href="files/papers/kcut-revisited.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
-          <td></td>
-          <td>
-            <p>
-              <span class="paper-title">LP Relaxation and Tree Packing for Minimum $k$-cuts</span> <a href="javascript:toggle('k-cut-revisited');"><span id='k-cut-revisited-expand' class="glyphicon glyphicon-plus"></span></a>
-              <br />
-              (with <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a>
-              and   <a href="http://web.engr.illinois.edu/~quanrud2/">Kent Quanrud</a>)
-              <br />
-              2018, Submitted.
-            </p>
-              <div class='abstract' id='k-cut-revisited'>
-                Karger used spanning tree packings to derive a near
-                linear-time randomized algorithm for the global minimum cut problem
-                as well as a bound on the number of approximate minimum cuts. This
-                is a different approach from his well-known random contraction
-                algorithm. Thorup developed a fast
-                deterministic algorithm for the minimum $k$-cut
-                problem via greedy <em>recursive</em> tree packings.
-                <br />
-                In this paper we revisit properties of an LP relaxation for $k$-cut
-                proposed by Naor and Rabani, and analyzed by
-                Chekuri, Guha and Naor.  We show that the dual of the LP yields a tree
-                packing, that when combined with an upper bound on the integrality
-                gap for the LP, easily and transparently extends Karger's analysis
-                for mincut to the $k$-cut problem. In addition to the simplicity of
-                the algorithm and its analysis, this allows us to improve the
-                running time of Thorup's algorithm by a factor of $n$. We also
-                improve the bound on the number of $\alpha$-approximate
-                $k$-cuts. Second, we give a simple proof that the integrality gap of
-                the LP is $2(1-1/n)$. Third, we show that an optimum solution to the
-                LP relaxation, for all values of $k$, is fully determined by the
-                principal sequence of partitions of the input graph. This allows us
-                to relate the LP relaxation to the Lagrangean relaxation approach of
-                Barahona and Ravi and Sinha; it also shows
-                that the idealized recursive tree packing considered by Thorup gives
-                an optimum dual solution to the LP. This work arose from an effort
-                to understand and simplify the results of Thorup.
-              </div>
-            
-          </td>
-        </tr>
-
         <!-- Subset Sum Made Simple -->
         <tr>
           <td><a href="files/papers/subset_sum_simple.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
@@ -204,7 +159,7 @@ function toggle(elementID){
               <br />
               (with <a href="http://koiliaris.com/">Konstantinos Koiliaris</a>)
               <br />
-              2018, Submitted.
+              2018.
             </p>
               <div class='abstract' id='sumbset-sum-simple'>
                 Subset Sum is a classical optimization problem taught to undergraduates as an
@@ -275,6 +230,51 @@ function toggle(elementID){
       <tr>
         <td colspan="3"><span class="pubtypeheader">Conference Publications</span></td>
       </tr>
+        
+        <!-- LP Relaxation and Tree Packing for Minimum $k$-cuts -->
+        <tr>
+          <td><a href="files/papers/kcut-revisited.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
+          <td></td>
+          <td>
+            <p>
+              <span class="paper-title">LP Relaxation and Tree Packing for Minimum $k$-cuts</span> <a href="javascript:toggle('k-cut-revisited');"><span id='k-cut-revisited-expand' class="glyphicon glyphicon-plus"></span></a>
+              <br />
+              (with <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a>
+              and   <a href="http://web.engr.illinois.edu/~quanrud2/">Kent Quanrud</a>)
+              <br />
+              To appear in <a href="https://simplicityinalgorithms.com/">SOSA 2019</a>.
+            </p>
+              <div class='abstract' id='k-cut-revisited'>
+                Karger used spanning tree packings to derive a near
+                linear-time randomized algorithm for the global minimum cut problem
+                as well as a bound on the number of approximate minimum cuts. This
+                is a different approach from his well-known random contraction
+                algorithm. Thorup developed a fast
+                deterministic algorithm for the minimum $k$-cut
+                problem via greedy <em>recursive</em> tree packings.
+                <br />
+                In this paper we revisit properties of an LP relaxation for $k$-cut
+                proposed by Naor and Rabani, and analyzed by
+                Chekuri, Guha and Naor.  We show that the dual of the LP yields a tree
+                packing, that when combined with an upper bound on the integrality
+                gap for the LP, easily and transparently extends Karger's analysis
+                for mincut to the $k$-cut problem. In addition to the simplicity of
+                the algorithm and its analysis, this allows us to improve the
+                running time of Thorup's algorithm by a factor of $n$. We also
+                improve the bound on the number of $\alpha$-approximate
+                $k$-cuts. Second, we give a simple proof that the integrality gap of
+                the LP is $2(1-1/n)$. Third, we show that an optimum solution to the
+                LP relaxation, for all values of $k$, is fully determined by the
+                principal sequence of partitions of the input graph. This allows us
+                to relate the LP relaxation to the Lagrangean relaxation approach of
+                Barahona and Ravi and Sinha; it also shows
+                that the idealized recursive tree packing considered by Thorup gives
+                an optimum dual solution to the LP. This work arose from an effort
+                to understand and simplify the results of Thorup.
+              </div>
+            
+          </td>
+        </tr>
 
         <!-- Hypergraph $k$-Cut in Randomized Polynomial Time -->
         <tr>
@@ -376,7 +376,7 @@ function toggle(elementID){
               <i><a href="https://www.siam.org/meetings/da17/">SODA 2017</a></i>.
               <br /><em><small>Note: The SODA camera ready version has a bug in the sparsification section that is fixed in the arXiv update.</small></em>
               <br />
-              <em><small>Note: The journal version with more even more results was serialized as <a href="#hypergraph_cut_journal_main">Minimum cuts and sparsification in hypergraphs</a> in SICOMP.</small></em>
+              <em><small>Note: The journal version with additional results was serialized as <a href="#hypergraph_cut_journal_main">Minimum cuts and sparsification in hypergraphs</a> in SICOMP.</small></em>
             </p>
             <div class='abstract' id='hypergraph-min-cut'>
               We study algorithmic and structural aspects of connectivity in hypergraphs. Given a hypergraph $H=(V,E)$ with $n=|V|$, $m=|E|$ and $p=\sum_{e\in E}|e|$ the best known algorithm to compute a global minimum cut in $H$ runs in time $O(np)$ for the uncapacitated case and in $O(np+n^2\log n)$ time for the capacitated case. We show the following new results. 
