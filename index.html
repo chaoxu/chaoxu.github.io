@@ -497,15 +497,15 @@ function toggle(elementID){
                         time to find a single minimum cut.
                     </li>
                     <li>
-                        We obtain a $(2+\e)$-approximation to the global minimum cut
-                        of a capacitated hypergraph in $O(\frac{1}{\e} (p \log n + n \log^2 n))$
-                        time, and for uncapacitated hypergraphs in $O(p/\e)$ time.
+                        We obtain a $(2+\eps)$-approximation to the global minimum cut
+                        of a capacitated hypergraph in $O(\frac{1}{\eps} (p \log n + n \log^2 n))$
+                        time, and for uncapacitated hypergraphs in $O(p/\eps)$ time.
                         We achieve this by generalizing Matula's algorithm for
                         graphs to hypergraphs.
                     </li>
                     <li>We describe an algorithm to compute approximate strengths of
                     all the edges of a hypergraph in $O(p \log^2 n \log p)$ time. This
-                    gives a near linear time algorithm for finding a $(1+\e)$-cut
+                    gives a near linear time algorithm for finding a $(1+\varepsilon)$-cut
                     sparsifier based on the work of Kogan and Krauthgamer. As a
                     byproduct we obtain faster algorithms for various cut and flow
                     problems in hypergraphs of small rank.
