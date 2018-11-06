@@ -44,7 +44,10 @@
 <p>Give a graph and <span class="math inline">\(k\)</span> set of edges <span class="math inline">\(F_1,\ldots,F_k\)</span>, <span class="math inline">\(a_1,\ldots,a_k,b\)</span>. Find a cut <span class="math inline">\(S\)</span> satisfies that <span class="math inline">\(|\delta(S)\cap F_i|\equiv a_i \pmod b\)</span> for all <span class="math inline">\(i\)</span>, and the value is minimized.</p>
 </section>
 <p>We will try to reduce this problem to the following</p>
-<p>{Problem}[submodular minimization under congruence constraints.] Given <span class="math inline">\(T_1,\ldots,T_k\)</span> and a submodular function <span class="math inline">\(f\)</span>. Find a set <span class="math inline">\(S\)</span> such that <span class="math inline">\(|T_i\cap S| \equiv a_i\pmod b_i\)</span>, and <span class="math inline">\(f(S)\)</span> is minimized.</p>
+<section class="theorem-environment Problem" id="Problem-2">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">2</span><span class="name">submodular minimization under congruence constraints</span></span>
+<p>Given <span class="math inline">\(T_1,\ldots,T_k\)</span> and a submodular function <span class="math inline">\(f\)</span>. Find a set <span class="math inline">\(S\)</span> such that <span class="math inline">\(|T_i\cap S| \equiv a_i\pmod b_i\)</span>, and <span class="math inline">\(f(S)\)</span> is minimized.</p>
+</section>
 <p>The above problem is known as submodular minimization under congruence constraints. It is known to be solvable in polynomial time under certain conditions on the <span class="math inline">\(b_i\)</span>'s <span class="citation" data-cites="NageleSZ18">[<a href="#ref-NageleSZ18">1</a>]</span>. We sketch the reductions.</p>
 <h1 id="undirected-case"><span class="header-section-number">1</span> Undirected case</h1>
 <p>In the undirected case, we only consider when <span class="math inline">\(b=2\)</span>. Patrick showed a the following construction. Create a new graph <span class="math inline">\(G&#39;\)</span> as follows. For each <span class="math inline">\(uv\)</span> in <span class="math inline">\(E\)</span>, split it into edges <span class="math inline">\(ux\)</span>, <span class="math inline">\(xy\)</span>, <span class="math inline">\(yv\)</span>, <span class="math inline">\(w(ux)=w(yv)=\infty\)</span>, and <span class="math inline">\(w(xy)=w(uv)\)</span>. Let <span class="math inline">\(T_i\)</span> contains the vertex <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> if <span class="math inline">\(uv\in F_i\)</span>.<br />
@@ -61,8 +64,8 @@ We now solve the submodular minimization under congruence constraints problem on
 
 </div>
 <div class="hide-on-print">
-    <div class="info">Posted by Chao Xu on 2018-10-23. </div>
-    <div class="info">Tags: algorithms, min-cut. <!--<a href="/posts/2018-10-23-some-cuts.md">Source</a>.--></div>
+    <div class="info">Posted by Chao Xu on 2018-11-06. </div>
+    <div class="info">Tags: algorithms, min-cut. <!--<a href="/posts/2018-11-06-global-min-cut-with-parity-constraint-on-the-edges.md">Source</a>.--></div>
 
     <!--    <div id="disqus_thread"></div>
         <script type="text/javascript">
