@@ -17,7 +17,7 @@ Let $k$ be a constant, we consider the following problem.
 
 We will try to reduce this problem to the following 
 
-{Problem}[submodular minimization under congruence constraints.]
+{Problem}(submodular minimization under congruence constraints)
     Given $T_1,\ldots,T_k$ and a submodular function $f$. Find a set $S$ such that $|T_i\cap S| \equiv a_i\pmod b_i$, and $f(S)$ is minimized. 
 
 
