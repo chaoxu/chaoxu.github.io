@@ -70,7 +70,7 @@ MathJax.Hub.Config({
 });
 </script>
 
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML"></script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js"></script>
 
 <script type="text/javascript">
 function toggle(elementID){
@@ -386,7 +386,7 @@ function toggle(elementID){
               We study algorithmic and structural aspects of connectivity in hypergraphs. Given a hypergraph $H=(V,E)$ with $n=|V|$, $m=|E|$ and $p=\sum_{e\in E}|e|$ the best known algorithm to compute a global minimum cut in $H$ runs in time $O(np)$ for the uncapacitated case and in $O(np+n^2\log n)$ time for the capacitated case. We show the following new results. 
               <ol>
                 <li>Given an uncapacitated hypergraph $H$ and an integer $k$ we describe an algorithm that runs in $O(p)$ time to find a subhypergraph $H'$ with sum of degrees $O(kn)$ that preserves all edge-connectivities up to $k$ (a $k$-sparsifier). This generalizes the corresponding result of Nagamochi and Ibaraki from graphs to hypergraphs. Using this sparsification we obtain an $O(p+\lambda n^2)$ time algorithm for computing a global minimum cut of $H$ where $\lambda$ is the minimum cut value. </li>
-                <li>We generalize Matula's argument for graphs to hypergraphs and obtain a $(2+\epsilon)$-approximation to the global minimum cut in a capacitated hypergraph in $O(\frac{1}{\epsilon}(p+n \log n)\log n)$ time. </li>
+                <li>We generalize Matula's argument for graphs to hypergraphs and obtain a $(2+\e)$-approximation to the global minimum cut in a capacitated hypergraph in $O(\frac{1}{\e}(p+n \log n)\log n)$ time. </li>
                 <li>We show that a hypercactus representation of all the global minimum cuts of a capacitated hypergraph can be computed in $O(np+n^2\log n)$ time and $O(p)$ space. </li>
               </ol>
               We utilize vertex ordering based ideas to obtain our results. Unlike graphs we observe that there are several different orderings for hypergraphs which yield different insights.
@@ -497,15 +497,15 @@ function toggle(elementID){
                         time to find a single minimum cut.
                     </li>
                     <li>
-                        We obtain a $(2+\eps)$-approximation to the global minimum cut
-                        of a capacitated hypergraph in $O(\frac{1}{\eps} (p \log n + n \log^2 n))$
-                        time, and for uncapacitated hypergraphs in $O(p/\eps)$ time.
+                        We obtain a $(2+\e)$-approximation to the global minimum cut
+                        of a capacitated hypergraph in $O(\frac{1}{\e} (p \log n + n \log^2 n))$
+                        time, and for uncapacitated hypergraphs in $O(p/\e)$ time.
                         We achieve this by generalizing Matula's algorithm for
                         graphs to hypergraphs.
                     </li>
                     <li>We describe an algorithm to compute approximate strengths of
                     all the edges of a hypergraph in $O(p \log^2 n \log p)$ time. This
-                    gives a near linear time algorithm for finding a $(1+\varepsilon)$-cut
+                    gives a near linear time algorithm for finding a $(1+\e)$-cut
                     sparsifier based on the work of Kogan and Krauthgamer. As a
                     byproduct we obtain faster algorithms for various cut and flow
                     problems in hypergraphs of small rank.
@@ -559,7 +559,7 @@ function toggle(elementID){
               <em><small>Note: The preliminary version <a href="#global_cuts_digraphs_main">Global and fixed-terminal cuts in digraphs</a> appeared in APPROX 2017</a>.</small></em>
             </p>
               <div class='abstract' id='global_bicut'>
-                In the fixed-terminal bicut problem, the input is a directed graph with two specified nodes s and t and the goal is to find a smallest subset of edges whose removal ensures that s cannot reach t and t cannot reach s. In the global bicut problem, the input is a directed graph and the goal is to find a smallest subset of edges whose removal ensures that there exist two nodes s and t such that s cannot reach t and t cannot reach s. Fixed-terminal bicut and global bicut are natural extensions of  $\{s,t\}$-min cut and global min-cut respectively, from undirected graphs to directed graphs. Fixed-terminal bicut is NP-hard, admits a simple $2$-approximation, and does not admit a  $(2−\epsilon)$-approximation for any constant  $\epsilon>0$ assuming the unique games conjecture. In this work, we show that global bicut admits a $(2−1/448)$-approximation, thus improving on the approximability of the global variant in comparison to the fixed-terminal variant.
+                In the fixed-terminal bicut problem, the input is a directed graph with two specified nodes s and t and the goal is to find a smallest subset of edges whose removal ensures that s cannot reach t and t cannot reach s. In the global bicut problem, the input is a directed graph and the goal is to find a smallest subset of edges whose removal ensures that there exist two nodes s and t such that s cannot reach t and t cannot reach s. Fixed-terminal bicut and global bicut are natural extensions of  $\{s,t\}$-min cut and global min-cut respectively, from undirected graphs to directed graphs. Fixed-terminal bicut is NP-hard, admits a simple $2$-approximation, and does not admit a  $(2−\e)$-approximation for any constant  $\e>0$ assuming the unique games conjecture. In this work, we show that global bicut admits a $(2−1/448)$-approximation, thus improving on the approximability of the global variant in comparison to the fixed-terminal variant.
               </div>
           </td>
         </tr>
