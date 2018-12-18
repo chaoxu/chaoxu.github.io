@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <title>Subset sum through balancing</title>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js" async>
+    </script>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" async/>
+    <link rel="stylesheet" href="/css/default.css" />
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="tex2jax_ignore">
+    <header class="hide-on-print">
+        <div id="blog-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1 id="article-title">Subset sum through balancing</h1>
+        <br />
+<div>
+<p>This is a note for Pisinger's balancing algorithm for subset sum <span class="citation" data-cites="Pisinger19991">[<a href="#ref-Pisinger19991">1</a>]</span>. Let <span class="math inline">\(\mathcal(S)\)</span> be the set of all subset sums of <span class="math inline">\(S\)</span>. The subset sum problem, the input is <span class="math inline">\(S\subset \N\)</span>, and we are interested in checking if <span class="math inline">\(t\in \mathcal(S)\)</span>.</p>
+<p>We define a variation of the subset sum problem. The . In this problem, we are given a vector <span class="math inline">\(v\)</span> of integers(does not have to be positive). We let <span class="math inline">\(M=\|v\|_\infty\)</span>. We are interested in find a subset that sums to <span class="math inline">\(t\in [M]\)</span>.</p>
+<section class="theorem-environment Theorem" id="Theorem-1">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">1</span></span>
+<p>Each subset sum problem on <span class="math inline">\(n\)</span> elements can be reduced to a balanced subset sum problem in <span class="math inline">\(n\)</span> elements in <span class="math inline">\(O(n)\)</span> time.</p>
+</section>
+<section class="theorem-environment Proof" id="Proof-">
+<span class="theorem-header"><span class="type">Proof</span></span>
+<p>Consider the input to the subset sum problem <span class="math inline">\(S\)</span> and <span class="math inline">\(t\)</span>. Greedily find a subset of elements <span class="math inline">\(S&#39;\)</span>, such that adding any other element will exceed <span class="math inline">\(t\)</span>. Let <span class="math inline">\(\|S&#39;\|_1=t&#39;\)</span>. Now, we negate all the elements in <span class="math inline">\(S&#39;\)</span>, and ask for balanced subset sum with input set <span class="math inline">\(-S&#39; \cup (S\setminus S&#39;)\)</span> and target number <span class="math inline">\(t-t&#39;\)</span>.</p>
+</section>
+<p>We partition <span class="math inline">\(S\)</span> into <span class="math inline">\(A = [-M..0]\cap S\)</span> and <span class="math inline">\(B=S\setminus A\)</span>. We also define <span class="math inline">\(A_i = \set{a_1,\ldots,a_i}\)</span> and <span class="math inline">\(B_i=\set{b_1,\ldots,b_i}\)</span>.</p>
+<p>A set is balanced by the following recursive definition. Let <span class="math inline">\(S\)</span> be a set.</p>
+<ul>
+<li><span class="math inline">\(S=\emptyset\)</span> is balanced.</li>
+<li><span class="math inline">\(\|S\|_1&gt; t\)</span>, then <span class="math inline">\(S\cup \set{a}\)</span> is balanced, where <span class="math inline">\(a\in A\)</span>.</li>
+<li><span class="math inline">\(\|S\|_1\leq t\)</span>, then <span class="math inline">\(S\cup \set{b}\)</span> is balanced, where <span class="math inline">\(b\in B\)</span>.</li>
+</ul>
+<p>Consider a set <span class="math inline">\(T\)</span>, such that <span class="math inline">\((i,j,k)\in T\)</span> if and only if <span class="math inline">\(k\)</span> is a subset sum of <span class="math inline">\(A_i\cup B_j\)</span>. Certainly, we are interested if <span class="math inline">\((|A|,|B|,t)\)</span> is in <span class="math inline">\(T\)</span>. However, the state space is already <span class="math inline">\(O(n^2M)\)</span>, which is no better than the standard dynamic programming algorithm.</p>
+<p>There is a nice dominance relation. If <span class="math inline">\((i,j,k)\in T\)</span>, then for <span class="math inline">\((i&#39;,j&#39;)\geq (i,j)\)</span>, we have <span class="math inline">\((i&#39;,j&#39;,k)\in T\)</span>. We can ask for each <span class="math inline">\(k\)</span>, what are all the minimal <span class="math inline">\((i,j)\)</span> pairs where <span class="math inline">\((i,j,k)\in T\)</span>. Such value will be <span class="math inline">\(g(j,k)\)</span>. Formally, <span class="math inline">\(g(j,k) = \min \set{i | (i,j,k)\in T}\)</span>, one can see that <span class="math inline">\(g(j,k) \geq g(j+1,k)\)</span>. Also, we know the solution corresponding to <span class="math inline">\(g(j,k)\)</span> must contain <span class="math inline">\(a_{g(j,k)}\)</span> as an element.</p>
+<p>One can get a recurrence relation for <span class="math inline">\(g\)</span> as below.</p>
+<p><span class="math display">\[
+g(j,k)= \min \begin{cases}
+g(j-1,k)\\
+g(j-1,k-b_j) &amp; \text{if }k-b_j\leq t\\
+i &amp; \text{if }k-a_i &gt; t \text{ and } i&gt;g(j,k-a_i)
+\end{cases}
+\]</span></p>
+<p>Fix a <span class="math inline">\(k\)</span> and <span class="math inline">\(j\)</span>, let <span class="math inline">\(i\)</span> to be as small as possible, such that there is <span class="math inline">\(A_i&#39;\subset A_i\)</span> and <span class="math inline">\(B_j&#39;\subset B_j\)</span> such that <span class="math inline">\(A_i&#39;\cup B_j&#39;\)</span> is balanced and sums to <span class="math inline">\(k\)</span>. Note that <span class="math inline">\(a_i\in A_i&#39;\)</span>.</p>
+<p>We obtained <span class="math inline">\(A_i&#39;\cup B_j&#39;\)</span> by inserting an element in <span class="math inline">\(B\)</span> or <span class="math inline">\(A\)</span> to another balanced set. If the inserted element is in <span class="math inline">\(B\)</span>, but not <span class="math inline">\(b_j\)</span>, then we know <span class="math inline">\(i=g(j-1,k)\)</span>. If it is <span class="math inline">\(b_j\)</span>, then <span class="math inline">\(i=g(j-1,k-b_j)\)</span>. If the last inserted is <span class="math inline">\(a_i\)</span>, then <span class="math inline">\(g(j,k)=i\)</span>. Note we observe in this case, <span class="math inline">\(g(j,k-a_i)&lt;i\)</span>. A direct dynamic programming implementation seems to imply a <span class="math inline">\(O(n^2M)\)</span> time algorithm, since there does not seem to be a quick way to obtain <span class="math inline">\(i\)</span>.</p>
+<p>On the other hand, if we think bottom up instead of top down, we can obtain a better result. Below is the algorithm.</p>
+<figure>
+<img src="/files/balanced_subsetsum.png" alt="The algorithm" /><figcaption>The algorithm</figcaption>
+</figure>
+<p>The value <span class="math inline">\(D[j,k]\)</span> eventually equals <span class="math inline">\(g(j,k)\)</span>. Note we can argue the running time is <span class="math inline">\(O(nM)\)</span>, since for each fixed <span class="math inline">\(k\)</span>, the final for loop can ran at most <span class="math inline">\(n\)</span> times. It is frustrating that the DP algorithm cannot be inferred directly from the recurrence relation. Indeed, we mainly obtained this through the fact that we can prune the search space if we start bottom up, which is unclear from the recurrence relation.</p>
+<h1 id="bibliography" class="unnumbered">References</h1>
+<div id="refs" class="references">
+<div id="ref-Pisinger19991">
+<p>[1] D. Pisinger, <strong>Linear time algorithms for knapsack problems with bounded weights</strong>, Journal of Algorithms. 33 (1999) 1–14 <a href="https://doi.org/10.1006/jagm.1999.1034">10.1006/jagm.1999.1034</a>.</p>
+</div>
+</div>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by Chao Xu on 2018-12-18. </div>
+    <div class="info">Tags: algorithms, subset sum. <!--<a href="/posts/2018-12-18-subset-sum-through-balancing.md">Source</a>.--></div>
+
+    <!--    <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'chaoxu'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    -->
+</div>
+      </article>
+    </main>
+    <footer class="hide-on-print">© 2010 - <script>document.write(new Date().getFullYear())</script> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+    <script type="text/javascript" async>
+      var clicky_site_ids = clicky_site_ids || [];
+      clicky_site_ids.push(100956820);
+      (function() {
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = '//static.getclicky.com/js';
+        ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+      })();
+    </script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100956820ns.gif" /></p></noscript>
+  </body>
+</html>

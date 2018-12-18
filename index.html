@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" async>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" async></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" async></script>
 
   <title>Chao Xu</title>
+  <meta name="Description" content="The personal webpage of Chao Xu.">
 
   <style type="text/css">
     @media (min-width: 1200px) {
@@ -70,7 +72,7 @@ MathJax.Hub.Config({
 });
 </script>
 
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js" async></script>
 
 <script type="text/javascript">
 function toggle(elementID){
@@ -153,39 +155,6 @@ function toggle(elementID){
         </span>
 </td>
       </tr>
-        <!-- Subset Sum Made Simple -->
-        <tr>
-          <td><a href="files/papers/subset_sum_simple.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
-          <td></td>
-          <td>
-            <p>
-              <span class="paper-title">Subset Sum Made Simple</span> <a href="javascript:toggle('sumbset-sum-simple');"><span id='sumbset-sum-simple-expand' class="glyphicon glyphicon-plus"></span></a>
-              <br />
-              (with <a href="http://koiliaris.com/">Konstantinos Koiliaris</a>)
-              <br />
-              2018.
-            </p>
-              <div class='abstract' id='sumbset-sum-simple'>
-                Subset Sum is a classical optimization problem taught to undergraduates as an
-                example of an NP-hard problem, which is amenable to dynamic programming,
-                yielding polynomial running time if the input numbers are relatively small.
-                Formally, given a set $S$ of $n$ positive integers and a target integer $t$,
-                the Subset Sum problem is to decide if there is a subset of $S$ that sums up to
-                $t$. Dynamic programming yields an algorithm with running time $O(nt)$.
-                Recently, the authors [<a href="https://doi.org/10.1137/1.9781611974782.68">Koiliaris & Xu SODA '17</a>] improved the running time to
-                $\tilde{O}\bigl(\sqrt{n}t\bigr)$, and it was further improved to
-                $\tilde{O}\bigl(n+t\bigr)$ by a somewhat involved randomized algorithm by
-                Bringmann [<a href="https://doi.org/10.1137/1.9781611974782.69">Bringmann SODA '17</a>], where $\tilde{O}$ hides polylogarithmic factors.
-                <br />Here, we present a new and significantly simpler algorithm with running time
-                $\tilde{O}\bigl(\sqrt{n}t\bigr)$. While not the fastest, we believe the new
-                algorithm and analysis are simple enough to be presented in an algorithms
-                class, as a striking example of a divide-and-conquer algorithm that uses FFT to
-                a problem that seems (at first) unrelated. In particular, the algorithm and its
-                analysis can be described in full detail in two pages (see pages 3-5).
-              </div>
-            
-          </td>
-        </tr>
 
         <!-- Minimum violation vertex maps and their applications to cut problems -->
         <tr>
@@ -196,21 +165,6 @@ function toggle(elementID){
               <span class="paper-title">Minimum violation vertex maps and their applications to cut problems</span>
               <br />
               (with <a href="http://research.nii.ac.jp/~k_keniti/">Ken-ichi Kawarabayashi</a>)
-              <br />
-              2018, Submitted.
-            </p>
-          </td>
-        </tr>
-
-        <!-- A Polynomial Time Algorithm to Minimize Total Travel Time in $k$-Depot Storage/Retrieval System -->
-        <tr>
-          <td></td>
-          <td><a href="files/presentations/kdepots.pdf"><span class="glyphicon glyphicon-blackboard"></span></a></td>
-          <td>
-            <p>
-              <span class="paper-title">A Polynomial Time Algorithm to Minimize Total Travel Time in $k$-Depot Storage/Retrieval System</span>
-              <br />
-              (with <a href="http://www.tamug.edu/mara/FacultyBios/AmirGharehgozli.html">Amir Gharehgozli</a> and Wenda Zhang)
               <br />
               2018, Submitted.
             </p>
@@ -231,6 +185,41 @@ function toggle(elementID){
             </p>
           </td>
         </tr>
+
+        <!-- A Polynomial Time Algorithm to Minimize Total Travel Time in $k$-Depot Storage/Retrieval System -->
+        <tr>
+          <td></td>
+          <td><a href="files/presentations/kdepots.pdf"><span class="glyphicon glyphicon-blackboard"></span></a></td>
+          <td>
+            <p>
+              <span class="paper-title">A Polynomial Time Algorithm to Minimize Total Travel Time in $k$-Depot Storage/Retrieval System</span>
+              <br />
+              (with <a href="http://www.tamug.edu/mara/FacultyBios/AmirGharehgozli.html">Amir Gharehgozli</a> and Wenda Zhang)
+              <br />
+              2018.
+            </p>
+          </td>
+        </tr>
+
+        <!-- An algorithm for the metric multiple depots capacitated vehicle routing problem with restocking and capacity two -->
+        <tr>
+          <td><a href="files/papers/milk.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
+          <td></td>
+          <td>
+            <p>
+              <span class="paper-title">An algorithm for the metric multiple depots capacitated vehicle routing problem with restocking and capacity two</span> <a href="javascript:toggle('milk');"><span id='milk-expand' class="glyphicon glyphicon-plus"></span></a>
+              <br />
+              (with Yichen Yang and <a href="http://qianzhang.me">Qian Zhang</a>)
+              <br />
+              2018, Submitted.
+            </p>
+              <div class='abstract' id='milk'>
+                The capacitated vehicle routing problem (CVRP) is one of the most well known NP-hard combinatorial optimization problem. Single depot CVRP with general metric is NP-hard even for fixed capacity $Q=3$, while polynomial time solvable for fixed capacity $Q\leq 2$. We consider the variant of CVRP where restocking is available.
+                We show that if there is a constant number of depots, then the problem can be solved in polynomial time when $Q=2$. More generally, when there are $p$ depots without a starting vehicle, there is a polynomial time algorithm for constant $p$.
+              </div>
+          </td>
+        </tr>
+
       <tr>
         <td colspan="3"><span class="pubtypeheader">Conference Publications</span></td>
       </tr>
@@ -408,7 +397,7 @@ function toggle(elementID){
             <br />
             (with
             <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a> and 
-            Thapanapong Rukkanchanunt)
+            <a href="https://dblp.org/pers/hd/r/Rukkanchanunt:Thapanapong">Thapanapong Rukkanchanunt</a>)
             <br />
             <i><a href="http://algo2015.upatras.gr/esa/">ESA 2015</a></i>.
             </p>
@@ -609,14 +598,45 @@ function toggle(elementID){
 
                 </div>
           </td>
-        </tr>
-
-
-      
+        </tr>   
 
       <tr>
         <td colspan="3"><span class="pubtypeheader">Manuscripts</span></td>
       </tr>
+
+        <!-- Subset Sum Made Simple -->
+        <tr>
+          <td><a href="files/papers/subset_sum_simple.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
+          <td></td>
+          <td>
+            <p>
+              <span class="paper-title">Subset Sum Made Simple</span> <a href="javascript:toggle('sumbset-sum-simple');"><span id='sumbset-sum-simple-expand' class="glyphicon glyphicon-plus"></span></a>
+              <br />
+              (with <a href="http://koiliaris.com/">Konstantinos Koiliaris</a>)
+              <br />
+              2018.
+            </p>
+              <div class='abstract' id='sumbset-sum-simple'>
+                Subset Sum is a classical optimization problem taught to undergraduates as an
+                example of an NP-hard problem, which is amenable to dynamic programming,
+                yielding polynomial running time if the input numbers are relatively small.
+                Formally, given a set $S$ of $n$ positive integers and a target integer $t$,
+                the Subset Sum problem is to decide if there is a subset of $S$ that sums up to
+                $t$. Dynamic programming yields an algorithm with running time $O(nt)$.
+                Recently, the authors [<a href="https://doi.org/10.1137/1.9781611974782.68">Koiliaris & Xu SODA '17</a>] improved the running time to
+                $\tilde{O}\bigl(\sqrt{n}t\bigr)$, and it was further improved to
+                $\tilde{O}\bigl(n+t\bigr)$ by a somewhat involved randomized algorithm by
+                Bringmann [<a href="https://doi.org/10.1137/1.9781611974782.69">Bringmann SODA '17</a>], where $\tilde{O}$ hides polylogarithmic factors.
+                <br />Here, we present a new and significantly simpler algorithm with running time
+                $\tilde{O}\bigl(\sqrt{n}t\bigr)$. While not the fastest, we believe the new
+                algorithm and analysis are simple enough to be presented in an algorithms
+                class, as a striking example of a divide-and-conquer algorithm that uses FFT to
+                a problem that seems (at first) unrelated. In particular, the algorithm and its
+                analysis can be described in full detail in two pages (see pages 3-5).
+              </div>
+            
+          </td>
+        </tr>
 
         <!-- Marking Streets to Improve Parking Density -->
         <tr>
@@ -724,7 +744,7 @@ function toggle(elementID){
       </p>
       -->
 </div>
-      <script type="text/javascript">
+      <script type="text/javascript" async>
       var clicky_site_ids = clicky_site_ids || [];
       clicky_site_ids.push(100956820);
       (function() {
