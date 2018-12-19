@@ -123,7 +123,7 @@ function toggle(elementID){
   <div class="col-md-5">
     <img class="center-block img-circle" width="270" height="270" src="files/chao/chaoxu6.jpg" style="padding:10px;" title="Lord Chao of the House Xu, the First of His Name, Guardian of the Art Gallery" alt="Photo of Chao Xu" />
   </div>
-  <div class="col-md-7"">
+  <div class="col-md-7">
 
     <p>
       I'm a research scientist at <a href="https://research.yahoo.com/">Yahoo! Research</a> in New York.
@@ -320,10 +320,6 @@ function toggle(elementID){
                   <li>In relation to these investigations, we also prove two results on undirected graphs which are of independent interest. First, we show NP-completeness and a tight inapproximability bound of $\frac{4}{3}$ for the node-weighted $3$-cut problem. Second, we show that for constant $k$, there exists an efficient algorithm to solve the minimum $\{s,t\}$-separating $k$-cut problem. </li>
                 </ol>
                 Our techniques for the algorithms are combinatorial, based on LPs and based on enumeration of approximate min-cuts. Our hardness results are based on combinatorial reductions and integrality gap instances.
-                <figure class="figure">
-                  <img src="files/papers_page/global_cuts_digraphs.png" class="img-responsive center-block" alt=""/>
-                  <figcaption>This image was used to prove some bold claim...</figcaption>
-                </figure>
               </div>
           </td>
         </tr>
@@ -346,11 +342,6 @@ function toggle(elementID){
             </p>
             <div class='abstract' id='subset-sum'>
               Given a multiset $S$ of $n$ positive integers and a target integer $t$, the subset sum problem is to decide if there is a subset of $S$ that sums up to $t$. We present a new divide-and-conquer algorithm that computes all the realizable subset sums up to an integer $u$ in $\tilde{O}\left(\min\{n\sqrt{u},u^{4/3},\sigma\}\right)$, where $\sigma$ is the sum of all elements in $S$ and $\tilde{O}$ hides polylogarithmic factors. This result improves upon the standard dynamic programming algorithm that runs in $O(nu)$ time. To the best of our knowledge, the new algorithm is the fastest general algorithm for this problem. We also present a modified algorithm for cyclic groups, which computes all the realizable subset sums within the group in $\tilde{O}\left(\min\{n\sqrt{m},m^{5/4}\}\right)$ time, where m is the order of the group.
-              <figure class="figure">
-                <img src="files/papers_page/subset-sum.png" class="img-responsive center-block" alt=""/>
-                <figcaption>Covering $\mathbb{Z}^*_{11}$ with segments of length $3$.</figcaption>
-              </figure>
-
             </div>
           </td>
         </tr>
@@ -379,10 +370,6 @@ function toggle(elementID){
                 <li>We show that a hypercactus representation of all the global minimum cuts of a capacitated hypergraph can be computed in $O(np+n^2\log n)$ time and $O(p)$ space. </li>
               </ol>
               We utilize vertex ordering based ideas to obtain our results. Unlike graphs we observe that there are several different orderings for hypergraphs which yield different insights.
-              <figure class="figure">
-                <img src="files/papers_page/hypergraph.png" class="img-responsive center-block" alt=""/>
-                <figcaption>Example of hyperedge insertion operation on vertex $v$.</figcaption>
-              </figure>
             </div>
           </td>
         </tr>
@@ -403,12 +390,6 @@ function toggle(elementID){
             </p>
             <div class='abstract' id='elem-connectivity'>
               The notion of <i>element-connectivity</i> has found several important applications in network design and routing problems. We focus on a reduction step that preserves the element-connectivity, which when applied repeatedly allows one to reduce the original graph to a simpler one. This pre-processing step is a crucial ingredient in several applications. In this paper we revisit this reduction step and provide a new proof via the use of setpairs. Our main contribution is algorithmic results for several basic problems on element-connectivity including the problem of achieving the aforementioned graph simplification. We utilize the underlying submodularity properties of element-connectivity to derive faster algorithms.
-              <figure class="figure">
-                <img src="files/papers_page/elem-connectivity.png" class="img-responsive center-block" alt=""/>
-                <figcaption>
-                  The black vertices are the terminals. The left image shows $4$ element-disjoint $st$-paths. The right image shows removing $4$ elements disconnects $s$ and $t$. $\kappa(s,t) = 4$.
-                </figcaption>
-              </figure>
             </div>
           </td>
         </tr>
@@ -432,15 +413,6 @@ function toggle(elementID){
               A closed curve in the plane is weakly simple if it is the limit (in the Fréchet metric) of a sequence of simple closed curves. We describe an algorithm to determine whether a closed walk of length n in a simple plane graph is weakly simple in $O(n \log n)$ time, improving an earlier $O(n^3)$-time algorithm of <a href="http://www.sciencedirect.com/science/article/pii/S0012365X07010680">Cortese et al.</a>. As an immediate corollary, we obtain the first efficient algorithm to determine whether an arbitrary n-vertex polygon is weakly simple; our algorithm runs in $O(n^2 \log n)$ time. We also describe algorithms that detect weak simplicity in $O(n \log n)$ time for two interesting classes of polygons. Finally, we discuss subtle errors in several previously published definitions of weak simplicity.
 
               <p class="dedication">Dedicated with thanks to our colleague <a href="http://dccg.upc.edu/people/ferran/">Ferran Hurtado</a> (1951–2014).</p>
-
-              <figure class="figure">
-                <img src="files/papers_page/wspolygon.png" class="img-responsive center-block" alt=""/>
-                <figcaption>A polygon $(a, b, c, a, b, c, a, x, y, z, x, y, z, x)$ that is not
-                weakly simple, even though its rotation number is $1$ and every pair of
-                vertices splits the polygon into two paths that do not cross.</figcaption>
-              </figure>
-              
-
             </div>
           </td>
         </tr>
@@ -449,6 +421,7 @@ function toggle(elementID){
       <tr>
         <td colspan="3"><span class="pubtypeheader">Journal Publications</span></td>
       </tr>
+
         <!-- Minimum cuts and sparsification in hypergraphs -->
         <tr id="hypergraph_cut_journal_main">
           <td><a href="files/papers/hypergraph_cut_journal.pdf"><span class="glyphicon glyphicon-file"></span></a></td>
@@ -460,7 +433,7 @@ function toggle(elementID){
               (with <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a>)
               <br />
               Accepted for publication in <i><a href="https://www.siam.org/Publications/Journals/SIAM-Journal-on-Computing-SICOMP">SIAM Journal on Computing</a></i><br />
-              <em><small>Note: The paper is a combination of <a href="#hypergraph-min-cut_main">Computing minimum cuts in hypergraphs</a> appeared in SODA 2017</a> and <a href="https://arxiv.org/abs/1703.03849">A note on approximate strengths of edges in a hypergraph</a>.</small></em>
+              <em><small>Note: The paper is a combination of <a href="#hypergraph-min-cut_main">Computing minimum cuts in hypergraphs</a> appeared in SODA 2017 and <a href="https://arxiv.org/abs/1703.03849">A note on approximate strengths of edges in a hypergraph</a>.</small></em>
             </p>
               <div class='abstract' id='hypergraph_cut_journal'>
                   We study algorithmic and structural aspects of connectivity in
@@ -524,9 +497,6 @@ function toggle(elementID){
               <div class='abstract' id='kinship'>
                   We consider a problem in descriptive kinship systems, namely finding the shortest sequence of terms that describes the kinship between a person and his/her relatives. The problem reduces to finding the minimum weight path in a labeled graph where the label of the path comes from a regular language. The running time of the algorithm is $O(n^3+s)$, where $n$ and $s$ are the input size and the output size of the algorithm, respectively.
                 <p class="dedication">To the memories of Jiaqi Zhao(1994–2016).</p>
-                  <figure class="figure">
-                    <img src="files/papers_page/kinship.png" class="img-responsive center-block" alt=""/>
-                  </figure>
               </div>
             
           </td>
@@ -545,7 +515,7 @@ function toggle(elementID){
               <br />
               <i><a href="https://link.springer.com/journal/10107">Mathematical Programming</a></i>, (2018).
               <br />
-              <em><small>Note: The preliminary version <a href="#global_cuts_digraphs_main">Global and fixed-terminal cuts in digraphs</a> appeared in APPROX 2017</a>.</small></em>
+              <em><small>Note: The preliminary version <a href="#global_cuts_digraphs_main">Global and fixed-terminal cuts in digraphs</a> appeared in APPROX 2017.</small></em>
             </p>
               <div class='abstract' id='global_bicut'>
                 In the fixed-terminal bicut problem, the input is a directed graph with two specified nodes s and t and the goal is to find a smallest subset of edges whose removal ensures that s cannot reach t and t cannot reach s. In the global bicut problem, the input is a directed graph and the goal is to find a smallest subset of edges whose removal ensures that there exist two nodes s and t such that s cannot reach t and t cannot reach s. Fixed-terminal bicut and global bicut are natural extensions of  $\{s,t\}$-min cut and global min-cut respectively, from undirected graphs to directed graphs. Fixed-terminal bicut is NP-hard, admits a simple $2$-approximation, and does not admit a  $(2−\e)$-approximation for any constant  $\e>0$ assuming the unique games conjecture. In this work, we show that global bicut admits a $(2−1/448)$-approximation, thus improving on the approximability of the global variant in comparison to the fixed-terminal variant.
@@ -591,11 +561,6 @@ function toggle(elementID){
                   wins. A spider graph is a champion if it has a Sprague-Grundy number equal to the
                   number of edges in the graph. We investigate the the Sprague-Grundy numbers of
                   various spider graphs when the number of paths or length of paths increase.
-                  <figure class="figure">
-                    <img src="files/papers_page/spider.png" class="img-responsive center-block" alt=""/>
-                    <figcaption>A spider graph.</figcaption>
-                  </figure>
-
                 </div>
           </td>
         </tr>   
@@ -654,11 +619,6 @@ function toggle(elementID){
               <div class='abstract' id='street-marking'>
                 Street parking spots for automobiles are a scarce commodity in most urban environments. The heterogeneity of car sizes makes it inefficient to rigidly define fixed-sized spots. Instead, unmarked streets in cities like New York leave placement decisions to individual drivers, who have no direct incentive to maximize street utilization. 
                 In this paper, we explore the effectiveness of two different behavioral interventions designed to encourage better parking, namely (1) educational campaigns to encourage parkers to "kiss the bumper" and reduce the distance between themselves and their neighbors, or (2) painting appropriately-spaced markings on the street and urging drivers to "hit the line". Through analysis and simulation, we establish that the greatest densities are achieved when lines are painted to create spots roughly twice the length of average-sized cars. Kiss-the-bumper campaigns are in principle more effective than hit-the-line for equal degrees of compliance, although we believe that the visual cues of painted lines induce better parking behavior.
-                  <figure class="figure">
-                    <img src="files/papers_page/street-marking.png" class="img-responsive center-block" alt=""/>
-                    <figcaption>Representative street landscapes for random/Rényi (top), kiss-the-bumper (center), and
-                                hit-the-line (bottom) for a street of length $l = 20$ with the optimal line spacing of $k = 2$, for $α$ values of 0, 0.5, and 0.5 respectively.</figcaption>
-                  </figure>
               </div>
             
           </td>
@@ -687,7 +647,7 @@ function toggle(elementID){
                   <li>We address the complexity gap between global vs. fixed-terminal cuts problems in digraphs by presenting a $2-\frac{1}{448}$ approximation algorithm for the global bicut problem.</li>
                 </ul>
 
-                <p class="text-center">Co-advised by <a href="http://karthik.ise.illinois.edu/">Karthik Chandrasekaran</a> and <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri.</p>
+                <p class="text-center">Co-advised by <a href="http://karthik.ise.illinois.edu/">Karthik Chandrasekaran</a> and <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a>.</p>
               </div>
             
           </td>
@@ -744,7 +704,7 @@ function toggle(elementID){
       </p>
       -->
 </div>
-      <script type="text/javascript" async>
+      <script type="text/javascript">
       var clicky_site_ids = clicky_site_ids || [];
       clicky_site_ids.push(100956820);
       (function() {
