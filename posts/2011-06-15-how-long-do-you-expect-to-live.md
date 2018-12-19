@@ -30,6 +30,7 @@ The quote above would follow directly from the proof of the following theorem:
     If $a = \lambda b + (1-\lambda) c$, where $\lambda \in [0,1]$, then $a \leq \max(b,c)$. Because $E[X|X\leq a]\leq a \leq E[X|X\geq a]$, $E[X] \leq E[X|X\geq a]$. 
 
 In fact, one can easily modify the above proof and prove the next theorem:
+
 {Theorem}
     For any real random variable $X$, if $x\geq y$ and $\Pr(X\geq x)>0$, then $E[X|X\geq x] \geq E[X|X\geq y]$. 
 
