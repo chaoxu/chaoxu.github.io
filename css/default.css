@@ -24,6 +24,7 @@
 
 /* Initial cleanup
 ----------------------------------------------- */
+.katex { font-size: 1em !important; } 
 
 html, body {
     padding: 0;
@@ -36,7 +37,7 @@ html, body {
 /* Main structure
 ----------------------------------------------- */
 body {
-    font-family: MJXc-TeX;
+    font-family: KaTeX_Main,Times New Roman,serif;
     font-size: 100%;
     line-height: 120%;
     margin: auto;
