@@ -9,8 +9,33 @@
     <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
     <title>Regular expression for a interval of non-negative integers</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js" async>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
     </script>
+
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <link rel="stylesheet" href="/css/default.css" />
     <!--[if lt IE 9]>
@@ -36,7 +61,7 @@
         <h1 id="article-title">Regular expression for a interval of non-negative integers</h1>
         <br />
 <div>
-<p>Let <span class="math inline">\(m,n \in \N\)</span> and <span class="math inline">\(m\leq n\)</span>. I wrote <a href="https://gist.github.com/chaoxu/5210853">a program in Haskell that generate a regular expression that matches all decimal representation of some number in between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> inclusive</a>. The regular expression would have length <span class="math inline">\(O(\log n \log \log n)\)</span>. I also included a simple version, which shows how the algorithm is done.</p>
+<p>Let <span class="math inline">m,n \in \N</span> and <span class="math inline">m\leq n</span>. I wrote <a href="https://gist.github.com/chaoxu/5210853">a program in Haskell that generate a regular expression that matches all decimal representation of some number in between <span class="math inline">a</span> and <span class="math inline">b</span> inclusive</a>. The regular expression would have length <span class="math inline">O(\log n \log \log n)</span>. I also included a simple version, which shows how the algorithm is done.</p>
 <p>The code was made for the decimal system, but of course it can be generalized to any base.</p>
 <p>Example:</p>
 <p><code>matchIntRange 123 4321</code></p>

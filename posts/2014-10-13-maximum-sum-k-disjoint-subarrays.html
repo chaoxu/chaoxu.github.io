@@ -9,8 +9,33 @@
     <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
     <title>Maximum sum $k$-disjoint subarrays</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js" async>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
     </script>
+
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <link rel="stylesheet" href="/css/default.css" />
     <!--[if lt IE 9]>
@@ -33,20 +58,20 @@
     </nav>
     <main>
       <article>
-        <h1 id="article-title">Maximum sum <span class="math inline">\(k\)</span>-disjoint subarrays</h1>
+        <h1 id="article-title">Maximum sum <span class="math inline">k</span>-disjoint subarrays</h1>
         <br />
 <div>
 <p>A common problem, the <a href="http://en.wikipedia.org/wiki/Maximum_subarray_problem">maximum subarray problem</a> asks the subarray with the maximum sum.</p>
-<p>There are many generalizations, for example into higher dimensions. In 2D, a <span class="math inline">\(n\times n\)</span> matrix, a common solution takes <span class="math inline">\(O(n^3)\)</span> time. Also, it can be generalized to trees, where node has weights. It can be generalized even further, to maximum weight connected subgraph(which is NP-hard even for planar graphs).</p>
-<p>We consider a similar problem where instead of consider <span class="math inline">\(k\)</span> disjoint subarrays, such that the sum together is maximized. In fact, this is the <a href="http://www.lintcode.com/en/problem/maximum-subarray-iii/">Maximum Subarray III problem on LintCode</a>.</p>
-<p>There is obviously an <span class="math inline">\(O(nk)\)</span> algorithm by extending the dynamic programming algorithm for the <span class="math inline">\(k=1\)</span> case.</p>
-<p>Let <span class="math inline">\(f(i,k)\)</span> to be the maximum value obtainable by <span class="math inline">\(k\)</span> subarray of <span class="math inline">\(A[1..i]\)</span>. Let <span class="math inline">\(g(i,k)\)</span> to be the maximum value obtainable by <span class="math inline">\(k\)</span> subarray of <span class="math inline">\(A[1..i]\)</span>, that uses the <span class="math inline">\(i\)</span>th value in the last subarray. The recurrence <span class="math inline">\(f(i,k) = \min(f(i,k-1),f(i-1,k),g(i,k))\)</span>, and <span class="math inline">\(g(i,k) = \min(g(i-1,k)+A[i],f(i-1,k-1)+A[i])\)</span> solves the problem.</p>
-<p>This kind of solution would possibly work on interviews. But can we do better? It is in fact possible to get <span class="math inline">\(O(n\log n)\)</span> with some care.</p>
-<p>wlog, let's assume the array is alternating, where all odd index are positive and all even index are negative. If we have the solution for the <span class="math inline">\(k\)</span> case, we can get a solution for <span class="math inline">\(k-1\)</span> case by either discard one of the arrays or &quot;merge&quot; two adjacent arrays by taking a negative piece in the middle.</p>
-<p>This shows that once we have the solution for the <span class="math inline">\(k\)</span> case, we can just &quot;contract&quot; a entire subarray into one single value. Csűrös showed that we can just use one merge operation<span class="citation" data-cites="Csuros04">[<a href="#ref-Csuros04">1</a>]</span>. It find a array element with minimum absolute value, say it's <span class="math inline">\(A[i]\)</span>, then it is replaced by <span class="math inline">\(A[i-1]+A[i]+A[i+1]\)</span>, and then we remove <span class="math inline">\(A[i-1]\)</span> and <span class="math inline">\(A[i+1]\)</span> from the array. (For boundary cases, assume <span class="math inline">\(A[0]=A[n+1]=0\)</span>). The idea is a merge can &quot;discard&quot; a value, and a merge is also adding a negative piece and then do contraction. This operation is done until there are exactly <span class="math inline">\(k\)</span> positive numbers, which in that case, the best solution is to just take all <span class="math inline">\(k\)</span> of them.</p>
-<p>Thus this implies a <span class="math inline">\(O(n\log n)\)</span> greedy algorithm, by keep merging and keep track of min absolute value item using a heap. Interestingly, this algorithm was also suggested by students in <a href="https://courses.engr.illinois.edu/cs473/">CS 473</a>. <a href="http://web.engr.illinois.edu/~hchang17/">Hsien-Chih</a> and I discovered it is correct by failing to find counterexamples to the greedy approach.</p>
-<p>One can see the smallest absolute value does not decrease throughout the algorithm, so instead of just keep finding and merging the item with smallest absolute value, what if one just keep merge merge item with absolute value smaller than <span class="math inline">\(t\)</span>? There are three possibilities: we picked <span class="math inline">\(t\)</span> so nicely that after all the merges, we get exactly <span class="math inline">\(k\)</span> positive elements left. We picked <span class="math inline">\(t\)</span> too large, we get less than <span class="math inline">\(k\)</span> positive elements. We picked <span class="math inline">\(t\)</span> too small, and we get more than <span class="math inline">\(k\)</span> positive elements.</p>
-<p>Bengtsson and Chen uses this idea<span class="citation" data-cites="Bengtsson06">[<a href="#ref-Bengtsson06">2</a>]</span>. They showed they can guess <span class="math inline">\(t\)</span> in a way such that the some measure of the problem size get's smaller by at least <span class="math inline">\(2/3\)</span>, and also shows how to keep track of the merges so it takes <span class="math inline">\(O(n\alpha(n))\)</span> time. Later on, they removed the need of the union-find data structure improved the time bound to <span class="math inline">\(O(n)\)</span> time<span class="citation" data-cites="Bengtsson07">[<a href="#ref-Bengtsson07">3</a>]</span>.</p>
+<p>There are many generalizations, for example into higher dimensions. In 2D, a <span class="math inline">n\times n</span> matrix, a common solution takes <span class="math inline">O(n^3)</span> time. Also, it can be generalized to trees, where node has weights. It can be generalized even further, to maximum weight connected subgraph(which is NP-hard even for planar graphs).</p>
+<p>We consider a similar problem where instead of consider <span class="math inline">k</span> disjoint subarrays, such that the sum together is maximized. In fact, this is the <a href="http://www.lintcode.com/en/problem/maximum-subarray-iii/">Maximum Subarray III problem on LintCode</a>.</p>
+<p>There is obviously an <span class="math inline">O(nk)</span> algorithm by extending the dynamic programming algorithm for the <span class="math inline">k=1</span> case.</p>
+<p>Let <span class="math inline">f(i,k)</span> to be the maximum value obtainable by <span class="math inline">k</span> subarray of <span class="math inline">A[1..i]</span>. Let <span class="math inline">g(i,k)</span> to be the maximum value obtainable by <span class="math inline">k</span> subarray of <span class="math inline">A[1..i]</span>, that uses the <span class="math inline">i</span>th value in the last subarray. The recurrence <span class="math inline">f(i,k) = \min(f(i,k-1),f(i-1,k),g(i,k))</span>, and <span class="math inline">g(i,k) = \min(g(i-1,k)+A[i],f(i-1,k-1)+A[i])</span> solves the problem.</p>
+<p>This kind of solution would possibly work on interviews. But can we do better? It is in fact possible to get <span class="math inline">O(n\log n)</span> with some care.</p>
+<p>wlog, let's assume the array is alternating, where all odd index are positive and all even index are negative. If we have the solution for the <span class="math inline">k</span> case, we can get a solution for <span class="math inline">k-1</span> case by either discard one of the arrays or &quot;merge&quot; two adjacent arrays by taking a negative piece in the middle.</p>
+<p>This shows that once we have the solution for the <span class="math inline">k</span> case, we can just &quot;contract&quot; a entire subarray into one single value. Csűrös showed that we can just use one merge operation<span class="citation" data-cites="Csuros04">[<a href="#ref-Csuros04">1</a>]</span>. It find a array element with minimum absolute value, say it's <span class="math inline">A[i]</span>, then it is replaced by <span class="math inline">A[i-1]+A[i]+A[i+1]</span>, and then we remove <span class="math inline">A[i-1]</span> and <span class="math inline">A[i+1]</span> from the array. (For boundary cases, assume <span class="math inline">A[0]=A[n+1]=0</span>). The idea is a merge can &quot;discard&quot; a value, and a merge is also adding a negative piece and then do contraction. This operation is done until there are exactly <span class="math inline">k</span> positive numbers, which in that case, the best solution is to just take all <span class="math inline">k</span> of them.</p>
+<p>Thus this implies a <span class="math inline">O(n\log n)</span> greedy algorithm, by keep merging and keep track of min absolute value item using a heap. Interestingly, this algorithm was also suggested by students in <a href="https://courses.engr.illinois.edu/cs473/">CS 473</a>. <a href="http://web.engr.illinois.edu/~hchang17/">Hsien-Chih</a> and I discovered it is correct by failing to find counterexamples to the greedy approach.</p>
+<p>One can see the smallest absolute value does not decrease throughout the algorithm, so instead of just keep finding and merging the item with smallest absolute value, what if one just keep merge merge item with absolute value smaller than <span class="math inline">t</span>? There are three possibilities: we picked <span class="math inline">t</span> so nicely that after all the merges, we get exactly <span class="math inline">k</span> positive elements left. We picked <span class="math inline">t</span> too large, we get less than <span class="math inline">k</span> positive elements. We picked <span class="math inline">t</span> too small, and we get more than <span class="math inline">k</span> positive elements.</p>
+<p>Bengtsson and Chen uses this idea<span class="citation" data-cites="Bengtsson06">[<a href="#ref-Bengtsson06">2</a>]</span>. They showed they can guess <span class="math inline">t</span> in a way such that the some measure of the problem size get's smaller by at least <span class="math inline">2/3</span>, and also shows how to keep track of the merges so it takes <span class="math inline">O(n\alpha(n))</span> time. Later on, they removed the need of the union-find data structure improved the time bound to <span class="math inline">O(n)</span> time<span class="citation" data-cites="Bengtsson07">[<a href="#ref-Bengtsson07">3</a>]</span>.</p>
 <p>Open problem: Can we find a linear time algorithm for trees? (either weights on edges or on vertices)</p>
 <h1 id="bibliography" class="unnumbered">References</h1>
 <div id="refs" class="references">

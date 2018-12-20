@@ -9,8 +9,33 @@
     <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
     <title>Even cycle in a simple graph</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js" async>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
     </script>
+
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <link rel="stylesheet" href="/css/default.css" />
     <!--[if lt IE 9]>
@@ -38,43 +63,43 @@
 <div>
 <section class="theorem-environment Problem" id="Problem-1">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
-<p><span class="math inline">\(G=(V,E)\)</span> is a simple graph, decide if there exist a cycle of even length in <span class="math inline">\(G\)</span>.</p>
+<p><span class="math inline">G=(V,E)</span> is a simple graph, decide if there exist a cycle of even length in <span class="math inline">G</span>.</p>
 </section>
 <p>The problem comes from 2014 Spring UIUC Theory Qualify Exam.</p>
 <h1 id="characterizations"><span class="header-section-number">1</span> Characterizations</h1>
-<p>Let <span class="math inline">\(\lambda(u,v)\)</span> denote the local edge connectivity of vertices <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span>. It's the same as the largest number of edge disjoint paths connecting <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span>. <span class="math inline">\(\overline{\lambda}(G) = \max_{u,v\in V} \{\lambda(u,v)\}\)</span>. Similarly, <span class="math inline">\(\kappa(u,v)\)</span> is defined as local vertex connectivity, and <span class="math inline">\(\overline{\kappa}(G) = \max_{u,v\in V} \{\kappa(u,v)\}\)</span></p>
+<p>Let <span class="math inline">\lambda(u,v)</span> denote the local edge connectivity of vertices <span class="math inline">u</span> and <span class="math inline">v</span>. It's the same as the largest number of edge disjoint paths connecting <span class="math inline">u</span> and <span class="math inline">v</span>. <span class="math inline">\overline{\lambda}(G) = \max_{u,v\in V} \{\lambda(u,v)\}</span>. Similarly, <span class="math inline">\kappa(u,v)</span> is defined as local vertex connectivity, and <span class="math inline">\overline{\kappa}(G) = \max_{u,v\in V} \{\kappa(u,v)\}</span></p>
 <section class="theorem-environment Theorem" id="Theorem-2">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">2</span></span>
-<p>If <span class="math inline">\(\kappa(u,v) \geq 3\)</span> for some <span class="math inline">\(u,v\in V\)</span>, then there exist an even cycle.</p>
+<p>If <span class="math inline">\kappa(u,v) \geq 3</span> for some <span class="math inline">u,v\in V</span>, then there exist an even cycle.</p>
 </section>
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span></span>
-<p>There are 3 vertex disjoint paths <span class="math inline">\(p_1,p_2,p_3\)</span> from <span class="math inline">\(u\)</span> to <span class="math inline">\(v\)</span>, thus it contains cycle <span class="math inline">\(p_1 p_2^{-1}\)</span>,<span class="math inline">\(p_1 p_3^{-1}\)</span> and <span class="math inline">\(p_2 p_3^{-1}\)</span>. One of them will have even length.</p>
+<p>There are 3 vertex disjoint paths <span class="math inline">p_1,p_2,p_3</span> from <span class="math inline">u</span> to <span class="math inline">v</span>, thus it contains cycle <span class="math inline">p_1 p_2^{-1}</span>,<span class="math inline">p_1 p_3^{-1}</span> and <span class="math inline">p_2 p_3^{-1}</span>. One of them will have even length.</p>
 </section>
 <section class="theorem-environment Theorem" id="Theorem-3">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">3</span></span>
-<p>If <span class="math inline">\(\overline{\lambda}(G)\geq 3\)</span>, then <span class="math inline">\(\overline{\kappa}(G)\geq 3\)</span>.</p>
+<p>If <span class="math inline">\overline{\lambda}(G)\geq 3</span>, then <span class="math inline">\overline{\kappa}(G)\geq 3</span>.</p>
 </section>
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span></span>
-<p>If <span class="math inline">\(\lambda(u,v)\geq 3\)</span>, we consider the 3 edge paths between <span class="math inline">\(u,v\)</span>. Let them be <span class="math inline">\(p_1,p_2,p_3\)</span>. Notice if none of them intersect at a vertex, <span class="math inline">\(\kappa(u,v)\geq 3\)</span>.</p>
-<p>If <span class="math inline">\(p_1,p_2\)</span> intersects and has their first intersection at <span class="math inline">\(v&#39;\)</span>. Let <span class="math inline">\(p_1&#39;,p_1&#39;&#39;\)</span> and <span class="math inline">\(p_2&#39;\)</span> be the paths following <span class="math inline">\(p_1\)</span> from <span class="math inline">\(u\)</span> to <span class="math inline">\(v&#39;\)</span> and <span class="math inline">\(v&#39;\)</span> to <span class="math inline">\(v\)</span>, and the paths following <span class="math inline">\(p_2\)</span> from <span class="math inline">\(u\)</span> to <span class="math inline">\(v&#39;\)</span>. <span class="math inline">\(p_1&#39; p_2&#39;^{-1}\)</span> is a cycle that contains <span class="math inline">\(u\)</span> and <span class="math inline">\(v&#39;\)</span>. <span class="math inline">\(\lambda(u,v&#39;)\geq 3\)</span> because there is an additional edge disjoint path <span class="math inline">\(p_3 p_1&#39;&#39;^{-1}\)</span> from <span class="math inline">\(u\)</span> to <span class="math inline">\(v&#39;\)</span>.</p>
-<p>So now we can consider <span class="math inline">\(u,v&#39;\)</span>, where <span class="math inline">\(\lambda(u,v&#39;)\geq 3\)</span> and <span class="math inline">\(u,v&#39;\)</span> is in some cycle <span class="math inline">\(C\)</span>. Consider another path <span class="math inline">\(P\)</span> from <span class="math inline">\(u\)</span> to <span class="math inline">\(v&#39;\)</span> that is edge disjoint from the cycle. Let <span class="math inline">\(t\)</span> be the first vertex where <span class="math inline">\(P\)</span> intersects <span class="math inline">\(C\)</span>. Clearly, <span class="math inline">\(\kappa(u,t)\geq 3\)</span>.</p>
+<p>If <span class="math inline">\lambda(u,v)\geq 3</span>, we consider the 3 edge paths between <span class="math inline">u,v</span>. Let them be <span class="math inline">p_1,p_2,p_3</span>. Notice if none of them intersect at a vertex, <span class="math inline">\kappa(u,v)\geq 3</span>.</p>
+<p>If <span class="math inline">p_1,p_2</span> intersects and has their first intersection at <span class="math inline">v&#39;</span>. Let <span class="math inline">p_1&#39;,p_1&#39;&#39;</span> and <span class="math inline">p_2&#39;</span> be the paths following <span class="math inline">p_1</span> from <span class="math inline">u</span> to <span class="math inline">v&#39;</span> and <span class="math inline">v&#39;</span> to <span class="math inline">v</span>, and the paths following <span class="math inline">p_2</span> from <span class="math inline">u</span> to <span class="math inline">v&#39;</span>. <span class="math inline">p_1&#39; p_2&#39;^{-1}</span> is a cycle that contains <span class="math inline">u</span> and <span class="math inline">v&#39;</span>. <span class="math inline">\lambda(u,v&#39;)\geq 3</span> because there is an additional edge disjoint path <span class="math inline">p_3 p_1&#39;&#39;^{-1}</span> from <span class="math inline">u</span> to <span class="math inline">v&#39;</span>.</p>
+<p>So now we can consider <span class="math inline">u,v&#39;</span>, where <span class="math inline">\lambda(u,v&#39;)\geq 3</span> and <span class="math inline">u,v&#39;</span> is in some cycle <span class="math inline">C</span>. Consider another path <span class="math inline">P</span> from <span class="math inline">u</span> to <span class="math inline">v&#39;</span> that is edge disjoint from the cycle. Let <span class="math inline">t</span> be the first vertex where <span class="math inline">P</span> intersects <span class="math inline">C</span>. Clearly, <span class="math inline">\kappa(u,t)\geq 3</span>.</p>
 </section>
 <p>It should be easy to show that</p>
 <section class="theorem-environment Theorem" id="Theorem-4">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">4</span></span>
-<p>If <span class="math inline">\(\overline{\lambda}(G)=2\)</span>, then all cycles in the graph are edge disjoint.</p>
+<p>If <span class="math inline">\overline{\lambda}(G)=2</span>, then all cycles in the graph are edge disjoint.</p>
 </section>
 <h1 id="a-complicated-yet-obvious-algorithm"><span class="header-section-number">2</span> A complicated yet obvious algorithm</h1>
 <ol type="1">
-<li>Compute if <span class="math inline">\(\overline{\lambda}(G)&gt;2\)</span>, if so, return true.</li>
+<li>Compute if <span class="math inline">\overline{\lambda}(G)&gt;2</span>, if so, return true.</li>
 <li>Compute if there is an even cycle in linear time.</li>
 </ol>
-<p>We first sparsify the graph with Nagamochi and Ibaraki's linear time algorithm that preserves the edge connectivity up to <span class="math inline">\(3\)</span>. After spending <span class="math inline">\(O(n+m)\)</span> time, the graph has at most <span class="math inline">\(3n\)</span> edges. We want to find a global maximum min-cut in the resulting graph. Either <span class="math inline">\(s-t\)</span>-min-cut is the global maximum min-cut, or <span class="math inline">\(s,t\)</span> are in the same component of the global maximum min-cut. One can modify Stoer-Wagner algorithm to find <span class="math inline">\(\overline{\lambda}(G)\)</span> in <span class="math inline">\(O(nm+n^2\log n)=O(n^2\log n)\)</span> time. Since our graph is unweighted we can do it better in <span class="math inline">\(O(n^2)\)</span> time.</p>
-<p>Another approach is to show the graph cannot contain a <a href="http://en.wikipedia.org/wiki/Diamond_graph">diamond graph</a> as a minor and use any general graph minor recognition algorithm. The fastest I know is the <span class="math inline">\(O(n^3)\)</span> one from the original Robertson–Seymour paper. There are some <a href="http://cstheory.stackexchange.com/questions/7928/the-complexity-of-determining-if-a-fixed-graph-is-a-minor-of-another">discussion on cstheory</a> on what is know about this algorithm.</p>
+<p>We first sparsify the graph with Nagamochi and Ibaraki's linear time algorithm that preserves the edge connectivity up to <span class="math inline">3</span>. After spending <span class="math inline">O(n+m)</span> time, the graph has at most <span class="math inline">3n</span> edges. We want to find a global maximum min-cut in the resulting graph. Either <span class="math inline">s-t</span>-min-cut is the global maximum min-cut, or <span class="math inline">s,t</span> are in the same component of the global maximum min-cut. One can modify Stoer-Wagner algorithm to find <span class="math inline">\overline{\lambda}(G)</span> in <span class="math inline">O(nm+n^2\log n)=O(n^2\log n)</span> time. Since our graph is unweighted we can do it better in <span class="math inline">O(n^2)</span> time.</p>
+<p>Another approach is to show the graph cannot contain a <a href="http://en.wikipedia.org/wiki/Diamond_graph">diamond graph</a> as a minor and use any general graph minor recognition algorithm. The fastest I know is the <span class="math inline">O(n^3)</span> one from the original Robertson–Seymour paper. There are some <a href="http://cstheory.stackexchange.com/questions/7928/the-complexity-of-determining-if-a-fixed-graph-is-a-minor-of-another">discussion on cstheory</a> on what is know about this algorithm.</p>
 <p>However we can do it better, because we can easily check graphs without a diamond as a minor has treewidth two. So we can first check if the graph have a fixed treewidth in linear time<span class="citation" data-cites="fixedparametertreewidth">[<a href="#ref-fixedparametertreewidth">1</a>]</span>. Next, we can then apply a linear time minor testing algorithm on graphs with bounded branch width(which is implied by bounded treewidth)<span class="citation" data-cites="fixedsurfaceminor">[<a href="#ref-fixedsurfaceminor">2</a>]</span>.</p>
-<p>The second step is computationally easy. Do a DFS, whenever we find a cycle, check if the cycle is even, delete all those edges, and keep going. The number of steps we take is at most <span class="math inline">\(O(n+m)\)</span> time. In fact, we don't really need to delete the edges once we find a cycle, as we know they will never get used by another cycle.</p>
+<p>The second step is computationally easy. Do a DFS, whenever we find a cycle, check if the cycle is even, delete all those edges, and keep going. The number of steps we take is at most <span class="math inline">O(n+m)</span> time. In fact, we don't really need to delete the edges once we find a cycle, as we know they will never get used by another cycle.</p>
 <h1 id="a-much-simpler-algorithm"><span class="header-section-number">3</span> A much simpler algorithm</h1>
 <p>Our algorithm above is pretty general and uses some heavy machinery. That's the kind of solution I would give during a qualify exam due to time constraints(well, always use the most powerful technique possible).</p>
 <p>The theorems we proved implies one nice corollary</p>
@@ -85,9 +110,9 @@
 <p>This kind of graph has a name, a <a href="http://en.wikipedia.org/wiki/Cactus_graph">cactus graph</a>. It is so special we can recognize it in linear time. A graph is a cactus if once we build a DFS tree, every vertex has at most one back edge.</p>
 <p>This implies a extremely simple algorithm</p>
 <ol type="1">
-<li>Run a DFS to build a DFS tree. Let <span class="math inline">\(d(v)\)</span> be the depth of a vertex <span class="math inline">\(v\)</span> in the tree.</li>
-<li>Assume there is a back edge between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, check if there is any back edge end at some node in the unique path from <span class="math inline">\(x\)</span> to <span class="math inline">\(y\)</span>.</li>
-<li>For every vertex <span class="math inline">\(v\)</span>, if it has a back edge to some vertex <span class="math inline">\(u\)</span>, then check if <span class="math inline">\(d(v)-d(u)\)</span> is odd. If it is, return true.</li>
+<li>Run a DFS to build a DFS tree. Let <span class="math inline">d(v)</span> be the depth of a vertex <span class="math inline">v</span> in the tree.</li>
+<li>Assume there is a back edge between <span class="math inline">x</span> and <span class="math inline">y</span>, check if there is any back edge end at some node in the unique path from <span class="math inline">x</span> to <span class="math inline">y</span>.</li>
+<li>For every vertex <span class="math inline">v</span>, if it has a back edge to some vertex <span class="math inline">u</span>, then check if <span class="math inline">d(v)-d(u)</span> is odd. If it is, return true.</li>
 <li>Return false.</li>
 </ol>
 <h1 id="bibliography" class="unnumbered">References</h1>

@@ -9,8 +9,33 @@
     <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
     <title>$\lcm$ of more than two numbers as a formula of $\gcd$s</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js" async>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
     </script>
+
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <link rel="stylesheet" href="/css/default.css" />
     <!--[if lt IE 9]>
@@ -33,27 +58,27 @@
     </nav>
     <main>
       <article>
-        <h1 id="article-title"><span class="math inline">\(\lcm\)</span> of more than two numbers as a formula of <span class="math inline">\(\gcd\)</span>s</h1>
+        <h1 id="article-title"><span class="math inline">\lcm</span> of more than two numbers as a formula of <span class="math inline">\gcd</span>s</h1>
         <br />
 <div>
-<p>It is a common elementary number theory exercise to prove that <span class="math inline">\(\lcm(a,b) = \frac{ab}{\gcd(a,b)}\)</span>.</p>
-<p>A student might ask what is the <span class="math inline">\(\lcm\)</span> of three numbers. Some might think that <span class="math display">\[
+<p>It is a common elementary number theory exercise to prove that <span class="math inline">\lcm(a,b) = \frac{ab}{\gcd(a,b)}</span>.</p>
+<p>A student might ask what is the <span class="math inline">\lcm</span> of three numbers. Some might think that <span class="math display">\displaystyle 
 \lcm(a,b,c) = \frac{abc}{\gcd(a,b,c)}
-\]</span> It isn't.</p>
-<p>Still, one might want a formula for the <span class="math inline">\(\lcm\)</span> of three numbers. Of course one can say <span class="math inline">\(\lcm(a,\lcm(b,c))\)</span>. In fact this is the common algorithm for computation. Are they ways to relate <span class="math inline">\(\lcm\)</span> and <span class="math inline">\(\gcd\)</span> without nesting those functions together?</p>
-<p>Yes, but the formula is not so pretty. <span class="math display">\[
+</span> It isn't.</p>
+<p>Still, one might want a formula for the <span class="math inline">\lcm</span> of three numbers. Of course one can say <span class="math inline">\lcm(a,\lcm(b,c))</span>. In fact this is the common algorithm for computation. Are they ways to relate <span class="math inline">\lcm</span> and <span class="math inline">\gcd</span> without nesting those functions together?</p>
+<p>Yes, but the formula is not so pretty. <span class="math display">\displaystyle 
 \lcm(a,b,c) = \frac{abc \gcd(a,b,c)}{\gcd(a,b)\gcd(b,c)\gcd(a,c)}
-\]</span></p>
-<p>This article shows how we can prove this result, and easily infer a more general theorem. First, we see there is a group isomorphism from the naturals to it's prime factors <span class="math inline">\(f:\mathbb{N}-&gt;\mathbb{N}^\infty\)</span>, <span class="math inline">\(f(p_1^{e_1} \ldots p_n^{e^n}) = (e_1,\ldots,e_n,0,0,\ldots)\)</span>, where <span class="math inline">\(p_n\)</span> is the <span class="math inline">\(n\)</span>th prime.</p>
+</span></p>
+<p>This article shows how we can prove this result, and easily infer a more general theorem. First, we see there is a group isomorphism from the naturals to it's prime factors <span class="math inline">f:\mathbb{N}-&gt;\mathbb{N}^\infty</span>, <span class="math inline">f(p_1^{e_1} \ldots p_n^{e^n}) = (e_1,\ldots,e_n,0,0,\ldots)</span>, where <span class="math inline">p_n</span> is the <span class="math inline">n</span>th prime.</p>
 It's easy to show
 <span class="math">\begin{align*}
 \lcm(a_1,a_2,\ldots,a_n) &= f^{-1} (\max(f(a_1),\ldots,f(a_n)))\\
 \gcd(a_1,a_2,\ldots,a_n) &= f^{-1} (\min(f(a_1),\ldots,f(a_n)))
 \end{align*}</span>
-<p>where <span class="math inline">\(\max\)</span> and <span class="math inline">\(\min\)</span> are defined coordinate-wise. In fact we only need to concern with one single coordinate. So the problem become proving <span class="math display">\[
+<p>where <span class="math inline">\max</span> and <span class="math inline">\min</span> are defined coordinate-wise. In fact we only need to concern with one single coordinate. So the problem become proving <span class="math display">\displaystyle 
 \max(a,b,c) = a+b+c+\min(a,b,c)-(\min(a,b)+\min(b,c)+\min(a,c))
-\]</span>, then the formula for <span class="math inline">\(\lcm\)</span> of 3 numbers holds.</p>
-<p>This look familiar to the inclusion-exclusion principle, and certainly we can use it to prove it and generalize! Let <span class="math inline">\(\mu\)</span> be the Lebesgue measure, then for a finite sequence of non-negative reals <span class="math inline">\(\{a_i\}\)</span>, <span class="math display">\[\max(a_1,\ldots,a_n) = \mu(\bigcup_{i=1}^n [0,a_i]).\]</span> It's just some standard arguments to show <span class="math inline">\(\max\)</span> does have the inclusion-exclusion structure. It generalize to allow negative reals by simply add a large enough constant to make them positive, and subtract the constant from the result. Formulas for <span class="math inline">\(\min,\gcd,\lcm\)</span> follows similarly.</p>
+</span>, then the formula for <span class="math inline">\lcm</span> of 3 numbers holds.</p>
+<p>This look familiar to the inclusion-exclusion principle, and certainly we can use it to prove it and generalize! Let <span class="math inline">\mu</span> be the Lebesgue measure, then for a finite sequence of non-negative reals <span class="math inline">\{a_i\}</span>, <span class="math display">\displaystyle \max(a_1,\ldots,a_n) = \mu(\bigcup_{i=1}^n [0,a_i]).</span> It's just some standard arguments to show <span class="math inline">\max</span> does have the inclusion-exclusion structure. It generalize to allow negative reals by simply add a large enough constant to make them positive, and subtract the constant from the result. Formulas for <span class="math inline">\min,\gcd,\lcm</span> follows similarly.</p>
 
 </div>
 <div class="hide-on-print">

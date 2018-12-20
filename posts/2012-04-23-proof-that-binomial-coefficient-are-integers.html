@@ -9,8 +9,33 @@
     <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
     <title>Proof that binomial coefficients are integers</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js" async>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
     </script>
+
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <link rel="stylesheet" href="/css/default.css" />
     <!--[if lt IE 9]>
@@ -37,21 +62,21 @@
         <br />
 <div>
 <p><a href="http://www.eaglefantasy.com/">Eagle Fantasy</a> asked how to prove that binomial coefficients are integers without induction or counting. He seek a purely number theoretical proof.</p>
-<p>One common way to prove a number is a integer is to show it has a integer factorization. Thus one try to demonstrate that <span class="math inline">\({n \choose k}\)</span> has such factorization.</p>
-<p>Let's start by figure out what is the factorization of <span class="math inline">\(n!\)</span>. Consider any prime <span class="math inline">\(p\)</span>. Certainly all numbers from <span class="math inline">\(1\)</span> to <span class="math inline">\(n\)</span> that is divisible by <span class="math inline">\(p\)</span> contribute to the exponent by <span class="math inline">\(1\)</span>, numbers that divisible by <span class="math inline">\(p^2\)</span> contribute to the exponent by <span class="math inline">\(1\)</span>, as we already counted one of the <span class="math inline">\(p\)</span> factor already. Similarly, one apply this for all <span class="math inline">\(p^i\)</span> and result <span class="math inline">\(p^{\sum_{i=1}^\infty \lfloor \frac{n}{p^i} \rfloor} | n!\)</span>, and by unique factorization theorem, we get that <span class="math display">\[
+<p>One common way to prove a number is a integer is to show it has a integer factorization. Thus one try to demonstrate that <span class="math inline">{n \choose k}</span> has such factorization.</p>
+<p>Let's start by figure out what is the factorization of <span class="math inline">n!</span>. Consider any prime <span class="math inline">p</span>. Certainly all numbers from <span class="math inline">1</span> to <span class="math inline">n</span> that is divisible by <span class="math inline">p</span> contribute to the exponent by <span class="math inline">1</span>, numbers that divisible by <span class="math inline">p^2</span> contribute to the exponent by <span class="math inline">1</span>, as we already counted one of the <span class="math inline">p</span> factor already. Similarly, one apply this for all <span class="math inline">p^i</span> and result <span class="math inline">p^{\sum_{i=1}^\infty \lfloor \frac{n}{p^i} \rfloor} | n!</span>, and by unique factorization theorem, we get that <span class="math display">\displaystyle 
 n! =\prod_{k=1}^\infty p_k^{\sum_{i=1}^\infty \lfloor \frac{n}{p_k^i} \rfloor} 
-\]</span> where <span class="math inline">\(p_k\)</span> is the <span class="math inline">\(k\)</span>-th prime.</p>
-<p>Of course, since we are going to manipulate the sum and the product, it is better to replace <span class="math inline">\(\infty\)</span> to some large <span class="math inline">\(N\)</span> so we don't need to define what we mean by infinite product or why we can switch the order of summation, etc.</p>
-Now consider the following inequality, left as an exercise to the reader <span class="math inline">\(\lfloor a+b\rfloor \geq \lfloor a \rfloor + \lfloor b\rfloor\)</span>. Then everything follows by easy algebraic manipulation.
+</span> where <span class="math inline">p_k</span> is the <span class="math inline">k</span>-th prime.</p>
+<p>Of course, since we are going to manipulate the sum and the product, it is better to replace <span class="math inline">\infty</span> to some large <span class="math inline">N</span> so we don't need to define what we mean by infinite product or why we can switch the order of summation, etc.</p>
+Now consider the following inequality, left as an exercise to the reader <span class="math inline">\lfloor a+b\rfloor \geq \lfloor a \rfloor + \lfloor b\rfloor</span>. Then everything follows by easy algebraic manipulation.
 <span class="math">\begin{align*}
 {n\choose k} &= \frac{n!}{(n-k)!k!}\\
 &= \frac{\prod_{k=1}^N p_k^{\sum_{i=1}^N \lfloor \frac{n}{p_k^i} \rfloor}}{\prod_{k=1}^N p_k^{\sum_{i=1}^N \lfloor \frac{n-k}{p_k^i} \rfloor} \prod_{k=1}^N p_k^{\sum_{i=1}^N \lfloor \frac{k}{p_k^i} \rfloor} }\\
 &= \prod_{k=1}^N p_k^{\sum_{i=1}^N \lfloor \frac{n}{p_k^i} \rfloor - \lfloor \frac{n-k}{p_k^i} \rfloor - \lfloor \frac{k}{p_k^i} \rfloor}
 \end{align*}</span>
-<p>Using the previous inequality, we see every exponent is a integer greater or equal to <span class="math inline">\(0\)</span>. This shows <span class="math inline">\({n\choose k}\)</span> is a integer.</p>
+<p>Using the previous inequality, we see every exponent is a integer greater or equal to <span class="math inline">0</span>. This shows <span class="math inline">{n\choose k}</span> is a integer.</p>
 <section class="theorem-environment Remark" id="Remark-">
 <span class="theorem-header"><span class="type">Remark</span></span>
-<p>This also derive the following result: <span class="math inline">\(k!|(m+1)\ldots (m+k)\)</span> for all <span class="math inline">\(m\geq 0\)</span>. One can use this result to prove that multinomial coefficients are integers.</p>
+<p>This also derive the following result: <span class="math inline">k!|(m+1)\ldots (m+k)</span> for all <span class="math inline">m\geq 0</span>. One can use this result to prove that multinomial coefficients are integers.</p>
 </section>
 
 </div>

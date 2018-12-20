@@ -9,8 +9,33 @@
     <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
     <title>Maximize the area of a radar chart</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js" async>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
     </script>
+
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <link rel="stylesheet" href="/css/default.css" />
     <!--[if lt IE 9]>
@@ -42,12 +67,12 @@
 <img src="/files/radarchart.png" alt="Two Radar Charts" /><figcaption>Two Radar Charts</figcaption>
 </figure>
 <p>In the image above, the left side has less area than the right.</p>
-<p>Given the sequence of data <span class="math inline">\((a_1,c_1),\ldots,(a_n,c_n)\)</span>, where <span class="math inline">\(a_i\)</span> is the value, a positive number, <span class="math inline">\(c_i\)</span> is a coordinate(in the image, the coordinates would be &quot;combinatorics&quot;, &quot;algorithms&quot;, etc.). How can we permute them, such that the data plotted on the radio chart is maximized?</p>
-<p>The area of of any single section of the radio chart is <span class="math inline">\(ab \frac{\cos \theta}{2}\)</span>, where <span class="math inline">\(\theta = \frac{2\pi}{n}\)</span>, and <span class="math inline">\(a,b\)</span> are the value for two adjacent coordinates. The area of the entire shape is the sum.</p>
-<p>Once we can maximize <span class="math inline">\(\sum_{i=1}^n a_{\pi(i)} a_{\pi(i+1)}\)</span>, we are done.</p>
+<p>Given the sequence of data <span class="math inline">(a_1,c_1),\ldots,(a_n,c_n)</span>, where <span class="math inline">a_i</span> is the value, a positive number, <span class="math inline">c_i</span> is a coordinate(in the image, the coordinates would be &quot;combinatorics&quot;, &quot;algorithms&quot;, etc.). How can we permute them, such that the data plotted on the radio chart is maximized?</p>
+<p>The area of of any single section of the radio chart is <span class="math inline">ab \frac{\cos \theta}{2}</span>, where <span class="math inline">\theta = \frac{2\pi}{n}</span>, and <span class="math inline">a,b</span> are the value for two adjacent coordinates. The area of the entire shape is the sum.</p>
+<p>Once we can maximize <span class="math inline">\sum_{i=1}^n a_{\pi(i)} a_{\pi(i+1)}</span>, we are done.</p>
 <section class="theorem-environment Lemma" id="Lemma-1">
 <span class="theorem-header"><span class="type">Lemma</span><span class="index">1</span></span>
-<p>If <span class="math inline">\(x\geq a\geq b \geq c \geq d\geq 0\)</span>, then <span class="math inline">\(ax+bx - ab \geq cx+dx-cd\)</span>.</p>
+<p>If <span class="math inline">x\geq a\geq b \geq c \geq d\geq 0</span>, then <span class="math inline">ax+bx - ab \geq cx+dx-cd</span>.</p>
 </section>
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span></span>
@@ -60,31 +85,31 @@ x&\geq \frac{b(a-c)+c(b-d)}{a-c+b-d}\\
 x&\geq \frac{b(a-c+b-d)}{a-c+b-d}\\
 x&\geq b
 \end{align*}</span>
-<p>The lemma is true, as <span class="math inline">\(x\geq b\)</span> is part of the hypothesis for <span class="math inline">\(x\)</span>.</p>
+<p>The lemma is true, as <span class="math inline">x\geq b</span> is part of the hypothesis for <span class="math inline">x</span>.</p>
 </section>
 <section class="theorem-environment Theorem" id="Theorem-2">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">2</span></span>
-<p>Let <span class="math inline">\(a_1,\ldots,a_n\)</span> be a sequence of positive numbers, such that <span class="math inline">\(a_1 \leq \ldots \leq a_n\)</span>.</p>
-<p>Let <span class="math inline">\(\pi\)</span> be the following:</p>
+<p>Let <span class="math inline">a_1,\ldots,a_n</span> be a sequence of positive numbers, such that <span class="math inline">a_1 \leq \ldots \leq a_n</span>.</p>
+<p>Let <span class="math inline">\pi</span> be the following:</p>
 <ol type="1">
-<li><span class="math inline">\(\pi(n+1) = 1\)</span>.</li>
-<li><span class="math inline">\(\pi(1),\ldots,\pi(n) = 1, 3, \ldots, n-1, n, n-2, \ldots, 4, 2\)</span> if <span class="math inline">\(n\)</span> is even</li>
-<li><span class="math inline">\(\pi(1),\ldots,\pi(n) = 1, 3, \ldots, n-2, n, n-1, \ldots, 4, 2\)</span> if <span class="math inline">\(n\)</span> is odd.</li>
+<li><span class="math inline">\pi(n+1) = 1</span>.</li>
+<li><span class="math inline">\pi(1),\ldots,\pi(n) = 1, 3, \ldots, n-1, n, n-2, \ldots, 4, 2</span> if <span class="math inline">n</span> is even</li>
+<li><span class="math inline">\pi(1),\ldots,\pi(n) = 1, 3, \ldots, n-2, n, n-1, \ldots, 4, 2</span> if <span class="math inline">n</span> is odd.</li>
 </ol>
-<p><span class="math inline">\(\pi\)</span> maximizes <span class="math display">\[
+<p><span class="math inline">\pi</span> maximizes <span class="math display">\displaystyle 
 \sum_{i=1}^n a_{\pi(i)}a_{\pi(i+1)}
-\]</span></p>
+</span></p>
 </section>
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span></span>
 <p>Proof by induction.</p>
-<p><em>Base case:</em> Base case for <span class="math inline">\(n=1,2\)</span> are trivial.</p>
-<p><em>Inductive Step:</em> Consider it is true for <span class="math inline">\(n-1\)</span>, we want to show it is true for <span class="math inline">\(n\)</span>.</p>
-<p>Consider we already obtained a sequence from <span class="math inline">\(a_1\)</span> to <span class="math inline">\(a_{n-1}\)</span>, and we want to insert <span class="math inline">\(a_n\)</span> somewhere. Clearly <span class="math inline">\(a_n\)</span> need to be placed in a position that maximizes its contribution. If we can insert it between <span class="math inline">\(a_{n-1}\)</span> and <span class="math inline">\(a_{n-2}\)</span>, then we get a contribution of <span class="math inline">\(a_{n-1}a_n+a_{n-2}a_n-a_{n-1}a_{n-2}\)</span>. By the lemma, it will give us the maximum contribution.</p>
-<p>If we can get the maximum contribution (over all possible configurations) to a maximum configuration for <span class="math inline">\(a_1\)</span> to <span class="math inline">\(a_{n-1}\)</span>, then we are done. The inductive hypothesis show the maximum configuration have adjacent <span class="math inline">\(a_{n-1}\)</span> and <span class="math inline">\(a_{n-2}\)</span>, therefore this shows the maximum configuration is where we insert <span class="math inline">\(a_n\)</span> in between <span class="math inline">\(a_{n-1}\)</span> and <span class="math inline">\(a_{n-2}\)</span> in the previous maximum configuration.</p>
+<p><em>Base case:</em> Base case for <span class="math inline">n=1,2</span> are trivial.</p>
+<p><em>Inductive Step:</em> Consider it is true for <span class="math inline">n-1</span>, we want to show it is true for <span class="math inline">n</span>.</p>
+<p>Consider we already obtained a sequence from <span class="math inline">a_1</span> to <span class="math inline">a_{n-1}</span>, and we want to insert <span class="math inline">a_n</span> somewhere. Clearly <span class="math inline">a_n</span> need to be placed in a position that maximizes its contribution. If we can insert it between <span class="math inline">a_{n-1}</span> and <span class="math inline">a_{n-2}</span>, then we get a contribution of <span class="math inline">a_{n-1}a_n+a_{n-2}a_n-a_{n-1}a_{n-2}</span>. By the lemma, it will give us the maximum contribution.</p>
+<p>If we can get the maximum contribution (over all possible configurations) to a maximum configuration for <span class="math inline">a_1</span> to <span class="math inline">a_{n-1}</span>, then we are done. The inductive hypothesis show the maximum configuration have adjacent <span class="math inline">a_{n-1}</span> and <span class="math inline">a_{n-2}</span>, therefore this shows the maximum configuration is where we insert <span class="math inline">a_n</span> in between <span class="math inline">a_{n-1}</span> and <span class="math inline">a_{n-2}</span> in the previous maximum configuration.</p>
 </section>
-<p>This implies a simple <span class="math inline">\(O(n \log n)\)</span> algorithm. Find the permutation that sort the input sequence by value, then composes it with permutation <span class="math inline">\(\pi\)</span>.</p>
-<p>Actually this problem is a special case of the TSP problem on a product matrix. A matrix is called a product matrix if <span class="math inline">\(M_{i,j} = a_ib_j\)</span> for vectors <span class="math inline">\((a_1,\ldots,a_n)\)</span> and <span class="math inline">\((b_1,\ldots,b_n)\)</span>. It is solvable in polynomial time if <span class="math inline">\(M\)</span> is a symmetric matrix <span class="citation" data-cites="burkard1998">[<a href="#ref-burkard1998">1</a>]</span>.</p>
+<p>This implies a simple <span class="math inline">O(n \log n)</span> algorithm. Find the permutation that sort the input sequence by value, then composes it with permutation <span class="math inline">\pi</span>.</p>
+<p>Actually this problem is a special case of the TSP problem on a product matrix. A matrix is called a product matrix if <span class="math inline">M_{i,j} = a_ib_j</span> for vectors <span class="math inline">(a_1,\ldots,a_n)</span> and <span class="math inline">(b_1,\ldots,b_n)</span>. It is solvable in polynomial time if <span class="math inline">M</span> is a symmetric matrix <span class="citation" data-cites="burkard1998">[<a href="#ref-burkard1998">1</a>]</span>.</p>
 <h1 id="bibliography" class="unnumbered">References</h1>
 <div id="refs" class="references">
 <div id="ref-burkard1998">

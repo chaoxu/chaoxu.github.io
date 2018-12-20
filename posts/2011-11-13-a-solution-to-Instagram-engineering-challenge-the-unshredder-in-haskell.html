@@ -9,8 +9,33 @@
     <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
     <title>A solution to Instagram Engineering Challenge, The Unshredder in Haskell</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js" async>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
     </script>
+
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <link rel="stylesheet" href="/css/default.css" />
     <!--[if lt IE 9]>
@@ -47,15 +72,15 @@
 <p>I'm pretty sure this is also NP-complete too. Thus I will just use a greedy algorithm and assume real life data are easy.</p>
 <p>I used a simple scheme to calculate the closeness between two strips: compare the last column of a strip with the first column of another strip. This decision come from my familiarity with lists instead of arrays. However, smarter move would be taking the average of a larger set of surrounding and see how each side deviates from it.</p>
 <p>The function I used to calculate the difference is</p>
-<p><span class="math display">\[
+<p><span class="math display">\displaystyle 
 \sum_{i=1}^n (\sum_{j=0}^3 |a_{i,j}-b_{i,j}|)^{1/4}
-\]</span></p>
-<p>Where <span class="math inline">\(a_{i,j}\)</span> is the value of the <span class="math inline">\(j\)</span>th channel of <span class="math inline">\(i\)</span>th pixel in the first strip's last column.</p>
+</span></p>
+<p>Where <span class="math inline">a_{i,j}</span> is the value of the <span class="math inline">j</span>th channel of <span class="math inline">i</span>th pixel in the first strip's last column.</p>
 <p>Which strip is the left most strip? Try all of them!</p>
-<p>Running time of my algorithm is <span class="math inline">\(O(n^3)\)</span>, as it cost <span class="math inline">\(O(n^2)\)</span> time to find a path with minimum weight starting from a specific vertex. Of course it can be improved to <span class="math inline">\(O(n^2)\)</span> if I pick any vertex and expand it both ways instead of just connecting things to the right.</p>
+<p>Running time of my algorithm is <span class="math inline">O(n^3)</span>, as it cost <span class="math inline">O(n^2)</span> time to find a path with minimum weight starting from a specific vertex. Of course it can be improved to <span class="math inline">O(n^2)</span> if I pick any vertex and expand it both ways instead of just connecting things to the right.</p>
 <p>To find the optimal strip width, it is easy if one have the following assumption:</p>
-<p>If the strip width is <span class="math inline">\(k\)</span>, the average difference between strips will be larger than strip width of <span class="math inline">\(m\)</span>, where <span class="math inline">\(m\neq kn\)</span> for some <span class="math inline">\(n\)</span>. Note it is possible that for strip width of <span class="math inline">\(2k\)</span> to have a higher average than <span class="math inline">\(k\)</span>.</p>
-<p>One can implement an algorithm on a DAG to figure this out. I was too tired so I just pick the top <span class="math inline">\(i=5\)</span> strip widths and computed the <span class="math inline">\(\gcd\)</span> instead.</p>
+<p>If the strip width is <span class="math inline">k</span>, the average difference between strips will be larger than strip width of <span class="math inline">m</span>, where <span class="math inline">m\neq kn</span> for some <span class="math inline">n</span>. Note it is possible that for strip width of <span class="math inline">2k</span> to have a higher average than <span class="math inline">k</span>.</p>
+<p>One can implement an algorithm on a DAG to figure this out. I was too tired so I just pick the top <span class="math inline">i=5</span> strip widths and computed the <span class="math inline">\gcd</span> instead.</p>
 <p>The code is slow, I have no idea why because I'm not experienced in how to reason about efficiency in Haskell.</p>
 
 </div>

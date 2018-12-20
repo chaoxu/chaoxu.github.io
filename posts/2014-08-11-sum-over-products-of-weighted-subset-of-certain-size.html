@@ -9,8 +9,33 @@
     <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
     <title>Sum over products of weighted subset of certain size</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js" async>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
     </script>
+
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <link rel="stylesheet" href="/css/default.css" />
     <!--[if lt IE 9]>
@@ -36,35 +61,35 @@
         <h1 id="article-title">Sum over products of weighted subset of certain size</h1>
         <br />
 <div>
-<p>Consider a commutative semiring <span class="math inline">\((R,+,\cdot)\)</span>. <span class="math inline">\(\mathbb{0}\)</span> is the identity for <span class="math inline">\((R,+)\)</span>, and <span class="math inline">\(\mathbb{1}\)</span> is the identity for <span class="math inline">\((R,\cdot)\)</span>. Let <span class="math inline">\(f,g:V\to R\)</span>, <span class="math inline">\(w:V\to \mathbb{N}\)</span> and <span class="math inline">\(Z\subset \mathbb{N}\)</span>. It is common that we are interested in computing expressions of the following form.</p>
-<p><span class="math display">\[
+<p>Consider a commutative semiring <span class="math inline">(R,+,\cdot)</span>. <span class="math inline">\mathbb{0}</span> is the identity for <span class="math inline">(R,+)</span>, and <span class="math inline">\mathbb{1}</span> is the identity for <span class="math inline">(R,\cdot)</span>. Let <span class="math inline">f,g:V\to R</span>, <span class="math inline">w:V\to \mathbb{N}</span> and <span class="math inline">Z\subset \mathbb{N}</span>. It is common that we are interested in computing expressions of the following form.</p>
+<p><span class="math display">\displaystyle 
 \sum_{S\subset V, \sum_{x\in S} w(x) \in Z} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x)
-\]</span></p>
+</span></p>
 <p>Examples:</p>
 <ol type="1">
-<li><p>If <span class="math inline">\(w(x)=1\)</span> for all <span class="math inline">\(x\)</span>, and <span class="math inline">\(f(x)\)</span> be the probability that event <span class="math inline">\(x\)</span> occurs, <span class="math inline">\(g=1-f\)</span>, we find the probability that the number of event occurs <span class="math inline">\(t\)</span> times, where <span class="math inline">\(t\in Z\)</span>. In probability, this is computing the Poisson distribution.</p></li>
-<li><p>If <span class="math inline">\((R,+,\cdot) = (\N,+,\cdot)\)</span>, <span class="math inline">\(f=g=1\)</span>, for all <span class="math inline">\(x\)</span> and <span class="math inline">\(w(x)=x\)</span> and <span class="math inline">\(V\subset \N\)</span> and <span class="math inline">\(Z=\{t\}\)</span>, then we find the number of subsets that have element sum <span class="math inline">\(t\)</span>.</p></li>
-<li><p>If <span class="math inline">\((R,+,\cdot) = (\N,\max,+)\)</span>, <span class="math inline">\(V\subset \N\)</span>, <span class="math inline">\(g=0\)</span> and <span class="math inline">\(Z=\{0,\ldots,W\}\)</span>, then this solves the knapsack problem with knapsack size <span class="math inline">\(W\)</span>, value <span class="math inline">\(f\)</span> and cost <span class="math inline">\(w\)</span>.</p></li>
-<li><p>An actual application inspired this post: An automated test suite that runs <span class="math inline">\(n\)</span> subtests, and it is allowed to rerun a subtest if it fails the first time. A subtest passes if first run passes or the rerun passes. The test is successful if all the subtests passes and the number of total reruns is at most <span class="math inline">\(k\)</span>. Assume probability of passing is independent for each subtest. One want to estimate the probability of a successful test given the probability a run passes for a specific subtest.</p></li>
+<li><p>If <span class="math inline">w(x)=1</span> for all <span class="math inline">x</span>, and <span class="math inline">f(x)</span> be the probability that event <span class="math inline">x</span> occurs, <span class="math inline">g=1-f</span>, we find the probability that the number of event occurs <span class="math inline">t</span> times, where <span class="math inline">t\in Z</span>. In probability, this is computing the Poisson distribution.</p></li>
+<li><p>If <span class="math inline">(R,+,\cdot) = (\N,+,\cdot)</span>, <span class="math inline">f=g=1</span>, for all <span class="math inline">x</span> and <span class="math inline">w(x)=x</span> and <span class="math inline">V\subset \N</span> and <span class="math inline">Z=\{t\}</span>, then we find the number of subsets that have element sum <span class="math inline">t</span>.</p></li>
+<li><p>If <span class="math inline">(R,+,\cdot) = (\N,\max,+)</span>, <span class="math inline">V\subset \N</span>, <span class="math inline">g=0</span> and <span class="math inline">Z=\{0,\ldots,W\}</span>, then this solves the knapsack problem with knapsack size <span class="math inline">W</span>, value <span class="math inline">f</span> and cost <span class="math inline">w</span>.</p></li>
+<li><p>An actual application inspired this post: An automated test suite that runs <span class="math inline">n</span> subtests, and it is allowed to rerun a subtest if it fails the first time. A subtest passes if first run passes or the rerun passes. The test is successful if all the subtests passes and the number of total reruns is at most <span class="math inline">k</span>. Assume probability of passing is independent for each subtest. One want to estimate the probability of a successful test given the probability a run passes for a specific subtest.</p></li>
 </ol>
-<p>Let <span class="math inline">\(\max Z = k\)</span> and <span class="math inline">\(|V| = n\)</span>. The naive algorithm runs in <span class="math inline">\(O(n2^n)\)</span> time (assuming semiring operation takes <span class="math inline">\(O(1)\)</span> time). There is a common transformation that turns this problem that sum over all subsets to a problem that sums over <span class="math inline">\(Z\)</span>. So it runs in <span class="math inline">\(O(nk)\)</span> time.</p>
-<p>Let <span class="math inline">\(V=\{v_1,\ldots,v_n\}\)</span> and <span class="math inline">\(V_j = \{v_1,\ldots,v_j\}\)</span>. Define <span class="math display">\[
+<p>Let <span class="math inline">\max Z = k</span> and <span class="math inline">|V| = n</span>. The naive algorithm runs in <span class="math inline">O(n2^n)</span> time (assuming semiring operation takes <span class="math inline">O(1)</span> time). There is a common transformation that turns this problem that sum over all subsets to a problem that sums over <span class="math inline">Z</span>. So it runs in <span class="math inline">O(nk)</span> time.</p>
+<p>Let <span class="math inline">V=\{v_1,\ldots,v_n\}</span> and <span class="math inline">V_j = \{v_1,\ldots,v_j\}</span>. Define <span class="math display">\displaystyle 
  		D(i,j) = \sum_{S\subset V_j, \sum_{x\in S} w(x) = i} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x)
-	\]</span>.</p>
-<p>Certainly, <span class="math display">\[
+	</span>.</p>
+<p>Certainly, <span class="math display">\displaystyle 
 		\sum_{S\subset V, \sum_{x\in S} w(x) \in Z} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x) = \sum_{i\in Z} D(i,n)
-	\]</span></p>
-<p>We only incur a <span class="math inline">\(O(k)\)</span> number of semiring operations once we compute all <span class="math inline">\(D(i,n)\)</span> for <span class="math inline">\(0\leq i\leq k\)</span>.</p>
-<p>Let <span class="math inline">\([P]\)</span> be the <a href="http://en.wikipedia.org/wiki/Iverson_bracket">Iverson bracket notation</a>, namely</p>
-<p><span class="math display">\[
+	</span></p>
+<p>We only incur a <span class="math inline">O(k)</span> number of semiring operations once we compute all <span class="math inline">D(i,n)</span> for <span class="math inline">0\leq i\leq k</span>.</p>
+<p>Let <span class="math inline">[P]</span> be the <a href="http://en.wikipedia.org/wiki/Iverson_bracket">Iverson bracket notation</a>, namely</p>
+<p><span class="math display">\displaystyle 
 [P] = \begin{cases} \mathbb{1} &amp; \text{if } P \text{ is true;}\\
       \mathbb{0} &amp; \text{otherwise.} \end{cases}
-\]</span></p>
+</span></p>
 <section class="theorem-environment Theorem" id="Theorem-1">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">1</span></span>
 <ol type="1">
-<li><p><span class="math inline">\(D(i,0) = [i \neq 0]\)</span></p></li>
-<li><p>For <span class="math inline">\(j\geq 1\)</span>, <span class="math inline">\(D(i,j) = [i\geq w(v_j)] f(v_j)D(i-w(v_j),j-1) + g(v_j) D(i,j-1)\)</span>.</p></li>
+<li><p><span class="math inline">D(i,0) = [i \neq 0]</span></p></li>
+<li><p>For <span class="math inline">j\geq 1</span>, <span class="math inline">D(i,j) = [i\geq w(v_j)] f(v_j)D(i-w(v_j),j-1) + g(v_j) D(i,j-1)</span>.</p></li>
 </ol>
 </section>
 <section class="theorem-environment Proof" id="Proof-">

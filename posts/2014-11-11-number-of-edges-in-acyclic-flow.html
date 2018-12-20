@@ -9,8 +9,33 @@
     <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
     <title>Number of edges in acyclic flow</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js" async>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
     </script>
+
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <link rel="stylesheet" href="/css/default.css" />
     <!--[if lt IE 9]>
@@ -39,40 +64,40 @@
 <p>The graph in this post are simple graphs with unit edge capacity.</p>
 <section class="theorem-environment Theorem" id="Theorem-1">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">1</span><span class="name">Main Theorem</span></span>
-<p>Let <span class="math inline">\(G=(V,E)\)</span> be a graph with <span class="math inline">\(n\)</span> vertices and <span class="math inline">\(m\)</span> edges, then an acyclic integer flow of value <span class="math inline">\(v\)</span> saturates <span class="math inline">\(O(n\sqrt{v})\)</span> edges.</p>
+<p>Let <span class="math inline">G=(V,E)</span> be a graph with <span class="math inline">n</span> vertices and <span class="math inline">m</span> edges, then an acyclic integer flow of value <span class="math inline">v</span> saturates <span class="math inline">O(n\sqrt{v})</span> edges.</p>
 </section>
 <p>Everything here is in the Karger and Levine's paper<span class="citation" data-cites="Karger1998">[<a href="#ref-Karger1998">1</a>]</span>, I'm writing this down for my own sake.</p>
 <section class="theorem-environment Theorem" id="Theorem-2">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">2</span></span>
-<p>Let <span class="math inline">\(d\)</span> to be the distance of the shortest path between <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span>. Let <span class="math inline">\(v\)</span> to be the value of a <span class="math inline">\(s\)</span>-<span class="math inline">\(t\)</span>-flow, then <span class="math inline">\(v\leq 2(n/d)^2\)</span> and <span class="math inline">\(v\leq 2 m/d\)</span>.</p>
+<p>Let <span class="math inline">d</span> to be the distance of the shortest path between <span class="math inline">s</span> and <span class="math inline">t</span>. Let <span class="math inline">v</span> to be the value of a <span class="math inline">s</span>-<span class="math inline">t</span>-flow, then <span class="math inline">v\leq 2(n/d)^2</span> and <span class="math inline">v\leq 2 m/d</span>.</p>
 </section>
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span></span>
-<p>Let <span class="math inline">\(V_i\)</span> to be the set of vertices with distance exactly <span class="math inline">\(i\)</span> from <span class="math inline">\(s\)</span>. The maximum flow is clearly bounded by <span class="math inline">\(|V_i||V_{i+1}|\)</span>, as all flows has to go in between the two levels and the maximum number of edges in between happens when it is a complete bipartite graph. Notice in order to maximize this value, we have <span class="math inline">\(|V_i|=n/d\)</span>. Hence <span class="math inline">\(v\leq 2(n/d)^2\)</span>. Similarly, we can also distribute the number of edges in between every two partitions, and get <span class="math inline">\(v\leq 2m/d\)</span>.</p>
+<p>Let <span class="math inline">V_i</span> to be the set of vertices with distance exactly <span class="math inline">i</span> from <span class="math inline">s</span>. The maximum flow is clearly bounded by <span class="math inline">|V_i||V_{i+1}|</span>, as all flows has to go in between the two levels and the maximum number of edges in between happens when it is a complete bipartite graph. Notice in order to maximize this value, we have <span class="math inline">|V_i|=n/d</span>. Hence <span class="math inline">v\leq 2(n/d)^2</span>. Similarly, we can also distribute the number of edges in between every two partitions, and get <span class="math inline">v\leq 2m/d</span>.</p>
 </section>
 <section class="theorem-environment Theorem" id="Theorem-3">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">3</span></span>
-<p>If we take shortest augmenting path successively in the residual graph to find a flow of value <span class="math inline">\(v\)</span>, then we saturate <span class="math inline">\(O(n\sqrt{v})\)</span> edges.</p>
+<p>If we take shortest augmenting path successively in the residual graph to find a flow of value <span class="math inline">v</span>, then we saturate <span class="math inline">O(n\sqrt{v})</span> edges.</p>
 </section>
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span></span>
-<p><span class="math inline">\(v\leq 2(n/d)^2\)</span>, thus <span class="math inline">\(d\leq n\sqrt{2}/\sqrt{v}\)</span>. If we take the shortest path successively, we have the number of edges we use in each augmenting path is</p>
-<p><span class="math display">\[
+<p><span class="math inline">v\leq 2(n/d)^2</span>, thus <span class="math inline">d\leq n\sqrt{2}/\sqrt{v}</span>. If we take the shortest path successively, we have the number of edges we use in each augmenting path is</p>
+<p><span class="math display">\displaystyle 
 	\sum_{i=1}^v n\sqrt{2}/\sqrt{i} = O(n\sqrt{v})
-\]</span></p>
+</span></p>
 </section>
-<p>For the above theorem, one might ask what happens if we use <span class="math inline">\(v\leq 2m/d\)</span> inequality instead. Then we get the sum of the length of all the augmenting paths we ever route is <span class="math inline">\(O(m\log m)\)</span>, pretty neat.</p>
+<p>For the above theorem, one might ask what happens if we use <span class="math inline">v\leq 2m/d</span> inequality instead. Then we get the sum of the length of all the augmenting paths we ever route is <span class="math inline">O(m\log m)</span>, pretty neat.</p>
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span><span class="name">Main theorem</span></span>
-<p>Let <span class="math inline">\(f\)</span> be an acyclic flow of value <span class="math inline">\(v\)</span> in <span class="math inline">\(G\)</span>. Remove all edges outside <span class="math inline">\(f\)</span>, and let the remaining graph be <span class="math inline">\(G&#39;\)</span>. Consider use shortest augmenting path algorithm sending a flow of value <span class="math inline">\(v\)</span> in <span class="math inline">\(G&#39;\)</span>. Notice this would produce <span class="math inline">\(f\)</span>. Thus this shows <span class="math inline">\(f\)</span> has <span class="math inline">\(O(n\sqrt{v})\)</span> edges.</p>
+<p>Let <span class="math inline">f</span> be an acyclic flow of value <span class="math inline">v</span> in <span class="math inline">G</span>. Remove all edges outside <span class="math inline">f</span>, and let the remaining graph be <span class="math inline">G&#39;</span>. Consider use shortest augmenting path algorithm sending a flow of value <span class="math inline">v</span> in <span class="math inline">G&#39;</span>. Notice this would produce <span class="math inline">f</span>. Thus this shows <span class="math inline">f</span> has <span class="math inline">O(n\sqrt{v})</span> edges.</p>
 </section>
 <section class="theorem-environment Corollary" id="Corollary-4">
 <span class="theorem-header"><span class="type">Corollary</span><span class="index">4</span></span>
-<p>Let <span class="math inline">\(G\)</span> be a simple graph on <span class="math inline">\(n\)</span> vertices. There exist <span class="math inline">\(\lambda(s,t)\)</span> <span class="math inline">\(st\)</span>-edge disjoint paths, such that the <span class="math inline">\(k\)</span> shortest paths has total of <span class="math inline">\(O(\sqrt{k}n)\)</span> edges for all <span class="math inline">\(k\leq \lambda(s,t)\)</span>.</p>
+<p>Let <span class="math inline">G</span> be a simple graph on <span class="math inline">n</span> vertices. There exist <span class="math inline">\lambda(s,t)</span> <span class="math inline">st</span>-edge disjoint paths, such that the <span class="math inline">k</span> shortest paths has total of <span class="math inline">O(\sqrt{k}n)</span> edges for all <span class="math inline">k\leq \lambda(s,t)</span>.</p>
 </section>
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span></span>
-<p>There exist <span class="math inline">\(\lambda(s,t)\)</span> <span class="math inline">\(st\)</span>-edge disjoint paths with total length <span class="math inline">\(O(\sqrt{\lambda(s,t)}n)\)</span>. The average length is <span class="math inline">\(O(\frac{n}{\sqrt{\lambda(s,t)}})\)</span>. The <span class="math inline">\(k\)</span> shortest paths has total length <span class="math inline">\(O(k\frac{n}{\sqrt{\lambda(s,t)}})=O(k\frac{n}{\sqrt{k}}) = O(\sqrt{k}n)\)</span>.</p>
+<p>There exist <span class="math inline">\lambda(s,t)</span> <span class="math inline">st</span>-edge disjoint paths with total length <span class="math inline">O(\sqrt{\lambda(s,t)}n)</span>. The average length is <span class="math inline">O(\frac{n}{\sqrt{\lambda(s,t)}})</span>. The <span class="math inline">k</span> shortest paths has total length <span class="math inline">O(k\frac{n}{\sqrt{\lambda(s,t)}})=O(k\frac{n}{\sqrt{k}}) = O(\sqrt{k}n)</span>.</p>
 </section>
 <h1 id="bibliography" class="unnumbered">References</h1>
 <div id="refs" class="references">

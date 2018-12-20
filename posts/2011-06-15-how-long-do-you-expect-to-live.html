@@ -9,8 +9,33 @@
     <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
     <title>How long do you expect to live?</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js" async>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
     </script>
+
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <link rel="stylesheet" href="/css/default.css" />
     <!--[if lt IE 9]>
@@ -48,11 +73,11 @@
 <p>The quote above would follow directly from the proof of the following theorem:</p>
 <section class="theorem-environment Theorem" id="Theorem-2">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">2</span></span>
-<p>For any real random variable <span class="math inline">\(X\)</span>, if <span class="math inline">\(\Pr(X\geq a)&gt;0\)</span>, <span class="math inline">\(E[X|X\geq a] \geq E[X]\)</span>.</p>
+<p>For any real random variable <span class="math inline">X</span>, if <span class="math inline">\Pr(X\geq a)&gt;0</span>, <span class="math inline">E[X|X\geq a] \geq E[X]</span>.</p>
 </section>
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span></span>
-Let <span class="math inline">\(c = \Pr(X\leq a)\)</span>
+Let <span class="math inline">c = \Pr(X\leq a)</span>
 <span class="math">\begin{align*}
 E[X] &= \int_{-\infty}^\infty x \Pr(X=x) dx\\
  &=\int_{-\infty}^a x \Pr(X=x) dx + \int_a^\infty x \Pr(X=x) dx\\
@@ -60,12 +85,12 @@ E[X] &= \int_{-\infty}^\infty x \Pr(X=x) dx\\
  &=c\int_{-\infty}^\infty x \Pr(X=x|X\leq a) dx + (1-c)\int_{-\infty}^\infty x \Pr(X=x|X\geq a) dx \\
  &=cE[X|X\leq a] + (1-c)E[X|X\geq a] \\
 \end{align*}</span>
-<p>If <span class="math inline">\(a = \lambda b + (1-\lambda) c\)</span>, where <span class="math inline">\(\lambda \in [0,1]\)</span>, then <span class="math inline">\(a \leq \max(b,c)\)</span>. Because <span class="math inline">\(E[X|X\leq a]\leq a \leq E[X|X\geq a]\)</span>, <span class="math inline">\(E[X] \leq E[X|X\geq a]\)</span>.</p>
+<p>If <span class="math inline">a = \lambda b + (1-\lambda) c</span>, where <span class="math inline">\lambda \in [0,1]</span>, then <span class="math inline">a \leq \max(b,c)</span>. Because <span class="math inline">E[X|X\leq a]\leq a \leq E[X|X\geq a]</span>, <span class="math inline">E[X] \leq E[X|X\geq a]</span>.</p>
 </section>
 <p>In fact, one can easily modify the above proof and prove the next theorem:</p>
 <section class="theorem-environment Theorem" id="Theorem-3">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">3</span></span>
-<p>For any real random variable <span class="math inline">\(X\)</span>, if <span class="math inline">\(x\geq y\)</span> and <span class="math inline">\(\Pr(X\geq x)&gt;0\)</span>, then <span class="math inline">\(E[X|X\geq x] \geq E[X|X\geq y]\)</span>.</p>
+<p>For any real random variable <span class="math inline">X</span>, if <span class="math inline">x\geq y</span> and <span class="math inline">\Pr(X\geq x)&gt;0</span>, then <span class="math inline">E[X|X\geq x] \geq E[X|X\geq y]</span>.</p>
 </section>
 <p>A heuristics conclusion: The longer you lived, you expect to live longer.</p>
 

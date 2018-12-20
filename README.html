@@ -9,8 +9,33 @@
     <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
     <title>README</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=https://chaoxuprime.com/mathjax_conf.js" async>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
     </script>
+
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
     <link rel="stylesheet" href="/css/default.css" />
     <!--[if lt IE 9]>
@@ -45,7 +70,7 @@
 <li>The math are shown with <a href="http://www.mathjax.org">MathJax</a>.</li>
 <li>The heading themes are similar to <a href="http://www.amazon.com/gp/product/0199205272/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0199205272&amp;linkCode=as2&amp;tag=fighterempire-20">Connections in Combinatorial Optimization</a>, and the remaining themes are similar to <a href="http://www.amazon.com/gp/product/0387984038/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0387984038&amp;linkCode=as2&amp;tag=fighterempire-20">Categories for the Working Mathematician</a>. The symbols are of <a href="http://www.stixfonts.org/">STIX fonts</a>, or mathjax's own.</li>
 <li>Uses <a href="http://www.kirupa.com/html5/detect_whether_font_is_installed.htm">Detect Whether a Font is Installed</a> to fall back on mathjax webfont if STIX is not installed.</li>
-<li>To compile just <code>MathDoc.hs</code>, you need <code>pandoc</code> and <code>pandoc-citeproc</code>. To compile the <code>site.hs</code>, additionally you need <code>hakyll</code>(obviously...).</li>
+<li>To compile just <code>MathDoc.hs</code>, you need <code>pandoc</code> and <code>pandoc-citeproc</code>. To compile the <code>site.hs</code>, additionally you need <code>hakyll</code>.</li>
 </ol>
 <h1 id="todo"><span class="header-section-number">2</span> Todo</h1>
 <ul>
