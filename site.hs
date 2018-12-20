@@ -87,7 +87,6 @@ mathCompiler = getResourceBody >>= mathDoc
 --mathCompiler = getResourceString >>= mathDoc
 
 idPages = ["favicon.ico",
-           "mathjax_conf.js",
            "googled46bf4e1cd540289.html",
            "CNAME",
            "index.html"]
