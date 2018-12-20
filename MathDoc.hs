@@ -21,7 +21,7 @@ setMeta key val (Pandoc (Meta ms) bs) = Pandoc (Meta $ M.insert key val ms) bs
 mathdocRead = def{readerExtensions = insert Ext_tex_math_double_backslash $ 
                                      insert Ext_tex_math_single_backslash $ 
                                      insert Ext_raw_tex pandocExtensions}
-mathdocWrite = def{writerHTMLMathMethod = MathJax "",
+mathdocWrite = def{writerHTMLMathMethod = KaTeX "" "",
                    writerHtml5          = True,
                    writerHighlight      = True,
                    writerNumberSections = True}
