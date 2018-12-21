@@ -13,12 +13,12 @@ tags: submodular
 {Proof}
 	Let $X^* = \argmin_{Y\in P(X)} f(Y)$,
 	note since $X^*\in P(X)$ and $Y^*\in P(Y)$, we have $X^*\vee Y^* \in P(X\vee Y)$ and $X^*\vee Y^* \in P(X\wedge Y)$.
-	\begin{align*}
+	\begin{aligned}
 	f_P(X) + f_P(Y) &= f(X^*) + f(Y^*)\\
 	                &\geq f(X^* \vee Y^*) + f(X^*\wedge Y^*)\\
 	                &\geq f((X\vee Y)^*) + f((X\wedge Y)^*)\\
 	                &= f_P(X\vee Y) + f_P(X\wedge Y)
-	\end{align*}
+	\end{aligned}
 
 This is quite useful, for starters, it proves that we can create a monotone submodular function from any submodular function.
 

@@ -22,14 +22,14 @@ Once we can maximize $\sum_{i=1}^n a_{\pi(i)} a_{\pi(i+1)}$, we are done.
 
 {Proof}
     Let's consider what is required to make sure the property works.
-    \begin{align*}
+    \begin{aligned}
     (a+b)x-ab &\geq  (c+d)x-cd\\
     x&\geq \frac{ab-cd}{a-c+b-d}\\
     x&\geq \frac{ab-bc+bc-cd}{a-c+b-d}\\
     x&\geq \frac{b(a-c)+c(b-d)}{a-c+b-d}\\
     x&\geq \frac{b(a-c+b-d)}{a-c+b-d}\\
     x&\geq b
-    \end{align*}
+    \end{aligned}
     The lemma is true, as $x\geq b$ is part of the hypothesis for $x$.
 
 {Theorem}

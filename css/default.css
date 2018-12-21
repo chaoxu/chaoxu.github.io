@@ -177,7 +177,7 @@ h5 {
 /* Global content control
 ----------------------------------------------- */
 img {
-    max-width: 800px;
+    max-width:100%;
     height: auto;
     margin: auto;
 }

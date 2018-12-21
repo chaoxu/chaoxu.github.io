@@ -11,7 +11,7 @@ The word problem is solved if one can put $w$ in Garside normal form. The proces
 
 
  A demonstration on a positive word.
-\begin{align*}
+\begin{aligned}
 \sigma_2\sigma_1\sigma_1\sigma_2\sigma_1\sigma_1\sigma_1\sigma_1 &= \sigma_2\sigma_1\sigma_1\sigma_2\sigma_1(\sigma_1\sigma_1\sigma_1)\\
 &= \sigma_2\sigma_1\sigma_1\sigma_2(\sigma_1\sigma_1\sigma_1)\sigma_1\\
 &= \sigma_2\sigma_1\sigma_1(\sigma_2\sigma_1\sigma_1)\sigma_1\sigma_1\\
@@ -23,7 +23,7 @@ The word problem is solved if one can put $w$ in Garside normal form. The proces
 &= \Delta^2\sigma_1\sigma_1\\
 &= \Delta^2(\sigma_1\sigma_1\cdot 1)\\
 &= \Delta^2\sigma_1^2\\
-\end{align*}
+\end{aligned}
 
 I wrote a [Haskell implementation of the algorithm](https://gist.github.com/1066286).
  <script src="https://gist.github.com/1066286.js?file=word_problem_b3.hs"></script>

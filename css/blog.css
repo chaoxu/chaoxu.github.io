@@ -90,8 +90,13 @@ table.postindex{
     border-bottom: 1px #999 dotted;
     color: #999;
 }
+table.postindex cite {
+  font-style: normal;
+}
+
 table.postindex td.right {
   text-align: right;
+  width: 11ex;
 }
 
 .header-section-number {

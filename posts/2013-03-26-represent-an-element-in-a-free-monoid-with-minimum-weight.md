@@ -41,10 +41,10 @@ The input is $a_1\ldots a_n$.
 
 Let $D(i,j)$ represent the minimum weight representation for $a_i\ldots a_j$. Let $P(i,j)$ represent the set of all possible $Power(x,k)$, such that $f(Power(x,k)) = a_i\ldots a_j$ for some $k\neq 1$. 
 
-\begin{align*}
+\begin{aligned}
 D(i,i) &= a_i\\
 D(i,j) &= \min(P(i,j)\cup \{ D(i,k)+D(k+1,j)| i\leq k\leq j-1\})
-\end{align*}
+\end{aligned}
 
 Here $\min$ return any of the expressions that achieves the minimum weight. This allows a $O(n^3)$ algorithm if one uses suffix tree for finding $P(i,j)$. One can naively try all possible $Power(x,k)$ instead, where $k|n$.
 

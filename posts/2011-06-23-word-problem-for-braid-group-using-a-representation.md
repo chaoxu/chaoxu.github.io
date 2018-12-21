@@ -45,10 +45,10 @@ $((\sigma_2\sigma_1^{-1})^n)^*(t_1)$.
 
 If we define $a_n,b_n,c_n$ to be the amount of $t_1,t_2,t_3$ (include it's inverses) at step $n$, ignoring the possibility of cancellation. We have the following recurrence relation.
 
-\begin{align*}
+\begin{aligned}
 a_{n+1} &= 2a_n + b_n\\
 b_{n+1} &= c_n\\
 c_{n+1} &= a_n+2c_n\\
-\end{align*}
+\end{aligned}
 
 One can show $a_n+b_n+c_n = 2F_{2n+1}-1$. It is also true that cancellations are not possible. 
