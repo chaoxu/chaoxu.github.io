@@ -111,6 +111,7 @@
   display: flex;
   margin-top: 10px;
   flex: 100%;
+  flex-wrap: wrap;
 }
 .col {
   flex: 50%;
