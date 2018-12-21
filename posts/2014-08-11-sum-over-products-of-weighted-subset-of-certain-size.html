@@ -92,12 +92,12 @@
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span></span>
 <p>The base case can be verified easily, we show part of a inductive step.</p>
-<span class="math">\begin{align*}
+<span class="math">\begin{aligned}
 f(v_j)D(i-w(v_j),j-1) + g(v_j)D(i,j-1) &= f(v_j) \sum_{S\subset V_{j-1}, \sum_{x\in S} w(x) = i-w(v_j)} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x)  +
 g(v_j) \sum_{S\subset V_{j-1}, \sum_{x\in S} w(x) = i)} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x) \\
 &=   \sum_{v_j\in S\subset V_j, \sum_{x\in S} w(x) = i} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x) + \sum_{v_j\not\in S\subset V_j, \sum_{x\in S} w(x) = i} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x)\\
 &= \sum_{S\subset V_j, \sum_{x\in S} w(x) = i} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x)
-\end{align*}</span>
+\end{aligned}</span>
 </section>
 
 </div>

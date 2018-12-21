@@ -65,7 +65,7 @@
 <li>Move every <span class="math inline">\Delta</span> factor in the word to the beginning of the word. Read from the end of the word, move it forward using <span class="math inline">\Delta</span> relations, pick up other <span class="math inline">\Delta</span> on the way. Check if moving <span class="math inline">\Delta</span> generates another <span class="math inline">\Delta</span>. <span class="math inline">B_3</span> don't have <span class="math inline">\sigma_i\sigma_j = \sigma_j\sigma_i</span> relation, therefore if a new <span class="math inline">\Delta</span> is created from moving <span class="math inline">\Delta</span>'s around, it is a local event. To be precise, during this process, <span class="math inline">x\Delta^m y = x\Delta^{m+1} y&#39;</span> if and only if the first 3 letter in the current presentation of <span class="math inline">y</span> is <span class="math inline">\Delta</span>.</li>
 </ol>
 A demonstration on a positive word.
-<span class="math">\begin{align*}
+<span class="math">\begin{aligned}
 \sigma_2\sigma_1\sigma_1\sigma_2\sigma_1\sigma_1\sigma_1\sigma_1 &= \sigma_2\sigma_1\sigma_1\sigma_2\sigma_1(\sigma_1\sigma_1\sigma_1)\\
 &= \sigma_2\sigma_1\sigma_1\sigma_2(\sigma_1\sigma_1\sigma_1)\sigma_1\\
 &= \sigma_2\sigma_1\sigma_1(\sigma_2\sigma_1\sigma_1)\sigma_1\sigma_1\\
@@ -77,7 +77,7 @@ A demonstration on a positive word.
 &= \Delta^2\sigma_1\sigma_1\\
 &= \Delta^2(\sigma_1\sigma_1\cdot 1)\\
 &= \Delta^2\sigma_1^2\\
-\end{align*}</span>
+\end{aligned}</span>
 I wrote a <a href="https://gist.github.com/1066286">Haskell implementation of the algorithm</a>.
 <script src="https://gist.github.com/1066286.js?file=word_problem_b3.hs"></script>
 

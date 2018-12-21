@@ -71,12 +71,12 @@ D(v) = \min_{(v,u)\in A} \max(D(u)-w((v,u)),0)
 <p>Because the graph is acyclic, there is a nice ordering allowing us to compute this nicely.</p>
 <p>Note this is exactly the best weight problem<span class="citation" data-cites="Huang08advanceddynamic">[<a href="#ref-Huang08advanceddynamic">1</a>]</span> under the semiring <span class="math inline">(\mathbb{R}\cup \{\infty\},\min,\otimes,\infty,0)</span>, where <span class="math inline">a \otimes b = \max(a-b,0)</span>.</p>
 <p>One should prove it's a semiring before using it. Everything seems obvious except the distributive property of the <span class="math inline">\otimes</span> operation. Here is a proof for one of the two distributive laws, the other is left as an exercise to the reader.</p>
-<span class="math">\begin{align*}
+<span class="math">\begin{aligned}
 (a\oplus b) \otimes c &= \max(\min(a,b)-c,0)\\
 &= \max(\min(a-c,b-c),0)\\
 &= \min(\max(a-c,0),\max(b-c,0))\\
 &= (a \otimes c) \oplus (b \otimes c)
-\end{align*}</span>
+\end{aligned}</span>
 <p>Can we extend the problem to directed graph with cycles? Yes. This semiring has the property that it is <span class="math inline">k</span>-closed for any graph <span class="math inline">G</span> for <span class="math inline">k</span> depending on <span class="math inline">G</span> and <span class="math inline">w</span>. It means we can't keep going though a cycle and keep producing better solutions. We can run a generic single source shortest distance algorithm<span class="citation" data-cites="Mohri:2002">[<a href="#ref-Mohri:2002">2</a>]</span>.</p>
 <h1 id="bibliography" class="unnumbered">References</h1>
 <div id="refs" class="references">

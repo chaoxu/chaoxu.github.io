@@ -65,11 +65,11 @@ n! =\prod_{k=1}^\infty p_k^{\sum_{i=1}^\infty \lfloor \frac{n}{p_k^i} \rfloor}
 </span> where <span class="math inline">p_k</span> is the <span class="math inline">k</span>-th prime.</p>
 <p>Of course, since we are going to manipulate the sum and the product, it is better to replace <span class="math inline">\infty</span> to some large <span class="math inline">N</span> so we don't need to define what we mean by infinite product or why we can switch the order of summation, etc.</p>
 Now consider the following inequality, left as an exercise to the reader <span class="math inline">\lfloor a+b\rfloor \geq \lfloor a \rfloor + \lfloor b\rfloor</span>. Then everything follows by easy algebraic manipulation.
-<span class="math">\begin{align*}
+<span class="math">\begin{aligned}
 {n\choose k} &= \frac{n!}{(n-k)!k!}\\
 &= \frac{\prod_{k=1}^N p_k^{\sum_{i=1}^N \lfloor \frac{n}{p_k^i} \rfloor}}{\prod_{k=1}^N p_k^{\sum_{i=1}^N \lfloor \frac{n-k}{p_k^i} \rfloor} \prod_{k=1}^N p_k^{\sum_{i=1}^N \lfloor \frac{k}{p_k^i} \rfloor} }\\
 &= \prod_{k=1}^N p_k^{\sum_{i=1}^N \lfloor \frac{n}{p_k^i} \rfloor - \lfloor \frac{n-k}{p_k^i} \rfloor - \lfloor \frac{k}{p_k^i} \rfloor}
-\end{align*}</span>
+\end{aligned}</span>
 <p>Using the previous inequality, we see every exponent is a integer greater or equal to <span class="math inline">0</span>. This shows <span class="math inline">{n\choose k}</span> is a integer.</p>
 <section class="theorem-environment Remark" id="Remark-">
 <span class="theorem-header"><span class="type">Remark</span></span>

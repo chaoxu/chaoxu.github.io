@@ -105,13 +105,13 @@ w(i,j) + w(i+1,j+1)\leq w(i,j+1) + w(i+1,j)
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span></span>
 Let <span class="math inline">\sum_{k=i+1}^{j-1} a_i - \mu = m</span>
-<span class="math">\begin{align*}
+<span class="math">\begin{aligned}
 w(i,j)+w(i+1,j+1) &=  |\sum_{k=i}^{j-1} a_i - \mu|
                     + |\sum_{k=i+1}^{j} a_i - \mu|\\
                   &= |a_i + m| + |a_j + m|\\
                   &\leq |a_i+a_j+m| + |m|\\
                   &= w(i,j+1)+w(i+1,j)
-\end{align*}</span>
+\end{aligned}</span>
 <p>To prove the <span class="math inline">\leq</span>, see that <span class="math inline">a_i,a_j</span> are positive, one can consider either <span class="math inline">m</span> is negative or positive, and notice either way the inequality holds true.</p>
 </section>
 <section class="theorem-environment Remark" id="Remark-">

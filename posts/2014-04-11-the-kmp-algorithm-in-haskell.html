@@ -101,12 +101,12 @@ isInfixOf&#39; pattern text
  <span class="fu">|</span> otherwise    <span class="fu">=</span> or <span class="fu">$</span> matchFold (buildAutomaton pattern) text (const (<span class="dt">False</span><span class="fu">:</span>)) (const (<span class="dt">True</span><span class="fu">:</span>)) []</code></pre></div>
 <p>It is obvious how we can build the entire automaton except for the failure transition.</p>
 Another way to reason about it. We impose an order on a set of strings <span class="math inline">S</span> by measuring the length of the string, so this order is a linear order when the set of strings have different length. Let <span class="math inline">Prefix(s)</span> to be the set of all prefix of <span class="math inline">s</span>. <span class="math inline">s^R</span> to be the reverse of <span class="math inline">s</span>.
-<span class="math">\begin{align*}
+<span class="math">\begin{aligned}
 Border(s) &= Prefix(s)\cap Prefix(s^R)\\
 Border'(sa) &= \{x|x\in Border(s),xa\not\in Border(sa)\}\\
 b(s) &= \max(Border(s)\backslash \{s\})\\
 b'(sa) &= \max(Border'(sa))
-\end{align*}</span>
+\end{aligned}</span>
 <p>Assume we try to compute <span class="math inline">b(x)</span> for a string <span class="math inline">x</span>, we first build the function <span class="math inline">next</span>, such that <span class="math inline">next</span> iterates through <span class="math inline">Prefix(x)</span> by length, and <span class="math inline">last</span> is a function that returns the last element in the string. We have the following relation for <span class="math inline">sa</span> a prefix of <span class="math inline">x</span>, where <span class="math inline">s</span> is a string and <span class="math inline">a</span> is in the alphabet.</p>
 <p><span class="math display">\displaystyle 
 b(sa) = \begin{cases} next(b(s)) &amp; last(next(b(s))) = a\\

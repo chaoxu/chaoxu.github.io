@@ -68,10 +68,10 @@
 </span></p>
 <p>This article shows how we can prove this result, and easily infer a more general theorem. First, we see there is a group isomorphism from the naturals to it's prime factors <span class="math inline">f:\mathbb{N}-&gt;\mathbb{N}^\infty</span>, <span class="math inline">f(p_1^{e_1} \ldots p_n^{e^n}) = (e_1,\ldots,e_n,0,0,\ldots)</span>, where <span class="math inline">p_n</span> is the <span class="math inline">n</span>th prime.</p>
 It's easy to show
-<span class="math">\begin{align*}
+<span class="math">\begin{aligned}
 \lcm(a_1,a_2,\ldots,a_n) &= f^{-1} (\max(f(a_1),\ldots,f(a_n)))\\
 \gcd(a_1,a_2,\ldots,a_n) &= f^{-1} (\min(f(a_1),\ldots,f(a_n)))
-\end{align*}</span>
+\end{aligned}</span>
 <p>where <span class="math inline">\max</span> and <span class="math inline">\min</span> are defined coordinate-wise. In fact we only need to concern with one single coordinate. So the problem become proving <span class="math display">\displaystyle 
 \max(a,b,c) = a+b+c+\min(a,b,c)-(\min(a,b)+\min(b,c)+\min(a,c))
 </span>, then the formula for <span class="math inline">\lcm</span> of 3 numbers holds.</p>

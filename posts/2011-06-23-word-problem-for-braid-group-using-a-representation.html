@@ -83,11 +83,11 @@ I wrote the program in Haskell, and <a href="https://gist.github.com/1041985">po
 <p>Braid groups are automatic. If this natural algorithm solves the problem in <span class="math inline">O(l^2 n)</span> time, it is not a surprise. However, it is likely not true. The running time is more likely to be <span class="math inline">O(c^l n)</span> for some constant <span class="math inline">c</span>. Although I can prove neither <span class="math inline">\sigma_i^*</span> and increase the length by a constant factor or by a constant. The best known algorithm in 2000 was provided by <a href="http://www.sciencedirect.com/science/article/pii/S0166864199000632">a paper of Hessam Hamidi-Tehrani</a>. It runs in <span class="math inline">O(l^2 n + l n \log n)</span> time, and was proved with advanced techniques.</p>
 <p><strong>Update 06/24/2011</strong>: Siegel provided a example in <span class="math inline">B_3</span> where the algorithm run in exponential time. <span class="math inline">((\sigma_2\sigma_1^{-1})^n)^*(t_1)</span>.</p>
 <p>If we define <span class="math inline">a_n,b_n,c_n</span> to be the amount of <span class="math inline">t_1,t_2,t_3</span> (include it's inverses) at step <span class="math inline">n</span>, ignoring the possibility of cancellation. We have the following recurrence relation.</p>
-<span class="math">\begin{align*}
+<span class="math">\begin{aligned}
 a_{n+1} &= 2a_n + b_n\\
 b_{n+1} &= c_n\\
 c_{n+1} &= a_n+2c_n\\
-\end{align*}</span>
+\end{aligned}</span>
 <p>One can show <span class="math inline">a_n+b_n+c_n = 2F_{2n+1}-1</span>. It is also true that cancellations are not possible.</p>
 
 </div>

@@ -69,13 +69,13 @@
 C(x) = \prod_{i=1}^m \sum_{j=0}^\infty x^{j d_i}
 </span></p>
 <p>The coefficient for <span class="math inline">x^n</span> is our solution. Let <span class="math inline">l = \lcm(d_1,\ldots,d_m)</span>.</p>
-<span class="math">\begin{align*}
+<span class="math">\begin{aligned}
 C(x) &= \prod_{i=1}^m \sum_{j=0}^\infty x^{j d_i}\\
 &= \prod_{i=1}^m (1-x^{d_i})^{-1}\\
 &= \left( \prod_{i=1}^m \sum_{j=0}^{l/d_i - 1} x^{j d_i} \right)(1-x^l)^{-m}\\
 &= \left( \prod_{i=1}^m \sum_{j=0}^{l/d_i - 1} x^{j d_i} \right)
 \sum_{k=0}^\infty { k+m-1 \choose m-1  } x^{lk}\\
-\end{align*}</span>
+\end{aligned}</span>
 <p>Now, notice the first part can be precomputed as some polynomial with finite degree. Let it be <span class="math inline">P(x)</span>, then we get that we need to find the coefficient of <span class="math inline">x^n</span> in the following expression. <span class="math display">\displaystyle 
 \sum_{k=0}^\infty P(x) { k+m-1 \choose m-1  } x^{lk}
 </span></p>
