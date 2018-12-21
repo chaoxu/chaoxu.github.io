@@ -9,7 +9,6 @@ body {
     margin: auto;
     background-color: #fff;
     text-align: left;
-    margin: auto;
     display:table;
     /*min-width: 840px;*/
 }
@@ -128,7 +127,7 @@ a:hover {
 }
 
 footer {
-    margin: 0.5em 20px 0 20px;
+    margin: 0.5em 0 0 0;
     border-top: 3px double #ccc;
     padding: 1em 0 0 0;
     font-size: 70%;

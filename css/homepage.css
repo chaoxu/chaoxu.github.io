@@ -25,6 +25,9 @@
     float: left;
   }
 }
+.disabled {
+  opacity: 0.1;
+}
 .abstract {
    display:none;
    border-style: solid;
