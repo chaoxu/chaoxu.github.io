@@ -1,8 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="The Art Gallery Guardian">
     <meta name="author" content="Chao Xu">
@@ -37,14 +36,12 @@
     </script>
 
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
-    <link rel="stylesheet" href="/css/default.css" />
-    <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
   </head>
   <body>
     <header class="hide-on-print">
-        <div id="blog-title">
+        <div id="site-title">
             <a href="/blog.html">The Art Gallery Guardian</a>
         </div>
     </header>
@@ -92,8 +89,8 @@ T(m,n)  = \begin{cases}
          \end{cases}       
 </span> For <span class="math inline">n</span> larger than <span class="math inline">\frac{m}{6}</span>, the algorithm will have <span class="math inline">O(\log \frac{n}{m})</span> recursive calls, each one cost <span class="math inline">O(1)</span> time. Once it reaches small <span class="math inline">n</span>, it will spend <span class="math inline">O(n)=O(m)</span> time on a linear search. The algorithm spends a total of <span class="math inline">O(m+ \log \frac{n}{m}) = O(m+\log n)</span> time.</p>
 <h1 id="notes"><span class="header-section-number">4</span> Notes</h1>
-<a href="https://www.facebook.com/BrosefStylin">Brosef Stalin</a> offered an alternative logic that offers cleaner code.
-<script src="http://pastebin.com/embed_js.php?i=107WhrsU"></script>
+Brosef Stalin offered an alternative logic that offers cleaner code.
+<script src="https://pastebin.com/embed_js.php?i=107WhrsU"></script>
 <p>Can we generalize this to first increase then decrease then increase arrays? One can show <span class="math inline">O(n)</span> is best possible by considering an array with <span class="math inline">a[i]=i</span> for all <span class="math inline">i\neq j</span>, and <span class="math inline">a[j]=-1</span>. There is no way to find <span class="math inline">j</span> with out looking over every position.</p>
 
 </div>
@@ -104,18 +101,6 @@ T(m,n)  = \begin{cases}
 </div>
       </article>
     </main>
-    <footer class="hide-on-print">© 2010 - <script>document.write(new Date().getFullYear())</script> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
-    <script>
-      var clicky_site_ids = clicky_site_ids || [];
-      clicky_site_ids.push(100956820);
-      (function() {
-        var s = document.createElement('script');
-        s.type = 'text/javascript';
-        s.async = true;
-        s.src = '//static.getclicky.com/js';
-        ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
-      })();
-    </script>
-    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100956820ns.gif" /></p></noscript>
+    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
   </body>
 </html>
