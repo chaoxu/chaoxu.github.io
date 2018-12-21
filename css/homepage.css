@@ -128,7 +128,7 @@
   border:0px;
 }
 .coauthor-list li {
-  display: inline;
+  display:inline;
   margin:0px;
 }
 .coauthor-list::before { 

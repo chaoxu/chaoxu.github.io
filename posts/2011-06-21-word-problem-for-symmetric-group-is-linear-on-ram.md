@@ -7,7 +7,7 @@ tags: BSU REU, computational complexity, group theory
 
 {Problem}(The word problem for symmetric groups)
 
-    **Input:***
+    **Input:**
     $w$ is a word of length $l$ from the presentation $S_n = \langle x_1,x_2,\ldots,x_n \mid x_i^2 = 1, x_{i+1}x_ix_{i+1} = x_ix_{i+1}x_i, x_ix_j = x_jx_i \rangle$ where $|i-j|\neq 1$.
      
     **Output:**
@@ -53,7 +53,7 @@ The normal form of a word $w\in S_n$ is $w = u_1u_2\ldots u_n$, such that $u_i\i
 
 One can construct a purely symbolic algorithm that apply only the group relations. We measure the time by the amount of group relations used.
 
-Siegel proposed an $O(l^2)$ algorithm to solve this problem. It is shown in [these slides](http://chaoxuprime.com/files/works/2011summer/week1pres.pdf).
+Siegel proposed an $O(l^2)$ algorithm to solve this problem.
 
 If there exist an algorithm $A(w)$ that write the word $w$ of length $l$ in normal form in $O(f(l,n))$ time., then one can always make it into an algorithm taking $O(l f(n^2,n))$ time.
 
