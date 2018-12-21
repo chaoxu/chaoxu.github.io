@@ -74,14 +74,13 @@
 </section>
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span></span>
-Let <span class="math inline">c = \Pr(X\leq a)</span>
-<span class="math">\begin{aligned}
-E[X] &= \int_{-\infty}^\infty x \Pr(X=x) dx\\
- &=\int_{-\infty}^a x \Pr(X=x) dx + \int_a^\infty x \Pr(X=x) dx\\
- &=\int_{-\infty}^\infty x \Pr(X=x|X\leq a)\Pr(X\leq a) dx + \int_{-\infty}^\infty x \Pr(X=x|X\geq a)\Pr(X\geq a) dx\\
- &=c\int_{-\infty}^\infty x \Pr(X=x|X\leq a) dx + (1-c)\int_{-\infty}^\infty x \Pr(X=x|X\geq a) dx \\
- &=cE[X|X\leq a] + (1-c)E[X|X\geq a] \\
-\end{aligned}</span>
+<p>Let <span class="math inline">c = \Pr(X\leq a)</span> <span class="math display">\displaystyle \begin{aligned}
+E[X] &amp;= \int_{-\infty}^\infty x \Pr(X=x) dx\\
+ &amp;=\int_{-\infty}^a x \Pr(X=x) dx + \int_a^\infty x \Pr(X=x) dx\\
+ &amp;=\int_{-\infty}^\infty x \Pr(X=x|X\leq a)\Pr(X\leq a) dx + \int_{-\infty}^\infty x \Pr(X=x|X\geq a)\Pr(X\geq a) dx\\
+ &amp;=c\int_{-\infty}^\infty x \Pr(X=x|X\leq a) dx + (1-c)\int_{-\infty}^\infty x \Pr(X=x|X\geq a) dx \\
+ &amp;=cE[X|X\leq a] + (1-c)E[X|X\geq a] \\
+\end{aligned}</span></p>
 <p>If <span class="math inline">a = \lambda b + (1-\lambda) c</span>, where <span class="math inline">\lambda \in [0,1]</span>, then <span class="math inline">a \leq \max(b,c)</span>. Because <span class="math inline">E[X|X\leq a]\leq a \leq E[X|X\geq a]</span>, <span class="math inline">E[X] \leq E[X|X\geq a]</span>.</p>
 </section>
 <p>In fact, one can easily modify the above proof and prove the next theorem:</p>

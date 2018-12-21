@@ -61,73 +61,71 @@
 <p>This post shows how to solve the special case for <a href="http://cs.stackexchange.com/questions/12441/is-it-np-hard-to-fill-up-bins-with-minimum-moves">this problem</a>. The special case has exactly one bin, and each ball have weight a power of <span class="math inline">2</span>. It is one of the <a href="http://cs.stackexchange.com/unanswered">most popular unanswered problem on cs.stackexchange</a> as of writing.</p>
 <section class="theorem-environment Problem" id="Problem-1">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
-We are interested in solving the following integer program,
-<span class="math">\begin{aligned}
-\text{Minimize:} & \sum_{i=1}^n |x_i-a_i| \\
-\text{subject to:} & \sum_{i=1}^n w_i x_i = c\\
-& 0\leq x_i \leq b_i \text{ for all } 1\leq i \leq n\\
-\end{aligned}</span>
+<p>We are interested in solving the following integer program, <span class="math display">\displaystyle \begin{aligned}
+\text{Minimize:} &amp; \sum_{i=1}^n |x_i-a_i| \\
+\text{subject to:} &amp; \sum_{i=1}^n w_i x_i = c\\
+&amp; 0\leq x_i \leq b_i \text{ for all } 1\leq i \leq n\\
+\end{aligned}</span></p>
 <p>where each <span class="math inline">w_i</span> is a power of <span class="math inline">2</span> for all <span class="math inline">1\leq i\leq n</span>. Assume <span class="math inline">w_i\leq w_{i+1}</span>.</p>
 </section>
 <p>In fact, we do not require the <span class="math inline">w_i</span>s are powers of <span class="math inline">2</span>. We can establish polynomial time as long as <span class="math inline">w_{i+1}/w_i</span> is bounded by a polynomial in terms of the input size for all <span class="math inline">i</span>. However, for simplicity of exposition, assume <span class="math inline">w_i</span>s are powers of <span class="math inline">2</span>. We do not know the case when <span class="math inline">w_{i+1}/w_i</span> is unbounded.</p>
 <p>Consider a more natural problem without the absolute values.</p>
 <section class="theorem-environment Problem" id="Problem-2">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">2</span><span class="name"><span class="math inline">0</span>-<span class="math inline">1</span> exact knapsack problem with divisible weights</span></span>
-We are interested in solving the following integer program,
-<span class="math">\begin{aligned}
-\text{Minimize:} & \sum_{i=1}^n c_i x_i \\
-\text{subject to:} & \sum_{i=1}^n w_i x_i = t\\
-& x_i \in \{0,1\} \text{ for all } 1\leq i \leq n\\
-\end{aligned}</span>
+<p>We are interested in solving the following integer program, <span class="math display">\displaystyle \begin{aligned}
+\text{Minimize:} &amp; \sum_{i=1}^n c_i x_i \\
+\text{subject to:} &amp; \sum_{i=1}^n w_i x_i = t\\
+&amp; x_i \in \{0,1\} \text{ for all } 1\leq i \leq n\\
+\end{aligned}</span></p>
 <p>where <span class="math inline">w_i|w_{i+1}</span> for all <span class="math inline">1\leq i\leq n</span>. <span class="math inline">w_i</span> can be negative.</p>
 </section>
 <p>We show <a href="#Problem-1">Problem 1</a> reduces to <a href="#Problem-2">Problem 2</a> with polynomial blow up, and <a href="#Problem-2">Problem 2</a> can be solved in polynomial time.</p>
 <h1 id="reduction"><span class="header-section-number">1</span> Reduction</h1>
 <p>The reduction goes through a few steps. We start with the integer program in <a href="#Problem-1">Problem 1</a>, and let <span class="math inline">y_i = a_i-x_i</span>, and we get</p>
-<span class="math">\begin{aligned}
-\text{Minimize:} & \sum_{i=1}^n |y_i| \\
-\text{subject to:} & \sum_{i=1}^n w_i y_i = \sum_{i=1}^n w_i a_i - c\\
-& a_i-b_i\leq y_i \leq a_i \text{ for all } 1\leq i \leq n\\
-\end{aligned}</span>
+<p><span class="math display">\displaystyle \begin{aligned}
+\text{Minimize:} &amp; \sum_{i=1}^n |y_i| \\
+\text{subject to:} &amp; \sum_{i=1}^n w_i y_i = \sum_{i=1}^n w_i a_i - c\\
+&amp; a_i-b_i\leq y_i \leq a_i \text{ for all } 1\leq i \leq n\\
+\end{aligned}</span></p>
 <p>Let <span class="math inline">c&#39; = \sum_{i=1}^n w_ia_i -c</span>, and <span class="math inline">l_i = a_i-b_i</span> and <span class="math inline">u_i = a_i</span>.</p>
-<span class="math">\begin{aligned}
-\text{Minimize:} & \sum_{i=1}^n |y_i| \\
-\text{subject to:} & \sum_{i=1}^n w_i y_i = c'\\
-& l_i \leq y_i \leq u_i \text{ for all } 1\leq i \leq n\\
-\end{aligned}</span>
+<p><span class="math display">\displaystyle \begin{aligned}
+\text{Minimize:} &amp; \sum_{i=1}^n |y_i| \\
+\text{subject to:} &amp; \sum_{i=1}^n w_i y_i = c&#39;\\
+&amp; l_i \leq y_i \leq u_i \text{ for all } 1\leq i \leq n\\
+\end{aligned}</span></p>
 <p>Let <span class="math inline">y_i=y_i^+ - y_i^-</span>, where <span class="math inline">y_i^-,y_i^+\geq 0</span>, we can remove the absolute value.</p>
-<span class="math">\begin{aligned}
-\text{Minimize:} & \sum_{i=1}^n y_i^+ + y_i^- \\
-\text{subject to:} & \sum_{i=1}^n w_i y_i^+ + \sum_{i=1}^n -w_i y_i^- = c'\\
-& l_i \leq y_i^+- y_i^- \leq u_i \text{ for all } 1\leq i \leq n\\
-& y_i^-, y_i^+\geq 0 \text{ for all } 1\leq i \leq n\\
-\end{aligned}</span>
+<p><span class="math display">\displaystyle \begin{aligned}
+\text{Minimize:} &amp; \sum_{i=1}^n y_i^+ + y_i^- \\
+\text{subject to:} &amp; \sum_{i=1}^n w_i y_i^+ + \sum_{i=1}^n -w_i y_i^- = c&#39;\\
+&amp; l_i \leq y_i^+- y_i^- \leq u_i \text{ for all } 1\leq i \leq n\\
+&amp; y_i^-, y_i^+\geq 0 \text{ for all } 1\leq i \leq n\\
+\end{aligned}</span></p>
 <p>Observe that we can separate the inequalities involving <span class="math inline">y_i^+ - y_i^-</span>, because there is always an optimal where <span class="math inline">y_i^-</span> or <span class="math inline">y_i^+</span> is <span class="math inline">0</span>.</p>
 <section class="theorem-environment Remark" id="Remark-">
 <span class="theorem-header"><span class="type">Remark</span></span>
 <p>This observation fails when the number of bins is more than <span class="math inline">1</span>.</p>
 </section>
-<span class="math">\begin{aligned}
-\text{Minimize:} & \sum_{i=1}^n y_i^+ + y_i^- \\
-\text{subject to:} & \sum_{i=1}^n w_i y_i^+ + \sum_{i=1}^n -w_i y_i^- = c'\\
-& 0 \leq y_i^+ \leq u_i \text{ for all } 1\leq i \leq n\\
-& 0 \leq y_i^- \leq -l_i \text{ for all } 1\leq i \leq n\\
-\end{aligned}</span>
+<p><span class="math display">\displaystyle \begin{aligned}
+\text{Minimize:} &amp; \sum_{i=1}^n y_i^+ + y_i^- \\
+\text{subject to:} &amp; \sum_{i=1}^n w_i y_i^+ + \sum_{i=1}^n -w_i y_i^- = c&#39;\\
+&amp; 0 \leq y_i^+ \leq u_i \text{ for all } 1\leq i \leq n\\
+&amp; 0 \leq y_i^- \leq -l_i \text{ for all } 1\leq i \leq n\\
+\end{aligned}</span></p>
 <p>This is an integer program as a bounded exact knapsack problem.</p>
-<span class="math">\begin{aligned}
-\text{Minimize:} & \sum_{i=1}^n x_i \\
-\text{subject to:} & \sum_{i=1}^n w_i x_i = c\\
-& 0 \leq x_i \leq b_i \text{ for all } 1\leq i \leq n\\
-\end{aligned}</span>
+<p><span class="math display">\displaystyle \begin{aligned}
+\text{Minimize:} &amp; \sum_{i=1}^n x_i \\
+\text{subject to:} &amp; \sum_{i=1}^n w_i x_i = c\\
+&amp; 0 \leq x_i \leq b_i \text{ for all } 1\leq i \leq n\\
+\end{aligned}</span></p>
 <p>Finally, apply the standard technique that rewrites a bounded knapsack problem to <span class="math inline">0</span>-<span class="math inline">1</span>-knapsack problem (see Section 7.1.1 of <span class="citation" data-cites="9783540402862">[<a href="#ref-9783540402862">1</a>]</span>). The blow up in problem size is at most a factor of <span class="math inline">O(\log \max_i b_i)</span>. We can get the integer program in <a href="#Problem-2">Problem 2</a>, and also the weights are all powers of <span class="math inline">2</span>. The reduction runs in polynomial time with respect to input size.</p>
 <h1 id="solving-problem-2"><span class="header-section-number">2</span> Solving <a href="#Problem-2">Problem 2</a></h1>
 <p><a href="http://sevenkplus.com/">Yuzhou Gu</a> noted that the integer program in <a href="#Problem-2">Problem 2</a> has a dynamic programming solution.</p>
 <p>Let <span class="math inline">D[m,k]</span> to be the optimal value to the following problem</p>
-<span class="math">\begin{aligned}
-\text{Minimize:} & \sum_{j=1}^m c_j x_j \\
-\text{subject to:} & \sum_{j=1}^m w_j x_j = k |w_m| + t \bmod |w_m|\\
-& x_j \in \{0,1\} \text{ for all } 1\leq j \leq m\\
-\end{aligned}</span>
+<p><span class="math display">\displaystyle \begin{aligned}
+\text{Minimize:} &amp; \sum_{j=1}^m c_j x_j \\
+\text{subject to:} &amp; \sum_{j=1}^m w_j x_j = k |w_m| + t \bmod |w_m|\\
+&amp; x_j \in \{0,1\} \text{ for all } 1\leq j \leq m\\
+\end{aligned}</span></p>
 <p>The claim is that <span class="math inline">D[m,k]</span> can be expressed by the following recurrence relation.</p>
 <p><span class="math display">\displaystyle 
 D[m,k] = \min_{x_m\in \{0,1\}} D\left[m-1,\frac{|w_m|k- w_m x_m+(t\bmod |w_m| - t\bmod |w_{m-1}|)}{|w_{m-1}|}\right]

@@ -66,13 +66,12 @@
 </section>
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span></span>
-Let <span class="math inline">X^* = \argmin_{Y\in P(X)} f(Y)</span>, note since <span class="math inline">X^*\in P(X)</span> and <span class="math inline">Y^*\in P(Y)</span>, we have <span class="math inline">X^*\vee Y^* \in P(X\vee Y)</span> and <span class="math inline">X^*\vee Y^* \in P(X\wedge Y)</span>.
-<span class="math">\begin{aligned}
-f_P(X) + f_P(Y) &= f(X^*) + f(Y^*)\\
-                &\geq f(X^* \vee Y^*) + f(X^*\wedge Y^*)\\
-                &\geq f((X\vee Y)^*) + f((X\wedge Y)^*)\\
-                &= f_P(X\vee Y) + f_P(X\wedge Y)
-\end{aligned}</span>
+<p>Let <span class="math inline">X^* = \argmin_{Y\in P(X)} f(Y)</span>, note since <span class="math inline">X^*\in P(X)</span> and <span class="math inline">Y^*\in P(Y)</span>, we have <span class="math inline">X^*\vee Y^* \in P(X\vee Y)</span> and <span class="math inline">X^*\vee Y^* \in P(X\wedge Y)</span>. <span class="math display">\displaystyle \begin{aligned}
+f_P(X) + f_P(Y) &amp;= f(X^*) + f(Y^*)\\
+                &amp;\geq f(X^* \vee Y^*) + f(X^*\wedge Y^*)\\
+                &amp;\geq f((X\vee Y)^*) + f((X\wedge Y)^*)\\
+                &amp;= f_P(X\vee Y) + f_P(X\wedge Y)
+\end{aligned}</span></p>
 </section>
 <p>This is quite useful, for starters, it proves that we can create a monotone submodular function from any submodular function.</p>
 <section class="theorem-environment Theorem" id="Theorem-2">
