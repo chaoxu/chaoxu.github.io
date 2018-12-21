@@ -1,6 +1,7 @@
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 721px) {
   .container {
     width: 700px;
+    margin: auto;
   }
   .intro-left {
     width: 40%;
@@ -10,10 +11,17 @@
     width: 60%;
     float:left;
   }
+  .cv-left{
+    width: 10%;
+  }
+  .cv-right{
+    width: 90%;
+  }
 }
-@media screen and (max-width: 699px) {
+@media screen and (max-width: 720px) {
   .container {
-    width: 100%;
+    width: 97%;
+    margin: auto;
   }
   .intro-left {
     width: 100%;
@@ -23,6 +31,12 @@
   .intro-right {
     width: 100%;
     float: left;
+  }
+  .cv-left{
+    width:20px;
+  }
+  .cv-right{
+    width:100%;
   }
 }
 .disabled {
@@ -80,7 +94,6 @@
 }
 .cv-left{
   float:left;
-  width:10%;
 }
 .cv-left a{
   border: 0;
