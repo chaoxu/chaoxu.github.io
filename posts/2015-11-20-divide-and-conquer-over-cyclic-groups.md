@@ -27,11 +27,11 @@ First, we would need a small lemma.
 
 	Proof by induction, basically $\frac{1}{x} (1+\frac{1}{x-1})=\frac{1}{x-1}$ for any $x\neq 0,1$, so this is true when $k=1$.
 
-	\begin{aligned}
+	\[\begin{aligned}
 	1+\sum_{j=1}^k \frac{1}{p_j} \prod_{i=1}^j \left(1+\frac{1}{p_i -1}\right) &= \prod_{j=1}^{k-1}\left(1+\frac{1}{p_j-1}\right) + \frac{1}{p_k}\prod_{j=1}^{k}\left(1+\frac{1}{p_j-1}\right)\\
 	&= \left(1+\frac{1}{p_k} \left(1 + \frac{1}{p_{k-1}}\right) \right)\prod_{j=1}^{k-1}\left(1+\frac{1}{p_j-1}\right)\\
 	&= \left(1+\frac{1}{p_k -1}\right)\prod_{j=1}^{k-1}\left(1+\frac{1}{p_j-1}\right)\\
-	\end{aligned}
+	\end{aligned}\]
 
 {Theorem}
 	
@@ -40,19 +40,19 @@ First, we would need a small lemma.
 	\]
 
 {Proof}
-	\begin{aligned}
+	\[\begin{aligned}
 		f_k(x)            &= \sum_{i=0}^k f_i(x/p_i)\\
 		f_k(x)-f_k(x/p_i) &= \sum_{i=0}^{k-1} f_i(x/p_i)\\
 		                  &= x \sum_{i=0}^{k-1} \frac{1}{p_i} \prod_{j=1}^i \left(1+\frac{1}{p_j-1}\right)\\
 		                  &= x \left(1 + \sum_{i=1}^{k-1} \frac{1}{p_i} \prod_{j=1}^i \left(1+\frac{1}{p_j-1}\right)\right)\\
 		                  &= x \prod_{i=1}^{k-1} \left(1+\frac{1}{p_i-1}\right)\\
-	\end{aligned}
+	\end{aligned}\]
 
 	We can substitute $f_k(x) = x \prod_{i=1}^{k} \left(1+\frac{1}{p_i-1}\right)$, and see the result matches.
 
-	\begin{aligned}
+	\[\begin{aligned}
 		x\left(1-\frac{1}{p_i}\right) \prod_{i=1}^{k} \left(1+\frac{1}{p_i-1}\right) = x \prod_{i=1}^{k-1} \left(1+\frac{1}{p_i-1}\right)
-	\end{aligned}
+	\end{aligned}\]
 
 It's also useful to bound $f_k(x)$.
 
@@ -64,13 +64,13 @@ It's also useful to bound $f_k(x)$.
 
 {Proof}
 	
-	\begin{aligned}
+	\[\begin{aligned}
 		f_k(x) &= x \prod_{i=1}^{k} \left(1+\frac{1}{p_i-1}\right)\\
 		       &\leq x \exp \left( \sum_{i=1}^k \frac{1}{p_i-1}\right)\\
 		       &\leq x \exp \left( 1 + \sum_{i=1}^k \frac{1}{p_i}\right)\\
 		       &\leq x \exp \left( \log \log (k \log k) + A \right)\\
 		       &= O(x \log k)
-	\end{aligned}
+	\end{aligned}\]
 
 	It uses the facts on [sum of reciprocals of the primes](https://en.wikipedia.org/wiki/Divergence_of_the_sum_of_the_reciprocals_of_the_primes).
 

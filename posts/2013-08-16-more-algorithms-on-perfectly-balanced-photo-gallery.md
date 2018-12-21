@@ -69,13 +69,13 @@ There is a standard technique on totally monotone matrices that can reduce the c
 {Proof}
     
     Let $\sum_{k=i+1}^{j-1} a_i - \mu = m$
-    \begin{aligned}
+    \[\begin{aligned}
     w(i,j)+w(i+1,j+1) &=  |\sum_{k=i}^{j-1} a_i - \mu|
                         + |\sum_{k=i+1}^{j} a_i - \mu|\\
                       &= |a_i + m| + |a_j + m|\\
                       &\leq |a_i+a_j+m| + |m|\\
                       &= w(i,j+1)+w(i+1,j)
-    \end{aligned}
+    \end{aligned}\]
     To prove the $\leq$, see that $a_i,a_j$ are positive, one can consider either $m$ is negative or positive, and notice either way the inequality holds true. 
 
 {Remark}

@@ -49,10 +49,10 @@ Let $[P]$ be the [Iverson bracket notation](http://en.wikipedia.org/wiki/Iverson
 {Proof}
 	The base case can be verified easily, we show part of a inductive step.
 
-	\begin{aligned}
+	\[\begin{aligned}
 	f(v_j)D(i-w(v_j),j-1) + g(v_j)D(i,j-1) &= f(v_j) \sum_{S\subset V_{j-1}, \sum_{x\in S} w(x) = i-w(v_j)} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x)  +
 	g(v_j) \sum_{S\subset V_{j-1}, \sum_{x\in S} w(x) = i)} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x) \\
 	&=   \sum_{v_j\in S\subset V_j, \sum_{x\in S} w(x) = i} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x) + \sum_{v_j\not\in S\subset V_j, \sum_{x\in S} w(x) = i} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x)\\
 	&= \sum_{S\subset V_j, \sum_{x\in S} w(x) = i} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x)
-	\end{aligned}
+	\end{aligned}\]
 

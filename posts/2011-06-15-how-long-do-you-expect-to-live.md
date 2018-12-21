@@ -19,13 +19,13 @@ The quote above would follow directly from the proof of the following theorem:
  
 {Proof}
     Let $c = \Pr(X\leq a)$ 
-    \begin{aligned}
+    \[\begin{aligned}
     E[X] &= \int_{-\infty}^\infty x \Pr(X=x) dx\\
      &=\int_{-\infty}^a x \Pr(X=x) dx + \int_a^\infty x \Pr(X=x) dx\\
      &=\int_{-\infty}^\infty x \Pr(X=x|X\leq a)\Pr(X\leq a) dx + \int_{-\infty}^\infty x \Pr(X=x|X\geq a)\Pr(X\geq a) dx\\
      &=c\int_{-\infty}^\infty x \Pr(X=x|X\leq a) dx + (1-c)\int_{-\infty}^\infty x \Pr(X=x|X\geq a) dx \\
      &=cE[X|X\leq a] + (1-c)E[X|X\geq a] \\
-    \end{aligned}
+    \end{aligned}\]
 
     If $a = \lambda b + (1-\lambda) c$, where $\lambda \in [0,1]$, then $a \leq \max(b,c)$. Because $E[X|X\leq a]\leq a \leq E[X|X\geq a]$, $E[X] \leq E[X|X\geq a]$. 
 
