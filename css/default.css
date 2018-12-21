@@ -1,86 +1,33 @@
-/* Initial cleanup
------------------------------------------------ */
 .katex { font-size: 1em !important; } 
 
-html, body {
-    padding: 0;
-    display: table;
-    margin: auto;
-}
-* {
-    box-sizing: border-box;
-}
 /* Main structure
 ----------------------------------------------- */
 body {
     font-family: KaTeX_Main,Times New Roman,serif;
-    font-size: 100%;
+    font-size: 14px;
     line-height: 120%;
     margin: auto;
     background-color: #fff;
+    text-align: left;
+    margin: auto;
+    display:table;
     /*min-width: 840px;*/
 }
 
-/*header, article {
-    margin-bottom: 2em;
-    padding-left: 20px;
-    padding-right: 20px;
-}*/
-
-footer, #theme-info, #footer-include {
+footer {
     clear: both;
 }
-article {
-   max-width:840px;
-   float: left;
-}
-/* Positioning
------------------------------------------------ */
-body {
-    text-align: left;
-    margin: 0 auto 0 0;
-}
-/* Navigation
------------------------------------------------ */
-nav {
-    margin: 20px 0 0 0;
-    border-bottom: 1px solid #ccc;
-    position: relative;
-}
 
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
 
-nav ul li {
-    display: block;
-    margin: 0 15px 0 0;
-    padding: 3px 0 3px 0;
-    float: left;
-    position: relative;
-    border: 0;
-}
-nav ul li a {
-    border: 0;
-}
 /* HTML element control
 ----------------------------------------------- */
 p {
     margin: 0 0 0 0;
-    text-align: justify;
+    text-align: left;
     text-justify: auto;
     line-height: 1.5em;
 }
 
-p + p {
-    text-indent: 1.5em;
-}
-
-.references p + p {
-    text-indent: 0em;
-}
 
 blockquote {
     margin: 0 0 1em 0;
@@ -171,26 +118,26 @@ ul li {
 ol li {
     margin: 0 0 0.25em 0.45em;
 }
+a { 
+    text-decoration: none;
+    border-bottom: 1px black dotted;
+    color: #000;
+}
+a:hover { 
+    border: 0;
+}
 
-/* Global content control
------------------------------------------------ */
-img {
-    max-width: 800px;
-    height: auto;
-    margin: auto;
+footer {
+    margin: 0.5em 20px 0 20px;
+    border-top: 3px double #ccc;
+    padding: 1em 0 0 0;
+    font-size: 70%;
+    color: #999;
 }
 
 /* Headers
 ----------------------------------------------- */
-#blog-title {
-    font-size: 2.5em;
-    font-weight: normal;
-    margin: 0;
-    border: none;
-    padding: 0;
-    line-height: 100%;
-    text-align:center;
-}
+
 /* The headers tries to emulate the format of
  Oxfod Lecture Series in Mathematics and Its Applications */
 h1 {
@@ -198,12 +145,7 @@ h1 {
     line-height: 3em;
     font-weight: bold;
 }
-#article-title {
-    font-size: 1.5em;
-    line-height: 1.2em;
-    border-bottom: 1px solid #000;
-    margin-bottom: 0px;
-}
+
 h2 {
     font-size: 1.2em;
     font-style: italic;
@@ -223,121 +165,20 @@ h5 {
     font-size: 0.8em;
 }
 
-/* Footer
------------------------------------------------ */
-footer {
-    margin: 0.5em 20px 0 20px;
-    border-top: 3px double #ccc;
-    padding: 1em 0 0 0;
-    font-size: 70%;
-    color: #999;
-}
-
-/* Links
------------------------------------------------ */
-a { 
-    text-decoration: none;
-    border-bottom: 1px black dotted;
-    color: #000;
-}
-a:hover { 
-    border: 0;
-}
-#blog-title a {
-    color: #000;
-    text-decoration:none;
-    border: 0;
-}
-.theorem-environment{
-  color: #000;
-  padding: 0 0;
-  margin: 20px 0;
-  font-style: italic;
-}
-.theorem-header {
-  font-weight: bold;
-  font-style: normal;
-}
-.theorem-header .index:before {
-  content: ' ';
-}
-.theorem-header .name:before {
-  content: ' (';
-}
-.theorem-header .name:after {
-  content: ')';
-}
-.theorem-header:after {
-  content: '.\2002\2002';
-}
-.theorem-header + p{
-    display:inline;
-}
-.Proof .type {
-  font-style: italic;
-  font-weight: normal;
-}
-.Proof {
-  padding: 0 0;
-  font-style: normal;
-  position: relative;
-}
-.Proof:after {
-    content: '∎';
-    display: inline-block;
-    font-size: 100%;
-    bottom: 0%;
-    right: 0%;
-    position: absolute;
-}
-.gist-file {
-  line-height: 1.2;
-  font-size: 75%;
-}
-table.postindex{
-  max-width: 840px;
-}
-.info {
-  margin-top: 20px;
-  color: #999;
-}
-.info a {
-    text-decoration: none;
-    border-bottom: 1px #999 dotted;
-    color: #999;
-}
-table.postindex td.right {
-  text-align: right;
-}
-
-.header-section-number {
-    margin-right: 10px;
-}
-.header-section-number:after {
-    content: '.';
-}
-/* code highlight */
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { font-weight: bold; }
-code > span.dt { text-decoration: underline; }
-code > span.co { font-style: italic; }
-code > span.al { font-weight: bold; }
-code > span.er { font-weight: bold; }
-
-  dt {
+#site-title {
+    font-size: 2.5em;
     font-weight: normal;
-    font-style: italic;
-  }
-  dd {
     margin: 0;
-    padding: 0 0 0.5em 0;
-  }
+    border: none;
+    padding: 0;
+    line-height: 100%;
+    text-align:center;
+}
 
-/* printing hide lame things*/
-@media print {
-    .hide-on-print { display: none !important; }
+/* Global content control
+----------------------------------------------- */
+img {
+    max-width: 800px;
+    height: auto;
+    margin: auto;
 }

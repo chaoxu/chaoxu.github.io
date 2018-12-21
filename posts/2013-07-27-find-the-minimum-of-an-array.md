@@ -48,7 +48,7 @@ For $n$ larger than $\frac{m}{6}$, the algorithm will have $O(\log \frac{n}{m})$
 
 # Notes
 
-[Brosef Stalin](https://www.facebook.com/BrosefStylin) offered an alternative logic that offers cleaner code.
-<script src="http://pastebin.com/embed_js.php?i=107WhrsU"></script> 
+Brosef Stalin offered an alternative logic that offers cleaner code.
+<script src="https://pastebin.com/embed_js.php?i=107WhrsU"></script> 
 
 Can we generalize this to first increase then decrease then increase arrays? One can show $O(n)$ is best possible by considering an array with $a[i]=i$ for all $i\neq j$, and $a[j]=-1$. There is no way to find $j$ with out looking over every position.
