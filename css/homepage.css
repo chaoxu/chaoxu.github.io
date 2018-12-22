@@ -26,11 +26,12 @@
   .intro-left {
     width: 100%;
     float:left;
-    text-align:center;
+    text-align: center;
   }
   .intro-right {
     width: 100%;
     float: left;
+    font-size: small;
   }
   .cv-left{
     width:20px;
@@ -116,7 +117,7 @@
 .note {
   font-style: italic;
   font-size: 0.8em;
-  color: #ccc;
+  color: #777;
 }
 .coauthor-list {
   margin:0px;
