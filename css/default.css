@@ -5,7 +5,6 @@
 body {
     font-family: KaTeX_Main,Times New Roman,serif;
     font-size: 14px;
-    line-height: 120%;
     margin: auto;
     background-color: #fff;
     text-align: left;
@@ -24,7 +23,7 @@ p {
     margin: 0 0 0 0;
     text-align: left;
     text-justify: auto;
-    line-height: 1.5em;
+    line-height: 1.3em;
 }
 
 
@@ -106,6 +105,9 @@ ul, ol {
 }
 ul {
     list-style: disc;
+}
+li {
+    line-height: 1.3em;
 }
 ul li {
     margin: 0 0 0.25em 0.35em;
