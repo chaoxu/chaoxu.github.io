@@ -104,13 +104,12 @@ def build_paper(paper):
              coauthor_list(paper["authors"],people)+
              bib(paper["pub"],paper["year"],paper["bib"],venues)+
              notess+
-             abstract+
              '</div>')
     
     out = ('<!-- ' +paper["title"] +' -->\n'+
           '<div class="row cv-entry" id="'+idd+'">'+
           toggle+
-          left+right+'</div>\n')
+          left+right+abstract+'</div>\n')
     return out
 
 def build_papers(papers):

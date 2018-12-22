@@ -122,6 +122,8 @@ authors: [Kristóf Bérczi, Karthekeyan Chandrasekaran, Tamás Király, Euiwoong
 type: conference
 pub: APPROX
 year: 2017
+notes:
+  - The results on global bicut was serialized as [Beating the 2-approximation factor for global bicut](#global-bicut) in Mathematical Programming.
 abstract: >
   The computational complexity of multicut-like problems may vary significantly depending on whether the terminals are fixed or not. In this work we present a comprehensive study of this phenomenon in two types of cut problems in directed graphs: double cut and bicut.
   
@@ -259,7 +261,7 @@ pub: MP
 year: 2018
 notes:
   - The preliminary version [Global and fixed-terminal cuts in digraphs](#global-cuts-digraphs) appeared in APPROX 2017.
-abstract: In the fixed-terminal bicut problem, the input is a directed graph with two specified nodes s and t and the goal is to find a smallest subset of edges whose removal ensures that s cannot reach t and t cannot reach s. In the global bicut problem, the input is a directed graph and the goal is to find a smallest subset of edges whose removal ensures that there exist two nodes s and t such that s cannot reach t and t cannot reach s. Fixed-terminal bicut and global bicut are natural extensions of  $\{s,t\}$-min cut and global min-cut respectively, from undirected graphs to directed graphs. Fixed-terminal bicut is NP-hard, admits a simple $2$-approximation, and does not admit a  $(2-\e)$-approximation for any constant  $\e>0$ assuming the unique games conjecture. In this work, we show that global bicut admits a $(2-1/448)$-approximation, thus improving on the approximability of the global variant in comparison to the fixed-terminal variant.
+abstract: In the fixed-terminal bicut problem, the input is a directed graph with two specified nodes $s$ and $t$ and the goal is to find a smallest subset of edges whose removal ensures that $s$ cannot reach $t$ and $t$ cannot reach $s$. In the global bicut problem, the input is a directed graph and the goal is to find a smallest subset of edges whose removal ensures that there exist two nodes $s$ and $t$ such that $s$ cannot reach $t$ and $t$ cannot reach $s$. Fixed-terminal bicut and global bicut are natural extensions of  $\{s,t\}$-min cut and global min-cut respectively, from undirected graphs to directed graphs. Fixed-terminal bicut is NP-hard, admits a simple $2$-approximation, and does not admit a  $(2-\e)$-approximation for any constant  $\e>0$ assuming the unique games conjecture. In this work, we show that global bicut admits a $(2-1/448)$-approximation, thus improving on the approximability of the global variant in comparison to the fixed-terminal variant.
 
 --- 
 id: edgedisjoint

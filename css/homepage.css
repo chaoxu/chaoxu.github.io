@@ -44,15 +44,8 @@
 }
 .abstract {
    display:none;
-   border-style: solid;
-   border-top-width:1px;
-   border-bottom-width:1px;
-   border-left-width:0px;
-   border-right-width:0px;
-   border-color:#ddd;
-   margin:2px;
    color:#777;
-   padding: 20px;
+   padding: 5px;
 }
 .abstract p + p {
   text-indent: 1.5em;
@@ -83,15 +76,15 @@
 }
 .abstract-guard:checked~div .showmore:after{
   color: #000;
-  content: "\e15b"; /* minus */
+  content: "\e5ce"; /* expand less */
   font-family: 'Material Icons';
 }
-.abstract-guard:checked~div > .abstract {
+.abstract-guard:checked~ .abstract {
   display: block
 }
 .showmore:after{
   color: #000;
-  content: "\e145"; /* plus */
+  content: "\e5cf"; /* expand more */
   cursor: pointer;
 }
 .material-icons{
