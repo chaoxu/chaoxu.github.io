@@ -101,15 +101,11 @@ h3 code {
 }
 
 ul, ol {
-    margin: 0 0 1em 15px;
+    margin: 0.25em 0 1em 15px;
     padding: 0;
 }
 ul {
     list-style: disc;
-}
-
-li {
-    line-height: 1.5em;
 }
 ul li {
     margin: 0 0 0.25em 0.35em;
@@ -120,7 +116,7 @@ ol li {
 a { 
     text-decoration: none;
     border-bottom: 1px black dotted;
-    color: #000;
+    color: inherit;
 }
 a:hover { 
     border: 0;
@@ -134,7 +130,7 @@ footer {
     color: #999;
 }
 rt {
-    color: #666;
+    color: #777;
 }
 /* Headers
 ----------------------------------------------- */
