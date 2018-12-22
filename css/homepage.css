@@ -44,14 +44,11 @@
 }
 .abstract {
    display:none;
-   color:#777;
    padding: 5px;
+   font-size:small;
 }
 .abstract p + p {
   text-indent: 1.5em;
-}
-.abstract a { 
-    color: inherit;
 }
 .pubtypeheader{
   font-size: 18px;
@@ -119,6 +116,7 @@
 .note {
   font-style: italic;
   font-size: 0.8em;
+  color: #ccc;
 }
 .coauthor-list {
   margin:0px;
