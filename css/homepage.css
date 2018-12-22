@@ -51,8 +51,7 @@
   text-indent: 1.5em;
 }
 .abstract a { 
-    border-bottom: 1px #777 dotted;
-    color: #777;
+    color: inherit;
 }
 .pubtypeheader{
   font-size: 18px;

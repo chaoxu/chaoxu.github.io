@@ -117,7 +117,7 @@ ol li {
 }
 a { 
     text-decoration: none;
-    border-bottom: 1px black dotted;
+    border-bottom: 1px #ddd dotted;
     color: inherit;
 }
 a:hover { 
