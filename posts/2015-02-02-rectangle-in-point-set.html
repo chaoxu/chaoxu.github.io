@@ -64,23 +64,27 @@
 </section>
 <p>The idea is we guess the left vertical segment of the rectangle, and see what would be the right vertical segment. If we pick an left vertical line <span class="math inline">l</span>, and then for each <span class="math inline">(x,y)\in l\cap P</span>, we consider all the points with the same <span class="math inline">y</span> coordinate and to the right of <span class="math inline">x</span>, and add a counter to the vertical lines that contains it. This can be done in linear time with respect to number of vertices with the same <span class="math inline">y</span> coordinate if one already builds a data structure before hand. If any counter become <span class="math inline">2</span>, then we are done.</p>
 <p>It is a <span class="math inline">O(n^2)</span> time algorithm, since the time it takes is at most <span class="math inline">O(n)</span> to guess each left vertical segment. One could, however analyze this algorithm better, and realize the time is actually <span class="math inline">O(lk)</span>, where <span class="math inline">l</span> is the maximum number of points on a horizontal line and <span class="math inline">k</span> is maximum number of points on a vertical line.</p>
-<p>There is an <span class="math inline">O(n^{3/2})</span> algorithm <span class="citation" data-cites="vanKreveld1990">[<a href="#ref-vanKreveld1990">1</a>]</span>, using this <span class="math inline">O(n^2)</span> algorithm as subroutine.</p>
+<p>There is an <span class="math inline">O(n^{3/2})</span> algorithm <span class="citation" data-cites="vanKreveldD91">[<a href="#ref-vanKreveldD91">1</a>]</span>, using this <span class="math inline">O(n^2)</span> algorithm as subroutine.</p>
 <p>We consider the set of vertical lines that contains at least <span class="math inline">2</span> points. This give us two set of vertical lines, <span class="math inline">S</span> are the lines with at most <span class="math inline">\sqrt{n}</span> points and <span class="math inline">L</span> are the lines contain at least <span class="math inline">\sqrt{n}+1</span> lines.</p>
 <p>There are 3 possibilities. There is a rectangle with two sides contained in <span class="math inline">S</span>, or one side in <span class="math inline">S</span> one in <span class="math inline">L</span>, or both in <span class="math inline">L</span>.</p>
 <p>For the first case, just use out <span class="math inline">O(lk)</span> algorithm, which gives us <span class="math inline">O(n^{3/2})</span> time.</p>
 <p>For the second case, consider we pick one line in <span class="math inline">S</span> and the union of all the points in the lines in <span class="math inline">L</span>. For each point in <span class="math inline">S</span>, we will find if this point is in some line in <span class="math inline">L</span>, if it is, we increment a counter for that line. We would increment at most <span class="math inline">\sqrt{n}</span> counters. The running time is therefore <span class="math inline">\sum_{l\in S} |l\cap P|(\log n + \sqrt{n}) = O(n^{3/2})</span>.</p>
 <p>Once we are done with the first two case, consider remove all the points lying on the small lines. Now we only have large lines. Since there are at most <span class="math inline">\sqrt{n}</span> large lines, we can rotate the plane and run the algorithm again, but this time, we know all the lines are small.</p>
+<p>We can do it a bit better. Given a bipartite graph on <span class="math inline">m</span> edges, finding a <span class="math inline">C_4</span> takes <span class="math inline">O(m^{4/3})</span> time <span class="citation" data-cites="AlonYZ97">[<a href="#ref-AlonYZ97">2</a>]</span>. Moreover, if the graph have <a href="https://en.wikipedia.org/wiki/Degeneracy_(graph_theory)">degeneracy</a> <span class="math inline">d</span>, the running time can be improved to <span class="math inline">O(md)</span>. As noted in the same article, rectangle finding problem can be reduced to finding a <span class="math inline">C_4</span> in a bipartite graph. The vertices are <span class="math inline">X=\set{x|(x,y)\in P}</span> and <span class="math inline">Y=\set{y|(x,y)\in P}</span>, and the edges are <span class="math inline">P</span>. So this is a nice interaction with graph theory.</p>
 <h1 id="bibliography" class="unnumbered">References</h1>
 <div id="refs" class="references">
-<div id="ref-vanKreveld1990">
-<p>[1] M. van Kreveld, M. de Berg, Finding squares and rectangles in sets of points, in: M. Nagl (Ed.), Graph-Theoretic Concepts in Computer Science, Springer Berlin Heidelberg, 1990: pp. 341–355 <a href="https://doi.org/10.1007/3-540-52292-1_25">10.1007/3-540-52292-1_25</a>.</p>
+<div id="ref-vanKreveldD91">
+<p>[1] M.J. van Kreveld, M.T. De Berg, <strong>Finding squares and rectangles in sets of points</strong>, BIT Numerical Mathematics. 31 (1991) 202–219 <a href="https://doi.org/10.1007/BF01931281">10.1007/BF01931281</a>.</p>
+</div>
+<div id="ref-AlonYZ97">
+<p>[2] N. Alon, R. Yuster, U. Zwick, <strong>Finding and counting given length cycles</strong>, Algorithmica. 17 (1997) 209–223 <a href="https://doi.org/10.1007/BF02523189">10.1007/BF02523189</a>.</p>
 </div>
 </div>
 
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2015-02-02. </div>
-    <div class="info">Tags: classical, algorithm, computational geometry.</div>
+    <div class="info">Tags: classical, algorithm, computational geometry, graph theory.</div>
 
 </div>
       </article>
