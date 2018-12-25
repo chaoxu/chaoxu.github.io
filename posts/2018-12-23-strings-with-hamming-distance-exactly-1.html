@@ -6,6 +6,7 @@
     <meta name="description" content="The Art Gallery Guardian">
     <meta name="author" content="Chao Xu">
     <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta name="referrer" content="origin">
     <title>Strings with hamming distance exactly $1$</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -84,6 +85,7 @@
 <p>To find the equivalent classes, build two tries for the strings. Trie <span class="math inline">T_P</span> for strings in <span class="math inline">S</span> and trie <span class="math inline">T_S</span> for the reversal of strings in <span class="math inline">S</span>. Building the tries takes <span class="math inline">O(mn)</span> time. Inspect the nodes at depth <span class="math inline">i-1</span> in <span class="math inline">T_P</span> and nodes at depth <span class="math inline">m-i+1</span> in <span class="math inline">T_S</span> to recover <span class="math inline">\mathcal{P}_i</span> and <span class="math inline">\mathcal{S}_i</span> in <span class="math inline">O(n)</span> time.</p>
 <p>Together, this gives us an algorithm that runs in <span class="math inline">O(mn)</span> time. This is the best possible, as the input size is already <span class="math inline">O(mn)</span>.</p>
 <h1 id="remarks"><span class="header-section-number">2</span> Remarks</h1>
+<p><a href="https://dblp.uni-trier.de/pers/hd/w/Wang:Ruosong">Ruosong Wang</a> communicated another <span class="math inline">O(mn)</span> solution. It is much easier to describe but requires the usage of <a href="https://en.wikipedia.org/wiki/Generalized_suffix_tree">generalized suffix trees</a>, which is certainly not implementable in a reasonable amount of time. Let <span class="math inline">\diamond</span> be a symbol not in the alphabet. Build a generalized suffix tree over the set of strings <span class="math inline">S&#39;=\set{x\diamond x| x\in S}</span>. Now, traverse the suffix tree, up to level <span class="math inline">m</span>, and output <code>true</code> if a path that contains <span class="math inline">\diamond</span> was traversed, and can lead to more than <span class="math inline">2</span> leaves below.</p>
 <p>We do assume the alphabet size is constant. If the alphabet size is <span class="math inline">\sigma</span> and ordered. there is an extra factor of <span class="math inline">\log \sigma</span> in building tires. The the final running time will be <span class="math inline">O(mn\log \sigma)</span>.</p>
 <p>The problem can reduce to finding the closest pair of elements by hamming metric <span class="citation" data-cites="MinKZ09">[<a href="#ref-MinKZ09">1</a>]</span>. It does not get us the desired running time though.</p>
 <p>We tried to solve a subproblem of the following form, where <span class="math inline">k=2</span>.</p>
