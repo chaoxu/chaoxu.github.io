@@ -161,4 +161,20 @@ nav ul li a {
     border: 0;
 }
 
-
+/* Gist */
+.gist-file {
+  border: none !important;
+  margin: 1em;
+}
+.blob-num {
+  display: none;
+}
+.gist-data {
+  padding: 0 0 !important;
+  border: 0 !important;
+  border-bottom: none !important;
+  border-radius: 0px !important;
+}
+.gist .gist-meta {
+  display: none;
+}

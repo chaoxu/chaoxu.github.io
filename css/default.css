@@ -8,7 +8,7 @@ body {
     margin: auto;
     background-color: #fff;
     text-align: left;
-    display:table;
+    display: block;
     /*min-width: 840px;*/
 }
 
@@ -117,7 +117,7 @@ ol li {
 }
 a { 
     text-decoration: none;
-    border-bottom: 1px #ddd dotted;
+    border-bottom: 1px #ccc dotted;
     color: inherit;
 }
 a:hover { 
