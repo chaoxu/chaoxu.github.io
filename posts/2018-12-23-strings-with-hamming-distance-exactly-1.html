@@ -66,10 +66,8 @@
 <p>Given a set <span class="math inline">S</span> of <span class="math inline">n</span> length <span class="math inline">m</span> strings. Decide if there are two of them that differs by exactly one position.</p>
 </section>
 <p>In other words, we want to find two strings in <span class="math inline">S</span> with <a href="https://en.wikipedia.org/wiki/Hamming_distance">hamming distance</a> <span class="math inline">1</span>.</p>
-<p>The naive algorithm would have running time <span class="math inline">O(n^2m)</span>.</p>
-<p>The complexity of the problem have gathered a lot of attention a while ago, for example a <a href="https://dev.to/conectado/advent-of-code-day-2-part-2-complexity-556l">post in dev.to</a>, and <a href="https://www.reddit.com/r/adventofcode/comments/a2damm/2018_day2_part_2_a_linear_time_solution/">on reddit</a>. Some of them had a running time of <span class="math inline">O(nm^2)</span>, and one with expected running time <span class="math inline">O(mn)</span> through hashing. Of course, it would require <span class="math inline">m</span> to be small for it to work.</p>
-<p>Currently, we are not aware of any <span class="math inline">O(mn)</span> time algorithm in existence. Here we present an <span class="math inline">O(mn)</span> time algorithm.</p>
-<h1 id="the-algorithm"><span class="header-section-number">1</span> The algorithm</h1>
+<p>The naive algorithm would have running time <span class="math inline">O(n^2m)</span>. The complexity of the problem have gathered a lot of attention a while ago, for example a <a href="https://dev.to/conectado/advent-of-code-day-2-part-2-complexity-556l">post in dev.to</a>, and <a href="https://www.reddit.com/r/adventofcode/comments/a2damm/2018_day2_part_2_a_linear_time_solution/">on reddit</a>. Some of them had a running time of <span class="math inline">O(nm^2)</span> instead. Some require hashing to get the <em>expected</em> running time to be <span class="math inline">O(mn)</span>. Here we are interested in an algorithm with <em>worst case</em> <span class="math inline">O(mn)</span> time.</p>
+<h1 id="an-omn-time-algorithm"><span class="header-section-number">1</span> An <span class="math inline">O(mn)</span> time algorithm</h1>
 <p>First, we define some equivalent classes on the strings in <span class="math inline">S</span>.</p>
 <ol type="1">
 <li><span class="math inline">x\equiv^i y</span>, if <span class="math inline">x[1..i-1]=y[1..i-1]</span>. Namely, if the first <span class="math inline">i-1</span> elements of <span class="math inline">x</span> and <span class="math inline">y</span> match.</li>
@@ -99,20 +97,19 @@
 </section>
 <section class="theorem-environment Theorem" id="Theorem-5">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">5</span></span>
-<p>There is a <span class="math inline">O(mn)</span> time algorithm solving <a href="#Problem-1">Problem 1</a></p>
+<p>There is an <span class="math inline">O(mn)</span> time algorithm for solving <a href="#Problem-1">Problem 1</a>.</p>
 </section>
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span></span>
-<p>Finding the sequence of equivalent classes takes <span class="math inline">O(mn)</span> time by <a href="#Lemma-3">Lemma 3</a>. For each <span class="math inline">i</span>, checking if there exists <span class="math inline">x,y\in S</span> differs in precisely position <span class="math inline">i</span> takes <span class="math inline">O(n)</span> time by <a href="#Lemma-2">Lemma 2</a>. Since <span class="math inline">i</span> goes through <span class="math inline">1</span> to <span class="math inline">m</span>, we obtain the final running time is <span class="math inline">O(mn)</span>.</p>
+<p>Finding the sequence of equivalent classes takes <span class="math inline">O(mn)</span> time by <a href="#Lemma-4">Lemma 4</a>. For each <span class="math inline">i</span>, checking if there exists <span class="math inline">x,y\in S</span> differs in precisely position <span class="math inline">i</span> takes <span class="math inline">O(n)</span> time by <a href="#Lemma-3">Lemma 3</a>. Since <span class="math inline">i</span> goes through <span class="math inline">1</span> to <span class="math inline">m</span>, we obtain the final running time is <span class="math inline">O(mn)</span>.</p>
 </section>
 <h1 id="remarks"><span class="header-section-number">2</span> Remarks</h1>
 <p><a href="https://dblp.uni-trier.de/pers/hd/w/Wang:Ruosong">Ruosong Wang</a> communicated another <span class="math inline">O(mn)</span> solution. It is much easier to describe but requires the usage of <a href="https://en.wikipedia.org/wiki/Generalized_suffix_tree">generalized suffix trees</a>. Let <span class="math inline">\diamond</span> be a symbol not in the alphabet. Build a generalized suffix tree over the set of strings <span class="math inline">S&#39;=\set{x\diamond x| x\in S}</span>. Now, traverse the suffix tree, up to level <span class="math inline">m</span>, and output <code>true</code> if a path that contains <span class="math inline">\diamond</span> was traversed, and can lead to more than <span class="math inline">2</span> leaves below. Indeed, this means the substring <span class="math inline">x\diamond y</span> appeared at least twice. Hence there are at least two strings of the form <span class="math inline">yax</span> and <span class="math inline">ybx</span> in <span class="math inline">S</span>. This definitely hits the optimal running time, but implementing a generalized suffix tree is fairly hard.</p>
-<p>I've also seen algorithms that manages to get a expected <span class="math inline">O(nm)</span> time algorithm through hashing. However, I am personally more interested in deterministic algorithms.</p>
 <p>We do assume the alphabet size is constant. If the alphabet size is <span class="math inline">\sigma</span> and ordered. there is an extra factor of <span class="math inline">\log \sigma</span> in building tires. The the final running time will be <span class="math inline">O(mn\log \sigma)</span>.</p>
 <p>Our solution tried to solve a problem of the following form, where <span class="math inline">k=2</span>.</p>
 <section class="theorem-environment Problem" id="Problem-6">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">6</span></span>
-<p>Given sets <span class="math inline">S_1,\ldots,S_n</span>, decide if there exists <span class="math inline">S_i</span> and <span class="math inline">S_j</span> such that <span class="math inline">|S_i\cap S_j|\geq k</span>.</p>
+<p>Given sets <span class="math inline">S_1,\ldots,S_n</span>, decide if there exists distinct <span class="math inline">i</span> and <span class="math inline">j</span> such that <span class="math inline">|S_i\cap S_j|\geq k</span>.</p>
 </section>
 <p>I have wrote about <a href="/posts/2015-02-08-two-problem-related-to-sequence-of-sets.html">this problem before</a>.</p>
 <p>The problem can reduce to finding the closest pair of elements by hamming metric <span class="citation" data-cites="MinKZ09">[<a href="#ref-MinKZ09">1</a>]</span>. It does not get us the desired running time though.</p>
