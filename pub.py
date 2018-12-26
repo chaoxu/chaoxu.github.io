@@ -31,7 +31,7 @@ def gen_left(show,idd):
     if 'a' in show:
         a = '<label class="showmore material-icons" for="'+idd+'-toggle"></label>'
     else:
-        a = '<i class="material-icons disabled">add</i>'
+        a = '<i class="material-icons disabled">expand_more</i>'
 
     if 'd' in show:
         d = '<a href="files/papers/'+idd+'.pdf"><i class="material-icons">description</i></a>'

@@ -143,12 +143,15 @@ h1 {
     font-size: 1.15em;
     line-height: 3em;
     font-weight: bold;
+    margin: 0;
 }
 
 h2 {
     font-size: 1.2em;
     font-style: italic;
     font-weight: normal;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 h3 {
     font-size: 1.1em;

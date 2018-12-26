@@ -44,11 +44,11 @@ Together, this gives us an algorithm that runs in $O(mn)$ time. This is the best
 # Remarks
 
 [Ruosong Wang](https://dblp.uni-trier.de/pers/hd/w/Wang:Ruosong) communicated another $O(mn)$ solution. It is much easier to describe but requires the usage of [generalized suffix trees](https://en.wikipedia.org/wiki/Generalized_suffix_tree), which is certainly not implementable in a reasonable amount of time.
-Let $\diamond$ be a symbol not in the alphabet. Build a generalized suffix tree over the set of strings $S'=\set{x\diamond x| x\in S}$. Now, traverse the suffix tree, up to level $m$, and output `true` if a path that contains $\diamond$ was traversed, and can lead to more than $2$ leaves below.
+Let $\diamond$ be a symbol not in the alphabet. Build a generalized suffix tree over the set of strings $S'=\set{x\diamond x| x\in S}$. Now, traverse the suffix tree, up to level $m$, and output `true` if a path that contains $\diamond$ was traversed, and can lead to more than $2$ leaves below. Indeed, this means the substring $x\diamond y$ appeared at least twice. Hence there are at least two strings of the form $yax$ and $ybx$ in $S$.
+
+I've also seen algorithms that manages to get a expected $O(nm)$ time algorithm through hashing. However, I am personally more interested in deterministic algorithms.
 
 We do assume the alphabet size is constant. If the alphabet size is $\sigma$ and ordered. there is an extra factor of $\log \sigma$ in building tires. The the final running time will be $O(mn\log \sigma)$. 
-
-The problem can reduce to finding the closest pair of elements by hamming metric [@MinKZ09]. It does not get us the desired running time though. 
 
 We tried to solve a subproblem of the following form, where $k=2$.
 
@@ -57,3 +57,4 @@ We tried to solve a subproblem of the following form, where $k=2$.
 
 I have wrote about [this problem before](/posts/2015-02-08-two-problem-related-to-sequence-of-sets.html).
 
+The problem can reduce to finding the closest pair of elements by hamming metric [@MinKZ09]. It does not get us the desired running time though. 
