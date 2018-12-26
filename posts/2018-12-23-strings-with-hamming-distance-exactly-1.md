@@ -10,13 +10,9 @@ tags: algorithms, strings, tries
 
 In other words, we want to find two strings in $S$ with [hamming distance](https://en.wikipedia.org/wiki/Hamming_distance) $1$.
 
-The naive algorithm would have running time $O(n^2m)$.
+The naive algorithm would have running time $O(n^2m)$. The complexity of the problem have gathered a lot of attention a while ago, for example a [post in dev.to]( https://dev.to/conectado/advent-of-code-day-2-part-2-complexity-556l), and [on reddit](https://www.reddit.com/r/adventofcode/comments/a2damm/2018_day2_part_2_a_linear_time_solution/). Some of them had a running time of $O(nm^2)$ instead. Some require hashing to get the _expected_ running time to be $O(mn)$. Here we are interested in an algorithm with _worst case_ $O(mn)$ time.
 
-The complexity of the problem have gathered a lot of attention a while ago, for example a [post in dev.to]( https://dev.to/conectado/advent-of-code-day-2-part-2-complexity-556l), and [on reddit](https://www.reddit.com/r/adventofcode/comments/a2damm/2018_day2_part_2_a_linear_time_solution/). Some of them had a running time of $O(nm^2)$, and one with expected running time $O(mn)$ through hashing. Of course, it would require $m$ to be small for it to work. 
-
-Currently, we are not aware of any $O(mn)$ time algorithm in existence. Here we present an $O(mn)$ time algorithm. 
-
-# The algorithm
+# An $O(mn)$ time algorithm
 
 First, we define some equivalent classes on the strings in $S$.
 
@@ -47,10 +43,10 @@ Let $\mathcal{P}_i$ and $\mathcal{S}_i$ be the collection of equivalent classes 
     To find the equivalent classes, build two tries for the strings. Trie $T_\mathcal{P}$ for strings in $S$ and trie $T_\mathcal{S}$ for the reversal of strings in $S$. Building the tries takes $O(mn)$ time. Inspect the nodes at depth $i-1$ in $T_P$ and nodes at depth $m-i+1$ in $T_S$ to recover $\mathcal{P}_i$ and $\mathcal{S}_i$ in $O(n)$ time. 
 
 {Theorem}
-    There is a $O(mn)$ time algorithm solving [Problem 1]
+    There is an $O(mn)$ time algorithm for solving [Problem 1].
 
 {Proof}
-    Finding the sequence of equivalent classes takes $O(mn)$ time by [Lemma 3]. For each $i$, checking if there exists $x,y\in S$ differs in precisely position $i$ takes $O(n)$ time by [Lemma 2]. Since $i$ goes through $1$ to $m$, we obtain the final running time is $O(mn)$.
+    Finding the sequence of equivalent classes takes $O(mn)$ time by [Lemma 4]. For each $i$, checking if there exists $x,y\in S$ differs in precisely position $i$ takes $O(n)$ time by [Lemma 3]. Since $i$ goes through $1$ to $m$, we obtain the final running time is $O(mn)$.
 
 # Remarks
 
@@ -58,14 +54,12 @@ Let $\mathcal{P}_i$ and $\mathcal{S}_i$ be the collection of equivalent classes 
 Let $\diamond$ be a symbol not in the alphabet. Build a generalized suffix tree over the set of strings $S'=\set{x\diamond x| x\in S}$. Now, traverse the suffix tree, up to level $m$, and output `true` if a path that contains $\diamond$ was traversed, and can lead to more than $2$ leaves below. Indeed, this means the substring $x\diamond y$ appeared at least twice. Hence there are at least two strings of the form $yax$ and $ybx$ in $S$. 
 This definitely hits the optimal running time, but implementing a generalized suffix tree is fairly hard.  
 
-I've also seen algorithms that manages to get a expected $O(nm)$ time algorithm through hashing. However, I am personally more interested in deterministic algorithms.
-
 We do assume the alphabet size is constant. If the alphabet size is $\sigma$ and ordered. there is an extra factor of $\log \sigma$ in building tires. The the final running time will be $O(mn\log \sigma)$. 
 
 Our solution tried to solve a problem of the following form, where $k=2$.
 
 {Problem}
-    Given sets $S_1,\ldots,S_n$, decide if there exists $S_i$ and $S_j$ such that $|S_i\cap S_j|\geq k$.
+    Given sets $S_1,\ldots,S_n$, decide if there exists distinct $i$ and $j$ such that $|S_i\cap S_j|\geq k$.
 
 I have wrote about [this problem before](/posts/2015-02-08-two-problem-related-to-sequence-of-sets.html).
 
