@@ -31,10 +31,9 @@ Let $\mathcal{P}_i$ and $\mathcal{S}_i$ be the collection of equivalent classes 
 
 {Proof}
     We want to finding $x$ and $y$, such that $x,y\in A\in \mathcal{P}_i$ and $x,y\in B\in \mathcal{S}_i$. 
-    Let $\mathcal{P}_i = \set{C_1,\ldots,C_t}$ and $\mathcal{S}_i=\set{C_{t+1},\ldots,C_{k}}$.
-    For each $x\in S$, we associate it with the set $I_x = \set{i | x\in C_i \text{ for some } i\in [k]}$.
-    The problem reduces to find $x$ and $y$, such that $|I_x \cap I_y|\geq 2$. One can see $|I_x|=2$ for each $x$. Indeed, this is because $x$ appear in one set in $\mathcal{P}_i$ and in one set in $\mathcal{S}_i$. Now we obtain a simpler looking problem: find $x$ and $y$ such that $I_x=I_y$. The simplified problem can be solved in $O(k)$ time. 
-    Indeed, we can encode $I_x=\set{a,b}$ as a pair $(a,b)\in [k]^2$, where $a<b$. The pair is just a base $k$ number with $2$ digits. We can apply radix sort with running time $O(k)$, and then it is easy to check if any number appears twice. 
+    Let $\mathcal{P}_i = \set{P_1,\ldots,P_t}$ and $\mathcal{S}_i=\set{S_1,\ldots,S_k}$.
+    For each $x\in S$, we associate it with the tuple $I_x = (a,b)$ such that $x\in P_a$ and $x\in S_b$.
+    We obtain a simpler looking problem: find $x$ and $y$ such that $I_x=I_y$. The simplified problem can be solved in $O(n)$ time. The pair is just a base $n$ number with $2$ digits. We can apply radix sort with running time $O(n)$, and then it is easy to check if any number appears twice. 
 
 {Lemma}
     Finding $\mathcal{P}_1,\ldots,\mathcal{P}_m$ and $\mathcal{S}_1,\ldots,\mathcal{S}_m$ can be done in $O(mn)$ time.
@@ -56,11 +55,11 @@ This definitely hits the optimal running time, but implementing a generalized su
 
 We do assume the alphabet size is constant. If the alphabet size is $\sigma$ and ordered, then there is an extra factor of $\log \sigma$ in building the tires. The the final running time will be $O(mn\log \sigma)$. 
 
-Our solution requires one to solve a problem of the following form, where $k=2$.
-
-{Problem}
-    Given sets $S_1,\ldots,S_n$, decide if there exists distinct $i$ and $j$ such that $|S_i\cap S_j|\geq k$.
-
-I have wrote about [this problem before](/posts/2015-02-08-two-problem-related-to-sequence-of-sets.html).
-
 [Problem 1] also reduce to finding the closest pair of elements by hamming metric [@MinKZ09]. It does not get us the desired running time though. 
+
+# An implementation in Haskell
+
+The implementation is mostly faithful to the presentation in the article. We did not implement counting sort nor radix sort. 
+
+<script src="https://gist.github.com/chaoxu/a4a60408a069edf3889e8328e685f700.js"></script>
+
