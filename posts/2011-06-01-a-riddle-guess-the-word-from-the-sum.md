@@ -24,7 +24,7 @@ Answer:
 
 Here is an extra riddle for fun.
 \[
-S = \{"p","e","r","s","o","n"\}
+S = \set{"p","e","r","s","o","n"}
 \]
 What is $\frac{1}{6} \sum_{s\in S} s$?
 A mean person...

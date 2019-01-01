@@ -188,3 +188,19 @@ nav ul li a {
 .gist .gist-meta {
   display: none;
 }
+/* code highlight */
+.gist .pl-k {
+  font-weight: bold;
+  color: #000 !important;
+}
+.gist .pl-en {
+  color: #000 !important;
+  text-decoration: underline;
+}
+.gist .pl-c {
+  color: #999 !important;
+  font-style: italic;
+}
+.gist .pl-c1, .gist .pl-s, .gist .pl-v, .gist .pl-smi {
+  color: #000 !important;
+}
