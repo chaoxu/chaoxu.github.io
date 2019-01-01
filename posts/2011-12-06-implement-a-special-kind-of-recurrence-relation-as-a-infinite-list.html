@@ -66,7 +66,7 @@ a_n = \begin{cases}
    c_n &amp; \text{if }n\leq k
        \end{cases}
 </span> , where <span class="math inline">m_i</span> and <span class="math inline">b_i</span> are both <em>infinite</em> sequences, and <span class="math inline">c_i</span> is a finite sequence. <span class="math inline">m_i\in \mathbb{N}</span>. <span class="math inline">a_{-i}=0</span> for all positive <span class="math inline">i</span>. This is well defined as long as <span class="math inline">b_i, a_i, c_i</span> are in the same ring.</p>
-<p>One can use a balanced binary tree to store the entire infinite list, and the time to generate the <span class="math inline">n</span>th element is <span class="math inline">O(d(n)\log n)</span>, where <span class="math inline">d</span> is the density function of <span class="math inline">\{m_i\}</span>.</p>
+<p>One can use a balanced binary tree to store the entire infinite list, and the time to generate the <span class="math inline">n</span>th element is <span class="math inline">O(d(n)\log n)</span>, where <span class="math inline">d</span> is the density function of <span class="math inline">\set{m_i}</span>.</p>
 <p>Using an array would make it <span class="math inline">O(d(n))</span>, but it is too imperative for our taste, how about we only use list and achieve <span class="math inline">O(d(n))</span> time, elegantly?</p>
 <p>The idea is that we are summing the first item of infinite many stacks. However we don't have to really sum the infinite stacks, we only sum the stack we require. <a href="https://gist.github.com/1438136">The code</a>:</p>
 <script src="https://gist.github.com/1438136.js?file=rec.hs"></script>
