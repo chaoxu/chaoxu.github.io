@@ -169,6 +169,16 @@ nav ul li a {
 .blob-num {
   display: none;
 }
+.gist .blob-code {
+  line-height: inherit !important;
+}
+.gist .blob-code-inner {
+  font-size: inherit !important;
+}
+.gist .highlight{
+  line-height:inherit !important;
+  font-size:inherit !important;
+}
 .gist-data {
   padding: 0 0 !important;
   border: 0 !important;
