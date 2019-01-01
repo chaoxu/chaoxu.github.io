@@ -19,7 +19,7 @@ $c_i>0$ for all $i$. $u_i$ can be computed from $\alpha_i$ trivially. We assume 
 
 This is not easy to code, and it take $O(n^3)$ time to just solve the linear system. A better and faster solution exploits the fact we are operating in a small dimension.
 
-Observe that a polygon lies on a plane, a 2D space, we might think we can arbitrarily put down the length of $n-1$ vectors, and calculate the last one from it. It is not true, the $c_i>0$ condition shows $\{c_1u_1+c_2u_2|c_1,c_2>0\}$ does not contain the origin unless $u_1=-u_2$.
+Observe that a polygon lies on a plane, a 2D space, we might think we can arbitrarily put down the length of $n-1$ vectors, and calculate the last one from it. It is not true, the $c_i>0$ condition shows $\set{c_1u_1+c_2u_2|c_1,c_2>0}$ does not contain the origin unless $u_1=-u_2$.
 
 If we can find $u_1,u_2,u_3$, such that the convex hull of them contains the origin (here the convex hull means the open polygon contained inside), then clearly we can use $u_1,u_2,u_3$ to span the entire plane. The span here is defined as all the values can be obtained from conical combination. This inspires the following algorithm:
 

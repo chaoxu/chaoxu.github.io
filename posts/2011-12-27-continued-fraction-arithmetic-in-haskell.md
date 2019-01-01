@@ -5,9 +5,9 @@ tags: Haskell
 
 I learned the algorithm to do arithmetic on continued fractions from the [talk by Mark Jason Dominus](http://perl.plover.com/yak/cftalk/). This algorithm can be generalized to handle many other kind of functions.
 
-I wrote an module ContinuedFraction in Haskell. It is an instance of the type class RealFrac. So you can use the four arithmetic operations like it's any other kind of real numbers. The standard numerical Haskell library is clearly not designed by a Algebraists. Instead of Field, Group, Ring and other algebraic structures, they use Real, Fractional and other random stuff that make sense to non-mathematicians.
+I wrote an module ContinuedFraction in Haskell. It is an instance of the type class RealFrac. So you can use the four arithmetic operations like it's any other kind of real numbers.
 
-A continued fraction is implemented as a list of Integral. Infinite continued fraction is possible! Although lazy evaluation make it easy to get only the first $k$ terms, some operation will not terminate. Currently, the only one I know of is comparing two equal infinite continued fractions. So make sure only compare a truncated version of two infinite continued fractions.
+A continued fraction is implemented as a list of `Integral`. Infinite continued fraction is possible! Although lazy evaluation make it easy to get only the first $k$ terms, some operation will not terminate. Currently, the only one I know of is comparing two equal infinite continued fractions. So make sure only compare a truncated version of two infinite continued fractions.
 
 It is possible to create formal continued fractions that doesn't correspond to any real number. No one know what will the arithmetic outcomes be.
  

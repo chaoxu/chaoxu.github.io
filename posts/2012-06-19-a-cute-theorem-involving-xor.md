@@ -3,7 +3,7 @@ title: A cute theorem involving xor
 tags: math
 ---
 
-Define $[a..b] = \{x|a\leq x\leq b, x\in \mathbb{N} \}$, and $k\oplus [a..b] = \{k\oplus x| x\in [a..b]\}$, where $\oplus$ is the bitwise xor function.
+Define $[a..b] = \set{x|a\leq x\leq b, x\in \mathbb{N} }$, and $k\oplus [a..b] = \set{k\oplus x| x\in [a..b]}$, where $\oplus$ is the bitwise xor function.
 We want to know something about $k\oplus [a..b]$. 
 
 {Lemma}
@@ -25,11 +25,11 @@ We want to know something about $k\oplus [a..b]$.
 {Theorem}
     If $f:\mathbb{N}\to \mathbb{N}$ a surjection such that $x-n\leq f(x)\leq x+m$, then
 
-    1. $\{f(x)|x\in [a..b]\} \supseteq [a+m..b-n]$
-    2. $\{f(x)|x\in [0..b]\} \supseteq [0..b-n]$
+    1. $[a+m..b-n] \subseteq f([a..b])$
+    2. $[0..b-n] \subseteq f([b])$
 
 {Proof}
-    $f$ is a surjection implies all values in any integer interval get's taken. $f^{-1}(y)=\min(\{x|f(x)=y\})$
+    $f$ is a surjection implies all values in any integer interval gets taken. $f^{-1}(y)=\min(\{x|f(x)=y\})$
     \[
     x-n\leq f(x)\leq x+m \implies y+m\leq f^{-1}(y)\leq y-n.
     \]

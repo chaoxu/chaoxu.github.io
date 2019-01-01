@@ -195,7 +195,8 @@ nav ul li a {
 }
 .gist .pl-en {
   color: #000 !important;
-  text-decoration: underline;
+  font-style: italic;
+  font-weight: bold;
 }
 .gist .pl-c {
   color: #999 !important;

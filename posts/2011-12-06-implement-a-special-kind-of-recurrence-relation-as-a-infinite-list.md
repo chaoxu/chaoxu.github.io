@@ -11,7 +11,7 @@ a_n = \begin{cases}
 \]
 , where $m_i$ and $b_i$ are both *infinite* sequences, and $c_i$ is a finite sequence. $m_i\in \mathbb{N}$. $a_{-i}=0$ for all positive $i$. This is well defined as long as $b_i, a_i, c_i$ are in the same ring.
 
-One can use a balanced binary tree to store the entire infinite list, and the time to generate the $n$th element is $O(d(n)\log n)$, where $d$ is the density function of $\{m_i\}$.
+One can use a balanced binary tree to store the entire infinite list, and the time to generate the $n$th element is $O(d(n)\log n)$, where $d$ is the density function of $\set{m_i}$.
 
 Using an array would make it $O(d(n))$, but it is too imperative for our taste, how about we only use list and achieve $O(d(n))$ time, elegantly?
 
