@@ -171,11 +171,11 @@ nav ul li a {
 }
 .gist .blob-code {
   line-height: inherit !important;
+  padding: 0px 0px !important;
 }
-.gist .blob-code .blob-num{
+.gist .blob-num {
   line-height: inherit !important;
-  padding-left: 0px !important;
-  padding-right: 0px !important;
+  padding: 0px 0px !important;
   display: none;
 }
 .gist .blob-code-inner {
