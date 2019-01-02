@@ -158,13 +158,11 @@ nav ul li a {
 }
 
 /* Gist */
-.gist-file {
-  line-height: 1.2;
-  font-size: 75%;
-}
 .gist {
+
   font-size: inherit !important;
   -webkit-text-size-adjust: none;
+  line-height: 1.2;
 }
 .gist-file {
   border: none !important;
@@ -177,7 +175,7 @@ nav ul li a {
   line-height: inherit !important;
 }
 .gist .blob-code-inner {
-  font-size: inherit !important;
+  font-size: 90% !important;
 }
 .gist .highlight{
   line-height:inherit !important;
