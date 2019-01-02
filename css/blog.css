@@ -1,12 +1,12 @@
 /* Display
 ----------------------------------------------- */
 
-@media screen and (min-width: 860px) {
+@media screen and (min-width: 114ex) {
   body {
-    width: 840px;
+    width: 110ex;
   }
 }
-@media screen and (max-width: 839px) {
+@media screen and (max-width: 113ex) {
   body {
     width: 97%;
   }
