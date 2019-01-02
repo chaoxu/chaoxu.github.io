@@ -69,14 +69,10 @@
 .Proof:after {
     content: '∎';
     display: inline-block;
-    font-size: 100%;
+    font-size: 130%;
     bottom: 0%;
     right: 0%;
     position: absolute;
-}
-.gist-file {
-  line-height: 1.2;
-  font-size: 75%;
 }
 table.postindex{
   width: 100%;
@@ -162,6 +158,14 @@ nav ul li a {
 }
 
 /* Gist */
+.gist-file {
+  line-height: 1.2;
+  font-size: 75%;
+}
+.gist {
+  font-size: inherit !important;
+  -webkit-text-size-adjust: none;
+}
 .gist-file {
   border: none !important;
   margin: 1em;
