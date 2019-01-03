@@ -160,7 +160,6 @@ nav ul li a {
 /* Gist */
 .gist {
   font-size: inherit !important;
-  -webkit-text-size-adjust: none;
 }
 .gist-file {
   border: none !important;

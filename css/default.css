@@ -9,6 +9,7 @@ body {
     background-color: #fff;
     text-align: left;
     display: block;
+    -webkit-text-size-adjust: none;
     /*min-width: 840px;*/
 }
 
