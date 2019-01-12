@@ -26,6 +26,7 @@ Since we just want to find a pair $\set{i,j}$ where $|S_i\cap S_j|\geq k$. We ca
 Together, the running time become $O(\min(nm,k n^2+m))$.
 
 For $k=2$. One can improve the running time when $n$ is large by reduce it to a problem similar to [finding rectangles](/posts/2015-02-02-rectangle-in-point-set.html) or finding a $C_4$ in the incident graph. 
-Together, the final running time for $k=2$ is $O(\min(nm, m^{4/3}, dm, k n^2+m))$. Here $d$ is the [degeneracy](https://en.wikipedia.org/wiki/Degeneracy_(graph_theory)) of the incident graph of the sets and the elements.
+Let $n'$ be $|\bigcup_i S_i|$, we can obtain a more refined bound. 
+Together, the final running time for $k=2$ is $O(\min(m^{4/3}, dm, n^2+m))$. Here $d$ is the [degeneracy](https://en.wikipedia.org/wiki/Degeneracy_(graph_theory)) of the incident graph of the sets and the elements, which is bounded above by the maximum degree. 
 
 I am unaware of any faster results for $k>2$, which is equivalent to finding subgraph of the form $K_{2,k}$ in bipartite graphs. 

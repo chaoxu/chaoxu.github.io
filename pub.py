@@ -134,4 +134,4 @@ out+= build_papers([paper for paper in t if paper["type"]=="manuscript"])
 out+= '<div class="row pubtypeheader">Thesis</div>'
 out+= build_papers([paper for paper in t if paper["type"]=="thesis"])
 
-print(out)
+print(out.encode('utf-8'))

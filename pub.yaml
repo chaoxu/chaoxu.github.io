@@ -66,8 +66,7 @@ authors: [Chandra Chekuri, Kent Quanrud, Chao Xu]
 type: conference
 pub: SOSA
 year: 2019
-bib: To appear in SOSA 2019.
-show: [d, a]
+show: [d, p]
 abstract: >
   Karger used spanning tree packings to derive a near
   linear-time randomized algorithm for the global minimum cut problem
