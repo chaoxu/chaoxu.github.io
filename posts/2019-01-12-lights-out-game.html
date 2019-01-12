@@ -60,29 +60,39 @@
         <h1 id="article-title">Lights out game on a grid</h1>
         <br />
 <div>
-<h6 id="section" type="Problem" index="1" name=""><span class="header-section-number">0.0.0.0.0.1</span> </h6>
+<section class="theorem-environment Problem" id="Problem-1">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
 <p>Let <span class="math inline">G</span> be a graph, let <span class="math inline">A</span> be the adjacency matrix of <span class="math inline">G</span>. Solve the equation <span class="math inline">Ax=b</span> in <span class="math inline">\F_2</span>.</p>
+</section>
 <p>The problem is equivalent to the <a href="https://en.wikipedia.org/wiki/Lights_Out_%28game%29">lights out game</a>. Each vertex has state <span class="math inline">0</span> or <span class="math inline">1</span>. Activate a vertex flips the state of itself and all its neighbors. Find a set of activations that turns all state into <span class="math inline">0</span>. Originally I thought this problem can be solved in <span class="math inline">O(n^{\omega/2})</span> when <span class="math inline">G</span> is planar graph on <span class="math inline">n</span> vertices by <a href="https://en.wikipedia.org/wiki/Nested_dissection">nested dissection</a>. However, only recently I found out the matrix must be non-singular. Therefore nested dissection does not apply.</p>
 <p>Recently I saw an algorithm that shows if the graph is a <span class="math inline">n\times n</span> grid, then it can be solved in <span class="math inline">O(n^3)</span> time. The solution in Chinese and can be seen <a href="https://zhuanlan.zhihu.com/p/53646257">here</a>.</p>
 <p>Given a <span class="math inline">n\times n</span> grid graph. Let <span class="math inline">v_{i,j}</span> be the node on the <span class="math inline">i</span>th row and <span class="math inline">j</span>th column. Let <span class="math inline">b_{i,j}</span> be the state of the vertex <span class="math inline">v_{i,j}</span>. The state is in <span class="math inline">\F_2</span> If we activates a node, the state of the node and its neighbors change by <span class="math inline">1</span>. The set of activated node is called the activation set.</p>
 <p>We are interested in finding an activation set <span class="math inline">S</span>, such the state of all nodes after activate <span class="math inline">S</span> is <span class="math inline">0</span>.</p>
 <p>Let <span class="math inline">S</span> be the activation set, and <span class="math inline">S_1</span> to be the activation set of the first row.</p>
-<h6 id="section-1" type="Theorem" index="2" name=""><span class="header-section-number">0.0.0.0.0.2</span> </h6>
+<section class="theorem-environment Theorem" id="Theorem-2">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">2</span></span>
 <p><span class="math inline">S_1</span> uniquely determines <span class="math inline">S</span>. Moreover, One can compute <span class="math inline">S</span> from <span class="math inline">S_1</span> in <span class="math inline">O(n^2)</span> time.</p>
-<h6 id="section-2" type="Proof" index="" name=""><span class="header-section-number">0.0.0.0.0.3</span> </h6>
+</section>
+<section class="theorem-environment Proof" id="Proof-">
+<span class="theorem-header"><span class="type">Proof</span></span>
 <p>Indeed, consider apply activation to the nodes in <span class="math inline">S_1</span>. Consider any vertex in row <span class="math inline">1</span>. If it <span class="math inline">0</span>, then the remaining neighbor (on the second row) cannot be activated. If it is <span class="math inline">1</span>, then the remaining neighbor has to be activated.</p>
+</section>
 <p>Let <span class="math inline">D[i,j]</span> indicates if we activate <span class="math inline">v_{i,j}</span> or not. We create formal variables <span class="math inline">Z=\set{z_1,\ldots,z_n}</span>. Here <span class="math inline">z_i</span> is an indicator variable that represents if <span class="math inline">v_{1,i}</span> is activated or not. The base case <span class="math inline">D[1,j] = z_j</span>. The observation shows that for each <span class="math inline">i</span> and <span class="math inline">j</span>, <span class="math inline">D[i+1,j] = 1 + D[i,j-1]+D[i,j]+D[i,j+1]+D[i-1,j]+b_{i,j}</span>. We can express <span class="math inline">D[i,j]</span> as a sum of elements in <span class="math inline">Z</span> and a constant, and we are summing a constant number of previous states. So it has size <span class="math inline">O(n)</span>. We can compute the expression of <span class="math inline">D[i,j]</span> in <span class="math inline">O(n)</span> time. So computing all <span class="math inline">D[i,j]</span> for <span class="math inline">i\geq 2</span> takes <span class="math inline">O(n^3)</span> time.</p>
 <p>We are interested in <span class="math inline">D[n,1],\ldots,D[n,n]</span>. We can see it is of the following form.</p>
-<span class="math">\begin{align*}
-D[n,1] &= c_{1,1} z_1+\ldots +c_{1,n} z_{n} + u_{1}\\
-D[n,2] &= c_{2,1} z_1+\ldots +c_{2,n} z_{n} + u_{2}\\
- \vdots &\qquad  \vdots\\
-D[n,n] &= c_{m,1} z_1+\ldots + c_{m,n} z_n + u_{n}\\
-\end{align*}</span>
+<p><span class="math display">\displaystyle 
+\begin{aligned}
+D[n,1] &amp;= c_{1,1} z_1+\ldots +c_{1,n} z_{n} + u_{1}\\
+D[n,2] &amp;= c_{2,1} z_1+\ldots +c_{2,n} z_{n} + u_{2}\\
+ \vdots &amp;\qquad  \vdots\\
+D[n,n] &amp;= c_{m,1} z_1+\ldots + c_{m,n} z_n + u_{n}
+\end{aligned}
+</span></p>
 <p>We solve the equation <span class="math inline">Cz=u</span>. Note here <span class="math inline">C</span> is just a <span class="math inline">n\times n</span> matrix. We finds <span class="math inline">z_1,\ldots,z_n</span>. So now we have found the activation set restricted on the first row. We can use it to find the entire activation set.</p>
 <p>The total running time is <span class="math inline">O(n^3)</span>. Building the table <span class="math inline">D</span> and solving <span class="math inline">Cz=u</span>. One can generalize this a bit further. We can obtain <span class="math inline">O(m^2n)</span> running time for a <span class="math inline">m\times n</span> grid, where <span class="math inline">m\leq n</span>. Also, there is no reason we have to work in <span class="math inline">\F_2</span>, any arbitrary field is fine.</p>
-<h6 id="section-3" type="Theorem" index="3" name=""><span class="header-section-number">0.0.0.0.0.4</span> </h6>
+<section class="theorem-environment Theorem" id="Theorem-3">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">3</span></span>
 <p>Let <span class="math inline">G</span> be a <span class="math inline">m\times n</span> grid and <span class="math inline">A</span> is a matrix where the non-zero entires are precisely the position of <span class="math inline">1</span>s in the adjacency matrix of <span class="math inline">A</span>. Finding <span class="math inline">Ax=b</span> can be done in <span class="math inline">O(m^2n)</span> time.</p>
+</section>
 <p>I did not think too much into it, but maybe it works for all integral domains too. Interestingly, this algorithm is so special, that we have no idea how to extend it to other graphs. Maybe it works for directed graph, maybe it works for subgraph of the grid graphs.</p>
 <p>It would be really interesting to see an algorithm with running time <span class="math inline">O(n^{3/2})</span> for a planar graph of <span class="math inline">n</span> vertices.</p>
 
