@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta name="referrer" content="origin">
+    <title>The KMP algorithm in Haskell</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\dist": "\\mathop{\\operatorname{dist}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
+    </script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
+  </head>
+  <body>
+    <header class="hide-on-print">
+        <div id="site-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1 id="article-title">The KMP algorithm in Haskell</h1>
+        <br />
+<div>
+<p>Almost all the string algorithms I read are doing index manipulations somewhere. However meddling with indices are never a smart move in pedagogical settings. For example, see the code for the <a href="http://www-igm.univ-mlv.fr/~lecroq/string/node8.html">KMP algorithm in C</a>. It's short, to the point, and elegant in it's own way. Except it's hard to see the meaning behind all the operations.</p>
+<p>As an example, this article demonstrates how to write the KMP string matching algorithm without all those indices.</p>
+<p>The KMP string matching algorithm solves the following problem.</p>
+<section class="theorem-environment Problem" id="Problem-1">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
+<p>Given a string <span class="math inline">pat</span> of length <span class="math inline">m</span>, return if it exist in <span class="math inline">text</span> of length <span class="math inline">n</span> in <span class="math inline">O(n)</span> time.</p>
+</section>
+<p>Half of the KMP algorithm implementations are actually <a href="http://www-igm.univ-mlv.fr/~lecroq/string/node8.html">the MP algorithm</a>. <a href="http://twanvl.nl/blog/haskell/Knuth-Morris-Pratt-in-Haskell">Twan van Laarhoven's implementation</a>, the earlier version of the <a href="http://hackage.haskell.org/package/KMP-0.1.0.2">KMP</a> package and even <a href="http://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm">Wikipedia's page</a>. Although both KMP and MP runs in <span class="math inline">O(n)</span> time, KMP uses at most <span class="math inline">O(\log m)</span> time to advance to match the next element in the list when MP could take <span class="math inline">O(m)</span> comparisons. More concretely, KMP could output the sequence <span class="math inline">m_0,\ldots,m_{n-1}</span> in <span class="math inline">O(n)</span> time, where <span class="math inline">m_i=1</span> iff <span class="math inline">pat</span> is a suffix of <span class="math inline">text[0..i]</span>, and the time between output is <span class="math inline">O(\log m)</span>.<br />
+This added benefit comes at a cost. In the MP algorithm, the failure table has only one <span class="math inline">-1</span>. The failure table for KMP, there is no <span class="math inline">-1</span>, and everything just goes to <span class="math inline">0</span> instead. If one tries to not use any indices, and want to separates the searching and the table building, one would need a special element to treat the <span class="math inline">0</span> positions.</p>
+<p>Comparing to the <a href="http://hackage.haskell.org/package/KMP-0.1.0.2">KMP package</a>, the implementation here doesn't use any array.</p>
+<h1 id="the-algorithm"><span class="header-section-number">1</span> The algorithm</h1>
+<p>We build the a automaton <span class="math inline">A</span> using a input string <span class="math inline">S = a_0,\ldots,a_{m-1}</span>. The automaton consist of states <span class="math inline">nil,s_0,\ldots,s_{m-1}</span>.</p>
+<p>Because of laziness, it is built incrementally. The total running time is <span class="math inline">O(n)</span>, even if <span class="math inline">m</span> is much larger than <span class="math inline">n</span>.</p>
+<p><span class="math inline">\delta</span> is the transition function, <span class="math inline">\delta(s_i,a_i)=s_{i+1}</span>, and <span class="math inline">\delta(s_i,x)=f_i</span> for <span class="math inline">x\neq a_i</span>, where <span class="math inline">f_i</span> is the failure state associated with state <span class="math inline">s_i</span>. We call <span class="math inline">a_i</span> the value of <span class="math inline">s_i</span>.</p>
+<p>One would also want to know if an state is accepting state or not. This prompt us to use the following declaration for the automaton.</p>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">data</span> <span class="dt">Automaton</span> a <span class="fu">=</span> <span class="dt">Node</span> {<span class="ot">value   ::</span> a,
+<span class="ot">                         success ::</span> <span class="dt">Automaton</span> a,
+<span class="ot">                         failure ::</span> <span class="dt">Automaton</span> a,
+<span class="ot">                         accept  ::</span> <span class="dt">Bool</span>
+                         } <span class="fu">|</span> 
+                   <span class="dt">Null</span> {<span class="ot">success ::</span> <span class="dt">Automaton</span> a,
+<span class="ot">                         accept ::</span> <span class="dt">Bool</span>}
+
+isNull (<span class="dt">Null</span> _ _) <span class="fu">=</span> <span class="dt">True</span>
+isNull _ <span class="fu">=</span> <span class="dt">False</span></code></pre></div>
+<p>Assume we have built a automaton, then doing a matching is quite easy. Just simulate the automaton. It's important to notice the <code>next</code> and <code>stay</code> are saying if we want to read the next character or stay at the same character. The code below is a generalized version of matching. It basically does a fold while we match. <code>isInfixOf'</code> is an example of how to use <code>matchFold</code> to test if a list is a infix in another list.</p>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">matchFold ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> <span class="dt">Automaton</span> a <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> ([a]<span class="ot">-&gt;</span>b<span class="ot">-&gt;</span>b) <span class="ot">-&gt;</span> ([a]<span class="ot">-&gt;</span>b<span class="ot">-&gt;</span>b) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> b
+matchFold _ [] _ _ identity <span class="fu">=</span> identity
+matchFold state text nomat mat identity <span class="fu">=</span> match&#39; state text
+  <span class="kw">where</span> match&#39; _ [] <span class="fu">=</span> identity
+        match&#39; a (x<span class="fu">:</span>xs)
+          <span class="fu">|</span> not (isNull a) <span class="fu">&amp;&amp;</span> value a <span class="fu">/=</span> x <span class="fu">=</span> stay
+          <span class="fu">|</span> not (accept a)                 <span class="fu">=</span> nomat (x<span class="fu">:</span>xs) next
+          <span class="fu">|</span> otherwise                      <span class="fu">=</span> mat   (x<span class="fu">:</span>xs) next
+          <span class="kw">where</span> next <span class="fu">=</span> match&#39; (success a) xs
+                stay <span class="fu">=</span> match&#39; (failure a) (x<span class="fu">:</span>xs)
+
+<span class="ot">isInfixOf&#39; ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+isInfixOf&#39; pattern text
+ <span class="fu">|</span> null pattern <span class="fu">=</span> <span class="dt">True</span>
+ <span class="fu">|</span> otherwise    <span class="fu">=</span> or <span class="fu">$</span> matchFold (buildAutomaton pattern) text (const (<span class="dt">False</span><span class="fu">:</span>)) (const (<span class="dt">True</span><span class="fu">:</span>)) []</code></pre></div>
+<p>It is obvious how we can build the entire automaton except for the failure transition.</p>
+<p>Another way to reason about it. We impose an order on a set of strings <span class="math inline">S</span> by measuring the length of the string, so this order is a linear order when the set of strings have different length. Let <span class="math inline">Prefixes(s)</span> to be the set of all prefixes of <span class="math inline">s</span>, <span class="math inline">Suffixes(s)</span> to be the set of all suffixes of <span class="math inline">s</span>. <span class="math display">\displaystyle \begin{aligned}
+Border(s) &amp;= Prefixes(s)\cap Suffixes(s)\\
+Border&#39;(sa) &amp;= \{x|x\in Border(s),xa\not\in Border(sa)\}\\
+b(s) &amp;= \max(Border(s)\backslash \{s\})\\
+b&#39;(sa) &amp;= \max(Border&#39;(sa))
+\end{aligned}</span></p>
+<p>Assume we try to compute <span class="math inline">b(x)</span> for a string <span class="math inline">x</span>, we first build the function <span class="math inline">next</span>, such that <span class="math inline">next</span> iterates through <span class="math inline">Prefix(x)</span> by length, and <span class="math inline">last</span> is a function that returns the last element in the string. We have the following relation for <span class="math inline">sa</span> a prefix of <span class="math inline">x</span>, where <span class="math inline">s</span> is a string and <span class="math inline">a</span> is in the alphabet.</p>
+<p><span class="math display">\displaystyle 
+b(sa) = \begin{cases} next(b(s)) &amp; last(next(b(s))) = a\\
+        next(b(b(s)a)) &amp; otherwise \end{cases}
+</span></p>
+<p><span class="math display">\displaystyle 
+b&#39;(sa) = \begin{cases} b&#39;(next(b(s))) &amp; last(b&#39;(next(b(s)))) = a\\
+        b&#39;(b&#39;(next(b(s))a)) &amp; otherwise \end{cases}
+</span> In fact, one can see the failure function is precisely <span class="math inline">b&#39;</span>. What's not clear is how can one compute this function without keep track of the entire history of <span class="math inline">b</span>.</p>
+<p>The essential function is <code>build ys s</code>. It builds the automaton by consume the remaining string, and <code>s</code> records essential information to compute the transition of the failure function.</p>
+<ol type="1">
+<li><span class="math inline">value s = value t</span>, then <span class="math inline">b(t) = b(s)</span>, and we would know <span class="math inline">b&#39;(next(t)) = next(s)</span>.</li>
+<li><span class="math inline">value s \neq value t</span>, then <span class="math inline">b(t) = s</span>, and we would compute <span class="math inline">b&#39;(next(t))</span> by searching back through failure edges.</li>
+</ol>
+<p>Note we have also computed <span class="math inline">b&#39;(next(t))</span>, which allow us to compute the next node <span class="math inline">next(t)</span>.</p>
+<p>So in <code>build ys s</code>, <code>s</code> will precisely store the state <span class="math inline">b&#39;(t)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">buildAutomaton ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Automaton</span> a
+buildAutomaton (x<span class="fu">:</span>xs) <span class="fu">=</span> automaton
+  <span class="kw">where</span> automaton <span class="fu">=</span> <span class="dt">Node</span> x (build xs automaton) (<span class="dt">Null</span> automaton <span class="dt">False</span>) (null xs)
+        build [] s <span class="fu">=</span> s
+        build (x<span class="fu">:</span>xs) s
+         <span class="fu">|</span> x <span class="fu">==</span> value s <span class="fu">=</span> success s <span class="ot">`nextNode`</span> failure s
+         <span class="fu">|</span> otherwise    <span class="fu">=</span> newS      <span class="ot">`nextNode`</span> s
+         <span class="kw">where</span> nextNode a b <span class="fu">=</span> <span class="dt">Node</span> x (build xs a) b (null xs)
+               newS         <span class="fu">=</span> success <span class="fu">$</span> until (\s<span class="ot">-&gt;</span>isNull s <span class="fu">||</span> x <span class="fu">==</span> value s) failure s</code></pre></div>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2014-04-11. </div>
+    <div class="info">Tags: .</div>
+
+</div>
+      </article>
+    </main>
+    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+  </body>
+</html>

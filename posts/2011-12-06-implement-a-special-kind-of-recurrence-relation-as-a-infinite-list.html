@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta name="referrer" content="origin">
+    <title>Implement a special kind of recurrence relation as a infinite list</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\dist": "\\mathop{\\operatorname{dist}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
+    </script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
+  </head>
+  <body>
+    <header class="hide-on-print">
+        <div id="site-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1 id="article-title">Implement a special kind of recurrence relation as a infinite list</h1>
+        <br />
+<div>
+<p>A common recurrence has the form <span class="math display">\displaystyle 
+a_n = \begin{cases}
+   \sum_{i=0}^\infty b_ia_{n-m_i} &amp;\text{if }n&gt;k\\
+   c_n &amp; \text{if }n\leq k
+       \end{cases}
+</span> , where <span class="math inline">m_i</span> and <span class="math inline">b_i</span> are both <em>infinite</em> sequences, and <span class="math inline">c_i</span> is a finite sequence. <span class="math inline">m_i\in \mathbb{N}</span>. <span class="math inline">a_{-i}=0</span> for all positive <span class="math inline">i</span>. This is well defined as long as <span class="math inline">b_i, a_i, c_i</span> are in the same ring.</p>
+<p>One can use a balanced binary tree to store the entire infinite list, and the time to generate the <span class="math inline">n</span>th element is <span class="math inline">O(d(n)\log n)</span>, where <span class="math inline">d</span> is the density function of <span class="math inline">\set{m_i}</span>.</p>
+<p>Using an array would make it <span class="math inline">O(d(n))</span>, but it is too imperative for our taste, how about we only use list and achieve <span class="math inline">O(d(n))</span> time, elegantly?</p>
+<p>The idea is that we are summing the first item of infinite many stacks. However we don't have to really sum the infinite stacks, we only sum the stack we require. <a href="https://gist.github.com/1438136">The code</a>:</p>
+<script src="https://gist.github.com/1438136.js?file=rec.hs"></script>
+<p>What's a practical usage of this? Produce a infinite list of partition numbers, such that finding the first <span class="math inline">n</span> elements can be done in <span class="math inline">O(n^{\frac{3}{2}})</span> time and 3 lines of code. <a href="https://gist.github.com/1438142">The code</a></p>
+<script src="https://gist.github.com/1438142.js?file=PartitionNumbers.hs"></script>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2011-12-06. </div>
+    <div class="info">Tags: Haskell.</div>
+
+</div>
+      </article>
+    </main>
+    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+  </body>
+</html>

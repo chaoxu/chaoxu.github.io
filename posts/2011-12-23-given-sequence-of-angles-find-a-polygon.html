@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta name="referrer" content="origin">
+    <title>Given sequence of angles, find a polygon</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\dist": "\\mathop{\\operatorname{dist}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
+    </script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
+  </head>
+  <body>
+    <header class="hide-on-print">
+        <div id="site-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1 id="article-title">Given sequence of angles, find a polygon</h1>
+        <br />
+<div>
+<section class="theorem-environment Problem" id="Problem-1">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
+<p>Find a polygon <span class="math inline">p_1\ldots p_n</span>, such that the angle at vertex <span class="math inline">p_i</span> is <span class="math inline">\alpha_i</span>.</p>
+</section>
+<p>Define <span class="math inline">p_{n+1} = p_1</span> for a polygon <span class="math inline">p_1\ldots p_n</span>. If one consider a polygon's sides are vectors, then a polygon is set of vectors that equals to 1, such that the magnitude of the vectors are greater than 0.</p>
+<p>Angles at each vertex determines the direction of the vector. Let <span class="math inline">u_i</span> be the unit vector with direction of <span class="math inline">p_ip_{i+1}</span>, we have</p>
+<p><span class="math display">\displaystyle 
+\sum_{i=1}^n c_iu_i = 0
+</span></p>
+<p><span class="math inline">c_i&gt;0</span> for all <span class="math inline">i</span>. <span class="math inline">u_i</span> can be computed from <span class="math inline">\alpha_i</span> trivially. We assume we have normalized the polygon by rotate it, so <span class="math inline">u_1=(0,1)</span>. Once we find a set of <span class="math inline">c_i</span>, then we determine a solution to the problem. <span class="math inline">(c_1,\ldots,c_n)</span> is in the intersection of the solutions of two set of linear systems. One might first calculate the solution to the linear systems individually, then take the intersection, and pick a point where all coordinates are positive.</p>
+<p>This is not easy to code, and it take <span class="math inline">O(n^3)</span> time to just solve the linear system. A better and faster solution exploits the fact we are operating in a small dimension.</p>
+<p>Observe that a polygon lies on a plane, a 2D space, we might think we can arbitrarily put down the length of <span class="math inline">n-1</span> vectors, and calculate the last one from it. It is not true, the <span class="math inline">c_i&gt;0</span> condition shows <span class="math inline">\set{c_1u_1+c_2u_2|c_1,c_2&gt;0}</span> does not contain the origin unless <span class="math inline">u_1=-u_2</span>.</p>
+<p>If we can find <span class="math inline">u_1,u_2,u_3</span>, such that the convex hull of them contains the origin (here the convex hull means the open polygon contained inside), then clearly we can use <span class="math inline">u_1,u_2,u_3</span> to span the entire plane. The span here is defined as all the values can be obtained from conical combination. This inspires the following algorithm:</p>
+<p>Find <span class="math inline">u_x,u_y,u_z</span> that spans the entire plane by checking if the convex hull contains <span class="math inline">(0,0)</span>. Arbitrarily assign <span class="math inline">c_i</span>, such that <span class="math inline">i\neq y,z</span>. Calculate <span class="math inline">c_y</span> and <span class="math inline">c_z</span> from the assignment.</p>
+<p>Once <span class="math inline">u_x,u_y,u_z</span> are found, only <span class="math inline">O(n)</span> time is required to find the polygon. Find the three spanning vectors is linear time. Pick any two adjacent vectors as <span class="math inline">u_x,u_y</span>, and do a search for <span class="math inline">u_z</span> that satisfy the condition. One can find a solution in <span class="math inline">O(n)</span> time.</p>
+<p>If the algorithm fails, there are two possibilities:</p>
+<ol type="1">
+<li>There is no such polygon.</li>
+<li>There are only four directions, and they are exactly <span class="math inline">(1,0),(0,1),(-1,0),(0,-1)</span>. We can solve this special case by arbitrarily assign <span class="math inline">c_i</span> except the 2 of the directions. Calculate the length for those two from the other ones. This special case can be solved in <span class="math inline">O(n)</span> time too.</li>
+</ol>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2011-12-23. </div>
+    <div class="info">Tags: computational geometry.</div>
+
+</div>
+      </article>
+    </main>
+    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+  </body>
+</html>
