@@ -17,7 +17,7 @@ cabal-version:       >=1.10
 
 executable chaosite
   main-is:             site.hs
-  -- other-modules:       
+  other-modules: MathDoc        
   -- other-extensions:    
   build-depends:       base >=4.9 && <5, pandoc >=1.19.2.4, containers >=0.5 && <0.6, pandoc-citeproc >=0.10.4.1 && <1.0, hakyll >= 4.9.5.1, filepath >= 0, array >= 0.5, regex-base >= 0.93, regex-posix >= 0.95, regex-compat >= 0.95
   -- hs-source-dirs:      

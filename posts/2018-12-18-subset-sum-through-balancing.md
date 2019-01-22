@@ -3,9 +3,9 @@ title: Subset sum through balancing
 tags: algorithms, subset sum
 ---
 
-This is a note for Pisinger's balancing algorithm for subset sum [@Pisinger19991]. Let $\mathcal(S)$ be the set of all subset sums of $S$. The subset sum problem, the input is $S\subset \N$, and we are interested in checking if $t\in \mathcal(S)$. 
+This is a note for Pisinger's balancing algorithm for subset sum [@Pisinger19991]. Let $\mathcal{S}$ be the set of all subset sums of $S$. The subset sum problem, the input is $S\subset \N$, and we are interested in checking if $t\in \mathcal{S}$. 
 
-We define a variation of the subset sum problem. The \emph{balanced subset sum problem}. In this problem, we are given a vector $v$ of integers(does not have to be positive). We let $M=\|v\|_\infty$. We are interested in find a subset that sums to $t\in [M]$. 
+We define a variation of the subset sum problem. The _balanced subset sum problem_. In this problem, we are given a vector $v$ of integers(does not have to be positive). We let $M=\|v\|_\infty$. We are interested in find a subset that sums to $t\in [M]$. 
 
 {Theorem}
     Each subset sum problem on $n$ elements can be reduced to a balanced subset sum problem in $n$ elements in $O(n)$ time. 

@@ -11,6 +11,7 @@ import           MathDoc
 import           Control.Monad
 import           Control.Applicative        ((<$>), Alternative (..), (<$>))
 import           Data.Maybe
+import           Data.Monoid
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
@@ -66,6 +67,14 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
     -}
+    -- rss 
+    create ["rss.xml"] $ do
+        route idRoute
+        compile $ do
+            let feedCtx = postCtx <> bodyField "description"
+            posts <- recentFirst =<<
+                loadAllSnapshots "posts/*" "content"
+            renderRss feedConfiguration feedCtx posts
     -- Index
     match "blog.html" $ do
         route idRoute
@@ -109,6 +118,14 @@ sourceField key = field key $
     fmap (maybe empty (sourceUrl . toUrl)) . getRoute . itemIdentifier
 
 sourceUrl xs = (take (length xs - 4) xs) ++ "md"
+
+feedConfiguration :: FeedConfiguration
+feedConfiguration = FeedConfiguration
+  { feedTitle = "The Art Gallery Guardian"
+  , feedDescription = "Mostly notes on algorithms"
+  , feedAuthorName = "Chao Xu"
+  , feedAuthorEmail = "mgcclx@gmail.com"
+  , feedRoot = "https://chaoxuprime.com/blog"}
 
 --------------------------------------------------------------------------------
 postCtx :: Context String

@@ -11,11 +11,11 @@ I saw an interview problem about assigning identical processors to embarrassingl
 
 If there is no integral requirement on $x_i$'s, then the problem is easy. Let $A=\sum_{i} a_i$. There is a closed solution of $x_i = k \frac{a_i}{A}$, and $\theta = A / k$.
 
-Otherwise, it is easy to check if $\theta'>0$ is a feasible solution. $\theta'$ is feasible iff $\sum_{i} \lceil a_i/\theta' \rceil \leq k$. Therefore one can apply binary search, and get the result in $O(n\log k)$ time.
+Otherwise, it is easy to check if $\theta'>0$ is a feasible solution. $\theta'$ is feasible iff $\sum_{i} \ceil{a_i/\theta'} \leq k$. Therefore one can apply binary search, and get the result in $O(n\log k)$ time.
 
-One can also get a $O(n\log n)$ time algorithm. First compute $y_i = \lceil k \frac{a_i}{A} \rceil$. Greedily find a $i$ such that $a_i/y_i$ is maximized, and decrease $y_i$ by $1$. We stop when we have $\sum_{i} y_i=k$. This takes $O(\log n)$ per operation using a binary search tree. 
+One can also get a $O(n\log n)$ time algorithm. First compute $y_i = \ceil{k \frac{a_i}{A}}$. Greedily find a $i$ such that $a_i/y_i$ is maximized, and decrease $y_i$ by $1$. We stop when we have $\sum_{i} y_i=k$. This takes $O(\log n)$ per operation using a binary search tree. 
 
-Linear time algorithm also exists. It is connected to proportional apportionment. This is the problem of finding the smallest $\lambda$, such that $\sum_{i} \lceil \lambda a_i \rceil = k$. Cheng and Eppstein found a $O(n)$ time algorithm [@Cheng2014]. Reitzig and Wild found a simpler algorithm later [@Reitzig2017].
+Linear time algorithm also exists. It is connected to proportional apportionment. This is the problem of finding the smallest $\lambda$, such that $\sum_{i} \ceil{\lambda a_i} = k$. Cheng and Eppstein found a $O(n)$ time algorithm [@Cheng2014]. Reitzig and Wild found a simpler algorithm later [@Reitzig2017].
 
 There is a similar interview problem. Given $n$ points on the real line, add $k$ more points, such that it minimizes the maximum length between adjacent points. The problem is the same as the following one.
 

@@ -9,7 +9,7 @@ tags: tree, dynamic programming
 
 This problem can be solved in $O(n^3)$ time, and it generalizes to graphs with constant treewidth [@doi:10.1137/S009753970139567X]. 
 
-Here we describe the dynamic programming solution for tree and also show the running time of $O(n^2)$ is possible. This is probably the solution in [@doi:10.1137/S009753970139567X] when the input is a tree, so this might lead to $O(2^kn^2)$ time algorithm for graphs with treewidth $k$.
+Here we describe the dynamic programming solution for tree and also show the running time is $O(n^2)$. This is probably the solution in [@doi:10.1137/S009753970139567X] when the input is a tree, so this might lead to $O(2^kn^2)$ time algorithm for graphs with treewidth $k$.
 
 This problem can be reduced to the following problem by arbitrarily root the tree at a leaf, and replace each vertex with degree $d+1$ into a binary tree with $d$ leaves, and assign weight $0$ to the internal nodes (except the root) of the replacing binary tree, and infinite edge weight for the edges connecting internal nodes inside the binary tree. 
 

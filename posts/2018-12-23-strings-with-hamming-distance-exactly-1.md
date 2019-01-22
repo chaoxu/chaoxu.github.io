@@ -31,7 +31,7 @@ Let $\mathcal{P}_i$ and $\mathcal{S}_i$ be the collection of equivalent classes 
 
 {Proof}
     Let $\mathcal{A}=\set{A_1,\ldots,A_k}$ and $\mathcal{B} = \set{B_1,\ldots,B_\ell}$.
-    We define $I_i = (a,b)$ such that $i\in A_a$ and $x\in B_b$.
+    We define $I_i = (a,b)$ such that $i\in A_a$ and $i\in B_b$.
     Then we know $i$ is in $A_a\cap B_b$ if $I_i=(a,b)$. Hence we are interested in find the largest set of elements such $S$ such that for $i,j\in S$, $I_i=I_j$. The simplified problem can be solved in $O(n)$ time. Indeed, the pair is just a base $n$ number with $2$ digits. We can apply radix sort with running time $O(n)$ and group by the result. 
 
 Note one can also directly use a [partition refinement data structure](https://en.wikipedia.org/wiki/Partition_refinement) to get the same result. 
