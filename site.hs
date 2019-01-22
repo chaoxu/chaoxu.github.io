@@ -73,7 +73,7 @@ main = hakyll $ do
         route idRoute
         compile $ do
             let feedCtx = postCtx <> bodyField "description"
-            posts <- recentFirst =<<
+            posts <- fmap (take 10) . recentFirst =<<
                 loadAllSnapshots "posts/*" "content"
             renderRss feedConfiguration feedCtx posts
     -- Index
