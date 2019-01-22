@@ -29,7 +29,7 @@ The set cover problem, given $\mathcal{S} = \set{S_1,\ldots,S_n}$ are $n$ set co
     There is a probability distribution $D$ over $\mathcal{S}$, such that for each $u$, the probability a random set $S$ covers $u$ is at least $\e$. There exists a set cover of $\ceil{\frac{\log u}{\e}}$.
 
 {Proof}
-   There exists a set that covers at least $\e |U'|$ for any $U' \subset U$. Therefore each greedy iteration decrease the size of uncovered universe by an $\e$ fraction. So there can be at most $t$ iterations, where $(1-\e)^t<1$. One can show $\ceil{\frac{\log u}{\e}}$ suffices. 
+    There exists a set that covers at least $\e |U'|$ for any $U' \subset U$. Therefore each greedy iteration decrease the size of uncovered universe by an $\e$ fraction. So there can be at most $t$ iterations, where $(1-\e)^t<1$. One can show $\ceil{\frac{\log u}{\e}}$ suffices. 
 
 {Theorem}
     There is a dominating set incident to $O(n\sqrt{n\log n})$ edges.
