@@ -34,6 +34,7 @@ main = hakyll $ do
         route $ setExtension "html"
         compile $ mathCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
+            >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/default.html" postCtx
         --    >>= relativizeUrls
     -- drafts
