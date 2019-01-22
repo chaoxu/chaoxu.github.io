@@ -40,6 +40,8 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
   <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+      href="https://chaoxuprime.com/rss.xml">
   </head>
   <body>
     <header class="hide-on-print">
@@ -92,7 +94,7 @@
 </section>
 <p>One can show the above result is almost optimal, as there exists graphs where every dominating set incidents <span class="math inline">\Omega(n^{3/2})</span> edges. The same bound holds for weakly connected dominating set, that is a dominating set <span class="math inline">D</span> such that the edges incident to <span class="math inline">D</span> forms a connected graph. The stronger modification of this result was used in deciding the <span class="math inline">4</span>-connectivity of a matroid <span class="citation" data-cites="Rajan87">[<a href="#ref-Rajan87">1</a>]</span>.</p>
 <h1 id="finding-small-subgraphs"><span class="header-section-number">2</span> Finding small subgraphs</h1>
-<h2 id="finding-triangle"><span class="header-section-number">2.1</span> Finding triangle</h2>
+<h2 id="finding-a-triangle"><span class="header-section-number">2.1</span> Finding a triangle</h2>
 <p>A <em>triangle</em> is <span class="math inline">3</span> vertices pairwise adjacent to each other, another name for <span class="math inline">K_3</span>.</p>
 <section class="theorem-environment Theorem" id="Theorem-5">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">5</span></span>
@@ -122,10 +124,10 @@
 <span class="theorem-header"><span class="type">Proof</span><span class="name">Alternative</span></span>
 <p>We modify the algorithm a little. For each vertex <span class="math inline">v</span>, we consider its neighbor <span class="math inline">u</span>, and check if <span class="math inline">u</span> has a neighbor that is in <span class="math inline">v</span>. Then we delete <span class="math inline">v</span>, and move on to next vertex. The running time become <span class="math inline">\sum_{v\in V} (\deg(v)+\sum_{u\in N(v)} \deg(u))</span>. Now, assume we pick vertices by the <em>largest</em> to <em>smallest</em> in term of degrees. We rearrange the sum and obtain <span class="math inline">\sum_{v\in V} (\deg(v)+\sum_{u\in N(v)} \deg(u)) = \sum_{v\in V} \deg(v) + 2 \sum_{uv\in E} \min(\deg(u),\deg(v)) = O(\alpha m)</span>. But <span class="math inline">\alpha\leq \sqrt{m}</span>, therefore we have the running time <span class="math inline">O(m^{3/2})</span>.</p>
 </section>
-<h2 id="finding-k_2ell-in-bipartite-graphs"><span class="header-section-number">2.2</span> Finding <span class="math inline">K_{2,\ell}</span> in bipartite graphs</h2>
+<h2 id="finding-a-k_2ell-in-bipartite-graphs"><span class="header-section-number">2.2</span> Finding a <span class="math inline">K_{2,\ell}</span> in bipartite graphs</h2>
 <p>This section we use technique that follows from <span class="citation" data-cites="AlonYZ97">[<a href="#ref-AlonYZ97">2</a>]</span>, which solved the special case <span class="math inline">K_{2,2}</span>. For two vertices <span class="math inline">u,v\in A</span>, decide if there is a intersection of the neighborhood of size at least <span class="math inline">\ell</span>. The claim is using the same argument as the triangle case with arboricity. Of course one need to be careful with designing the algorithm. However, the following would not be difficult to obtain.</p>
 <section class="theorem-environment Theorem" id="Theorem-8">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">8</span><span class="name"><span class="citation" data-cites="ChibaN85">[@ChibaN85]</span></span></span>
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">8</span></span>
 <p>One can check if there exists a <span class="math inline">K_{2,\ell}</span> in the bipartite graph <span class="math inline">G=(A,B,E)</span> in <span class="math inline">O(\alpha m)</span> time.</p>
 </section>
 <p>Again, we directly obtain <span class="math inline">O(m^{3/2})</span> running time. However, we show something better using stronger theorems.</p>
@@ -133,9 +135,9 @@
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">9</span></span>
 <p>One can check if there exists a <span class="math inline">K_{2,\ell}</span> in the bipartite graph <span class="math inline">G=(A,B,E)</span> in <span class="math inline">O(\ell n^2)</span> time.</p>
 </section>
-<p>Now, we combine the two algorithms. It requires a theorem in extremal graph theory.</p>
+<p>Now, we combine the two algorithms. It requires a theorem in extremal graph theory can be found in <span class="citation" data-cites="Furedi96">[<a href="#ref-Furedi96">3</a>]</span>.</p>
 <section class="theorem-environment Theorem" id="Theorem-10">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">10</span><span class="name"><span class="math inline">K_{2,\ell}</span>-free theorem <span class="citation" data-cites="Furedi96">[@Furedi96]</span></span></span>
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">10</span><span class="name"><span class="math inline">K_{2,\ell}</span>-free theorem</span></span>
 <p>There exists a constant <span class="math inline">c</span>, such that each <span class="math inline">n</span> vertex graph with <span class="math inline">c n^{3/2} \ell^{1/2}</span> edges contains a <span class="math inline">K_{2,\ell}</span>.</p>
 </section>
 <section class="theorem-environment Theorem" id="Theorem-11">
@@ -153,6 +155,9 @@
 </div>
 <div id="ref-AlonYZ97">
 <p>[2] N. Alon, R. Yuster, U. Zwick, <strong>Finding and counting given length cycles</strong>, Algorithmica. 17 (1997) 209–223 <a href="https://doi.org/10.1007/BF02523189">10.1007/BF02523189</a>.</p>
+</div>
+<div id="ref-Furedi96">
+<p>[3] Z. Füredi, <strong>New asymptotics for bipartite turán numbers</strong>, Journal of Combinatorial Theory, Series A. 75 (1996) 141–144 <a href="https://doi.org/https://doi.org/10.1006/jcta.1996.0067">https://doi.org/10.1006/jcta.1996.0067</a>.</p>
 </div>
 </div>
 
