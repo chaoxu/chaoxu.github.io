@@ -43,7 +43,7 @@ One can show the above result is almost optimal, as there exists graphs where ev
 
 # Finding small subgraphs
 
-## Finding triangle
+## Finding a triangle
 
 A _triangle_ is $3$ vertices pairwise adjacent to each other, another name for $K_3$.
 
@@ -69,13 +69,13 @@ A _triangle_ is $3$ vertices pairwise adjacent to each other, another name for $
     We modify the algorithm a little. For each vertex $v$, we consider its neighbor $u$, and check if $u$ has a neighbor that is in $v$. Then we delete $v$, and move on to next vertex. The running time become $\sum_{v\in V} (\deg(v)+\sum_{u\in N(v)} \deg(u))$. Now, assume we pick vertices by the _largest_ to _smallest_ in term of degrees. We rearrange the sum and obtain $\sum_{v\in V}  (\deg(v)+\sum_{u\in N(v)} \deg(u)) = \sum_{v\in V} \deg(v) + 2 \sum_{uv\in E} \min(\deg(u),\deg(v)) = O(\alpha m)$. 
     But $\alpha\leq \sqrt{m}$, therefore we have the running time $O(m^{3/2})$.
 
-## Finding $K_{2,\ell}$ in bipartite graphs
+## Finding a $K_{2,\ell}$ in bipartite graphs
 
 This section we use technique that follows from [@AlonYZ97], which solved the special case $K_{2,2}$.
 For two vertices $u,v\in A$, decide if there is a intersection of the neighborhood of size at least $\ell$. 
 The claim is using the same argument as the triangle case with arboricity. Of course one need to be careful with designing the algorithm. However, the following would not be difficult to obtain.
 
-{Theorem}([@ChibaN85])
+{Theorem}
     One can check if there exists a $K_{2,\ell}$ in the bipartite graph $G=(A,B,E)$ in $O(\alpha m)$ time.
 
 Again, we directly obtain $O(m^{3/2})$ running time. However, we show something better using stronger theorems. 
@@ -83,9 +83,9 @@ Again, we directly obtain $O(m^{3/2})$ running time. However, we show something 
 {Theorem}
     One can check if there exists a $K_{2,\ell}$ in the bipartite graph $G=(A,B,E)$ in $O(\ell n^2)$ time.
 
-Now, we combine the two algorithms. It requires a theorem in extremal graph theory. 
+Now, we combine the two algorithms. It requires a theorem in extremal graph theory can be found in [@Furedi96]. 
 
-{Theorem}($K_{2,\ell}$-free theorem [@Furedi96])
+{Theorem}($K_{2,\ell}$-free theorem)
     There exists a constant $c$, such that each $n$ vertex graph with $c n^{3/2} \ell^{1/2}$ edges contains a $K_{2,\ell}$.
 
 {Theorem}
