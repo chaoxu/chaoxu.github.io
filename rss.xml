@@ -25,7 +25,7 @@
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">2</span></span>
 <p>If the arboricity of a graph is <span class="math inline">\alpha</span>, then there exists a induced subgraph with minimum degree at least <span class="math inline">\alpha</span>.</p>
 </section>
-<p>Often, using the arboricity, we can obtain the same complexity algorithm without high-degree low-degree technique. Note the arboricity is <span class="math inline">O(\sqrt{m})</span>. The application of arboricity are from <span class="citation" data-cites="ChibaN85">[<span class="citeproc-not-found" data-reference-id="ChibaN85"><strong>???</strong></span>]</span>.</p>
+<p>Often, using the arboricity, we can obtain the same complexity algorithm without high-degree low-degree technique. Note the arboricity is <span class="math inline">O(\sqrt{m})</span>. The application of arboricity are from <span class="citation" data-cites="ChibaN85">[<a href="#ref-ChibaN85">1</a>]</span>.</p>
 <p>Some of the algorithms described can be speedup by using matrix multiplication, or faster combinatorial boolean matrix multiplication. We avoid them for simplicity of exposition.</p>
 <h1 id="dominating-set-with-few-edges"><span class="header-section-number">1</span> Dominating set with few edges</h1>
 <p>The set cover problem, given <span class="math inline">\mathcal{S} = \set{S_1,\ldots,S_n}</span> are <span class="math inline">n</span> set contains a total of <span class="math inline">m</span> elements. <span class="math inline">U=\bigcup_{S\in \mathcal{S}} S</span> is the universe, with size <span class="math inline">u</span>.</p>
@@ -33,8 +33,10 @@
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">3</span></span>
 <p>There is a probability distribution <span class="math inline">D</span> over <span class="math inline">\mathcal{S}</span>, such that for each <span class="math inline">u</span>, the probability a random set <span class="math inline">S</span> covers <span class="math inline">u</span> is at least <span class="math inline">\e</span>. There exists a set cover of <span class="math inline">\ceil{\frac{\log u}{\e}}</span>.</p>
 </section>
-<h6 id="section-3" type="Proof" index="" name=""><span class="header-section-number">1.0.0.0.0.1</span> </h6>
+<section class="theorem-environment Proof" id="Proof-">
+<span class="theorem-header"><span class="type">Proof</span></span>
 <p>There exists a set that covers at least <span class="math inline">\e |U&#39;|</span> for any <span class="math inline">U&#39; \subset U</span>. Therefore each greedy iteration decrease the size of uncovered universe by an <span class="math inline">\e</span> fraction. So there can be at most <span class="math inline">t</span> iterations, where <span class="math inline">(1-\e)^t&lt;1</span>. One can show <span class="math inline">\ceil{\frac{\log u}{\e}}</span> suffices.</p>
+</section>
 <section class="theorem-environment Theorem" id="Theorem-4">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">4</span></span>
 <p>There is a dominating set incident to <span class="math inline">O(n\sqrt{n\log n})</span> edges.</p>
@@ -43,7 +45,7 @@
 <span class="theorem-header"><span class="type">Proof</span></span>
 <p>Fix a <span class="math inline">\delta</span>. We repeatedly removing vertices with degree no more than <span class="math inline">\delta</span> from the graph, and add it into a set <span class="math inline">D</span>. The total degree of <span class="math inline">D</span> is at most <span class="math inline">n\delta</span>. Now the remaining vertices has degree at least <span class="math inline">\delta</span>. Using the set cover theorem, and let the distribution to be the uniform distribution. If all elements are covered at least by <span class="math inline">\e</span> fraction of the set, then we obtain a set cover of size <span class="math inline">O(\frac{\log u}{\e})</span>. Now, let the sets <span class="math inline">N(v)</span> for each <span class="math inline">v</span>. Since degree is bounded by at most <span class="math inline">n</span>, we can obtain a dominating set of size <span class="math inline">O(\frac{n\log n}{e})</span>. We set <span class="math inline">\e=\delta/n</span>. Since the degree of each vertex is at least <span class="math inline">\delta</span>, then there is a covering of <span class="math inline">O(\frac{n^2\log n}{\delta})</span>. Add the vertices induces this set cover to <span class="math inline">D</span>. <span class="math inline">D</span> is a dominating set, and its size is <span class="math inline">O(n\delta +\frac{n^2\log n}{\delta})</span>, set <span class="math inline">\delta=\sqrt{n\log n}</span> and we obtain the desired result.</p>
 </section>
-<p>One can show the above result is almost optimal, as there exists graphs where every dominating set incidents <span class="math inline">\Omega(n^{3/2})</span> edges. The same bound holds for weakly connected dominating set, that is a dominating set <span class="math inline">D</span> such that the edges incident to <span class="math inline">D</span> forms a connected graph. The stronger modification of this result was used in deciding the <span class="math inline">4</span>-connectivity of a matroid <span class="citation" data-cites="Rajan87">[<a href="#ref-Rajan87">1</a>]</span>.</p>
+<p>One can show the above result is almost optimal, as there exists graphs where every dominating set incidents <span class="math inline">\Omega(n^{3/2})</span> edges. The same bound holds for weakly connected dominating set, that is a dominating set <span class="math inline">D</span> such that the edges incident to <span class="math inline">D</span> forms a connected graph. The stronger modification of this result was used in deciding the <span class="math inline">4</span>-connectivity of a matroid <span class="citation" data-cites="Rajan87">[<a href="#ref-Rajan87">2</a>]</span>.</p>
 <h1 id="finding-small-subgraphs"><span class="header-section-number">2</span> Finding small subgraphs</h1>
 <h2 id="finding-a-triangle"><span class="header-section-number">2.1</span> Finding a triangle</h2>
 <p>A <em>triangle</em> is <span class="math inline">3</span> vertices pairwise adjacent to each other, another name for <span class="math inline">K_3</span>.</p>
@@ -76,7 +78,7 @@
 <p>We modify the algorithm a little. For each vertex <span class="math inline">v</span>, we consider its neighbor <span class="math inline">u</span>, and check if <span class="math inline">u</span> has a neighbor that is in <span class="math inline">v</span>. Then we delete <span class="math inline">v</span>, and move on to next vertex. The running time become <span class="math inline">\sum_{v\in V} (\deg(v)+\sum_{u\in N(v)} \deg(u))</span>. Now, assume we pick vertices by the <em>largest</em> to <em>smallest</em> in term of degrees. We rearrange the sum and obtain <span class="math inline">\sum_{v\in V} (\deg(v)+\sum_{u\in N(v)} \deg(u)) = \sum_{v\in V} \deg(v) + 2 \sum_{uv\in E} \min(\deg(u),\deg(v)) = O(\alpha m)</span>. But <span class="math inline">\alpha\leq \sqrt{m}</span>, therefore we have the running time <span class="math inline">O(m^{3/2})</span>.</p>
 </section>
 <h2 id="finding-a-k_2ell-in-bipartite-graphs"><span class="header-section-number">2.2</span> Finding a <span class="math inline">K_{2,\ell}</span> in bipartite graphs</h2>
-<p>This section we use technique that follows from <span class="citation" data-cites="AlonYZ97">[<a href="#ref-AlonYZ97">2</a>]</span>, which solved the special case <span class="math inline">K_{2,2}</span>. For two vertices <span class="math inline">u,v\in A</span>, decide if there is a intersection of the neighborhood of size at least <span class="math inline">\ell</span>. The claim is using the same argument as the triangle case with arboricity. Of course one need to be careful with designing the algorithm. However, the following would not be difficult to obtain.</p>
+<p>This section we use technique that follows from <span class="citation" data-cites="AlonYZ97">[<a href="#ref-AlonYZ97">3</a>]</span>, which solved the special case <span class="math inline">K_{2,2}</span>. For two vertices <span class="math inline">u,v\in A</span>, decide if there is a intersection of the neighborhood of size at least <span class="math inline">\ell</span>. The claim is using the same argument as the triangle case with arboricity. Of course one need to be careful with designing the algorithm. However, the following would not be difficult to obtain.</p>
 <section class="theorem-environment Theorem" id="Theorem-8">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">8</span></span>
 <p>One can check if there exists a <span class="math inline">K_{2,\ell}</span> in the bipartite graph <span class="math inline">G=(A,B,E)</span> in <span class="math inline">O(\alpha m)</span> time.</p>
@@ -86,7 +88,7 @@
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">9</span></span>
 <p>One can check if there exists a <span class="math inline">K_{2,\ell}</span> in the bipartite graph <span class="math inline">G=(A,B,E)</span> in <span class="math inline">O(\ell n^2)</span> time.</p>
 </section>
-<p>Now, we combine the two algorithms. It requires a theorem in extremal graph theory can be found in <span class="citation" data-cites="Furedi96">[<a href="#ref-Furedi96">3</a>]</span>.</p>
+<p>Now, we combine the two algorithms. It requires a theorem in extremal graph theory can be found in <span class="citation" data-cites="Furedi96">[<a href="#ref-Furedi96">4</a>]</span>.</p>
 <section class="theorem-environment Theorem" id="Theorem-10">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">10</span><span class="name"><span class="math inline">K_{2,\ell}</span>-free theorem</span></span>
 <p>There exists a constant <span class="math inline">c</span>, such that each <span class="math inline">n</span> vertex graph with <span class="math inline">c n^{3/2} \ell^{1/2}</span> edges contains a <span class="math inline">K_{2,\ell}</span>.</p>
@@ -101,14 +103,17 @@
 </section>
 <h1 id="bibliography" class="unnumbered">References</h1>
 <div id="refs" class="references">
+<div id="ref-ChibaN85">
+<p>[1] N. Chiba, T. Nishizeki, <strong>Arboricity and Subgraph Listing Algorithms</strong>, SIAM Journal on Computing. 14 (1985) 210–223 <a href="https://doi.org/10.1137/0214017">10.1137/0214017</a>.</p>
+</div>
 <div id="ref-Rajan87">
-<p>[1] A. Rajan, Algorithmic applications of connectivity and related topics in matroid theory, PhD thesis, Northwestern University, 1987.</p>
+<p>[2] A. Rajan, Algorithmic applications of connectivity and related topics in matroid theory, PhD thesis, Northwestern University, 1987.</p>
 </div>
 <div id="ref-AlonYZ97">
-<p>[2] N. Alon, R. Yuster, U. Zwick, <strong>Finding and counting given length cycles</strong>, Algorithmica. 17 (1997) 209–223 <a href="https://doi.org/10.1007/BF02523189">10.1007/BF02523189</a>.</p>
+<p>[3] N. Alon, R. Yuster, U. Zwick, <strong>Finding and counting given length cycles</strong>, Algorithmica. 17 (1997) 209–223 <a href="https://doi.org/10.1007/BF02523189">10.1007/BF02523189</a>.</p>
 </div>
 <div id="ref-Furedi96">
-<p>[3] Z. Füredi, <strong>New asymptotics for bipartite turán numbers</strong>, Journal of Combinatorial Theory, Series A. 75 (1996) 141–144 <a href="https://doi.org/https://doi.org/10.1006/jcta.1996.0067">https://doi.org/10.1006/jcta.1996.0067</a>.</p>
+<p>[4] Z. Füredi, <strong>New asymptotics for bipartite turán numbers</strong>, Journal of Combinatorial Theory, Series A. 75 (1996) 141–144 <a href="https://doi.org/https://doi.org/10.1006/jcta.1996.0067">https://doi.org/10.1006/jcta.1996.0067</a>.</p>
 </div>
 </div>
 
