@@ -29,4 +29,4 @@ For $k=2$. One can improve the running time when $n$ is large by reduce it to a 
 Let $n'$ be $|\bigcup_i S_i|$, we can obtain a more refined bound. 
 Together, the final running time for $k=2$ is $O(\min(m^{4/3}, dm, n^2+m))$. Here $d$ is the [degeneracy](https://en.wikipedia.org/wiki/Degeneracy_(graph_theory)) of the incident graph of the sets and the elements, which is bounded above by the maximum degree. 
 
-I am unaware of any faster results for $k>2$, which is equivalent to finding subgraph of the form $K_{2,k}$ in bipartite graphs. 
+Recently, [I've shown that for larger $k$](https://chaoxuprime.com/posts/2019-01-21-high-degree-low-degree-technique.html#finding-a-k_2ell-in-bipartite-graphs), we can obtain a $O(k^{1/3}m^{4/3})$ running time. 
