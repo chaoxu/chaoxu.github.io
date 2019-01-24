@@ -7,8 +7,48 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxuprime.com/blog/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Mon, 21 Jan 2019 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Tue, 22 Jan 2019 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Soft heap and selection</title>
+    <link>https://chaoxuprime.com/blog/posts/2019-01-22-soft-heap-and-selection.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>I enjoyed the workshop <a href="https://simplicityinalgorithms.com/">SOSA</a> a lot (Disclaimer: I have a paper in SOSA). The papers are simple and fun. I liked the paper <span class="citation" data-cites="KaplanKZZ18">[<a href="#ref-KaplanKZZ18">1</a>]</span> the most, because I learned some really interesting tricks with <a href="https://en.wikipedia.org/wiki/Soft_heap">soft heap</a>.</p>
+<p>Here I give a teaser of two things soft heap can do.</p>
+<p>We consider a minimalistic soft heap, as there are soft heap with more operations.</p>
+<ul>
+<li><code>soft-heap(ε)</code>: creates an empty soft heap with error parameter <span class="math inline">\e</span>.</li>
+<li><code>insert(e)</code>: insert an element into the heap.</li>
+<li><code>extract-min()</code>: return the element of minimum key in heap, and set of newly corrupted elements since last extraction.</li>
+</ul>
+<p>The operation <code>insert</code> takes <span class="math inline">O(1)</span> time, <code>extract-min()</code> takes <span class="math inline">O(1/\e)</span> time. In this article, we can assume <span class="math inline">\e=1/4</span>.</p>
+<p>During each insertion, the key of some elements might be increased. An element is corrupted if its key in the heap is strictly greater than the original key. If there are <span class="math inline">I</span> insertions into the soft heap, then at most <span class="math inline">\eI</span> elements can be corrupted.</p>
+<p>Although <code>extract-min()</code> might return an element that is not necessarily the minimum, but there is a bound on the amount of possible errors. Before <span class="citation" data-cites="KaplanKZZ18">[<a href="#ref-KaplanKZZ18">1</a>]</span>, I don't know of any application of soft heap other than vaguely knowing about it was used for minimum spanning tree.</p>
+<h1 id="linear-time-selection-in-unordered-list"><span class="header-section-number">1</span> Linear time selection in unordered list</h1>
+<p>We insert all elements into the soft-heap, and then we apply <code>extract-min</code> <span class="math inline">(1-\e)n/2</span> times, and find the maximum element <span class="math inline">e</span>. One can see the rank of <span class="math inline">e</span> lies between <span class="math inline">(1-\e)n/2</span> and <span class="math inline">(1+\e)n/2</span>. Now we can use this to remove at least <span class="math inline">(1-\e)n/2=\frac{1+\e}{2} n</span> elements, and recurse on the remaining. Once there is only a constant number of elements, use brute force. This gives us an running time <span class="math inline">T(n) = O(n) + T(\frac{1+\e}{2} n) = O(n)</span>.</p>
+<h1 id="linear-time-selection-in-heap"><span class="header-section-number">2</span> Linear time selection in heap</h1>
+<p>We are given a min heap <span class="math inline">H</span>, and interested in find the <span class="math inline">k</span>th smallest element in the heap. We first insert the min element <span class="math inline">e</span> into the soft heap.</p>
+<p>Whenever we apply <code>extract-min</code> to the soft heap, we obtain <span class="math inline">e</span> and a set of newly corrupted elements <span class="math inline">C</span>. For each element <span class="math inline">e&#39;\in C</span>, we add the children of <span class="math inline">e&#39;</span> in <span class="math inline">H</span> into the soft heap. If <span class="math inline">e</span> is not corrupted, we also add the children of <span class="math inline">e</span> in <span class="math inline">H</span> into the soft heap. Once we apply <code>extract-min</code> <span class="math inline">k-1</span> times we stop. Let <span class="math inline">S</span> be the set of all elements that was inserted into the soft heap. There are two important claims: <span class="math inline">|S|=O(k)</span> and the rank <span class="math inline">k</span> element has to be in <span class="math inline">S</span>. We can use a linear time selection algorithm on <span class="math inline">S</span> once we prove the two claims.</p>
+<h1 id="other-useful-results"><span class="header-section-number">3</span> Other useful results</h1>
+<p>There are some other nice results in the paper. Getting optimal results for selecting the rank <span class="math inline">k</span> element in <span class="math inline">m</span> sorted lists, and selecting <span class="math inline">k</span>th element in <span class="math inline">X+Y = \set{x+y | x\in X, y\in Y}</span>.</p>
+<h1 id="bibliography" class="unnumbered">References</h1>
+<div id="refs" class="references">
+<div id="ref-KaplanKZZ18">
+<p>[1] H. Kaplan, L. Kozma, O. Zamir, U. Zwick, Selection from Heaps, Row-Sorted Matrices, and X+Y Using Soft Heaps, in: J.T. Fineman, M. Mitzenmacher (Eds.), 2nd Symposium on Simplicity in Algorithms (Sosa 2019), Schloss Dagstuhl–Leibniz-Zentrum fuer Informatik, Dagstuhl, Germany, 2018: pp. 5:1–5:21 <a href="https://doi.org/10.4230/OASIcs.SOSA.2019.5">10.4230/OASIcs.SOSA.2019.5</a>.</p>
+</div>
+</div>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2019-01-22. </div>
+    <div class="info">Tags: algorithm, data structure.</div>
+
+</div>]]></description>
+    <pubDate>Tue, 22 Jan 2019 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/blog/posts/2019-01-22-soft-heap-and-selection.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title>The high-degree low-degree technique and arboricity</title>
     <link>https://chaoxuprime.com/blog/posts/2019-01-21-high-degree-low-degree-technique.html</link>
     <description><![CDATA[<br />
@@ -21,24 +61,20 @@
     \sum_{uv\in E} \min(\deg(u),\deg(v)) \leq 2\alpha m
 </span></p>
 </section>
-<section class="theorem-environment Theorem" id="Theorem-2">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">2</span></span>
-<p>If the arboricity of a graph is <span class="math inline">\alpha</span>, then there exists a induced subgraph with minimum degree at least <span class="math inline">\alpha</span>.</p>
-</section>
 <p>Often, using the arboricity, we can obtain the same complexity algorithm without high-degree low-degree technique. Note the arboricity is <span class="math inline">O(\sqrt{m})</span>. The application of arboricity are from <span class="citation" data-cites="ChibaN85">[<a href="#ref-ChibaN85">1</a>]</span>.</p>
 <p>Some of the algorithms described can be speedup by using matrix multiplication, or faster combinatorial boolean matrix multiplication. We avoid them for simplicity of exposition.</p>
 <h1 id="dominating-set-with-few-edges"><span class="header-section-number">1</span> Dominating set with few edges</h1>
 <p>The set cover problem, given <span class="math inline">\mathcal{S} = \set{S_1,\ldots,S_n}</span> are <span class="math inline">n</span> set contains a total of <span class="math inline">m</span> elements. <span class="math inline">U=\bigcup_{S\in \mathcal{S}} S</span> is the universe, with size <span class="math inline">u</span>.</p>
-<section class="theorem-environment Theorem" id="Theorem-3">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">3</span></span>
+<section class="theorem-environment Theorem" id="Theorem-2">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">2</span></span>
 <p>There is a probability distribution <span class="math inline">D</span> over <span class="math inline">\mathcal{S}</span>, such that for each <span class="math inline">u</span>, the probability a random set <span class="math inline">S</span> covers <span class="math inline">u</span> is at least <span class="math inline">\e</span>. There exists a set cover of <span class="math inline">\ceil{\frac{\log u}{\e}}</span>.</p>
 </section>
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span></span>
 <p>There exists a set that covers at least <span class="math inline">\e |U&#39;|</span> for any <span class="math inline">U&#39; \subset U</span>. Therefore each greedy iteration decrease the size of uncovered universe by an <span class="math inline">\e</span> fraction. So there can be at most <span class="math inline">t</span> iterations, where <span class="math inline">(1-\e)^t&lt;1</span>. One can show <span class="math inline">\ceil{\frac{\log u}{\e}}</span> suffices.</p>
 </section>
-<section class="theorem-environment Theorem" id="Theorem-4">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">4</span></span>
+<section class="theorem-environment Theorem" id="Theorem-3">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">3</span></span>
 <p>There is a dominating set incident to <span class="math inline">O(n\sqrt{n\log n})</span> edges.</p>
 </section>
 <section class="theorem-environment Proof" id="Proof-">
@@ -49,24 +85,24 @@
 <h1 id="finding-small-subgraphs"><span class="header-section-number">2</span> Finding small subgraphs</h1>
 <h2 id="finding-a-triangle"><span class="header-section-number">2.1</span> Finding a triangle</h2>
 <p>A <em>triangle</em> is <span class="math inline">3</span> vertices pairwise adjacent to each other, another name for <span class="math inline">K_3</span>.</p>
-<section class="theorem-environment Theorem" id="Theorem-5">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">5</span></span>
+<section class="theorem-environment Theorem" id="Theorem-4">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">4</span></span>
 <p>There is a <span class="math inline">O(m\Delta)</span> time algorithm to decide if the graph has a triangle, where <span class="math inline">\Delta</span> is the maximum degree.</p>
 </section>
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span></span>
 <p>Indeed, for each vertex <span class="math inline">v</span>, we consider its neighbors, see if any is adjacent to each other. We then delete <span class="math inline">v</span>. The algorithm takes <span class="math inline">O(\sum_{v} \deg^2(v)) = O(m\Delta)</span> time.</p>
 </section>
-<section class="theorem-environment Theorem" id="Theorem-6">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">6</span></span>
+<section class="theorem-environment Theorem" id="Theorem-5">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">5</span></span>
 <p>There is a <span class="math inline">O(n^3)</span> time algorithm to decide if the graph has a triangle.</p>
 </section>
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span></span>
 <p>The naive algorithm, for each <span class="math inline">3</span> vertices, we decide if it forms a triangle.</p>
 </section>
-<section class="theorem-environment Theorem" id="Theorem-7">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">7</span></span>
+<section class="theorem-environment Theorem" id="Theorem-6">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">6</span></span>
 <p>There is a <span class="math inline">O(m^{3/2})</span> time algorithm to decide if the graph has a triangle.</p>
 </section>
 <section class="theorem-environment Proof" id="Proof-">
@@ -75,31 +111,40 @@
 </section>
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span><span class="name">Alternative</span></span>
-<p>We modify the algorithm a little. For each vertex <span class="math inline">v</span>, we consider its neighbor <span class="math inline">u</span>, and check if <span class="math inline">u</span> has a neighbor that is in <span class="math inline">v</span>. Then we delete <span class="math inline">v</span>, and move on to next vertex. The running time become <span class="math inline">\sum_{v\in V} (\deg(v)+\sum_{u\in N(v)} \deg(u))</span>. Now, assume we pick vertices by the <em>largest</em> to <em>smallest</em> in term of degrees. We rearrange the sum and obtain <span class="math inline">\sum_{v\in V} (\deg(v)+\sum_{u\in N(v)} \deg(u)) = \sum_{v\in V} \deg(v) + 2 \sum_{uv\in E} \min(\deg(u),\deg(v)) = O(\alpha m)</span>. But <span class="math inline">\alpha\leq \sqrt{m}</span>, therefore we have the running time <span class="math inline">O(m^{3/2})</span>.</p>
+<p>We modify the algorithm a little. For each vertex <span class="math inline">v</span>, we consider its neighbor <span class="math inline">u</span>, and check if <span class="math inline">u</span> has a neighbor that is in <span class="math inline">v</span>. Then we delete <span class="math inline">v</span>, and move on to next vertex. The running time become <span class="math inline">\sum_{v\in V} (\deg(v)+\sum_{u\in N(v)} \deg(u))</span>. Now, assume we pick vertices by the <em>largest</em> to <em>smallest</em> in term of degrees. We rearrange the sum and obtain <span class="math inline">\sum_{v\in V} (\deg(v)+\sum_{u\in N(v)} \deg(u)) = \sum_{v\in V} \deg(v) + 2 \sum_{uv\in E} \min(\deg(u),\deg(v)) = O(\alpha m)</span>. Because <span class="math inline">\alpha\leq \sqrt{m}</span>, we have the running time <span class="math inline">O(m^{3/2})</span>.</p>
 </section>
-<h2 id="finding-a-k_2ell-in-bipartite-graphs"><span class="header-section-number">2.2</span> Finding a <span class="math inline">K_{2,\ell}</span> in bipartite graphs</h2>
-<p>This section we use technique that follows from <span class="citation" data-cites="AlonYZ97">[<a href="#ref-AlonYZ97">3</a>]</span>, which solved the special case <span class="math inline">K_{2,2}</span>. For two vertices <span class="math inline">u,v\in A</span>, decide if there is a intersection of the neighborhood of size at least <span class="math inline">\ell</span>. The claim is using the same argument as the triangle case with arboricity. Of course one need to be careful with designing the algorithm. However, the following would not be difficult to obtain.</p>
-<section class="theorem-environment Theorem" id="Theorem-8">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">8</span></span>
-<p>One can check if there exists a <span class="math inline">K_{2,\ell}</span> in the bipartite graph <span class="math inline">G=(A,B,E)</span> in <span class="math inline">O(\alpha m)</span> time.</p>
-</section>
-<p>Again, we directly obtain <span class="math inline">O(m^{3/2})</span> running time. However, we show something better using stronger theorems.</p>
-<section class="theorem-environment Theorem" id="Theorem-9">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">9</span></span>
+<h2 id="a-motivating-problem"><span class="header-section-number">2.2</span> A motivating problem</h2>
+<p>Let <span class="math inline">S_1,\ldots,S_n</span> be sets with total of <span class="math inline">m</span> elements. How quickly can we find two distinct <span class="math inline">i</span> and <span class="math inline">j</span> such that <span class="math inline">|S_i\cap S_j|\geq \ell</span>? This problem can be shown to be equivalent to finding a colored <span class="math inline">K_{2,\ell}</span> in a bipartite graph. That is, for input bipartite graph <span class="math inline">G=(A,B,E)</span>. Find a <span class="math inline">K_{2,\ell}</span> where the side of two vertices has to be in <span class="math inline">A</span>.</p>
+<h2 id="finding-a-c_4-in-bipartite-graphs"><span class="header-section-number">2.3</span> Finding a <span class="math inline">C_4</span> in bipartite graphs</h2>
+<p>This section we use technique that follows from <span class="citation" data-cites="AlonYZ97">[<a href="#ref-AlonYZ97">3</a>]</span>. Although we are into finding <span class="math inline">C_4</span>, but some theorems are more general for <span class="math inline">K_{2,\ell}</span>, so we will state them too. Note finding a colored <span class="math inline">K_{2,2}</span> and finding a <span class="math inline">K_{2,2}</span> is the same problem due to symmetry.</p>
+<p>Let <span class="math inline">v_1,\ldots,v_n</span> be an ordering such that <span class="math inline">\deg(v_i)\geq \deg(v_j)</span>. There exists an algorithm that finds an ordering of vertices <span class="math inline">v_1,\ldots,v_n</span>, and returns <span class="math inline">N_i(v_i)\cap N_i(v_j)</span> for each <span class="math inline">i</span> and <span class="math inline">j&gt;i</span>. Here <span class="math inline">N_i(v)</span> is the set of neighbors of <span class="math inline">v</span> in <span class="math inline">G[\set{v_i,\ldots,v_n}]</span>. Here we show an algorithm solves the above problem when the arboricity is small.</p>
+<p>The algorithm is as follows <span class="citation" data-cites="ChibaN85">[<a href="#ref-ChibaN85">1</a>]</span>. Take <span class="math inline">v</span>, we consider each neighbor <span class="math inline">u</span>. Maintain a set <span class="math inline">S_w</span> for each vertex <span class="math inline">w</span> distance <span class="math inline">2</span> from <span class="math inline">v</span>. Add <span class="math inline">u</span> into each of <span class="math inline">u</span>'s neighbor in <span class="math inline">w</span>. <span class="math inline">S_w</span> would give us information of <span class="math inline">N(v)\cap N(w)</span>. We delete <span class="math inline">v</span> and keep going. It is known the algorithm takes <span class="math inline">O(\alpha(G)m)</span> time. This allows us to compute <span class="math inline">C_4</span> in the same time. Hence we directly obtain <span class="math inline">O(m^{3/2})</span> running time. However, we show something better is possible if we are not interested in finding all <span class="math inline">C_4</span>, but find any <span class="math inline">C_4</span>. We also need the following theorem.</p>
+<section class="theorem-environment Theorem" id="Theorem-7">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">7</span></span>
 <p>One can check if there exists a <span class="math inline">K_{2,\ell}</span> in the bipartite graph <span class="math inline">G=(A,B,E)</span> in <span class="math inline">O(\ell n^2)</span> time.</p>
 </section>
 <p>Now, we combine the two algorithms. It requires a theorem in extremal graph theory can be found in <span class="citation" data-cites="Furedi96">[<a href="#ref-Furedi96">4</a>]</span>.</p>
-<section class="theorem-environment Theorem" id="Theorem-10">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">10</span><span class="name"><span class="math inline">K_{2,\ell}</span>-free theorem</span></span>
+<section class="theorem-environment Theorem" id="Theorem-8">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">8</span><span class="name"><span class="math inline">K_{2,\ell}</span>-free theorem</span></span>
 <p>There exists a constant <span class="math inline">c</span>, such that each <span class="math inline">n</span> vertex graph with <span class="math inline">c n^{3/2} \ell^{1/2}</span> edges contains a <span class="math inline">K_{2,\ell}</span>.</p>
 </section>
-<section class="theorem-environment Theorem" id="Theorem-11">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">11</span></span>
-<p>There is a <span class="math inline">O(\ell^{1/3}m^{4/3})</span> time algorithm to find a <span class="math inline">K_{2,\ell}</span> in the graph.</p>
+<section class="theorem-environment Theorem" id="Theorem-9">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">9</span></span>
+<p>There is a <span class="math inline">O(m^{4/3})</span> time algorithm to find a <span class="math inline">C_4</span> in the graph.</p>
 </section>
 <section class="theorem-environment Proof" id="Proof-">
 <span class="theorem-header"><span class="type">Proof</span></span>
-<p>If the arboricity is <span class="math inline">t</span>. We use the first algorithm and we get running time <span class="math inline">O(t m)</span>. Otherwise, we know there is a subgraph with minimum degree at least <span class="math inline">t</span>. The subgraph can be found by repeatedly deleting vertices of minimum degree. The subgraph <span class="math inline">G&#39;</span> with the previous property has <span class="math inline">n&#39;\leq n</span> vertices and <span class="math inline">m&#39;\leq n&#39;t</span> edges. One can see <span class="math inline">n&#39;\leq m&#39;/t\leq m/t</span>. If <span class="math inline">cn&#39;^{3/2}\ell^{1/2}\leq m&#39; \leq n&#39;t</span>, then we know there exists a <span class="math inline">K_{2,\ell}</span> in <span class="math inline">G&#39;</span> by the previous theorem, and we can apply the <span class="math inline">O(\ell n^2)</span> time algorithm in the subgraph to find the <span class="math inline">K_{2,\ell}</span>. The total running time is therefore <span class="math inline">O(tm + \ell n&#39;^2) = O(tm+\ell (m/t)^2)</span>. We set <span class="math inline">t=c^{3/2} (\ell m)^{1/3}</span>. One can check after lot of algebra, it make sure the condition <span class="math inline">cn&#39;^{3/2}\ell^{1/2}\leq n&#39;t</span> is satisfied. The algorithm takes <span class="math inline">O(\ell^{1/3}m^{4/3})</span> time.</p>
+<p>If the arboricity is <span class="math inline">t</span>. We use the first algorithm and we get running time <span class="math inline">O(t m)</span>. Otherwise, we know there is a subgraph with minimum degree at least <span class="math inline">t</span>. The subgraph can be found by repeatedly deleting vertices of minimum degree. The subgraph <span class="math inline">G&#39;</span> with the previous property has <span class="math inline">n&#39;\leq n</span> vertices and <span class="math inline">m&#39;\leq n&#39;t</span> edges. One can see <span class="math inline">n&#39;\leq m&#39;/t\leq m/t</span>. If <span class="math inline">cn&#39;^{3/2}\leq m&#39; \leq n&#39;t</span>, then we know there exists a <span class="math inline">C_4</span> in <span class="math inline">G&#39;</span> by the previous theorem, and we can apply the <span class="math inline">O(n^2)</span> time algorithm in the subgraph to find the <span class="math inline">C_4</span>. The total running time is therefore <span class="math inline">O(tm + n&#39;^2) = O(tm+(m/t)^2)</span>. We set <span class="math inline">t=c^{3/2} m^{1/3}</span>. One can check after lot of algebra, it make sure the condition <span class="math inline">cn&#39;^{3/2}\leq n&#39;t</span> is satisfied. The algorithm takes <span class="math inline">O(m^{4/3})</span> time.</p>
+</section>
+<h2 id="finding-a-colored-k_23-in-bipartite-graphs"><span class="header-section-number">2.4</span> Finding a colored <span class="math inline">K_{2,3}</span> in bipartite graphs</h2>
+<p>For finding <span class="math inline">K_{2,\ell}</span>, the low arboricity algorithm for <span class="math inline">C_4</span> works here. The <span class="math inline">O(\alpha(G)m)</span> algorithm is still fine. It's not hard to generalize and show a <span class="math inline">O(\ell^{1/3}m^{4/3})</span> running time algorithm.</p>
+<p>However, in order to solve the motivating problem. We need a colored <span class="math inline">K_{2,\ell}</span>.</p>
+<p>Let's consider a <span class="math inline">K_{2,\ell}</span> in <span class="math inline">G</span>, and consider the first indexed vertex <span class="math inline">v</span>. If <span class="math inline">v\in A</span>, then we are done, as the algorithm will find it. If <span class="math inline">v\in B</span>, then we will solve the problem in another way, which gives us some time improvement when <span class="math inline">\ell=3</span>.</p>
+<p>For each <span class="math inline">v_i</span> in <span class="math inline">B</span>, we consider <span class="math inline">v_j\in B</span> that has distance <span class="math inline">2</span> from <span class="math inline">v_i</span> and <span class="math inline">j&gt;i</span>. We consider the set of vertices <span class="math inline">S_{i,j} = N_i(v_i)\cap N_i(v_j)</span>. If there are two sets <span class="math inline">S_{i,j}</span> and <span class="math inline">S_{a,b}</span> has intersection size at least <span class="math inline">2</span>, then we claim there exists a <span class="math inline">K_{2,3}</span> in <span class="math inline">G</span>. Now, this becomes finding a <span class="math inline">C_4</span> in the input sets. The total size of the input sets are <span class="math inline">O(\alpha(G)m)</span>. Hence we can use <span class="math inline">O((\alpha(G)m)^{4/3})</span> time to find a <span class="math inline">C_4</span>. Hence this implies a <span class="math inline">O((\alpha(G)m)^{4/3})</span> time algorithm to find a <span class="math inline">K_{2,3}</span>.</p>
+<p>Using the idea for finding <span class="math inline">C_4</span>, we can mix the <span class="math inline">((\alpha(G)m)^{4/3})</span> time algorithm and the <span class="math inline">O(n^2)</span> time algorithm. Working out the algebra shows the following theorem.</p>
+<section class="theorem-environment Theorem" id="Theorem-10">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">10</span></span>
+<p>There is a <span class="math inline">O(m^{28/15})</span> time algorithm for finding a colored <span class="math inline">K_{2,3}</span>.</p>
 </section>
 <h1 id="bibliography" class="unnumbered">References</h1>
 <div id="refs" class="references">
@@ -113,7 +158,7 @@
 <p>[3] N. Alon, R. Yuster, U. Zwick, <strong>Finding and counting given length cycles</strong>, Algorithmica. 17 (1997) 209–223 <a href="https://doi.org/10.1007/BF02523189">10.1007/BF02523189</a>.</p>
 </div>
 <div id="ref-Furedi96">
-<p>[4] Z. Füredi, <strong>New asymptotics for bipartite turán numbers</strong>, Journal of Combinatorial Theory, Series A. 75 (1996) 141–144 <a href="https://doi.org/https://doi.org/10.1006/jcta.1996.0067">https://doi.org/10.1006/jcta.1996.0067</a>.</p>
+<p>[4] Z. Füredi, <strong>New asymptotics for bipartite turán numbers</strong>, Journal of Combinatorial Theory, Series A. 75 (1996) 141–144 <a href="https://doi.org/10.1006/jcta.1996.0067">10.1006/jcta.1996.0067</a>.</p>
 </div>
 </div>
 
@@ -569,46 +614,6 @@ D[m,k] = \min_{x_m\in \{0,1\}} D\left[m-1,\frac{|w_m|k- w_m x_m+(t\bmod |w_m| - 
 </div>]]></description>
     <pubDate>Thu, 09 Mar 2017 00:00:00 UT</pubDate>
     <guid>https://chaoxuprime.com/blog/posts/2017-03-09-filling-up-a-bin-using-balls-with-divisible-weight.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>Processor distribution and proportional apportionment</title>
-    <link>https://chaoxuprime.com/blog/posts/2016-08-02-proportional-apportionment.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>I saw an interview problem about assigning identical processors to embarrassingly parallel jobs. The running time of a job equals the running time on a single processor divided by the number of processors. We are interested in minimizing the maximum running time. Formally, we get the following problem.</p>
-<section class="theorem-environment Problem" id="Problem-1">
-<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
-<p>Given positive reals <span class="math inline">a_1,\ldots,a_n</span> and positive integer <span class="math inline">k</span>, find non-negative integers <span class="math inline">x_1,\ldots,x_n</span>, such that <span class="math inline">\sum_{i} x_i \leq k</span> and <span class="math inline">\theta = \max_{i} a_i/x_i</span> is minimized.</p>
-</section>
-<p>If there is no integral requirement on <span class="math inline">x_i</span>'s, then the problem is easy. Let <span class="math inline">A=\sum_{i} a_i</span>. There is a closed solution of <span class="math inline">x_i = k \frac{a_i}{A}</span>, and <span class="math inline">\theta = A / k</span>.</p>
-<p>Otherwise, it is easy to check if <span class="math inline">\theta&#39;&gt;0</span> is a feasible solution. <span class="math inline">\theta&#39;</span> is feasible iff <span class="math inline">\sum_{i} \ceil{a_i/\theta&#39;} \leq k</span>. Therefore one can apply binary search, and get the result in <span class="math inline">O(n\log k)</span> time.</p>
-<p>One can also get a <span class="math inline">O(n\log n)</span> time algorithm. First compute <span class="math inline">y_i = \ceil{k \frac{a_i}{A}}</span>. Greedily find a <span class="math inline">i</span> such that <span class="math inline">a_i/y_i</span> is maximized, and decrease <span class="math inline">y_i</span> by <span class="math inline">1</span>. We stop when we have <span class="math inline">\sum_{i} y_i=k</span>. This takes <span class="math inline">O(\log n)</span> per operation using a binary search tree.</p>
-<p>Linear time algorithm also exists. It is connected to proportional apportionment. This is the problem of finding the smallest <span class="math inline">\lambda</span>, such that <span class="math inline">\sum_{i} \ceil{\lambda a_i} = k</span>. Cheng and Eppstein found a <span class="math inline">O(n)</span> time algorithm <span class="citation" data-cites="Cheng2014">[<a href="#ref-Cheng2014">1</a>]</span>. Reitzig and Wild found a simpler algorithm later <span class="citation" data-cites="Reitzig2017">[<a href="#ref-Reitzig2017">2</a>]</span>.</p>
-<p>There is a similar interview problem. Given <span class="math inline">n</span> points on the real line, add <span class="math inline">k</span> more points, such that it minimizes the maximum length between adjacent points. The problem is the same as the following one.</p>
-<section class="theorem-environment Problem" id="Problem-2">
-<span class="theorem-header"><span class="type">Problem</span><span class="index">2</span></span>
-<p>Given positive <span class="math inline">a_1,\ldots,a_n</span> and positive integer <span class="math inline">k</span>, find non-negative integers <span class="math inline">x_1,\ldots,x_n</span>, such that <span class="math inline">\sum_{i} x_i \leq k</span> and <span class="math inline">\theta = \max_{i} a_i/(x_i+1)</span> is minimized.</p>
-</section>
-<p>The linear time algorithm for proportional apportionment should also work for the above problem. It is interesting how much can we change the problem before the linear time algorithm no longer works.</p>
-<h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references">
-<div id="ref-Cheng2014">
-<p>[1] Z. Cheng, D. Eppstein, Linear-time algorithms for proportional apportionment, in: H.-K. Ahn, C.-S. Shin (Eds.), Algorithms and Computation: 25th International Symposium, Isaac 2014, Jeonju, Korea, December 15-17, 2014, Proceedings, Springer International Publishing, Cham, 2014: pp. 581–592 <a href="https://doi.org/10.1007/978-3-319-13075-0_46">10.1007/978-3-319-13075-0_46</a>.</p>
-</div>
-<div id="ref-Reitzig2017">
-<p>[2] R. Reitzig, S. Wild, <strong>Building fences straight and high: An optimal algorithm for finding the maximum length you can cut <span class="math inline">k</span> times from given sticks</strong>, Algorithmica. (2017) <a href="https://doi.org/10.1007/s00453-017-0392-3">10.1007/s00453-017-0392-3</a>.</p>
-</div>
-</div>
-
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2016-08-02. </div>
-    <div class="info">Tags: optimization, integer.</div>
-
-</div>]]></description>
-    <pubDate>Tue, 02 Aug 2016 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/blog/posts/2016-08-02-proportional-apportionment.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 
