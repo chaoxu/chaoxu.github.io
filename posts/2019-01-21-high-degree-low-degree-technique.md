@@ -14,9 +14,6 @@ Mainly, there are a few useful statements.
         \sum_{uv\in E} \min(\deg(u),\deg(v)) \leq 2\alpha m
     \]
 
-{Theorem}
-    If the arboricity of a graph is $\alpha$, then there exists a induced subgraph with minimum degree at least $\alpha$.
-
 Often, using the arboricity, we can obtain the same complexity algorithm without high-degree low-degree technique. Note the arboricity is $O(\sqrt{m})$. The application of arboricity are from [@ChibaN85].
 
 Some of the algorithms described can be speedup by using matrix multiplication, or faster combinatorial boolean matrix multiplication. We avoid them for simplicity of exposition. 
@@ -67,18 +64,21 @@ A _triangle_ is $3$ vertices pairwise adjacent to each other, another name for $
 
 {Proof}(Alternative)
     We modify the algorithm a little. For each vertex $v$, we consider its neighbor $u$, and check if $u$ has a neighbor that is in $v$. Then we delete $v$, and move on to next vertex. The running time become $\sum_{v\in V} (\deg(v)+\sum_{u\in N(v)} \deg(u))$. Now, assume we pick vertices by the _largest_ to _smallest_ in term of degrees. We rearrange the sum and obtain $\sum_{v\in V}  (\deg(v)+\sum_{u\in N(v)} \deg(u)) = \sum_{v\in V} \deg(v) + 2 \sum_{uv\in E} \min(\deg(u),\deg(v)) = O(\alpha m)$. 
-    But $\alpha\leq \sqrt{m}$, therefore we have the running time $O(m^{3/2})$.
+    Because $\alpha\leq \sqrt{m}$, we have the running time $O(m^{3/2})$.
 
-## Finding a $K_{2,\ell}$ in bipartite graphs
 
-This section we use technique that follows from [@AlonYZ97], which solved the special case $K_{2,2}$.
-For two vertices $u,v\in A$, decide if there is a intersection of the neighborhood of size at least $\ell$. 
-The claim is using the same argument as the triangle case with arboricity. Of course one need to be careful with designing the algorithm. However, the following would not be difficult to obtain.
+## A motivating problem
 
-{Theorem}
-    One can check if there exists a $K_{2,\ell}$ in the bipartite graph $G=(A,B,E)$ in $O(\alpha m)$ time.
+Let $S_1,\ldots,S_n$ be sets with total of $m$ elements. How quickly can we find two distinct $i$ and $j$ such that $|S_i\cap S_j|\geq \ell$? This problem can be shown to be equivalent to finding a colored $K_{2,\ell}$ in a bipartite graph. That is, for input bipartite graph $G=(A,B,E)$. Find a $K_{2,\ell}$ where the side of two vertices has to be in $A$. 
 
-Again, we directly obtain $O(m^{3/2})$ running time. However, we show something better using stronger theorems. 
+## Finding a $C_4$ in bipartite graphs
+
+This section we use technique that follows from [@AlonYZ97]. Although we are into finding $C_4$, but some theorems are more general for $K_{2,\ell}$, so we will state them too. Note finding a colored $K_{2,2}$ and finding a $K_{2,2}$ is the same problem due to symmetry. 
+
+Let $v_1,\ldots,v_n$ be an ordering such that $\deg(v_i)\geq \deg(v_j)$. There exists an algorithm that finds an ordering of vertices $v_1,\ldots,v_n$, and returns $N_i(v_i)\cap N_i(v_j)$ for each $i$ and $j>i$. Here $N_i(v)$ is the set of neighbors of $v$ in $G[\set{v_i,\ldots,v_n}]$.
+Here we show an algorithm solves the above problem when the arboricity is small. 
+
+The algorithm is as follows [@ChibaN85]. Take $v$, we consider each neighbor $u$. Maintain a set $S_w$ for each vertex $w$ distance $2$ from $v$. Add $u$ into each of $u$'s neighbor in $w$. $S_w$ would give us information of $N(v)\cap N(w)$. We delete $v$ and keep going. It is known the algorithm takes $O(\alpha(G)m)$ time. This allows us to compute $C_4$ in the same time. Hence we directly obtain $O(m^{3/2})$ running time. However, we show something better is possible if we are not interested in finding all $C_4$, but find any $C_4$. We also need the following theorem.
 
 {Theorem}
     One can check if there exists a $K_{2,\ell}$ in the bipartite graph $G=(A,B,E)$ in $O(\ell n^2)$ time.
@@ -89,8 +89,24 @@ Now, we combine the two algorithms. It requires a theorem in extremal graph theo
     There exists a constant $c$, such that each $n$ vertex graph with $c n^{3/2} \ell^{1/2}$ edges contains a $K_{2,\ell}$.
 
 {Theorem}
-    There is a $O(\ell^{1/3}m^{4/3})$ time algorithm to find a $K_{2,\ell}$ in the graph.
+    There is a $O(m^{4/3})$ time algorithm to find a $C_4$ in the graph.
 
 {Proof}
-    If the arboricity is $t$. We use the first algorithm and we get running time $O(t m)$. Otherwise, we know there is a subgraph with minimum degree at least $t$. The subgraph can be found by repeatedly deleting vertices of minimum degree. The subgraph $G'$ with the previous property has $n'\leq n$ vertices and $m'\leq n't$ edges. One can see $n'\leq m'/t\leq m/t$. If $cn'^{3/2}\ell^{1/2}\leq m' \leq n't$, then we know there exists a $K_{2,\ell}$ in $G'$ by the previous theorem, and we can apply the $O(\ell n^2)$ time algorithm in the subgraph to find the $K_{2,\ell}$. The total running time is therefore $O(tm + \ell n'^2) = O(tm+\ell (m/t)^2)$.
-    We set $t=c^{3/2} (\ell m)^{1/3}$. One can check after lot of algebra, it make sure the condition $cn'^{3/2}\ell^{1/2}\leq n't$ is satisfied. The algorithm takes $O(\ell^{1/3}m^{4/3})$ time. 
+    If the arboricity is $t$. We use the first algorithm and we get running time $O(t m)$. Otherwise, we know there is a subgraph with minimum degree at least $t$. The subgraph can be found by repeatedly deleting vertices of minimum degree. The subgraph $G'$ with the previous property has $n'\leq n$ vertices and $m'\leq n't$ edges. One can see $n'\leq m'/t\leq m/t$. If $cn'^{3/2}\leq m' \leq n't$, then we know there exists a $C_4$ in $G'$ by the previous theorem, and we can apply the $O(n^2)$ time algorithm in the subgraph to find the $C_4$. The total running time is therefore $O(tm + n'^2) = O(tm+(m/t)^2)$.
+    We set $t=c^{3/2} m^{1/3}$. One can check after lot of algebra, it make sure the condition $cn'^{3/2}\leq n't$ is satisfied. The algorithm takes $O(m^{4/3})$ time. 
+
+## Finding a colored $K_{2,3}$ in bipartite graphs
+
+For finding $K_{2,\ell}$, the low arboricity algorithm for $C_4$ works here. The $O(\alpha(G)m)$ algorithm is still fine. It's not hard to generalize and show a $O(\ell^{1/3}m^{4/3})$ running time algorithm.
+
+However, in order to solve the motivating problem. We need a colored $K_{2,\ell}$.
+
+Let's consider a $K_{2,\ell}$ in $G$, and consider the first indexed vertex $v$. If $v\in A$, then we are done, as the algorithm will find it. If $v\in B$, then we will solve the problem in another way, which gives us some time improvement when $\ell=3$. 
+
+For each $v_i$ in $B$, we consider $v_j\in B$ that has distance $2$ from $v_i$ and $j>i$. We consider the set of vertices $S_{i,j} = N_i(v_i)\cap N_i(v_j)$. 
+If there are two sets $S_{i,j}$ and $S_{a,b}$ has intersection size at least $2$, then we claim there exists a $K_{2,3}$ in $G$. Now, this becomes finding a $C_4$ in the input sets. The total size of the input sets are $O(\alpha(G)m)$. Hence we can use $O((\alpha(G)m)^{4/3})$ time to find a $C_4$. Hence this implies a $O((\alpha(G)m)^{4/3})$ time algorithm to find a $K_{2,3}$. 
+
+Using the idea for finding $C_4$, we can mix the $((\alpha(G)m)^{4/3})$ time algorithm and the $O(n^2)$ time algorithm. Working out the algebra shows the following theorem.
+
+{Theorem}
+    There is a $O(m^{28/15})$ time algorithm for finding a colored $K_{2,3}$.
