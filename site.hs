@@ -68,6 +68,20 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
     -}
+    -- sitemap
+    create ["sitemap.xml"] $ do
+        route idRoute
+        compile $ do
+            -- load and sort the posts
+            posts <- recentFirst =<< loadAll "posts/*"
+                           -- mappend the posts and singlePages together
+            let pages = posts 
+                           -- create the `pages` field with the postCtx
+                           -- and return the `pages` value for it
+                sitemapCtx = listField "pages" postCtx (return pages)
+            -- make the item and apply our sitemap template
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
     -- rss 
     create ["rss.xml"] $ do
         route idRoute
@@ -76,6 +90,7 @@ main = hakyll $ do
             posts <- fmap (take 10) . recentFirst =<<
                 loadAllSnapshots "posts/*" "content"
             renderRss feedConfiguration feedCtx posts
+
     -- Index
     match "blog.html" $ do
         route idRoute
