@@ -88,61 +88,20 @@
 <li>While doing the flood fill, it can also find the rank of the <span class="math inline">k/2</span>th element in <span class="math inline">A_o</span> in the matrix <span class="math inline">A</span> for no extra cost.</li>
 <li>A linear time selection algorithm on all the elements resulted from the flood fill.</li>
 </ol>
-<p>This would give us a recursive algorithm if instead of just finding <span class="math inline">k</span>th number, it finds the <span class="math inline">k_1</span>th and <span class="math inline">k_2</span>th number at the same time. As long as <span class="math inline">|k_1-k_2|=O(m)</span>, we can find them both only with a <span class="math inline">O(m)</span> extra time. <span class="math inline">k_1</span> and <span class="math inline">k_2</span> will be the upper and lower bounds respectively. Some basic algebra shows we will <span class="math inline">|k_1-k_2|=O(m)</span> inside each recursive step if we start with <span class="math inline">k_1=k_2=k</span>.</p>
+<p>This would give us a recursive algorithm if instead of just finding <span class="math inline">k</span>th number, it finds the <span class="math inline">k_1</span>th and <span class="math inline">k_2</span>th number at the same time. As long as <span class="math inline">|k_1-k_2|=O(m)</span>, we can find them both only with a <span class="math inline">O(m)</span> extra time. <span class="math inline">k_1</span> and <span class="math inline">k_2</span> will be the upper and lower bounds respectively. Some basic algebra shows <span class="math inline">|k_1-k_2|=O(m)</span> inside each recursive step if we start with <span class="math inline">k_1=k_2=k</span>.</p>
 <p>Let <span class="math inline">T(n,m)</span> be the time used when the matrix is of size <span class="math inline">n\times m</span>, and <span class="math inline">n\leq m</span>. Certainly <span class="math inline">T(1,m)=1</span>, and the rest follow the recursive relation <span class="math inline">T(n,m) = cm + T(n,m/2)</span> for some constant <span class="math inline">c</span>.</p>
 <p>If <span class="math inline">n&gt;m</span>, we can rotate the matrix implicitly to get the same running time.</p>
 <p>Solving it gives us the desired running time <span class="math inline">O(m)</span>. This is also a <span class="math inline">O(k)</span> time algorithm because we only need to consider the <span class="math inline">k\times k</span> submatrix in the up-left position.</p>
 <p>A Haskell implementation here, it requires a linear time rank selection algorithm <code>selectRank</code>.</p>
-<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import </span><span class="dt">Data.List</span>
-<span class="kw">import </span><span class="dt">Control.Applicative</span>
-<span class="kw">import </span><span class="dt">Control.Arrow</span>
-<span class="kw">import </span><span class="dt">Control.Monad</span>
-<span class="kw">import </span><span class="dt">RankSelection</span>
-
-<span class="kw">type</span> <span class="dt">Matrix</span> a <span class="fu">=</span> (<span class="dt">Int</span><span class="ot">-&gt;</span><span class="dt">Int</span><span class="ot">-&gt;</span>a, <span class="dt">Int</span>, <span class="dt">Int</span>)
-
-<span class="co">-- The input is an matrix sorted in both row and column order</span>
-<span class="co">-- This selects the kth smallest element. (0th is the smallest)</span>
-<span class="ot">selectMatrixRank ::</span> <span class="dt">Ord</span> a <span class="ot">=&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Matrix</span> a <span class="ot">-&gt;</span> a
-selectMatrixRank k (f,n,m)
- <span class="fu">|</span> k <span class="fu">&gt;=</span> n<span class="fu">*</span>m <span class="fu">||</span> k <span class="fu">&lt;</span> <span class="dv">0</span> <span class="fu">=</span> error <span class="st">&quot;rank doesn&#39;t exist&quot;</span>
- <span class="fu">|</span> otherwise         <span class="fu">=</span> fst <span class="fu">$</span> fst <span class="fu">$</span> biselect k k (f&#39;, min n (k<span class="fu">+</span><span class="dv">1</span>), min m (k<span class="fu">+</span><span class="dv">1</span>))
- <span class="kw">where</span> f&#39; x y<span class="fu">=</span> (f x y, (x, y))
-
-<span class="ot">biselect ::</span> <span class="dt">Ord</span> a <span class="ot">=&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Matrix</span> a <span class="ot">-&gt;</span> (a,a)
-biselect lb ub (f&#39;,n&#39;,m&#39;) <span class="fu">=</span> join (<span class="fu">***</span>) (selectRank values) (lb<span class="fu">-</span>ra, ub<span class="fu">-</span>ra)
- <span class="kw">where</span> mat<span class="fu">@</span>(f,n,m)
-        <span class="fu">|</span> n&#39; <span class="fu">&gt;</span> m&#39;   <span class="fu">=</span> (flip f&#39;, m&#39;, n&#39;)
-        <span class="fu">|</span> otherwise <span class="fu">=</span> (f&#39;, n&#39;, m&#39;)
-       (a, b)
-        <span class="fu">|</span> n <span class="fu">&lt;</span> <span class="dv">3</span>     <span class="fu">=</span> (f <span class="dv">0</span> <span class="dv">0</span>, f (n<span class="fu">-</span><span class="dv">1</span>) (m<span class="fu">-</span><span class="dv">1</span>))
-        <span class="fu">|</span> otherwise <span class="fu">=</span> biselect lb&#39; ub&#39; halfMat
-       (lb&#39;, ub&#39;)   <span class="fu">=</span> (lb <span class="ot">`div`</span> <span class="dv">2</span>, min ((ub <span class="ot">`div`</span> <span class="dv">2</span>) <span class="fu">+</span> n) (n <span class="fu">*</span> hm <span class="fu">-</span> <span class="dv">1</span>))
-       (ra, values) <span class="fu">=</span> (rankInMatrix mat a, selectRange mat a b)
-       halfMat
-        <span class="fu">|</span> even m <span class="fu">=</span> (\x y<span class="ot">-&gt;</span>f x (<span class="kw">if</span> y <span class="fu">&lt;</span> hm <span class="fu">-</span> <span class="dv">1</span> <span class="kw">then</span> <span class="dv">2</span> <span class="fu">*</span> y <span class="kw">else</span> <span class="dv">2</span> <span class="fu">*</span> y <span class="fu">-</span> <span class="dv">1</span>), n, hm)
-        <span class="fu">|</span> odd  m <span class="fu">=</span> (\x y<span class="ot">-&gt;</span>f x (<span class="dv">2</span><span class="fu">*</span>y), n, hm)
-       hm <span class="fu">=</span> m <span class="ot">`div`</span> <span class="dv">2</span> <span class="fu">+</span> <span class="dv">1</span>
-
-<span class="co">-- the rank of an element in the matrix</span>
-<span class="ot">rankInMatrix ::</span> <span class="dt">Ord</span> a <span class="ot">=&gt;</span> <span class="dt">Matrix</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> <span class="dt">Int</span>
-rankInMatrix mat a <span class="fu">=</span> sum (map (\(_,y)<span class="ot">-&gt;</span><span class="dv">1</span><span class="fu">+</span>y) <span class="fu">$</span> frontier mat a)<span class="fu">-</span><span class="dv">1</span>
-
-<span class="co">-- select all elements x in the matrix such that a &lt;= x &lt;= b </span>
-<span class="ot">selectRange ::</span> <span class="dt">Ord</span> a <span class="ot">=&gt;</span> <span class="dt">Matrix</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> [a]
-selectRange mat<span class="fu">@</span>(f,_,_) a b <span class="fu">=</span> concatMap search (frontier mat b)
- <span class="kw">where</span> search (x,y) <span class="fu">=</span> takeWhile (<span class="fu">&gt;=</span>a) <span class="fu">$</span> map (f x) [y,y<span class="fu">-</span><span class="dv">1</span><span class="fu">..</span><span class="dv">0</span>]
-
-<span class="ot">frontier ::</span> <span class="dt">Ord</span> a <span class="ot">=&gt;</span> <span class="dt">Matrix</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> [(<span class="dt">Int</span>,<span class="dt">Int</span>)]
-frontier (f,n,m) b <span class="fu">=</span> step <span class="dv">0</span> (m<span class="fu">-</span><span class="dv">1</span>)
- <span class="kw">where</span> step i j 
-        <span class="fu">|</span> i <span class="fu">&gt;</span> n<span class="fu">-</span><span class="dv">1</span> <span class="fu">||</span> j <span class="fu">&lt;</span> <span class="dv">0</span> <span class="fu">=</span> []
-        <span class="fu">|</span> f i j <span class="fu">&lt;=</span> b       <span class="fu">=</span> (i,j)<span class="fu">:</span>step (i<span class="fu">+</span><span class="dv">1</span>) j
-        <span class="fu">|</span> otherwise        <span class="fu">=</span> step i (j<span class="fu">-</span><span class="dv">1</span>)</code></pre></div>
+<script src="https://gist.github.com/4505639.js?file=MatrixRankSelection.hs" type="text/javascript"></script>
+<p>Note a slightly faster algorithm also exists when <span class="math inline">n</span> and <span class="math inline">m</span> are very different. It was shown selecting the <span class="math inline">k</span>th element can be done in <span class="math inline">O(n\log m/n)</span> time <span class="citation" data-cites="FredericksonJ84">[<a href="#ref-FredericksonJ84">2</a>]</span>.</p>
 <h1 id="bibliography" class="unnumbered">References</h1>
 <div id="refs" class="references">
 <div id="ref-Mirzaian198513">
 <p>[1] A. Mirzaian, E. Arjomandi, <strong>Selection in x + y and matrices with sorted rows and columns</strong>, Information Processing Letters. 20 (1985) 13–17.</p>
+</div>
+<div id="ref-FredericksonJ84">
+<p>[2] G. Frederickson, D. Johnson, <strong>Generalized selection and ranking: Sorted matrices</strong>, SIAM Journal on Computing. 13 (1984) 14–30 <a href="https://doi.org/10.1137/0213002">10.1137/0213002</a>.</p>
 </div>
 </div>
 

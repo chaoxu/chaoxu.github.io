@@ -7,8 +7,124 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxuprime.com/blog/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Tue, 22 Jan 2019 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Thu, 31 Jan 2019 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Bottleneck <span class="math inline">k</span>-link path</title>
+    <link>https://chaoxuprime.com/blog/posts/2019-01-31-bottleneck-k-link-path.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>A DAG is called complete, if there are vertices <span class="math inline">v_1,\ldots,v_n</span>, and <span class="math inline">v_iv_j</span> is an edge if and only if <span class="math inline">i&lt;j</span>. Let <span class="math inline">w(i,j)</span> be the edge weights from <span class="math inline">i</span> to <span class="math inline">j</span>. The weight is called ordered, if <span class="math inline">w(i,j)&lt;w(i,j+1)</span> and <span class="math inline">w(i+ 1,j)&lt;w(i,j)</span>.</p>
+<section class="theorem-environment Problem" id="Problem-1">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
+<p>Find a path consists of <span class="math inline">k</span> edges from <span class="math inline">v_1</span> to <span class="math inline">v_n</span>, such that the maximum weight of the edges in the path is minimized.</p>
+</section>
+<p>One can formulate a dynamic programming algorithm, which takes <span class="math inline">O(kn^2)</span> time. My <a href="https://chaoxuprime.com/posts/2013-08-16-more-algorithms-on-perfectly-balanced-photo-gallery.html">previous writing</a> shows an <span class="math inline">O(kn)</span> time algorithm using the monge property. Using binary search, there is also an <span class="math inline">O(k\log(n/k)\log M)</span> time algorithm if all weights are positive integers no larger than <span class="math inline">M</span>.</p>
+<p>We show there is an <span class="math inline">O(n+k\log(n/k)\log n)</span> time algorithm. Assume <span class="math inline">\lambda^*</span> is the optimal weight. First, there is an oracle that given <span class="math inline">\lambda</span>, decides if <span class="math inline">\lambda\geq \lambda^*</span>. Indeed, we can apply the greedy algorithm. Find the sequence <span class="math inline">a_1,\ldots,a_k</span>, as follows. <span class="math inline">a_0=1</span>, <span class="math inline">a_i</span> is the largest value such that <span class="math inline">w(a_{i-1},a_i)\leq \lambda</span>. If <span class="math inline">a_k=n</span>, then it is clear that <span class="math inline">\lambda \geq \lambda^*</span>. Also, we can show if <span class="math inline">a_k&lt;n</span>, then <span class="math inline">\lambda &lt; \lambda^*</span>. <span class="math inline">O(n)</span> time seems to be a quite large bound. We could do it in <span class="math inline">O(k\log (n))</span> instead by doing binary search for each <span class="math inline">a_i</span>. Using <a href="https://en.wikipedia.org/wiki/Exponential_search">exponential search</a> instead, we can obtain a <span class="math inline">O(k\log(n/k))</span> time algorithm.</p>
+<p>One need to do binary search for <span class="math inline">\lambda^*</span>. There are <span class="math inline">\Omega(n^2)</span> weights, let it be <span class="math inline">W</span>. One does not have to know all of them in order to apply binary search. Note that <span class="math inline">w</span> is a matrix sorted in both row and column, hence we need a selection algorithm that returns the <span class="math inline">k</span>th smallest element for such matrix. There is an <a href="https://chaoxuprime.com/posts/2014-04-02-selection-in-a-sorted-matrix.html"><span class="math inline">O(n)</span> time algorithm</a> for that. Hence we can do binary search on the sorted <span class="math inline">W</span> by spending <span class="math inline">O(n)</span> time to access <span class="math inline">i</span>th element. We now obtain a <span class="math inline">O((n+ k\log(n/k)) \log n) = O(n\log n)</span> time algorithm. Not bad.</p>
+<p>We can speed it up even further. Instead of selection in the sorted matrix, we can do <a href="https://chaoxuprime.com/posts/2019-01-30-search-sorted-matrixhtml">search in the sorted matrix</a>. We are given an oracle to test if a value is smaller than <span class="math inline">\lambda^*</span> after all. We can do search for <span class="math inline">\lambda^*</span> using <span class="math inline">O(\log n)</span> oracle calls and <span class="math inline">O(n)</span> time. Hence this gives us a <span class="math inline">O(n+k\log (n/k) \log n)</span> time algorithm for the problem. Whenever <span class="math inline">k=O(\frac{n}{\log(n) \log \log n})</span>, this is <span class="math inline">O(n)</span> time.</p>
+<p>As an application, we obtain a solution to <a href="https://leetcode.com/problems/split-array-largest-sum/">Leetcode 410 Split Array Largest Sum</a>, as we can define <span class="math inline">w(i,j)</span> to be the sum of elements from the <span class="math inline">i</span>th index of the array to the <span class="math inline">j</span>th index of the array. After <span class="math inline">O(n)</span> preprocessing, <span class="math inline">w(i,j)</span> can be computed in <span class="math inline">O(1)</span> time. This results a <span class="math inline">O(n+k\log (n/k) \log n)</span> running time algorithm.</p>
+<p>What about when <span class="math inline">k</span> is large? We believe the result in <span class="citation" data-cites="FredericksonZ17">[<a href="#ref-FredericksonZ17">1</a>]</span> can be used to solve the problem in <span class="math inline">O(n)</span> time even for large <span class="math inline">k</span>.</p>
+<h1 id="bibliography" class="unnumbered">References</h1>
+<div id="refs" class="references">
+<div id="ref-FredericksonZ17">
+<p>[1] G.N. Frederickson, S. Zhou, <strong>Optimal parametric search for path and tree partitioning</strong>, CoRR. abs/1711.00599 (2017).</p>
+</div>
+</div>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2019-01-31. </div>
+    <div class="info">Tags: algorithm, data structure.</div>
+
+</div>]]></description>
+    <pubDate>Thu, 31 Jan 2019 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/blog/posts/2019-01-31-bottleneck-k-link-path.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
+    <title>Search in a sorted matrix with an oracle</title>
+    <link>https://chaoxuprime.com/blog/posts/2019-01-30-search-sorted-matrix.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>A matrix <span class="math inline">M</span> is sorted if <span class="math inline">M_{i,j}\leq M_{i,j+1}</span> and <span class="math inline">M_{i,j}\leq M_{i+1,j}</span>.</p>
+<section class="theorem-environment Problem" id="Problem-1">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
+<p>Given a <span class="math inline">m\times n</span> sorted matrix <span class="math inline">M</span> where <span class="math inline">n\leq m</span>, and an oracle that takes <span class="math inline">\lambda</span> returns if a value is <span class="math inline">\lambda &lt;\lambda^*</span> or <span class="math inline">\lambda \geq \lambda^*</span>. Find the largest value no larger than <span class="math inline">\lambda^*</span>.</p>
+</section>
+<p>This is a fairly common problem, as this is <a href="https://leetcode.com/problems/search-a-2d-matrix-ii/">Leetcode 240. Search a 2D Matrix II</a>. However, our problem is more general, because comparison with <span class="math inline">\lambda^*</span> can only be done through the oracle. Craig Gidney wrote about an <a href="http://twistedoakstudios.com/blog/Post5365_searching-a-sorted-matrix-faster">optimal algorithm</a> with <span class="math inline">O(n\log \frac{m}{n})</span> running time, matrix access algorithm. However, the oracle access is too large. There are times where the oracle access is slow. For example, when using it as a subroutine for finding a <a href="https://chaoxuprime.com/posts/2019-01-31-bottleneck-k-link-path.html">bottleneck <span class="math inline">k</span>-link path</a>. There is an algorithm with optimal running time and <span class="math inline">O(\log(nm))</span> oracle access.</p>
+<p>Let's consider a special case, where <span class="math inline">n=m=2^k</span> for some <span class="math inline">k</span>. This case was shown in <span class="citation" data-cites="FredericksonZ17">[<a href="#ref-FredericksonZ17">1</a>]</span>. For each submatrix, the two vertices on the opposite diagonal indicates the largest and smallest element in the submatrix. Hence each matrix can be represented by two numbers, indicate the maximum and minimum. These numbers are called the representative of the matrix. The idea is we keep two numbers <span class="math inline">\lambda_1</span> and <span class="math inline">\lambda_2</span>, such that we know <span class="math inline">\lambda^*\in [\lambda_1,\lambda_2]</span>. The algorithm keep partition the matrix into small matrices, updating <span class="math inline">\lambda_1</span> and <span class="math inline">\lambda_2</span>, and discard matrices outside the range. We apply the following algorithm. Let <span class="math inline">R</span> consists of the multiset of representatives of the matrix, and <span class="math inline">R&#39;</span> be the representatives that lies inside <span class="math inline">[\lambda_1,\lambda_2]</span>. We find <span class="math inline">\lambda</span>, the median of <span class="math inline">R&#39;</span>. Test if <span class="math inline">\lambda&lt;\lambda^*</span>. If so, then <span class="math inline">\lambda_1</span> updates to <span class="math inline">\lambda</span>, otherwise <span class="math inline">\lambda_2</span> updates to <span class="math inline">\lambda</span>. This step is done twice. Now, we split the matrices with more than one element into <span class="math inline">4</span> equally sized matrices, and repeat the algorithm. Recall at all times, the matrices does not contain any element in <span class="math inline">[\lambda_1,\lambda_2]</span> are discarded.</p>
+<p>There is at most <span class="math inline">O(\log n)</span> iterations before range shrinks to a single element, hence at most <span class="math inline">O(\log n)</span> oracle calls. The difficulty is to show that the overall time is only <span class="math inline">O(n)</span>. Intuitively, in each iteration we quadruple the number of matrices, but we half it by two calls to the oracle. Therefore in <span class="math inline">\log n</span> steps we obtain roughly <span class="math inline">2^{\log n}=O(n)</span> matrices. However, at this point, the matrices are all singletons, and no more matrix can be created. We will only decrease the number of matrices by each oracle call. Careful reader can trace the whole argument in Lemma 2.1 of <span class="citation" data-cites="FredericksonZ17">[<a href="#ref-FredericksonZ17">1</a>]</span>.</p>
+<p>For the more general case, one can find the proof in <span class="citation" data-cites="FredericksonJ84">[<a href="#ref-FredericksonJ84">2</a>]</span>. Note the proof is for selection, but one can easily modify it to work for search.</p>
+<h1 id="remark"><span class="header-section-number">1</span> Remark</h1>
+<p>There is an alternative algorithm which can be found in <span class="citation" data-cites="JacobR08">[<a href="#ref-JacobR08">3</a>]</span>. The alternative algorithm is quite close to a post about <a href="https://chaoxuprime.com/posts/2014-04-02-selection-in-a-sorted-matrix.html">selection in a sorted matrix</a>.</p>
+<p>The careful reader might observe the known search algorithms follow the exact same structure as algorithms for selection. Indeed, we <em>are</em> doing selection but we do not know the rank of the element. Intuitively, many selection algorithm, the rank is <em>only used</em> to remove the correct set of candidates. Hence this suggest one can modify the algorithm to use the oracle call in place of the rank.</p>
+<h1 id="bibliography" class="unnumbered">References</h1>
+<div id="refs" class="references">
+<div id="ref-FredericksonZ17">
+<p>[1] G.N. Frederickson, S. Zhou, <strong>Optimal parametric search for path and tree partitioning</strong>, CoRR. abs/1711.00599 (2017).</p>
+</div>
+<div id="ref-FredericksonJ84">
+<p>[2] G. Frederickson, D. Johnson, <strong>Generalized selection and ranking: Sorted matrices</strong>, SIAM Journal on Computing. 13 (1984) 14–30 <a href="https://doi.org/10.1137/0213002">10.1137/0213002</a>.</p>
+</div>
+<div id="ref-JacobR08">
+<p>[3] R. Jacob, <strong>Binary search on two-dimensional data</strong>, Technische Universität München, 2008.</p>
+</div>
+</div>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2019-01-30. </div>
+    <div class="info">Tags: algorithm, data structure.</div>
+
+</div>]]></description>
+    <pubDate>Wed, 30 Jan 2019 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/blog/posts/2019-01-30-search-sorted-matrix.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
+    <title>A Reviewer Assignment Problem</title>
+    <link>https://chaoxuprime.com/blog/posts/2019-01-29-reviewer-assignment.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>Consider there are some reviewers and some papers. Each reviewer can review exactly one paper, and each reviewer is qualified to review some subset of papers. We are interested in maximizing the number of papers reviewed by at least <span class="math inline">k</span> reviewer, then under that constraint, maximize the paper reviewed by <span class="math inline">k+1</span> reviewer, etc. This make sure we are being fair in evaluating papers. It would try to avoid the case where most paper getting small number of reviews and a few papers getting unreasonable number of reviews.</p>
+<p>Formally, we are given a bipartite graph <span class="math inline">G=(A,B,E)</span> of <span class="math inline">n</span> vertices and <span class="math inline">m</span> edges. A subset of edges <span class="math inline">M</span> is called a semi-matching, if <span class="math inline">\deg_M(v)=1</span> for all <span class="math inline">v\in A</span>. For a subset of edges <span class="math inline">M</span>, let <span class="math inline">g_M(i)</span> to be the number of vertices in <span class="math inline">B</span> with degree at least <span class="math inline">i</span>. We want to find a semi-matching <span class="math inline">M</span>, such that <span class="math inline">(g_M(k),g_M(k+1),\ldots,g_M(n))</span> is lexicographically maximum.</p>
+<p>When <span class="math inline">k=1</span>, if <span class="math inline">M</span> minimizes the sum of the function <span class="math inline">\sum_{v\in B} f(\deg_M(v))</span> for any strictly convex increasing function <span class="math inline">f</span>, then <span class="math inline">(g_M(1),g_M(2),\ldots,g_M(n))</span> is lexicographically maximum. The problem therefore can be reduced to min-cost flow can be applied here directly, and obtain a polynomial time algorithm <span class="citation" data-cites="HarveyLLT06">[<a href="#ref-HarveyLLT06">1</a>]</span>.</p>
+<p>When <span class="math inline">k=3</span>, the problem is NP-hard, since it would imply we have to maximized <span class="math inline">g_M(3)</span>, and this is already NP-hard because exact cover by <span class="math inline">3</span>-sets. That is, given a collection of sets of size <span class="math inline">3</span> each. Decide if there exists a subcollection that forms a partition of the universe.</p>
+<p>The only unresolved case is <span class="math inline">k=2</span>. Interestingly, we can show it is also polynomial time solvable. First, one can see that maximizing <span class="math inline">(g_M(2),g_M(3),\ldots,g_M(n))</span> is equivalent to minimize <span class="math inline">\sum_{v, \deg_M(v)\geq 2} f(\deg_M(v))</span> for some strictly convex increasing function <span class="math inline">v</span>, and <span class="math inline">M</span> range through all semi-matchings so each vertex in <span class="math inline">B</span> has degree exactly <span class="math inline">2</span> (Assuming it exists).</p>
+<p>Apollonio and Sebő shown the following problem is polynomial time solvable <span class="citation" data-cites="ApollonioS09">[<a href="#ref-ApollonioS09">2</a>]</span>.</p>
+<section class="theorem-environment Problem" id="Problem-1">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
+<p>Given a graph <span class="math inline">G=(V,E)</span>, a integer <span class="math inline">k</span>, convex functions <span class="math inline">f_v:\N \to \R</span> for each <span class="math inline">v\in V</span>, and an edge cost function <span class="math inline">c:E\to \R</span>. One can find the following in polynomial time. <span class="math display">\displaystyle \min \left\{   \sum_{v\in V} f_v(\deg_M(v)) + \sum_{e\in M} c(e) \middle| M\subseteq E, |M|=k  \right\}</span></p>
+</section>
+<p>It's not hard to generalize it a bit further by requiring <span class="math inline">M</span> to respect some upper and lower bound on the vertices. Indeed, we can let <span class="math inline">f_v:\N\to \R\cup \set{\infty}</span>, and set <span class="math inline">f_v(x)=\infty</span> if <span class="math inline">x</span> is not between the upper and lower bounds.</p>
+<p>Now, we are going to reduce the problem. The reduction is similar to the <a href="https://cstheory.stackexchange.com/questions/33857/is-two-or-zero-matching-in-a-bipartite-graph-np-complete/33859">one for <span class="math inline">2</span>-or-<span class="math inline">0</span> matching</a>.</p>
+<p>For each vertex <span class="math inline">v\in B</span>, split into two vertices <span class="math inline">v_1</span> and <span class="math inline">v_2</span>. Define <span class="math inline">B_i=\set{v_1|v\in B}</span>. The new input graph consists of vertices <span class="math inline">B_1\cup B_2 \cup A</span>. <span class="math inline">v_1</span> and <span class="math inline">v_2</span> connects to the same vertices as <span class="math inline">v</span>. We add an edge between <span class="math inline">v_1</span> and <span class="math inline">v_2</span>, with very large cost <span class="math inline">C</span>. Say <span class="math inline">C=mn^2+1</span>. <span class="math inline">v_1</span> has both an upper and lower bound of <span class="math inline">1</span>. <span class="math inline">v_2</span> has a lower bound of <span class="math inline">1</span>. For each vertex in <span class="math inline">A</span>, add an upper and lower bound of <span class="math inline">1</span>. We have a strict convex function <span class="math inline">f_{v_2}(x)=x^2</span> on each vertex <span class="math inline">v_2</span>.</p>
+<p>Let <span class="math inline">r=|A|</span>, <span class="math inline">p=|B|</span>. We solve <a href="#Problem-1">Problem 1</a> repeatedly for each <span class="math inline">k</span> from <span class="math inline">r</span> to <span class="math inline">r+p</span>.</p>
+<p>Say there exists an optimal solution to the original problem with exactly <span class="math inline">t</span> vertices in <span class="math inline">B</span> with degree smaller than <span class="math inline">2</span>. Find the optimal solution to the new problem with <span class="math inline">k=r+t</span>. Let it be <span class="math inline">M&#39;</span>. We obtain <span class="math inline">M</span> from <span class="math inline">M&#39;</span> by identify pairs of vertices <span class="math inline">v_1</span> and <span class="math inline">v_2</span>. <span class="math inline">M</span> would be the solution to the original problem.</p>
+<h1 id="extensions"><span class="header-section-number">1</span> Extensions</h1>
+<p>We might add degree upper and lower bounds to all vertices, and only look at subgraphs in <span class="math inline">M</span> that satisfies the upper and lower bounds. That is, we can also make sure no reviewers review too many papers too. Under that constraint, find <span class="math inline">(g_M(k),\ldots,g_M(n))</span> lexicographically. This is possible but more tricky, as we have to do some reduction from capacitated <span class="math inline">b</span>-matching to <span class="math inline">b</span>-matching.</p>
+<p>There is a little more generalization. Assume for each paper, we have a lower bound of reviews <span class="math inline">d_v</span>. That is, it has to be reviewed by at least <span class="math inline">d_v</span> person to be useful. So translating to the graph case, we can impose the constraint that <span class="math inline">\deg_M(v)=0</span> or <span class="math inline">\deg_M(v)\geq d_v</span>. One can see maximizing <span class="math inline">(g_M(2),g_M(3),\ldots,g_M(n))</span> is equivalent to maximizing <span class="math inline">(g_M(1),g_M(2),\ldots,g_M(n))</span> where <span class="math inline">d_v=2</span> for all vertices. Again, one can modify the reduction to handle the case when <span class="math inline">d_v</span> is either <span class="math inline">1</span> or <span class="math inline">2</span>.</p>
+<h1 id="bibliography" class="unnumbered">References</h1>
+<div id="refs" class="references">
+<div id="ref-HarveyLLT06">
+<p>[1] N.J. Harvey, R.E. Ladner, L. Lovász, T. Tamir, <strong>Semi-matchings for bipartite graphs and load balancing</strong>, Journal of Algorithms. 59 (2006) 53–78 <a href="https://doi.org/10.1016/j.jalgor.2005.01.003">10.1016/j.jalgor.2005.01.003</a>.</p>
+</div>
+<div id="ref-ApollonioS09">
+<p>[2] N. Apollonio, A. Sebő, <strong>Minconvex factors of prescribed size in graphs</strong>, SIAM Journal on Discrete Mathematics. 23 (2009) 1297–1310 <a href="https://doi.org/10.1137/060651136">10.1137/060651136</a>.</p>
+</div>
+</div>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2019-01-29. </div>
+    <div class="info">Tags: algorithm, matching.</div>
+
+</div>]]></description>
+    <pubDate>Tue, 29 Jan 2019 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/blog/posts/2019-01-29-reviewer-assignment.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title>Soft heap and selection</title>
     <link>https://chaoxuprime.com/blog/posts/2019-01-22-soft-heap-and-selection.html</link>
     <description><![CDATA[<br />
@@ -427,193 +543,6 @@ We now solve the submodular minimization under congruence constraints problem on
 </div>]]></description>
     <pubDate>Fri, 23 Feb 2018 00:00:00 UT</pubDate>
     <guid>https://chaoxuprime.com/blog/posts/2018-02-23-weighted-h-index.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>Small <span class="math inline">L_1</span> norm solution to a linear Diophantine equation</title>
-    <link>https://chaoxuprime.com/blog/posts/2017-08-26-solution-to-linear-diophantine.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>Let <span class="math inline">a=(a_1,\ldots,a_n)</span> be <span class="math inline">n</span> integers with <span class="math inline">\gcd(a_1,\ldots,a_n)=1</span>. There exists a integral vector <span class="math inline">x=(x_1,\ldots,x_n)</span>, such that <span class="math inline">\sum_{i=1}^n x_ia_i = 1</span>. How large is the solution <span class="math inline">x</span>? By <a href="https://en.wikipedia.org/wiki/Bézout%27s_identity">Bézout's lemma</a>, when <span class="math inline">n=2</span>, we can obtain that <span class="math inline">\|x\|\leq \|a\|</span>. Here <span class="math inline">\|\cdot \|</span> is the <span class="math inline">L_1</span> norm.</p>
-<p>However, I could not find a general bound of <span class="math inline">\|x\|</span> anywhere. Here we prove that the bound on <span class="math inline">\|x\|</span> is true in general. Before that, we first introduce a lemma from <span class="citation" data-cites="Ford1996">[<a href="#ref-Ford1996">1</a>]</span>.</p>
-<section class="theorem-environment Lemma" id="Lemma-1">
-<span class="theorem-header"><span class="type">Lemma</span><span class="index">1</span></span>
-<p>Let <span class="math inline">a=(a_1,\ldots,a_n)</span> be a vector of positive integers with at least <span class="math inline">2</span> elements, it does not contain <span class="math inline">1</span> and <span class="math inline">\gcd(a)=1</span>. If <span class="math inline">g_k = \gcd(a_k,\ldots,a_n)</span>, then there exist a solution to <span class="math display">\displaystyle 
-\sum_{i=1}^n x_i a_i = 1
-</span> such that for all <span class="math inline">1\leq i\leq n-1</span>, <span class="math display">\displaystyle 
-|x_i|\leq \frac{g_{i+1}}{2g_i}
-</span> and <span class="math inline">|x_n|\leq \frac{\max(a_1,\ldots,a_{n-1})}{2}</span>.</p>
-</section>
-<section class="theorem-environment Theorem" id="Theorem-2">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">2</span></span>
-<p>Let <span class="math inline">a</span> be a vector of positive integers such that <span class="math inline">\gcd(a)=1</span>, then there exists a integral solution to <span class="math inline">x \cdot a=1</span> such that <span class="math inline">\|x\|\leq \frac{1}{2}(\min(a)+\max(a))</span>.</p>
-</section>
-<section class="theorem-environment Proof" id="Proof-">
-<span class="theorem-header"><span class="type">Proof</span></span>
-<p>Let <span class="math inline">a=(a_1,\ldots,a_n)</span>. Let <span class="math inline">a_n=\min(a)</span>. We can assume <span class="math inline">1</span> is not in <span class="math inline">a</span>, otherwise we can find <span class="math inline">x</span> such that <span class="math inline">\|x\|=1</span>. Let <span class="math inline">g_i = \gcd(a_i,\ldots,a_n)</span>. Hence <span class="math inline">g_n = \min(a)</span>. We consider a solution to <span class="math inline">\sum_{i=1}^n x_ia_i = 1</span> satisfies <a href="#Lemma-1">Lemma 1</a>. Let <span class="math inline">I = \set{i | g_{i+1}\geq 2g_{i}, i\leq n-1}</span> and <span class="math inline">j=\min(I)</span>. One can algebraically check that <span class="math inline">a/b\leq a-b</span> holds if both <span class="math inline">a\geq 2b</span> and <span class="math inline">b\geq 2</span>. In particular, we have <span class="math inline">\frac{g_{i+1}}{g_i} \leq g_{i+1}-g_i</span> for all <span class="math inline">i\in I\setminus \set{j}</span>. <span class="math display">\displaystyle 
-\sum_{i\in I} |x_i| \leq \frac{1}{2} \sum_{i\in I} \frac{g_{i+1}}{g_i} \leq \frac{g_{j+1}}{2} + \frac{1}{2} \sum_{i\in I, i\neq j} g_{i+1} - g_i \leq \frac{g_{j+1}}{2} + \frac{1}{2} \sum_{i=j+1}^{n-1} g_{i+1}-g_i = \frac{1}{2}g_n = \frac{\min(a)}{2}.
-</span></p>
-<p><span class="math display">\displaystyle 
-    \|x\| = \sum_{i=1}^n |x_i| = |x_n| + \sum_{i\in I} |x_i| \leq \frac{\min(a)+\max(a)}{2}
-</span></p>
-</section>
-<section class="theorem-environment Corollary" id="Corollary-3">
-<span class="theorem-header"><span class="type">Corollary</span><span class="index">3</span></span>
-<p>Let <span class="math inline">a</span> be a vector of integers such that <span class="math inline">\gcd(a)=1</span>, then there exists a integral solution to <span class="math inline">x \cdot a=1</span> such that <span class="math inline">\|x\|\leq \|a\|</span>.</p>
-</section>
-<h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references">
-<div id="ref-Ford1996">
-<p>[1] D. Ford, G. Havas, A new algorithm and refined bounds for extended gcd computation, in: H. Cohen (Ed.), Algorithmic Number Theory: Second International Symposium, Ants-Ii Talence, France, May 18–23, 1996 Proceedings, Springer Berlin Heidelberg, Berlin, Heidelberg, 1996: pp. 145–150 <a href="https://doi.org/10.1007/3-540-61581-4_50">10.1007/3-540-61581-4_50</a>.</p>
-</div>
-</div>
-
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2017-08-26. </div>
-    <div class="info">Tags: number theory.</div>
-
-</div>]]></description>
-    <pubDate>Sat, 26 Aug 2017 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/blog/posts/2017-08-26-solution-to-linear-diophantine.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>List the smallest <span class="math inline">k</span> subset sums</title>
-    <link>https://chaoxuprime.com/blog/posts/2017-04-20-list-the-smallest-k-subset-sums.html</link>
-    <description><![CDATA[<br />
-<div>
-<section class="theorem-environment Problem" id="Problem-1">
-<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
-<p>Given a set of positive reals <span class="math inline">\set{x_1,\ldots,x_n}</span> where <span class="math inline">x_1&lt;x_2&lt;\ldots&lt;x_n</span>, find the smallest <span class="math inline">k</span> subset sums.</p>
-</section>
-<p>We can assume <span class="math inline">n\leq k</span>, because we do not have to read <span class="math inline">x_j</span> if <span class="math inline">j&gt;k</span>.</p>
-<p>Torsten Gross and Nils Blüthgen posted <a href="https://arxiv.org/abs/1704.05795">a <span class="math inline">O(k^2)</span> time solution on arXiv</a>.</p>
-<p>We show a <span class="math inline">O(k\log k)</span> time algorithm, which is optimal if we want to output the numbers in order.</p>
-<p>We list the sums one by one by maintaining a priority queue of sums. We start with the empty set. Assume that we added the sum induced by <span class="math inline">I\subset [n]</span> (that is, <span class="math inline">\sum_{i\in I} x_i</span>) into the output, let <span class="math inline">j=1+\max I</span>. Now we can consider two possibilities by extending the current solution: the sum induced by <span class="math inline">I\cup \set{j}</span> or the sum induced by <span class="math inline">I\cup \set{k}</span> where <span class="math inline">k&gt;j</span>. We will add both possibilities to the queue so that one can inspect them later. We can avoid storing the sets, only the values are required.</p>
-<p>Here is a python implementation.</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> first_k_subset_sums(x,k):
-    n <span class="op">=</span> <span class="bu">len</span>(x)
-    h <span class="op">=</span> []
-    output <span class="op">=</span> [<span class="dv">0</span>] <span class="co"># need to account for the empty set</span>
-    heapq.heappush(h,(x[<span class="dv">0</span>],<span class="dv">0</span>))
-    <span class="cf">while</span> h <span class="kw">and</span> <span class="bu">len</span>(output)<span class="op">&lt;</span>k:
-        (u,b) <span class="op">=</span> heapq.heappop(h)
-        output.append(u)
-        <span class="cf">if</span> b<span class="op">+</span><span class="dv">1</span><span class="op">&lt;</span>n:
-            heapq.heappush(h,(u<span class="op">+</span>x[b<span class="op">+</span><span class="dv">1</span>],b<span class="op">+</span><span class="dv">1</span>))
-            heapq.heappush(h,((u<span class="op">-</span>x[b])<span class="op">+</span>x[b<span class="op">+</span><span class="dv">1</span>],b<span class="op">+</span><span class="dv">1</span>))
-    <span class="cf">return</span> output</code></pre></div>
-<p>If we want to output the sets themselves, not just the values, does the running time change? If a set <span class="math inline">I</span> is in the output, then all subsets of <span class="math inline">I</span> must also be in the output. Hence the largest set we can ever output has size <span class="math inline">O(\log k)</span>. Therefore the total output length is at most <span class="math inline">O(k\log k)</span>.</p>
-<p>This is also a lower bound. Consider when <span class="math inline">x_i=2^i</span>, then we will output all subsets of <span class="math inline">\set{x_1,\ldots,x_{\log k}}</span>, and we know that <span class="math inline">\sum_{i=1}^{\log k} i{\log k\choose i} = \Omega(\log k)</span>.</p>
-<p>If we don't have to list the smallest <span class="math inline">k</span> subset sum values in order, then <span class="math inline">O(k)</span> is possible, see <a href="https://mathoverflow.net/a/222341/6886">this mathoverflow answer</a> by <a href="https://www.ics.uci.edu/~eppstein/">David Eppstein</a>.</p>
-<p>If we are interested in the smallest <span class="math inline">k</span> <em>distinct</em> subset sum. I don't know of any algorithm that performs better than <span class="math inline">O(nk)</span>, even if we know that <span class="math inline">n=\Omega(k)</span>.</p>
-<h1 id="acknowledgements" class="unnumbered">Acknowledgements</h1>
-<p>I would like to thank Tana Wattanawaroon for helpful discussions and taking an interest in this problem.</p>
-
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2017-04-20. </div>
-    <div class="info">Tags: algorithm.</div>
-
-</div>]]></description>
-    <pubDate>Thu, 20 Apr 2017 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/blog/posts/2017-04-20-list-the-smallest-k-subset-sums.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>Filling up a bin using balls with divisible weights</title>
-    <link>https://chaoxuprime.com/blog/posts/2017-03-09-filling-up-a-bin-using-balls-with-divisible-weight.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>This post shows how to solve the special case for <a href="http://cs.stackexchange.com/questions/12441/is-it-np-hard-to-fill-up-bins-with-minimum-moves">this problem</a>. The special case has exactly one bin, and each ball have weight a power of <span class="math inline">2</span>. It is one of the <a href="http://cs.stackexchange.com/unanswered">most popular unanswered problem on cs.stackexchange</a> as of writing.</p>
-<section class="theorem-environment Problem" id="Problem-1">
-<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
-<p>We are interested in solving the following integer program, <span class="math display">\displaystyle \begin{aligned}
-\text{Minimize:} &amp; \sum_{i=1}^n |x_i-a_i| \\
-\text{subject to:} &amp; \sum_{i=1}^n w_i x_i = c\\
-&amp; 0\leq x_i \leq b_i \text{ for all } 1\leq i \leq n\\
-\end{aligned}</span></p>
-<p>where each <span class="math inline">w_i</span> is a power of <span class="math inline">2</span> for all <span class="math inline">1\leq i\leq n</span>. Assume <span class="math inline">w_i\leq w_{i+1}</span>.</p>
-</section>
-<p>In fact, we do not require the <span class="math inline">w_i</span>s are powers of <span class="math inline">2</span>. We can establish polynomial time as long as <span class="math inline">w_{i+1}/w_i</span> is bounded by a polynomial in terms of the input size for all <span class="math inline">i</span>. However, for simplicity of exposition, assume <span class="math inline">w_i</span>s are powers of <span class="math inline">2</span>. We do not know the case when <span class="math inline">w_{i+1}/w_i</span> is unbounded.</p>
-<p>Consider a more natural problem without the absolute values.</p>
-<section class="theorem-environment Problem" id="Problem-2">
-<span class="theorem-header"><span class="type">Problem</span><span class="index">2</span><span class="name"><span class="math inline">0</span>-<span class="math inline">1</span> exact knapsack problem with divisible weights</span></span>
-<p>We are interested in solving the following integer program, <span class="math display">\displaystyle \begin{aligned}
-\text{Minimize:} &amp; \sum_{i=1}^n c_i x_i \\
-\text{subject to:} &amp; \sum_{i=1}^n w_i x_i = t\\
-&amp; x_i \in \{0,1\} \text{ for all } 1\leq i \leq n\\
-\end{aligned}</span></p>
-<p>where <span class="math inline">w_i|w_{i+1}</span> for all <span class="math inline">1\leq i\leq n</span>. <span class="math inline">w_i</span> can be negative.</p>
-</section>
-<p>We show <a href="#Problem-1">Problem 1</a> reduces to <a href="#Problem-2">Problem 2</a> with polynomial blow up, and <a href="#Problem-2">Problem 2</a> can be solved in polynomial time.</p>
-<h1 id="reduction"><span class="header-section-number">1</span> Reduction</h1>
-<p>The reduction goes through a few steps. We start with the integer program in <a href="#Problem-1">Problem 1</a>, and let <span class="math inline">y_i = a_i-x_i</span>, and we get</p>
-<p><span class="math display">\displaystyle \begin{aligned}
-\text{Minimize:} &amp; \sum_{i=1}^n |y_i| \\
-\text{subject to:} &amp; \sum_{i=1}^n w_i y_i = \sum_{i=1}^n w_i a_i - c\\
-&amp; a_i-b_i\leq y_i \leq a_i \text{ for all } 1\leq i \leq n\\
-\end{aligned}</span></p>
-<p>Let <span class="math inline">c&#39; = \sum_{i=1}^n w_ia_i -c</span>, and <span class="math inline">l_i = a_i-b_i</span> and <span class="math inline">u_i = a_i</span>.</p>
-<p><span class="math display">\displaystyle \begin{aligned}
-\text{Minimize:} &amp; \sum_{i=1}^n |y_i| \\
-\text{subject to:} &amp; \sum_{i=1}^n w_i y_i = c&#39;\\
-&amp; l_i \leq y_i \leq u_i \text{ for all } 1\leq i \leq n\\
-\end{aligned}</span></p>
-<p>Let <span class="math inline">y_i=y_i^+ - y_i^-</span>, where <span class="math inline">y_i^-,y_i^+\geq 0</span>, we can remove the absolute value.</p>
-<p><span class="math display">\displaystyle \begin{aligned}
-\text{Minimize:} &amp; \sum_{i=1}^n y_i^+ + y_i^- \\
-\text{subject to:} &amp; \sum_{i=1}^n w_i y_i^+ + \sum_{i=1}^n -w_i y_i^- = c&#39;\\
-&amp; l_i \leq y_i^+- y_i^- \leq u_i \text{ for all } 1\leq i \leq n\\
-&amp; y_i^-, y_i^+\geq 0 \text{ for all } 1\leq i \leq n\\
-\end{aligned}</span></p>
-<p>Observe that we can separate the inequalities involving <span class="math inline">y_i^+ - y_i^-</span>, because there is always an optimal where <span class="math inline">y_i^-</span> or <span class="math inline">y_i^+</span> is <span class="math inline">0</span>.</p>
-<section class="theorem-environment Remark" id="Remark-">
-<span class="theorem-header"><span class="type">Remark</span></span>
-<p>This observation fails when the number of bins is more than <span class="math inline">1</span>.</p>
-</section>
-<p><span class="math display">\displaystyle \begin{aligned}
-\text{Minimize:} &amp; \sum_{i=1}^n y_i^+ + y_i^- \\
-\text{subject to:} &amp; \sum_{i=1}^n w_i y_i^+ + \sum_{i=1}^n -w_i y_i^- = c&#39;\\
-&amp; 0 \leq y_i^+ \leq u_i \text{ for all } 1\leq i \leq n\\
-&amp; 0 \leq y_i^- \leq -l_i \text{ for all } 1\leq i \leq n\\
-\end{aligned}</span></p>
-<p>This is an integer program as a bounded exact knapsack problem.</p>
-<p><span class="math display">\displaystyle \begin{aligned}
-\text{Minimize:} &amp; \sum_{i=1}^n x_i \\
-\text{subject to:} &amp; \sum_{i=1}^n w_i x_i = c\\
-&amp; 0 \leq x_i \leq b_i \text{ for all } 1\leq i \leq n\\
-\end{aligned}</span></p>
-<p>Finally, apply the standard technique that rewrites a bounded knapsack problem to <span class="math inline">0</span>-<span class="math inline">1</span>-knapsack problem (see Section 7.1.1 of <span class="citation" data-cites="9783540402862">[<a href="#ref-9783540402862">1</a>]</span>). The blow up in problem size is at most a factor of <span class="math inline">O(\log \max_i b_i)</span>. We can get the integer program in <a href="#Problem-2">Problem 2</a>, and also the weights are all powers of <span class="math inline">2</span>. The reduction runs in polynomial time with respect to input size.</p>
-<h1 id="solving-problem-2"><span class="header-section-number">2</span> Solving <a href="#Problem-2">Problem 2</a></h1>
-<p><a href="http://sevenkplus.com/">Yuzhou Gu</a> noted that the integer program in <a href="#Problem-2">Problem 2</a> has a dynamic programming solution.</p>
-<p>Let <span class="math inline">D[m,k]</span> to be the optimal value to the following problem</p>
-<p><span class="math display">\displaystyle \begin{aligned}
-\text{Minimize:} &amp; \sum_{j=1}^m c_j x_j \\
-\text{subject to:} &amp; \sum_{j=1}^m w_j x_j = k |w_m| + t \bmod |w_m|\\
-&amp; x_j \in \{0,1\} \text{ for all } 1\leq j \leq m\\
-\end{aligned}</span></p>
-<p>The claim is that <span class="math inline">D[m,k]</span> can be expressed by the following recurrence relation.</p>
-<p><span class="math display">\displaystyle 
-D[m,k] = \min_{x_m\in \{0,1\}} D\left[m-1,\frac{|w_m|k- w_m x_m+(t\bmod |w_m| - t\bmod |w_{m-1}|)}{|w_{m-1}|}\right]
-</span></p>
-<p>Note that <span class="math inline">|k|</span> is at most <span class="math inline">m</span>. Therefore the table has at most <span class="math inline">O(n^2)</span> entries. To obtain the solution to the original equation, we find the minimum overall <span class="math inline">D[n, k]</span>. Clearly, this runs in polynomial time.</p>
-<h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references">
-<div id="ref-9783540402862">
-<p>[1] H. Kellerer, U. Pferschy, D. Pisinger, <strong>Knapsack problems</strong>, Springer, 2004.</p>
-</div>
-</div>
-
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2017-03-09. </div>
-    <div class="info">Tags: optimization, integer.</div>
-
-</div>]]></description>
-    <pubDate>Thu, 09 Mar 2017 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/blog/posts/2017-03-09-filling-up-a-bin-using-balls-with-divisible-weight.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 

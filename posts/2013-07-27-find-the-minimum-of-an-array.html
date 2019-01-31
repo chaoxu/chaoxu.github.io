@@ -94,7 +94,7 @@ T(m,n)  = \begin{cases}
 </span> For <span class="math inline">n</span> larger than <span class="math inline">\frac{m}{6}</span>, the algorithm will have <span class="math inline">O(\log \frac{n}{m})</span> recursive calls, each one cost <span class="math inline">O(1)</span> time. Once it reaches small <span class="math inline">n</span>, it will spend <span class="math inline">O(n)=O(m)</span> time on a linear search. The algorithm spends a total of <span class="math inline">O(m+ \log \frac{n}{m}) = O(m+\log n)</span> time.</p>
 <h1 id="notes"><span class="header-section-number">4</span> Notes</h1>
 Brosef Stalin offered an alternative logic that offers cleaner code.
-<script src="https://pastebin.com/embed_js.php?i=107WhrsU"></script>
+<script src="https://gist.github.com/chaoxu/2e9da8c6c7b04153756ab20e78fa5d0d.js"></script>
 <p>Can we generalize this to first increase then decrease then increase arrays? One can show <span class="math inline">O(n)</span> is best possible by considering an array with <span class="math inline">a[i]=i</span> for all <span class="math inline">i\neq j</span>, and <span class="math inline">a[j]=-1</span>. There is no way to find <span class="math inline">j</span> with out looking over every position.</p>
 
 </div>
