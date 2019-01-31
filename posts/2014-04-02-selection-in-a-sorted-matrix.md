@@ -47,6 +47,6 @@ Solving it gives us the desired running time $O(m)$. This is also a $O(k)$ time 
 
 A Haskell implementation here, it requires a linear time rank selection algorithm `selectRank`.
 
-<script src="https://gist.github.com/4505639.js?file=MatrixRankSelection.hs" type="text/javascript"></script>
+<script src="https://gist.github.com/chaoxu/81ab728730e6a65524cc4262c9dd0e80.js?file=MatrixRankSelection.hs"></script>
 
 Note a slightly faster algorithm also exists when $n$ and $m$ are very different. It was shown selecting the $k$th element can be done in $O(n\log m/n)$ time [@FredericksonJ84].
