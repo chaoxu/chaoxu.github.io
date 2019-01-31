@@ -31,7 +31,7 @@ Let's first consider a simpler problem for demonstration.
 
 We will solve this problem with a reduction to a problem on a DAG, and then apply dynamic programming. Since we can always turn a problem that ask us to find the *cost* to a problem that ask us to find a *construction* that achieve the cost(with the same time/space bound). We will only concern with the cost version of the problem as it's much clearer. (One can implement some arrows in Haskell to make DP for construction as easy as DP for cost, sounds like a nice project. )
 
-Build a directed graph $D(V,A)$, where $V=\{v_1,\ldots,v_n\}$, $(v_i,v_j)\in A$ if and only if $i\leq j$. (We can make it $i < j$ instead, depend on if we consider a empty sequence a valid sequence.)
+Build a directed graph $D(V,A)$, where $V=\set{v_1,\ldots,v_n}$, $(v_i,v_j)\in A$ if and only if $i\leq j$. (We can make it $i < j$ instead, depend on if we consider a empty sequence a valid sequence.)
 
 We have a weight function $w(i,j)$ that assign weights to arc $(v_i,v_j)$. Define $w(i,j) = |\sum_{k=i}^{j-1} a_i - \mu|$. 
 
@@ -159,9 +159,9 @@ $\max(1,2)=\max(0,2)$, but the matrix is not totally monotone. $1>0$ but $2\not 
 
 If instead the operation is strictly compatible, i.e. $a \oplus b< a \oplus c$ if $b < c$, then we can always produce a totally monotone matrix. This is not the case with $\max$. 
 
-Some readers who are familiar with [$L^p$ space](http://en.wikipedia.org/wiki/Lp_space) might point out for any sequence of reals $a_1,\ldots,a_n$ and $\epsilon>0$, there exist a $p\geq 1$, such that $(\sum_{i=1}^n |a_i|^p)^{1/p} - \max_{i=1}^n |a_i|< \epsilon$. So if we don't need to be exact, pick a large enough $p$ as an exponential is good enough. This opens up a can of numerical analysis, and that's undesirable...
+Some readers who are familiar with [$L^p$ space](http://en.wikipedia.org/wiki/Lp_space) might point out for any sequence of reals $a_1,\ldots,a_n$ and $\epsilon>0$, there exist a $p\geq 1$, such that $(\sum_{i=1}^n |a_i|^p)^{1/p} - \max_{i=1}^n |a_i|< \epsilon$. So if we don't need to be exact, pick a large enough $p$ as an exponential is good enough. This opens up a can of numerical analysis.
 
-Good news, a more restrictive but good enough variant of the Monge property hold.
+A more restrictive but good enough variant of the Monge property hold.
 
 {Definition}
     
@@ -199,4 +199,7 @@ Can we do better? Yes, by considering a different kind of reduction(thank god we
 
 This is the exact same problem described on section 5 of [@Bein2005455]. It can be solve in $O(n)$ time. 
 
+# Update
+
+We did some [more investigation into this problem](bottleneck-k-link-path). 
 

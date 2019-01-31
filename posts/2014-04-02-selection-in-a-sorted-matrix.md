@@ -37,7 +37,7 @@ This means if we want to find an element of rank $k$ in $A$, we can first find e
  2. While doing the flood fill, it can also find the rank of the $k/2$th element in $A_o$ in the matrix $A$ for no extra cost.
  3. A linear time selection algorithm on all the elements resulted from the flood fill.
 
-This would give us a recursive algorithm if instead of just finding $k$th number, it finds the $k_1$th and $k_2$th number at the same time. As long as $|k_1-k_2|=O(m)$, we can find them both only with a $O(m)$ extra time. $k_1$ and $k_2$ will be the upper and lower bounds respectively. Some basic algebra shows we will $|k_1-k_2|=O(m)$ inside each recursive step if we start with $k_1=k_2=k$.
+This would give us a recursive algorithm if instead of just finding $k$th number, it finds the $k_1$th and $k_2$th number at the same time. As long as $|k_1-k_2|=O(m)$, we can find them both only with a $O(m)$ extra time. $k_1$ and $k_2$ will be the upper and lower bounds respectively. Some basic algebra shows $|k_1-k_2|=O(m)$ inside each recursive step if we start with $k_1=k_2=k$.
 
 Let $T(n,m)$ be the time used when the matrix is of size $n\times m$, and $n\leq m$. Certainly $T(1,m)=1$, and the rest follow the recursive relation $T(n,m) = cm + T(n,m/2)$ for some constant $c$.
 
@@ -47,52 +47,6 @@ Solving it gives us the desired running time $O(m)$. This is also a $O(k)$ time 
 
 A Haskell implementation here, it requires a linear time rank selection algorithm `selectRank`.
 
-```haskell
-import Data.List
-import Control.Applicative
-import Control.Arrow
-import Control.Monad
-import RankSelection
+<script src="https://gist.github.com/4505639.js?file=MatrixRankSelection.hs" type="text/javascript"></script>
 
-type Matrix a = (Int->Int->a, Int, Int)
-
--- The input is an matrix sorted in both row and column order
--- This selects the kth smallest element. (0th is the smallest)
-selectMatrixRank :: Ord a => Int -> Matrix a -> a
-selectMatrixRank k (f,n,m)
- | k >= n*m || k < 0 = error "rank doesn't exist"
- | otherwise         = fst $ fst $ biselect k k (f', min n (k+1), min m (k+1))
- where f' x y= (f x y, (x, y))
-
-biselect :: Ord a => Int -> Int -> Matrix a -> (a,a)
-biselect lb ub (f',n',m') = join (***) (selectRank values) (lb-ra, ub-ra)
- where mat@(f,n,m)
-        | n' > m'   = (flip f', m', n')
-        | otherwise = (f', n', m')
-       (a, b)
-        | n < 3     = (f 0 0, f (n-1) (m-1))
-        | otherwise = biselect lb' ub' halfMat
-       (lb', ub')   = (lb `div` 2, min ((ub `div` 2) + n) (n * hm - 1))
-       (ra, values) = (rankInMatrix mat a, selectRange mat a b)
-       halfMat
-        | even m = (\x y->f x (if y < hm - 1 then 2 * y else 2 * y - 1), n, hm)
-        | odd  m = (\x y->f x (2*y), n, hm)
-       hm = m `div` 2 + 1
-
--- the rank of an element in the matrix
-rankInMatrix :: Ord a => Matrix a -> a -> Int
-rankInMatrix mat a = sum (map (\(_,y)->1+y) $ frontier mat a)-1
-
--- select all elements x in the matrix such that a <= x <= b 
-selectRange :: Ord a => Matrix a -> a -> a -> [a]
-selectRange mat@(f,_,_) a b = concatMap search (frontier mat b)
- where search (x,y) = takeWhile (>=a) $ map (f x) [y,y-1..0]
-
-frontier :: Ord a => Matrix a -> a -> [(Int,Int)]
-frontier (f,n,m) b = step 0 (m-1)
- where step i j 
-        | i > n-1 || j < 0 = []
-        | f i j <= b       = (i,j):step (i+1) j
-        | otherwise        = step i (j-1)
-```
-
+Note a slightly faster algorithm also exists when $n$ and $m$ are very different. It was shown selecting the $k$th element can be done in $O(n\log m/n)$ time [@FredericksonJ84].
