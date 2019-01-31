@@ -35,6 +35,16 @@
     }}});
   </script>
   
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-4171915-2');
+  </script>
+
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 
@@ -178,20 +188,5 @@ Here, we present a new and significantly simpler algorithm with running time <sp
 
 
 </div>
-<!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
-<script>
-  (function(f, a, t, h, o, m){
-    a[h]=a[h]||function(){
-      (a[h].q=a[h].q||[]).push(arguments)
-    };
-    o=f.createElement('script'),
-    m=f.getElementsByTagName('script')[0];
-    o.async=1; o.src=t; o.id='fathom-script';
-    m.parentNode.insertBefore(o,m)
-  })(document, window, '//ec2-52-91-103-22.compute-1.amazonaws.com:8080/tracker.js', 'fathom');
-  fathom('set', 'siteId', 'WXDOF');
-  fathom('trackPageview');
-</script>
-<!-- / Fathom -->
 </body>
 </html>
