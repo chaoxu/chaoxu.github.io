@@ -93,7 +93,7 @@
 <p>If <span class="math inline">n&gt;m</span>, we can rotate the matrix implicitly to get the same running time.</p>
 <p>Solving it gives us the desired running time <span class="math inline">O(m)</span>. This is also a <span class="math inline">O(k)</span> time algorithm because we only need to consider the <span class="math inline">k\times k</span> submatrix in the up-left position.</p>
 <p>A Haskell implementation here, it requires a linear time rank selection algorithm <code>selectRank</code>.</p>
-<script src="https://gist.github.com/4505639.js?file=MatrixRankSelection.hs" type="text/javascript"></script>
+<script src="https://gist.github.com/chaoxu/81ab728730e6a65524cc4262c9dd0e80.js?file=MatrixRankSelection.hs"></script>
 <p>Note a slightly faster algorithm also exists when <span class="math inline">n</span> and <span class="math inline">m</span> are very different. It was shown selecting the <span class="math inline">k</span>th element can be done in <span class="math inline">O(n\log m/n)</span> time <span class="citation" data-cites="FredericksonJ84">[<a href="#ref-FredericksonJ84">2</a>]</span>.</p>
 <h1 id="bibliography" class="unnumbered">References</h1>
 <div id="refs" class="references">
