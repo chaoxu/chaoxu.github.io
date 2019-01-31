@@ -196,10 +196,8 @@ nav ul li a {
 /* code highlight */
 .gist .pl-k {
   font-weight: bold;
-  color: #000 !important;
 }
 .gist .pl-en {
-  color: #000 !important;
   font-style: italic;
   font-weight: bold;
 }
@@ -207,6 +205,6 @@ nav ul li a {
   color: #999 !important;
   font-style: italic;
 }
-.gist .pl-c1, .gist .pl-s, .gist .pl-v, .gist .pl-smi {
+.gist .pl-c1, .gist .pl-s, .gist .pl-v, .gist .pl-smi, .gist .pl-e, .gist .pl-k, .gist .pl-en{
   color: #000 !important;
 }
