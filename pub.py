@@ -1,24 +1,35 @@
 import yaml
 import re
 import mistune
-
+import functools
+from jinja2 import Template
+import io
 mk = mistune.Markdown(parse_block_html=True)
+from bs4 import BeautifulSoup as bs
+
+def compose(*functions):
+    return functools.reduce(lambda f, g: lambda x: f(g(x)), functions, lambda x: x)
 
 def mki(x): 
-    return mk(x)[3:-5]
+    return mk(x)
+
+def math(string):
+    # find $ $ pairs
+    return re.sub(r'\$(.*?)\$', r'<span class="math">\1</span>', string)
+
+parse=compose(mki,math)
 
 def coauthor_list(xs, links):
     xs = [x for x in xs if x!="Chao Xu"]
-    if not xs:
-        return ""
-    out = '<ul class="coauthor-list">'
+    y = []
     for x in xs:
-        s = x
+        a = {}
+        a["link"] = ""
+        a["name"] = x
         if x in links.keys():
-            if links[x]:
-                s = '<a href="'+links[x]+'">'+x+'</a>'
-        out+= "<li>"+s+"</li>"
-    return out+"</ul>"
+            a["link"] = links[x]
+        y.append(a)
+    return y
 
 def yaml_loader(filepath):
     """Load a yaml file."""
@@ -27,111 +38,60 @@ def yaml_loader(filepath):
     data = yaml.load_all(s)
     return data
 
-def gen_left(show,idd):
-    if 'a' in show:
-        a = '<label class="showmore material-icons" for="'+idd+'-toggle"></label>'
-    else:
-        a = '<i class="material-icons disabled">expand_more</i>'
-
-    if 'd' in show:
-        d = '<a href="files/papers/'+idd+'.pdf"><i class="material-icons">description</i></a>'
-    else:
-        d = '<i class="material-icons disabled">description</i>'
-    if 'p' in show:
-        p = '<a href="files/presentations/'+idd+'.pdf"><i class="material-icons">airplay</i></a>'
-    else:
-        p = '<i class="material-icons disabled">airplay</i>'
-    return a+d+p
-
-def math(string):
-    # find $ $ pairs
-    return re.sub(r'\$(.*?)\$', r'<span class="math">\1</span>', string)
-
-def bib(pub, year, bib, venues):
-    z = bib
-    if not z:
-        if pub:
-            z = '<abbr title="'+venues[pub]+'">'+pub+'</abbr>' + ' <time>'+str(year)+'</time>.'
-        else:
-            z = '<time>'+str(year)+'</time>.'
-    return '<p><em>'+z+'</em></p>'
-
-def notes(ns):
-    out = ""
-    if not ns:
-        return out
-    for x in ns:
-        out+='<aside class="note">'+mki(math(x))+'</aside>'
-    return out
-
 def build_paper(paper):
 
     if "show" not in paper.keys():
         paper["show"] = []
 
-    idd = paper["id"]
-    idtoggle = idd+"-toggle"
+    paper["title"] = math(paper["title"])
+    paper["authors"] = coauthor_list(paper["authors"],people)
+    if "notes" in paper.keys():
+        paper["notes"] = map(parse,paper["notes"])
+    if "pub" in paper.keys():
+        a = {}
+        a["name"] = paper["pub"]
+        a["venue"] = venues[paper["pub"]]
+        # print paper["pub"]
+        paper["pub"] = a
     if "abstract" in paper.keys():
         paper["show"].append("a")
+        paper["abstract"] = parse(paper["abstract"])
 
-    if "bib" not in paper.keys():
-        paper["bib"] = ""
-    if "pub" not in paper.keys():
-        paper["pub"] = ""
-
-    paper["title"] = math(paper["title"])
-
-    left = '<div class="cv-left">'+gen_left(paper["show"],idd)+'</div>'
-
-    title = '<cite class="paper-title">'+paper["title"]+'</cite>'
-
-    toggle = ""
-    abstract =""
-    if 'a' in paper["show"]:
-        abstract = '<div class="abstract">'+mk(math(paper["abstract"]))
-        if "dedication" in paper.keys():
-            abstract+='<aside class="dedication">'+mki(paper["dedication"])+'</aside>' 
-        abstract +='</div>'
-        toggle = '<input type="checkbox" class="abstract-guard" id="'+idtoggle+'">'
-
-    if "notes" in paper.keys():
-        notess = notes(paper["notes"])
-    else:
-        notess = ""
-
-    right = ('<div class="cv-right">'+
-             title+
-             coauthor_list(paper["authors"],people)+
-             bib(paper["pub"],paper["year"],paper["bib"],venues)+
-             notess+
-             '</div>')
+    if "dedication" in paper.keys():
+        paper["dedication"] = mki(paper["dedication"])
     
-    out = ('<!-- ' +paper["title"] +' -->\n'+
-          '<div class="row cv-entry" id="'+idd+'">'+
-          toggle+
-          left+right+abstract+'</div>\n')
-    return out
+    return paper
 
 def build_papers(papers):
-    return ''.join(map(build_paper,papers))
+    return map(build_paper,papers)
 
 
 t = list(yaml_loader("pub.yaml"))
 venues = t[0]["venues"]
 people = t[0]["people"]
+types = t[0]["types"]
 t = t[1:]
 
-out = ''
-out+='<div class="row pubtypeheader">Conference Publications</div>'
-out+=build_papers([paper for paper in t if paper["type"]=="conference"])
+#types = {"conference": "Conference Publications", 
+#         "journal":"Journal Publications", 
+#         "manuscript":'<span>Manuscripts<br /><span style="font-size:0.6em"><em>Some manuscripts are available upon request.</em></span></span>', 
+#         "thesis":"Thesis"}
 
-out+= '<div class="row pubtypeheader">Journal Publications</div>'
-out+= build_papers([paper for paper in t if paper["type"]=="journal"])
+parsed = []
+for z in types.keys():
+    q = {}
+    q["title"] = types[z] 
+    q["papers"] = build_papers([paper for paper in t if paper["type"]==z])
+    parsed.append(q)
 
-out+= '<div class="row pubtypeheader"><span>Manuscripts<br /><span style="font-size:0.6em"><em>Some manuscripts are available upon request.</em></span></span></div>'
-out+= build_papers([paper for paper in t if paper["type"]=="manuscript"])
+# print parsed
 
-out+= '<div class="row pubtypeheader">Thesis</div>'
-out+= build_papers([paper for paper in t if paper["type"]=="thesis"])
+file = io.open("index_template.html", "r", encoding="utf-8") 
+template = Template(file.read())
+root = template.render(pub_types=parsed).splitlines()
+filtered = filter(lambda x: not re.match(r'^\s*$', x), root)
+print('\n'.join(filtered).encode("utf-8"))
 
-print(out.encode('utf-8'))
+#soup = bs(root)                #make BeautifulSoup
+#prettyHTML = soup.prettify()
+#print(prettyHTML.encode("utf-8"))

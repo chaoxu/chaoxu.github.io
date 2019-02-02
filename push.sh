@@ -10,6 +10,9 @@ git checkout develop
 export LANG=C
 export LC_CTYPE=C
 
+# Build index
+python pub.py > index.html
+
 # Build new files
 mv ~/tmp/.stack-work .stack-work
 stack exec chaosite clean

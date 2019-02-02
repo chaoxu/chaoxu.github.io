@@ -39,6 +39,12 @@ people:
   Steven Skiena: http://www3.cs.stonybrook.edu/~skiena/
   Boris Aronov: https://engineering.nyu.edu/faculty/boris-aronov
 
+types:
+  conference: Conference Publications
+  journal : Journal Publications
+  manuscript: <span>Manuscripts<br /><span style="font-size:0.6em"><em>Some manuscripts are available upon request.</em></span></span> 
+  thesis: Thesis
+  
 # id: the unique identifier
 # title: title of the article
 # authors: a list of authors
