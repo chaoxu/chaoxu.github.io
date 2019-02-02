@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta name="referrer" content="origin">
+    <title>Pack a histogram</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\dist": "\\mathop{\\operatorname{dist}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
+    </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-4171915-2');
+  </script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+      href="https://chaoxuprime.com/rss.xml">
+  </head>
+  <body>
+    <header class="hide-on-print">
+        <div id="site-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1 id="article-title">Pack a histogram</h1>
+        <br />
+<div>
+<p>Consider we have a histogram of <span class="math inline">n</span> values and <span class="math inline">n</span> distinct colors. The <span class="math inline">i</span>th bar is a rectangle of size <span class="math inline">1\times v_i</span>, where <span class="math inline">v_i</span> is the value and has color <span class="math inline">i</span>. The total area of all the bars are <span class="math inline">n</span>. We are interested in make a few cuts to pack it into <span class="math inline">n</span> squares each one of area <span class="math inline">1</span>, such that each square is consist of at most <span class="math inline">2</span> different colors.</p>
+<p>Formally, we are seeking an algorithm for the following problem:</p>
+<section class="theorem-environment Problem" id="Problem-1">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
+<p>Input: <span class="math inline">(v_1,1),\ldots,(v_n,n)</span>.</p>
+<p>Output: <span class="math inline">S=\{s_1,\ldots,s_n\}</span>, such that <span class="math inline">s_i = \{(x_{2i-1},c_{2i-1}),(x_{2i},c_{2i})\}</span>, <span class="math inline">x_{2i}+x_{2i-1}=1</span> and for all <span class="math inline">1 \leq i\leq n</span>, <span class="math display">\displaystyle 
+\sum_{s\in S} \sum_{(x,i)\in s} x = v_i.
+</span></p>
+</section>
+<p>Here is an algorithm that make sure this can be done in linear time. The idea is to separate the numbers into two bins. <span class="math inline">(v_i,i)</span> is in the large bin if <span class="math inline">v_i &gt; 1</span>, and it is in the small bin otherwise. The idea is always pick two elements, one in large bin one in small bin, say <span class="math inline">(x,i)</span> and <span class="math inline">(y,j)</span>, where <span class="math inline">x\leq 1&lt; y</span>. Now we create a set <span class="math inline">\{(x,i),(1-x,j)\}</span>, and put <span class="math inline">(y-(1-x),j)</span> back into the bins.</p>
+<p>If we can always prove that there is an element in the small bin during the execution of the algorithm, then we find an linear time algorithm for this problem. This is clear by simple induction.</p>
+<p>This problem come up in order to implement the alias method. I recommend a good read on this topic <a href="http://www.keithschwarz.com/darts-dice-coins/">Darts, Dice, and Coins: Sampling from a Discrete Distribution</a> by <a href="http://www.keithschwarz.com">Keith Schwarz</a>.</p>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2014-10-12. </div>
+    <div class="info">Tags: classical, algorithm.</div>
+
+</div>
+      </article>
+    </main>
+    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+  </body>
+</html>
