@@ -112,40 +112,40 @@
       <cite class="paper-title">{{paper.title}}</cite>
       {% if paper.authors %}
       <ul class="coauthor-list">
-        {% for author in paper.authors %}
-          <li>
+        {% for author in paper.authors %}<li>
             {% if author.link %}
             <a href="{{author.link}}">{{author.name}}</a>
             {% else %}
             {{author.name}}
             {% endif %}
-          </li>
-        {% endfor %}
-      </ul>
+          </li>{% endfor %}
+        </ul>
       {% endif %}
 
+      <p><em>
       {% if paper.bib %}
-        <p><em>{{paper.bib}}</em></p>
+        {{paper.bib}}
       {% elif paper.pub %}
         <abbr title="{{paper.pub.venue}}">{{paper.pub.name}}</abbr> <time>{{paper.year}}</time>.
       {% else %}
         <time>{{paper.year}}</time>.
       {% endif %}
-
+      </em><p>
 
       {% for note in paper.notes %}
         <aside class="note">{{note}}</aside>
       {% endfor %}
+    </div>
 
-      {% if paper.abstract %}
-      <div class="abstract">
-        {{paper.abstract}}
-        {% if paper.dedication %}
-          <aside class="dedication">{{paper.dedication}}</aside>
-        {% endif %}
-      </div>
+    {% if paper.abstract %}
+    <div class="abstract">
+      {{paper.abstract}}
+      {% if paper.dedication %}
+        <aside class="dedication">{{paper.dedication}}</aside>
       {% endif %}
     </div>
+    {% endif %}
+
   </div>
   {% endfor %}
 {% endfor %}
