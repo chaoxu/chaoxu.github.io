@@ -113,12 +113,7 @@
       {% if paper.authors %}
       <ul class="coauthor-list">
         {% for author in paper.authors %}<li>
-            {% if author.link %}
-            <a href="{{author.link}}">{{author.name}}</a>
-            {% else %}
-            {{author.name}}
-            {% endif %}
-          </li>{% endfor %}</ul>
+            {% if author.link %}<a href="{{author.link}}">{{author.name}}</a>{% else %}{{author.name}}{% endif %}</li>{% endfor %}</ul>
       {% endif %}
 
       <p><em>
