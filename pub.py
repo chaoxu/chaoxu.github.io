@@ -11,13 +11,15 @@ def compose(*functions):
     return functools.reduce(lambda f, g: lambda x: f(g(x)), functions, lambda x: x)
 
 def mki(x): 
-    return mk(x)
+    return mk(x)[3:-5]
 
 def math(string):
     # find $ $ pairs
     return re.sub(r'\$(.*?)\$', r'<span class="math">\1</span>', string)
 
-parse=compose(mki,math)
+parse=compose(mk,math)
+# inline parse, strip the <p> tag
+parsei=compose(mki,math)
 
 def coauthor_list(xs, links):
     xs = [x for x in xs if x!="Chao Xu"]
@@ -46,7 +48,7 @@ def build_paper(paper):
     paper["title"] = math(paper["title"])
     paper["authors"] = coauthor_list(paper["authors"],people)
     if "notes" in paper.keys():
-        paper["notes"] = map(parse,paper["notes"])
+        paper["notes"] = map(parsei,paper["notes"])
     if "pub" in paper.keys():
         a = {}
         a["name"] = paper["pub"]
@@ -58,7 +60,7 @@ def build_paper(paper):
         paper["abstract"] = parse(paper["abstract"])
 
     if "dedication" in paper.keys():
-        paper["dedication"] = mki(paper["dedication"])
+        paper["dedication"] = parsei(paper["dedication"])
     
     return paper
 
