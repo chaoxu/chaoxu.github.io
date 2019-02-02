@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta name="referrer" content="origin">
+    <title>Minimum cost zero skew tree</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\dist": "\\mathop{\\operatorname{dist}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
+    </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-4171915-2');
+  </script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+      href="https://chaoxuprime.com/rss.xml">
+  </head>
+  <body>
+    <header class="hide-on-print">
+        <div id="site-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1 id="article-title">Minimum cost zero skew tree</h1>
+        <br />
+<div>
+<section class="theorem-environment Problem" id="Problem-1">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
+<p>Let <span class="math inline">T</span> be a rooted tree with real costs <span class="math inline">c(e)</span> and length lower bounds <span class="math inline">\ell(e)</span> on each edge <span class="math inline">e</span>. We are interested in compute a function <span class="math inline">f</span>, such that <span class="math inline">f(e)\geq \ell(e)</span>, for any root to leaf path <span class="math inline">P</span>, <span class="math inline">\sum_{e\in P} f(e)=t</span> and <span class="math inline">\sum_{e\in E} c(e)f(e)</span> is minimized.</p>
+</section>
+<p>This is the <a href="http://theory.cs.uni-bonn.de/info5/steinerkompendium/node27.html">zero skew tree problem</a> where the tree is fixed.</p>
+<p>Here we show how this problem can be solved in <span class="math inline">O(n\log n)</span> time by reducing it to minimum cost flow on 2-terminal series parallel graph. <span class="citation" data-cites="Booth1993416">[<a href="#ref-Booth1993416">1</a>]</span></p>
+<p><span class="math inline">C(v)</span> denote the set of all the children of <span class="math inline">v</span>.</p>
+<p>For <span class="math inline">vu\in E(T)</span>, and <span class="math inline">u\in C(v)</span>, the graph <span class="math inline">P(vu)</span> is the parallel connection of one single edge with cost <span class="math inline">c(vu)</span>, lower bound <span class="math inline">\ell(vu)</span>, infinite upper bound and a series-parallel graph <span class="math inline">S(u)</span>. Let the graph <span class="math inline">S(v)</span> for <span class="math inline">v\in V(T)</span> to be the series connection of <span class="math inline">P(vu)</span> for all <span class="math inline">u\in C(v)</span>(the connection can be ordered arbitrarily).</p>
+<p>The base case is when <span class="math inline">u</span> does not have any children, and <span class="math inline">P(vu)</span> is just a single edge with two terminals.</p>
+<p>Let <span class="math inline">G=S(r)</span>, where <span class="math inline">r</span> is the root of <span class="math inline">T</span>. There is a bijection between the edges in <span class="math inline">T</span> and the edges in <span class="math inline">G</span>.</p>
+<p>Finding the minimum cost flow of value <span class="math inline">t</span> in <span class="math inline">G</span> with the two terminals gives us the desired solution by going back to the original edge using the bijection.</p>
+<h1 id="bibliography" class="unnumbered">References</h1>
+<div id="refs" class="references">
+<div id="ref-Booth1993416">
+<p>[1] H. Booth, R. Tarjan, <strong>Finding the minimum-cost maximum flow in a series-parallel network</strong>, Journal of Algorithms. 15 (1993) 416–446 <a href="https://doi.org/10.1006/jagm.1993.1048">10.1006/jagm.1993.1048</a>.</p>
+</div>
+</div>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2015-03-15. </div>
+    <div class="info">Tags: series-parallel, tree.</div>
+
+</div>
+      </article>
+    </main>
+    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+  </body>
+</html>
