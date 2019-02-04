@@ -98,14 +98,7 @@ D_k = \{x \backslash \bigcup S_{k+1} : x \in S_k\}
 <p>Equivalently, find an upper bound of the number of edges in the transitive reduction of any graph <span class="math inline">G</span>.</p>
 <p>Answer: For even <span class="math inline">n</span>, it's <span class="math inline">\frac{n^2}{4}</span>, for odd <span class="math inline">n</span>, <span class="math inline">\frac{n^2-2n}{4}</span>. Solution comes from the maximal triangle free graph is bipartite, and transitive reductions are triangle free.</p>
 <h2 id="distance-from-closest-permutation-with-one-cycle"><span class="header-section-number">0.6</span> Distance from closest permutation with one cycle</h2>
-<p>Let <span class="math inline">[n]=\{1,\ldots,n\}</span>. <span class="math inline">f:[n]\to[n]</span>. Find a permutation <span class="math inline">\pi:[n]\to[n]</span>, such that <span class="math inline">\pi</span> has only one cycle, and the hamming distance between <span class="math inline">f</span> and <span class="math inline">\pi</span> is minimized. (By Matt Dipple)</p>
-<h2 id="saving-on-multiple-binary-searchs"><span class="header-section-number">0.7</span> Saving on multiple binary searchs</h2>
-<p>We have two sorted arrays <span class="math inline">A</span> with <span class="math inline">n</span> elements and <span class="math inline">B</span> with <span class="math inline">m</span> elements. such that all the elements are unique and every element in <span class="math inline">B</span> appears in <span class="math inline">A</span>.</p>
-<p>Compute <span class="math inline">C</span>, such that <span class="math inline">C[i]</span> contains the positions where <span class="math inline">B[i]</span> is equal to <span class="math inline">A[j]</span>. In other words, compute <span class="math inline">C[i]</span>, such that <span class="math inline">B[i]=A[C[i]]</span>.</p>
-<p>If <span class="math inline">m=\Theta(n)</span>, then we use a variation of a merge algorithm and get <span class="math inline">O(n)</span> time.</p>
-<p>If <span class="math inline">m = O(\frac{n}{\log n})</span>. We can do <span class="math inline">m</span> binary searches, and find all the positions in <span class="math inline">O(m \log n)</span> time. Can we do better in this case?</p>
-<p>What about when <span class="math inline">m = \Omega(\frac{n}{\log n})</span>?</p>
-<p>Answer: It can be done in <span class="math inline">O(m \log \frac{n}{m})</span> time <a href="http://cstheory.stackexchange.com/questions/10407/merging-two-binary-search-trees">according to this</a>.</p>
+<p>Let <span class="math inline">[n]=\{1,\ldots,n\}</span>. <span class="math inline">f:[n]\to[n]</span>. Find a permutation <span class="math inline">\pi:[n]\to[n]</span>, such that <span class="math inline">\pi</span> has only one cycle, and the hamming distance between <span class="math inline">f</span> and <span class="math inline">\pi</span> is minimized. (By Matt Dippel)</p>
 
       </article>
     </main>
