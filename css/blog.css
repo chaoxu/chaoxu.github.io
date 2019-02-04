@@ -134,8 +134,7 @@ article p + p {
 /* Navigation
 ----------------------------------------------- */
 nav {
-    margin: 20px 0 0 0;
-    border-bottom: 1px solid #ccc;
+    margin: 10px 0 10px 0;
     position: relative;
 }
 
@@ -146,10 +145,9 @@ nav ul {
 }
 
 nav ul li {
-    display: block;
+    display: inline;
     margin: 0 15px 0 0;
     padding: 3px 0 3px 0;
-    float: left;
     position: relative;
     border: 0;
 }

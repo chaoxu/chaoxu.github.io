@@ -6,6 +6,7 @@ from jinja2 import Template
 import io
 mk = mistune.Markdown(parse_block_html=True)
 from bs4 import BeautifulSoup as bs
+import cgi
 
 def compose(*functions):
     return functools.reduce(lambda f, g: lambda x: f(g(x)), functions, lambda x: x)
@@ -14,8 +15,11 @@ def mki(x):
     return mk(x)[3:-5]
 
 def math(string):
+    def my_replace(match):
+        return '<span class="math">'+cgi.escape(match.group(1))+'</span>'
+
     # find $ $ pairs
-    return re.sub(r'\$(.*?)\$', r'<span class="math">\1</span>', string)
+    return re.sub(r'\$(.*?)\$', my_replace, string)
 
 parse=compose(mk,math)
 # inline parse, strip the <p> tag
