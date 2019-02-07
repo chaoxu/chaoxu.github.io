@@ -29,7 +29,7 @@ For the more general case, one can find the proof in [@FredericksonJ84]. Note th
 
 Now, $n$ and $m$ is not known, but we can quickly using exponential search to find it. Indeed, we just have to apply exponential search in the first row and first column using the oracle. This gives us an extra $O(\log n + \log m)=O(\log nm)$ oracle calls. 
 
-Actually, better running time is possible. Use exponential search until we find the first $i$ such that $M_{2^i,2^i}>\lambda^*$. So we can upper bound $t$. Then one can solve the problem with $2$ matrices. One $t\times k$ matrix and a $k\times t$ matrix. The total running time is therefore $O(\log k+t\log k/t)=O(t\log k/t)$. In fact, we get $O(\log k)$ oracle calls and $O(t\log k/t)$ running time.
+Actually, better running time is possible. Use exponential search until we find the first $i$ such that $M_{2^i,2^i}>\lambda^*$. So we can upper bound $t$. Then one can solve the problem with $2$ matrices. One $t\times k$ matrix and a $k\times t$ matrix. The total running time is therefore $O(\log k+t\log k/t)=O(t\log k)$. In fact, we get $O(\log k)$ oracle calls and $O(t\log k)$ running time. Note $t$ will never approach $k$. The running time is $O(t\log k)$.
 
 # Remark
 
