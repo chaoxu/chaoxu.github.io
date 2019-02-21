@@ -13,6 +13,8 @@ title: README
 10. The math are shown with [KaTex](https://katex.org/).
 11. The heading themes are similar to [Connections in Combinatorial Optimization](http://www.amazon.com/gp/product/0199205272/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0199205272&linkCode=as2&tag=fighterempire-20), and the remaining themes are similar to [Categories for the Working Mathematician](http://www.amazon.com/gp/product/0387984038/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0387984038&linkCode=as2&tag=fighterempire-20). The symbols are of KaTeX.
 12. To compile just `MathDoc.hs`, you need `pandoc` and `pandoc-citeproc`. To compile the `site.hs`, additionally you need `hakyll`.
+13. For the homepage, I generate with python. Needs to run `pip install pyyaml mistune jinja2 bs4` on a new machine. 
+
 
 # Todo
 
