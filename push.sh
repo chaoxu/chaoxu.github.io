@@ -11,10 +11,8 @@ export LANG=C
 export LC_CTYPE=C
 
 # Build new files
-mv ~/tmp/.stack-work .stack-work
 stack exec chaosite clean
 stack exec chaosite build
-mv .stack-work/ ~/tmp/
 
 # Build index
 python pub.py > _site/index.html
