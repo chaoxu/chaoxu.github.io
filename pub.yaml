@@ -206,7 +206,6 @@ type: journal
 show: [d]
 pub: SICOMP
 year: 2018
-bib: Accepted for publication in SICOMP
 notes:
   - The paper is a combination of [Computing minimum cuts in hypergraphs](#hypergraph-min-cut-conf) appeared in SODA 2017 and [A note on approximate strengths of edges in a hypergraph](https://arxiv.org/abs/1703.03849).
 abstract: >
