@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta name="referrer" content="origin">
+    <title>Global min-cut with parity constraint on the edges</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\dist": "\\mathop{\\operatorname{dist}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
+    </script>
+  <!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
+  <script>
+  if(window.location.hostname === "chaoxuprime.com"){
+    (function(f, a, t, h, o, m){
+      a[h]=a[h]||function(){
+        (a[h].q=a[h].q||[]).push(arguments)
+      };
+      o=f.createElement('script'),
+      m=f.getElementsByTagName('script')[0];
+      o.async=1; o.src=t; o.id='fathom-script';
+      m.parentNode.insertBefore(o,m)
+    })(document, window, '//track.chaoxuprime.com/tracker.js', 'fathom');
+    fathom('set', 'siteId', 'DNRQY');
+    fathom('trackPageview');
+  }
+  </script>
+  <!-- / Fathom -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-4171915-2');
+  </script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+      href="https://chaoxuprime.com/rss.xml">
+  </head>
+  <body>
+    <header class="hide-on-print">
+        <div id="site-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1 id="article-title">Global min-cut with parity constraint on the edges</h1>
+        <br />
+<div>
+<p>In a discussion with <a href="https://patrickl.in/">Patrick Lin</a>, a nice problem was born.</p>
+<p>Let <span class="math inline">\delta(S)</span> to be the set of edges with exactly one endpoint in <span class="math inline">S</span>. <span class="math inline">\delta^-(S)</span> to be the set of edges with its head in <span class="math inline">S</span> and tail in <span class="math inline">V\setminus S</span>. Given a non-negative weighted graph, we define the cut function <span class="math inline">f:2^V\to \R^+</span> to be <span class="math inline">f(S) = \sum_{e\in \delta(S)} w(e)</span>. For directed graphs, <span class="math inline">f(S) = \sum_{e\in \delta^-(S)} w(e)</span>. <span class="math inline">f(S)</span> is called the value of the cut <span class="math inline">S</span>.</p>
+<p>Let <span class="math inline">k</span> be a constant, we consider the following problem.</p>
+<section class="theorem-environment Problem" id="Problem-1">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
+<p>Give a graph and <span class="math inline">k</span> set of edges <span class="math inline">F_1,\ldots,F_k</span>, <span class="math inline">a_1,\ldots,a_k,b</span>. Find a cut <span class="math inline">S</span> satisfies that <span class="math inline">|\delta(S)\cap F_i|\equiv a_i \pmod b</span> for all <span class="math inline">i</span>, and the value is minimized.</p>
+</section>
+<p>We will try to reduce this problem to the following</p>
+<section class="theorem-environment Problem" id="Problem-2">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">2</span><span class="name">submodular minimization under congruence constraints</span></span>
+<p>Given <span class="math inline">T_1,\ldots,T_k</span> and a submodular function <span class="math inline">f</span>. Find a set <span class="math inline">S</span> such that <span class="math inline">|T_i\cap S| \equiv a_i\pmod b_i</span>, and <span class="math inline">f(S)</span> is minimized.</p>
+</section>
+<p>The above problem is known as submodular minimization under congruence constraints. It is known to be solvable in polynomial time under certain conditions on the <span class="math inline">b_i</span>'s <span class="citation" data-cites="NageleSZ18">[<a href="#ref-NageleSZ18">1</a>]</span>. We sketch the reductions.</p>
+<h1 id="undirected-case"><span class="header-section-number">1</span> Undirected case</h1>
+<p>In the undirected case, we only consider when <span class="math inline">b=2</span>. Patrick showed a the following construction. Create a new graph <span class="math inline">G&#39;</span> as follows. For each <span class="math inline">uv</span> in <span class="math inline">E</span>, split it into edges <span class="math inline">ux</span>, <span class="math inline">xy</span>, <span class="math inline">yv</span>, <span class="math inline">w(ux)=w(yv)=\infty</span>, and <span class="math inline">w(xy)=w(uv)</span>. Let <span class="math inline">T_i</span> contains the vertex <span class="math inline">x</span> and <span class="math inline">y</span> if <span class="math inline">uv\in F_i</span>.<br />
+We now solve the submodular minimization under congruence constraints problem on input <span class="math inline">f</span>, which is the cut function for <span class="math inline">G&#39;</span>, and same <span class="math inline">a_1,\ldots,a_k</span> and <span class="math inline">b_1,\ldots,b_k=2</span>.</p>
+<h1 id="directed-case"><span class="header-section-number">2</span> Directed case</h1>
+<p>In the directed case, a similar approach works. But now, instead of <span class="math inline">\mod 2</span>, we can do <span class="math inline">\mod b</span> for any <span class="math inline">b</span>. We consider the same approach.<br />
+<span class="math inline">(u,v) \in E</span> split into <span class="math inline">(u,x_1),\ldots,(x_b,v)</span> and <span class="math inline">w(u,x_1)=w(u,v)</span>, <span class="math inline">w(x_i,x_{i+1})=\infty</span>, <span class="math inline">w(x_b,v)=\infty</span>. Now, let <span class="math inline">T_i</span> contain vertices <span class="math inline">x_1,\ldots,x_b</span> of <span class="math inline">uv\in F_i</span>.</p>
+<h1 id="bibliography" class="unnumbered">References</h1>
+<div id="refs" class="references">
+<div id="ref-NageleSZ18">
+<p>[1] M. Nägele, B. Sudakov, R. Zenklusen, Submodular minimization under congruency constraints, in: Proceedings of the Twenty-Ninth Annual Acm-Siam Symposium on Discrete Algorithms, Society for Industrial; Applied Mathematics, Philadelphia, PA, USA, 2018: pp. 849–866.</p>
+</div>
+</div>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2018-11-06. </div>
+    <div class="info">Tags: algorithms, min-cut.</div>
+
+</div>
+      </article>
+    </main>
+    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+  </body>
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta name="referrer" content="origin">
+    <title>Find the square root of an integer with trigonometry and Lagrange's four-square theorem</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\dist": "\\mathop{\\operatorname{dist}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
+    </script>
+  <!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
+  <script>
+  if(window.location.hostname === "chaoxuprime.com"){
+    (function(f, a, t, h, o, m){
+      a[h]=a[h]||function(){
+        (a[h].q=a[h].q||[]).push(arguments)
+      };
+      o=f.createElement('script'),
+      m=f.getElementsByTagName('script')[0];
+      o.async=1; o.src=t; o.id='fathom-script';
+      m.parentNode.insertBefore(o,m)
+    })(document, window, '//track.chaoxuprime.com/tracker.js', 'fathom');
+    fathom('set', 'siteId', 'DNRQY');
+    fathom('trackPageview');
+  }
+  </script>
+  <!-- / Fathom -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-4171915-2');
+  </script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+      href="https://chaoxuprime.com/rss.xml">
+  </head>
+  <body>
+    <header class="hide-on-print">
+        <div id="site-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1 id="article-title">Find the square root of an integer with trigonometry and Lagrange's four-square theorem</h1>
+        <br />
+<div>
+<p>My friend was solving the following problem during a interview for Citigroup's IT department.</p>
+<section class="theorem-environment Problem" id="Problem-1">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
+<p>Find the square root of a integer n, without using the built in sqrt function. (The range of the result was not specified, I assume it's double)</p>
+</section>
+<p>This is a common interview question.</p>
+<p>There are <a href="http://en.wikipedia.org/wiki/Methods_of_computing_square_roots">many ways to do it</a>. I want to come up with a way no one else would think of, something that could amaze the interviewer. I mean, she might interviewed enough people to get bored with the standard answers.</p>
+<p>I present the following highly inefficient but somewhat creative solution. <a href="https://github.com/chaoxu/mgccl-haskell/blob/master/random/sqrtOfInteger.hs">The code is here</a>.</p>
+<p>How does it work?</p>
+<p>We know <span class="math inline">n</span> is an integer. By <a href="http://en.wikipedia.org/wiki/Lagrange&#39;s_four-square_theorem">Lagrange's four-square theorem</a>, <span class="math inline">n=a^2+b^2+c^2+d^2</span> for integer <span class="math inline">a,b,c,d</span>. <span class="math inline">\sqrt{n} = \sqrt{a^2+b^2+c^2+d^2}</span>. Thus <span class="math inline">\sqrt{n}</span> is the magnitude of the vector <span class="math inline">[a,b,c,d]</span>. <span class="math inline">a,b,c,d</span> can be calculated by brute force search(therefore runs in <span class="math inline">O(n^2)</span> time).</p>
+<p>Note a simple improvement of the naive algorithm can reduce the computation time to <span class="math inline">O(n^\frac{3}{2} \log n)</span> by doing a binary search for the last square.</p>
+<p><a href="http://onlinelibrary.wiley.com/doi/10.1002/cpa.3160390713/abstract">A much smarter randomized algorithm</a> by Michael O. Rabin and Jeffrey Shallit have a running time of <span class="math inline">O(\log^2 n)</span>.</p>
+<p>A recursive algorithm using the following relation can find the magnitude of any vector(assume <span class="math inline">a_i\neq 0</span>) <span class="math inline">|[a_0,...,a_{n-1},a_n]| = \frac{a_n}{\sin(\tan^{-1}(\frac{a_n}{|[a_0,...,a_{n-1}]|}))}</span> It's easy to see, this breaks a <span class="math inline">n</span>-dimension vector into orthogonal vectors of <span class="math inline">n-1</span>-dimensions and <span class="math inline">1</span>-dimension. We get a right triangle. Trigonometry comes in handy.</p>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2010-11-07. </div>
+    <div class="info">Tags: math.</div>
+
+</div>
+      </article>
+    </main>
+    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+  </body>
+</html>

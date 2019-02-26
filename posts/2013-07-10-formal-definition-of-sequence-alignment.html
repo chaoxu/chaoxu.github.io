@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta name="referrer" content="origin">
+    <title>Formal Definition of Sequence Alignment</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\dist": "\\mathop{\\operatorname{dist}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
+    </script>
+  <!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
+  <script>
+  if(window.location.hostname === "chaoxuprime.com"){
+    (function(f, a, t, h, o, m){
+      a[h]=a[h]||function(){
+        (a[h].q=a[h].q||[]).push(arguments)
+      };
+      o=f.createElement('script'),
+      m=f.getElementsByTagName('script')[0];
+      o.async=1; o.src=t; o.id='fathom-script';
+      m.parentNode.insertBefore(o,m)
+    })(document, window, '//track.chaoxuprime.com/tracker.js', 'fathom');
+    fathom('set', 'siteId', 'DNRQY');
+    fathom('trackPageview');
+  }
+  </script>
+  <!-- / Fathom -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-4171915-2');
+  </script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+      href="https://chaoxuprime.com/rss.xml">
+  </head>
+  <body>
+    <header class="hide-on-print">
+        <div id="site-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1 id="article-title">Formal Definition of Sequence Alignment</h1>
+        <br />
+<div>
+<p>Consider an alphabet <span class="math inline">\Sigma</span> and two sequences <span class="math inline">s</span> and <span class="math inline">t</span> on <span class="math inline">\Sigma</span>. Let <span class="math inline">\bar{\Sigma} = \Sigma\cup \{\diamond\}</span> where <span class="math inline">\diamond</span> is some symbol not in <span class="math inline">\Sigma</span>, it's called the gap symbol. <span class="math inline">M:\bar{\Sigma}\times \bar{\Sigma}\to \Z</span>. We have a gap penalties functions <span class="math inline">g_s,g_t:\N\to \Z</span>. The functions are monotonic and are <span class="math inline">0</span> at <span class="math inline">0</span>. The four boundary gap penalty coefficient <span class="math inline">b_s,b_t,e_s,e_t\in \{0,1\}</span>. We want to find the alignment score between the two sequences.</p>
+<p>A gap is the maximal substring consist of only <span class="math inline">\diamond</span>'s. The gap sequence of a string is a sequence of lengths of each gap. Define <span class="math inline">s_\diamond</span> be the gap sequence of string <span class="math inline">s</span>.</p>
+<p><span class="math inline">G(x,g,y,a) = xg(a_1) + \sum_{i=2}^{n-1} g(a_i) + yg(a_n)</span>, where <span class="math inline">a</span> is a sequence of length <span class="math inline">n</span>.</p>
+<p><span class="math display">\displaystyle 
+A(u,v) = \sum_{i=1}^{|u|} M(u_i,v_i) + G(b_s,g_s,e_s,u_\diamond) + G(b_t,g_t,e_t,v_\diamond)
+</span></p>
+<p>Define <span class="math inline">S</span> and <span class="math inline">T</span> be the set of all strings that can be formed by inserting <span class="math inline">\diamond</span> into <span class="math inline">s</span> and <span class="math inline">t</span> respectively.</p>
+<p>The alignment score is defined as <span class="math display">\displaystyle 
+\max \{A(u,v) : |u|=|v|, u\in S, v\in T\}
+</span></p>
+<p>Now, once one write an algorithm for this problem, it can be used for many sequence alignment problems on <a href="http://rosalind.info/">Rosalind</a>.</p>
+<ul>
+<li><a href="http://rosalind.info/problems/hamm/">Hamming Distance</a>: <span class="math inline">M(a,a)=-1</span>, and <span class="math inline">0</span> otherwise. All other function are <span class="math inline">-\infty</span>.</li>
+<li><a href="http://rosalind.info/problems/lcsq/">Finding a Shared Spliced Motif</a>, longest common subsequence. <span class="math inline">M(a,a)=1</span> for <span class="math inline">a\in \Sigma</span>, <span class="math inline">0</span> otherwise. Everything else are <span class="math inline">0</span>.</li>
+<li><a href="http://rosalind.info/problems/edit/">Edit distance</a>: Levenshtein distance, <span class="math inline">M(a,a)=-1</span> for <span class="math inline">a\in \bar{\Sigma}</span>, <span class="math inline">0</span> otherwise. All other are <span class="math inline">-\infty</span>.</li>
+<li><a href="http://rosalind.info/problems/glob/">Global alignment</a>: <span class="math inline">b_s=e_s=g_s</span>, <span class="math inline">b_t=e_t=g_t</span>.</li>
+<li><a href="http://rosalind.info/problems/oap/">Overlap alignment</a>: <span class="math inline">b_s=e_t=0</span>, <span class="math inline">b_t=g_t</span>, <span class="math inline">e_s=g_s</span>.</li>
+<li><a href="http://rosalind.info/problems/sims/">Fitting alignment</a>: <span class="math inline">b_s=e_s=0</span>, <span class="math inline">b_t=e_t=g_t</span>.</li>
+<li><a href="http://rosalind.info/problems/smgb/">Semiglobal alignment</a>: <span class="math inline">b_s=e_s=b_t=e_t=0</span>.</li>
+<li>Substring Matching: <span class="math inline">b_s=e_s=0</span>, <span class="math inline">g_s,g_t,b_t,e_t=-\infty</span>.</li>
+</ul>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2013-07-10. </div>
+    <div class="info">Tags: .</div>
+
+</div>
+      </article>
+    </main>
+    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+  </body>
+</html>

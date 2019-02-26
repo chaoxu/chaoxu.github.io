@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta name="referrer" content="origin">
+    <title>Minimum of submodular function over family of subsets</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\dist": "\\mathop{\\operatorname{dist}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
+    </script>
+  <!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
+  <script>
+  if(window.location.hostname === "chaoxuprime.com"){
+    (function(f, a, t, h, o, m){
+      a[h]=a[h]||function(){
+        (a[h].q=a[h].q||[]).push(arguments)
+      };
+      o=f.createElement('script'),
+      m=f.getElementsByTagName('script')[0];
+      o.async=1; o.src=t; o.id='fathom-script';
+      m.parentNode.insertBefore(o,m)
+    })(document, window, '//track.chaoxuprime.com/tracker.js', 'fathom');
+    fathom('set', 'siteId', 'DNRQY');
+    fathom('trackPageview');
+  }
+  </script>
+  <!-- / Fathom -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-4171915-2');
+  </script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+      href="https://chaoxuprime.com/rss.xml">
+  </head>
+  <body>
+    <header class="hide-on-print">
+        <div id="site-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1 id="article-title">Minimum of submodular function over family of subsets</h1>
+        <br />
+<div>
+<section class="theorem-environment Theorem" id="Theorem-1">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">1</span></span>
+<p>Let <span class="math inline">L</span> and <span class="math inline">L&#39;</span> are two lattices. If <span class="math inline">f:L \to \R</span> is a submodular function and <span class="math inline">P:L&#39;\to 2^{L}</span> is a function with the property that if <span class="math inline">X\in P(A)</span> and <span class="math inline">Y\in P(B)</span>, then <span class="math inline">X\wedge Y\in P(A\wedge B)</span> and <span class="math inline">X\vee Y\in P(A\vee B)</span>. <span class="math inline">f_P:L&#39;\to \R</span> defined as <span class="math display">\displaystyle 
+	f_P(X) = \min_{Y\in P(X)} f(Y)\\
+</span> is submodular.</p>
+</section>
+<section class="theorem-environment Proof" id="Proof-">
+<span class="theorem-header"><span class="type">Proof</span></span>
+<p>Let <span class="math inline">X^* = \argmin_{Y\in P(X)} f(Y)</span>, note since <span class="math inline">X^*\in P(X)</span> and <span class="math inline">Y^*\in P(Y)</span>, we have <span class="math inline">X^*\vee Y^* \in P(X\vee Y)</span> and <span class="math inline">X^*\vee Y^* \in P(X\wedge Y)</span>. <span class="math display">\displaystyle \begin{aligned}
+f_P(X) + f_P(Y) &amp;= f(X^*) + f(Y^*)\\
+                &amp;\geq f(X^* \vee Y^*) + f(X^*\wedge Y^*)\\
+                &amp;\geq f((X\vee Y)^*) + f((X\wedge Y)^*)\\
+                &amp;= f_P(X\vee Y) + f_P(X\wedge Y)
+\end{aligned}</span></p>
+</section>
+<p>This is quite useful, for starters, it proves that we can create a monotone submodular function from any submodular function.</p>
+<section class="theorem-environment Theorem" id="Theorem-2">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">2</span></span>
+<p>Let <span class="math inline">f:2^V\to \R</span> be a submodular function, then <span class="math inline">f_*,f^*:2^V\to \R</span> defined as <span class="math display">\displaystyle 
+	f_*(X) = \min \{f(Y)|Y\subset X\}\\
+	f^*(X) = \min \{f(Y)|X\subset Y\}
+</span> are monotone and submodular.</p>
+</section>
+<p>A practical application is to generalize the cut function. Consider for a directed graph graph <span class="math inline">G=(V,E)</span>. We would define <span class="math inline">\delta^+(A)</span> to be the set of out going edges from <span class="math inline">A</span> to <span class="math inline">V\setminus A</span>. <span class="math inline">f=|\delta^+|</span> is a submodular function. An alternate definition for <span class="math inline">f</span> is the minimum number of edges to be removed so there is no path from <span class="math inline">A</span> to <span class="math inline">V\setminus A</span>.</p>
+<p>A simple generalization is when we only care about <span class="math inline">T\subset V</span>. We can define <span class="math inline">f_T(A)</span> to be the minimum number of edges to be removed so there is no path from <span class="math inline">A</span> to <span class="math inline">T\setminus A</span>. Amazingly(or not not surprisingly, depending on your intuition), <span class="math inline">f_T</span> is also a submodular function by invoking the next theorem, which is a direct corollary of our first theorem.</p>
+<section class="theorem-environment Theorem" id="Theorem-3">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">3</span></span>
+<p>Let <span class="math inline">f:2^V\to \R</span> be a submodular function, then <span class="math inline">f_T:2^T\to \R</span> defined as <span class="math display">\displaystyle 
+	f_T(X) = \min \{f(Y)|Y\subset X, T\setminus X\subset V\setminus Y\}\\
+</span> is submodular.</p>
+</section>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2014-08-13. </div>
+    <div class="info">Tags: submodular.</div>
+
+</div>
+      </article>
+    </main>
+    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+  </body>
+</html>
