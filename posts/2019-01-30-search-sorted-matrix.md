@@ -36,7 +36,7 @@ Note if we relax on number of oracle calls. I know how to get a $O(\sqrt{k})$ ru
 {Theorem}
     Given $\lambda^*$ and a $n\times m$ sorted matrix such that the $i$th row has $k_i$ elements no larger than $x$. Let $k=\sum_{i} k_i$. We can find $\lambda^*$ in $O(\sum_{i} \log (k_{i+1}-k_i+1) ) = O(n \log \frac{k/n^2})$ time.
 
-The idea is simple, we do exponential search on each row to find the largest element no larger than $\lambda^*$, but we reuse information from the previous row. This gives us the running time $O(\sum_{i} \log (k_{i+1}-k_i+1) )$. The main difficulty is to show why is is $O(n \log \frac{k/n^2})$. 
+The idea is simple, we do exponential search on each row to find the largest element no larger than $\lambda^*$, but we reuse information from the previous row. This gives us the running time $O(\sum_{i} \log (k_{i+1}-k_i+1) )$. The main difficulty is to show why is is $O(n \log \frac{k}{n^2})$. 
 Once we show that, we can use the theorem to obtain $O(\sqrt{k})$ running time.
 
 # Remark
