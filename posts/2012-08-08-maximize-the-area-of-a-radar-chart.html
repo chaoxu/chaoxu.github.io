@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta name="referrer" content="origin">
+    <title>Maximize the area of a radar chart</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\dist": "\\mathop{\\operatorname{dist}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
+    </script>
+  <!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
+  <script>
+  if(window.location.hostname === "chaoxuprime.com"){
+    (function(f, a, t, h, o, m){
+      a[h]=a[h]||function(){
+        (a[h].q=a[h].q||[]).push(arguments)
+      };
+      o=f.createElement('script'),
+      m=f.getElementsByTagName('script')[0];
+      o.async=1; o.src=t; o.id='fathom-script';
+      m.parentNode.insertBefore(o,m)
+    })(document, window, '//track.chaoxuprime.com/tracker.js', 'fathom');
+    fathom('set', 'siteId', 'DNRQY');
+    fathom('trackPageview');
+  }
+  </script>
+  <!-- / Fathom -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-4171915-2');
+  </script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+      href="https://chaoxuprime.com/rss.xml">
+  </head>
+  <body>
+    <header class="hide-on-print">
+        <div id="site-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1 id="article-title">Maximize the area of a radar chart</h1>
+        <br />
+<div>
+<p>People use <a href="http://en.wikipedia.org/wiki/Radar_chart">radar charts</a> to present their ability in different skills.</p>
+<p>Like all self presentations, it need to make the person &quot;look good&quot;. A chart with larger area looks better than the ones with less area. The remaining of the article take about how to find a radar chart with maximum area.</p>
+<figure>
+<img src="/files/radarchart.png" alt="Two Radar Charts" /><figcaption>Two Radar Charts</figcaption>
+</figure>
+<p>In the image above, the left side has less area than the right.</p>
+<p>Given the sequence of data <span class="math inline">(a_1,c_1),\ldots,(a_n,c_n)</span>, where <span class="math inline">a_i</span> is the value, a positive number, <span class="math inline">c_i</span> is a coordinate(in the image, the coordinates would be &quot;combinatorics&quot;, &quot;algorithms&quot;, etc.). How can we permute them, such that the data plotted on the radio chart is maximized?</p>
+<p>The area of of any single section of the radio chart is <span class="math inline">ab \frac{\cos \theta}{2}</span>, where <span class="math inline">\theta = \frac{2\pi}{n}</span>, and <span class="math inline">a,b</span> are the value for two adjacent coordinates. The area of the entire shape is the sum.</p>
+<p>Once we can maximize <span class="math inline">\sum_{i=1}^n a_{\pi(i)} a_{\pi(i+1)}</span>, we are done.</p>
+<section class="theorem-environment Lemma" id="Lemma-1">
+<span class="theorem-header"><span class="type">Lemma</span><span class="index">1</span></span>
+<p>If <span class="math inline">x\geq a\geq b \geq c \geq d\geq 0</span>, then <span class="math inline">ax+bx - ab \geq cx+dx-cd</span>.</p>
+</section>
+<section class="theorem-environment Proof" id="Proof-">
+<span class="theorem-header"><span class="type">Proof</span></span>
+<p>Let's consider what is required to make sure the property works. <span class="math display">\displaystyle \begin{aligned}
+(a+b)x-ab &amp;\geq  (c+d)x-cd\\
+x&amp;\geq \frac{ab-cd}{a-c+b-d}\\
+x&amp;\geq \frac{ab-bc+bc-cd}{a-c+b-d}\\
+x&amp;\geq \frac{b(a-c)+c(b-d)}{a-c+b-d}\\
+x&amp;\geq \frac{b(a-c+b-d)}{a-c+b-d}\\
+x&amp;\geq b
+\end{aligned}</span> The lemma is true, as <span class="math inline">x\geq b</span> is part of the hypothesis for <span class="math inline">x</span>.</p>
+</section>
+<section class="theorem-environment Theorem" id="Theorem-2">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">2</span></span>
+<p>Let <span class="math inline">a_1,\ldots,a_n</span> be a sequence of positive numbers, such that <span class="math inline">a_1 \leq \ldots \leq a_n</span>.</p>
+<p>Let <span class="math inline">\pi</span> be the following:</p>
+<ol type="1">
+<li><span class="math inline">\pi(n+1) = 1</span>.</li>
+<li><span class="math inline">\pi(1),\ldots,\pi(n) = 1, 3, \ldots, n-1, n, n-2, \ldots, 4, 2</span> if <span class="math inline">n</span> is even</li>
+<li><span class="math inline">\pi(1),\ldots,\pi(n) = 1, 3, \ldots, n-2, n, n-1, \ldots, 4, 2</span> if <span class="math inline">n</span> is odd.</li>
+</ol>
+<p><span class="math inline">\pi</span> maximizes <span class="math display">\displaystyle 
+\sum_{i=1}^n a_{\pi(i)}a_{\pi(i+1)}
+</span></p>
+</section>
+<section class="theorem-environment Proof" id="Proof-">
+<span class="theorem-header"><span class="type">Proof</span></span>
+<p>Proof by induction.</p>
+<p><em>Base case:</em> Base case for <span class="math inline">n=1,2</span> are trivial.</p>
+<p><em>Inductive Step:</em> Consider it is true for <span class="math inline">n-1</span>, we want to show it is true for <span class="math inline">n</span>.</p>
+<p>Consider we already obtained a sequence from <span class="math inline">a_1</span> to <span class="math inline">a_{n-1}</span>, and we want to insert <span class="math inline">a_n</span> somewhere. Clearly <span class="math inline">a_n</span> need to be placed in a position that maximizes its contribution. If we can insert it between <span class="math inline">a_{n-1}</span> and <span class="math inline">a_{n-2}</span>, then we get a contribution of <span class="math inline">a_{n-1}a_n+a_{n-2}a_n-a_{n-1}a_{n-2}</span>. By the lemma, it will give us the maximum contribution.</p>
+<p>If we can get the maximum contribution (over all possible configurations) to a maximum configuration for <span class="math inline">a_1</span> to <span class="math inline">a_{n-1}</span>, then we are done. The inductive hypothesis show the maximum configuration have adjacent <span class="math inline">a_{n-1}</span> and <span class="math inline">a_{n-2}</span>, therefore this shows the maximum configuration is where we insert <span class="math inline">a_n</span> in between <span class="math inline">a_{n-1}</span> and <span class="math inline">a_{n-2}</span> in the previous maximum configuration.</p>
+</section>
+<p>This implies a simple <span class="math inline">O(n \log n)</span> algorithm. Find the permutation that sort the input sequence by value, then composes it with permutation <span class="math inline">\pi</span>.</p>
+<p>Actually this problem is a special case of the TSP problem on a product matrix. A matrix is called a product matrix if <span class="math inline">M_{i,j} = a_ib_j</span> for vectors <span class="math inline">(a_1,\ldots,a_n)</span> and <span class="math inline">(b_1,\ldots,b_n)</span>. It is solvable in polynomial time if <span class="math inline">M</span> is a symmetric matrix <span class="citation" data-cites="burkard1998">[<a href="#ref-burkard1998">1</a>]</span>.</p>
+<h1 id="bibliography" class="unnumbered">References</h1>
+<div id="refs" class="references">
+<div id="ref-burkard1998">
+<p>[1] R.E. Burkard, V.G. Deῐneko, R. van Dal, J.A.A. van der Veen, G.J. Woeginger, <strong>Well-solvable special cases of the traveling salesman problem: A survey</strong>, SIAM Review. 40 (1998) pp. 496–546.</p>
+</div>
+</div>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2012-08-08. </div>
+    <div class="info">Tags: math.</div>
+
+</div>
+      </article>
+    </main>
+    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+  </body>
+</html>

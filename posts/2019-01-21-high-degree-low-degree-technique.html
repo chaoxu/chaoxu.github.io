@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta name="referrer" content="origin">
+    <title>The high-degree low-degree technique and arboricity</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\dist": "\\mathop{\\operatorname{dist}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
+    </script>
+  <!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
+  <script>
+  if(window.location.hostname === "chaoxuprime.com"){
+    (function(f, a, t, h, o, m){
+      a[h]=a[h]||function(){
+        (a[h].q=a[h].q||[]).push(arguments)
+      };
+      o=f.createElement('script'),
+      m=f.getElementsByTagName('script')[0];
+      o.async=1; o.src=t; o.id='fathom-script';
+      m.parentNode.insertBefore(o,m)
+    })(document, window, '//track.chaoxuprime.com/tracker.js', 'fathom');
+    fathom('set', 'siteId', 'DNRQY');
+    fathom('trackPageview');
+  }
+  </script>
+  <!-- / Fathom -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-4171915-2');
+  </script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+      href="https://chaoxuprime.com/rss.xml">
+  </head>
+  <body>
+    <header class="hide-on-print">
+        <div id="site-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1 id="article-title">The high-degree low-degree technique and arboricity</h1>
+        <br />
+<div>
+<p>In this piece we demonstrate the high-degree low-degree technique in graphs. Often, we obtain running times that depends on the individual degrees of the vertices. If the graph has only low degree vertices, then a faster algorithm exists. For graph with only large degrees, then it is dense, and can often be handled in another way.</p>
+<p>We will also use the information of <a href="https://en.wikipedia.org/wiki/Arboricity">arboricity</a>. Mainly, there are a few useful statements.</p>
+<section class="theorem-environment Theorem" id="Theorem-1">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">1</span></span>
+<p>For a graph <span class="math inline">G=(V,E)</span> with arboricity <span class="math inline">\alpha</span>, we have <span class="math display">\displaystyle 
+    \sum_{uv\in E} \min(\deg(u),\deg(v)) \leq 2\alpha m
+</span></p>
+</section>
+<p>Often, using the arboricity, we can obtain the same complexity algorithm without high-degree low-degree technique. Note the arboricity is <span class="math inline">O(\sqrt{m})</span>. The application of arboricity are from <span class="citation" data-cites="ChibaN85">[<a href="#ref-ChibaN85">1</a>]</span>.</p>
+<p>Some of the algorithms described can be speedup by using matrix multiplication, or faster combinatorial boolean matrix multiplication. We avoid them for simplicity of exposition.</p>
+<h1 id="dominating-set-with-few-edges"><span class="header-section-number">1</span> Dominating set with few edges</h1>
+<p>The set cover problem, given <span class="math inline">\mathcal{S} = \set{S_1,\ldots,S_n}</span> are <span class="math inline">n</span> set contains a total of <span class="math inline">m</span> elements. <span class="math inline">U=\bigcup_{S\in \mathcal{S}} S</span> is the universe, with size <span class="math inline">u</span>.</p>
+<section class="theorem-environment Theorem" id="Theorem-2">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">2</span></span>
+<p>There is a probability distribution <span class="math inline">D</span> over <span class="math inline">\mathcal{S}</span>, such that for each <span class="math inline">u</span>, the probability a random set <span class="math inline">S</span> covers <span class="math inline">u</span> is at least <span class="math inline">\e</span>. There exists a set cover of <span class="math inline">\ceil{\frac{\log u}{\e}}</span>.</p>
+</section>
+<section class="theorem-environment Proof" id="Proof-">
+<span class="theorem-header"><span class="type">Proof</span></span>
+<p>There exists a set that covers at least <span class="math inline">\e |U&#39;|</span> for any <span class="math inline">U&#39; \subset U</span>. Therefore each greedy iteration decrease the size of uncovered universe by an <span class="math inline">\e</span> fraction. So there can be at most <span class="math inline">t</span> iterations, where <span class="math inline">(1-\e)^t&lt;1</span>. One can show <span class="math inline">\ceil{\frac{\log u}{\e}}</span> suffices.</p>
+</section>
+<section class="theorem-environment Theorem" id="Theorem-3">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">3</span></span>
+<p>There is a dominating set incident to <span class="math inline">O(n\sqrt{n\log n})</span> edges.</p>
+</section>
+<section class="theorem-environment Proof" id="Proof-">
+<span class="theorem-header"><span class="type">Proof</span></span>
+<p>Fix a <span class="math inline">\delta</span>. We repeatedly removing vertices with degree no more than <span class="math inline">\delta</span> from the graph, and add it into a set <span class="math inline">D</span>. The total degree of <span class="math inline">D</span> is at most <span class="math inline">n\delta</span>. Now the remaining vertices has degree at least <span class="math inline">\delta</span>. Using the set cover theorem, and let the distribution to be the uniform distribution. If all elements are covered at least by <span class="math inline">\e</span> fraction of the set, then we obtain a set cover of size <span class="math inline">O(\frac{\log u}{\e})</span>. Now, let the sets <span class="math inline">N(v)</span> for each <span class="math inline">v</span>. Since degree is bounded by at most <span class="math inline">n</span>, we can obtain a dominating set of size <span class="math inline">O(\frac{n\log n}{e})</span>. We set <span class="math inline">\e=\delta/n</span>. Since the degree of each vertex is at least <span class="math inline">\delta</span>, then there is a covering of <span class="math inline">O(\frac{n^2\log n}{\delta})</span>. Add the vertices induces this set cover to <span class="math inline">D</span>. <span class="math inline">D</span> is a dominating set, and its size is <span class="math inline">O(n\delta +\frac{n^2\log n}{\delta})</span>, set <span class="math inline">\delta=\sqrt{n\log n}</span> and we obtain the desired result.</p>
+</section>
+<p>One can show the above result is almost optimal, as there exists graphs where every dominating set incidents <span class="math inline">\Omega(n^{3/2})</span> edges. The same bound holds for weakly connected dominating set, that is a dominating set <span class="math inline">D</span> such that the edges incident to <span class="math inline">D</span> forms a connected graph. The stronger modification of this result was used in deciding the <span class="math inline">4</span>-connectivity of a matroid <span class="citation" data-cites="Rajan87">[<a href="#ref-Rajan87">2</a>]</span>.</p>
+<h1 id="finding-small-subgraphs"><span class="header-section-number">2</span> Finding small subgraphs</h1>
+<h2 id="finding-a-triangle"><span class="header-section-number">2.1</span> Finding a triangle</h2>
+<p>A <em>triangle</em> is <span class="math inline">3</span> vertices pairwise adjacent to each other, another name for <span class="math inline">K_3</span>.</p>
+<section class="theorem-environment Theorem" id="Theorem-4">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">4</span></span>
+<p>There is a <span class="math inline">O(m\Delta)</span> time algorithm to decide if the graph has a triangle, where <span class="math inline">\Delta</span> is the maximum degree.</p>
+</section>
+<section class="theorem-environment Proof" id="Proof-">
+<span class="theorem-header"><span class="type">Proof</span></span>
+<p>Indeed, for each vertex <span class="math inline">v</span>, we consider its neighbors, see if any is adjacent to each other. We then delete <span class="math inline">v</span>. The algorithm takes <span class="math inline">O(\sum_{v} \deg^2(v)) = O(m\Delta)</span> time.</p>
+</section>
+<section class="theorem-environment Theorem" id="Theorem-5">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">5</span></span>
+<p>There is a <span class="math inline">O(n^3)</span> time algorithm to decide if the graph has a triangle.</p>
+</section>
+<section class="theorem-environment Proof" id="Proof-">
+<span class="theorem-header"><span class="type">Proof</span></span>
+<p>The naive algorithm, for each <span class="math inline">3</span> vertices, we decide if it forms a triangle.</p>
+</section>
+<section class="theorem-environment Theorem" id="Theorem-6">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">6</span></span>
+<p>There is a <span class="math inline">O(m^{3/2})</span> time algorithm to decide if the graph has a triangle.</p>
+</section>
+<section class="theorem-environment Proof" id="Proof-">
+<span class="theorem-header"><span class="type">Proof</span></span>
+<p>Let <span class="math inline">t</span> be a parameter we will find later. Apply the above algorithm by picking the vertex with the smallest degree, until the next vertex has degree at least <span class="math inline">t</span>. It will use at most <span class="math inline">O(mt)</span> time. Now, for the remaining graph, it is clear the maximum degree is at least <span class="math inline">t</span>. Note, there can be at most <span class="math inline">n/t</span> vertices. We use the <span class="math inline">O(n^3)</span> time algorithm. The final running time is <span class="math inline">O(mt+(m/t)^3)</span>. Set <span class="math inline">t=\sqrt{m}</span> and we are done.</p>
+</section>
+<section class="theorem-environment Proof" id="Proof-">
+<span class="theorem-header"><span class="type">Proof</span><span class="name">Alternative</span></span>
+<p>We modify the algorithm a little. For each vertex <span class="math inline">v</span>, we consider its neighbor <span class="math inline">u</span>, and check if <span class="math inline">u</span> has a neighbor that is in <span class="math inline">v</span>. Then we delete <span class="math inline">v</span>, and move on to next vertex. The running time become <span class="math inline">\sum_{v\in V} (\deg(v)+\sum_{u\in N(v)} \deg(u))</span>. Now, assume we pick vertices by the <em>largest</em> to <em>smallest</em> in term of degrees. We rearrange the sum and obtain <span class="math inline">\sum_{v\in V} (\deg(v)+\sum_{u\in N(v)} \deg(u)) = \sum_{v\in V} \deg(v) + 2 \sum_{uv\in E} \min(\deg(u),\deg(v)) = O(\alpha m)</span>. Because <span class="math inline">\alpha\leq \sqrt{m}</span>, we have the running time <span class="math inline">O(m^{3/2})</span>.</p>
+</section>
+<h2 id="a-motivating-problem"><span class="header-section-number">2.2</span> A motivating problem</h2>
+<p>Let <span class="math inline">S_1,\ldots,S_n</span> be sets with total of <span class="math inline">m</span> elements. How quickly can we find two distinct <span class="math inline">i</span> and <span class="math inline">j</span> such that <span class="math inline">|S_i\cap S_j|\geq \ell</span>? This problem can be shown to be equivalent to finding a colored <span class="math inline">K_{2,\ell}</span> in a bipartite graph. That is, for input bipartite graph <span class="math inline">G=(A,B,E)</span>. Find a <span class="math inline">K_{2,\ell}</span> where the side of two vertices has to be in <span class="math inline">A</span>.</p>
+<h2 id="finding-a-c_4-in-bipartite-graphs"><span class="header-section-number">2.3</span> Finding a <span class="math inline">C_4</span> in bipartite graphs</h2>
+<p>This section we use technique that follows from <span class="citation" data-cites="AlonYZ97">[<a href="#ref-AlonYZ97">3</a>]</span>. Although we are into finding <span class="math inline">C_4</span>, but some theorems are more general for <span class="math inline">K_{2,\ell}</span>, so we will state them too. Note finding a colored <span class="math inline">K_{2,2}</span> and finding a <span class="math inline">K_{2,2}</span> is the same problem due to symmetry.</p>
+<p>Let <span class="math inline">v_1,\ldots,v_n</span> be an ordering such that <span class="math inline">\deg(v_i)\geq \deg(v_j)</span>. There exists an algorithm that finds an ordering of vertices <span class="math inline">v_1,\ldots,v_n</span>, and returns <span class="math inline">N_i(v_i)\cap N_i(v_j)</span> for each <span class="math inline">i</span> and <span class="math inline">j&gt;i</span>. Here <span class="math inline">N_i(v)</span> is the set of neighbors of <span class="math inline">v</span> in <span class="math inline">G[\set{v_i,\ldots,v_n}]</span>. Here we show an algorithm solves the above problem when the arboricity is small.</p>
+<p>The algorithm is as follows <span class="citation" data-cites="ChibaN85">[<a href="#ref-ChibaN85">1</a>]</span>. Take <span class="math inline">v</span>, we consider each neighbor <span class="math inline">u</span>. Maintain a set <span class="math inline">S_w</span> for each vertex <span class="math inline">w</span> distance <span class="math inline">2</span> from <span class="math inline">v</span>. Add <span class="math inline">u</span> into each of <span class="math inline">u</span>'s neighbor in <span class="math inline">w</span>. <span class="math inline">S_w</span> would give us information of <span class="math inline">N(v)\cap N(w)</span>. We delete <span class="math inline">v</span> and keep going. It is known the algorithm takes <span class="math inline">O(\alpha(G)m)</span> time. This allows us to compute <span class="math inline">C_4</span> in the same time. Hence we directly obtain <span class="math inline">O(m^{3/2})</span> running time. However, we show something better is possible if we are not interested in finding all <span class="math inline">C_4</span>, but find any <span class="math inline">C_4</span>. We also need the following theorem.</p>
+<section class="theorem-environment Theorem" id="Theorem-7">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">7</span></span>
+<p>One can check if there exists a <span class="math inline">K_{2,\ell}</span> in the bipartite graph <span class="math inline">G=(A,B,E)</span> in <span class="math inline">O(\ell n^2)</span> time.</p>
+</section>
+<p>Now, we combine the two algorithms. It requires a theorem in extremal graph theory can be found in <span class="citation" data-cites="Furedi96">[<a href="#ref-Furedi96">4</a>]</span>.</p>
+<section class="theorem-environment Theorem" id="Theorem-8">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">8</span><span class="name"><span class="math inline">K_{2,\ell}</span>-free theorem</span></span>
+<p>There exists a constant <span class="math inline">c</span>, such that each <span class="math inline">n</span> vertex graph with <span class="math inline">c n^{3/2} \ell^{1/2}</span> edges contains a <span class="math inline">K_{2,\ell}</span>.</p>
+</section>
+<section class="theorem-environment Theorem" id="Theorem-9">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">9</span></span>
+<p>There is a <span class="math inline">O(m^{4/3})</span> time algorithm to find a <span class="math inline">C_4</span> in the graph.</p>
+</section>
+<section class="theorem-environment Proof" id="Proof-">
+<span class="theorem-header"><span class="type">Proof</span></span>
+<p>If the arboricity is <span class="math inline">t</span>. We use the first algorithm and we get running time <span class="math inline">O(t m)</span>. Otherwise, we know there is a subgraph with minimum degree at least <span class="math inline">t</span>. The subgraph can be found by repeatedly deleting vertices of minimum degree. The subgraph <span class="math inline">G&#39;</span> with the previous property has <span class="math inline">n&#39;\leq n</span> vertices and <span class="math inline">m&#39;\leq n&#39;t</span> edges. One can see <span class="math inline">n&#39;\leq m&#39;/t\leq m/t</span>. If <span class="math inline">cn&#39;^{3/2}\leq m&#39; \leq n&#39;t</span>, then we know there exists a <span class="math inline">C_4</span> in <span class="math inline">G&#39;</span> by the previous theorem, and we can apply the <span class="math inline">O(n^2)</span> time algorithm in the subgraph to find the <span class="math inline">C_4</span>. The total running time is therefore <span class="math inline">O(tm + n&#39;^2) = O(tm+(m/t)^2)</span>. We set <span class="math inline">t=c^{3/2} m^{1/3}</span>. One can check after lot of algebra, it make sure the condition <span class="math inline">cn&#39;^{3/2}\leq n&#39;t</span> is satisfied. The algorithm takes <span class="math inline">O(m^{4/3})</span> time.</p>
+</section>
+<h2 id="finding-a-colored-k_23-in-bipartite-graphs"><span class="header-section-number">2.4</span> Finding a colored <span class="math inline">K_{2,3}</span> in bipartite graphs</h2>
+<p>For finding <span class="math inline">K_{2,\ell}</span>, the low arboricity algorithm for <span class="math inline">C_4</span> works here. The <span class="math inline">O(\alpha(G)m)</span> algorithm is still fine. It's not hard to generalize and show a <span class="math inline">O(\ell^{1/3}m^{4/3})</span> running time algorithm.</p>
+<p>However, in order to solve the motivating problem. We need a colored <span class="math inline">K_{2,\ell}</span>.</p>
+<p>Let's consider a <span class="math inline">K_{2,\ell}</span> in <span class="math inline">G</span>, and consider the first indexed vertex <span class="math inline">v</span>. If <span class="math inline">v\in A</span>, then we are done, as the algorithm will find it. If <span class="math inline">v\in B</span>, then we will solve the problem in another way, which gives us some time improvement when <span class="math inline">\ell=3</span>.</p>
+<p>For each <span class="math inline">v_i</span> in <span class="math inline">B</span>, we consider <span class="math inline">v_j\in B</span> that has distance <span class="math inline">2</span> from <span class="math inline">v_i</span> and <span class="math inline">j&gt;i</span>. We consider the set of vertices <span class="math inline">S_{i,j} = N_i(v_i)\cap N_i(v_j)</span>. If there are two sets <span class="math inline">S_{i,j}</span> and <span class="math inline">S_{a,b}</span> has intersection size at least <span class="math inline">2</span>, then we claim there exists a <span class="math inline">K_{2,3}</span> in <span class="math inline">G</span>. Now, this becomes finding a <span class="math inline">C_4</span> in the input sets. The total size of the input sets are <span class="math inline">O(\alpha(G)m)</span>. Hence we can use <span class="math inline">O((\alpha(G)m)^{4/3})</span> time to find a <span class="math inline">C_4</span>. Hence this implies a <span class="math inline">O((\alpha(G)m)^{4/3})</span> time algorithm to find a <span class="math inline">K_{2,3}</span>.</p>
+<p>Using the idea for finding <span class="math inline">C_4</span>, we can mix the <span class="math inline">((\alpha(G)m)^{4/3})</span> time algorithm and the <span class="math inline">O(n^2)</span> time algorithm. Working out the algebra shows the following theorem.</p>
+<section class="theorem-environment Theorem" id="Theorem-10">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">10</span></span>
+<p>There is a <span class="math inline">O(m^{28/15})</span> time algorithm for finding a colored <span class="math inline">K_{2,3}</span>.</p>
+</section>
+<h1 id="bibliography" class="unnumbered">References</h1>
+<div id="refs" class="references">
+<div id="ref-ChibaN85">
+<p>[1] N. Chiba, T. Nishizeki, <strong>Arboricity and Subgraph Listing Algorithms</strong>, SIAM Journal on Computing. 14 (1985) 210–223 <a href="https://doi.org/10.1137/0214017">10.1137/0214017</a>.</p>
+</div>
+<div id="ref-Rajan87">
+<p>[2] A. Rajan, Algorithmic applications of connectivity and related topics in matroid theory, PhD thesis, Northwestern University, 1987.</p>
+</div>
+<div id="ref-AlonYZ97">
+<p>[3] N. Alon, R. Yuster, U. Zwick, <strong>Finding and counting given length cycles</strong>, Algorithmica. 17 (1997) 209–223 <a href="https://doi.org/10.1007/BF02523189">10.1007/BF02523189</a>.</p>
+</div>
+<div id="ref-Furedi96">
+<p>[4] Z. Füredi, <strong>New asymptotics for bipartite turán numbers</strong>, Journal of Combinatorial Theory, Series A. 75 (1996) 141–144 <a href="https://doi.org/10.1006/jcta.1996.0067">10.1006/jcta.1996.0067</a>.</p>
+</div>
+</div>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2019-01-21. </div>
+    <div class="info">Tags: algorithm, graph.</div>
+
+</div>
+      </article>
+    </main>
+    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta name="referrer" content="origin">
+    <title>No nice generalization of Gomory-Hu tree</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\dist": "\\mathop{\\operatorname{dist}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
+    </script>
+  <!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
+  <script>
+  if(window.location.hostname === "chaoxuprime.com"){
+    (function(f, a, t, h, o, m){
+      a[h]=a[h]||function(){
+        (a[h].q=a[h].q||[]).push(arguments)
+      };
+      o=f.createElement('script'),
+      m=f.getElementsByTagName('script')[0];
+      o.async=1; o.src=t; o.id='fathom-script';
+      m.parentNode.insertBefore(o,m)
+    })(document, window, '//track.chaoxuprime.com/tracker.js', 'fathom');
+    fathom('set', 'siteId', 'DNRQY');
+    fathom('trackPageview');
+  }
+  </script>
+  <!-- / Fathom -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-4171915-2');
+  </script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+      href="https://chaoxuprime.com/rss.xml">
+  </head>
+  <body>
+    <header class="hide-on-print">
+        <div id="site-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1 id="article-title">No nice generalization of Gomory-Hu tree</h1>
+        <br />
+<div>
+<p><a href="https://en.wikipedia.org/wiki/Gomory%E2%80%93Hu_tree">Gomory-Hu tree</a> of a graph <span class="math inline">G</span> is a weighted graph <span class="math inline">H</span> on the same set of vertices. It has the two nice properties.</p>
+<ol type="1">
+<li>It is a tree.</li>
+<li>For every <span class="math inline">s,t</span>, there exist a min-<span class="math inline">st</span>-cut in <span class="math inline">H</span> that is also a min-<span class="math inline">st</span>-cut in <span class="math inline">G</span>.</li>
+</ol>
+<p>We could ask for a generalization. Given a graph <span class="math inline">G</span>, can we find some <em>nice</em> graph <span class="math inline">H</span> such that</p>
+<p>For every <span class="math inline">S,T</span> such that <span class="math inline">1\leq |S|,|T|\leq k</span> and <span class="math inline">S\cap T=\emptyset</span>, there is a min-<span class="math inline">ST</span>-cut in <span class="math inline">H</span> that is a min-<span class="math inline">ST</span>-cut in <span class="math inline">G</span>.</p>
+<p>We recover Gomory-Hu tree when <span class="math inline">k=1</span>. There were some consideration of a problem similar to this <span class="citation" data-cites="2015arXiv151108647C">[<a href="#ref-2015arXiv151108647C">1</a>]</span>.</p>
+<p>There are various useful definition of <em>nice</em> , for example sparse or bounded treewidth. Likely none of them would apply, because we can show that for <span class="math inline">k=2</span>, there are graphs where <span class="math inline">H</span> is almost the complete graph.</p>
+<p>Let <span class="math inline">G</span> be the complete graph on <span class="math inline">n</span> vertices, and each edge has capacity <span class="math inline">1</span>. Let <span class="math inline">f(S)</span> be the sum of the capacity of edges going across <span class="math inline">S</span>. There is a unique <span class="math inline">ST</span>-min cut for every <span class="math inline">|T|=1</span> and <span class="math inline">|S|=2</span>. Hence this shows that <span class="math inline">f(\{v\}) = n-1</span> for every <span class="math inline">v\in V</span>. If <span class="math inline">|S|=|T|=2</span>, there are exactly two min <span class="math inline">ST</span>-cuts, either <span class="math inline">S</span> or <span class="math inline">T</span> in <span class="math inline">G</span>. Assume that <span class="math inline">T</span> is not a min <span class="math inline">ST</span>-cut in <span class="math inline">H</span>, then <span class="math inline">S</span> has to be the min <span class="math inline">ST</span>-cut in <span class="math inline">H</span>. Therefore for all <span class="math inline">\{s_1,s_2\}</span> such that <span class="math inline">s_1,s_2\not \in T</span>, we have <span class="math inline">f(\{s_1,s_2\})=2n-4</span>. Because <span class="math inline">f(\{s_1\})=f(\{s_2\})=n-1</span>, the edge between <span class="math inline">s_1</span> and <span class="math inline">s_2</span> has capacity <span class="math inline">1</span>. The complete graph on <span class="math inline">V\setminus T</span> has to be a subgraph of <span class="math inline">H</span>.</p>
+<h1 id="reference" class="unnumbered">Reference</h1>
+<div id="refs" class="references">
+<div id="ref-2015arXiv151108647C">
+<p>[1] R. Chitnis, L. Kamma, R. Krauthgamer, <strong>Tight Bounds for Gomory-Hu-like Cut Counting</strong>, ArXiv E-Prints. (2015).</p>
+</div>
+</div>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2016-02-01. </div>
+    <div class="info">Tags: .</div>
+
+</div>
+      </article>
+    </main>
+    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+  </body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta name="referrer" content="origin">
+    <title>Soft heap and selection</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\dist": "\\mathop{\\operatorname{dist}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
+    </script>
+  <!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
+  <script>
+  if(window.location.hostname === "chaoxuprime.com"){
+    (function(f, a, t, h, o, m){
+      a[h]=a[h]||function(){
+        (a[h].q=a[h].q||[]).push(arguments)
+      };
+      o=f.createElement('script'),
+      m=f.getElementsByTagName('script')[0];
+      o.async=1; o.src=t; o.id='fathom-script';
+      m.parentNode.insertBefore(o,m)
+    })(document, window, '//track.chaoxuprime.com/tracker.js', 'fathom');
+    fathom('set', 'siteId', 'DNRQY');
+    fathom('trackPageview');
+  }
+  </script>
+  <!-- / Fathom -->
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-4171915-2');
+  </script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+      href="https://chaoxuprime.com/rss.xml">
+  </head>
+  <body>
+    <header class="hide-on-print">
+        <div id="site-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1 id="article-title">Soft heap and selection</h1>
+        <br />
+<div>
+<p>I enjoyed the workshop <a href="https://simplicityinalgorithms.com/">SOSA</a> a lot (Disclaimer: I have a paper in SOSA). The papers are simple and fun. I liked the paper <span class="citation" data-cites="KaplanKZZ18">[<a href="#ref-KaplanKZZ18">1</a>]</span> the most, because I learned some really interesting tricks with <a href="https://en.wikipedia.org/wiki/Soft_heap">soft heap</a>.</p>
+<p>Here I give a teaser of two things soft heap can do.</p>
+<p>We consider a minimalistic soft heap, as there are soft heap with more operations.</p>
+<ul>
+<li><code>soft-heap(ε)</code>: creates an empty soft heap with error parameter <span class="math inline">\e</span>.</li>
+<li><code>insert(e)</code>: insert an element into the heap.</li>
+<li><code>extract-min()</code>: return the element of minimum key in heap, and set of newly corrupted elements since last extraction.</li>
+</ul>
+<p>The operation <code>insert</code> takes <span class="math inline">O(1)</span> time, <code>extract-min()</code> takes <span class="math inline">O(1/\e)</span> time. In this article, we can assume <span class="math inline">\e=1/4</span>.</p>
+<p>During each insertion, the key of some elements might be increased. An element is corrupted if its key in the heap is strictly greater than the original key. If there are <span class="math inline">I</span> insertions into the soft heap, then at most <span class="math inline">\eI</span> elements can be corrupted.</p>
+<p>Although <code>extract-min()</code> might return an element that is not necessarily the minimum, but there is a bound on the amount of possible errors. Before <span class="citation" data-cites="KaplanKZZ18">[<a href="#ref-KaplanKZZ18">1</a>]</span>, I don't know of any application of soft heap other than vaguely knowing about it was used for minimum spanning tree.</p>
+<h1 id="linear-time-selection-in-unordered-list"><span class="header-section-number">1</span> Linear time selection in unordered list</h1>
+<p>We insert all elements into the soft-heap, and then we apply <code>extract-min</code> <span class="math inline">(1-\e)n/2</span> times, and find the maximum element <span class="math inline">e</span>. One can see the rank of <span class="math inline">e</span> lies between <span class="math inline">(1-\e)n/2</span> and <span class="math inline">(1+\e)n/2</span>. Now we can use this to remove at least <span class="math inline">(1-\e)n/2=\frac{1+\e}{2} n</span> elements, and recurse on the remaining. Once there is only a constant number of elements, use brute force. This gives us an running time <span class="math inline">T(n) = O(n) + T(\frac{1+\e}{2} n) = O(n)</span>.</p>
+<h1 id="linear-time-selection-in-heap"><span class="header-section-number">2</span> Linear time selection in heap</h1>
+<p>We are given a min heap <span class="math inline">H</span>, and interested in find the <span class="math inline">k</span>th smallest element in the heap. We first insert the min element <span class="math inline">e</span> into the soft heap.</p>
+<p>Whenever we apply <code>extract-min</code> to the soft heap, we obtain <span class="math inline">e</span> and a set of newly corrupted elements <span class="math inline">C</span>. For each element <span class="math inline">e&#39;\in C</span>, we add the children of <span class="math inline">e&#39;</span> in <span class="math inline">H</span> into the soft heap. If <span class="math inline">e</span> is not corrupted, we also add the children of <span class="math inline">e</span> in <span class="math inline">H</span> into the soft heap. Once we apply <code>extract-min</code> <span class="math inline">k-1</span> times we stop. Let <span class="math inline">S</span> be the set of all elements that was inserted into the soft heap. There are two important claims: <span class="math inline">|S|=O(k)</span> and the rank <span class="math inline">k</span> element has to be in <span class="math inline">S</span>. We can use a linear time selection algorithm on <span class="math inline">S</span> once we prove the two claims.</p>
+<h1 id="other-useful-results"><span class="header-section-number">3</span> Other useful results</h1>
+<p>There are some other nice results in the paper. Getting optimal results for selecting the rank <span class="math inline">k</span> element in <span class="math inline">m</span> sorted lists, and selecting <span class="math inline">k</span>th element in <span class="math inline">X+Y = \set{x+y | x\in X, y\in Y}</span>.</p>
+<h1 id="bibliography" class="unnumbered">References</h1>
+<div id="refs" class="references">
+<div id="ref-KaplanKZZ18">
+<p>[1] H. Kaplan, L. Kozma, O. Zamir, U. Zwick, Selection from Heaps, Row-Sorted Matrices, and X+Y Using Soft Heaps, in: J.T. Fineman, M. Mitzenmacher (Eds.), 2nd Symposium on Simplicity in Algorithms (Sosa 2019), Schloss Dagstuhl–Leibniz-Zentrum fuer Informatik, Dagstuhl, Germany, 2018: pp. 5:1–5:21 <a href="https://doi.org/10.4230/OASIcs.SOSA.2019.5">10.4230/OASIcs.SOSA.2019.5</a>.</p>
+</div>
+</div>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2019-01-22. </div>
+    <div class="info">Tags: algorithm, data structure.</div>
+
+</div>
+      </article>
+    </main>
+    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+  </body>
+</html>
