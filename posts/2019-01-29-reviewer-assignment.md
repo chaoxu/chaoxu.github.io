@@ -37,6 +37,7 @@ Say there exists an optimal solution to the original problem with exactly $t$ ve
 We obtain $M$ from $M'$ by identify pairs of vertices $v_1$ and $v_2$. $M$ would be the solution to the original problem.
 
 # Extensions
+
 I first heard of the problem from [@YesilcimenY19], where they focused on $k=1$ case, but the reviewer can review more than one paper. This case can be handled easily. 
 We can add degree upper and lower bounds to all vertices, and only look at subgraphs in $M$ that satisfies the upper and lower bounds. That is, we can also make sure no reviewers review too many papers too. Under that constraint, find $(g_M(k),\ldots,g_M(n))$ lexicographically.
 This is possible but more tricky, as we have to do some reduction from capacitated $b$-matching to $b$-matching. 

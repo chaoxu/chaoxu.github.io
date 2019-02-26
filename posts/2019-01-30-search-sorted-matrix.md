@@ -16,7 +16,7 @@ Craig Gidney wrote about an [optimal algorithm](http://twistedoakstudios.com/blo
 However, the oracle access is too large. There are times where the oracle access is slow. For example, when using it as a subroutine for finding a [bottleneck $k$-link path](https://chaoxuprime.com/posts/2019-01-31-bottleneck-k-link-path.html).
 There is an algorithm with optimal running time and $O(\log(nm))$ oracle access. 
 
-Let's consider a special case, where $n=m=2^k$ for some $k$. This case was shown in [@FredericksonZ17].
+Let's consider a special case, where $n=m=2^i$ for some $i$. This case was shown in [@FredericksonZ17].
 For each submatrix, the two vertices on the opposite diagonal indicates the largest and smallest element in the submatrix. Hence each matrix can be represented by two numbers, indicate the maximum and minimum. These numbers are called the representative of the matrix. The idea is we keep two numbers $\lambda_1$ and $\lambda_2$, such that we know $\lambda^*\in [\lambda_1,\lambda_2]$. 
 The algorithm keep partition the matrix into small matrices, updating $\lambda_1$ and $\lambda_2$, and discard matrices outside the range. 
 We apply the following algorithm. Let $R$ consists of the multiset of representatives of the matrix, and $R'$ be the representatives that lies inside $[\lambda_1,\lambda_2]$. We find $\lambda$, the median of $R'$. Test if $\lambda<\lambda^*$. If so, then $\lambda_1$ updates to $\lambda$, otherwise $\lambda_2$ updates to $\lambda$. This step is done twice. 
@@ -29,7 +29,15 @@ For the more general case, one can find the proof in [@FredericksonJ84]. Note th
 
 Now, $n$ and $m$ is not known, but we can quickly using exponential search to find it. Indeed, we just have to apply exponential search in the first row and first column using the oracle. This gives us an extra $O(\log n + \log m)=O(\log nm)$ oracle calls. 
 
-Actually, better running time is possible. Use exponential search until we find the first $i$ such that $M_{2^i,2^i}>\lambda^*$. So we can upper bound $t$. Then one can solve the problem with $2$ matrices. One $t\times k$ matrix and a $k\times t$ matrix. The total running time is therefore $O(\log k+t\log k/t)=O(t\log k)$. In fact, we get $O(\log k)$ oracle calls and $O(t\log k)$ running time. Note $t$ will never approach $k$. The running time is $O(t\log k)$.
+Let $k$ to be the number of elements no larger than $\lambda^*$. We can get running time relative to $k$. Use exponential search until we find the first $i$ such that $M_{2^i,2^i}>\lambda^*$. So we can upper bound $t$. Then one can solve the problem with $2$ matrices. One $t\times k$ matrix and a $k\times t$ matrix. The total running time is therefore $O(\log k+t\log k/t)=O(t\log k)$. In fact, we get $O(\log k)$ oracle calls and $O(t\log k)$ running time. Here we can take $t$ to be $\sqrt{k}$, and obtain $O(\sqrt{k}\log k)$ time.
+
+Note if we relax on number of oracle calls. I know how to get a $O(\sqrt{k})$ running time.
+
+{Theorem}
+    Given $\lambda^*$ and a $n\times m$ sorted matrix such that the $i$th row has $k_i$ elements no larger than $x$. Let $k=\sum_{i} k_i$. We can find $\lambda^*$ in $O(\sum_{i} \log (k_{i+1}-k_i+1) ) = O(n \log \frac{k/n^2})$ time.
+
+The idea is simple, we do exponential search on each row to find the largest element no larger than $\lambda^*$, but we reuse information from the previous row. This gives us the running time $O(\sum_{i} \log (k_{i+1}-k_i+1) )$. The main difficulty is to show why is is $O(n \log \frac{k/n^2})$. 
+Once we show that, we can use the theorem to obtain $O(\sqrt{k})$ running time.
 
 # Remark
 
