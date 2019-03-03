@@ -34,10 +34,17 @@ Let $k$ to be the number of elements no larger than $\lambda^*$. We can get runn
 Note if we relax on number of oracle calls. I know how to get a $O(\sqrt{k})$ running time.
 
 {Theorem}
-    Given $\lambda^*$ and a $n\times m$ sorted matrix such that the $i$th row has $k_i$ elements no larger than $x$. Let $k=\sum_{i} k_i$. We can find $\lambda^*$ in $O(\sum_{i} \log (k_{i+1}-k_i+1) ) = O(n \log \frac{k/n^2})$ time.
+    Given $\lambda^*$ and a $n\times m$ sorted matrix such that the $i$th row has $k_i$ elements no larger than $x$. Let $k=\sum_{i} k_i$. We can find $\lambda^*$ in $O(\sum_{i} \log (k_{i+1}-k_i+1) ) = O(n \log \frac{k}{n^2})$ time.
 
 The idea is simple, we do exponential search on each row to find the largest element no larger than $\lambda^*$, but we reuse information from the previous row. This gives us the running time $O(\sum_{i} \log (k_{i+1}-k_i+1) )$. The main difficulty is to show why is is $O(n \log \frac{k}{n^2})$. 
+
+{Lemma}
+    If $\sum_{i=1}^n k_i=k$, then $\sum_{i=1}^n \log (k_{i+1}-k_i+1)=O(n\log k/n^2)$.
+
 Once we show that, we can use the theorem to obtain $O(\sqrt{k})$ running time.
+
+In fact, we can also get a very simple algorithm with running time $O(h \log(k/h^2))$, where $h$ is the number of stairs in the staircase shape. However, it also uses $O(h\log(k/h^2)$ oracle calls. The idea is to use exponential search to find the boundary of the staircase, but we switch between boundaries: horizontal then vertical. 
+It is open if we can obtain $O(h\log(k/h^2))$ running time and $O(\log k)$ oracle calls. 
 
 # Remark
 
