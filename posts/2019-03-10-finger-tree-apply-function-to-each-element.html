@@ -75,8 +75,12 @@
 <p>Let <span class="math inline">f = f_1,\ldots,f_n\in M\to M</span>.</p>
 <p>The functions satisfies the following property.</p>
 <p><span class="math inline">f_1(x_1)+\ldots+f_n(x_n) = f_1(y_1)+\ldots+f_n(y_n)</span> if <span class="math inline">\sum_{i=1}^n x_i = \sum_{i=1}^n y_i</span>.</p>
-<p>The sequence <span class="math inline">f</span> is given implicitly, where it has two methods: - <code>evaluate(X)</code>: It returns <span class="math inline">f_1(x_1) + \ldots +f_n(x_n)</span> for any sequence <span class="math inline">x_1,\ldots,x_n</span> such that <span class="math inline">\sum_{i=1}^n x_i = X</span>. - <code>split(j)</code>: returns a representation for <span class="math inline">f_1,\ldots,f_j</span> and <span class="math inline">f_{j+1},\ldots,f_n</span>.</p>
-<p>We are interested in implementing <code>FunctionUpdate(a,f)</code>, the output would be the sequence <span class="math inline">f_1(a_1),\ldots,f_n(a_n)</span>.</p>
+<p>The sequence <span class="math inline">f</span> is given implicitly, where it has two methods:</p>
+<ul>
+<li><code>evaluate(X)</code>: It returns <span class="math inline">f_1(x_1) + \ldots +f_n(x_n)</span> for any sequence <span class="math inline">x_1,\ldots,x_n</span> such that <span class="math inline">\sum_{i=1}^n x_i = X</span>.</li>
+<li><code>split(j)</code>: returns a representation for <span class="math inline">f_1,\ldots,f_j</span> and <span class="math inline">f_{j+1},\ldots,f_n</span>.</li>
+</ul>
+<p>We are interested in implementing <code>FunctionUpdate(a,f)</code>, the output would be a representation of the sequence <span class="math inline">f_1(a_1),\ldots,f_n(a_n)</span>.</p>
 <p>Many problems actually require update to a entire interval of the sequence, which makes this extremely valuable. For example, consider the following simple problem.</p>
 <p>Maintain a sequence of integers <span class="math inline">a_1,\ldots,a_n</span>, such that we can do the operation <span class="math inline">inc(i,j)</span>, which increment all numbers from <span class="math inline">i</span>th to <span class="math inline">j</span>th index by <span class="math inline">1</span>. That is, the new sequence is <span class="math inline">a_1,\ldots,a_{i-1},a_i+1,\ldots,a_j+1,a_{j+1},\ldots,a_n</span>. Also, it has a function <span class="math inline">value(i)</span> which returns <span class="math inline">a_i</span>. This problem can be solved by finger tree with function update operation.</p>
 <p>I want an actual implementation of such data structure so I can implement the min-cost flow algorithm for series-parallel graphs <span class="citation" data-cites="Booth1993416">[<a href="#ref-Booth1993416">1</a>]</span>.</p>
