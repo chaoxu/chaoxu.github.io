@@ -7,8 +7,39 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxuprime.com/blog/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Tue, 05 Feb 2019 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sun, 10 Mar 2019 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Finger tree allowing apply functions to each element</title>
+    <link>https://chaoxuprime.com/blog/posts/2019-03-10-finger-tree-apply-function-to-each-element.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>Let <span class="math inline">(M,+)</span> be a monoid. We are interested in maintaining a sequence <span class="math inline">a = a_1,\ldots,a_n\in M</span> under all updates currently supported by finger tree. However, we are also interested in adding another update, which we call the function update.</p>
+<p>Let <span class="math inline">f = f_1,\ldots,f_n\in M\to M</span>.</p>
+<p>The functions satisfies the following property.</p>
+<p><span class="math inline">f_1(x_1)+\ldots+f_n(x_n) = f_1(y_1)+\ldots+f_n(y_n)</span> if <span class="math inline">\sum_{i=1}^n x_i = \sum_{i=1}^n y_i</span>.</p>
+<p>The sequence <span class="math inline">f</span> is given implicitly, where it has two methods: - <code>evaluate(X)</code>: It returns <span class="math inline">f_1(x_1) + \ldots +f_n(x_n)</span> for any sequence <span class="math inline">x_1,\ldots,x_n</span> such that <span class="math inline">\sum_{i=1}^n x_i = X</span>. - <code>split(j)</code>: returns a representation for <span class="math inline">f_1,\ldots,f_j</span> and <span class="math inline">f_{j+1},\ldots,f_n</span>.</p>
+<p>We are interested in implementing <code>FunctionUpdate(a,f)</code>, the output would be the sequence <span class="math inline">f_1(a_1),\ldots,f_n(a_n)</span>.</p>
+<p>Many problems actually require update to a entire interval of the sequence, which makes this extremely valuable. For example, consider the following simple problem.</p>
+<p>Maintain a sequence of integers <span class="math inline">a_1,\ldots,a_n</span>, such that we can do the operation <span class="math inline">inc(i,j)</span>, which increment all numbers from <span class="math inline">i</span>th to <span class="math inline">j</span>th index by <span class="math inline">1</span>. That is, the new sequence is <span class="math inline">a_1,\ldots,a_{i-1},a_i+1,\ldots,a_j+1,a_{j+1},\ldots,a_n</span>. Also, it has a function <span class="math inline">value(i)</span> which returns <span class="math inline">a_i</span>. This problem can be solved by finger tree with function update operation.</p>
+<p>I want an actual implementation of such data structure so I can implement the min-cost flow algorithm for series-parallel graphs <span class="citation" data-cites="Booth1993416">[<a href="#ref-Booth1993416">1</a>]</span>.</p>
+<h1 id="bibliography" class="unnumbered">References</h1>
+<div id="refs" class="references">
+<div id="ref-Booth1993416">
+<p>[1] H. Booth, R. Tarjan, <strong>Finding the minimum-cost maximum flow in a series-parallel network</strong>, Journal of Algorithms. 15 (1993) 416–446 <a href="https://doi.org/10.1006/jagm.1993.1048">10.1006/jagm.1993.1048</a>.</p>
+</div>
+</div>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2019-03-10. </div>
+    <div class="info">Tags: data structure, lazy propagation.</div>
+
+</div>]]></description>
+    <pubDate>Sun, 10 Mar 2019 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/blog/posts/2019-03-10-finger-tree-apply-function-to-each-element.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title>Find the period of a nice eventually periodic sequence</title>
     <link>https://chaoxuprime.com/blog/posts/2019-02-05-eventually-periodic.html</link>
     <description><![CDATA[<br />
@@ -519,47 +550,6 @@ i &amp; \text{if }k-a_i &gt; t \text{ and } i&gt;g(j,k-a_i)
 </div>]]></description>
     <pubDate>Tue, 18 Dec 2018 00:00:00 UT</pubDate>
     <guid>https://chaoxuprime.com/blog/posts/2018-12-18-subset-sum-through-balancing.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>Global min-cut with parity constraint on the edges</title>
-    <link>https://chaoxuprime.com/blog/posts/2018-11-06-global-min-cut-with-parity-constraint-on-the-edges.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>In a discussion with <a href="https://patrickl.in/">Patrick Lin</a>, a nice problem was born.</p>
-<p>Let <span class="math inline">\delta(S)</span> to be the set of edges with exactly one endpoint in <span class="math inline">S</span>. <span class="math inline">\delta^-(S)</span> to be the set of edges with its head in <span class="math inline">S</span> and tail in <span class="math inline">V\setminus S</span>. Given a non-negative weighted graph, we define the cut function <span class="math inline">f:2^V\to \R^+</span> to be <span class="math inline">f(S) = \sum_{e\in \delta(S)} w(e)</span>. For directed graphs, <span class="math inline">f(S) = \sum_{e\in \delta^-(S)} w(e)</span>. <span class="math inline">f(S)</span> is called the value of the cut <span class="math inline">S</span>.</p>
-<p>Let <span class="math inline">k</span> be a constant, we consider the following problem.</p>
-<section class="theorem-environment Problem" id="Problem-1">
-<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
-<p>Give a graph and <span class="math inline">k</span> set of edges <span class="math inline">F_1,\ldots,F_k</span>, <span class="math inline">a_1,\ldots,a_k,b</span>. Find a cut <span class="math inline">S</span> satisfies that <span class="math inline">|\delta(S)\cap F_i|\equiv a_i \pmod b</span> for all <span class="math inline">i</span>, and the value is minimized.</p>
-</section>
-<p>We will try to reduce this problem to the following</p>
-<section class="theorem-environment Problem" id="Problem-2">
-<span class="theorem-header"><span class="type">Problem</span><span class="index">2</span><span class="name">submodular minimization under congruence constraints</span></span>
-<p>Given <span class="math inline">T_1,\ldots,T_k</span> and a submodular function <span class="math inline">f</span>. Find a set <span class="math inline">S</span> such that <span class="math inline">|T_i\cap S| \equiv a_i\pmod b_i</span>, and <span class="math inline">f(S)</span> is minimized.</p>
-</section>
-<p>The above problem is known as submodular minimization under congruence constraints. It is known to be solvable in polynomial time under certain conditions on the <span class="math inline">b_i</span>'s <span class="citation" data-cites="NageleSZ18">[<a href="#ref-NageleSZ18">1</a>]</span>. We sketch the reductions.</p>
-<h1 id="undirected-case"><span class="header-section-number">1</span> Undirected case</h1>
-<p>In the undirected case, we only consider when <span class="math inline">b=2</span>. Patrick showed a the following construction. Create a new graph <span class="math inline">G&#39;</span> as follows. For each <span class="math inline">uv</span> in <span class="math inline">E</span>, split it into edges <span class="math inline">ux</span>, <span class="math inline">xy</span>, <span class="math inline">yv</span>, <span class="math inline">w(ux)=w(yv)=\infty</span>, and <span class="math inline">w(xy)=w(uv)</span>. Let <span class="math inline">T_i</span> contains the vertex <span class="math inline">x</span> and <span class="math inline">y</span> if <span class="math inline">uv\in F_i</span>.<br />
-We now solve the submodular minimization under congruence constraints problem on input <span class="math inline">f</span>, which is the cut function for <span class="math inline">G&#39;</span>, and same <span class="math inline">a_1,\ldots,a_k</span> and <span class="math inline">b_1,\ldots,b_k=2</span>.</p>
-<h1 id="directed-case"><span class="header-section-number">2</span> Directed case</h1>
-<p>In the directed case, a similar approach works. But now, instead of <span class="math inline">\mod 2</span>, we can do <span class="math inline">\mod b</span> for any <span class="math inline">b</span>. We consider the same approach.<br />
-<span class="math inline">(u,v) \in E</span> split into <span class="math inline">(u,x_1),\ldots,(x_b,v)</span> and <span class="math inline">w(u,x_1)=w(u,v)</span>, <span class="math inline">w(x_i,x_{i+1})=\infty</span>, <span class="math inline">w(x_b,v)=\infty</span>. Now, let <span class="math inline">T_i</span> contain vertices <span class="math inline">x_1,\ldots,x_b</span> of <span class="math inline">uv\in F_i</span>.</p>
-<h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references">
-<div id="ref-NageleSZ18">
-<p>[1] M. Nägele, B. Sudakov, R. Zenklusen, Submodular minimization under congruency constraints, in: Proceedings of the Twenty-Ninth Annual Acm-Siam Symposium on Discrete Algorithms, Society for Industrial; Applied Mathematics, Philadelphia, PA, USA, 2018: pp. 849–866.</p>
-</div>
-</div>
-
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2018-11-06. </div>
-    <div class="info">Tags: algorithms, min-cut.</div>
-
-</div>]]></description>
-    <pubDate>Tue, 06 Nov 2018 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/blog/posts/2018-11-06-global-min-cut-with-parity-constraint-on-the-edges.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 

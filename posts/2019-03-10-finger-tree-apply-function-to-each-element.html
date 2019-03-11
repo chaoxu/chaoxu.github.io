@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta name="referrer" content="origin">
+    <title>Finger tree allowing apply functions to each element</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var macros={
+                  "\\C":"\\mathbb{C}",
+                  "\\F":"\\mathbb{F}",
+                  "\\e": "\\varepsilon",
+                  "\\eps": "\\varepsilon",
+                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
+                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
+                  "\\mex": "\\mathop{\\operatorname{mex}}",
+                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
+                  "\\dist": "\\mathop{\\operatorname{dist}}",
+                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+                  '\\set':'\\left\\{ #1 \\right\\}',
+                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+                  '\\abs':'\\left\\| #1 \\right\\|'
+                  }
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+        }}});
+    </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-4171915-2');
+  </script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+      href="https://chaoxuprime.com/rss.xml">
+  </head>
+  <body>
+    <header class="hide-on-print">
+        <div id="site-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1 id="article-title">Finger tree allowing apply functions to each element</h1>
+        <br />
+<div>
+<p>Let <span class="math inline">(M,+)</span> be a monoid. We are interested in maintaining a sequence <span class="math inline">a = a_1,\ldots,a_n\in M</span> under all updates currently supported by finger tree. However, we are also interested in adding another update, which we call the function update.</p>
+<p>Let <span class="math inline">f = f_1,\ldots,f_n\in M\to M</span>.</p>
+<p>The functions satisfies the following property.</p>
+<p><span class="math inline">f_1(x_1)+\ldots+f_n(x_n) = f_1(y_1)+\ldots+f_n(y_n)</span> if <span class="math inline">\sum_{i=1}^n x_i = \sum_{i=1}^n y_i</span>.</p>
+<p>The sequence <span class="math inline">f</span> is given implicitly, where it has two methods: - <code>evaluate(X)</code>: It returns <span class="math inline">f_1(x_1) + \ldots +f_n(x_n)</span> for any sequence <span class="math inline">x_1,\ldots,x_n</span> such that <span class="math inline">\sum_{i=1}^n x_i = X</span>. - <code>split(j)</code>: returns a representation for <span class="math inline">f_1,\ldots,f_j</span> and <span class="math inline">f_{j+1},\ldots,f_n</span>.</p>
+<p>We are interested in implementing <code>FunctionUpdate(a,f)</code>, the output would be the sequence <span class="math inline">f_1(a_1),\ldots,f_n(a_n)</span>.</p>
+<p>Many problems actually require update to a entire interval of the sequence, which makes this extremely valuable. For example, consider the following simple problem.</p>
+<p>Maintain a sequence of integers <span class="math inline">a_1,\ldots,a_n</span>, such that we can do the operation <span class="math inline">inc(i,j)</span>, which increment all numbers from <span class="math inline">i</span>th to <span class="math inline">j</span>th index by <span class="math inline">1</span>. That is, the new sequence is <span class="math inline">a_1,\ldots,a_{i-1},a_i+1,\ldots,a_j+1,a_{j+1},\ldots,a_n</span>. Also, it has a function <span class="math inline">value(i)</span> which returns <span class="math inline">a_i</span>. This problem can be solved by finger tree with function update operation.</p>
+<p>I want an actual implementation of such data structure so I can implement the min-cost flow algorithm for series-parallel graphs <span class="citation" data-cites="Booth1993416">[<a href="#ref-Booth1993416">1</a>]</span>.</p>
+<h1 id="bibliography" class="unnumbered">References</h1>
+<div id="refs" class="references">
+<div id="ref-Booth1993416">
+<p>[1] H. Booth, R. Tarjan, <strong>Finding the minimum-cost maximum flow in a series-parallel network</strong>, Journal of Algorithms. 15 (1993) 416–446 <a href="https://doi.org/10.1006/jagm.1993.1048">10.1006/jagm.1993.1048</a>.</p>
+</div>
+</div>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2019-03-10. </div>
+    <div class="info">Tags: data structure, lazy propagation.</div>
+
+</div>
+      </article>
+    </main>
+    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
+  </body>
+</html>
