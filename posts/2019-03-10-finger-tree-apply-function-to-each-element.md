@@ -12,10 +12,11 @@ The functions satisfies the following property.
 $f_1(x_1)+\ldots+f_n(x_n) = f_1(y_1)+\ldots+f_n(y_n)$ if $\sum_{i=1}^n x_i = \sum_{i=1}^n y_i$.
 
 The sequence $f$ is given implicitly, where it has two methods:
-- `evaluate(X)`: It returns $f_1(x_1) + \ldots +f_n(x_n)$ for any sequence $x_1,\ldots,x_n$ such that $\sum_{i=1}^n x_i = X$. 
-- `split(j)`: returns a representation for $f_1,\ldots,f_j$ and $f_{j+1},\ldots,f_n$.
 
-We are interested in implementing `FunctionUpdate(a,f)`, the output would be the sequence $f_1(a_1),\ldots,f_n(a_n)$.
+ - `evaluate(X)`: It returns $f_1(x_1) + \ldots +f_n(x_n)$ for any sequence $x_1,\ldots,x_n$ such that $\sum_{i=1}^n x_i = X$. 
+ - `split(j)`: returns a representation for $f_1,\ldots,f_j$ and $f_{j+1},\ldots,f_n$.
+
+We are interested in implementing `FunctionUpdate(a,f)`, the output would be a representation of the sequence $f_1(a_1),\ldots,f_n(a_n)$.
 
 Many problems actually require update to a entire interval of the sequence, which makes this extremely valuable. For example, consider the following simple problem.
 
