@@ -315,7 +315,7 @@ authors: [Bin Cao, Chao Xu]
 ---
 id: kdepots
 show: [p]
-title: A Polynomial Time Algorithm to Minimize Total Travel Time in $k$-Depot Storage/Retrieval System
+title: High multiplicity asymmetric traveling salesman problem with feedback vertex set and its application to storage/retrieval system
 type: manuscript
 authors: [Amir Gharehgozli, Chao Xu, Wenda Zhang]
 year: 2018
