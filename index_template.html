@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Chao Xu</title>
+  <meta name="Description" content="The personal webpage of Chao Xu.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-4171915-2');
+  </script>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/homepage.css" crossorigin="anonymous">
+  
+</head>
+<body>
+<div class="container">
+
+<div class="row" style="display:block"><h1 id="site-title">Chao Xu <wbr>|<wbr> <ruby>
+<rb>许</rb><rp>(</rp><rt>xǔ</rt><rp>)</rp></ruby>
+<ruby><rb>超</rb><rp>(</rp><rt>chāo</rt><rp>)</rp></ruby>
+</h1></div>
+
+<div class="row">
+  <div class="intro-left">
+    <img width="270" height="270" src="/files/chao/chaoxu6.jpg" style="border-radius:50%;max-width:95%" title="Lord Chao of the House Xu, the First of His Name, Guardian of the Art Gallery" alt="Photo of Chao Xu" />
+  </div>
+  
+  <div class="intro-right">
+    <p>
+      I'm a research scientist at <a href="https://research.yahoo.com/">Yahoo! Research</a> in New York.
+      My research interests are algorithms, combinatorial optimization and computational geometry. I'm also interested in more applied problems with nice theoretical components. 
+      Here is my <a href="files/cv.pdf">CV</a>(last updated Oct 2018) and <a href="files/research_statement.pdf">old research statement</a>.
+    </p>
+    <p>I obtained my PhD in Computer Science from <a href="https://illinois.edu/">University of Illinois at Urbana-Champaign</a> in May 2018. My advisors were <a href="http://karthik.ise.illinois.edu/">Karthik Chandrasekaran</a> and <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a>.
+    I've previously held a summer visiting position at <a href="https://www.nii.ac.jp/en/">National Institute of Informatics</a>, hosted by <a href="http://research.nii.ac.jp/~k_keniti/">Ken-ichi Kawarabayashi</a>, and <a href="https://www.nyu.edu/">New York University</a>, hosted by <a href="https://engineering.nyu.edu/faculty/boris-aronov">Boris Aronov</a>. 
+    I finished my undergrad in mathematics at <a href="https://www.stonybrook.edu/">Stony Brook University</a> in 2013, and spent Spring 2012 in <a href="https://www.budapestsemesters.com/">Budapest Semesters in Mathematics</a>.
+    </p>
+    <p>I maintain a <a href="https://github.com/chaoxu/">github account</a> and a <a href="blog.html"><strong>blog</strong></a>. I frequent <a href="http://cstheory.stackexchange.com/users/314/chao-xu">cstheory</a>.</p>
+
+    <p>You can contact me through email <samp><a href="mailto:chao.xu@verizonmedia.com">chao.xu@verizonmedia.com</a></samp>.</p>
+  </div>
+</div>
+
+
+{% for pub_type in pub_types %}
+<div class="row pubtypeheader">{{pub_type.title}}</div>
+  {% for paper in pub_type.papers %}
+  <!-- {{paper.title}}  -->
+  <div class="row cv-entry" id="{{paper.id}}">
+    <input type="checkbox" class="abstract-guard" id="{{paper.id}}-toggle">
+    <div class="cv-left">
+      {% if 'a' in paper.show %}
+        <label class="showmore material-icons" for="{{paper.id}}-toggle"></label>
+      {% else %}
+        <i class="material-icons disabled">expand_more</i>
+      {% endif %}
+
+      {% if 'd' in paper.show %}
+        <a href="files/papers/{{paper.id}}.pdf"><i class="material-icons">description</i></a>
+      {% else %}
+        <i class="material-icons disabled">description</i>
+      {% endif %}
+
+      {% if 'p' in paper.show %}
+        <a href="files/presentations/{{paper.id}}.pdf"><i class="material-icons">airplay</i></a>
+      {% else %}
+        <i class="material-icons disabled">airplay</i>
+      {% endif %}
+    </div>
+
+    <div class="cv-right">
+      <cite class="paper-title">{{paper.title}}</cite>
+      {% if paper.authors %}
+      <ul class="coauthor-list">
+        {% for author in paper.authors %}<li>
+            {% if author.link %}<a href="{{author.link}}">{{author.name}}</a>{% else %}{{author.name}}{% endif %}</li>{% endfor %}</ul>
+      {% endif %}
+
+      <p><em>
+      {% if paper.bib %}
+        {{paper.bib}}
+      {% elif paper.pub %}
+        <abbr title="{{paper.pub.venue}}">{{paper.pub.name}}</abbr> <time>{{paper.year}}</time>.
+      {% else %}
+        <time>{{paper.year}}</time>.
+      {% endif %}
+      </em><p>
+
+      {% for note in paper.notes %}
+        <aside class="note">{{note}}</aside>
+      {% endfor %}
+    </div>
+
+    {% if paper.abstract %}
+    <div class="abstract">
+      {{paper.abstract}}
+      {% if paper.dedication %}
+        <aside class="dedication">{{paper.dedication}}</aside>
+      {% endif %}
+    </div>
+    {% endif %}
+
+  </div>
+  {% endfor %}
+{% endfor %}
+
+
+</div>
+</body>
+</html>
