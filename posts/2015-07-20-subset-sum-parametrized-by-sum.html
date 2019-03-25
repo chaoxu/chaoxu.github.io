@@ -1,43 +1,15 @@
-<!doctype html>
-<html lang="en">
-  <head>
+<!DOCTYPE html><html lang="en"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="The Art Gallery Guardian">
     <meta name="author" content="Chao Xu">
-    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok">
     <meta name="referrer" content="origin">
     <title>Subset sum of elements sum to $\sigma$</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-          var macros={
-                  "\\C":"\\mathbb{C}",
-                  "\\F":"\\mathbb{F}",
-                  "\\e": "\\varepsilon",
-                  "\\eps": "\\varepsilon",
-                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
-                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
-                  "\\mex": "\\mathop{\\operatorname{mex}}",
-                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
-                  "\\dist": "\\mathop{\\operatorname{dist}}",
-                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
-                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
-                  '\\set':'\\left\\{ #1 \\right\\}',
-                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
-                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
-                  '\\abs':'\\left\\| #1 \\right\\|'
-                  }
-        var mathElements = document.getElementsByClassName("math");
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
-        }}});
-    </script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -46,11 +18,10 @@
     gtag('config', 'UA-4171915-2');
   </script>
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
-  <link rel="alternate" type="application/rss+xml" title="RSS"
-      href="https://chaoxuprime.com/rss.xml">
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="https://chaoxuprime.com/rss.xml">
   </head>
   <body>
     <header class="hide-on-print">
@@ -68,12 +39,12 @@
     </nav>
     <main>
       <article>
-        <h1 id="article-title">Subset sum of elements sum to <span class="math inline">\sigma</span></h1>
-        <br />
+        <h1 id="article-title">Subset sum of elements sum to <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span style="margin-right: 0.03588em;" class="mord mathdefault">σ</span></span></span></span></span></h1>
+        <br>
 <div>
-<p>We assume the input of the subset sum problem is a sequence of <span class="math inline">n</span> positive integers that sums to <span class="math inline">\sigma</span>. We are interested if there is a subsequence sums to <span class="math inline">t</span>.</p>
-<p>In this case, the subset sum problem can be solved in <span class="math inline">O(\sigma \log^2 \sigma)</span> time. In fact, it output all possible subset sums in the same running time.</p>
-<p>Consider we partition the input into two subsequences, each have sum in between <span class="math inline">\sigma/4</span> and <span class="math inline">3\sigma/4</span>, and solve each recursively then take the Minkowski sum. One can analyze this and get <span class="math inline">O(\sigma \log^2 \sigma)</span> running time. Notice if at some point, such partition cannot be found, then there is a side with a single huge element, and hence can be solved in constant time.</p>
+<p>We assume the input of the subset sum problem is a sequence of <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault">n</span></span></span></span></span> positive integers that sums to <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span style="margin-right: 0.03588em;" class="mord mathdefault">σ</span></span></span></span></span>. We are interested if there is a subsequence sums to <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.61508em; vertical-align: 0em;"></span><span class="mord mathdefault">t</span></span></span></span></span>.</p>
+<p>In this case, the subset sum problem can be solved in <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>σ</mi><msup><mi>log</mi><mo>⁡</mo><mn>2</mn></msup><mi>σ</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(\sigma \log^2 \sigma)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1.148448em; vertical-align: -0.25em;"></span><span style="margin-right: 0.02778em;" class="mord mathdefault">O</span><span class="mopen">(</span><span style="margin-right: 0.03588em;" class="mord mathdefault">σ</span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="mop"><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8984479999999999em;"><span class="" style="top: -3.1473400000000002em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span style="margin-right: 0.03588em;" class="mord mathdefault">σ</span><span class="mclose">)</span></span></span></span></span> time. In fact, it output all possible subset sums in the same running time.</p>
+<p>Consider we partition the input into two subsequences, each have sum in between <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>σ</mi><mi mathvariant="normal">/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">\sigma/4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span style="margin-right: 0.03588em;" class="mord mathdefault">σ</span><span class="mord">/</span><span class="mord">4</span></span></span></span></span> and <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mi>σ</mi><mi mathvariant="normal">/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">3\sigma/4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">3</span><span style="margin-right: 0.03588em;" class="mord mathdefault">σ</span><span class="mord">/</span><span class="mord">4</span></span></span></span></span>, and solve each recursively then take the Minkowski sum. One can analyze this and get <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>σ</mi><msup><mi>log</mi><mo>⁡</mo><mn>2</mn></msup><mi>σ</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(\sigma \log^2 \sigma)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1.148448em; vertical-align: -0.25em;"></span><span style="margin-right: 0.02778em;" class="mord mathdefault">O</span><span class="mopen">(</span><span style="margin-right: 0.03588em;" class="mord mathdefault">σ</span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="mop"><span class="mop">lo<span style="margin-right: 0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8984479999999999em;"><span class="" style="top: -3.1473400000000002em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span style="margin-right: 0.03588em;" class="mord mathdefault">σ</span><span class="mclose">)</span></span></span></span></span> running time. Notice if at some point, such partition cannot be found, then there is a side with a single huge element, and hence can be solved in constant time.</p>
 
 </div>
 <div class="hide-on-print">
@@ -84,5 +55,6 @@
       </article>
     </main>
     <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
-  </body>
-</html>
+  
+
+</body></html>

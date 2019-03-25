@@ -1,43 +1,15 @@
-<!doctype html>
-<html lang="en">
-  <head>
+<!DOCTYPE html><html lang="en"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="The Art Gallery Guardian">
     <meta name="author" content="Chao Xu">
-    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok">
     <meta name="referrer" content="origin">
     <title>The Aho–Corasick Automaton in Haskell</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-          var macros={
-                  "\\C":"\\mathbb{C}",
-                  "\\F":"\\mathbb{F}",
-                  "\\e": "\\varepsilon",
-                  "\\eps": "\\varepsilon",
-                  "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
-                  "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
-                  "\\mex": "\\mathop{\\operatorname{mex}}",
-                  "\\lcm": "\\mathop{\\operatorname{lcm}}",
-                  "\\dist": "\\mathop{\\operatorname{dist}}",
-                  "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
-                  "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
-                  '\\set':'\\left\\{ #1 \\right\\}',
-                  '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
-                  '\\ceil':'\\left\\lceil #1 \\right\\rceil',
-                  '\\abs':'\\left\\| #1 \\right\\|'
-                  }
-        var mathElements = document.getElementsByClassName("math");
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
-        }}});
-    </script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -46,11 +18,10 @@
     gtag('config', 'UA-4171915-2');
   </script>
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
-  <link rel="alternate" type="application/rss+xml" title="RSS"
-      href="https://chaoxuprime.com/rss.xml">
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="https://chaoxuprime.com/rss.xml">
   </head>
   <body>
     <header class="hide-on-print">
@@ -69,9 +40,9 @@
     <main>
       <article>
         <h1 id="article-title">The Aho–Corasick Automaton in Haskell</h1>
-        <br />
+        <br>
 <div>
-<p>It is common that one might want to match <span class="math inline">k</span> different strings against one single text of length <span class="math inline">m</span>. One can of course apply the <a href="/posts/2014-04-11-the-kmp-algorithm-in-haskell.html">KMP algorithm</a> individually, and result an algorithm that runs in <span class="math inline">O(km)</span> time.</p>
+<p>It is common that one might want to match <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span style="margin-right: 0.03148em;" class="mord mathdefault">k</span></span></span></span></span> different strings against one single text of length <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault">m</span></span></span></span></span>. One can of course apply the <a href="/posts/2014-04-11-the-kmp-algorithm-in-haskell.html">KMP algorithm</a> individually, and result an algorithm that runs in <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>k</mi><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(km)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span style="margin-right: 0.02778em;" class="mord mathdefault">O</span><span class="mopen">(</span><span style="margin-right: 0.03148em;" class="mord mathdefault">k</span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span></span> time.</p>
 <p>Faster algorithms are known. The idea is to build an finite state transducer that can output which strings is the suffix of the string it read. The Aho-Corasick automaton is a compressed version of such transducer, as the size does not depend on the size of the alphabet.</p>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import           </span><span class="dt">Control.Arrow</span> (first)
 <span class="kw">import           </span><span class="dt">Data.Function</span> (on)
@@ -106,11 +77,11 @@ build trans xs out <span class="fu">=</span> node
 <span class="ot">match ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> <span class="dt">Automaton</span> a b <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [b]
 match a xs <span class="fu">=</span> map output <span class="fu">$</span> scanl delta a xs
 
-<span class="ot">match&#39; ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> [[a]] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [[[a]]]
-match&#39; pat <span class="fu">=</span> match (buildAutomaton <span class="fu">$</span> map (\x<span class="ot">-&gt;</span> (x,[x])) pat)
+<span class="ot">match' ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> [[a]] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [[[a]]]
+match' pat <span class="fu">=</span> match (buildAutomaton <span class="fu">$</span> map (\x<span class="ot">-&gt;</span> (x,[x])) pat)
 
-<span class="ot">isInfixOf&#39; ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
-isInfixOf&#39; xs ys <span class="fu">=</span> getAll <span class="fu">$</span> mconcat <span class="fu">$</span> match (buildAutomaton [(xs, <span class="dt">All</span> <span class="dt">True</span>)]) ys</code></pre></div>
+<span class="ot">isInfixOf' ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+isInfixOf' xs ys <span class="fu">=</span> getAll <span class="fu">$</span> mconcat <span class="fu">$</span> match (buildAutomaton [(xs, <span class="dt">All</span> <span class="dt">True</span>)]) ys</code></pre></div>
 
 </div>
 <div class="hide-on-print">
@@ -121,5 +92,6 @@ isInfixOf&#39; xs ys <span class="fu">=</span> getAll <span class="fu">$</span> 
       </article>
     </main>
     <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com">Chao Xu</a>. Licensed under <a href="http://www.wtfpl.net/txt/copying/">WTFPL v2</a> unless otherwise specified. <a href="/README.html">Blog README</a>.</footer>
-  </body>
-</html>
+  
+
+</body></html>
