@@ -18,8 +18,7 @@ stack exec chaosite build
 # Build index
 python pub.py > _site/index.html
 # KaTeX local html filter
-FILES=_site/**/*.html
-for f in $FILES
+for f in $(find _site -name '*.html')
 do
   node math_katex_offline.js $f
 done
