@@ -40,5 +40,5 @@ for (var i = 0; i < mathElements.length; i++) {
 };
 fs.writeFile(filename, dom.serialize(), function(err, data) {
   if (err) console.log(err);
-  console.log("Successfully Written to File.");
+  console.log("KaTeX Compiled for " + filename);
 });
