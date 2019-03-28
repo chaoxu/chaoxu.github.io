@@ -3,14 +3,14 @@
     xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
         <title>The Art Gallery Guardian</title>
-        <link>https://chaoxuprime.com/blog</link>
+        <link>https://chaoxuprime.com</link>
         <description><![CDATA[Mostly notes on algorithms]]></description>
-        <atom:link href="https://chaoxuprime.com/blog/rss.xml" rel="self"
+        <atom:link href="https://chaoxuprime.com/rss.xml" rel="self"
                    type="application/rss+xml" />
         <lastBuildDate>Sun, 24 Mar 2019 00:00:00 UT</lastBuildDate>
         <item>
     <title>Densest subgraph variation</title>
-    <link>https://chaoxuprime.com/blog/posts/2019-03-24-densest-subgraph-variation.html</link>
+    <link>https://chaoxuprime.com/posts/2019-03-24-densest-subgraph-variation.html</link>
     <description><![CDATA[<br />
 <div>
 <p>Let <span class="math inline">G=(V,E)</span> be a graph. Consider an edge weight function <span class="math inline">w:E\to \R^+</span> and a vertex cost function <span class="math inline">c:V\to \R^+</span>.</p>
@@ -25,12 +25,12 @@
 
 </div>]]></description>
     <pubDate>Sun, 24 Mar 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/blog/posts/2019-03-24-densest-subgraph-variation.html</guid>
+    <guid>https://chaoxuprime.com/posts/2019-03-24-densest-subgraph-variation.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>Finger tree allowing apply functions to each element</title>
-    <link>https://chaoxuprime.com/blog/posts/2019-03-10-finger-tree-apply-function-to-each-element.html</link>
+    <link>https://chaoxuprime.com/posts/2019-03-10-finger-tree-apply-function-to-each-element.html</link>
     <description><![CDATA[<br />
 <div>
 <p>Let <span class="math inline">(M,+)</span> be a monoid. We are interested in maintaining a sequence <span class="math inline">a = a_1,\ldots,a_n\in M</span> under all updates currently supported by finger tree. However, we are also interested in adding another update, which we call the function update.</p>
@@ -60,12 +60,12 @@
 
 </div>]]></description>
     <pubDate>Sun, 10 Mar 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/blog/posts/2019-03-10-finger-tree-apply-function-to-each-element.html</guid>
+    <guid>https://chaoxuprime.com/posts/2019-03-10-finger-tree-apply-function-to-each-element.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>Find the period of a nice eventually periodic sequence</title>
-    <link>https://chaoxuprime.com/blog/posts/2019-02-05-eventually-periodic.html</link>
+    <link>https://chaoxuprime.com/posts/2019-02-05-eventually-periodic.html</link>
     <description><![CDATA[<br />
 <div>
 <p>A sequence is periodic if <span class="math inline">s_i = s_{i+p}</span> for all <span class="math inline">i</span>, where <span class="math inline">p&gt;0</span> is called a period. A sequence is eventually periodic if there exists a <span class="math inline">n</span> and <span class="math inline">p</span>, such that <span class="math inline">s_i = s_{i+p}</span> for all <span class="math inline">i&gt;n</span>. The sequence with index above <span class="math inline">n</span> is the <em>periodic part</em>.</p>
@@ -87,12 +87,12 @@
 
 </div>]]></description>
     <pubDate>Tue, 05 Feb 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/blog/posts/2019-02-05-eventually-periodic.html</guid>
+    <guid>https://chaoxuprime.com/posts/2019-02-05-eventually-periodic.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>Bottleneck <span class="math inline">k</span>-link path</title>
-    <link>https://chaoxuprime.com/blog/posts/2019-01-31-bottleneck-k-link-path.html</link>
+    <link>https://chaoxuprime.com/posts/2019-01-31-bottleneck-k-link-path.html</link>
     <description><![CDATA[<br />
 <div>
 <p>A DAG is called complete, if there are vertices <span class="math inline">v_1,\ldots,v_n</span>, and <span class="math inline">v_iv_j</span> is an edge if and only if <span class="math inline">i&lt;j</span>. Let <span class="math inline">w(i,j)</span> be the edge weights from <span class="math inline">i</span> to <span class="math inline">j</span>. The weight is called ordered, if <span class="math inline">w(i,j)&lt;w(i,j+1)</span> and <span class="math inline">w(i+ 1,j)&lt;w(i,j)</span>.</p>
@@ -123,12 +123,12 @@
 
 </div>]]></description>
     <pubDate>Thu, 31 Jan 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/blog/posts/2019-01-31-bottleneck-k-link-path.html</guid>
+    <guid>https://chaoxuprime.com/posts/2019-01-31-bottleneck-k-link-path.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>Search in a sorted matrix with an oracle</title>
-    <link>https://chaoxuprime.com/blog/posts/2019-01-30-search-sorted-matrix.html</link>
+    <link>https://chaoxuprime.com/posts/2019-01-30-search-sorted-matrix.html</link>
     <description><![CDATA[<br />
 <div>
 <p>Consider a infinite matrix <span class="math inline">M</span>. Another way to think about it is a function <span class="math inline">f:\N\to \N\to X</span>. A matrix <span class="math inline">M</span> is sorted if <span class="math inline">M_{i,j}\leq M_{i,j+1}</span> and <span class="math inline">M_{i,j}\leq M_{i+1,j}</span>.</p>
@@ -178,12 +178,12 @@
 
 </div>]]></description>
     <pubDate>Wed, 30 Jan 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/blog/posts/2019-01-30-search-sorted-matrix.html</guid>
+    <guid>https://chaoxuprime.com/posts/2019-01-30-search-sorted-matrix.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>A Reviewer Assignment Problem</title>
-    <link>https://chaoxuprime.com/blog/posts/2019-01-29-reviewer-assignment.html</link>
+    <link>https://chaoxuprime.com/posts/2019-01-29-reviewer-assignment.html</link>
     <description><![CDATA[<br />
 <div>
 <p>Consider there are some reviewers and some papers. Each reviewer can review exactly one paper, and each reviewer is qualified to review some subset of papers. We are interested in maximizing the number of papers reviewed by at least <span class="math inline">k</span> reviewer, then under that constraint, maximize the paper reviewed by <span class="math inline">k+1</span> reviewer, etc. This make sure we are being fair in evaluating papers. It would try to avoid the case where most paper getting small number of reviews and a few papers getting unreasonable number of reviews.</p>
@@ -224,12 +224,12 @@
 
 </div>]]></description>
     <pubDate>Tue, 29 Jan 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/blog/posts/2019-01-29-reviewer-assignment.html</guid>
+    <guid>https://chaoxuprime.com/posts/2019-01-29-reviewer-assignment.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>Soft heap and selection</title>
-    <link>https://chaoxuprime.com/blog/posts/2019-01-22-soft-heap-and-selection.html</link>
+    <link>https://chaoxuprime.com/posts/2019-01-22-soft-heap-and-selection.html</link>
     <description><![CDATA[<br />
 <div>
 <p>I enjoyed the workshop <a href="https://simplicityinalgorithms.com/">SOSA</a> a lot (Disclaimer: I have a paper in SOSA). The papers are simple and fun. I liked the paper <span class="citation" data-cites="KaplanKZZ18">[<a href="#ref-KaplanKZZ18">1</a>]</span> the most, because I learned some really interesting tricks with <a href="https://en.wikipedia.org/wiki/Soft_heap">soft heap</a>.</p>
@@ -264,12 +264,12 @@
 
 </div>]]></description>
     <pubDate>Tue, 22 Jan 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/blog/posts/2019-01-22-soft-heap-and-selection.html</guid>
+    <guid>https://chaoxuprime.com/posts/2019-01-22-soft-heap-and-selection.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>The high-degree low-degree technique and arboricity</title>
-    <link>https://chaoxuprime.com/blog/posts/2019-01-21-high-degree-low-degree-technique.html</link>
+    <link>https://chaoxuprime.com/posts/2019-01-21-high-degree-low-degree-technique.html</link>
     <description><![CDATA[<br />
 <div>
 <p>In this piece we demonstrate the high-degree low-degree technique in graphs. Often, we obtain running times that depends on the individual degrees of the vertices. If the graph has only low degree vertices, then a faster algorithm exists. For graph with only large degrees, then it is dense, and can often be handled in another way.</p>
@@ -388,12 +388,12 @@
 
 </div>]]></description>
     <pubDate>Mon, 21 Jan 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/blog/posts/2019-01-21-high-degree-low-degree-technique.html</guid>
+    <guid>https://chaoxuprime.com/posts/2019-01-21-high-degree-low-degree-technique.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>Lights out game on a grid</title>
-    <link>https://chaoxuprime.com/blog/posts/2019-01-12-lights-out-game.html</link>
+    <link>https://chaoxuprime.com/posts/2019-01-12-lights-out-game.html</link>
     <description><![CDATA[<br />
 <div>
 <section class="theorem-environment Problem" id="Problem-1">
@@ -439,12 +439,12 @@ D[n,n] &amp;= c_{m,1} z_1+\ldots + c_{m,n} z_n + u_{n}
 
 </div>]]></description>
     <pubDate>Sat, 12 Jan 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/blog/posts/2019-01-12-lights-out-game.html</guid>
+    <guid>https://chaoxuprime.com/posts/2019-01-12-lights-out-game.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>Strings with hamming distance exactly <span class="math inline">1</span></title>
-    <link>https://chaoxuprime.com/blog/posts/2018-12-23-strings-with-hamming-distance-exactly-1.html</link>
+    <link>https://chaoxuprime.com/posts/2018-12-23-strings-with-hamming-distance-exactly-1.html</link>
     <description><![CDATA[<br />
 <div>
 <p><a href="http://darktef.github.io/">Lin Yang</a> asked me about the complexity for the following problem, which is the day 2 part 2 of the <a href="https://adventofcode.com/2018">advent of code 2018</a>. It is an elegant programming exercise, and also a clever algorithmic exercise. The problem can be summarized below.</p>
@@ -517,7 +517,7 @@ D[n,n] &amp;= c_{m,1} z_1+\ldots + c_{m,n} z_n + u_{n}
 
 </div>]]></description>
     <pubDate>Sun, 23 Dec 2018 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/blog/posts/2018-12-23-strings-with-hamming-distance-exactly-1.html</guid>
+    <guid>https://chaoxuprime.com/posts/2018-12-23-strings-with-hamming-distance-exactly-1.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 
