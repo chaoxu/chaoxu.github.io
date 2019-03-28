@@ -141,7 +141,7 @@ feedConfiguration = FeedConfiguration
   , feedDescription = "Mostly notes on algorithms"
   , feedAuthorName = "Chao Xu"
   , feedAuthorEmail = "mgcclx@gmail.com"
-  , feedRoot = "https://chaoxuprime.com/blog"}
+  , feedRoot = "https://chaoxuprime.com"}
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
