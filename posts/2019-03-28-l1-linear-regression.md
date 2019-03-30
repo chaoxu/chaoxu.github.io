@@ -44,4 +44,9 @@ Let's consider the second part, $\sum_{(x,y)\in S^-} ax+b - y = a\sum_{(x,y)\in 
 
 Consider the function $g_p(s)$ defined for a point $p$ to be the error for the line with slope $s$ that contains $p$. The function is bitonic, therefore we can do a ternary search to find the minimum. The only problem is that we do not have a space of the slopes for $p$ that we can quickly go through. 
 
-Halfspace counting data structure is built on top of partition tree. So we can look into partition tree directly. I'm not that familiar with partition tree, so I'm just writing this out to check my basic intuition. Say the partition tree has a branching factor of $r$, then we can spend $\tilde{O}(r)$ time to generate one testing line for each of the $r$ partitions. We can do ternary search on those lines in $O(\log r)$ error computations. Once we find a few adjacent lines. Together it would cut $O(r^{1/2})$ partitions each with $O(\frac{n}{r})$ elements. Now we just have to recurse. I did not completely verify. But setting $r$ to be $n^{1/3}$ is fine. This would imply a $\tilde{O}(n^{4/3})$ running time algorithm. 
+Halfspace counting data structure is built on top of partition tree, which uses the following to partition the points by putting them into simplices.
+
+{Theorem}
+    Let $S$ be a set of $n$ points on the plane. We can find $O(r)$ triangles, such that each one contains $\Theta(n/r)$ elements in $S$, and every line intersects $O(\sqrt{r})$ triangles.
+
+So we can look into partition tree directly. Say the partition tree has a branching factor of $r$, then we can spend $\tilde{O}(r)$ time to generate one testing line for each of the $r$ partitions. We can do ternary search on those lines in $O(\log r)$ error computations. Once we find a few adjacent lines. Together it would cut $O(r^{1/2})$ partitions each with $O(\frac{n}{r})$ elements. Now we just have to recurse. I did not completely verify. But setting $r$ to be $n^{1/3}$ is fine. This would imply a $\tilde{O}(n^{4/3})$ running time algorithm. 
