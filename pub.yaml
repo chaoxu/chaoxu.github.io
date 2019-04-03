@@ -188,7 +188,7 @@ abstract: The notion of _element-connectivity_ has found several important appli
 ---
 id: wspolygon
 title: Detecting Weakly Simple Polygons
-authors: [Jeff Erickson, Hsien-Chih Chang, Chao Xu]
+authors: [Hsien-Chih Chang, Jeff Erickson, Chao Xu]
 type: conference
 show: [d,p]
 pub: SODA
