@@ -7,8 +7,28 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxuprime.com/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Thu, 28 Mar 2019 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sat, 06 Apr 2019 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Misleading while being honest</title>
+    <link>https://chaoxuprime.com/posts/2019-04-06-misleading-while-being-honest.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>Given a set of data <span class="math inline">A</span>, we can plot it on a <a href="https://en.wikipedia.org/wiki/Radar_chart">radar chart</a>. One can permute the axis to make sure the area of the radar chart is maximized. This was explored in <a href="https://chaoxuprime.com/posts/2012-08-08-maximize-the-area-of-a-radar-chart.html">a previous article</a>.</p>
+<p>More interesting problem. Given two sets of data <span class="math inline">A</span> and <span class="math inline">B</span>, we are interested in finding a common radar chart, that make <span class="math inline">A</span> look as good as possible compared to <span class="math inline">B</span>. We might want to optimize the area ratio, area difference, or something else. Again, we are thinking of permuting the axis of the radar chart.</p>
+<p>I once mentioned this problem to <a href="https://www.contrib.andrew.cmu.edu/~ravi/">R Ravi</a>, and he suggest I could ask the same question for all kind of different graphs. How to mislead people with graphs while being completely honest? Indeed, this looks like a fun research project. There is a <a href="https://en.wikipedia.org/wiki/Misleading_graph">wikipedia article completely devoted to it</a>. In my <a href="https://chaoxuprime.com/posts/2019-03-28-l1-linear-regression.html">previous post</a>, I've discussed how to fitting two seemingly not that related data points through simple transformation.</p>
+<p>I'm interested in are algorithmic problems where one want to compute the most misleading chart, I think it would be a great fun project.</p>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2019-04-06. </div>
+    <div class="info">Tags: data visualization.</div>
+
+</div>]]></description>
+    <pubDate>Sat, 06 Apr 2019 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/posts/2019-04-06-misleading-while-being-honest.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title><span class="math inline">L_1</span> linear regression</title>
     <link>https://chaoxuprime.com/posts/2019-03-28-l1-linear-regression.html</link>
     <description><![CDATA[<br />
@@ -17,7 +37,7 @@
 <p>I am interested in misleading people while being completely honest. The article inspires the following problem. Given 2 vectors <span class="math inline">\bm{x},\bm{y}\in \R^n</span>. Let <span class="math inline">\bm{1}</span> be the all <span class="math inline">1</span> vector in <span class="math inline">\R^n</span>. We are interested in finding <span class="math inline">a,b\in \R</span>, such that <span class="math inline">\|\bm{y}-(a\bm{x}+b\bm{1})\|_p</span> is minimized. Here <span class="math inline">p</span> is either <span class="math inline">1,2</span> or <span class="math inline">\infty</span>.</p>
 <p>Note the problem is precisely the same as the linear regression problem. In the linear regression problem, we are given a point set <span class="math inline">S\subset \R^2</span> of size <span class="math inline">n</span> and we are interested in find a line <span class="math inline">f(x) = ax+b</span>, such that it minimizes the <em>error</em>, defined as</p>
 <p><span class="math display">\displaystyle 
-\sum_{(x,y)\in S} |y - f(x)\|_p
+\sum_{(x,y)\in S} \|y - f(x)\|_p
 </span></p>
 <p>For <span class="math inline">p=2</span>, there is a <span class="math inline">O(n)</span> time algorithm because there is a closed formula. For <span class="math inline">p=\infty</span>, the problem can be rewritten as a linear program with <span class="math inline">3</span> variables and <span class="math inline">n</span> constraints. Using Megiddo's result <span class="citation" data-cites="Megiddo84">[<a href="#ref-Megiddo84">1</a>]</span>, there is a <span class="math inline">O(n)</span> time algorithm to solve this problem.</p>
 <p>It is hard to find the worst case complexity when <span class="math inline">p=1</span>. This case is called the <em>least absolute deviations</em>. Statisticians just don't care about worst case running time as CS people do.</p>
@@ -31,6 +51,7 @@
 <p>Let's consider the second sum, <span class="math inline">\sum_{(x,y)\in S^-} ax+b - y = a\sum_{(x,y)\in S^-}x + |S^-|b -\sum_{(x,y)\in S^-}y</span>. Note the <span class="math inline">3</span> terms can each be solved with a halfspace counting query, consider all points lies below <span class="math inline">f</span>. This shows in <span class="math inline">6</span> halfspace counting queries.</p>
 <p>How can one do ternary search? This would need us to be able to pick the point that gives us the <span class="math inline">i</span>th largest slope with <span class="math inline">p</span>. We need a data structure such that it can return the <span class="math inline">i</span>th largest point in the radial ordering of the points in <span class="math inline">S</span> around <span class="math inline">p</span>. It is equivalent to <a href="https://cstheory.stackexchange.com/questions/42609/data-structure-for-radial-orderings-of-points-on-the-plane">halfspace range counting up to polylog factors</a>.</p>
 <p>Thus, the total running time after building the data structure in <span class="math inline">\tilde{O}(n^{4/3})</span> is <span class="math inline">n</span> times ternary search over <span class="math inline">n</span> elements, where each decision process takes <span class="math inline">\tilde{O}(n^{1/3})</span> time. Therefore the final running time is <span class="math inline">\tilde{O}(n^{4/3})</span> time.</p>
+<p>Qizheng mentioned the problem to <a href="http://tmc.web.engr.illinois.edu">Timothy Chan</a>, who gave us some references. The references seems to indicate a <span class="math inline">O(n)</span> time algorithm for the linear regression problem in constant dimension <span class="citation" data-cites="Zemel84">[<a href="#ref-Zemel84">4</a>]</span>. It is a bit hard to decipher the problem, but at least there is an easy solution that obtains <span class="math inline">O(n\log^2 n)</span> time algorithm using simple parametric search <span class="citation" data-cites="MegiddoT83">[<a href="#ref-MegiddoT83">5</a>]</span>.</p>
 <h1 id="bibliography" class="unnumbered">References</h1>
 <div id="refs" class="references">
 <div id="ref-Megiddo84">
@@ -41,6 +62,12 @@
 </div>
 <div id="ref-Matousek93">
 <p>[3] J. Matoušek, <strong>Range searching with efficient hierarchical cuttings</strong>, Discrete &amp; Computational Geometry. 10 (1993) 157–182 <a href="https://doi.org/10.1007/BF02573972">10.1007/BF02573972</a>.</p>
+</div>
+<div id="ref-Zemel84">
+<p>[4] E. Zemel, <strong>An O(n) algorithm for the linear multiple choice knapsack problem and related problems</strong>, 18 (1984) 123–128 <a href="https://doi.org/10.1016/0020-0190(84)90014-0">10.1016/0020-0190(84)90014-0</a>.</p>
+</div>
+<div id="ref-MegiddoT83">
+<p>[5] N. Megiddo, A. Tamir, <strong>Finding Least-Distances Lines</strong>, SIAM Journal on Algebraic Discrete Methods. 4 (1983) 207–211 <a href="https://doi.org/10.1137/0604021">10.1137/0604021</a>.</p>
 </div>
 </div>
 
@@ -435,57 +462,6 @@
 </div>]]></description>
     <pubDate>Mon, 21 Jan 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxuprime.com/posts/2019-01-21-high-degree-low-degree-technique.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>Lights out game on a grid</title>
-    <link>https://chaoxuprime.com/posts/2019-01-12-lights-out-game.html</link>
-    <description><![CDATA[<br />
-<div>
-<section class="theorem-environment Problem" id="Problem-1">
-<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
-<p>Let <span class="math inline">G</span> be a graph, let <span class="math inline">A</span> be the adjacency matrix of <span class="math inline">G</span>. Solve the equation <span class="math inline">Ax=b</span> in <span class="math inline">\F_2</span>.</p>
-</section>
-<p>The problem is equivalent to the <a href="https://en.wikipedia.org/wiki/Lights_Out_%28game%29">lights out game</a>. Each vertex has state <span class="math inline">0</span> or <span class="math inline">1</span>. Activate a vertex flips the state of itself and all its neighbors. Find a set of activations that turns all state into <span class="math inline">0</span>. Originally I thought this problem can be solved in <span class="math inline">O(n^{\omega/2})</span> when <span class="math inline">G</span> is planar graph on <span class="math inline">n</span> vertices by <a href="https://en.wikipedia.org/wiki/Nested_dissection">nested dissection</a>. However, only recently I found out the matrix must be non-singular. Therefore nested dissection does not apply.</p>
-<p>Recently I saw an algorithm that shows if the graph is a <span class="math inline">n\times n</span> grid, then it can be solved in <span class="math inline">O(n^3)</span> time. The solution in Chinese and can be seen <a href="https://zhuanlan.zhihu.com/p/53646257">here</a>.</p>
-<p>Given a <span class="math inline">n\times n</span> grid graph. Let <span class="math inline">v_{i,j}</span> be the node on the <span class="math inline">i</span>th row and <span class="math inline">j</span>th column. Let <span class="math inline">b_{i,j}</span> be the state of the vertex <span class="math inline">v_{i,j}</span>. The state is in <span class="math inline">\F_2</span> If we activates a node, the state of the node and its neighbors change by <span class="math inline">1</span>. The set of activated node is called the activation set.</p>
-<p>We are interested in finding an activation set <span class="math inline">S</span>, such the state of all nodes after activate <span class="math inline">S</span> is <span class="math inline">0</span>.</p>
-<p>Let <span class="math inline">S</span> be the activation set, and <span class="math inline">S_1</span> to be the activation set of the first row.</p>
-<section class="theorem-environment Theorem" id="Theorem-2">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">2</span></span>
-<p><span class="math inline">S_1</span> uniquely determines <span class="math inline">S</span>. Moreover, One can compute <span class="math inline">S</span> from <span class="math inline">S_1</span> in <span class="math inline">O(n^2)</span> time.</p>
-</section>
-<section class="theorem-environment Proof" id="Proof-">
-<span class="theorem-header"><span class="type">Proof</span></span>
-<p>Indeed, consider apply activation to the nodes in <span class="math inline">S_1</span>. Consider any vertex in row <span class="math inline">1</span>. If it <span class="math inline">0</span>, then the remaining neighbor (on the second row) cannot be activated. If it is <span class="math inline">1</span>, then the remaining neighbor has to be activated.</p>
-</section>
-<p>Let <span class="math inline">D[i,j]</span> indicates if we activate <span class="math inline">v_{i,j}</span> or not. We create formal variables <span class="math inline">Z=\set{z_1,\ldots,z_n}</span>. Here <span class="math inline">z_i</span> is an indicator variable that represents if <span class="math inline">v_{1,i}</span> is activated or not. The base case <span class="math inline">D[1,j] = z_j</span>. The observation shows that for each <span class="math inline">i</span> and <span class="math inline">j</span>, <span class="math inline">D[i+1,j] = 1 + D[i,j-1]+D[i,j]+D[i,j+1]+D[i-1,j]+b_{i,j}</span>. We can express <span class="math inline">D[i,j]</span> as a sum of elements in <span class="math inline">Z</span> and a constant, and we are summing a constant number of previous states. So it has size <span class="math inline">O(n)</span>. We can compute the expression of <span class="math inline">D[i,j]</span> in <span class="math inline">O(n)</span> time. So computing all <span class="math inline">D[i,j]</span> for <span class="math inline">i\geq 2</span> takes <span class="math inline">O(n^3)</span> time.</p>
-<p>We are interested in <span class="math inline">D[n,1],\ldots,D[n,n]</span>. We can see it is of the following form.</p>
-<p><span class="math display">\displaystyle 
-\begin{aligned}
-D[n,1] &amp;= c_{1,1} z_1+\ldots +c_{1,n} z_{n} + u_{1}\\
-D[n,2] &amp;= c_{2,1} z_1+\ldots +c_{2,n} z_{n} + u_{2}\\
- \vdots &amp;\qquad  \vdots\\
-D[n,n] &amp;= c_{m,1} z_1+\ldots + c_{m,n} z_n + u_{n}
-\end{aligned}
-</span></p>
-<p>We solve the equation <span class="math inline">Cz=u</span>. Note here <span class="math inline">C</span> is just a <span class="math inline">n\times n</span> matrix. We finds <span class="math inline">z_1,\ldots,z_n</span>. So now we have found the activation set restricted on the first row. We can use it to find the entire activation set.</p>
-<p>The total running time is <span class="math inline">O(n^3)</span>. Building the table <span class="math inline">D</span> and solving <span class="math inline">Cz=u</span>. One can generalize this a bit further. We can obtain <span class="math inline">O(m^2n)</span> running time for a <span class="math inline">m\times n</span> grid, where <span class="math inline">m\leq n</span>. Also, there is no reason we have to work in <span class="math inline">\F_2</span>, any arbitrary field is fine.</p>
-<section class="theorem-environment Theorem" id="Theorem-3">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">3</span></span>
-<p>Let <span class="math inline">G</span> be a <span class="math inline">m\times n</span> grid and <span class="math inline">A</span> is a matrix where the non-zero entires are precisely the position of <span class="math inline">1</span>s in the adjacency matrix of <span class="math inline">A</span>. Finding <span class="math inline">Ax=b</span> can be done in <span class="math inline">O(m^2n)</span> time.</p>
-</section>
-<p>I did not think too much into it, but maybe it works for all integral domains too. Interestingly, this algorithm is so special, that we have no idea how to extend it to other graphs. Maybe it works for directed graph, maybe it works for subgraph of the grid graphs.</p>
-<p>It would be really interesting to see an algorithm with running time <span class="math inline">O(n^{3/2})</span> for a planar graph of <span class="math inline">n</span> vertices.</p>
-
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2019-01-12. </div>
-    <div class="info">Tags: algorithm, algebra.</div>
-
-</div>]]></description>
-    <pubDate>Sat, 12 Jan 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-01-12-lights-out-game.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 
