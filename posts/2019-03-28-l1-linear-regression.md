@@ -16,7 +16,7 @@ Note the problem is precisely the same as the linear regression problem.
 In the linear regression problem, we are given a point set $S\subset \R^2$ of size $n$ and we are interested in find a line $f(x) = ax+b$, such that it minimizes the _error_, defined as 
 
 \[
-\sum_{(x,y)\in S} |y - f(x)\|_p
+\sum_{(x,y)\in S} \|y - f(x)\|_p
 \]
 
 For $p=2$, there is a $O(n)$ time algorithm because there is a closed formula.
@@ -44,4 +44,6 @@ Let's consider the second sum, $\sum_{(x,y)\in S^-} ax+b - y = a\sum_{(x,y)\in S
 
 How can one do ternary search? This would need us to be able to pick the point that gives us the $i$th largest slope with $p$. We need a data structure such that it can return the $i$th largest point in the radial ordering of the points in $S$ around $p$. It is equivalent to [halfspace range counting up to polylog factors](https://cstheory.stackexchange.com/questions/42609/data-structure-for-radial-orderings-of-points-on-the-plane). 
 
-Thus, the total running time after building the data structure in $\tilde{O}(n^{4/3})$ is $n$ times ternary search over $n$ elements, where each decision process takes $\tilde{O}(n^{1/3})$ time. Therefore the final running time is $\tilde{O}(n^{4/3})$ time. 
+Thus, the total running time after building the data structure in $\tilde{O}(n^{4/3})$ is $n$ times ternary search over $n$ elements, where each decision process takes $\tilde{O}(n^{1/3})$ time. Therefore the final running time is $\tilde{O}(n^{4/3})$ time.
+
+Qizheng mentioned the problem to [Timothy Chan](http://tmc.web.engr.illinois.edu), who gave us some references. The references seems to indicate a $O(n)$ time algorithm for the linear regression problem in constant dimension [@Zemel84]. It is a bit hard to decipher the problem, but at least there is an easy solution that obtains $O(n\log^2 n)$ time algorithm using simple parametric search [@MegiddoT83]. 
