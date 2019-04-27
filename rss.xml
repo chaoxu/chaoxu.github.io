@@ -46,26 +46,21 @@
 <p>Unfortunately, once you know how the entire algorithm goes, one can see its performance does not look promising. Also, making it work in Hive is next to impossible due to Hive's limitations on joins and subqueries.</p>
 <p><a href="http://tsql.solidq.com/">Itzik Ben-Gan</a> has <a href="https://www.itprotoday.com/development-techniques-and-management/packing-date-intervals">written</a> <a href="https://blogs.solidq.com/en/sqlserver/packing-intervals/">multiple</a> <a href="https://www.itprotoday.com/sql-server/new-solution-packing-intervals-problem">articles</a> on how to solve this problem. I recommend reading them to learn various tricks. In fact, my solution here is quite similar to one of Ben-Gan's.</p>
 <h1 id="using-basic-sql"><span class="header-section-number">3</span> Using basic SQL</h1>
-<p>Here we will try to implement an algorithm using the most basic of SQL, so it would even work in Hive. We first build a table, such that <span class="math inline">(p,i,j)</span> is in the table shows that there are precisely <span class="math inline">j</span> intervals covering <span class="math inline">p</span>, and there are <span class="math inline">i</span> intervals covering the previous point.</p>
+<p>Here we will try to implement an algorithm using the most basic of SQL, so it would even work in Hive. We first build a table, such that <span class="math inline">(a,i,j)</span> is in the table shows that there are <span class="math inline">j</span> intervals covering <span class="math inline">a</span>, and there are <span class="math inline">i</span> intervals covering the previous point.</p>
 <div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">VIEW</span> r <span class="kw">AS</span> 
-<span class="kw">SELECT</span> p,
-       <span class="fu">SUM</span>(d) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> p <span class="kw">ROWS</span> <span class="kw">BETWEEN</span> <span class="kw">UNBOUNDED</span> <span class="kw">PRECEDING</span> <span class="kw">AND</span> <span class="dv">1</span> <span class="kw">PRECEDING</span>) <span class="kw">AS</span> i,
-       <span class="fu">SUM</span>(d) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> p <span class="kw">ROWS</span> <span class="kw">UNBOUNDED</span> <span class="kw">PRECEDING</span>) <span class="kw">AS</span> j
-<span class="kw">FROM</span>  (<span class="kw">SELECT</span> p,
-              <span class="fu">SUM</span>(d) <span class="kw">AS</span> d
-       <span class="kw">FROM</span>   (<span class="kw">SELECT</span> a <span class="kw">AS</span> p,
-                      <span class="dv">1</span> <span class="kw">AS</span> d
-               <span class="kw">FROM</span>   t
+<span class="kw">SELECT</span> a,
+       <span class="fu">Sum</span>(d) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> a <span class="kw">ROWS</span> <span class="kw">BETWEEN</span> <span class="kw">UNBOUNDED</span> <span class="kw">PRECEDING</span> <span class="kw">AND</span> <span class="dv">1</span> <span class="kw">PRECEDING</span>) <span class="kw">AS</span> i,
+       <span class="fu">Sum</span>(d) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> a <span class="kw">ROWS</span> <span class="kw">UNBOUNDED</span> <span class="kw">PRECEDING</span>) <span class="kw">AS</span> j
+<span class="kw">FROM</span>  (<span class="kw">SELECT</span> a, <span class="fu">Sum</span>(d) <span class="kw">AS</span> d
+       <span class="kw">FROM</span>   (<span class="kw">SELECT</span> a,  <span class="dv">1</span> <span class="kw">AS</span> d <span class="kw">FROM</span> t
                <span class="kw">UNION</span> <span class="kw">ALL</span>
-               <span class="kw">SELECT</span> b  <span class="kw">AS</span> p,
-                      -<span class="dv">1</span> <span class="kw">AS</span> d
-               <span class="kw">FROM</span>   t) e
-       <span class="kw">GROUP</span>  <span class="kw">BY</span> p) f; </code></pre></div>
-<p>Next, we produce all the endpoints in the union of the intervals, and pair up adjacent ones. Finally, we produce the set of intervals by only pick the odd numbered rows.</p>
+               <span class="kw">SELECT</span> b, -<span class="dv">1</span> <span class="kw">AS</span> d <span class="kw">FROM</span> t) e
+       <span class="kw">GROUP</span>  <span class="kw">BY</span> a) f; </code></pre></div>
+<p>Next, we produce all the endpoints in the union of the intervals and pair up adjacent ones. Finally, we produce the set of intervals by only pick the odd-numbered rows.</p>
 <div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> a, b
-<span class="kw">FROM</span> (<span class="kw">SELECT</span> p <span class="kw">as</span> a, 
-             <span class="fu">Lead</span>(p) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> p)      <span class="kw">AS</span> b,
-             <span class="fu">Row_number</span>() <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> p) <span class="kw">AS</span> n
+<span class="kw">FROM</span> (<span class="kw">SELECT</span> a,
+             <span class="fu">Lead</span>(a)      <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="kw">AS</span> b,
+             <span class="fu">Row_number</span>() <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="kw">AS</span> n
       <span class="kw">FROM</span>   r
       <span class="kw">WHERE</span>  j=<span class="dv">0</span> <span class="kw">OR</span> i=<span class="dv">0</span> <span class="kw">OR</span> i <span class="kw">is</span> <span class="kw">null</span>) e
 <span class="kw">WHERE</span>  n%<span class="dv">2</span> = <span class="dv">1</span>;</code></pre></div>
