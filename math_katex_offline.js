@@ -17,8 +17,6 @@ const macros={
               "\\F":"\\mathbb{F}",
               "\\e": "\\varepsilon",
               "\\eps": "\\varepsilon",
-              "\\argmin": "\\DOTSB\\mathop{\\operatorname{arg\\,min}}\\limits",
-              "\\argmax": "\\DOTSB\\mathop{\\operatorname{arg\\,max}}\\limits",
               "\\mex": "\\mathop{\\operatorname{mex}}",
               "\\lcm": "\\mathop{\\operatorname{lcm}}",
               "\\dist": "\\mathop{\\operatorname{dist}}",
