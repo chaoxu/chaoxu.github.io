@@ -9,6 +9,79 @@
                    type="application/rss+xml" />
         <lastBuildDate>Sat, 27 Apr 2019 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Union of intervals in SQL</title>
+    <link>https://chaoxuprime.com/posts/2019-04-27-union-of-intervals-in-sql.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>We given a collection of intervals, and we want to find its union, represented by a set of disjoint intervals. Note this is a common interview problem. It is <a href="https://leetcode.com/problems/merge-intervals/">LeetCode 56. Merge Intervals</a>. Assume the intervals are of the form <span class="math inline">[a,b)</span>, where <span class="math inline">a&lt;b</span>. However, I have to solve this problem in Hive. So this is a problem I have to solve in Hive's SQL variant.</p>
+<p>First, here is the schema of the table and some sample inputs.</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">TABLE</span> t (
+  a <span class="dt">int</span>,
+  b <span class="dt">int</span>
+);
+<span class="kw">INSERT</span> <span class="kw">INTO</span> t <span class="kw">VALUES</span>
+  (<span class="dv">0</span>,<span class="dv">10</span>),
+  (<span class="dv">20</span>,<span class="dv">30</span>),
+  (<span class="dv">5</span>,<span class="dv">15</span>);</code></pre></div>
+<p>The correct output should be the following.</p>
+<pre><code>a    b
+-------
+0    15
+20   30</code></pre>
+<p>We do not allow empty intervals, so we cannot have <span class="math inline">a=b</span>. I was surprised find a <a href="https://stackoverflow.com/a/8120432/303863">very short solution on stackoverflow</a>.</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> 
+       t1.a,
+       <span class="fu">MIN</span>(t2.b) <span class="kw">AS</span> b
+<span class="kw">FROM</span> t t1 
+<span class="kw">INNER</span> <span class="kw">JOIN</span> t t2 <span class="kw">ON</span> t1.a &lt;= t2.b
+  <span class="kw">AND</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span>(<span class="kw">SELECT</span> * <span class="kw">FROM</span> t 
+                 <span class="kw">WHERE</span> t2.b &gt;= t.a <span class="kw">AND</span> t2.b &lt; t.b) 
+<span class="kw">WHERE</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span>(<span class="kw">SELECT</span> * <span class="kw">FROM</span> t
+                 <span class="kw">WHERE</span> t1.a &gt; t.a <span class="kw">AND</span> t1.a &lt;= t.b) 
+<span class="kw">GROUP</span> <span class="kw">BY</span> t1.a
+<span class="kw">ORDER</span> <span class="kw">BY</span> t1.a</code></pre></div>
+<p>Unfortunately, once you know how the entire algorithm goes, one can see its performance does not look promising. Also, making it work in Hive is next to impossible due to Hive's limitations on joins and subqueries.</p>
+<p>Here we will try to implement an algorithm using the most basic of SQL, so it would even work in Hive. We first build a table, such that <span class="math inline">(p,i)</span> is in the table shows that there are precisely <span class="math inline">i</span> points overlapping <span class="math inline">p</span>.</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">VIEW</span> r <span class="kw">AS</span> 
+<span class="kw">SELECT</span> p,
+       <span class="fu">SUM</span>(d) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> p <span class="kw">ROWS</span> <span class="kw">UNBOUNDED</span> <span class="kw">PRECEDING</span>) <span class="kw">AS</span> c
+<span class="kw">FROM</span>  (<span class="kw">SELECT</span> p,
+              <span class="fu">SUM</span>(d) <span class="kw">AS</span> d
+       <span class="kw">FROM</span>   (<span class="kw">SELECT</span> a <span class="kw">AS</span> p,
+                      <span class="dv">1</span> <span class="kw">AS</span> d
+               <span class="kw">FROM</span>   t
+               <span class="kw">UNION</span> <span class="kw">ALL</span>
+               <span class="kw">SELECT</span> b  <span class="kw">AS</span> p,
+                      -<span class="dv">1</span> <span class="kw">AS</span> d
+               <span class="kw">FROM</span>   t) e
+       <span class="kw">GROUP</span>  <span class="kw">BY</span> p) f; </code></pre></div>
+<p>Next, we produce all the endpoints in the union of the intervals.</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">VIEW</span> s <span class="kw">AS</span>
+<span class="kw">SELECT</span> p
+<span class="kw">FROM</span>   (<span class="kw">SELECT</span> *,
+               <span class="fu">Lag</span>(c) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> p)    <span class="kw">AS</span> d 
+        <span class="kw">FROM</span>   r) e
+<span class="kw">WHERE</span>  c=<span class="dv">0</span> <span class="kw">OR</span> d=<span class="dv">0</span> <span class="kw">OR</span> d <span class="kw">is</span> <span class="kw">null</span>;</code></pre></div>
+<p>Finally, we produce the set of intervals by pairing up adjacent rows.</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> a, b
+<span class="kw">FROM</span>   (<span class="kw">SELECT</span> p                              <span class="kw">AS</span> a,
+               <span class="fu">Lead</span>(p) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> p)      <span class="kw">AS</span> b,
+               <span class="fu">Row_number</span>() <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> p) <span class="kw">AS</span> n
+        <span class="kw">FROM</span>   s) f
+<span class="kw">WHERE</span>  n%<span class="dv">2</span> = <span class="dv">1</span>;</code></pre></div>
+<p>You can find <a href="https://www.db-fiddle.com/f/aVaF6NDTVYmxBpifsHDFBf/5">the example in DB-fiddle</a>. I am interested to seeing simpler and faster code using the simplest of SQL.</p>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2019-04-27. </div>
+    <div class="info">Tags: SQL, algorithm.</div>
+
+</div>]]></description>
+    <pubDate>Sat, 27 Apr 2019 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/posts/2019-04-27-union-of-intervals-in-sql.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title>Maximum weight hierarchical <span class="math inline">b</span>-matching</title>
     <link>https://chaoxuprime.com/posts/2019-04-27-maximum-weight-hierarchical-b-matching.html</link>
     <description><![CDATA[<br />
@@ -376,46 +449,6 @@
 </div>]]></description>
     <pubDate>Tue, 29 Jan 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxuprime.com/posts/2019-01-29-reviewer-assignment.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>Soft heap and selection</title>
-    <link>https://chaoxuprime.com/posts/2019-01-22-soft-heap-and-selection.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>I enjoyed the workshop <a href="https://simplicityinalgorithms.com/">SOSA</a> a lot (Disclaimer: I have a paper in SOSA). The papers are simple and fun. I liked the paper <span class="citation" data-cites="KaplanKZZ18">[<a href="#ref-KaplanKZZ18">1</a>]</span> the most, because I learned some really interesting tricks with <a href="https://en.wikipedia.org/wiki/Soft_heap">soft heap</a>.</p>
-<p>Here I give a teaser of two things soft heap can do.</p>
-<p>We consider a minimalistic soft heap, as there are soft heap with more operations.</p>
-<ul>
-<li><code>soft-heap(ε)</code>: creates an empty soft heap with error parameter <span class="math inline">\e</span>.</li>
-<li><code>insert(e)</code>: insert an element into the heap.</li>
-<li><code>extract-min()</code>: return the element of minimum key in heap, and set of newly corrupted elements since last extraction.</li>
-</ul>
-<p>The operation <code>insert</code> takes <span class="math inline">O(1)</span> time, <code>extract-min()</code> takes <span class="math inline">O(1/\e)</span> time. In this article, we can assume <span class="math inline">\e=1/4</span>.</p>
-<p>During each insertion, the key of some elements might be increased. An element is corrupted if its key in the heap is strictly greater than the original key. If there are <span class="math inline">I</span> insertions into the soft heap, then at most <span class="math inline">\eI</span> elements can be corrupted.</p>
-<p>Although <code>extract-min()</code> might return an element that is not necessarily the minimum, but there is a bound on the amount of possible errors. Before <span class="citation" data-cites="KaplanKZZ18">[<a href="#ref-KaplanKZZ18">1</a>]</span>, I don't know of any application of soft heap other than vaguely knowing about it was used for minimum spanning tree.</p>
-<h1 id="linear-time-selection-in-unordered-list"><span class="header-section-number">1</span> Linear time selection in unordered list</h1>
-<p>We insert all elements into the soft-heap, and then we apply <code>extract-min</code> <span class="math inline">(1-\e)n/2</span> times, and find the maximum element <span class="math inline">e</span>. One can see the rank of <span class="math inline">e</span> lies between <span class="math inline">(1-\e)n/2</span> and <span class="math inline">(1+\e)n/2</span>. Now we can use this to remove at least <span class="math inline">(1-\e)n/2=\frac{1+\e}{2} n</span> elements, and recurse on the remaining. Once there is only a constant number of elements, use brute force. This gives us an running time <span class="math inline">T(n) = O(n) + T(\frac{1+\e}{2} n) = O(n)</span>.</p>
-<h1 id="linear-time-selection-in-heap"><span class="header-section-number">2</span> Linear time selection in heap</h1>
-<p>We are given a min heap <span class="math inline">H</span>, and interested in find the <span class="math inline">k</span>th smallest element in the heap. We first insert the min element <span class="math inline">e</span> into the soft heap.</p>
-<p>Whenever we apply <code>extract-min</code> to the soft heap, we obtain <span class="math inline">e</span> and a set of newly corrupted elements <span class="math inline">C</span>. For each element <span class="math inline">e&#39;\in C</span>, we add the children of <span class="math inline">e&#39;</span> in <span class="math inline">H</span> into the soft heap. If <span class="math inline">e</span> is not corrupted, we also add the children of <span class="math inline">e</span> in <span class="math inline">H</span> into the soft heap. Once we apply <code>extract-min</code> <span class="math inline">k-1</span> times we stop. Let <span class="math inline">S</span> be the set of all elements that was inserted into the soft heap. There are two important claims: <span class="math inline">|S|=O(k)</span> and the rank <span class="math inline">k</span> element has to be in <span class="math inline">S</span>. We can use a linear time selection algorithm on <span class="math inline">S</span> once we prove the two claims.</p>
-<h1 id="other-useful-results"><span class="header-section-number">3</span> Other useful results</h1>
-<p>There are some other nice results in the paper. Getting optimal results for selecting the rank <span class="math inline">k</span> element in <span class="math inline">m</span> sorted lists, and selecting <span class="math inline">k</span>th element in <span class="math inline">X+Y = \set{x+y | x\in X, y\in Y}</span>.</p>
-<h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references">
-<div id="ref-KaplanKZZ18">
-<p>[1] H. Kaplan, L. Kozma, O. Zamir, U. Zwick, Selection from Heaps, Row-Sorted Matrices, and X+Y Using Soft Heaps, in: J.T. Fineman, M. Mitzenmacher (Eds.), 2nd Symposium on Simplicity in Algorithms (Sosa 2019), Schloss Dagstuhl–Leibniz-Zentrum fuer Informatik, Dagstuhl, Germany, 2018: pp. 5:1–5:21 <a href="https://doi.org/10.4230/OASIcs.SOSA.2019.5">10.4230/OASIcs.SOSA.2019.5</a>.</p>
-</div>
-</div>
-
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2019-01-22. </div>
-    <div class="info">Tags: algorithm, data structure.</div>
-
-</div>]]></description>
-    <pubDate>Tue, 22 Jan 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-01-22-soft-heap-and-selection.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 
