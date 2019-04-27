@@ -3,7 +3,9 @@ title: Union of intervals in SQL
 tags: SQL, algorithm
 ---
 
-We given a collection of intervals, and we want to find its union, represented by a set of disjoint intervals. Note this is a common interview problem. It is [LeetCode 56. Merge Intervals](https://leetcode.com/problems/merge-intervals/). Assume the intervals are of the form $[a,b)$, where $a<b$. 
+# Introduction 
+
+We given a collection of intervals, and we want to find its union, represented by a set of disjoint intervals. Assume the intervals are of the form $[a,b)$, where $a<b$. 
 However, I have to solve this problem in Hive. So this is a problem I have to solve in Hive's SQL variant. 
 
 First, here is the schema of the table and some sample inputs. 
@@ -28,7 +30,12 @@ a    b
 20   30
 ```
 
-We do not allow empty intervals, so we cannot have $a=b$. I was surprised find a [very short solution on stackoverflow](https://stackoverflow.com/a/8120432/303863).
+We do not allow empty intervals, so we cannot have $a=b$. 
+
+# Previous Works
+
+Note this is a common interview problem, [LeetCode 56. Merge Intervals](https://leetcode.com/problems/merge-intervals/). 
+I was surprised find a [very short solution on stackoverflow](https://stackoverflow.com/a/8120432/303863). 
 
 ```sql
 SELECT 
@@ -46,6 +53,9 @@ ORDER BY t1.a
 
 Unfortunately, once you know how the entire algorithm goes, one can see its performance does not look promising. Also, making it work in Hive is next to impossible due to Hive's limitations on joins and subqueries.
 
+[Itzik Ben-Gan](http://tsql.solidq.com/) has [written](https://www.itprotoday.com/development-techniques-and-management/packing-date-intervals) [multiple](https://blogs.solidq.com/en/sqlserver/packing-intervals/) [articles](https://www.itprotoday.com/sql-server/new-solution-packing-intervals-problem) on how to solve this problem. I recommend reading them to learn various tricks. In fact, my solution here is quite similar to one of Ben-Gan's. 
+
+# Using basic SQL
 Here we will try to implement an algorithm using the most basic of SQL, so it would even work in Hive. We first build a table, such that $(p,i)$ is in the table shows that there are precisely $i$ points overlapping $p$.
 
 ```sql
