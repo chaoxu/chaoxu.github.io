@@ -4,7 +4,7 @@
   <title>Chao Xu</title>
   <meta name="Description" content="The personal webpage of Chao Xu.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
   <script>
@@ -20,27 +20,40 @@
 </head>
 <body>
 <div class="container">
-<div class="row" style="display:block"><h1 id="site-title">Chao Xu <wbr>|<wbr> <ruby>
+<div class="person" itemscope="" itemtype="http://schema.org/Person">
+    <meta itemprop="gender" content="Male">
+    <meta itemprop="birthDate" content="September 12, 1989">
+    <meta itemprop="honorificPrefix" content="Dr">
+    <meta itemprop="honorificSuffix" content="PhD">
+    <meta itemprop="url" content="https://chaoxuprime.com">
+<div class="row" style="display:block"><h1 id="site-title"><span itemprop="givenName">Chao</span> <span itemprop="familyName">Xu</span> <wbr>|<wbr> <ruby>
 <rb>许</rb><rp>(</rp><rt>xǔ</rt><rp>)</rp></ruby>
 <ruby><rb>超</rb><rp>(</rp><rt>chāo</rt><rp>)</rp></ruby>
 </h1></div>
 <div class="row">
-  <div class="intro-left">
-    <img width="270" height="270" src="/files/chao/chaoxu6.jpg" style="border-radius:50%;max-width:95%" title="Lord Chao of the House Xu, the First of His Name, Guardian of the Art Gallery" alt="Photo of Chao Xu">
+  <div class="intro-left" itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject">
+    <meta itemprop="representativeOfPage" content="True">
+    <img width="270" height="270" src="https://chaoxuprime.com/files/chao/chaoxu_current.jpg" style="border-radius:50%;max-width:95%" title="Lord Chao of the House Xu, the First of His Name, Guardian of the Art Gallery" alt="Photo of Chao Xu" itemprop="contentUrl">
   </div>
   <div class="intro-right">
     <p>
-      I'm a research scientist at <a href="https://research.yahoo.com/">Yahoo! Research</a> in New York.
-      My research interests are algorithms, combinatorial optimization and computational geometry. I'm also interested in more applied problems with nice theoretical components. 
+      I'm a <span itemprop="jobTitle">research scientist</span> at 
+        <span itemprop="worksFor" itemscope="" itemtype="http://schema.org/Corporation"><span itemprop="name">Yahoo! Research</span></span> in New York.
+      My research interests are <span itemprop="knowsAbout">algorithms</span>, <span itemprop="knowsAbout">combinatorial optimization</span> and <span itemprop="knowsAbout">computational geometry</span>. I'm also interested in more applied problems with nice theoretical components. 
       Here is my <a href="files/cv.pdf">CV</a>(last updated Oct 2018) and <a href="files/research_statement.pdf">old research statement</a>.
     </p>
-    <p>I obtained my PhD in Computer Science from <a href="https://illinois.edu/">University of Illinois at Urbana-Champaign</a> in May 2018. My advisors were <a href="http://karthik.ise.illinois.edu/">Karthik Chandrasekaran</a> and <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a>.
+    <p>I obtained my PhD in Computer Science from 
+      <span itemprop="alumniOf" itemscope="" itemtype="http://schema.org/EducationalOrganization"><a itemprop="name" href="https://illinois.edu/">University of Illinois at Urbana-Champaign</a></span>
+    in May 2018. My advisors were <a href="http://karthik.ise.illinois.edu/">Karthik Chandrasekaran</a> and <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a>.
     I've previously held a summer visiting position at <a href="https://www.nii.ac.jp/en/">National Institute of Informatics</a>, hosted by <a href="http://research.nii.ac.jp/~k_keniti/">Ken-ichi Kawarabayashi</a>, and <a href="https://www.nyu.edu/">New York University</a>, hosted by <a href="https://engineering.nyu.edu/faculty/boris-aronov">Boris Aronov</a>. 
-    I finished my undergrad in mathematics at <a href="https://www.stonybrook.edu/">Stony Brook University</a> in 2013, and spent Spring 2012 in <a href="https://www.budapestsemesters.com/">Budapest Semesters in Mathematics</a>.
+    I finished my undergrad in mathematics at 
+    <span itemprop="alumniOf" itemscope="" itemtype="http://schema.org/EducationalOrganization"><a itemprop="name" href="https://www.stonybrook.edu/">Stony Brook University</a></span>
+     in 2013, and spent Spring 2012 in <a href="https://www.budapestsemesters.com/">Budapest Semesters in Mathematics</a>.
     </p>
     <p>I maintain a <a href="https://github.com/chaoxu/">github account</a> and a <a href="blog.html"><strong>blog</strong></a>. I frequent <a href="http://cstheory.stackexchange.com/users/314/chao-xu">cstheory</a>.</p>
-    <p>You can contact me through email <samp><a href="mailto:chao.xu@verizonmedia.com">chao.xu@verizonmedia.com</a></samp>.</p>
+    <p>You can contact me through email <a href="mailto:chao.xu@verizonmedia.com"><samp itemprop="email">chao.xu@verizonmedia.com</samp></a>.</p>
   </div>
+</div>
 </div>
 <div class="row pubtypeheader">Conference Publications</div>
   <!-- LP Relaxation and Tree Packing for Minimum <span class="math">k</span>-cuts  -->
