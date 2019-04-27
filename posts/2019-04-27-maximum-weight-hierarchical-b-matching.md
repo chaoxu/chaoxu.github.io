@@ -10,11 +10,13 @@ Consider a graph $G=(V,E)$ with a weight function $w:E\to \N$ and capacity funct
 
 Formally, it is the following integer program.
 
+\[
 \begin{aligned}
 & \max_{y\in \Z^m} & & \sum_{e} w_e y_e & \\
 & \text{s.t.} & & \sum_{v\in F_i} \sum_{e:v\in e\in E} y_e \leq u_i & i\in [k] \\
 & & &  0\leq y_e \leq c_e & \forall e\in E \\
 \end{aligned}
+\]
 
 This is a generalization of the maximum weight $c$-capacitated $b$-matching problem. Indeed, we can simply set $F_i = \set{v_i}$ and $u_i=b_i$. 
 However, this problem is actually no more general than the maximum weight $c$-capacitated $b$-matching problem.
@@ -32,6 +34,7 @@ We define $F_i' = F_i \setminus \bigcup_{j: F_j\subsetneq F_i} F_j$.
 We also define $C_i$ to be the indices $j$, such that for all $k$, $F_j\subseteq F_k \subsetneq F_i$ implies $j=k$.
 $y_e$ denote the amount of capacities we assign to $e$, $x_v$ denotes the capacitated degree, hence $x_v = \sum_{e:v\in e\in E} y_e$. We define $z_i = \sum_{v\in F_i} x_v$, which can be transformed to $z_i = \sum_{v\in F_i'} x_v + \sum_{j\in C_i} z_j$. Therefore we obtain the following integer program by directly applying substitutions.
 
+\[
 \begin{aligned}
 & \max_{x\in \Z^n,y\in \Z^m, z\in \Z^k} & & \sum_{e} w_e y_e & \\
 & \text{s.t.} & & \sum_{v\in F_i'} x_v + \sum_{j\in C_i} z_j - z_i= 0 & i\in [k] \\
@@ -39,5 +42,6 @@ $y_e$ denote the amount of capacities we assign to $e$, $x_v$ denotes the capaci
 & & &  0\leq y_e \leq c_e & \forall e\in E \\
 & & &  0\leq z_i \leq u_i & \forall i\in [k] \\
 \end{aligned}
+\]
 
 The matrix here is a bidirected matrix. This shows the original problem can be solved in polynomial time. 
