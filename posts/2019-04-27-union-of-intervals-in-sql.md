@@ -56,32 +56,27 @@ Unfortunately, once you know how the entire algorithm goes, one can see its perf
 [Itzik Ben-Gan](http://tsql.solidq.com/) has [written](https://www.itprotoday.com/development-techniques-and-management/packing-date-intervals) [multiple](https://blogs.solidq.com/en/sqlserver/packing-intervals/) [articles](https://www.itprotoday.com/sql-server/new-solution-packing-intervals-problem) on how to solve this problem. I recommend reading them to learn various tricks. In fact, my solution here is quite similar to one of Ben-Gan's. 
 
 # Using basic SQL
-Here we will try to implement an algorithm using the most basic of SQL, so it would even work in Hive. We first build a table, such that $(p,i,j)$ is in the table shows that there are precisely $j$ intervals covering $p$, and there are $i$ intervals covering the previous point.
+Here we will try to implement an algorithm using the most basic of SQL, so it would even work in Hive. We first build a table, such that $(a,i,j)$ is in the table shows that there are $j$ intervals covering $a$, and there are $i$ intervals covering the previous point.
 
 ```sql
 CREATE VIEW r AS 
-SELECT p,
-       SUM(d) OVER (ORDER BY p ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING) AS i,
-       SUM(d) OVER (ORDER BY p ROWS UNBOUNDED PRECEDING) AS j
-FROM  (SELECT p,
-              SUM(d) AS d
-       FROM   (SELECT a AS p,
-                      1 AS d
-               FROM   t
+SELECT a,
+       Sum(d) OVER (ORDER BY a ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING) AS i,
+       Sum(d) OVER (ORDER BY a ROWS UNBOUNDED PRECEDING) AS j
+FROM  (SELECT a, Sum(d) AS d
+       FROM   (SELECT a,  1 AS d FROM t
                UNION ALL
-               SELECT b  AS p,
-                      -1 AS d
-               FROM   t) e
-       GROUP  BY p) f; 
+               SELECT b, -1 AS d FROM t) e
+       GROUP  BY a) f; 
 ```
 
-Next, we produce all the endpoints in the union of the intervals, and pair up adjacent ones. Finally, we produce the set of intervals by only pick the odd numbered rows. 
+Next, we produce all the endpoints in the union of the intervals and pair up adjacent ones. Finally, we produce the set of intervals by only pick the odd-numbered rows. 
 
 ```sql
 SELECT a, b
-FROM (SELECT p as a, 
-             Lead(p) OVER (ORDER BY p)      AS b,
-             Row_number() OVER (ORDER BY p) AS n
+FROM (SELECT a,
+             Lead(a)      OVER (ORDER BY a) AS b,
+             Row_number() OVER (ORDER BY a) AS n
       FROM   r
       WHERE  j=0 OR i=0 OR i is null) e
 WHERE  n%2 = 1;
