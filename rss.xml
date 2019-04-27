@@ -13,7 +13,8 @@
     <link>https://chaoxuprime.com/posts/2019-04-27-union-of-intervals-in-sql.html</link>
     <description><![CDATA[<br />
 <div>
-<p>We given a collection of intervals, and we want to find its union, represented by a set of disjoint intervals. Note this is a common interview problem. It is <a href="https://leetcode.com/problems/merge-intervals/">LeetCode 56. Merge Intervals</a>. Assume the intervals are of the form <span class="math inline">[a,b)</span>, where <span class="math inline">a&lt;b</span>. However, I have to solve this problem in Hive. So this is a problem I have to solve in Hive's SQL variant.</p>
+<h1 id="introduction"><span class="header-section-number">1</span> Introduction</h1>
+<p>We given a collection of intervals, and we want to find its union, represented by a set of disjoint intervals. Assume the intervals are of the form <span class="math inline">[a,b)</span>, where <span class="math inline">a&lt;b</span>. However, I have to solve this problem in Hive. So this is a problem I have to solve in Hive's SQL variant.</p>
 <p>First, here is the schema of the table and some sample inputs.</p>
 <div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">TABLE</span> t (
   a <span class="dt">int</span>,
@@ -28,7 +29,9 @@
 -------
 0    15
 20   30</code></pre>
-<p>We do not allow empty intervals, so we cannot have <span class="math inline">a=b</span>. I was surprised find a <a href="https://stackoverflow.com/a/8120432/303863">very short solution on stackoverflow</a>.</p>
+<p>We do not allow empty intervals, so we cannot have <span class="math inline">a=b</span>.</p>
+<h1 id="previous-works"><span class="header-section-number">2</span> Previous Works</h1>
+<p>Note this is a common interview problem, <a href="https://leetcode.com/problems/merge-intervals/">LeetCode 56. Merge Intervals</a>. I was surprised find a <a href="https://stackoverflow.com/a/8120432/303863">very short solution on stackoverflow</a>.</p>
 <div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> 
        t1.a,
        <span class="fu">MIN</span>(t2.b) <span class="kw">AS</span> b
@@ -41,6 +44,8 @@
 <span class="kw">GROUP</span> <span class="kw">BY</span> t1.a
 <span class="kw">ORDER</span> <span class="kw">BY</span> t1.a</code></pre></div>
 <p>Unfortunately, once you know how the entire algorithm goes, one can see its performance does not look promising. Also, making it work in Hive is next to impossible due to Hive's limitations on joins and subqueries.</p>
+<p><a href="http://tsql.solidq.com/">Itzik Ben-Gan</a> has <a href="https://www.itprotoday.com/development-techniques-and-management/packing-date-intervals">written</a> <a href="https://blogs.solidq.com/en/sqlserver/packing-intervals/">multiple</a> <a href="https://www.itprotoday.com/sql-server/new-solution-packing-intervals-problem">articles</a> on how to solve this problem. I recommend reading them to learn various tricks. In fact, my solution here is quite similar to one of Ben-Gan's.</p>
+<h1 id="using-basic-sql"><span class="header-section-number">3</span> Using basic SQL</h1>
 <p>Here we will try to implement an algorithm using the most basic of SQL, so it would even work in Hive. We first build a table, such that <span class="math inline">(p,i)</span> is in the table shows that there are precisely <span class="math inline">i</span> points overlapping <span class="math inline">p</span>.</p>
 <div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">VIEW</span> r <span class="kw">AS</span> 
 <span class="kw">SELECT</span> p,
@@ -104,15 +109,14 @@
 </section>
 <p>The above theorem can be found in <span class="citation" data-cites="Schrijver03">[<a href="#ref-Schrijver03">2</a>]</span>. Note that in Schrijver's book, one require <span class="math inline">\sum_{i=1}^m |A_{i,j}|=2</span>. It is not hard to see the statement still holds even if we have <span class="math inline">\leq</span> in place of <span class="math inline">=</span>.</p>
 <p>We will express the maximum weight hierarchical <span class="math inline">b</span>-matching problem as an integer program based on a bidirected matrix. The integer program is a modification of the integer program in <span class="citation" data-cites="KaparisLM17">[<a href="#ref-KaparisLM17">3</a>]</span>. The integer program here is simpler, because we are not trying to reduce to <em>perfect</em> <span class="math inline">b</span>-matching.</p>
-<p>We define <span class="math inline">F_i&#39; = F_i \setminus \bigcup_{j: F_j\subsetneq F_i} F_j</span>. We also define <span class="math inline">C_i</span> to be the indices <span class="math inline">j</span>, such that for all <span class="math inline">k</span>, <span class="math inline">F_j\subseteq F_k \subsetneq F_i</span> implies <span class="math inline">j=k</span>. <span class="math inline">y_e</span> denote the amount of capacities we assign to <span class="math inline">e</span>, <span class="math inline">x_v</span> denotes the capacitated degree, hence <span class="math inline">x_v = \sum_{e:v\in e\in E} y_e</span>. We define <span class="math inline">z_i = \sum_{v\in F_i} x_v</span>, which can be transformed to <span class="math inline">z_i = \sum_{v\in F_i&#39;} x_v + \sum_{j\in C_i} z_j</span>. Therefore we obtain the following integer program by directly applying substitutions. <span class="math display">\displaystyle 
-\begin{aligned}
-&amp; \max_{x\in \Z^n,y\in \Z^m, z\in \Z^k} &amp; &amp; \sum_{e} w_e y_e &amp; \\
-&amp; \text{s.t.} &amp; &amp; \sum_{v\in F_i&#39;} x_v + \sum_{j\in C_i} z_j = 0 &amp; i\in [k] \\
-&amp; &amp; &amp;  \sum_{e: v\in e\in E} y_e -x_v = 0 &amp; \forall v\in V \\
-&amp; &amp; &amp;  0\leq y_e \leq c_e &amp; \forall e\in E \\
-&amp; &amp; &amp;  0\leq z_i \leq u_i &amp; \forall i\in [k] \\
-\end{aligned}
-</span></p>
+<p>We define <span class="math inline">F_i&#39; = F_i \setminus \bigcup_{j: F_j\subsetneq F_i} F_j</span>. We also define <span class="math inline">C_i</span> to be the indices <span class="math inline">j</span>, such that for all <span class="math inline">k</span>, <span class="math inline">F_j\subseteq F_k \subsetneq F_i</span> implies <span class="math inline">j=k</span>. <span class="math inline">y_e</span> denote the amount of capacities we assign to <span class="math inline">e</span>, <span class="math inline">x_v</span> denotes the capacitated degree, hence <span class="math inline">x_v = \sum_{e:v\in e\in E} y_e</span>. We define <span class="math inline">z_i = \sum_{v\in F_i} x_v</span>, which can be transformed to <span class="math inline">z_i = \sum_{v\in F_i&#39;} x_v + \sum_{j\in C_i} z_j</span>. Therefore we obtain the following integer program by directly applying substitutions.</p>
+<span class="math">\begin{aligned}
+& \max_{x\in \Z^n,y\in \Z^m, z\in \Z^k} & & \sum_{e} w_e y_e & \\
+& \text{s.t.} & & \sum_{v\in F_i'} x_v + \sum_{j\in C_i} z_j = 0 & i\in [k] \\
+& & &  \sum_{e: v\in e\in E} y_e -x_v = 0 & \forall v\in V \\
+& & &  0\leq y_e \leq c_e & \forall e\in E \\
+& & &  0\leq z_i \leq u_i & \forall i\in [k] \\
+\end{aligned}</span>
 <p>It's easy to see the matrix here is a bidirected matrix. This shows the original problem can be solved in polynomial time.</p>
 <h1 id="bibliography" class="unnumbered">References</h1>
 <div id="refs" class="references">
@@ -120,7 +124,7 @@
 <p>[1] Y. Emek, S. Kutten, M. Shalom, S. Zaks, <strong>Hierarchical b-Matching</strong>, arXiv E-Prints. (2019) arXiv:1904.10210.</p>
 </div>
 <div id="ref-Schrijver03">
-<p>[2] A. Schrijver, <strong>Combinatorial optimization (3 volume, a,B, &amp; c)</strong>, Springer, 2003.</p>
+<p>[2] A. Schrijver, <strong>Combinatorial Optimization (3 volume, A, B, &amp; C)</strong>, Springer, 2003.</p>
 </div>
 <div id="ref-KaparisLM17">
 <p>[3] I.M. Konstantinos Kaparis Adam N. Letchford, <strong>On matroid parity and matching polytopes</strong>, Department of Management Science, Lancaster University, 2017.</p>
