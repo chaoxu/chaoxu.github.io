@@ -56,12 +56,13 @@ Unfortunately, once you know how the entire algorithm goes, one can see its perf
 [Itzik Ben-Gan](http://tsql.solidq.com/) has [written](https://www.itprotoday.com/development-techniques-and-management/packing-date-intervals) [multiple](https://blogs.solidq.com/en/sqlserver/packing-intervals/) [articles](https://www.itprotoday.com/sql-server/new-solution-packing-intervals-problem) on how to solve this problem. I recommend reading them to learn various tricks. In fact, my solution here is quite similar to one of Ben-Gan's. 
 
 # Using basic SQL
-Here we will try to implement an algorithm using the most basic of SQL, so it would even work in Hive. We first build a table, such that $(p,i)$ is in the table shows that there are precisely $i$ points overlapping $p$.
+Here we will try to implement an algorithm using the most basic of SQL, so it would even work in Hive. We first build a table, such that $(p,i,j)$ is in the table shows that there are precisely $j$ intervals covering $p$, and there are $i$ intervals covering the previous point.
 
 ```sql
 CREATE VIEW r AS 
 SELECT p,
-       SUM(d) OVER (ORDER BY p ROWS UNBOUNDED PRECEDING) AS c
+       SUM(d) OVER (ORDER BY p ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING) AS i,
+       SUM(d) OVER (ORDER BY p ROWS UNBOUNDED PRECEDING) AS j
 FROM  (SELECT p,
               SUM(d) AS d
        FROM   (SELECT a AS p,
@@ -74,26 +75,16 @@ FROM  (SELECT p,
        GROUP  BY p) f; 
 ```
 
-Next, we produce all the endpoints in the union of the intervals.
-
-```sql
-CREATE VIEW s AS
-SELECT p
-FROM   (SELECT *,
-               Lag(c) OVER (ORDER BY p)    AS d 
-        FROM   r) e
-WHERE  c=0 OR d=0 OR d is null;
-```
-
-Finally, we produce the set of intervals by pairing up adjacent rows. 
+Next, we produce all the endpoints in the union of the intervals, and pair up adjacent ones. Finally, we produce the set of intervals by only pick the odd numbered rows. 
 
 ```sql
 SELECT a, b
-FROM   (SELECT p                              AS a,
-               Lead(p) OVER (ORDER BY p)      AS b,
-               Row_number() OVER (ORDER BY p) AS n
-        FROM   s) f
+FROM (SELECT p as a, 
+             Lead(p) OVER (ORDER BY p)      AS b,
+             Row_number() OVER (ORDER BY p) AS n
+      FROM   r
+      WHERE  j=0 OR i=0 OR i is null) e
 WHERE  n%2 = 1;
 ```
 
-You can find [the example in DB-fiddle](https://www.db-fiddle.com/f/aVaF6NDTVYmxBpifsHDFBf/5). I am interested to seeing simpler and faster code using the simplest of SQL. 
+You can find [the example in DB-fiddle](https://www.db-fiddle.com/f/aVaF6NDTVYmxBpifsHDFBf/6). I am interested to seeing simpler and faster code using the simplest of SQL. 
