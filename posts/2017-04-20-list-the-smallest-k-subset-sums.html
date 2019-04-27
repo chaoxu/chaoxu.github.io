@@ -4,7 +4,10 @@
     <meta name="description" content="The Art Gallery Guardian">
     <meta name="author" content="Chao Xu">
     <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok">
-    <meta name="referrer" content="origin">
+    <meta property="og:title" content="List the smallest <span class=" math="" inline"=""></head><body>k subset sums" /&gt;
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="The Art Gallery Guardian">
+    <meta property="article:tag" content="algorithm">
     <title>List the smallest $k$ subset sums</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
@@ -22,8 +25,8 @@
   <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
   <link rel="alternate" type="application/rss+xml" title="RSS" href="https://chaoxuprime.com/rss.xml">
-  </head>
-  <body>
+  
+  
     <header class="hide-on-print">
         <div id="site-title">
             <a href="/blog.html">The Art Gallery Guardian</a>
@@ -41,10 +44,10 @@
       </ul>
     </nav>
     <main>
-      <article>
-        <h1 id="article-title">List the smallest <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span style="margin-right: 0.03148em;" class="mord mathdefault">k</span></span></span></span></span> subset sums</h1>
+      <article itemscope="" itemtype="http://schema.org/Article">
+        <h1 id="article-title" itemprop="name">List the smallest <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span style="margin-right: 0.03148em;" class="mord mathdefault">k</span></span></span></span></span> subset sums</h1>
         <br>
-<div>
+<div itemprop="articleBody">
 <section class="theorem-environment Problem" id="Problem-1">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
 <p>Given a set of positive reals <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo fence="true">{</mo><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>x</mi><mi>n</mi></msub><mo fence="true">}</mo></mrow><annotation encoding="application/x-tex">\set{x_1,\ldots,x_n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top: 0em;">{</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.30110799999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.151392em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mclose delimcenter" style="top: 0em;">}</span></span></span></span></span></span> where <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>x</mi><mn>2</mn></msub><mo>&lt;</mo><mo>…</mo><mo>&lt;</mo><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">x_1&lt;x_2&lt;\ldots&lt;x_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.6891em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.30110799999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.6891em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.30110799999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.5782em; vertical-align: -0.0391em;"></span><span class="minner">…</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.58056em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.151392em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>, find the smallest <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span style="margin-right: 0.03148em;" class="mord mathdefault">k</span></span></span></span></span> subset sums.</p>
@@ -75,8 +78,8 @@
 
 </div>
 <div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2017-04-20. </div>
-    <div class="info">Tags: algorithm.</div>
+    <div class="info">Posted by <a href="https://chaoxuprime.com"><span itemprop="author">Chao Xu</span></a> on <time datetime="2017-04-20" itemprop="datePublished">2017-04-20</time>. </div>
+    <div class="info">Tags: <span itemprop="keywords">algorithm</span>.</div>
 
 </div>
       </article>

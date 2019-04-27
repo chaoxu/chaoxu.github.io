@@ -4,7 +4,10 @@
     <meta name="description" content="The Art Gallery Guardian">
     <meta name="author" content="Chao Xu">
     <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok">
-    <meta name="referrer" content="origin">
+    <meta property="og:title" content="Given sequence of angles, find a polygon">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="The Art Gallery Guardian">
+    <meta property="article:tag" content="computational geometry">
     <title>Given sequence of angles, find a polygon</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
@@ -41,10 +44,10 @@
       </ul>
     </nav>
     <main>
-      <article>
-        <h1 id="article-title">Given sequence of angles, find a polygon</h1>
+      <article itemscope="" itemtype="http://schema.org/Article">
+        <h1 id="article-title" itemprop="name">Given sequence of angles, find a polygon</h1>
         <br>
-<div>
+<div itemprop="articleBody">
 <section class="theorem-environment Problem" id="Problem-1">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
 <p>Find a polygon <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>…</mo><msub><mi>p</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">p_1\ldots p_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.625em; vertical-align: -0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.30110799999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.151392em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>, such that the angle at vertex <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">p_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.625em; vertical-align: -0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.31166399999999994em;"><span class="" style="top: -2.5500000000000003em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> is <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>α</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\alpha_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.58056em; vertical-align: -0.15em;"></span><span class="mord"><span style="margin-right: 0.0037em;" class="mord mathdefault">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.31166399999999994em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.0037em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>.</p>
@@ -68,8 +71,8 @@
 
 </div>
 <div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2011-12-23. </div>
-    <div class="info">Tags: computational geometry.</div>
+    <div class="info">Posted by <a href="https://chaoxuprime.com"><span itemprop="author">Chao Xu</span></a> on <time datetime="2011-12-23" itemprop="datePublished">2011-12-23</time>. </div>
+    <div class="info">Tags: <span itemprop="keywords">computational geometry</span>.</div>
 
 </div>
       </article>

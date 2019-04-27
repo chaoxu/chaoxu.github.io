@@ -4,7 +4,10 @@
     <meta name="description" content="The Art Gallery Guardian">
     <meta name="author" content="Chao Xu">
     <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok">
-    <meta name="referrer" content="origin">
+    <meta property="og:title" content="Simple keystroke counter">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="The Art Gallery Guardian">
+    <meta property="article:tag" content="python, tools">
     <title>Simple keystroke counter</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
@@ -41,18 +44,18 @@
       </ul>
     </nav>
     <main>
-      <article>
-        <h1 id="article-title">Simple keystroke counter</h1>
+      <article itemscope="" itemtype="http://schema.org/Article">
+        <h1 id="article-title" itemprop="name">Simple keystroke counter</h1>
         <br>
-<div>
+<div itemprop="articleBody">
 I wrote this script to count the amount of keystrokes I do on my computer. All updates will be posted <a href="https://gist.github.com/856198">here</a>.
 <script src="https://gist.github.com/856198.js?file=keycounter.py"></script>
 <p>It's simple. So simple it's have some bugs. For example, if you keep holding a key, it will be counted repeatedly.</p>
 
 </div>
 <div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on 2011-03-05. </div>
-    <div class="info">Tags: python, tools.</div>
+    <div class="info">Posted by <a href="https://chaoxuprime.com"><span itemprop="author">Chao Xu</span></a> on <time datetime="2011-03-05" itemprop="datePublished">2011-03-05</time>. </div>
+    <div class="info">Tags: <span itemprop="keywords">python, tools</span>.</div>
 
 </div>
       </article>
