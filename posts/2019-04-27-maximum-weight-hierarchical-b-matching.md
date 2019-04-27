@@ -10,25 +10,23 @@ Consider a graph $G=(V,E)$ with a weight function $w:E\to \N$ and capacity funct
 
 Formally, it is the following integer program.
 
-\[
 \begin{aligned}
 & \max_{y\in \Z^m} & & \sum_{e} w_e y_e & \\
 & \text{s.t.} & & \sum_{v\in F_i} \sum_{e:v\in e\in E} y_e \leq u_i & i\in [k] \\
 & & &  0\leq y_e \leq c_e & \forall e\in E \\
 \end{aligned}
-\]
 
 This is a generalization of the maximum weight $c$-capacitated $b$-matching problem. Indeed, we can simply set $F_i = \set{v_i}$ and $u_i=b_i$. 
 However, this problem is actually no more general than the maximum weight $c$-capacitated $b$-matching problem.
 
-Let $A \in \Z^{m\times n}$ to be a matrix such that $\sum_{i=1}^m |A_{i,j}|\leq 2$ for every $j$. We call $A$ a bidirected matrix.
+Let $A \in \Z^{m\times n}$ be a matrix such that $\sum_{i=1}^m |A_{i,j}|\leq 2$ for every $j$. We call $A$ a bidirected matrix.
 
 {Theorem}
     Given $A \in \Z^{m\times n}$ a bidirected matrix and vectors $a,b\in \Z^m$, $c,d,w\in \Z^n$. The integer program $\max_{x\in \Z^n} \set{wx \mid a\leq Ax\leq b, c\leq x\leq d}$ can be solved in polynomial time. In particular, it is equivalent to the maximum weight $b$-matching problem on graph of size $poly(m,n)$.
 
-The above theorem can be found in [@Schrijver03, chap. 36]. Note that in Schrijver's book, one require $\sum_{i=1}^m |A_{i,j}|=2$. It is not hard to see the statement still holds even if we have $\leq$ in place of $=$.
+The above theorem can be found in [@Schrijver03, chap. 36]. Note that in Schrijver's book, one requires $\sum_{i=1}^m |A_{i,j}|=2$. It is not hard to see the statement still holds even if we have $\leq$ in place of $=$.
 
-We will express the maximum weight hierarchical $b$-matching problem as an integer program based on a bidirected matrix. The integer program is a modification of the integer program in [@KaparisLM17]. The integer program here is simpler, because we are not trying to reduce to *perfect* $b$-matching.
+We will express the maximum weight hierarchical $b$-matching problem as an integer program over a polytope defined over a bidirected matrix. The integer program is a modification of the integer program in [@KaparisLM17]. The integer program here is simpler, because we are not trying to reduce to *perfect* $b$-matching.
 
 We define $F_i' = F_i \setminus \bigcup_{j: F_j\subsetneq F_i} F_j$.
 We also define $C_i$ to be the indices $j$, such that for all $k$, $F_j\subseteq F_k \subsetneq F_i$ implies $j=k$.
@@ -36,10 +34,10 @@ $y_e$ denote the amount of capacities we assign to $e$, $x_v$ denotes the capaci
 
 \begin{aligned}
 & \max_{x\in \Z^n,y\in \Z^m, z\in \Z^k} & & \sum_{e} w_e y_e & \\
-& \text{s.t.} & & \sum_{v\in F_i'} x_v + \sum_{j\in C_i} z_j = 0 & i\in [k] \\
+& \text{s.t.} & & \sum_{v\in F_i'} x_v + \sum_{j\in C_i} z_j - z_i= 0 & i\in [k] \\
 & & &  \sum_{e: v\in e\in E} y_e -x_v = 0 & \forall v\in V \\
 & & &  0\leq y_e \leq c_e & \forall e\in E \\
 & & &  0\leq z_i \leq u_i & \forall i\in [k] \\
 \end{aligned}
 
-It's easy to see the matrix here is a bidirected matrix. This shows the original problem can be solved in polynomial time. 
+The matrix here is a bidirected matrix. This shows the original problem can be solved in polynomial time. 
