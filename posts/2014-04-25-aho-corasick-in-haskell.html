@@ -44,10 +44,10 @@
       </ul>
     </nav>
     <main>
-      <article itemscope="" itemtype="http://schema.org/Article">
-        <h1 id="article-title" itemprop="name">The Aho–Corasick Automaton in Haskell</h1>
+      <article>
+        <h1 id="article-title">The Aho–Corasick Automaton in Haskell</h1>
         <br>
-<div itemprop="articleBody">
+<div>
 <p>It is common that one might want to match <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span style="margin-right: 0.03148em;" class="mord mathdefault">k</span></span></span></span></span> different strings against one single text of length <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault">m</span></span></span></span></span>. One can of course apply the <a href="/posts/2014-04-11-the-kmp-algorithm-in-haskell.html">KMP algorithm</a> individually, and result an algorithm that runs in <span class="math inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>k</mi><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(km)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span style="margin-right: 0.02778em;" class="mord mathdefault">O</span><span class="mopen">(</span><span style="margin-right: 0.03148em;" class="mord mathdefault">k</span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span></span> time.</p>
 <p>Faster algorithms are known. The idea is to build an finite state transducer that can output which strings is the suffix of the string it read. The Aho-Corasick automaton is a compressed version of such transducer, as the size does not depend on the size of the alphabet.</p>
 <div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="kw">import           </span><span class="dt">Control.Arrow</span> (first)
@@ -91,9 +91,8 @@ isInfixOf' xs ys <span class="fu">=</span> getAll <span class="fu">$</span> mcon
 
 </div>
 <div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com"><span itemprop="author">Chao Xu</span></a> on <time datetime="2014-04-25" itemprop="datePublished">2014-04-25</time>. </div>
-    <div class="info">Tags: <span itemprop="keywords"></span>.</div>
-
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2014-04-25">2014-04-25</time>. </div>
+    <div class="info">Tags: .</div>
 </div>
       </article>
     </main>
