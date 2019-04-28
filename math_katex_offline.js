@@ -2,7 +2,9 @@ var args = process.argv.slice(2);
 
 const fs = require("fs");
 const filename = args[0]
-const data = fs.readFileSync(filename, 'utf8');
+const data = fs.readFileSync(0, "utf-8");
+//const data = fs.readFileSync(filename, 'utf8');
+
 
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
@@ -36,7 +38,9 @@ for (var i = 0; i < mathElements.length; i++) {
           );
         }
 };
-fs.writeFile(filename, dom.serialize(), function(err, data) {
-  if (err) console.log(err);
-  console.log("KaTeX Compiled for " + filename);
-});
+console.log(dom.serialize());
+
+//fs.writeFile(filename, dom.serialize(), function(err, data) {
+//  if (err) console.log(err);
+//  console.log("KaTeX Compiled for " + filename);
+//});

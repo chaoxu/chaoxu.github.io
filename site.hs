@@ -28,6 +28,7 @@ main = hakyll $ do
         route $ setExtension "html"
         compile $ mathCompiler
             >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= katexFilter
         --    >>= relativizeUrls
     -- posts
     match "posts/*.md" $ do
@@ -36,6 +37,7 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
             >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= katexFilter
         --    >>= relativizeUrls
     -- drafts
     match "drafts/*.md" $ do
@@ -53,21 +55,6 @@ main = hakyll $ do
     match "files/**" $ version "raw" $ do
         route   idRoute
         compile copyFileCompiler
-    {-
-    create ["archive.html"] $ do
-        route idRoute
-        compile $ do
-            let archiveCtx =
-                    field "posts" (\_ -> postList recentFirst) `mappend`
-                    constField "title" "Archives"              `mappend`
-                    titleField    "htmltitle"                  `mappend`
-                    defaultContext
-
-            makeItem ""
-                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
-                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
-                >>= relativizeUrls
-    -}
     -- sitemap
     create ["sitemap.xml"] $ do
         route idRoute
@@ -101,6 +88,7 @@ main = hakyll $ do
             getResourceBody
                 >>= applyAsTemplate indexCtx
                 >>= loadAndApplyTemplate "templates/default.html" postCtx
+                >>= katexFilter
             --    >>= relativizeUrls
 
     match "templates/*" $ compile templateCompiler
@@ -110,6 +98,8 @@ mathDoc = return . fmap mathdoc
 
 mathCompiler = getResourceBody >>= mathDoc
 --mathCompiler = getResourceString >>= mathDoc
+
+katexFilter = withItemBody (unixFilter "node" ["math_katex_offline.js"])
 
 idPages = ["favicon.ico",
            "googled46bf4e1cd540289.html",
