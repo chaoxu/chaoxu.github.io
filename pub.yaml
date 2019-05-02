@@ -149,7 +149,7 @@ pub: SODA
 year: 2017
 notes:
   - Not practical. [Discussion/implementation](https://gist.github.com/chaoxu/c9350bcdd4d7f44ca1a1d7e9c8c905d9).
-  - Journal version under submission. It combines with [Subset Sum Made Simple](#subset-sum-simple), features an additional $\tilde{O}(u^{4/3})$ time algorithm, and a unified presentation. 
+  - The [journal version](#subset-sum-journal) combines with [Subset Sum Made Simple](https://arxiv.org/abs/1807.08248), features an additional $\tilde{O}(u^{4/3})$ time algorithm, and a unified presentation. 
 abstract: Given a multiset $S$ of $n$ positive integers and a target integer $t$, the subset sum problem is to decide if there is a subset of $S$ that sums up to $t$. We present a new divide-and-conquer algorithm that computes all the realizable subset sums up to an integer $u$ in $\tilde{O}\left(\min\{n\sqrt{u},u^{4/3},\sigma\}\right)$, where $\sigma$ is the sum of all elements in $S$ and $\tilde{O}$ hides polylogarithmic factors. This result improves upon the standard dynamic programming algorithm that runs in $O(nu)$ time. To the best of our knowledge, the new algorithm is the fastest general algorithm for this problem. We also present a modified algorithm for cyclic groups, which computes all the realizable subset sums within the group in $\tilde{O}\left(\min\{n\sqrt{m},m^{5/4}\}\right)$ time, where m is the order of the group.
 
 ---
@@ -198,6 +198,29 @@ abstract: A closed curve in the plane is weakly simple if it is the limit (in th
 
 
 # journal publications
+---
+id: subset-sum-journal
+title: Faster Pseudopolynomial Time Algorithms for Subset Sum
+authors: [Konstantinos Koiliaris, Chao Xu]
+type: journal
+pub: TALG
+year: 2019
+bib: To appear in TALG.
+notes:
+  - The paper is a combination of [A Faster Pseudopolynomial Time Algorithm for Subset Sum](#subset-sum) appeared in SODA 2017 and [Subset Sum Made Simple](https://arxiv.org/abs/1807.08248). This full version among other additions, simplifies the $\tilde{O}(\sqrt{n}u)$ time algorithm and improves the bound from $\tilde{O}(u^{4/3})$ to $\tilde{O}(u^{5/4})$ time.
+abstract: >
+  Given a (multi) set $S$ of $n$ positive integers and a target integer $u$, the subset sum problem is 
+  to decide if there is a subset of $S$ that sums up to $u$. We present a series of new algorithms that 
+  compute and return <emph>all</emph> the realizable subset sums up to the integer $u$ in 
+  $\tilde{O}(\min\{\sqrt{n}u,u^{5/4},\sigma\})$, where $\sigma$ is the sum of all elements of $S$ 
+  and $\tilde{O}$ hides polylogarithmic factors. We also present a modified algorithm for integers 
+  modulo $m$, which computes all the realizable subset sums modulo $m$ in $\tilde{O}(\min \{\sqrt{n}m,m^{5/4}\})$ time. 
+
+  Our contributions improve upon the standard dynamic programming algorithm that runs in $O(nu)$ time. To the 
+  best of our knowledge, the new algorithms are the fastest deterministic algorithms for this problem. The new
+  results can be employed in various algorithmic problems, from graph bipartition to computational social choice.
+  Finally, we also improve a result on covering $\Z_m$, which might be of independent interest. 
+
 ---
 id: hypergraph-min-cut-journal
 title: Minimum cuts and sparsification in hypergraphs
@@ -332,31 +355,31 @@ abstract: >
   The capacitated vehicle routing problem (CVRP) is one of the most well known NP-hard combinatorial optimization problem. Single depot CVRP with general metric is NP-hard even for fixed capacity $Q=3$, while polynomial time solvable for fixed capacity $Q\leq 2$. We consider the variant of CVRP where restocking is available.
   We show that if there is a constant number of depots, then the problem can be solved in polynomial time when $Q=2$. More generally, when there are $p$ depots without a starting vehicle, there is a polynomial time algorithm for constant $p$.
 
---- 
-id: subset-sum-simple
-show: [d]
-title: Subset Sum Made Simple
-authors: [Konstantinos Koiliaris, Chao Xu]
-type: manuscript
-year: 2018
-abstract: >
-  Subset Sum is a classical optimization problem taught to undergraduates as an
-  example of an NP-hard problem, which is amenable to dynamic programming,
-  yielding polynomial running time if the input numbers are relatively small.
-  Formally, given a set $S$ of $n$ positive integers and a target integer $t$,
-  the Subset Sum problem is to decide if there is a subset of $S$ that sums up to
-  $t$. Dynamic programming yields an algorithm with running time $O(nt)$.
-  Recently, the authors [[Koiliaris & Xu SODA '17](https://doi.org/10.1137/1.9781611974782.68)] improved the running time to
-  $\tilde{O}\bigl(\sqrt{n}t\bigr)$, and it was further improved to
-  $\tilde{O}\bigl(n+t\bigr)$ by a somewhat involved randomized algorithm by
-  Bringmann [[Bringmann SODA '17](https://doi.org/10.1137/1.9781611974782.69)], where $\tilde{O}$ hides polylogarithmic factors.
+# --- 
+# id: subset-sum-simple
+# show: [d]
+# title: Subset Sum Made Simple
+# authors: [Konstantinos Koiliaris, Chao Xu]
+# type: manuscript
+# year: 2018
+# abstract: >
+#   Subset Sum is a classical optimization problem taught to undergraduates as an
+#   example of an NP-hard problem, which is amenable to dynamic programming,
+#   yielding polynomial running time if the input numbers are relatively small.
+#   Formally, given a set $S$ of $n$ positive integers and a target integer $t$,
+#   the Subset Sum problem is to decide if there is a subset of $S$ that sums up to
+#   $t$. Dynamic programming yields an algorithm with running time $O(nt)$.
+#   Recently, the authors [[Koiliaris & Xu SODA '17](https://doi.org/10.1137/1.9781611974782.68)] improved the running time to
+#   $\tilde{O}\bigl(\sqrt{n}t\bigr)$, and it was further improved to
+#   $\tilde{O}\bigl(n+t\bigr)$ by a somewhat involved randomized algorithm by
+#   Bringmann [[Bringmann SODA '17](https://doi.org/10.1137/1.9781611974782.69)], where $\tilde{O}$ hides polylogarithmic factors.
 
-  Here, we present a new and significantly simpler algorithm with running time
-  $\tilde{O}\bigl(\sqrt{n}t\bigr)$. While not the fastest, we believe the new
-  algorithm and analysis are simple enough to be presented in an algorithms
-  class, as a striking example of a divide-and-conquer algorithm that uses FFT to
-  a problem that seems (at first) unrelated. In particular, the algorithm and its
-  analysis can be described in full detail in two pages (see pages 3-5).
+#   Here, we present a new and significantly simpler algorithm with running time
+#   $\tilde{O}\bigl(\sqrt{n}t\bigr)$. While not the fastest, we believe the new
+#   algorithm and analysis are simple enough to be presented in an algorithms
+#   class, as a striking example of a divide-and-conquer algorithm that uses FFT to
+#   a problem that seems (at first) unrelated. In particular, the algorithm and its
+#   analysis can be described in full detail in two pages (see pages 3-5).
 
 ---
 id: parking
