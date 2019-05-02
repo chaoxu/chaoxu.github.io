@@ -7,6 +7,31 @@
   <meta name="description" content="The personal webpage of Chao Xu.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+  <!-- Do not remove katex render. Index page is a idpage --> 
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var macros={
+              "\\C":"\\mathbb{C}",
+              "\\F":"\\mathbb{F}",
+              "\\e": "\\varepsilon",
+              "\\eps": "\\varepsilon",
+              "\\mex": "\\mathop{\\operatorname{mex}}",
+              "\\lcm": "\\mathop{\\operatorname{lcm}}",
+              "\\dist": "\\mathop{\\operatorname{dist}}",
+              "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+              "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+              '\\set':'\\left\\{ #1 \\right\\}',
+              '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
+              '\\ceil':'\\left\\lceil #1 \\right\\rceil',
+              '\\abs':'\\left\\| #1 \\right\\|'
+              }
+    var mathElements = document.getElementsByClassName("math");
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
+    }}});
+  </script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
   <script>
@@ -154,7 +179,7 @@ Our algorithm is based on random contractions akin to Karger's min cut algorithm
         <abbr title="ACM-SIAM Symposium on Discrete Algorithms">SODA</abbr> <time>2017</time>.
       </em><p>
         <aside class="note">Not practical. <a href="https://gist.github.com/chaoxu/c9350bcdd4d7f44ca1a1d7e9c8c905d9">Discussion/implementation</a>.</aside>
-        <aside class="note">Journal version under submission. It combines with <a href="#subset-sum-simple">Subset Sum Made Simple</a>, features an additional <span class="math">\tilde{O}(u^{4/3})</span> time algorithm, and a unified presentation.</aside>
+        <aside class="note">The <a href="#subset-sum-journal">journal version</a> combines with <a href="https://arxiv.org/abs/1807.08248">Subset Sum Made Simple</a>, features an additional <span class="math">\tilde{O}(u^{4/3})</span> time algorithm, and a unified presentation.</aside>
     </div>
     <div class="abstract">
       <p>Given a multiset <span class="math">S</span> of <span class="math">n</span> positive integers and a target integer <span class="math">t</span>, the subset sum problem is to decide if there is a subset of <span class="math">S</span> that sums up to <span class="math">t</span>. We present a new divide-and-conquer algorithm that computes all the realizable subset sums up to an integer <span class="math">u</span> in <span class="math">\tilde{O}\left(\min\{n\sqrt{u},u^{4/3},\sigma\}\right)</span>, where <span class="math">\sigma</span> is the sum of all elements in <span class="math">S</span> and <span class="math">\tilde{O}</span> hides polylogarithmic factors. This result improves upon the standard dynamic programming algorithm that runs in <span class="math">O(nu)</span> time. To the best of our knowledge, the new algorithm is the fastest general algorithm for this problem. We also present a modified algorithm for cyclic groups, which computes all the realizable subset sums within the group in <span class="math">\tilde{O}\left(\min\{n\sqrt{m},m^{5/4}\}\right)</span> time, where m is the order of the group.</p>
@@ -235,6 +260,29 @@ We utilize vertex ordering based ideas to obtain our results. Unlike graphs we o
     </div>
   </div>
 <div class="row pubtypeheader">Journal Publications</div>
+  <!-- Faster Pseudopolynomial Time Algorithms for Subset Sum  -->
+  <div class="row cv-entry" id="subset-sum-journal">
+    <input type="checkbox" class="abstract-guard" id="subset-sum-journal-toggle">
+    <div class="cv-left">
+        <label class="showmore material-icons" for="subset-sum-journal-toggle"></label>
+        <i class="material-icons disabled">description</i>
+        <i class="material-icons disabled">airplay</i>
+    </div>
+    <div class="cv-right">
+      <cite class="paper-title">Faster Pseudopolynomial Time Algorithms for Subset Sum</cite>
+      <ul class="coauthor-list">
+        <li>
+            <a href="http://koiliaris.com/">Konstantinos Koiliaris</a></li></ul>
+      <p><em>
+        To appear in TALG.
+      </em><p>
+        <aside class="note">The paper is a combination of <a href="#subset-sum">A Faster Pseudopolynomial Time Algorithm for Subset Sum</a> appeared in SODA 2017 and <a href="https://arxiv.org/abs/1807.08248">Subset Sum Made Simple</a>. This full version among other additions, simplifies the <span class="math">\tilde{O}(\sqrt{n}u)</span> time algorithm and improves the bound from <span class="math">\tilde{O}(u^{4/3})</span> to <span class="math">\tilde{O}(u^{5/4})</span> time.</aside>
+    </div>
+    <div class="abstract">
+      <p>Given a (multi) set <span class="math">S</span> of <span class="math">n</span> positive integers and a target integer <span class="math">u</span>, the subset sum problem is  to decide if there is a subset of <span class="math">S</span> that sums up to <span class="math">u</span>. We present a series of new algorithms that  compute and return <emph>all</emph> the realizable subset sums up to the integer <span class="math">u</span> in  <span class="math">\tilde{O}(\min\{\sqrt{n}u,u^{5/4},\sigma\})</span>, where <span class="math">\sigma</span> is the sum of all elements of <span class="math">S</span>  and <span class="math">\tilde{O}</span> hides polylogarithmic factors. We also present a modified algorithm for integers  modulo <span class="math">m</span>, which computes all the realizable subset sums modulo <span class="math">m</span> in <span class="math">\tilde{O}(\min \{\sqrt{n}m,m^{5/4}\})</span> time. 
+Our contributions improve upon the standard dynamic programming algorithm that runs in <span class="math">O(nu)</span> time. To the  best of our knowledge, the new algorithms are the fastest deterministic algorithms for this problem. The new results can be employed in various algorithmic problems, from graph bipartition to computational social choice. Finally, we also improve a result on covering <span class="math">\Z_m</span>, which might be of independent interest.</p>
+    </div>
+  </div>
   <!-- Minimum cuts and sparsification in hypergraphs  -->
   <div class="row cv-entry" id="hypergraph-min-cut-journal">
     <input type="checkbox" class="abstract-guard" id="hypergraph-min-cut-journal-toggle">
@@ -447,28 +495,6 @@ problems in hypergraphs of small rank.</li>
     </div>
     <div class="abstract">
       <p>The capacitated vehicle routing problem (CVRP) is one of the most well known NP-hard combinatorial optimization problem. Single depot CVRP with general metric is NP-hard even for fixed capacity <span class="math">Q=3</span>, while polynomial time solvable for fixed capacity <span class="math">Q\leq 2</span>. We consider the variant of CVRP where restocking is available. We show that if there is a constant number of depots, then the problem can be solved in polynomial time when <span class="math">Q=2</span>. More generally, when there are <span class="math">p</span> depots without a starting vehicle, there is a polynomial time algorithm for constant <span class="math">p</span>.</p>
-    </div>
-  </div>
-  <!-- Subset Sum Made Simple  -->
-  <div class="row cv-entry" id="subset-sum-simple">
-    <input type="checkbox" class="abstract-guard" id="subset-sum-simple-toggle">
-    <div class="cv-left">
-        <label class="showmore material-icons" for="subset-sum-simple-toggle"></label>
-        <a href="files/papers/subset-sum-simple.pdf"><i class="material-icons">description</i></a>
-        <i class="material-icons disabled">airplay</i>
-    </div>
-    <div class="cv-right">
-      <cite class="paper-title">Subset Sum Made Simple</cite>
-      <ul class="coauthor-list">
-        <li>
-            <a href="http://koiliaris.com/">Konstantinos Koiliaris</a></li></ul>
-      <p><em>
-        <time>2018</time>.
-      </em><p>
-    </div>
-    <div class="abstract">
-      <p>Subset Sum is a classical optimization problem taught to undergraduates as an example of an NP-hard problem, which is amenable to dynamic programming, yielding polynomial running time if the input numbers are relatively small. Formally, given a set <span class="math">S</span> of <span class="math">n</span> positive integers and a target integer <span class="math">t</span>, the Subset Sum problem is to decide if there is a subset of <span class="math">S</span> that sums up to <span class="math">t</span>. Dynamic programming yields an algorithm with running time <span class="math">O(nt)</span>. Recently, the authors [<a href="https://doi.org/10.1137/1.9781611974782.68">Koiliaris & Xu SODA '17</a>] improved the running time to <span class="math">\tilde{O}\bigl(\sqrt{n}t\bigr)</span>, and it was further improved to <span class="math">\tilde{O}\bigl(n+t\bigr)</span> by a somewhat involved randomized algorithm by Bringmann [<a href="https://doi.org/10.1137/1.9781611974782.69">Bringmann SODA '17</a>], where <span class="math">\tilde{O}</span> hides polylogarithmic factors.
-Here, we present a new and significantly simpler algorithm with running time <span class="math">\tilde{O}\bigl(\sqrt{n}t\bigr)</span>. While not the fastest, we believe the new algorithm and analysis are simple enough to be presented in an algorithms class, as a striking example of a divide-and-conquer algorithm that uses FFT to a problem that seems (at first) unrelated. In particular, the algorithm and its analysis can be described in full detail in two pages (see pages 3-5).</p>
     </div>
   </div>
   <!-- Marking Streets to Improve Parking Density  -->
