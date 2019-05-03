@@ -179,7 +179,7 @@ Our algorithm is based on random contractions akin to Karger's min cut algorithm
         <abbr title="ACM-SIAM Symposium on Discrete Algorithms">SODA</abbr> <time>2017</time>.
       </em><p>
         <aside class="note">Not practical. <a href="https://gist.github.com/chaoxu/c9350bcdd4d7f44ca1a1d7e9c8c905d9">Discussion/implementation</a>.</aside>
-        <aside class="note">The <a href="#subset-sum-journal">journal version</a> combines with <a href="https://arxiv.org/abs/1807.08248">Subset Sum Made Simple</a>, features an additional <span class="math">\tilde{O}(u^{4/3})</span> time algorithm, and a unified presentation.</aside>
+        <aside class="note">The <a href="#subset-sum-journal">journal version</a> combines with <a href="https://arxiv.org/abs/1807.08248">Subset Sum Made Simple</a>, features an additional <span class="math">\tilde{O}(u^{5/4})</span> time algorithm, and a unified presentation.</aside>
     </div>
     <div class="abstract">
       <p>Given a multiset <span class="math">S</span> of <span class="math">n</span> positive integers and a target integer <span class="math">t</span>, the subset sum problem is to decide if there is a subset of <span class="math">S</span> that sums up to <span class="math">t</span>. We present a new divide-and-conquer algorithm that computes all the realizable subset sums up to an integer <span class="math">u</span> in <span class="math">\tilde{O}\left(\min\{n\sqrt{u},u^{4/3},\sigma\}\right)</span>, where <span class="math">\sigma</span> is the sum of all elements in <span class="math">S</span> and <span class="math">\tilde{O}</span> hides polylogarithmic factors. This result improves upon the standard dynamic programming algorithm that runs in <span class="math">O(nu)</span> time. To the best of our knowledge, the new algorithm is the fastest general algorithm for this problem. We also present a modified algorithm for cyclic groups, which computes all the realizable subset sums within the group in <span class="math">\tilde{O}\left(\min\{n\sqrt{m},m^{5/4}\}\right)</span> time, where m is the order of the group.</p>
@@ -265,7 +265,7 @@ We utilize vertex ordering based ideas to obtain our results. Unlike graphs we o
     <input type="checkbox" class="abstract-guard" id="subset-sum-journal-toggle">
     <div class="cv-left">
         <label class="showmore material-icons" for="subset-sum-journal-toggle"></label>
-        <i class="material-icons disabled">description</i>
+        <a href="files/papers/subset-sum-journal.pdf"><i class="material-icons">description</i></a>
         <i class="material-icons disabled">airplay</i>
     </div>
     <div class="cv-right">
