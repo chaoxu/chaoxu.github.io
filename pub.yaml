@@ -203,6 +203,7 @@ id: subset-sum-journal
 title: Faster Pseudopolynomial Time Algorithms for Subset Sum
 authors: [Konstantinos Koiliaris, Chao Xu]
 type: journal
+show: [d]
 pub: TALG
 year: 2019
 bib: To appear in TALG.
