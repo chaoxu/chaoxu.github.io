@@ -11,7 +11,7 @@ export LANG=C
 export LC_CTYPE=C
 
 # Build new files
-stack build
+# stack build
 # stack exec chaosite clean
 stack exec chaosite build
 
