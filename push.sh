@@ -16,7 +16,7 @@ export LC_CTYPE=C
 stack exec chaosite build
 
 # Build index
-python pub.py > _site/index.html
+python3 pub.py > _site/index.html
 
 # Get previous files
 git fetch --all
