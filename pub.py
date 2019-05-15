@@ -1,7 +1,9 @@
 import yaml
 import re
 import mistune
+import html
 import functools
+import sys
 from jinja2 import Template
 import io
 mk = mistune.Markdown(parse_block_html=True)
@@ -16,7 +18,7 @@ def mki(x):
 
 def math(string):
     def my_replace(match):
-        return '<span class="math">'+cgi.escape(match.group(1))+'</span>'
+        return '<span class="math">'+html.escape(match.group(1))+'</span>'
 
     # find $ $ pairs
     return re.sub(r'\$(.*?)\$', my_replace, string)
@@ -41,7 +43,7 @@ def yaml_loader(filepath):
     """Load a yaml file."""
     f = open(filepath, "r")
     s = f.read()
-    data = yaml.load_all(s)
+    data = yaml.load_all(s, Loader=yaml.FullLoader)
     return data
 
 def build_paper(paper):
@@ -95,9 +97,9 @@ for z in types.keys():
 file = io.open("index_template.html", "r", encoding="utf-8") 
 template = Template(file.read())
 root = template.render(pub_types=parsed).splitlines()
-filtered = filter(lambda x: not re.match(r'^\s*$', x), root)
-print('\n'.join(filtered).encode("utf-8"))
-
+filtered = list(filter(lambda x: not re.match(r'^\s*$', x), root))
+#print("\n".join(filtered).encode('utf8'))
+sys.stdout.buffer.write("\n".join(filtered).encode('utf8'))
 #soup = bs(root)                #make BeautifulSoup
 #prettyHTML = soup.prettify()
 #print(prettyHTML.encode("utf-8"))

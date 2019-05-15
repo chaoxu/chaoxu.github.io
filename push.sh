@@ -11,19 +11,19 @@ export LANG=C
 export LC_CTYPE=C
 
 # Build new files
-stack build
+# stack build
 # stack exec chaosite clean
 stack exec chaosite build
 
 # Build index
-python pub.py > _site/index.html
+python3 pub.py > _site/index.html
 
 # Get previous files
 git fetch --all
 git checkout -b master --track origin/master
 
 # Overwrite existing files with new files
-rsync -a --filter='P _site/' --filter='P _cache/' --filter='P .git/' --filter='P .gitignore' --filter='P .gitattributes' --delete-excluded _site/ .
+rsync -a --checksum --filter='P _site/' --filter='P _cache/' --filter='P .git/' --filter='P .stack-work/' --filter='P .gitignore' --filter='P .gitattributes' --delete-excluded _site/ .
 rm -r drafts
 
 # Commit
