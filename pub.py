@@ -1,6 +1,7 @@
 import yaml
 import re
 import mistune
+import html
 import functools
 from jinja2 import Template
 import io
@@ -16,7 +17,7 @@ def mki(x):
 
 def math(string):
     def my_replace(match):
-        return '<span class="math">'+cgi.escape(match.group(1))+'</span>'
+        return '<span class="math">'+html.escape(match.group(1))+'</span>'
 
     # find $ $ pairs
     return re.sub(r'\$(.*?)\$', my_replace, string)
@@ -41,7 +42,7 @@ def yaml_loader(filepath):
     """Load a yaml file."""
     f = open(filepath, "r")
     s = f.read()
-    data = yaml.load_all(s)
+    data = yaml.load_all(s, Loader=yaml.FullLoader)
     return data
 
 def build_paper(paper):
