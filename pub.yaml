@@ -324,16 +324,16 @@ id: min-violation
 show: [p]
 title: Minimum violation vertex maps and their applications to cut problems
 type: manuscript
-year: 2018
-bib: <time>2018</time>, Submitted.
+year: 2019
+bib: <time>2019</time>, Submitted.
 authors: [Ken-ichi Kawarabayashi, Chao Xu]
 
 ---
 id: airplane
 title: A near-linear time algorithm for computing the optimal landing times of a fixed sequence of planes
 type: manuscript
-year: 2018
-bib: <time>2018</time>, Submitted.
+year: 2019
+bib: <time>2019</time>, Submitted.
 authors: [Bin Cao, Chao Xu]
 
 ---
@@ -350,11 +350,11 @@ show: [d]
 title: An algorithm for the metric multiple depots capacitated vehicle routing problem with restocking and capacity two
 authors: [Chao Xu, Yichen Yang, Qian Zhang]
 type: manuscript
-year: 2018
-bib: 2018, Submitted.
+year: 2019
+bib: 2019, Submitted.
 abstract: >
-  The capacitated vehicle routing problem (CVRP) is one of the most well known NP-hard combinatorial optimization problem. Single depot CVRP with general metric is NP-hard even for fixed capacity $Q=3$, while polynomial time solvable for fixed capacity $Q\leq 2$. We consider the variant of CVRP where restocking is available.
-  We show that if there is a constant number of depots, then the problem can be solved in polynomial time when $Q=2$. More generally, when there are $p$ depots without a starting vehicle, there is a polynomial time algorithm for constant $p$.
+  The capacitated vehicle routing problem (CVRP) is one of the most well known NP-hard combinatorial optimization problems. Single depot CVRP with a general metric is NP-hard even for fixed capacity 3, while polynomial time solvable for fixed capacity 2. We consider the variant of CVRP where restocking is available.
+  We show that if there is a constant number of depots, then the problem can be solved in polynomial time when capacity is $2$.
 
 # --- 
 # id: subset-sum-simple
