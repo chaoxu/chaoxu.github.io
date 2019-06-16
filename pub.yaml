@@ -19,7 +19,7 @@ people:
   Ken-ichi Kawarabayashi: http://research.nii.ac.jp/~k_keniti/
   Bin Cao: https://scholar.google.com/citations?user=4DRkxEoAAAAJ&hl=en
   Amir Gharehgozli: https://www.csun.edu/som/amir-gharehgozli
-  Wenda Zhang:
+  Wenda Zhang: https://www.linkedin.com/in/wenda-zhang-a5359a36/
   Yichen Yang:
   Qian Zhang: http://qianzhang.me/
   Chandra Chekuri: http://chekuri.cs.illinois.edu/
@@ -206,7 +206,6 @@ type: journal
 show: [d]
 pub: TALG
 year: 2019
-bib: To appear in TALG.
 notes:
   - The paper is a combination of [A Faster Pseudopolynomial Time Algorithm for Subset Sum](#subset-sum) appeared in SODA 2017 and [Subset Sum Made Simple](https://arxiv.org/abs/1807.08248). This full version among other additions, simplifies the $\tilde{O}(\sqrt{n}u)$ time algorithm and improves the bound from $\tilde{O}(u^{4/3})$ to $\tilde{O}(u^{5/4})$ time.
 abstract: >
