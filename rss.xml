@@ -9,6 +9,53 @@
                    type="application/rss+xml" />
         <lastBuildDate>Sat, 15 Jun 2019 00:00:00 UT</lastBuildDate>
         <item>
+    <title>An algorithm for covert back-to-back ticketing</title>
+    <link>https://chaoxuprime.com/posts/2019-06-15-covert-back-to-back-ticketing.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>Airline booking ploys are ways to circumventing airlines ticket rules in order to spend less on the ticket. A fairly nice <a href="https://en.wikipedia.org/wiki/Airline_booking_ploys">Wikipedia article on airline booking ploys</a>. We consider a special case, the back-to-back ticketing/nested ticketing. <a href="https://www.tripsavvy.com/back-to-back-ticketing-468287">TripSavvy has a good article on back-to-back ticketing</a>.</p>
+<p>For many airlines, back-to-back ticketing is explicitly forbidden, this includes <a href="https://www.aa.com/i18n/customer-service/support/conditions-of-carriage.jsp?anchorEvent=false&amp;from=footer?#ticketvalidity">American Airlines</a>, <a href="https://www.delta.com/us/en/booking-information/fare-classes-and-tickets/ticket-rules-restrictions">Delta</a> and <a href="https://www.united.com/ual/en/us/fly/contract-of-carriage.html">United</a>.</p>
+<p>We want to model back-to-back ticketing into an algorithmic problem. There is a sequence of trips between two locations, and it can be grouped into different round trips. Each round trip itinerary has a different cost. A round trip itinerary is no more than a matching between two trips.</p>
+<p>This can be seen as simple matching problem. The vertices are trips, which we can assume a trip means &quot;traveling from A to B on date x&quot;. There is an edge between two trips, if there is a round trip itinerary containing the trips. The cost of the edge is the cost of buying a round trip for those two trips. Since it is also possible that we buy a one-way ticket, there are also self-loops. Also, we can consider a multigraph, where the edges are colored. Each color class represents an airline.</p>
+<p>If one does not care about the airline finding out. Hence one can see this is a minimum weight perfect matching problem allowing self-loops. However, people might actually care about airline not happy about this practice. Hence we are interested in making sure in each airline, we have no overlapping itineraries. However, we allow overlapping itineraries across airlines.</p>
+<p>For two edges <span class="math inline">\set{a,b}</span> and <span class="math inline">\set{c,d}</span> defined over integers, it is <em>independent</em> if <span class="math inline">[a,b]\cap [c,d]= \emptyset</span>. A set of edges is <em>independent</em> if the edges are pairwise independent.</p>
+<section class="theorem-environment Problem" id="Problem-1">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span><span class="name">Covert back-to-back ticketing problem</span></span>
+<p><strong>Input:</strong> A multigraph <span class="math inline">G=(V,E)</span> where <span class="math inline">V\subseteq [n]</span>, edges has <span class="math inline">k</span> different colors, and there is an edge cost function <span class="math inline">c:E\to \R^+</span>.</p>
+<p><strong>Output:</strong> A perfect matching <span class="math inline">M</span> (allowing self-loops), such that each color class of <span class="math inline">M</span> is independent, and the cost is minimized.</p>
+</section>
+<p>I suspect for arbitrary <span class="math inline">k</span>, the problem is NP-hard. We show how to solve the problem in polynomial time for <span class="math inline">k=2</span>.</p>
+<p><a href="https://yizhis.github.io/">Yizhi Song</a> stated the idea that if one edge in a color is picked, it forces some edges of the other color to be picked. We can use the idea to obtain an <span class="math inline">O(n^3)</span> time algorithm for this problem.</p>
+<p>Since we are only working with <span class="math inline">k=2</span> case, we will let <span class="math inline">\bar{a}</span> to be the color that is not <span class="math inline">a</span>. Recall <span class="math inline">[n]=\set{1,\ldots,n}</span> and <span class="math inline">[a..b] = \set{a,a+1,\ldots,b}</span>. We assume the vertices <span class="math inline">V=[n]</span>. For a graph with <span class="math inline">k</span> color classes, we define <span class="math inline">G_a</span> to be the subgraph consists of all edges of color <span class="math inline">a</span>. <span class="math inline">c_a(x,y)</span> is the cost of a color <span class="math inline">a</span> edge <span class="math inline">xy</span>. We define <span class="math inline">D(a,y,z)</span> as the optimal solution when the input graph is <span class="math inline">G_{\bar{a}}[[z-1]\setminus \set{y}] \cup G_a[[y-1]]</span>. We also define <span class="math inline">C_{a}(x,y)</span> to be the optimal solution when the input graph is <span class="math inline">G_a[[x..y]]</span>.</p>
+<p>The optimal solution is <span class="math inline">D(a,n+1,n+1)</span> for either color <span class="math inline">a</span>.</p>
+<p>We express the recursive relation. For <span class="math inline">y&lt;z</span>, we have the following. <span class="math display">\displaystyle 
+D(a,y,z) =\min \begin{cases}
+\min_{x&lt;y} \set{ C_{\bar{a}}(y+2,z-1) + c_{\bar{a}}(x,y+1) + D(\bar{a},x,y)}\\
+C_{\bar{a}}(y+1,z-1) + D(\bar{a},y,y)
+\end{cases}
+</span> It might be beneficial to see the intuition behind the two cases through the following pictures.</p>
+<figure>
+<img src="/files/ticketing_case1.png" alt="First case." /><figcaption>First case.</figcaption>
+</figure>
+<figure>
+<img src="/files/ticketing_case2.png" alt="Second case." /><figcaption>Second case.</figcaption>
+</figure>
+<p>On the other hand, when <span class="math inline">y=z</span> <span class="math display">\displaystyle 
+D(a,y,y) =\min_{x&lt;y} \set{
+D(a,x,y) + c_a(x,y),
+D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
+</span> One can easily infer the base case through definition. Note that all values of <span class="math inline">C_a</span> can be computed in <span class="math inline">O(n^2)</span> time. It takes <span class="math inline">O(n)</span> time to compute one value in <span class="math inline">D</span>. Therefore, the total running time is <span class="math inline">O(n^3)</span>.</p>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-06-15">2019-06-15</time>. </div>
+    <div class="info">Tags: Optimization.</div>
+</div>]]></description>
+    <pubDate>Sat, 15 Jun 2019 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/posts/2019-06-15-covert-back-to-back-ticketing.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title>Arrays and permutation</title>
     <link>https://chaoxuprime.com/posts/2019-06-15-array-and-permutation.html</link>
     <description><![CDATA[<br />
@@ -37,53 +84,6 @@
 </div>]]></description>
     <pubDate>Sat, 15 Jun 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxuprime.com/posts/2019-06-15-array-and-permutation.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>An algorithm for covert back-to-back ticketing</title>
-    <link>https://chaoxuprime.com/posts/2019-06-15-airline-booking-polys-and-algorithms.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>Airline booking ploys are ways to circumventing airlines ticket rules in order to spend less on the ticket. A fairly nice <a href="https://en.wikipedia.org/wiki/Airline_booking_ploys">Wikipedia article on airline booking ploys</a>. We consider a special case, the back-to-back ticketing/nested ticketing. If one repeatedly taking round trips between two locations, then there are multiple ways to decompose it into round trips. If the round trip itinerary overlaps in time, then it is called back-to-back ticketing.</p>
-<p>For many airlines, all the above are breach of contract. <a href="https://www.delta.com/us/en/booking-information/fare-classes-and-tickets/ticket-rules-restrictions">Delta explicitly forbids all the airline booking polys</a>.</p>
-<p>Now we want to model back-to-back ticketing into an algorithmic problem. The idea is there is a sequence of trips between two locations, and it can be grouped into different round trips. Each round trip itinerary has a different cost. A round trip itinerary is no more than a matching between two trips.</p>
-<p>This can be seen as simple matching problem. The vertices are trips, which we can assume a trip means &quot;traveling from A to B on date x&quot;. There is an edge between two trips, if there is a round trip itinerary containing the trips. The cost of the edge is the cost of buying a round trip for those two trips. Since it is also possible that we buy a one-way ticket, there are also self-loops. Also, we can consider a multigraph, where the edges are colored. Each color class represents an airline.</p>
-<p>If one does not care about the airline finding out. Hence one can see this is a minimum weight perfect matching problem allowing self-loops. However, people might actually care about airline not happy about this practice. Hence we are interested in making sure in each airline, we have no overlapping itineraries. However, we allow overlapping itineraries across airlines.</p>
-<p>For two edges <span class="math inline">\set{a,b}</span> and <span class="math inline">\set{c,d}</span>, it is <em>independent</em> if <span class="math inline">[a,b]\cap [c,d]= \emptyset</span>. A set of edges is <em>independent</em> if the edges are pairwise independent.</p>
-<section class="theorem-environment Problem" id="Problem-1">
-<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span><span class="name">Covert back-to-back ticketing problem</span></span>
-<p><strong>Input:</strong> A multigraph <span class="math inline">G=(V,E)</span> where <span class="math inline">V\subseteq [n]</span>, edges has <span class="math inline">k</span> different colors, and there is an edge cost function <span class="math inline">c:E\to \R^+</span>.</p>
-<p><strong>Output:</strong> A perfect matching <span class="math inline">M</span> (allowing self-loops), such that each color class of <span class="math inline">M</span> is independent, and the cost is minimized.</p>
-</section>
-<p>I suspect for arbitrary <span class="math inline">k</span>, the problem is NP-hard. We show how to solve the problem in polynomial time for <span class="math inline">k=2</span>.</p>
-<p><a href="https://yizhis.github.io/">Yizhi Song</a> stated the idea that if one edge in a color is picked, it forces some edges of the other color to be picked. We can use the idea to obtain an <span class="math inline">O(n^3)</span> time algorithm for this problem.</p>
-<p>Since we are only working with <span class="math inline">k=2</span> case, we will let <span class="math inline">\bar{a}</span> to be the color that is not <span class="math inline">a</span>. Recall <span class="math inline">[n]=\set{1,\ldots,n}</span> and <span class="math inline">[a..b] = \set{a,a+1,\ldots,b}</span>. We assume the vertices <span class="math inline">V=[n]</span>. For a graph with <span class="math inline">k</span> color classes, we define <span class="math inline">G_a</span> to be the subgraph consists of all edges of color <span class="math inline">a</span>. <span class="math inline">c_a(x,y)</span> is the cost of a color <span class="math inline">a</span> edge <span class="math inline">xy</span>. We define <span class="math inline">D(a,y,z)</span> as the optimal solution when the input graph is <span class="math inline">G_\bar{a}[[z-1]\setminus \set{y}] \cup G_a[[y-1]]</span>. We also define <span class="math inline">C_{a}(x,y)</span> to be the optimal solution when the input graph is <span class="math inline">G_a[[x..y]]</span>.</p>
-<p>The optimal solution is <span class="math inline">D(a,n+1,n+1)</span> for either color <span class="math inline">a</span>.</p>
-<p>We express the recursive relation. For <span class="math inline">y&lt;z</span>, we have the following. <span class="math display">\displaystyle 
-D(a,y,z) =\min \begin{cases}
-\min_{x&lt;y} \set{ C_\bar{a}(y+2,z-1) + c_\bar{a}(x,y+1) + D(\bar{a},x,y)}\\
-C_\bar{a}(y+1,z-1) + D(\bar{a},y,y)
-\end{cases}
-</span> It might be beneficial to see the intuition behind the two cases through the following pictures.</p>
-<figure>
-<img src="files/ticketing_case1.png" alt="First case." /><figcaption>First case.</figcaption>
-</figure>
-<figure>
-<img src="files/ticketing_case2.png" alt="Second case." /><figcaption>Second case.</figcaption>
-</figure>
-<p>On the other hand, when <span class="math inline">y=z</span> <span class="math display">\displaystyle 
-D(a,y,y) =\min_{x&lt;y} \set{
-D(a,x,y) + c_a(x,y),
-D(\bar{a},x,y) + c_\bar{a}(x,y)}
-</span> One can easily infer the base case through definition. Note that all values of <span class="math inline">C_a</span> can be computed in <span class="math inline">O(n^2)</span> time. It takes <span class="math inline">O(n)</span> time to compute one value in <span class="math inline">D</span>. Therefore, the total running time is <span class="math inline">O(n^3)</span>.</p>
-
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-06-15">2019-06-15</time>. </div>
-    <div class="info">Tags: Optimization.</div>
-</div>]]></description>
-    <pubDate>Sat, 15 Jun 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-06-15-airline-booking-polys-and-algorithms.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
