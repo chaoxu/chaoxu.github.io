@@ -7,8 +7,86 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxuprime.com/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sat, 27 Apr 2019 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sat, 15 Jun 2019 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Arrays and permutation</title>
+    <link>https://chaoxuprime.com/posts/2019-06-15-array-and-permutation.html</link>
+    <description><![CDATA[<br />
+<div>
+<h1 id="permutation-functional-form"><span class="header-section-number">1</span> Permutation, functional form</h1>
+<p>It is often where we are tasked with permuting an array. We can abstract out and ask what exactly is an array. In functional form, an array just have to support the following two operations in constant time.</p>
+<ol type="1">
+<li><span class="math inline">get(A,i)</span>: returns <span class="math inline">A[i]</span>.</li>
+<li><span class="math inline">set(A,i,x)</span>: update the array <span class="math inline">A</span> such that <span class="math inline">A[i]</span> returns <span class="math inline">x</span>.</li>
+</ol>
+<p>So in some sense, array is just encoding a function <span class="math inline">f:[n]\to X</span>. A permutation would be a bijective function <span class="math inline">\pi:[n]\to [n]</span>. If we are interested in applying a permutation <span class="math inline">\pi</span>, then to program it is easy, we need to output a new function <span class="math inline">g</span> such that <span class="math inline">g(i) = f(\pi(i))</span>.</p>
+<p>This allows us to apply permutations pretty easily by composing functions and cache outputs. In the purely functional view, the layout of the array in memory and the indexing can be different.</p>
+<h1 id="permutation-physically"><span class="header-section-number">2</span> Permutation, physically</h1>
+<p>Sometimes one might ask to physically apply the permutation to an array. That is, the <span class="math inline">i</span>th position in the array contains the element in <span class="math inline">\pi(i)</span>. This is helpful because it helps with cache locality: accessing consecutive elements would be in the same location. Although if the ordering of loops does not matter, there is no harm considering the functional view.</p>
+<p>Often, one is tasked to apply permutation to an array physically. It usually ask for <span class="math inline">O(n)</span> running time and <span class="math inline">O(1)</span> space. Unfortunately, there is no way to obtain this running time for all permutations. There are some permutations where this is impossible. [cite]</p>
+<h1 id="mix-and-match"><span class="header-section-number">3</span> Mix and match</h1>
+<p><a href="https://www.linkedin.com/in/lingyu-xu-9b87a565/">Lingyu Xu</a> asked me about <a href="https://leetcode.com/problems/wiggle-sort-ii/">Wiggle Sort</a>, where the actual <strong>physical layout</strong> has to be changed, but it takes both the functional and physical view of the array.</p>
+<p>Let's consider the simple case where every element is distinct. One simple solution is the following. Partition the numbers into the median, elements smaller than median, and elements larger than the median. We map the smallest <span class="math inline">n/2</span> elements into even positions, and remaining elements into the odd position. The algorithm has <span class="math inline">O(n)</span> time. The problem is how to get constant extra place. Because it is unclear how to apply the following permutation in place. The permutation <span class="math inline">\sigma(i) = (1+2i) \% (n|1)</span>.</p>
+<p>However, one we take the functional view, the problem can be solved, physically too. The <a href="https://leetcode.com/problems/wiggle-sort-ii/discuss/77677/ono1-after-median-virtual-indexing/81756">answer by</a> <a href="http://www.stefan-pochmann.info/">Stefan Pochmann</a> shows one can simply do the mapping in place.</p>
+<p>What is happening in the physical location. If we applied index transform <span class="math inline">\pi</span>, then apply physical permutation <span class="math inline">\sigma</span> on the index, what happens for the physical array? It is the same as applying <span class="math inline">\pi^{-1}\sigma\pi</span> to the physical array.</p>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-06-15">2019-06-15</time>. </div>
+    <div class="info">Tags: Permutation.</div>
+</div>]]></description>
+    <pubDate>Sat, 15 Jun 2019 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/posts/2019-06-15-array-and-permutation.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
+    <title>An algorithm for covert back-to-back ticketing</title>
+    <link>https://chaoxuprime.com/posts/2019-06-15-airline-booking-polys-and-algorithms.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>Airline booking ploys are ways to circumventing airlines ticket rules in order to spend less on the ticket. A fairly nice <a href="https://en.wikipedia.org/wiki/Airline_booking_ploys">Wikipedia article on airline booking ploys</a>. We consider a special case, the back-to-back ticketing/nested ticketing. If one repeatedly taking round trips between two locations, then there are multiple ways to decompose it into round trips. If the round trip itinerary overlaps in time, then it is called back-to-back ticketing.</p>
+<p>For many airlines, all the above are breach of contract. <a href="https://www.delta.com/us/en/booking-information/fare-classes-and-tickets/ticket-rules-restrictions">Delta explicitly forbids all the airline booking polys</a>.</p>
+<p>Now we want to model back-to-back ticketing into an algorithmic problem. The idea is there is a sequence of trips between two locations, and it can be grouped into different round trips. Each round trip itinerary has a different cost. A round trip itinerary is no more than a matching between two trips.</p>
+<p>This can be seen as simple matching problem. The vertices are trips, which we can assume a trip means &quot;traveling from A to B on date x&quot;. There is an edge between two trips, if there is a round trip itinerary containing the trips. The cost of the edge is the cost of buying a round trip for those two trips. Since it is also possible that we buy a one-way ticket, there are also self-loops. Also, we can consider a multigraph, where the edges are colored. Each color class represents an airline.</p>
+<p>If one does not care about the airline finding out. Hence one can see this is a minimum weight perfect matching problem allowing self-loops. However, people might actually care about airline not happy about this practice. Hence we are interested in making sure in each airline, we have no overlapping itineraries. However, we allow overlapping itineraries across airlines.</p>
+<p>For two edges <span class="math inline">\set{a,b}</span> and <span class="math inline">\set{c,d}</span>, it is <em>independent</em> if <span class="math inline">[a,b]\cap [c,d]= \emptyset</span>. A set of edges is <em>independent</em> if the edges are pairwise independent.</p>
+<section class="theorem-environment Problem" id="Problem-1">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span><span class="name">Covert back-to-back ticketing problem</span></span>
+<p><strong>Input:</strong> A multigraph <span class="math inline">G=(V,E)</span> where <span class="math inline">V\subseteq [n]</span>, edges has <span class="math inline">k</span> different colors, and there is an edge cost function <span class="math inline">c:E\to \R^+</span>.</p>
+<p><strong>Output:</strong> A perfect matching <span class="math inline">M</span> (allowing self-loops), such that each color class of <span class="math inline">M</span> is independent, and the cost is minimized.</p>
+</section>
+<p>I suspect for arbitrary <span class="math inline">k</span>, the problem is NP-hard. We show how to solve the problem in polynomial time for <span class="math inline">k=2</span>.</p>
+<p><a href="https://yizhis.github.io/">Yizhi Song</a> stated the idea that if one edge in a color is picked, it forces some edges of the other color to be picked. We can use the idea to obtain an <span class="math inline">O(n^3)</span> time algorithm for this problem.</p>
+<p>Since we are only working with <span class="math inline">k=2</span> case, we will let <span class="math inline">\bar{a}</span> to be the color that is not <span class="math inline">a</span>. Recall <span class="math inline">[n]=\set{1,\ldots,n}</span> and <span class="math inline">[a..b] = \set{a,a+1,\ldots,b}</span>. We assume the vertices <span class="math inline">V=[n]</span>. For a graph with <span class="math inline">k</span> color classes, we define <span class="math inline">G_a</span> to be the subgraph consists of all edges of color <span class="math inline">a</span>. <span class="math inline">c_a(x,y)</span> is the cost of a color <span class="math inline">a</span> edge <span class="math inline">xy</span>. We define <span class="math inline">D(a,y,z)</span> as the optimal solution when the input graph is <span class="math inline">G_\bar{a}[[z-1]\setminus \set{y}] \cup G_a[[y-1]]</span>. We also define <span class="math inline">C_{a}(x,y)</span> to be the optimal solution when the input graph is <span class="math inline">G_a[[x..y]]</span>.</p>
+<p>The optimal solution is <span class="math inline">D(a,n+1,n+1)</span> for either color <span class="math inline">a</span>.</p>
+<p>We express the recursive relation. For <span class="math inline">y&lt;z</span>, we have the following. <span class="math display">\displaystyle 
+D(a,y,z) =\min \begin{cases}
+\min_{x&lt;y} \set{ C_\bar{a}(y+2,z-1) + c_\bar{a}(x,y+1) + D(\bar{a},x,y)}\\
+C_\bar{a}(y+1,z-1) + D(\bar{a},y,y)
+\end{cases}
+</span> It might be beneficial to see the intuition behind the two cases through the following pictures.</p>
+<figure>
+<img src="files/ticketing_case1.png" alt="First case." /><figcaption>First case.</figcaption>
+</figure>
+<figure>
+<img src="files/ticketing_case2.png" alt="Second case." /><figcaption>Second case.</figcaption>
+</figure>
+<p>On the other hand, when <span class="math inline">y=z</span> <span class="math display">\displaystyle 
+D(a,y,y) =\min_{x&lt;y} \set{
+D(a,x,y) + c_a(x,y),
+D(\bar{a},x,y) + c_\bar{a}(x,y)}
+</span> One can easily infer the base case through definition. Note that all values of <span class="math inline">C_a</span> can be computed in <span class="math inline">O(n^2)</span> time. It takes <span class="math inline">O(n)</span> time to compute one value in <span class="math inline">D</span>. Therefore, the total running time is <span class="math inline">O(n^3)</span>.</p>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-06-15">2019-06-15</time>. </div>
+    <div class="info">Tags: Optimization.</div>
+</div>]]></description>
+    <pubDate>Sat, 15 Jun 2019 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/posts/2019-06-15-airline-booking-polys-and-algorithms.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title>Union of intervals in SQL</title>
     <link>https://chaoxuprime.com/posts/2019-04-27-union-of-intervals-in-sql.html</link>
     <description><![CDATA[<br />
@@ -373,105 +451,6 @@
 </div>]]></description>
     <pubDate>Thu, 31 Jan 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxuprime.com/posts/2019-01-31-bottleneck-k-link-path.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>Search in a sorted matrix with an oracle</title>
-    <link>https://chaoxuprime.com/posts/2019-01-30-search-sorted-matrix.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>Consider a infinite matrix <span class="math inline">M</span>. Another way to think about it is a function <span class="math inline">f:\N\to \N\to X</span>. A matrix <span class="math inline">M</span> is sorted if <span class="math inline">M_{i,j}\leq M_{i,j+1}</span> and <span class="math inline">M_{i,j}\leq M_{i+1,j}</span>.</p>
-<section class="theorem-environment Problem" id="Problem-1">
-<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
-<p>Given a sorted matrix <span class="math inline">M</span>, and an oracle that takes <span class="math inline">\lambda</span> returns if a value is <span class="math inline">\lambda &lt;\lambda^*</span> or <span class="math inline">\lambda \geq \lambda^*</span>. Find the largest value no larger than <span class="math inline">\lambda^*</span>.</p>
-</section>
-<p>Assuming there are at most <span class="math inline">k</span> elements no larger than <span class="math inline">\lambda^*</span>, and we know the smallest <span class="math inline">n</span> and <span class="math inline">m</span> such that <span class="math inline">M_{i,j}&gt;\lambda^*</span> if <span class="math inline">i&gt;n</span> or <span class="math inline">j&gt;m</span>. Also, let <span class="math inline">t</span> be the smallest number such that <span class="math inline">M_{t,t}&gt;\lambda^*</span>. One can see that <span class="math inline">t\leq \min(n,m)</span> and <span class="math inline">k=O(\max(n,m)^2)</span>.</p>
-<p>Let's first consider the case when <span class="math inline">n</span> and <span class="math inline">m</span> is known and <span class="math inline">n\leq m</span>. It is <a href="https://leetcode.com/problems/search-a-2d-matrix-ii/">Leetcode 240. Search a 2D Matrix II</a>. However, our problem is more general, because comparison with <span class="math inline">\lambda^*</span> can only be done through the oracle. Craig Gidney wrote about an <a href="http://twistedoakstudios.com/blog/Post5365_searching-a-sorted-matrix-faster">optimal algorithm</a> with <span class="math inline">O(n\log \frac{m}{n})</span> running time, matrix access algorithm. However, the oracle access is too large. There are times where the oracle access is slow. For example, when using it as a subroutine for finding a <a href="https://chaoxuprime.com/posts/2019-01-31-bottleneck-k-link-path.html">bottleneck <span class="math inline">k</span>-link path</a>. There is an algorithm with optimal running time and <span class="math inline">O(\log(nm))</span> oracle access.</p>
-<p>Let's consider a special case, where <span class="math inline">n=m=2^i</span> for some <span class="math inline">i</span>. This case was shown in <span class="citation" data-cites="FredericksonZ17">[<a href="#ref-FredericksonZ17">1</a>]</span>. For each submatrix, the two vertices on the opposite diagonal indicates the largest and smallest element in the submatrix. Hence each matrix can be represented by two numbers, indicate the maximum and minimum. These numbers are called the representative of the matrix. The idea is we keep two numbers <span class="math inline">\lambda_1</span> and <span class="math inline">\lambda_2</span>, such that we know <span class="math inline">\lambda^*\in [\lambda_1,\lambda_2]</span>. The algorithm keep partition the matrix into small matrices, updating <span class="math inline">\lambda_1</span> and <span class="math inline">\lambda_2</span>, and discard matrices outside the range. We apply the following algorithm. Let <span class="math inline">R</span> consists of the multiset of representatives of the matrix, and <span class="math inline">R&#39;</span> be the representatives that lies inside <span class="math inline">[\lambda_1,\lambda_2]</span>. We find <span class="math inline">\lambda</span>, the median of <span class="math inline">R&#39;</span>. Test if <span class="math inline">\lambda&lt;\lambda^*</span>. If so, then <span class="math inline">\lambda_1</span> updates to <span class="math inline">\lambda</span>, otherwise <span class="math inline">\lambda_2</span> updates to <span class="math inline">\lambda</span>. This step is done twice. Now, we split the matrices with more than one element into <span class="math inline">4</span> equally sized matrices, and repeat the algorithm. Recall at all times, the matrices does not contain any element in <span class="math inline">[\lambda_1,\lambda_2]</span> are discarded.</p>
-<p>There is at most <span class="math inline">O(\log n)</span> iterations before range shrinks to a single element, hence at most <span class="math inline">O(\log n)</span> oracle calls. The difficulty is to show that the overall time is only <span class="math inline">O(n)</span>. Intuitively, in each iteration we quadruple the number of matrices, but we half it by two calls to the oracle. Therefore in <span class="math inline">\log n</span> steps we obtain roughly <span class="math inline">2^{\log n}=O(n)</span> matrices. However, at this point, the matrices are all singletons, and no more matrix can be created. We will only decrease the number of matrices by each oracle call. Careful reader can trace the whole argument in Lemma 2.1 of <span class="citation" data-cites="FredericksonZ17">[<a href="#ref-FredericksonZ17">1</a>]</span>.</p>
-<p>For the more general case, one can find the proof in <span class="citation" data-cites="FredericksonJ84">[<a href="#ref-FredericksonJ84">2</a>]</span>. Note the proof is for selection, but one can easily modify it to work for search.</p>
-<p>Now, <span class="math inline">n</span> and <span class="math inline">m</span> is not known, but we can quickly using exponential search to find it. Indeed, we just have to apply exponential search in the first row and first column using the oracle. This gives us an extra <span class="math inline">O(\log n + \log m)=O(\log nm)</span> oracle calls.</p>
-<p>Let <span class="math inline">k</span> to be the number of elements no larger than <span class="math inline">\lambda^*</span>. We can get running time relative to <span class="math inline">k</span>. Use exponential search until we find the first <span class="math inline">i</span> such that <span class="math inline">M_{2^i,2^i}&gt;\lambda^*</span>. So we can upper bound <span class="math inline">t</span>. Then one can solve the problem with <span class="math inline">2</span> matrices. One <span class="math inline">t\times k</span> matrix and a <span class="math inline">k\times t</span> matrix. The total running time is therefore <span class="math inline">O(\log k+t\log k/t)=O(t\log k)</span>. In fact, we get <span class="math inline">O(\log k)</span> oracle calls and <span class="math inline">O(t\log k)</span> running time. Here we can take <span class="math inline">t</span> to be <span class="math inline">\sqrt{k}</span>, and obtain <span class="math inline">O(\sqrt{k}\log k)</span> time.</p>
-<p>Note if we relax on number of oracle calls. I know how to get a <span class="math inline">O(\sqrt{k})</span> running time.</p>
-<section class="theorem-environment Theorem" id="Theorem-2">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">2</span></span>
-<p>Given <span class="math inline">\lambda^*</span> and a <span class="math inline">n\times m</span> sorted matrix such that the <span class="math inline">i</span>th row has <span class="math inline">k_i</span> elements no larger than <span class="math inline">x</span>. Let <span class="math inline">k=\sum_{i} k_i</span>. We can find <span class="math inline">\lambda^*</span> in <span class="math inline">O(\sum_{i} \log (k_{i+1}-k_i+1) ) = O(n \log \frac{k}{n^2})</span> time.</p>
-</section>
-<p>The idea is simple, we do exponential search on each row to find the largest element no larger than <span class="math inline">\lambda^*</span>, but we reuse information from the previous row. This gives us the running time <span class="math inline">O(\sum_{i} \log (k_{i+1}-k_i+1) )</span>. The main difficulty is to show why is is <span class="math inline">O(n \log \frac{k}{n^2})</span>.</p>
-<section class="theorem-environment Lemma" id="Lemma-3">
-<span class="theorem-header"><span class="type">Lemma</span><span class="index">3</span></span>
-<p>If <span class="math inline">\sum_{i=1}^n k_i=k</span>, then <span class="math inline">\sum_{i=1}^n \log (k_{i+1}-k_i+1)=O(n\log k/n^2)</span>.</p>
-</section>
-<p>Once we show that, we can use the theorem to obtain <span class="math inline">O(\sqrt{k})</span> running time.</p>
-<p>In fact, we can also get a very simple algorithm with running time <span class="math inline">O(h \log(k/h^2))</span>, where <span class="math inline">h</span> is the number of stairs in the staircase shape. However, it also uses <span class="math inline">O(h\log(k/h^2)</span> oracle calls. The idea is to use exponential search to find the boundary of the staircase, but we switch between boundaries: horizontal then vertical. It is open if we can obtain <span class="math inline">O(h\log(k/h^2))</span> running time and <span class="math inline">O(\log k)</span> oracle calls.</p>
-<h1 id="remark"><span class="header-section-number">1</span> Remark</h1>
-<p>There is an alternative algorithm which can be found in <span class="citation" data-cites="JacobR08">[<a href="#ref-JacobR08">3</a>]</span>. The alternative algorithm is quite close to a post about <a href="https://chaoxuprime.com/posts/2014-04-02-selection-in-a-sorted-matrix.html">selection in a sorted matrix</a>.</p>
-<p>The careful reader might observe the known search algorithms follow the exact same structure as algorithms for selection. Indeed, we <em>are</em> doing selection but we do not know the rank of the element. Intuitively, many selection algorithm, the rank is <em>only used</em> to remove the correct set of candidates. Hence this suggest one can modify the algorithm to use the oracle call in place of the rank.</p>
-<h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references">
-<div id="ref-FredericksonZ17">
-<p>[1] G.N. Frederickson, S. Zhou, <strong>Optimal parametric search for path and tree partitioning</strong>, CoRR. abs/1711.00599 (2017).</p>
-</div>
-<div id="ref-FredericksonJ84">
-<p>[2] G. Frederickson, D. Johnson, <strong>Generalized selection and ranking: Sorted matrices</strong>, SIAM Journal on Computing. 13 (1984) 14–30 <a href="https://doi.org/10.1137/0213002">10.1137/0213002</a>.</p>
-</div>
-<div id="ref-JacobR08">
-<p>[3] R. Jacob, <strong>Binary search on two-dimensional data</strong>, Technische Universität München, 2008.</p>
-</div>
-</div>
-
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-01-30">2019-01-30</time>. </div>
-    <div class="info">Tags: algorithm, data structure.</div>
-</div>]]></description>
-    <pubDate>Wed, 30 Jan 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-01-30-search-sorted-matrix.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>A Reviewer Assignment Problem</title>
-    <link>https://chaoxuprime.com/posts/2019-01-29-reviewer-assignment.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>Consider there are some reviewers and some papers. Each reviewer can review exactly one paper, and each reviewer is qualified to review some subset of papers. We are interested in maximizing the number of papers reviewed by at least <span class="math inline">k</span> reviewer, then under that constraint, maximize the paper reviewed by <span class="math inline">k+1</span> reviewer, etc. This make sure we are being fair in evaluating papers. It would try to avoid the case where most paper getting small number of reviews and a few papers getting unreasonable number of reviews.</p>
-<p>Formally, we are given a bipartite graph <span class="math inline">G=(A,B,E)</span> of <span class="math inline">n</span> vertices and <span class="math inline">m</span> edges. A subset of edges <span class="math inline">M</span> is called a semi-matching, if <span class="math inline">\deg_M(v)=1</span> for all <span class="math inline">v\in A</span>. For a subset of edges <span class="math inline">M</span>, let <span class="math inline">g_M(i)</span> to be the number of vertices in <span class="math inline">B</span> with degree at least <span class="math inline">i</span>. We want to find a semi-matching <span class="math inline">M</span>, such that <span class="math inline">(g_M(k),g_M(k+1),\ldots,g_M(n))</span> is lexicographically maximum.</p>
-<p>When <span class="math inline">k=1</span>, if <span class="math inline">M</span> minimizes the sum of the function <span class="math inline">\sum_{v\in B} f(\deg_M(v))</span> for any strictly convex increasing function <span class="math inline">f</span>, then <span class="math inline">(g_M(1),g_M(2),\ldots,g_M(n))</span> is lexicographically maximum. The problem therefore can be reduced to min-cost flow can be applied here directly, and obtain a polynomial time algorithm <span class="citation" data-cites="HarveyLLT06">[<a href="#ref-HarveyLLT06">1</a>]</span>.</p>
-<p>When <span class="math inline">k=3</span>, the problem is NP-hard, since it would imply we have to maximized <span class="math inline">g_M(3)</span>, and this is already NP-hard because exact cover by <span class="math inline">3</span>-sets. That is, given a collection of sets of size <span class="math inline">3</span> each. Decide if there exists a subcollection that forms a partition of the universe.</p>
-<p>The only unresolved case is <span class="math inline">k=2</span>. Interestingly, we can show it is also polynomial time solvable. First, one can see that maximizing <span class="math inline">(g_M(2),g_M(3),\ldots,g_M(n))</span> is equivalent to minimize <span class="math inline">\sum_{v, \deg_M(v)\geq 2} f(\deg_M(v))</span> for some strictly convex increasing function <span class="math inline">v</span>, and <span class="math inline">M</span> range through all semi-matchings so each vertex in <span class="math inline">B</span> has degree exactly <span class="math inline">2</span> (Assuming it exists).</p>
-<p>Apollonio and Sebő shown the following problem is polynomial time solvable <span class="citation" data-cites="ApollonioS09">[<a href="#ref-ApollonioS09">2</a>]</span>.</p>
-<section class="theorem-environment Problem" id="Problem-1">
-<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
-<p>Given a graph <span class="math inline">G=(V,E)</span>, a integer <span class="math inline">k</span>, convex functions <span class="math inline">f_v:\N \to \R</span> for each <span class="math inline">v\in V</span>, and an edge cost function <span class="math inline">c:E\to \R</span>. One can find the following in polynomial time. <span class="math display">\displaystyle \min \left\{   \sum_{v\in V} f_v(\deg_M(v)) + \sum_{e\in M} c(e) \middle| M\subseteq E, |M|=k  \right\}</span></p>
-</section>
-<p>It's not hard to generalize it a bit further by requiring <span class="math inline">M</span> to respect some upper and lower bound on the vertices. Indeed, we can let <span class="math inline">f_v:\N\to \R\cup \set{\infty}</span>, and set <span class="math inline">f_v(x)=\infty</span> if <span class="math inline">x</span> is not between the upper and lower bounds.</p>
-<p>Now, we are going to reduce the problem. The reduction is similar to the <a href="https://cstheory.stackexchange.com/questions/33857/is-two-or-zero-matching-in-a-bipartite-graph-np-complete/33859">one for <span class="math inline">2</span>-or-<span class="math inline">0</span> matching</a>.</p>
-<p>For each vertex <span class="math inline">v\in B</span>, split into two vertices <span class="math inline">v_1</span> and <span class="math inline">v_2</span>. Define <span class="math inline">B_i=\set{v_1|v\in B}</span>. The new input graph consists of vertices <span class="math inline">B_1\cup B_2 \cup A</span>. <span class="math inline">v_1</span> and <span class="math inline">v_2</span> connects to the same vertices as <span class="math inline">v</span>. We add an edge between <span class="math inline">v_1</span> and <span class="math inline">v_2</span>, with very large cost <span class="math inline">C</span>. Say <span class="math inline">C=mn^2+1</span>. <span class="math inline">v_1</span> has both an upper and lower bound of <span class="math inline">1</span>. <span class="math inline">v_2</span> has a lower bound of <span class="math inline">1</span>. For each vertex in <span class="math inline">A</span>, add an upper and lower bound of <span class="math inline">1</span>. We have a strict convex function <span class="math inline">f_{v_2}(x)=x^2</span> on each vertex <span class="math inline">v_2</span>.</p>
-<p>Let <span class="math inline">r=|A|</span>, <span class="math inline">p=|B|</span>. We solve <a href="#Problem-1">Problem 1</a> repeatedly for each <span class="math inline">k</span> from <span class="math inline">r</span> to <span class="math inline">r+p</span>.</p>
-<p>Say there exists an optimal solution to the original problem with exactly <span class="math inline">t</span> vertices in <span class="math inline">B</span> with degree smaller than <span class="math inline">2</span>. Find the optimal solution to the new problem with <span class="math inline">k=r+t</span>. Let it be <span class="math inline">M&#39;</span>. We obtain <span class="math inline">M</span> from <span class="math inline">M&#39;</span> by identify pairs of vertices <span class="math inline">v_1</span> and <span class="math inline">v_2</span>. <span class="math inline">M</span> would be the solution to the original problem.</p>
-<h1 id="extensions"><span class="header-section-number">1</span> Extensions</h1>
-<p>I first heard of the problem from <span class="citation" data-cites="YesilcimenY19">[<a href="#ref-YesilcimenY19">3</a>]</span>, where they focused on <span class="math inline">k=1</span> case, but the reviewer can review more than one paper. This case can be handled easily. We can add degree upper and lower bounds to all vertices, and only look at subgraphs in <span class="math inline">M</span> that satisfies the upper and lower bounds. That is, we can also make sure no reviewers review too many papers too. Under that constraint, find <span class="math inline">(g_M(k),\ldots,g_M(n))</span> lexicographically. This is possible but more tricky, as we have to do some reduction from capacitated <span class="math inline">b</span>-matching to <span class="math inline">b</span>-matching.</p>
-<p>There is a little more generalization. Assume for each paper, we have a lower bound of reviews <span class="math inline">d_v</span>. That is, it has to be reviewed by at least <span class="math inline">d_v</span> person to be useful. So translating to the graph case, we can impose the constraint that <span class="math inline">\deg_M(v)=0</span> or <span class="math inline">\deg_M(v)\geq d_v</span>. One can see maximizing <span class="math inline">(g_M(2),g_M(3),\ldots,g_M(n))</span> is equivalent to maximizing <span class="math inline">(g_M(1),g_M(2),\ldots,g_M(n))</span> where <span class="math inline">d_v=2</span> for all vertices. Again, one can modify the reduction to handle the case when <span class="math inline">d_v</span> is either <span class="math inline">1</span> or <span class="math inline">2</span>.</p>
-<h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references">
-<div id="ref-HarveyLLT06">
-<p>[1] N.J. Harvey, R.E. Ladner, L. Lovász, T. Tamir, <strong>Semi-matchings for bipartite graphs and load balancing</strong>, Journal of Algorithms. 59 (2006) 53–78 <a href="https://doi.org/10.1016/j.jalgor.2005.01.003">10.1016/j.jalgor.2005.01.003</a>.</p>
-</div>
-<div id="ref-ApollonioS09">
-<p>[2] N. Apollonio, A. Sebő, <strong>Minconvex factors of prescribed size in graphs</strong>, SIAM Journal on Discrete Mathematics. 23 (2009) 1297–1310 <a href="https://doi.org/10.1137/060651136">10.1137/060651136</a>.</p>
-</div>
-<div id="ref-YesilcimenY19">
-<p>[3] A. Yeşilçimen, E.A. Yildirim, <strong>An alternative polynomial-sized formulation and an optimization based heuristic for the reviewer assignment problem</strong>, European Journal of Operational Research. (2019) <a href="https://doi.org/10.1016/j.ejor.2019.01.035">10.1016/j.ejor.2019.01.035</a>.</p>
-</div>
-</div>
-
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-01-29">2019-01-29</time>. </div>
-    <div class="info">Tags: algorithm, matching.</div>
-</div>]]></description>
-    <pubDate>Tue, 29 Jan 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-01-29-reviewer-assignment.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 

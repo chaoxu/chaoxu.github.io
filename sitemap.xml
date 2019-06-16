@@ -19,6 +19,20 @@
   </url>
 
   <url>
+    <loc>https://chaoxuprime.com/posts/2019-06-15-array-and-permutation.html</loc>
+    <lastmod>2019-06-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://chaoxuprime.com/posts/2019-06-15-airline-booking-polys-and-algorithms.html</loc>
+    <lastmod>2019-06-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://chaoxuprime.com/posts/2019-04-27-union-of-intervals-in-sql.html</loc>
     <lastmod>2019-04-27</lastmod>
     <changefreq>weekly</changefreq>
