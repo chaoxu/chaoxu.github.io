@@ -5,7 +5,7 @@ tags: Permutation
 
 # Permutation, functional form
 
-It is often where we are tasked with permuting an array. We can abstract out and ask what exactly is an array. In functional form, an array just have to support the following two operations in constant time.
+What exactly is an array. In functional form, an array just have to support the following two operations in constant time.
 
 1. $get(A,i)$: returns $A[i]$.
 2. $set(A,i,x)$: update the array $A$ such that $A[i]$ returns $x$.
@@ -20,7 +20,7 @@ This allows us to apply permutations pretty easily by composing functions and ca
 
 Sometimes one might ask to physically apply the permutation to an array. That is, the $i$th position in the array contains the element in $\pi(i)$. This is helpful because it helps with cache locality: accessing consecutive elements would be in the same location. Although if the ordering of loops does not matter, there is no harm considering the functional view. 
 
-Often, one is tasked to apply permutation to an array physically. It usually ask for $O(n)$ running time and $O(1)$ space. Unfortunately, there is no way to obtain this running time for all permutations. There are some permutations where this is impossible. [cite]
+Often, one is tasked to apply permutation to an array physically. It usually ask for $O(n)$ running time and $O(1)$ space. Unfortunately, there is no way to obtain this running time for all permutations. There are some permutations where this is impossible. [A discussion can be found in cstheory](https://cstheory.stackexchange.com/questions/6711/complexity-of-applying-a-permutation-in-place).
 
 # Mix and match
 
@@ -31,5 +31,5 @@ Let's consider the simple case where every element is distinct.  One simple solu
 However, one we take the functional view, the problem can be solved, physically too. 
 The [answer by](https://leetcode.com/problems/wiggle-sort-ii/discuss/77677/ono1-after-median-virtual-indexing/81756) [Stefan Pochmann](http://www.stefan-pochmann.info/) shows one can simply do the mapping in place. 
 
-What is happening in the physical location. If we applied index transform $\pi$, then apply physical permutation $\sigma$ on the index, what happens for the physical array? It is the same as applying $\pi^{-1}\sigma\pi$ to the physical array.
+What is happening in the physical location. If we applied index transform $\pi$, then apply physical permutation $\sigma$ on the index, what happens for the physical array? It is the same as applying $\pi^{-1}\sigma\pi$ to the physical array. Note this means we can only use this trick to obtain conjugates of $\sigma$.
 

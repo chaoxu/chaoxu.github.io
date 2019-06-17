@@ -1,8 +1,8 @@
 ---
 title: An algorithm for covert back-to-back ticketing
-tags: Optimization
+tags: Optimization, algorithm, airline
+typora-root-url: ../
 ---
-
 
 
 Airline booking ploys are ways to circumventing airlines ticket rules in order to spend less on the ticket. A fairly nice [Wikipedia article on airline booking ploys](https://en.wikipedia.org/wiki/Airline_booking_ploys). We consider a special case, the back-to-back ticketing/nested ticketing. [TripSavvy has a good article on back-to-back ticketing](https://www.tripsavvy.com/back-to-back-ticketing-468287). 
@@ -19,7 +19,7 @@ For two edges $\set{a,b}$ and $\set{c,d}$ defined over integers, it is _independ
 
 {Problem}(Covert back-to-back ticketing problem)
     
-    **Input:** A multigraph $G=(V,E)$ where $V\subseteq [n]$, edges has $k$ different colors, and there is an edge cost function $c:E\to \R^+$. 
+    **Input:** A multigraph $G=(V,E)$ where $V\subseteq [n]$, where each edge can be one of $k$ colors, and there is an edge cost function $c:E\to \R^+$. 
     
     **Output:** A perfect matching $M$ (allowing self-loops), such that each color class of $M$ is independent, and the cost is minimized. 
 
@@ -32,12 +32,12 @@ Since we are only working with $k=2$ case, we will let $\bar{a}$ to be the color
 The optimal solution is $D(a,n+1,n+1)$ for either color $a$.
 
 We express the recursive relation. For $y<z$, we have the following.
-\[
+$$
 D(a,y,z) =\min \begin{cases}
 \min_{x<y} \set{ C_{\bar{a}}(y+2,z-1) + c_{\bar{a}}(x,y+1) + D(\bar{a},x,y)}\\
 C_{\bar{a}}(y+1,z-1) + D(\bar{a},y,y)
 \end{cases}
-\]
+$$
 It might be beneficial to see the intuition behind the two cases through the following pictures.
 
 ![First case.](/files/ticketing_case1.png)
@@ -45,9 +45,11 @@ It might be beneficial to see the intuition behind the two cases through the fol
 ![Second case.](/files/ticketing_case2.png)
 
 On the other hand, when $y=z$
-\[
+$$
 D(a,y,y) =\min_{x<y} \set{
 D(a,x,y) + c_a(x,y),
 D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
-\]
+$$
 One can easily infer the base case through definition. Note that all values of $C_a$ can be computed in $O(n^2)$ time. It takes $O(n)$ time to compute one value in $D$. Therefore, the total running time is $O(n^3)$.
+
+
