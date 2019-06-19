@@ -7,8 +7,44 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxuprime.com/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sat, 15 Jun 2019 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Tue, 18 Jun 2019 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Long distance couple back-to-back ticketing</title>
+    <link>https://chaoxuprime.com/posts/2019-06-18-long-distance-couple-back-to-back-ticketing.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>The reason I explored <a href="https://chaoxuprime.com/posts/2019-06-15-covert-back-to-back-ticketing.html">an algorithm for covert back-to-back ticketing</a> in the previous blog post, was because as someone currently in a long distance relationship. It is important to save money on travel.</p>
+<p>For long distance couples, two people can fly. Consider if the couple decides be together each weekend, one can fly to the city of the other on Friday night, and comes back on Sunday night. Again we can take advantage of the back-to-back ticketing.</p>
+<p>Let <span class="math inline">M</span> be a matching of a graph <span class="math inline">G</span> where the edges are two colored. <span class="math inline">M</span> is called <em>valid</em> if vertex <span class="math inline">2i</span> and <span class="math inline">2i-1</span> are contained in the same colored edge in <span class="math inline">M</span>.</p>
+<section class="theorem-environment Problem" id="Problem-1">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span><span class="name">Couple back-to-back ticketing problem</span></span>
+<p><strong>Input:</strong> A multigraph <span class="math inline">G=(V,E)</span> where <span class="math inline">V\subseteq [n]</span>, where each edge can be either red or blue, and there is an edge cost function <span class="math inline">c:E\to \R^+</span>.</p>
+<p><strong>Output:</strong> A valid perfect matching <span class="math inline">M</span> (allowing self-loops), such that the cost is minimized.</p>
+</section>
+<p>Unfortunately, I don't see how to solve this problem in polynomial time. I could convert this problem to something that might be solved in polynomial time in the future.</p>
+<p>Note we can split the vertices. That is, for vertex <span class="math inline">i</span>, we split it into <span class="math inline">(i,R)</span> and <span class="math inline">(i,B)</span> for its blue and red counter part. A matching is <em>paired</em> if <span class="math inline">(2i,C)</span> and <span class="math inline">(2i-1,C)</span> both has to be matched, where <span class="math inline">C\in \set{R,B}</span>. The matching is <em>split</em> if <span class="math inline">(i,R)</span> and <span class="math inline">(i,B)</span> cannot be both in the matching.</p>
+<p>If we just enforce one property -- paired or split -- then it is solvable in polynomial time. Indeed, both are matching under restrictions. We are interested in finding a matching <span class="math inline">M</span>, such that the vertices covered by <span class="math inline">M</span> is in some special structure. Namely <span class="math inline">\Delta</span>-matroid. Since the paired property is a very special <span class="math inline">\Delta</span>-matroid <span class="citation" data-cites="KakimuraT14">[<a href="#ref-KakimuraT14">1</a>]</span>, which was first solved in <span class="citation" data-cites="HefnerK95">[<a href="#ref-HefnerK95">2</a>]</span>. The second property is partition matroid, which can be handled by <a href="/posts/2019-04-27-maximum-weight-hierarchical-b-matching.html">hierarchical <span class="math inline">b</span>-matching</a>. Reader can see each individual restriction, the problem can be turned into a maximum weight perfect matching.</p>
+<p>If we enforce both property, the problem seems to be open. Although the structure is still very special, it is an <a href="https://en.wikipedia.org/wiki/Delta-matroid">even <span class="math inline">\Delta</span>-matroid</a>. I'm pretty sure this is an major open problem. However, this special case might have a much simpler solution.</p>
+<h1 id="bibliography" class="unnumbered">References</h1>
+<div id="refs" class="references">
+<div id="ref-KakimuraT14">
+<p>[1] N. Kakimura, M. Takamatsu, <strong>Matching Problems with Delta-Matroid Constraints</strong>, SIAM Journal on Discrete Mathematics. 28 (2014) 942–961 <a href="https://doi.org/10.1137/110860070">10.1137/110860070</a>.</p>
+</div>
+<div id="ref-HefnerK95">
+<p>[2] A. Hefner, P. Kleinschmidt, <strong>A constrained matching problem</strong>, Annals of Operations Research. 57 (1995) 135–145 <a href="https://doi.org/10.1007/BF02099694">10.1007/BF02099694</a>.</p>
+</div>
+</div>
+
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-06-18">2019-06-18</time>. </div>
+    <div class="info">Tags: Optimization, algorithm, airline.</div>
+</div>]]></description>
+    <pubDate>Tue, 18 Jun 2019 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/posts/2019-06-18-long-distance-couple-back-to-back-ticketing.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title>An algorithm for covert back-to-back ticketing</title>
     <link>https://chaoxuprime.com/posts/2019-06-15-covert-back-to-back-ticketing.html</link>
     <description><![CDATA[<br />
@@ -416,41 +452,6 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 </div>]]></description>
     <pubDate>Tue, 05 Feb 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxuprime.com/posts/2019-02-05-eventually-periodic.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>Bottleneck <span class="math inline">k</span>-link path</title>
-    <link>https://chaoxuprime.com/posts/2019-01-31-bottleneck-k-link-path.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>A DAG is called complete, if there are vertices <span class="math inline">v_1,\ldots,v_n</span>, and <span class="math inline">v_iv_j</span> is an edge if and only if <span class="math inline">i&lt;j</span>. Let <span class="math inline">w(i,j)</span> be the edge weights from <span class="math inline">i</span> to <span class="math inline">j</span>. The weight is called ordered, if <span class="math inline">w(i,j)&lt;w(i,j+1)</span> and <span class="math inline">w(i+ 1,j)&lt;w(i,j)</span>.</p>
-<section class="theorem-environment Problem" id="Problem-1">
-<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span><span class="name">Bottleneck <span class="math inline">k</span>-link path problem</span></span>
-<p>Find a path consists of <span class="math inline">k</span> edges from <span class="math inline">v_1</span> to <span class="math inline">v_n</span>, such that the maximum weight of the edges in the path is minimized.</p>
-</section>
-<p>One can formulate a dynamic programming algorithm, which takes <span class="math inline">O(kn^2)</span> time. My <a href="https://chaoxuprime.com/posts/2013-08-16-more-algorithms-on-perfectly-balanced-photo-gallery.html">previous writing</a> shows an <span class="math inline">O(kn)</span> time algorithm using the monge property. Using binary search, there is also an <span class="math inline">O(k\log(n/k)\log M)</span> time algorithm if all weights are positive integers no larger than <span class="math inline">M</span>.</p>
-<p>We show there is an <span class="math inline">O(n+k\log(n/k)\log n)</span> time algorithm. Assume <span class="math inline">\lambda^*</span> is the optimal weight. First, there is an oracle that given <span class="math inline">\lambda</span>, decides if <span class="math inline">\lambda\geq \lambda^*</span>. Indeed, we can apply the greedy algorithm. Find the sequence <span class="math inline">a_1,\ldots,a_k</span>, as follows. <span class="math inline">a_0=1</span>, <span class="math inline">a_i</span> is the largest value such that <span class="math inline">w(a_{i-1},a_i)\leq \lambda</span>. If <span class="math inline">a_k=n</span>, then it is clear that <span class="math inline">\lambda \geq \lambda^*</span>. Also, we can show if <span class="math inline">a_k&lt;n</span>, then <span class="math inline">\lambda &lt; \lambda^*</span>. <span class="math inline">O(n)</span> time seems to be a quite large bound. We could do it in <span class="math inline">O(k\log (n))</span> instead by doing binary search for each <span class="math inline">a_i</span>. Using <a href="https://en.wikipedia.org/wiki/Exponential_search">exponential search</a> instead, we can obtain a <span class="math inline">O(k\log(n/k))</span> time algorithm.</p>
-<p>One need to do binary search for <span class="math inline">\lambda^*</span>. There are <span class="math inline">\Omega(n^2)</span> weights, let it be <span class="math inline">W</span>. One does not have to know all of them in order to apply binary search. Note that <span class="math inline">w</span> is a matrix sorted in both row and column, hence we need a selection algorithm that returns the <span class="math inline">k</span>th smallest element for such matrix. There is an <a href="https://chaoxuprime.com/posts/2014-04-02-selection-in-a-sorted-matrix.html"><span class="math inline">O(n)</span> time algorithm</a> for that. Hence we can do binary search on the sorted <span class="math inline">W</span> by spending <span class="math inline">O(n)</span> time to access <span class="math inline">i</span>th element. We now obtain a <span class="math inline">O((n+ k\log(n/k)) \log n) = O(n\log n)</span> time algorithm. Not bad.</p>
-<p>We can speed it up even further. Instead of selection in the sorted matrix, we can do <a href="https://chaoxuprime.com/posts/2019-01-30-search-sorted-matrixhtml">search in the sorted matrix</a>. We are given an oracle to test if a value is smaller than <span class="math inline">\lambda^*</span> after all. We can do search for <span class="math inline">\lambda^*</span> using <span class="math inline">O(\log n)</span> oracle calls and <span class="math inline">O(n)</span> time. Hence this gives us a <span class="math inline">O(n+k\log (n/k) \log n)</span> time algorithm for the problem. Whenever <span class="math inline">k=O(\frac{n}{\log(n) \log \log n})</span>, this is <span class="math inline">O(n)</span> time.</p>
-<p>As an application, we obtain a solution to <a href="https://leetcode.com/problems/split-array-largest-sum/">Leetcode 410 Split Array Largest Sum</a>. The problem is also called the <em>linear partitioning</em> problem. The problem asks one to partition array into <span class="math inline">k</span> contagious subarrays that minimizes the maximum sum of each subarray. It was an example for learning dynamic programming in chapter 8.5 of <span class="citation" data-cites="Skiena10book">[<a href="#ref-Skiena10book">1</a>]</span>. An <span class="math inline">O(kn^2)</span> algorithm was given. Reading the discussion online, one would find <span class="math inline">O(n\log M)</span> time algorithm is the suggested solution, where <span class="math inline">M</span> is the maximum over all integers. The algorithm is actually fairly useful for photo galleries. There is the <a href="https://www.npmjs.com/package/linear-partitioning">NPM package <code>linear-partitioning</code></a>, used by multiple photo galleries packages. My <a href="https://chaoxuprime.com/posts/2013-08-16-more-algorithms-on-perfectly-balanced-photo-gallery.html">first encountered of the problem</a> was also for photo gallery. The linear partition problem reduces to the bottleneck <span class="math inline">k</span>-link path problem because we can define <span class="math inline">w(i,j)</span> to be the sum of elements from the <span class="math inline">i</span>th index of the array to the <span class="math inline">j</span>th index of the array. After <span class="math inline">O(n)</span> preprocessing, <span class="math inline">w(i,j)</span> can be computed in <span class="math inline">O(1)</span> time. This results a <span class="math inline">O(n+k\log (n/k) \log n)</span> running time algorithm.</p>
-<p>What about when <span class="math inline">k</span> is large? I've emailed <a href="https://samsonzhou.github.io/">Samson Zhou</a>, who has confirmed the algorithm in <span class="citation" data-cites="FredericksonZ17">[<a href="#ref-FredericksonZ17">2</a>]</span> can be used to solve the problem in <span class="math inline">O(n)</span> time.</p>
-<h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references">
-<div id="ref-Skiena10book">
-<p>[1] S.S. Skiena, <strong>The algorithm design manual</strong>, Springer, 2010.</p>
-</div>
-<div id="ref-FredericksonZ17">
-<p>[2] G.N. Frederickson, S. Zhou, <strong>Optimal parametric search for path and tree partitioning</strong>, CoRR. abs/1711.00599 (2017).</p>
-</div>
-</div>
-
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-01-31">2019-01-31</time>. </div>
-    <div class="info">Tags: algorithm, data structure.</div>
-</div>]]></description>
-    <pubDate>Thu, 31 Jan 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-01-31-bottleneck-k-link-path.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 
