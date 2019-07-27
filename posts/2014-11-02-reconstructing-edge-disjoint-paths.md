@@ -5,8 +5,9 @@ tags: combinatorial optimization
 
 This is a small improvement of the analysis of [@ConfortiHR03], this assume you already read that paper.
 
-{Problem}
+::: Problem
   Given a simple undirected graph of $n$ vertices and $m$ edges, construct a data structure such that we can query two vertices $u$ and $v$, and it returns the maximum edge disjoint paths between $u$ and $v$.
+:::
 
 We let $MF(n,m)$ to be the time to compute $st$-maximum flow on a undirected unit capacity graph.
 

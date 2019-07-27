@@ -13,9 +13,9 @@ Another way is to understand it as a graph problem. We are given a path, and the
 
 We consider a similar problem where instead of a single subarray, we want at most $k$ disjoint subarrays, such that the sum together is maximized. In fact, this is the [Maximum Subarray III problem on LintCode](http://www.lintcode.com/en/problem/maximum-subarray-iii/).
 
-{Problem}(Maximum $k$-Disjoint Subarray Problem)
-    Given array $A[1..n]$, find a non-decreasing sequence of indices $i_1,\ldots,i_{2k}$, such that $\sum_{i=1}^k \sum_{j=i_{2i-1}}^{2i} A[j]$ is maximized.
-
+::: {.Problem title="Maximum $k$-Disjoint Subarray Problem"}
+  Given array $A[1..n]$, find a non-decreasing sequence of indices $i_1,\ldots,i_{2k}$, such that $\sum_{i=1}^k \sum_{j=i_{2i-1}}^{2i} A[j]$ is maximized.
+:::
 There is obviously an $O(nk)$ algorithm by extending the dynamic programming algorithm for the $k=1$ case.
 
 # Solutions
@@ -54,8 +54,9 @@ Given indices $i$ and $j$, find indices $i'$ and $j'$ such that $i\leq i'\leq j'
 
 Recently, I've seen a truly simple result. A related problem is the following.
 
-{Problem}
-    Given array $B[1..n]$, find a non-decreasing sequence of indices $i_1,\ldots,i_{2k}$, such that $\sum_{i=1}^k B[i_{2i}]-B[i_{2i-1}]$ is maximized.
+::: Problem
+  Given array $B[1..n]$, find a non-decreasing sequence of indices $i_1,\ldots,i_{2k}$, such that $\sum_{i=1}^k B[i_{2i}]-B[i_{2i-1}]$ is maximized.
+:::
 
 This problem is featured in interviews, and is also [on leetcode as Best time to buy an sell stock IV](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/) and showed up in codeforces as [stock trading](http://codeforces.com/contest/391/problem/F3). 
 [Problem 1] and [Problem 2] can be reduced to each other in linear time. For one direction, we can define $B[i]=\sum_{j=1}^i A[j]$. The other direction, we let $A[i]=B[i]-B[i-1]$ for all $i$. The editorial in codeforces showed [a solution similar to [@Bengtsson07]](http://codeforces.com/blog/entry/10727) for [Problem 2].

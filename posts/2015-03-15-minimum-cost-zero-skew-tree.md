@@ -3,9 +3,9 @@ title: Minimum cost zero skew tree
 tags: series-parallel, tree
 ---
 
-{Problem}
-    Let $T$ be a rooted tree with real costs $c(e)$ and length lower bounds $\ell(e)$ on each edge $e$. We are interested in compute a function $f$, such that $f(e)\geq \ell(e)$, for any root to leaf path $P$, $\sum_{e\in P} f(e)=t$ and $\sum_{e\in E} c(e)f(e)$ is minimized. 
-
+::: Problem
+  Let $T$ be a rooted tree with real costs $c(e)$ and length lower bounds $\ell(e)$ on each edge $e$. We are interested in compute a function $f$, such that $f(e)\geq \ell(e)$, for any root to leaf path $P$, $\sum_{e\in P} f(e)=t$ and $\sum_{e\in E} c(e)f(e)$ is minimized. 
+:::
 This is the [zero skew tree problem](http://theory.cs.uni-bonn.de/info5/steinerkompendium/node27.html) where the tree is fixed.
 
 Here we show how this problem can be solved in $O(n\log n)$ time by reducing it to minimum cost flow on 2-terminal series parallel graph. [@Booth1993416]

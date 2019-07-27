@@ -7,12 +7,12 @@ This is a note for Pisinger's balancing algorithm for subset sum [@Pisinger19991
 
 We define a variation of the subset sum problem. The _balanced subset sum problem_. In this problem, we are given a vector $v$ of integers(does not have to be positive). We let $M=\|v\|_\infty$. We are interested in find a subset that sums to $t\in [M]$. 
 
-{Theorem}
-    Each subset sum problem on $n$ elements can be reduced to a balanced subset sum problem in $n$ elements in $O(n)$ time. 
-
-{Proof}
-    Consider the input to the subset sum problem $S$ and $t$. Greedily find a subset of elements $S'$, such that adding any other element will exceed $t$. Let $\|S'\|_1=t'$. Now, we negate all the elements in $S'$, and ask for balanced subset sum with input set $-S' \cup (S\setminus S')$ and target number $t-t'$.
-
+::: Theorem
+  Each subset sum problem on $n$ elements can be reduced to a balanced subset sum problem in $n$ elements in $O(n)$ time. 
+:::
+::: Proof
+  Consider the input to the subset sum problem $S$ and $t$. Greedily find a subset of elements $S'$, such that adding any other element will exceed $t$. Let $\|S'\|_1=t'$. Now, we negate all the elements in $S'$, and ask for balanced subset sum with input set $-S' \cup (S\setminus S')$ and target number $t-t'$.
+:::
 We partition $S$ into $A = [-M..0]\cap S$ and $B=S\setminus A$. We also define $A_i = \set{a_1,\ldots,a_i}$ and $B_i=\set{b_1,\ldots,b_i}$.
 
 A set is balanced by the following recursive definition.

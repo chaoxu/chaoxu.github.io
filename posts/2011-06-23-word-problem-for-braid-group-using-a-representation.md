@@ -3,12 +3,13 @@ title: Word problem for braid group using a representation
 tags: braid group, BSU REU, group theory, Haskell
 ---
 
-{Problem}(The word problem for braid groups)
-    **Input:**
-    $w$ is a word of length $l$ from the presentation $\langle \sigma_1,\sigma_2,\ldots,\sigma_{n-1} \mid  \sigma_{i+1}\sigma_i\sigma_{i+1} = \sigma_i\sigma_{i+1}\sigma_i, \sigma_i\sigma_j = \sigma_j\sigma_i \rangle$ where $|i-j|\neq 1$.
-       
-    **Output:**
-    Return `true` if $w$ is the identity, else return `false`.
+::: {.Problem title="The word problem for braid groups"}
+**Input:**
+$w$ is a word of length $l$ from the presentation $\langle \sigma_1,\sigma_2,\ldots,\sigma_{n-1} \mid  \sigma_{i+1}\sigma_i\sigma_{i+1} = \sigma_i\sigma_{i+1}\sigma_i, \sigma_i\sigma_j = \sigma_j\sigma_i \rangle$ where $|i-j|\neq 1$.
+   
+**Output:**
+Return `true` if $w$ is the identity, else return `false`.
+:::
 
 The word problem for braid group was solved a long time ago with Artin combing. It requires one to express pure braid group $P_n$ as a semidirect product of free groups $F_1,\ldots,F_{n-1}$. It is slow and quite difficult, at least I wasn't able to come up with an explicit algorithm for it.
 

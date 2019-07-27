@@ -1,5 +1,6 @@
 ---
 title: The KMP algorithm in Haskell
+tags: Algorithm
 ---
 
 Almost all the string algorithms I read are doing index manipulations somewhere. 
@@ -12,8 +13,9 @@ As an example, this article demonstrates how to write the KMP string matching al
 
 The KMP string matching algorithm solves the following problem.
 
-{Problem}
-    Given a string $pat$ of length $m$, return if it exist in $text$ of length $n$ in $O(n)$ time.
+::: Problem
+  Given a string $pat$ of length $m$, return if it exist in $text$ of length $n$ in $O(n)$ time.
+:::
 
 Half of the KMP algorithm implementations are actually [the MP algorithm](http://www-igm.univ-mlv.fr/~lecroq/string/node8.html).
 [Twan van Laarhoven's implementation](http://twanvl.nl/blog/haskell/Knuth-Morris-Pratt-in-Haskell), the earlier version of the [KMP](http://hackage.haskell.org/package/KMP-0.1.0.2) package and even [Wikipedia's page](http://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm). 

@@ -1,5 +1,6 @@
 ---
 title: Sum of sparse array in linear time
+tags: Algorithm
 ---
 
 Let $\vec{n}=(n_1,\ldots,n_d)$. Define $\vec{x}\mod \vec{n} = (x_1 \mod n_1,\ldots,x_d\mod n_d)$. We want to represent an $d$-dimensional array. Assume $A$ and $B$ are both $d$-dimensional arrays of size $\vec{n}$ and one have $m$ non-zero elements one have $m'$ non-zero elements. The following operations should be supported. 

@@ -5,9 +5,10 @@ tags: math
 
 My friend was solving the following problem during a interview for Citigroup's IT department. 
 
-{Problem}
-    Find the square root of a integer n, without using the built in sqrt function. (The range of the result was not specified, I assume it's double)
-   
+::: Problem 
+Find the square root of a integer n, without using the built in sqrt function. (The range of the result was not specified, I assume it's double)
+:::
+
 This is a common interview question.
 
 There are [many ways to do it](http://en.wikipedia.org/wiki/Methods_of_computing_square_roots). I want to come up with a way no one else would think of, something that could amaze the interviewer. I mean, she might interviewed enough people to get bored with the standard answers. 

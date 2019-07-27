@@ -1,5 +1,6 @@
 ---
 title: Sushi sharing problem
+tags: puzzle
 ---
 
 The problem was first brought up by [Sam McCauley](http://www.cs.sunysb.edu/~smccauley/) when I was still in Stony Brook.

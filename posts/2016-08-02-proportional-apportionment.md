@@ -5,9 +5,9 @@ tags: optimization, integer
 
 I saw an interview problem about assigning identical processors to embarrassingly parallel jobs. The running time of a job equals the running time on a single processor divided by the number of processors. We are interested in minimizing the maximum running time. Formally, we get the following problem.
 
-{Problem}
-
-    Given positive reals $a_1,\ldots,a_n$ and positive integer $k$, find non-negative integers $x_1,\ldots,x_n$, such that $\sum_{i} x_i \leq k$ and $\theta = \max_{i} a_i/x_i$ is minimized.
+::: Problem
+  Given positive reals $a_1,\ldots,a_n$ and positive integer $k$, find non-negative integers $x_1,\ldots,x_n$, such that $\sum_{i} x_i \leq k$ and $\theta = \max_{i} a_i/x_i$ is minimized.
+:::
 
 If there is no integral requirement on $x_i$'s, then the problem is easy. Let $A=\sum_{i} a_i$. There is a closed solution of $x_i = k \frac{a_i}{A}$, and $\theta = A / k$.
 
@@ -19,8 +19,7 @@ Linear time algorithm also exists. It is connected to proportional apportionment
 
 There is a similar interview problem. Given $n$ points on the real line, add $k$ more points, such that it minimizes the maximum length between adjacent points. The problem is the same as the following one.
 
-{Problem}
-
-    Given positive $a_1,\ldots,a_n$ and positive integer $k$, find non-negative integers $x_1,\ldots,x_n$, such that $\sum_{i} x_i \leq k$ and $\theta = \max_{i} a_i/(x_i+1)$ is minimized.
-
+::: Problem
+  Given positive $a_1,\ldots,a_n$ and positive integer $k$, find non-negative integers $x_1,\ldots,x_n$, such that $\sum_{i} x_i \leq k$ and $\theta = \max_{i} a_i/(x_i+1)$ is minimized.
+:::
 The linear time algorithm for proportional apportionment should also work for the above problem. It is interesting how much can we change the problem before the linear time algorithm no longer works.

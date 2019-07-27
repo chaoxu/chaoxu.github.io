@@ -1,5 +1,6 @@
 ---
 title: Reduction between vertex disjoint paths and maximum matching 
+tags: Algorithm, Combinatorial Optimization, Matching
 ---
 
 # Reduce maximum bipartite matching to maximum vertex disjoint paths

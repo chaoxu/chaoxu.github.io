@@ -1,5 +1,6 @@
 ---
 title: Formal Definition of Sequence Alignment
+tags: alignment
 ---
 
 Consider an alphabet $\Sigma$ and two sequences $s$ and $t$ on $\Sigma$. Let $\bar{\Sigma} = \Sigma\cup \{\diamond\}$ where $\diamond$ is some symbol not in $\Sigma$, it's called the gap symbol. $M:\bar{\Sigma}\times \bar{\Sigma}\to \Z$. We have a gap penalties functions $g_s,g_t:\N\to \Z$. The functions are monotonic and are $0$ at $0$. The four boundary gap penalty coefficient $b_s,b_t,e_s,e_t\in \{0,1\}$. We want to find the alignment score between the two sequences.

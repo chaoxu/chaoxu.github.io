@@ -9,9 +9,9 @@ There is a nice algorithm design technique for cuts: fix a small number of parti
 
 A cut $(X,\bar{X})$ such that both $|X|,|\bar{X}|\geq k$ is called a $k$-size-cut.
 
-{Problem}
-
-    Given a graph $G$, find a minimum $k$-size-cut.
+::: Problem
+  Given a graph $G$, find a minimum $k$-size-cut.
+:::
 
 The standard algorithm is based on finding all possible min-$ST$-cut, where $S,T$ are all possible disjoint sets of size $k$. The running time is $O(n^{2k})$ min-cut computations.
 
@@ -23,9 +23,9 @@ It's interesting to wonder if the running time can be improved, especially for t
 
 This prompt a interesting problem:
 
-{Problem}
-	
-	Find the second smallest $st$-cut, if we already have a min-$st$-cut and it's corresponding flow(or some other useful information obtained through a push relabel flow computation).
+::: Problem
+  Find the second smallest $st$-cut, if we already have a min-$st$-cut and it's corresponding flow(or some other useful information obtained through a push relabel flow computation).
+:::
 
 Can we solve this in $O(m)$ time? What if we also know the min-$st$-cut is induced by $t$? 
 
@@ -33,9 +33,9 @@ Can we solve this in $O(m)$ time? What if we also know the min-$st$-cut is induc
 
 A problem which appeared as a [question on cstheory](http://cstheory.stackexchange.com/questions/29474/finding-a-minimum-directed-cut-that-splits-a-weakly-connected-bipartite-graph-in).
 
-{Problem}
-
-    Given a graph $G$, find the minimum cut under the constraint that each side is connected and has at least $2$ vertices. (Assume it exists).
+::: Problem
+  Given a graph $G$, find the minimum cut under the constraint that each side is connected and has at least $2$ vertices. (Assume it exists).
+:::
 
 This is the $k$-restricted edge connectivity problem when $k=2$.
 

@@ -1,39 +1,41 @@
 ---
 title: Even cycle in a simple graph
+tags: algorithm
 ---
 
-{Problem}
-    $G=(V,E)$ is a simple graph, decide if there exist a cycle of even length in $G$.
+::: Problem
+  $G=(V,E)$ is a simple graph, decide if there exist a cycle of even length in $G$.
+:::
 
 The problem comes from 2014 Spring UIUC Theory Qualify Exam. 
 
 # Characterizations
 Let $\lambda(u,v)$ denote the local edge connectivity of vertices $u$ and $v$. It's the same as the largest number of edge disjoint paths connecting $u$ and $v$. $\overline{\lambda}(G) = \max_{u,v\in V} \{\lambda(u,v)\}$. Similarly, $\kappa(u,v)$ is defined as local vertex connectivity, and $\overline{\kappa}(G) = \max_{u,v\in V} \{\kappa(u,v)\}$
 
-{Theorem}
-    
-    If $\kappa(u,v) \geq 3$ for some $u,v\in V$, then there exist an even cycle.
+::: Theorem
+  If $\kappa(u,v) \geq 3$ for some $u,v\in V$, then there exist an even cycle.
+:::
 
-{Proof}
-    There are 3 vertex disjoint paths $p_1,p_2,p_3$ from $u$ to $v$, thus it contains cycle $p_1 p_2^{-1}$,$p_1 p_3^{-1}$ and $p_2 p_3^{-1}$. One of them will have even length. 
+::: Proof
+  There are 3 vertex disjoint paths $p_1,p_2,p_3$ from $u$ to $v$, thus it contains cycle $p_1 p_2^{-1}$,$p_1 p_3^{-1}$ and $p_2 p_3^{-1}$. One of them will have even length. 
+:::
 
-{Theorem}
-    
-    If $\overline{\lambda}(G)\geq 3$, then $\overline{\kappa}(G)\geq 3$.
+::: Theorem
+  If $\overline{\lambda}(G)\geq 3$, then $\overline{\kappa}(G)\geq 3$.
+:::
+::: Proof
+  If $\lambda(u,v)\geq 3$, we consider the 3 edge paths between $u,v$. Let them be $p_1,p_2,p_3$. Notice if none of them intersect at a vertex, $\kappa(u,v)\geq 3$.
 
-{Proof}
-    
-    If $\lambda(u,v)\geq 3$, we consider the 3 edge paths between $u,v$. Let them be $p_1,p_2,p_3$. Notice if none of them intersect at a vertex, $\kappa(u,v)\geq 3$.
+  If $p_1,p_2$ intersects and has their first intersection at $v'$. Let $p_1',p_1''$ and $p_2'$ be the paths following $p_1$ from $u$ to $v'$ and $v'$ to $v$, and the paths following $p_2$ from $u$ to $v'$. $p_1' p_2'^{-1}$ is a cycle that contains $u$ and $v'$. $\lambda(u,v')\geq 3$ because there is an additional edge disjoint path $p_3 p_1''^{-1}$ from $u$ to $v'$.
 
-    If $p_1,p_2$ intersects and has their first intersection at $v'$. Let $p_1',p_1''$ and $p_2'$ be the paths following $p_1$ from $u$ to $v'$ and $v'$ to $v$, and the paths following $p_2$ from $u$ to $v'$. $p_1' p_2'^{-1}$ is a cycle that contains $u$ and $v'$. $\lambda(u,v')\geq 3$ because there is an additional edge disjoint path $p_3 p_1''^{-1}$ from $u$ to $v'$.
-
-    So now we can consider $u,v'$, where $\lambda(u,v')\geq 3$ and $u,v'$ is in some cycle $C$. Consider another path $P$ from $u$ to $v'$ that is edge disjoint from the cycle. Let $t$ be the first vertex where $P$ intersects $C$. Clearly, $\kappa(u,t)\geq 3$. 
+  So now we can consider $u,v'$, where $\lambda(u,v')\geq 3$ and $u,v'$ is in some cycle $C$. Consider another path $P$ from $u$ to $v'$ that is edge disjoint from the cycle. Let $t$ be the first vertex where $P$ intersects $C$. Clearly, $\kappa(u,t)\geq 3$. 
+:::
 
 It should be easy to show that
 
-{Theorem}
-
-    If $\overline{\lambda}(G)=2$, then all cycles in the graph are edge disjoint.
+::: Theorem
+  If $\overline{\lambda}(G)=2$, then all cycles in the graph are edge disjoint.
+:::
 
 # A complicated yet obvious algorithm
 
@@ -54,10 +56,9 @@ Our algorithm above is pretty general and uses some heavy machinery. That's the 
 
 The theorems we proved implies one nice corollary
 
-{Corollary}
-
-    If a graph has no even cycles, then all cycles in the graph are edge disjoint.
-
+::: Corollary
+  If a graph has no even cycles, then all cycles in the graph are edge disjoint.
+:::
 This kind of graph has a name, a [cactus graph](http://en.wikipedia.org/wiki/Cactus_graph). It is so special we can recognize it in linear time. A graph is a cactus if once we build a DFS tree, every vertex has at most one back edge.
 
 This implies a extremely simple algorithm

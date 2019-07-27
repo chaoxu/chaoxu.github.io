@@ -7,21 +7,18 @@ A common algorithm problem is that given a sequence of numbers, find a h-index. 
 
 Formally, we have the following problem. 
 
-{Problem}
-
-    Given $a_1,\ldots,a_n$, find the largest $h$, such that $|\set{i \mid a_i\geq h}|\geq h$. 
-
+::: Problem
+  Given $a_1,\ldots,a_n$, find the largest $h$, such that $|\set{i \mid a_i\geq h}|\geq h$. 
+:::
 The [h-index problem is featured in leetcode](https://leetcode.com/problems/h-index/description/).
 
 If we the numbers are sorted, then a trivial $O(n)$ time algorithm exists. If it is not sorted, then note that we can solve the problem on $\min(a_1,n),\ldots,\min(a_n,n)$. In this case, the input numbers is at most $n$, therefore can be sorted in $O(n)$ time. Hence the total running time is $O(n)$.
 
 Consider a weighted version of the problem where the above algorithm does not work.
 
-{Problem}
-
-    Given a sequence of pairs of non-negative positive reals $(w_1,a_1),\ldots,(w_n,a_n)$. Find the largest $h\in \R$, such that 
-    $\sum_{i:a_i\geq h} w_i \geq h$.
-
+::: Problem
+  Given a sequence of pairs of non-negative positive reals $(w_1,a_1),\ldots,(w_n,a_n)$. Find the largest $h\in \R$, such that $\sum_{i:a_i\geq h} w_i \geq h$.
+:::
 An $O(n)$ time algorithm still exists. 
 For simplicity, we assume all $a_i$'s are distinct, so the input is a set. The case where $a_i$'s are not distinct is left as an exercise to the reader.
 

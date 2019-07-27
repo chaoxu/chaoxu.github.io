@@ -3,17 +3,17 @@ title: Two problem related to sequence of sets
 tags: algorithm
 ---
 
-{Problem}
-    Given a sequence of sets $S_1,\ldots,S_n$ with a total of $m$ elements. Partition $[n]$, such that if $i,j$ is in the same partition class, then $S_i = S_j$.
-
+::: Problem
+  Given a sequence of sets $S_1,\ldots,S_n$ with a total of $m$ elements. Partition $[n]$, such that if $i,j$ is in the same partition class, then $S_i = S_j$.
+:::
 Solve the problem by building a trie over the lexicographic ordering of the elements in the set. Since the alphabet has size $n$, it has running time $O(m\log n)$. One can get better running time using integer data structures, say $O(m\log \log n)$ using van Emde Boas tree.
 
 $O(m)$ time is actually possible. For each $k$, we build the set $H_k = \set{j | k\in S_j}$ (as a list). We define equivalent relation $\equiv_k$ as $i\equiv_k j$ if $S_i\cap [k] =S_j\cap [k]$. If we have equivalent class of $\equiv_k$, we can obtain the equivalent class of $\equiv_{k+1}$ in $O(|H_k|)$ time. Hence together the running time is $O(m)$. 
 
-{Problem}
-    Given a sequence of sets $S_1,\ldots,S_n$ containing a total of $m$ integers, and a integer $k$.
-    Decide if there exists $i$ and $j$ such that $i\neq j$ and $|S_i\cap S_j|\geq k$.
-
+::: Problem
+  Given a sequence of sets $S_1,\ldots,S_n$ containing a total of $m$ integers, and a integer $k$.
+  Decide if there exists $i$ and $j$ such that $i\neq j$ and $|S_i\cap S_j|\geq k$.
+:::
 We assume the elements in the sets are in $[m]$. Let $S=\bigcup_{i=1}^n S_i$.
 
 For $k=0,1$, we can solve it in $O(m)$ time: Decide if any element appears more than once in the sets.

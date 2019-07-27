@@ -9,11 +9,13 @@ For long distance couples, two people can fly. Consider if the couple decides be
 
 Let $M$ be a matching of a graph $G$ where the edges are two colored. $M$ is called _valid_ if vertex $2i$ and $2i-1$ are contained in the same colored edge in $M$. 
 
-{Problem}(Couple back-to-back ticketing problem)
+::: {.Problem title="Couple back-to-back ticketing problem"}
+ 
+**Input:** A multigraph $G=(V,E)$ where $V\subseteq [n]$, where each edge can be either red or blue, and there is an edge cost function $c:E\to \R^+$. 
     
-    **Input:** A multigraph $G=(V,E)$ where $V\subseteq [n]$, where each edge can be either red or blue, and there is an edge cost function $c:E\to \R^+$. 
-    
-    **Output:** A valid perfect matching $M$ (allowing self-loops), such that the cost is minimized. 
+**Output:** A valid perfect matching $M$ (allowing self-loops), such that the cost is minimized. 
+
+:::
 
 Unfortunately, I don't see how to solve this problem in polynomial time. I could convert this problem to something that might be solved in polynomial time in the future.
 

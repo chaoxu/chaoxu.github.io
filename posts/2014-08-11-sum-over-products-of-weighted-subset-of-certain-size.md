@@ -41,18 +41,19 @@ Let $[P]$ be the [Iverson bracket notation](http://en.wikipedia.org/wiki/Iverson
       \mathbb{0} & \text{otherwise.} \end{cases}
 \]
 
-{Theorem}
-     1. $D(i,0) = [i \neq 0]$
+::: Theorem
+  1. $D(i,0) = [i \neq 0]$
+  2. For $j\geq 1$, $D(i,j) = [i\geq w(v_j)] f(v_j)D(i-w(v_j),j-1) + g(v_j) D(i,j-1)$.
+:::
 
-     2. For $j\geq 1$, $D(i,j) = [i\geq w(v_j)] f(v_j)D(i-w(v_j),j-1) + g(v_j) D(i,j-1)$.
+::: Proof
+  The base case can be verified easily, we show part of a inductive step.
 
-{Proof}
-	The base case can be verified easily, we show part of a inductive step.
-
-	\[\begin{aligned}
-	f(v_j)D(i-w(v_j),j-1) + g(v_j)D(i,j-1) &= f(v_j) \sum_{S\subset V_{j-1}, \sum_{x\in S} w(x) = i-w(v_j)} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x)  +
-	g(v_j) \sum_{S\subset V_{j-1}, \sum_{x\in S} w(x) = i)} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x) \\
-	&=   \sum_{v_j\in S\subset V_j, \sum_{x\in S} w(x) = i} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x) + \sum_{v_j\not\in S\subset V_j, \sum_{x\in S} w(x) = i} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x)\\
-	&= \sum_{S\subset V_j, \sum_{x\in S} w(x) = i} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x)
-	\end{aligned}\]
+  \[\begin{aligned}
+  f(v_j)D(i-w(v_j),j-1) + g(v_j)D(i,j-1) &= f(v_j) \sum_{S\subset V_{j-1}, \sum_{x\in S} w(x) = i-w(v_j)} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x)  +
+  g(v_j) \sum_{S\subset V_{j-1}, \sum_{x\in S} w(x) = i)} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x) \\
+  &=   \sum_{v_j\in S\subset V_j, \sum_{x\in S} w(x) = i} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x) + \sum_{v_j\not\in S\subset V_j, \sum_{x\in S} w(x) = i} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x)\\
+  &= \sum_{S\subset V_j, \sum_{x\in S} w(x) = i} \prod_{x\in S} f(x) \prod_{x\in V\backslash S} g(x)
+  \end{aligned}\]
+:::
 

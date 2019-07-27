@@ -12,14 +12,14 @@ $f(S)$ is called the value of the cut $S$.
 
 Let $k$ be a constant, we consider the following problem.
 
-{Problem}
-    Give a graph and $k$ set of edges $F_1,\ldots,F_k$, $a_1,\ldots,a_k,b$. Find a cut $S$ satisfies that $|\delta(S)\cap F_i|\equiv a_i \pmod b$ for all $i$, and the value is minimized. 
-
+::: Problem
+  Give a graph and $k$ set of edges $F_1,\ldots,F_k$, $a_1,\ldots,a_k,b$. Find a cut $S$ satisfies that $|\delta(S)\cap F_i|\equiv a_i \pmod b$ for all $i$, and the value is minimized. 
+:::
 We will try to reduce this problem to the following 
 
-{Problem}(submodular minimization under congruence constraints)
-    Given $T_1,\ldots,T_k$ and a submodular function $f$. Find a set $S$ such that $|T_i\cap S| \equiv a_i\pmod b_i$, and $f(S)$ is minimized. 
-
+::: {.Problem title="submodular minimization under congruence constraints"}
+  Given $T_1,\ldots,T_k$ and a submodular function $f$. Find a set $S$ such that $|T_i\cap S| \equiv a_i\pmod b_i$, and $f(S)$ is minimized. 
+:::
 
 The above problem is known as submodular minimization under congruence constraints. It is known to be solvable in polynomial time under certain conditions on the $b_i$'s [@NageleSZ18]. 
 We sketch the reductions.

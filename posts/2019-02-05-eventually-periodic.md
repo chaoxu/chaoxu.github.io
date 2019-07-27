@@ -10,8 +10,9 @@ A sequence is called *$u$-normal*, if there exists $s_i=s_{i+p}$ for some $p>0$ 
 
 When does $u$-normal sequence comes up? Consider we have a recurrence relation that produces a sequence. Say it is of the form $a_n = f(a_{n-1},a_{n-2},\ldots,a_{n-u})$. The sequence $a_1,\ldots$ is $u$-normal.
 
-{Problem}
-    Given a oracle that can take input $i$ and return the $i$th element in a $u$-normal eventually periodic sequence $a$. Find the smallest lexicographic pair $(n,p)$ where $p>0$, such that $a_i=a_{i+p}$ for all $i>n$.
+::: Problem
+Given a oracle that can take input $i$ and return the $i$th element in a $u$-normal eventually periodic sequence $a$. Find the smallest lexicographic pair $(n,p)$ where $p>0$, such that $a_i=a_{i+p}$ for all $i>n$.
+:::
 
 One can solve this problem in $O(u \log \frac{n}{u})$ time. 
 First, consider the subsequence $a_u,a_{2u},\ldots$. We guess an upper bound on $n$ through exponential search in the subsequence. There is a $O(u)$ time algorithm to decide if $n'\geq n$. For example using the [KMP algorithm](https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm). We can quickly locate a $n'$ such that $n\in [n'-u,n']$.

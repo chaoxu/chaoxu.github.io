@@ -1,5 +1,6 @@
 ---
 title: Network Transformations and Applications
+tags: Algorithm
 ---
 
 There are so many variations of what minimum cost flow means. Sometimes an algorithm might state it only works if the costs are all positive. Here are some of the transforms, many are just from section 2.4 of [@Ahuja:1993:NFT:137406].

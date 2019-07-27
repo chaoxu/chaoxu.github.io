@@ -23,8 +23,9 @@ However, this problem is actually no more general than the maximum weight $c$-ca
 
 Let $A \in \Z^{m\times n}$ be a matrix such that $\sum_{i=1}^m |A_{i,j}|\leq 2$ for every $j$. We call $A$ a bidirected matrix.
 
-{Theorem}
-    Given $A \in \Z^{m\times n}$ a bidirected matrix and vectors $a,b\in \Z^m$, $c,d,w\in \Z^n$. The integer program $\max_{x\in \Z^n} \set{wx \mid a\leq Ax\leq b, c\leq x\leq d}$ can be solved in polynomial time. In particular, it is equivalent to the maximum weight $b$-matching problem on graph of size $poly(m,n)$.
+::: Theorem
+Given $A \in \Z^{m\times n}$ a bidirected matrix and vectors $a,b\in \Z^m$, $c,d,w\in \Z^n$. The integer program $\max_{x\in \Z^n} \set{wx \mid a\leq Ax\leq b, c\leq x\leq d}$ can be solved in polynomial time. In particular, it is equivalent to the maximum weight $b$-matching problem on graph of size $poly(m,n)$.
+:::
 
 The above theorem can be found in [@Schrijver03, chap. 36]. Note that in Schrijver's book, one requires $\sum_{i=1}^m |A_{i,j}|=2$. It is not hard to see the statement still holds even if we have $\leq$ in place of $=$.
 

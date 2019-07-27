@@ -17,11 +17,13 @@ If one does not care about the airline finding out, it is just a minimum weight 
 
 For two edges $\set{a,b}$ and $\set{c,d}$ defined over integers, it is _independent_ if $[a,b]\cap [c,d]= \emptyset$. A set of edges is _independent_ if the edges are pairwise independent.
 
-{Problem}(Covert back-to-back ticketing problem)
+::: {.Problem title="Covert back-to-back ticketing problem"}
+
+**Input:** A multigraph $G=(V,E)$ where $V\subseteq [n]$, each edge can be one of $k$ colors, and there is an edge cost function $c:E\to \R^+$. 
     
-    **Input:** A multigraph $G=(V,E)$ where $V\subseteq [n]$, each edge can be one of $k$ colors, and there is an edge cost function $c:E\to \R^+$. 
-    
-    **Output:** A perfect matching $M$ (allowing self-loops), such that each color class of $M$ is independent, and the cost is minimized. 
+**Output:** A perfect matching $M$ (allowing self-loops), such that each color class of $M$ is independent, and the cost is minimized. 
+
+:::
 
 I suspect for arbitrary $k$, the problem is NP-hard. We show how to solve the problem in polynomial time for $k=2$. 
 

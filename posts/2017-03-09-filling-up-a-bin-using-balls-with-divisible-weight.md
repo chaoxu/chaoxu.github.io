@@ -5,31 +5,29 @@ tags: optimization, integer
 
 This post shows how to solve the special case for [this problem](http://cs.stackexchange.com/questions/12441/is-it-np-hard-to-fill-up-bins-with-minimum-moves). The special case has exactly one bin, and each ball have weight a power of $2$. It is one of the [most popular unanswered problem on cs.stackexchange](http://cs.stackexchange.com/unanswered) as of writing.
 
-{Problem}
-
-    We are interested in solving the following integer program, 
-    \[\begin{aligned}
-    \text{Minimize:} & \sum_{i=1}^n |x_i-a_i| \\
-    \text{subject to:} & \sum_{i=1}^n w_i x_i = c\\
-    & 0\leq x_i \leq b_i \text{ for all } 1\leq i \leq n\\
-    \end{aligned}\]
-
-    where each $w_i$ is a power of $2$ for all $1\leq i\leq n$. Assume $w_i\leq w_{i+1}$.
-
+::: Problem
+  We are interested in solving the following integer program, 
+  \[\begin{aligned}
+  \text{Minimize:} & \sum_{i=1}^n |x_i-a_i| \\
+  \text{subject to:} & \sum_{i=1}^n w_i x_i = c\\
+  & 0\leq x_i \leq b_i \text{ for all } 1\leq i \leq n.
+  \end{aligned}\]
+  where each $w_i$ is a power of $2$ for all $1\leq i\leq n$. Assume $w_i\leq w_{i+1}$.
+:::
 In fact, we do not require the $w_i$s are powers of $2$. We can establish polynomial time as long as $w_{i+1}/w_i$ is bounded by a polynomial in terms of the input size for all $i$. However, for simplicity of exposition, assume $w_i$s are powers of $2$. We do not know the case when $w_{i+1}/w_i$ is unbounded.
 
 Consider a more natural problem without the absolute values.
 
-{Problem}($0$-$1$ exact knapsack problem with divisible weights)
-    We are interested in solving the following integer program, 
-    \[\begin{aligned}
-    \text{Minimize:} & \sum_{i=1}^n c_i x_i \\
-    \text{subject to:} & \sum_{i=1}^n w_i x_i = t\\
-    & x_i \in \{0,1\} \text{ for all } 1\leq i \leq n\\
-    \end{aligned}\]
+::: {.Problem title="$0$-$1$ exact knapsack problem with divisible weights"}
+  We are interested in solving the following integer program, 
+  \[\begin{aligned}
+  \text{Minimize:} & \sum_{i=1}^n c_i x_i \\
+  \text{subject to:} & \sum_{i=1}^n w_i x_i = t\\
+  & x_i \in \{0,1\} \text{ for all } 1\leq i \leq n\\
+  \end{aligned}\]
 
-    where $w_i|w_{i+1}$ for all $1\leq i\leq n$. $w_i$ can be negative.
-
+  where $w_i|w_{i+1}$ for all $1\leq i\leq n$. $w_i$ can be negative.
+:::
 
 We show [Problem 1] reduces to [Problem 2] with polynomial blow up, and [Problem 2] can be solved in polynomial time.
 
@@ -62,8 +60,9 @@ Let $y_i=y_i^+ - y_i^-$, where $y_i^-,y_i^+\geq 0$, we can remove the absolute v
 
 Observe that we can separate the inequalities involving $y_i^+ - y_i^-$, because there is always an optimal where $y_i^-$ or $y_i^+$ is $0$.
 
-{Remark}
-    This observation fails when the number of bins is more than $1$.
+::: Remark
+  This observation fails when the number of bins is more than $1$.
+:::
 
 \[\begin{aligned}
 \text{Minimize:} & \sum_{i=1}^n y_i^+ + y_i^- \\

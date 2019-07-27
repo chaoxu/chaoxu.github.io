@@ -5,8 +5,9 @@ tags: computational complexity, NP
 
 I was asked the following question by a friend who seeks an algorithm to the problem. I'm sure it is well studied but I can't find any relevant information:
 
-{Problem}
-    Given a set of axis-aligned rectangles, one want to arrange them on the plane by translations, such that the smallest rectangle covering them is minimized. What is the minimum area of such a covering rectangle?
+::: Problem
+  Given a set of axis-aligned rectangles, one want to arrange them on the plane by translations, such that the smallest rectangle covering them is minimized. What is the minimum area of such a covering rectangle?
+:::
 
 The problem have this NP-Hard feel to it. Indeed I am able to reduce it to set partition.
 

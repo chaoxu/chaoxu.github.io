@@ -5,9 +5,9 @@ tags: algorithmic toolkit
 
 # Introduction
 
-{Problem}
-	Consider a knapsack of capacity $C$ and a empty sequence of objects. One can update the sequence by add or delete objects from either end of the sequence. Construct a data structure, such that we can output the maximum possible value of the knapsack after every update if we pack the knapsack using the objects in the sequence.
-
+:: Problem
+  Consider a knapsack of capacity $C$ and a empty sequence of objects. One can update the sequence by add or delete objects from either end of the sequence. Construct a data structure, such that we can output the maximum possible value of the knapsack after every update if we pack the knapsack using the objects in the sequence.
+:::
 This is a generalization of the [online knapsack problem](http://codeforces.com/blog/entry/14366), which is an generalization of a hard [offline knapsack problem](https://www.hackerrank.com/contests/cs-quora/challenges/quora-feed-optimizer) used by Quora. 
 
 A naive algorithm just recompute the knapsack each time using a dynamic programming algorithm. 
@@ -16,20 +16,20 @@ The rest of the article describe the idea of decomposable function, which lead t
 
 # Decomposable function
 
-{Definition}
-	A function $f:\cup_{i=1}^\infty X^i \to Y$ is called $(\triangleright,\bowtie,\triangleleft)$-decomposable, if for all $1 \leq k \leq n$,
-	\[
-	f(x_1,\ldots,x_n)=(x_1 \triangleright \ldots \triangleright x_k \triangleright id_{\triangleright}) \bowtie (id_{\triangleleft} \triangleleft x_{k+1}\triangleleft \ldots \triangleleft x_n)
-	\]
-	where 
+::: Definition
+  A function $f:\cup_{i=1}^\infty X^i \to Y$ is called $(\triangleright,\bowtie,\triangleleft)$-decomposable, if for all $1 \leq k \leq n$,
+  \[
+  f(x_1,\ldots,x_n)=(x_1 \triangleright \ldots \triangleright x_k \triangleright id_{\triangleright}) \bowtie (id_{\triangleleft} \triangleleft x_{k+1}\triangleleft \ldots \triangleleft x_n)
+  \]
+  where 
 
-	  1. $\triangleright:X\times Y_{\triangleright}\to Y_{\triangleright}$ is right associative.
-	  2. $\triangleleft:Y_{\triangleleft} \times X\to Y_{\triangleleft}$ is left associative. 
-	  3. $\bowtie:Y_{\triangleright}\times Y_{\triangleleft}\to Y$.
-
-{Problem}
-	Let $f$ be a $(\triangleright,\bowtie,\triangleleft)$-decomposable function. Let $S$ be a finite sequence of elements, such that $S$ is in the domain of $f$. Dynamically output $f(S)$ after every deque operation on $S$, such that we call $\triangleright,\bowtie$ and $\triangleleft$ amortized constant number of times per operation. 
-
+    1. $\triangleright:X\times Y_{\triangleright}\to Y_{\triangleright}$ is right associative.
+    2. $\triangleleft:Y_{\triangleleft} \times X\to Y_{\triangleleft}$ is left associative. 
+    3. $\bowtie:Y_{\triangleright}\times Y_{\triangleleft}\to Y$.
+:::
+::: Problem
+  Let $f$ be a $(\triangleright,\bowtie,\triangleleft)$-decomposable function. Let $S$ be a finite sequence of elements, such that $S$ is in the domain of $f$. Dynamically output $f(S)$ after every deque operation on $S$, such that we call $\triangleright,\bowtie$ and $\triangleleft$ amortized constant number of times per operation. 
+:::
 We will use $\bigtriangleright_{i=1}^n x_i$ to mean $x_1 \triangleright \ldots \triangleright x_n \triangleright id_{\triangleright}$, and $\bigtriangleleft_{i=1}^n x_i$ to mean $id_{\triangleright} \triangleleft x_1 \triangleleft \ldots \triangleleft x_n$. 
 
 $f$ is called decomposable if there exist $(\triangleright,\bowtie,\triangleleft)$ such that it's decomposable.
@@ -44,9 +44,9 @@ Intuitively, $\triangleright$ and $\triangleleft$ produces two stacks. $\bowtie$
 
 ## $\triangleleft$, a stack
 
-{Problem}
-	We have a stack of elements $S$, dynamically maintain $foldl \triangleleft$ in $O(1)$ $\triangleleft$ per operation.
-
+::: Problem
+  We have a stack of elements $S$, dynamically maintain $foldl \triangleleft$ in $O(1)$ $\triangleleft$ per operation.
+:::
 Say $S=x_1,\ldots,x_n$. We store $\bigtriangleleft_{i=1}^k x_i$ for all $1\leq k\leq n$, and whenever there is an insertion, we compute $\bigtriangleleft_{i=1}^{n+1} x_i = \bigtriangleleft_{i=1}^n x_i \triangleleft x_{n+1}$ in one monoid operation. Deletion can be handled by discarding a value. In the worst case, $\triangleleft$ gets called only once.
 
 But this requires us to store $O(n)$ values after the fold. We can decrease the extra space to store only $O(\sqrt{n})$ prefix sums.
@@ -63,9 +63,9 @@ The idea is to build this through two stacks. This is a very common problem, and
 
 We can try to simulate the deque with 3 stacks(where $n$ deque operation maps to $9n$ stack operations) [@Petersen2001], but that is just an interesting exercise. We just need to use our two stack set up as in the queue and occasionally rebuild everything. When our front stack become empty and we remove an element in front of our sequence, we just rebuild the structure with two stacks of the same size. There are ways to do the rebuilding without use extra space. The case on the other side is handled symmetrically. Therefore we still maintain $O(1)$ amortized monoid time per operation and $O(\sqrt{n})$ extra space. Finally, we combine the result through $\bowtie$.
 
-{Remark}
-	There exist worst case constant time simulation of deque using a few stacks [@Petersen2001]. Thus it is conceivable to make everything from amortized to worst case, with obvious increase in space.
-
+::: Remark
+  There exist worst case constant time simulation of deque using a few stacks [@Petersen2001]. Thus it is conceivable to make everything from amortized to worst case, with obvious increase in space.
+:::
 # Examples
 
 I have the code sample for the entire [framework](https://gist.github.com/chaoxu/8c63f1c7e464f26053e6) along with the examples. There are only $6$ functions.
@@ -89,15 +89,15 @@ Let $\bigtriangleright_{i=j}^k x_i=(a,b,c,d)$, where $a$ is the maximum sum usin
 
 ## Dynamic sum of a sequence of elements
 
-{Problem}
-	Let $x_1,\ldots,x_n$ be a finite sequence of elements from a monoid $(M,+)$. Dynamically maintain the sum of all element in the sequence if we can add and delete element in both end of the sequence.
-
+::: Problem
+  Let $x_1,\ldots,x_n$ be a finite sequence of elements from a monoid $(M,+)$. Dynamically maintain the sum of all element in the sequence if we can add and delete element in both end of the sequence.
+:::
 A simpler version of this problem is asked in [CS theory](http://cstheory.stackexchange.com/questions/18655/maintaining-the-product-of-a-queue-of-semigroup-elements/), where we are allowed to add in one end and delete in another.
 
 Let $f$ be the sum of elements in the sequence, then $f$ is $(+,+,+)$-decomposable. There is a more general statement: 
 
-{Theorem}
-	$f$ is a homomorphism, then it is decomposable.
-
+::: Theorem
+  $f$ is a homomorphism, then it is decomposable.
+:::
 Of course, there is already a data structure support this--a finger tree [@Hinze2006]. Because of the monoid structure, we can even allow concatenations. 
 

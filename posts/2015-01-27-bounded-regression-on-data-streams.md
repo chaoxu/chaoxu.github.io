@@ -1,21 +1,21 @@
 ---
 title: Bounded regression on data streams
-tag: flow, circulation, algorithms
+tags: flow, circulation, algorithms
 ---
 
 # Bounded Regression on Data Streams
 
 [Hsien-Chih](http://web.engr.illinois.edu/~hchang17/) sent me [this problem](http://www.careercup.com/question?id=5207197178920960). [Similar problem has been asked on Quora](http://www.quora.com/Given-an-integer-array-what-is-the-algorithmic-approach-to-find-minimum-adjustments-such-that-the-absolute-difference-between-the-adjacent-elements-is-within-target-value). He noticed it might be solved in near linear time using min-cost circulation. Here we show a generalization.
 
-{Problem}(Bounded Regression on Data Stream)
-    Given 
+::: {.Problem title="Bounded Regression on Data Stream"}
+  Given 
 
-    1. $(a_1,\ldots,a_n)\in \R^n$,
-    2. $(w_1,\ldots,w_n)\in \R^n_+$,
-    3. $(l_1,\ldots,l_{n-1})\leq (u_1,\ldots,u_{n-1}) \in \R^n$.
+  1. $(a_1,\ldots,a_n)\in \R^n$,
+  2. $(w_1,\ldots,w_n)\in \R^n_+$,
+  3. $(l_1,\ldots,l_{n-1})\leq (u_1,\ldots,u_{n-1}) \in \R^n$.
 
-    Output $(x_1,\ldots,x_n)\in \R^n$ such that $l_i \leq x_{i+1}-x_i\leq u_i$ for all $1\leq i<n$, and minimize $\sum_{i=1}^n w_i |a_i-x_i|$.
-
+  Output $(x_1,\ldots,x_n)\in \R^n$ such that $l_i \leq x_{i+1}-x_i\leq u_i$ for all $1\leq i<n$, and minimize $\sum_{i=1}^n w_i |a_i-x_i|$.
+:::
 # Reduce the problem to min-cost circulation
 
 It's natural to model this problem as variations of min-cost circulation problem on a graph.

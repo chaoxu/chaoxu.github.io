@@ -1,22 +1,23 @@
 ---
 title: Shooting balloons and problems on circular arcs
+tags: Algorithm
 ---
 
 The Fall 1999 [UIUC theory qual](https://sarielhp.org/research/algorithms/quals/) has a problem on shooting balloons. There are $n$ balloons (disks) on the plane, and you are standing at a given point. Find the minimum number rays to shoot so you can pop all the balloons. 
 
 It reminds me of the interval version of the problem.
 
-{Problem}
-  
+::: Problem
   There are $n$ interval on the real line, find minimum number of points on the line such that every interval contains at least one of the points.
+:::
 
 There is a common $O(n\log n)$ algorithm where the time is dominated by sorting. Pick the left most right end point of the uncovered intervals until all intervals are covered. 
 
 Almost all interval related problem can be generalized to circular arcs. There are a certain set of problems on circular arcs that seems quite easy to solve. Wlog, assume no circular arc completely contain another. 
 
-{Problem}
-  
+::: Problem
   There are $n$ arcs on the unit circle, find minimum number of points on the circle such that every arc contains at least one of the points.
+:::
 
 We can use $O(n\log n)$ time to sort. Break the circle at the start of some arc and consider the real line version of the problem. Total of $O(n^2)$ time because there are $n$ possible starting positions. 
 

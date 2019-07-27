@@ -6,8 +6,9 @@ tags: algorithm, data structure
 Consider a infinite matrix $M$. Another way to think about it is a function $f:\N\to \N\to X$.
 A matrix $M$ is sorted if $M_{i,j}\leq M_{i,j+1}$ and $M_{i,j}\leq M_{i+1,j}$.
 
-{Problem}
-    Given a sorted matrix $M$, and an oracle that takes $\lambda$ returns if a value is $\lambda <\lambda^*$ or $\lambda \geq \lambda^*$. Find the largest value no larger than $\lambda^*$.
+::: Problem
+Given a sorted matrix $M$, and an oracle that takes $\lambda$ returns if a value is $\lambda <\lambda^*$ or $\lambda \geq \lambda^*$. Find the largest value no larger than $\lambda^*$.
+:::
 
 Assuming there are at most $k$ elements no larger than $\lambda^*$, and we know the smallest $n$ and $m$ such that $M_{i,j}>\lambda^*$ if $i>n$ or $j>m$. Also, let $t$ be the smallest number such that $M_{t,t}>\lambda^*$. One can see that $t\leq \min(n,m)$ and $k=O(\max(n,m)^2)$. 
 
@@ -33,13 +34,15 @@ Let $k$ to be the number of elements no larger than $\lambda^*$. We can get runn
 
 Note if we relax on number of oracle calls. I know how to get a $O(\sqrt{k})$ running time.
 
-{Theorem}
-    Given $\lambda^*$ and a $n\times m$ sorted matrix such that the $i$th row has $k_i$ elements no larger than $x$. Let $k=\sum_{i} k_i$. We can find $\lambda^*$ in $O(\sum_{i} \log (k_{i+1}-k_i+1) ) = O(n \log \frac{k}{n^2})$ time.
+::: Theorem
+Given $\lambda^*$ and a $n\times m$ sorted matrix such that the $i$th row has $k_i$ elements no larger than $x$. Let $k=\sum_{i} k_i$. We can find $\lambda^*$ in $O(\sum_{i} \log (k_{i+1}-k_i+1) ) = O(n \log \frac{k}{n^2})$ time.
+:::
 
 The idea is simple, we do exponential search on each row to find the largest element no larger than $\lambda^*$, but we reuse information from the previous row. This gives us the running time $O(\sum_{i} \log (k_{i+1}-k_i+1) )$. The main difficulty is to show why is is $O(n \log \frac{k}{n^2})$. 
 
-{Lemma}
+::: Lemma
     If $\sum_{i=1}^n k_i=k$, then $\sum_{i=1}^n \log (k_{i+1}-k_i+1)=O(n\log k/n^2)$.
+:::
 
 Once we show that, we can use the theorem to obtain $O(\sqrt{k})$ running time.
 

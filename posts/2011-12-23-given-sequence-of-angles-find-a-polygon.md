@@ -3,8 +3,9 @@ title: Given sequence of angles, find a polygon
 tags: computational geometry
 ---
 
-{Problem}
-    Find a polygon $p_1\ldots p_n$, such that the angle at vertex $p_i$ is $\alpha_i$.
+::: Problem
+  Find a polygon $p_1\ldots p_n$, such that the angle at vertex $p_i$ is $\alpha_i$.
+:::
 
 Define $p_{n+1} = p_1$ for a polygon $p_1\ldots p_n$.
 If one consider a polygon's sides are vectors, then a polygon is set of vectors that equals to 1, such that the magnitude of the vectors are greater than 0.

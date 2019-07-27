@@ -1,5 +1,6 @@
 ---
 title: Why I left Google
+tags: random
 ---
 
 Google is an amazing place, it's the first "real" job I had.

@@ -1,17 +1,20 @@
 ---
 title: Bisect circle for a balanced set of points
+tags: Algorithm
 ---
 
-{Problem}
-    $S$ is a set of $n$ points on the unit circle. No two points in $S$ lies on the same diagonal. Find a line that passes through the origin that divide the unit circle into two open semicircles, such that each piece have the same number of points in $S$.
+::: Problem
+  $S$ is a set of $n$ points on the unit circle. No two points in $S$ lies on the same diagonal. Find a line that passes through the origin that divide the unit circle into two open semicircles, such that each piece have the same number of points in $S$.
+:::
 
 A harder version of this problem is [Problem 1 in UIUC's 1995 Fall Theory Qual](http://sarielhp.org/research/algorithms/quals/19xx/1995-a.ps).
 Let $C$ be the unit circle. The angle made by the lines and the $x$-axis uniquely defines the line. Let the line pass through the origin with an angle $\theta$ be $l_\theta$. Let $C(a,b) = \cup_{\theta \in (a,b)} l_\theta \cap C$, $L$ is the semicircle below the $x$-axis, $U$ is the semicircle above the $x$-axis. $U(a,b)$ and $L(a,b)$ are define the same way as $C(a,b)$. 
 
 We can solve this problem in $O(n)$ time by reducing it to a somewhat more general problem.
 
-{Problem}
-    Given two arcs $L(a,b)$ and $U(a,b)$ and a set of points $S$ on lying on the two arcs. $|S\cap L(a,b)|\geq k$ and $|S\cap U(a,b)|\leq k$. $|l_\theta\cap S|\leq 1$ for all $\theta\in(a,b)$. Find a $l_\theta$, such that $\theta\in(a,b)$ and $|S\cap (L(a,\theta)\cup U(\theta,b))|=k$ in $O(|S|)$ time.
+::: Problem
+  Given two arcs $L(a,b)$ and $U(a,b)$ and a set of points $S$ on lying on the two arcs. $|S\cap L(a,b)|\geq k$ and $|S\cap U(a,b)|\leq k$. $|l_\theta\cap S|\leq 1$ for all $\theta\in(a,b)$. Find a $l_\theta$, such that $\theta\in(a,b)$ and $|S\cap (L(a,\theta)\cup U(\theta,b))|=k$ in $O(|S|)$ time.
+:::
 
 Let's consider an algorithm that returns line $l_\theta$ be $partition(S,a,b,k)$.
 

@@ -6,9 +6,9 @@ tags: Haskell, monoid
 Consider a rank $k$ free monoid $(M,\cdot)$ with free generators $G$. Sometimes there are ways to express them by writing a little less than write the whole string of generators. We can group some generators by powers.
 For example, $aababababaaaa = a(ab)^4a^4$.
 
-{Problem}
-
-    Find the shortest way to write down an element in a free monoid.
+::: Problem
+  Find the shortest way to write down an element in a free monoid.
+:::
 
 There are problems on how long are the parentheses, exponents etc. Therefore we generalize it to allow weight to those operations. 
 
@@ -18,14 +18,14 @@ Formally. For any free monoid $M$ with free generators $G$, we can construct ano
 1. $a\in G \implies Atom(a)\in M^*$.
 2. $a\in M^*$, $n\in\N$, then $Power(a,n) \in M^*$. 
 
-{Definition}
-
-    Consider a homomorphism $w:M^*\to \N$. Such that for all $n$, it satisfy the following criteria: 
-    
-    1. $w(a)\leq w(b) \implies w(Power(a,n))\leq w(Power(b,n))$,
-    2. $w(a)\leq w(Power(a,1))$.
-    
-    $w$ is a weight function.
+::: Definition
+  Consider a homomorphism $w:M^*\to \N$. Such that for all $n$, it satisfy the following criteria: 
+  
+  1. $w(a)\leq w(b) \implies w(Power(a,n))\leq w(Power(b,n))$,
+  2. $w(a)\leq w(Power(a,1))$.
+  
+  $w$ is a weight function.
+:::
 
 Let $f:M^*\to M$, such that
 
@@ -33,10 +33,9 @@ Let $f:M^*\to M$, such that
 - $f(Atom(a)) = a$,
 - $f(Power(a,n)) = a^n$.
 
-{Problem}
-
-    Given $a\in M$, we want to find $a'\in M^*$, such that $f(a') = a$ and $w(a')$ is minimized.
-
+::: Problem
+  Given $a\in M$, we want to find $a'\in M^*$, such that $f(a') = a$ and $w(a')$ is minimized.
+:::
 The input is $a_1\ldots a_n$.
 
 Let $D(i,j)$ represent the minimum weight representation for $a_i\ldots a_j$. Let $P(i,j)$ represent the set of all possible $Power(x,k)$, such that $f(Power(x,k)) = a_i\ldots a_j$ for some $k\neq 1$. 

@@ -3,9 +3,9 @@ title: Rectangles in point set
 tags: classical, algorithm, computational geometry, graph theory
 ---
 
-{Problem}
-    Given $n$ points in the plane $P$, find if any $4$ of them are the vertices of some axis-aligned rectangle.
-
+::: Problem
+  Given $n$ points in the plane $P$, find if any $4$ of them are the vertices of some axis-aligned rectangle.
+:::
 The idea is we guess the left vertical segment of the rectangle, and see what would be the right vertical segment. If we pick an left vertical line $l$, and then for each $(x,y)\in l\cap P$, we consider all the points with the same $y$ coordinate and to the right of $x$, and add a counter to the vertical lines that contains it. This can be done in linear time with respect to number of vertices with the same $y$ coordinate if one already builds a data structure before hand. If any counter become $2$, then we are done. 
 
 It is a $O(n^2)$ time algorithm, since the time it takes is at most $O(n)$ to guess each left vertical segment. One could, however analyze this algorithm better, and realize the time is actually $O(ln)$, where $l$ is the maximum number of points on a horizontal line. 

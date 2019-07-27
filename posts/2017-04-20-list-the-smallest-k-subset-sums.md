@@ -3,10 +3,10 @@ title: List the smallest $k$ subset sums
 tags: algorithm
 ---
 
-{Problem}
-
-    Given a set of positive reals $\set{x_1,\ldots,x_n}$ where $x_1<x_2<\ldots<x_n$, 
-    find the smallest $k$ subset sums.
+::: Problem
+Given a set of positive reals $\set{x_1,\ldots,x_n}$ where $x_1<x_2<\ldots<x_n$, 
+find the smallest $k$ subset sums. 
+:::
 
 We can assume $n\leq k$, because we do not have to read $x_j$ if $j>k$. 
 
@@ -43,4 +43,4 @@ If we are interested in the smallest $k$ *distinct* subset sum. I don't know of 
 
 # Acknowledgements {-}
 
-I would like to thank Tana Wattanawaroon for helpful discussions and taking an interest in this problem. 
+I would like to thank Tana Wattanawaroon for helpful discussions and taking an interest in this problem.  

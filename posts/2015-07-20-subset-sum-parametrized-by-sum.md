@@ -1,5 +1,6 @@
 ---
 title: Subset sum of elements sum to $\sigma$
+tags: Algorithm
 ---
 
 We assume the input of the subset sum problem is a sequence of $n$ positive integers that sums to $\sigma$. We are interested if there is a subsequence sums to $t$.

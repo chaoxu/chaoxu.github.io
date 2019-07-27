@@ -1,5 +1,6 @@
 ---
 title: Applications of finger trees
+tags: Data Structure, Algorithm
 ---
 
 # Finger trees
@@ -52,10 +53,9 @@ Most of the above has been described in [@Hinze2006], but we will talk about two
 
 ## Merge sorted lists in optimal time bound
 
-{Theorem}
-
-    If $S$ and $T$ are two ordered sequences of length $n$ and $m$, respectively. $n\leq m$. Both ordered sequences are represented by finger trees. Compute the finger tree representation of $S\cup T$ takes $O(n\log \frac{m}{n})$ time.
-
+::: Theorem
+  If $S$ and $T$ are two ordered sequences of length $n$ and $m$, respectively. $n\leq m$. Both ordered sequences are represented by finger trees. Compute the finger tree representation of $S\cup T$ takes $O(n\log \frac{m}{n})$ time.
+:::
 Split $T$ into $n$ pieces one by one by split along the $i$th element of $S$ to the second part of the $i$th produced piece for all $i$, then concatenate all of them. The splitting takes $\sum_{i=1}^n \log t_i$ time, where $t_i$ is the size of the $i$th piece. By concavity, we have the time for split is $\sum_{i=1}^n \log t_i \leq n \log \frac{m}{n}$, and concatenation time is similar.
 
 ## Solve the Klee's measure problem
@@ -75,9 +75,9 @@ We maintain a collection of intervals with data structure $D$, there are 3 opera
 2. $delete(D,a,b)$. Delete a interval $(a,b)$ from the collection, we assume it's always a interval inserted before.
 3. $measure(D)$. Find the measure of the union of all intervals in the collection. 
 
-{Remark}
-    It can be sharpened such that $n$ is the number of intervals inside the data structure. We just do a global rebuild if the number of interval doubled or reduced to half since the last global update. Also, $measure()$ actually only take constant time.
-
+::: Remark
+  It can be sharpened such that $n$ is the number of intervals inside the data structure. We just do a global rebuild if the number of interval doubled or reduced to half since the last global update. Also, $measure()$ actually only take constant time.
+:::
 The finger tree stores a sequence of elementary intervals that partitions the space, and how many copies of that interval exists. Thus we can represent it as $((l,r),c)$, where $(l,r)$ is the elementary interval with left and right boundary, and $c$ is the number of copies.
 
 To insert a interval, consider it's left point $l$. The data structure find a elementary interval contains $l$, and split it into two elementary intervals. Similarly, we do the same with the right endpoint. This takes $O(\log n)$ time, and we increase the number of elementary intervals by at most $2$. $increment$ is an automorphism defined as $increment(((a,b),c))=((a,b),c+1)$. For each insertion of interval $(a,b)$, $increment$ gets applied to all elementary interval in the range. For deletion, we apply $decrement = increment^{-1}$ instead. 
@@ -89,5 +89,3 @@ The ranking sequence of a sequence of distinct numbers $a_1,\ldots,a_n$ is defin
 Given a sequence of unique integers $a_1,\ldots,a_n$, we want to design a data structure to query $Q(i,j)$, which returns the ranking sequence of $a_i,\ldots,a_j$. 
 
 This can be solved by storing sorted subsequences. We just have to return sorted sequence of $a_i,\ldots,a_j$ during the query, and then it become simple to figure out the ranking sequence. This will make sure the running time for $Q(i,j)$ to be $O(j-i)$. There are a few other variants, but seems quite hard to adopt a finger tree for [@Chang2012517]. 
-
-# Reference

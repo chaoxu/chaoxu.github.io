@@ -23,5 +23,6 @@ Now consider the following inequality, left as an exercise to the reader $\floor
 \end{aligned}\]
 Using the previous inequality, we see every exponent is a integer greater or equal to $0$. This shows ${n\choose k}$ is a integer.
 
-{Remark}
-    This also derive the following result: $k!|(m+1)\ldots (m+k)$ for all $m\geq 0$. One can use this result to prove that multinomial coefficients are integers.
+::: Remark
+  This also derive the following result: $k!|(m+1)\ldots (m+k)$ for all $m\geq 0$. One can use this result to prove that multinomial coefficients are integers.
+:::

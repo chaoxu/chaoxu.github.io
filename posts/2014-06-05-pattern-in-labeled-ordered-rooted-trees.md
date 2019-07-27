@@ -3,9 +3,9 @@ title: Pattern in Labeled Ordered Rooted Trees
 tags: algorithm
 ---
 
-{Problem}
-    Let $T$ be a rooted ordered labeled tree. Find all the vertices where all it's subtrees are equal.
-
+::: Problem
+  Let $T$ be a rooted ordered labeled tree. Find all the vertices where all it's subtrees are equal.
+:::
 Let $T(v)$ to denote the subtree rooted at $v$. The two trees are equal if they have the same shape and the same label. 
 
 # Reduce to a string problem
@@ -18,9 +18,9 @@ Let $s(T)$ be a string defined by concatenating the labels on the path by traver
 
 Note $s(T)$ would be a balanced set of parenthesis when $l$ maps vertices to the empty string. Indeed, there is a bijection between unlabeled ordered trees and balanced parenthesis. It's not hard to see this generalizes to the labeled setting.
 
-{Theorem}
-    If $s(T)=s(T')$, then $T=T'$.
-
+::: Theorem
+  If $s(T)=s(T')$, then $T=T'$.
+:::
 A run in a string is a maximal string of the form $a^nb$, where $b$ is a prefix of $a$ and $n\geq 2$. The runs theorem states there are at most $O(n)$ runs, and all of them can be found in $O(n)$ time[@Crochemore_computinglongest]. Let $a^nb$ be a run in a string, then we call the $a^n$ part the complete repetitions.
 
 Define the vertices with at least $2$ child and all it's subtrees are equal as good vertices. It's easy to $s(T(v))$ for some good vertex $v$ is going to be a complete repetition! 

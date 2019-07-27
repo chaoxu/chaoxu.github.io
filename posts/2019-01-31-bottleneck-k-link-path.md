@@ -5,8 +5,9 @@ tags: algorithm, data structure
 
 A DAG is called complete, if there are vertices $v_1,\ldots,v_n$, and $v_iv_j$ is an edge if and only if $i<j$. Let $w(i,j)$ be the edge weights from $i$ to $j$. The weight is called ordered, if $w(i,j)<w(i,j+1)$ and $w(i+ 1,j)<w(i,j)$.
 
-{Problem}(Bottleneck $k$-link path problem)
-    Find a path consists of $k$ edges from $v_1$ to $v_n$, such that the maximum weight of the edges in the path is minimized. 
+::: {.Problem title="Bottleneck $k$-link path problem"}
+Find a path consists of $k$ edges from $v_1$ to $v_n$, such that the maximum weight of the edges in the path is minimized. 
+:::
 
 One can formulate a dynamic programming algorithm, which takes $O(kn^2)$ time. My [previous writing](https://chaoxuprime.com/posts/2013-08-16-more-algorithms-on-perfectly-balanced-photo-gallery.html) shows an $O(kn)$ time algorithm using the monge property. Using binary search, there is also an $O(k\log(n/k)\log M)$ time algorithm if all weights are positive integers no larger than $M$.
 

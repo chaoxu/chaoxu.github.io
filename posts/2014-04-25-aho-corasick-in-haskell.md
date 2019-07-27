@@ -1,5 +1,6 @@
 ---
 title: The Aho–Corasick Automaton in Haskell
+tags: Algorithm, Haskell
 ---
 
 It is common that one might want to match $k$ different strings against one single text of length $m$. One can of course apply the [KMP algorithm](/posts/2014-04-11-the-kmp-algorithm-in-haskell.html) individually, and result an algorithm that runs in $O(km)$ time.
