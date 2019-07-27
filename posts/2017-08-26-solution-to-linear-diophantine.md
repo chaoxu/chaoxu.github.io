@@ -7,7 +7,7 @@ Let $a=(a_1,\ldots,a_n)$ be $n$ integers with $\gcd(a_1,\ldots,a_n)=1$. There ex
 
 However, I could not find a general bound of $\|x\|$ anywhere. Here we prove that the bound on $\|x\|$ is true in general. Before that, we first introduce a lemma from [@Ford1996].
 
-::: Lemma
+::: {.Lemma #lem}
   Let $a=(a_1,\ldots,a_n)$ be a vector of positive integers with at least $2$ elements, it does not contain $1$ and $\gcd(a)=1$. If $g_k = \gcd(a_k,\ldots,a_n)$, then there exist a solution to 
   \[
   \sum_{i=1}^n x_i a_i = 1
@@ -22,7 +22,7 @@ However, I could not find a general bound of $\|x\|$ anywhere. Here we prove tha
   Let $a$ be a vector of positive integers such that $\gcd(a)=1$, then there exists a integral solution to $x \cdot a=1$ such that $\|x\|\leq \frac{1}{2}(\min(a)+\max(a))$.
 :::
 ::: Proof
-  Let $a=(a_1,\ldots,a_n)$. Let $a_n=\min(a)$. We can assume $1$ is not in $a$, otherwise we can find $x$ such that $\|x\|=1$. Let $g_i = \gcd(a_i,\ldots,a_n)$. Hence $g_n = \min(a)$. We consider a solution to $\sum_{i=1}^n x_ia_i = 1$ satisfies [Lemma 1]. 
+  Let $a=(a_1,\ldots,a_n)$. Let $a_n=\min(a)$. We can assume $1$ is not in $a$, otherwise we can find $x$ such that $\|x\|=1$. Let $g_i = \gcd(a_i,\ldots,a_n)$. Hence $g_n = \min(a)$. We consider a solution to $\sum_{i=1}^n x_ia_i = 1$ satisfies [@lem]. 
   Let $I = \set{i | g_{i+1}\geq 2g_{i}, i\leq n-1}$ and $j=\min(I)$. 
   One can algebraically check that $a/b\leq a-b$ holds if both $a\geq 2b$ and $b\geq 2$. In particular, we have $\frac{g_{i+1}}{g_i} \leq g_{i+1}-g_i$ for all $i\in I\setminus \set{j}$.
   \[

@@ -5,7 +5,7 @@ tags: optimization, integer
 
 This post shows how to solve the special case for [this problem](http://cs.stackexchange.com/questions/12441/is-it-np-hard-to-fill-up-bins-with-minimum-moves). The special case has exactly one bin, and each ball have weight a power of $2$. It is one of the [most popular unanswered problem on cs.stackexchange](http://cs.stackexchange.com/unanswered) as of writing.
 
-::: Problem
+::: {.Problem #prob:1}
   We are interested in solving the following integer program, 
   \[\begin{aligned}
   \text{Minimize:} & \sum_{i=1}^n |x_i-a_i| \\
@@ -18,7 +18,7 @@ In fact, we do not require the $w_i$s are powers of $2$. We can establish polyno
 
 Consider a more natural problem without the absolute values.
 
-::: {.Problem title="$0$-$1$ exact knapsack problem with divisible weights"}
+::: {.Problem title="$0$-$1$ exact knapsack problem with divisible weights" #prob:2}
   We are interested in solving the following integer program, 
   \[\begin{aligned}
   \text{Minimize:} & \sum_{i=1}^n c_i x_i \\
@@ -29,7 +29,7 @@ Consider a more natural problem without the absolute values.
   where $w_i|w_{i+1}$ for all $1\leq i\leq n$. $w_i$ can be negative.
 :::
 
-We show [Problem 1] reduces to [Problem 2] with polynomial blow up, and [Problem 2] can be solved in polynomial time.
+We show [@prob:1] reduces to [@prob:2] with polynomial blow up, and [@prob:2] can be solved in polynomial time.
 
 # Reduction
 
@@ -79,11 +79,11 @@ This is an integer program as a bounded exact knapsack problem.
 & 0 \leq x_i \leq b_i \text{ for all } 1\leq i \leq n\\
 \end{aligned}\]
 
-Finally, apply the standard technique that rewrites a bounded knapsack problem to $0$-$1$-knapsack problem (see Section 7.1.1 of [@9783540402862]). The blow up in problem size is at most a factor of $O(\log \max_i b_i)$. We can get the integer program in [Problem 2], and also the weights are all powers of $2$. The reduction runs in polynomial time with respect to input size.
+Finally, apply the standard technique that rewrites a bounded knapsack problem to $0$-$1$-knapsack problem (see Section 7.1.1 of [@9783540402862]). The blow up in problem size is at most a factor of $O(\log \max_i b_i)$. We can get the integer program in [@prob:2], and also the weights are all powers of $2$. The reduction runs in polynomial time with respect to input size.
 
-# Solving [Problem 2]
+# Solving [@prob:2]
 
-[Yuzhou Gu](http://sevenkplus.com/) noted that the integer program in [Problem 2] has a dynamic programming solution.
+[Yuzhou Gu](http://sevenkplus.com/) noted that the integer program in [@prob:2] has a dynamic programming solution.
 
 Let $D[m,k]$ to be the optimal value to the following problem
 

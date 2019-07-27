@@ -13,7 +13,7 @@ Another way is to understand it as a graph problem. We are given a path, and the
 
 We consider a similar problem where instead of a single subarray, we want at most $k$ disjoint subarrays, such that the sum together is maximized. In fact, this is the [Maximum Subarray III problem on LintCode](http://www.lintcode.com/en/problem/maximum-subarray-iii/).
 
-::: {.Problem title="Maximum $k$-Disjoint Subarray Problem"}
+::: {.Problem title="Maximum $k$-Disjoint Subarray Problem" #prob:mkdsp}
   Given array $A[1..n]$, find a non-decreasing sequence of indices $i_1,\ldots,i_{2k}$, such that $\sum_{i=1}^k \sum_{j=i_{2i-1}}^{2i} A[j]$ is maximized.
 :::
 There is obviously an $O(nk)$ algorithm by extending the dynamic programming algorithm for the $k=1$ case.
@@ -48,20 +48,20 @@ Bengtsson and Chen uses this idea[@Bengtsson06]. They showed they can guess $t$ 
 ## Optimal running time reducing to $k=1$ queries
 
 There are other approaches to obtain the same running time. We can consider a query version of the problem when $k=1$. 
-Given indices $i$ and $j$, find indices $i'$ and $j'$ such that $i\leq i'\leq j'\leq j$, and sum of the elements in $A[i'..j']$ is maximized. Chen and Chao showed how to use a data structure that can be built in $O(n)$ time, and return the solution to the above query in $O(1)$ time [@ChenC07]. It is not a simple data structure. Gawrychowski and Nicholson showed such data structure can be used to solve the [Problem 1] in $O(n)$ time [@GawrychowskiN15]. The reduction is easy, but again the bottleneck is the heavy hammers to build the data structure. 
+Given indices $i$ and $j$, find indices $i'$ and $j'$ such that $i\leq i'\leq j'\leq j$, and sum of the elements in $A[i'..j']$ is maximized. Chen and Chao showed how to use a data structure that can be built in $O(n)$ time, and return the solution to the above query in $O(1)$ time [@ChenC07]. It is not a simple data structure. Gawrychowski and Nicholson showed such data structure can be used to solve the [@prob:mkdsp] in $O(n)$ time [@GawrychowskiN15]. The reduction is easy, but again the bottleneck is the heavy hammers to build the data structure. 
 
 ## A very simple solution
 
 Recently, I've seen a truly simple result. A related problem is the following.
 
-::: Problem
+::: {.Problem #prob:simp}
   Given array $B[1..n]$, find a non-decreasing sequence of indices $i_1,\ldots,i_{2k}$, such that $\sum_{i=1}^k B[i_{2i}]-B[i_{2i-1}]$ is maximized.
 :::
 
 This problem is featured in interviews, and is also [on leetcode as Best time to buy an sell stock IV](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/) and showed up in codeforces as [stock trading](http://codeforces.com/contest/391/problem/F3). 
-[Problem 1] and [Problem 2] can be reduced to each other in linear time. For one direction, we can define $B[i]=\sum_{j=1}^i A[j]$. The other direction, we let $A[i]=B[i]-B[i-1]$ for all $i$. The editorial in codeforces showed [a solution similar to [@Bengtsson07]](http://codeforces.com/blog/entry/10727) for [Problem 2].
+[@prob:mkdsp] and [@prob:simp] can be reduced to each other in linear time. For one direction, we can define $B[i]=\sum_{j=1}^i A[j]$. The other direction, we let $A[i]=B[i]-B[i-1]$ for all $i$. The editorial in codeforces showed [a solution similar to [@Bengtsson07]](http://codeforces.com/blog/entry/10727) for [@prob:simp].
 
-A surprising algorithm for [Problem 2] was found by [Zhiqing Xiao](https://zhiqingxiao.weebly.com) that claims to solve the problem in $O(n)$ time by building upon the [observation of leetcode user yishiluo](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/54118/C%2B%2B-Solution-with-O(n-%2B-klgn)-time-using-Max-Heap-and-Stack). Hence it shows [Problem 1] can be solved in linear time, and the only (a bit) heavy hammer is the [selection algorithm](https://en.wikipedia.org/wiki/Selection_algorithm). Although the solution is simple, it is fairly unclear how to prove correctness. [Fangrui Song](http://maskray.me) wrote [a better explanation](http://maskray.me/blog/2015-03-27-leetcode-best-time-to-buy-and-sell-stock-iv) in Chinese. Although it still does not fully prove correctness, it is a step toward a proof. 
+A surprising algorithm for [@prob:simp] was found by [Zhiqing Xiao](https://zhiqingxiao.weebly.com) that claims to solve the problem in $O(n)$ time by building upon the [observation of leetcode user yishiluo](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/54118/C%2B%2B-Solution-with-O(n-%2B-klgn)-time-using-Max-Heap-and-Stack). Hence it shows [@prob:mkdsp] can be solved in linear time, and the only (a bit) heavy hammer is the [selection algorithm](https://en.wikipedia.org/wiki/Selection_algorithm). Although the solution is simple, it is fairly unclear how to prove correctness. [Fangrui Song](http://maskray.me) wrote [a better explanation](http://maskray.me/blog/2015-03-27-leetcode-best-time-to-buy-and-sell-stock-iv) in Chinese. Although it still does not fully prove correctness, it is a step toward a proof. 
 
 # Open problem
 

@@ -14,7 +14,7 @@ The problem is not so well defined. To make sure the heights are close, do we mi
 
 Nevertheless, in real applications, the exact definition doesn't matter that much. Treitz reduce the problem to the linear partition problem.
 
-::: Problem
+::: {.Problem #prob:linearpartition}
   Let $a_1,\ldots,a_n$ be a sequence of positive reals. We want to partition it into $k$ consecutive subsequences, such that the maximum sum over each subsequence is minimized. 
   Formally, find $k+1$ positions $b_1=1,b_2,\ldots,b_{k},b_{k+1}=n$, such that $\max_{i=1}^{k} \sum_{j=b_i}^{b_{i+1}} a_j$ is minimized.
 :::
@@ -25,7 +25,7 @@ $a_i = W_i/H_i$ is the aspect ratio. This article will explore the techniques to
 
 Let's first consider a simpler problem for demonstration.
 
-::: Problem
+::: {.Problem #prob:mtd} 
   Let $a_1,\ldots,a_n$ be a sequence of positive reals. We want to partition it into $k$ consecutive subsequences, such that the total difference between the sum of each consecutive sequence and the average sum of the whole sequence is minimized. 
   Formally, let $\mu = \frac{1}{k}\sum_{i=1}^n a_i$. Find $k+1$ positions $b_1=1,b_2,\ldots,b_k,b_{k+1}=n$, such that $\sum_{i=1}^{k} |\sum_{j=b_i}^{b_{i+1}} a_j - \mu|$ is minimized.
 :::
@@ -36,7 +36,7 @@ Build a directed graph $D(V,A)$, where $V=\set{v_1,\ldots,v_n}$, $(v_i,v_j)\in A
 
 We have a weight function $w(i,j)$ that assign weights to arc $(v_i,v_j)$. Define $w(i,j) = |\sum_{k=i}^{j-1} a_i - \mu|$. 
 
-If we find a $k$-edge path of minimum weight from $v_1$ to $v_n$, then this implies a solution to [Problem 3].
+If we find a $k$-edge path of minimum weight from $v_1$ to $v_n$, then this implies a solution to [@prob:mtd].
 
 # Solve the minimum weight $k$-edge path problem
 Define $C(d,i)$ to be the $d$-edge path from $v_1$ to $v_i$ with minimum weight. We want to find $C(k,n)$.
@@ -136,7 +136,7 @@ C(d,i) = \min_{1\leq j\leq n} M^d_{j,i}
 
 where $M^d_{j,i} = \max (C(d-1,j),w(j,i))$.
 
-Just like [Problem 3], this describes a $O(kn^2)$ time algorithm. Compare $w,C$ and $M^d$ with the previous problem to see there isn't much difference. 
+Just like [@prob:mtd], this describes a $O(kn^2)$ time algorithm. Compare $w,C$ and $M^d$ with the previous problem to see there isn't much difference. 
 
 # Improve the time complexity, again
 
@@ -179,12 +179,12 @@ There seems to be a direct proof by analyze 12 different cases, but I got too bo
 The final punchline.
     
 ::: Theorem
-  Change the last `(+)` in `minCostkEdgePath` to `max`, and change how `w` is computed in `minCostMuPartition` solves [Problem 2].
+  Change the last `(+)` in `minCostkEdgePath` to `max`, and change how `w` is computed in `minCostMuPartition` solves [@prob:linearpartition].
 :::
 
 # Rethink the original problem
 
-We have developed a $O(kn)$ algorithm for [Problem 2]. As we can see from the practical application, this is a $O(n^2)$ algorithm because the $k$ is of the order $n$.
+We have developed a $O(kn)$ algorithm for [@prob:linearpartition]. As we can see from the practical application, this is a $O(n^2)$ algorithm because the $k$ is of the order $n$.
 
 For a few hundred photos, we can afford to run it in real time. This will reach a limit once there are thousand of photos.
 

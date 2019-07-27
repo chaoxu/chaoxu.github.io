@@ -17,7 +17,7 @@ The only unresolved case is $k=2$. Interestingly, we can show it is also polynom
 
 Apollonio and Sebő shown the following problem is polynomial time solvable [@ApollonioS09].
 
-::: Problem
+::: {.Problem #prob}
 Given a graph $G=(V,E)$, a integer $k$, convex functions $f_v:\N \to \R$ for each $v\in V$, and an edge cost function $c:E\to \R$. One can find the following in polynomial time.
 $$\min \left\{   \sum_{v\in V} f_v(\deg_M(v)) + \sum_{e\in M} c(e) \middle| M\subseteq E, |M|=k  \right\}$$
 :::
@@ -32,7 +32,7 @@ $v_1$ and $v_2$ connects to the same vertices as $v$. We add an edge between $v_
 $v_1$ has both an upper and lower bound of $1$. $v_2$ has a lower bound of $1$. For each vertex in $A$, add an upper and lower bound of $1$.
 We have a strict convex function $f_{v_2}(x)=x^2$ on each vertex $v_2$. 
 
-Let $r=|A|$, $p=|B|$. We solve [Problem 1] repeatedly for each $k$ from $r$ to $r+p$. 
+Let $r=|A|$, $p=|B|$. We solve [@prob] repeatedly for each $k$ from $r$ to $r+p$. 
 
 Say there exists an optimal solution to the original problem with exactly $t$ vertices in $B$ with degree smaller than $2$. Find the optimal solution to the new problem with $k=r+t$. Let it be $M'$.
 We obtain $M$ from $M'$ by identify pairs of vertices $v_1$ and $v_2$. $M$ would be the solution to the original problem.

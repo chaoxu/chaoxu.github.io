@@ -13,7 +13,7 @@ Let $X$ be a totally ordered set. Let $l(S)$ be the sorted sequence of all the e
 ::: Lemma
   For nonempty sets $A$ and $B$, if $A\preccurlyeq B$ , then $A - min A \preccurlyeq B - min B$. Also if $A\preccurlyeq B$ then $A \preccurlyeq A\cup B \preccurlyeq B$.
 :::
-::: Theorem
+::: {.Theorem #thm:prec}
   $A\preccurlyeq A'$, $B\preccurlyeq B'$ then $A\cup B \preccurlyeq A'\cup B'$
 :::
 ::: Proof
@@ -74,7 +74,7 @@ Before proving the theorem, we consider a useful lemma.
 
   If it reaches $y$ before $x$, then the subpath from $s$ to $y$ then from $y$ to $t$ using the $yt$-LBSP would imply $xy$ is not in $st$-LBSP, a contradiction.
 
-  Thus, we must have the $st$-LBSP is a concatenation of $3$ paths, a $sx$-path $P_{sx}$, edge $xy$ and a $yt$-path $P_{ty}$. Using [Theorem 3], we notice $P$ is a LBSP.
+  Thus, we must have the $st$-LBSP is a concatenation of $3$ paths, a $sx$-path $P_{sx}$, edge $xy$ and a $yt$-path $P_{ty}$. Using [@thm:prec], we notice $P$ is a LBSP.
 :::
 
 ::: {.Proof title="Theorem 7"}

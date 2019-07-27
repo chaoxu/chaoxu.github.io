@@ -5,7 +5,7 @@ tags: algorithms, strings, tries
 
 [Lin Yang](http://darktef.github.io/) asked me about the complexity for the following problem, which is the day 2 part 2 of the [advent of code 2018](https://adventofcode.com/2018). It is an elegant programming exercise, and also a clever algorithmic exercise. The problem can be summarized below. 
 
-::: Problem
+::: {.Problem #prob}
   Given a set $W$ of $n$ length $m$ strings. Decide if there are two of them that differs at exactly one position.
 :::
 In other words, we want to find two strings in $W$ with [hamming distance](https://en.wikipedia.org/wiki/Hamming_distance) $1$.
@@ -26,7 +26,7 @@ The algorithm uses the following idea. For each $i$, decide if there are any str
 :::
 Let $\mathcal{P}_i$ and $\mathcal{S}_i$ be the collection of equivalent classes of $\equiv^i$ and $\equiv_i$, respectively. We show a result related to the meet of partitions.  
 
-::: Lemma
+::: {.Lemma #lem:3}
   Let $\mathcal{A}$ and $\mathcal{B}$ be partitions of $[n]$. There is an $O(n)$ time algorithm to test find the sets in $\set{ A\cap B | A\in \mathcal{A}, B\in \mathcal{B}}$.
 :::
 ::: Proof
@@ -39,7 +39,7 @@ Note one can also directly use a [partition refinement data structure](https://e
 
 As a corollary, consider $\mathcal{A}=\mathcal{P}_i$ and $\mathcal{B}=\mathcal{S}_i$, then we obtain the following lemma. 
 
-::: Lemma
+::: {.Lemma #lem:4}
   Given the collections $\mathcal{P}_i$ and $\mathcal{S}_i$, there is an $O(n)$ time algorithm to test if there are two strings $x,y\in W$ that differs in precisely position $i$.
 :::
 ::: Lemma
@@ -49,10 +49,10 @@ As a corollary, consider $\mathcal{A}=\mathcal{P}_i$ and $\mathcal{B}=\mathcal{S
   To find the equivalent classes, build two tries for the strings. Trie $T_\mathcal{P}$ for strings in $W$ and trie $T_\mathcal{S}$ for the reversal of strings in $W$. Building the tries takes $O(mn)$ time. Inspect the nodes at depth $i-1$ in $T_P$ and nodes at depth $m-i+1$ in $T_S$ to recover $\mathcal{P}_i$ and $\mathcal{S}_i$ in $O(n)$ time. 
 :::
 ::: Theorem
-  There is an $O(mn)$ time algorithm that solves [Problem 1].
+  There is an $O(mn)$ time algorithm that solves [@prob].
 :::
 ::: Proof
-  Finding the sequence of equivalent classes takes $O(mn)$ time by [Lemma 4]. For each $i$, checking if there exists $x,y\in W$ differs in precisely position $i$ takes $O(n)$ time by [Lemma 3]. Since $i$ ranges from $1$ to $m$, we obtain the final running time is $O(mn)$.
+  Finding the sequence of equivalent classes takes $O(mn)$ time by [@lem:4]. For each $i$, checking if there exists $x,y\in W$ differs in precisely position $i$ takes $O(n)$ time by [@lem:3]. Since $i$ ranges from $1$ to $m$, we obtain the final running time is $O(mn)$.
 :::
 # Remarks
 
@@ -62,7 +62,7 @@ This definitely hits the optimal running time, but implementing a generalized su
 
 We do assume the alphabet size is constant. If the alphabet size is $\sigma$ and ordered, then there is an extra factor of $\log \sigma$ in building the tries. The the final running time will be $O(mn\log \sigma)$. 
 
-[Problem 1] also reduces to finding the closest pair of elements by hamming metric [@MinKZ09]. It does not get us the desired running time though. 
+[@prob] also reduces to finding the closest pair of elements by hamming metric [@MinKZ09]. It does not get us the desired running time though. 
 
 # An implementation in Haskell
 
