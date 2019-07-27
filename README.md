@@ -18,5 +18,4 @@ title: README
 
 # Notes
 
-- Under mac, MathDoc require you to `export LANG=C` for it to work, I have no idea why.
 - I made an [syntax highlighting file](https://gist.github.com/chaoxu/195ce33124f384a2f4e4) for sublime 3, so in Markdown it can also highlight latex codes.
