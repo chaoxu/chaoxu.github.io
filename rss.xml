@@ -16,17 +16,17 @@
 <p>The reason I explored <a href="https://chaoxuprime.com/posts/2019-06-15-covert-back-to-back-ticketing.html">an algorithm for covert back-to-back ticketing</a> in the previous blog post, was because as someone currently in a long distance relationship. It is important to save money on travel.</p>
 <p>For long distance couples, two people can fly. Consider if the couple decides be together each weekend, one can fly to the city of the other on Friday night, and comes back on Sunday night. Again we can take advantage of the back-to-back ticketing.</p>
 <p>Let <span class="math inline">M</span> be a matching of a graph <span class="math inline">G</span> where the edges are two colored. <span class="math inline">M</span> is called <em>valid</em> if vertex <span class="math inline">2i</span> and <span class="math inline">2i-1</span> are contained in the same colored edge in <span class="math inline">M</span>.</p>
-<section class="theorem-environment Problem" id="Problem-1">
+<div class="theorem-environment Problem" data-index="1" type="Problem" title="Couple back-to-back ticketing problem">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">1</span><span class="name">Couple back-to-back ticketing problem</span></span>
 <p><strong>Input:</strong> A multigraph <span class="math inline">G=(V,E)</span> where <span class="math inline">V\subseteq [n]</span>, where each edge can be either red or blue, and there is an edge cost function <span class="math inline">c:E\to \R^+</span>.</p>
 <p><strong>Output:</strong> A valid perfect matching <span class="math inline">M</span> (allowing self-loops), such that the cost is minimized.</p>
-</section>
-<p>Unfortunately, I don't see how to solve this problem in polynomial time. I could convert this problem to something that might be solved in polynomial time in the future.</p>
+</div>
+<p>Unfortunately, I don’t see how to solve this problem in polynomial time. I could convert this problem to something that might be solved in polynomial time in the future.</p>
 <p>Note we can split the vertices. That is, for vertex <span class="math inline">i</span>, we split it into <span class="math inline">(i,R)</span> and <span class="math inline">(i,B)</span> for its blue and red counter part. A matching is <em>paired</em> if <span class="math inline">(2i,C)</span> and <span class="math inline">(2i-1,C)</span> both has to be matched, where <span class="math inline">C\in \set{R,B}</span>. The matching is <em>split</em> if <span class="math inline">(i,R)</span> and <span class="math inline">(i,B)</span> cannot be both in the matching.</p>
-<p>If we just enforce one property -- paired or split -- then it is solvable in polynomial time. Indeed, both are matching under restrictions. We are interested in finding a matching <span class="math inline">M</span>, such that the vertices covered by <span class="math inline">M</span> is in some special structure. Namely <span class="math inline">\Delta</span>-matroid. Since the paired property is a very special <span class="math inline">\Delta</span>-matroid <span class="citation" data-cites="KakimuraT14">[<a href="#ref-KakimuraT14">1</a>]</span>, which was first solved in <span class="citation" data-cites="HefnerK95">[<a href="#ref-HefnerK95">2</a>]</span>. The second property is partition matroid, which can be handled by <a href="/posts/2019-04-27-maximum-weight-hierarchical-b-matching.html">hierarchical <span class="math inline">b</span>-matching</a>. Reader can see each individual restriction, the problem can be turned into a maximum weight perfect matching.</p>
-<p>If we enforce both property, the problem seems to be open. Although the structure is still very special, it is an <a href="https://en.wikipedia.org/wiki/Delta-matroid">even <span class="math inline">\Delta</span>-matroid</a>. I'm pretty sure this is an major open problem. However, this special case might have a much simpler solution.</p>
+<p>If we just enforce one property – paired or split – then it is solvable in polynomial time. Indeed, both are matching under restrictions. We are interested in finding a matching <span class="math inline">M</span>, such that the vertices covered by <span class="math inline">M</span> is in some special structure. Namely <span class="math inline">\Delta</span>-matroid. Since the paired property is a very special <span class="math inline">\Delta</span>-matroid <span class="citation" data-cites="KakimuraT14">[<a href="#ref-KakimuraT14" role="doc-biblioref">1</a>]</span>, which was first solved in <span class="citation" data-cites="HefnerK95">[<a href="#ref-HefnerK95" role="doc-biblioref">2</a>]</span>. The second property is partition matroid, which can be handled by <a href="/posts/2019-04-27-maximum-weight-hierarchical-b-matching.html">hierarchical <span class="math inline">b</span>-matching</a>. Reader can see each individual restriction, the problem can be turned into a maximum weight perfect matching.</p>
+<p>If we enforce both property, the problem seems to be open. Although the structure is still very special, it is an <a href="https://en.wikipedia.org/wiki/Delta-matroid">even <span class="math inline">\Delta</span>-matroid</a>. I’m pretty sure this is an major open problem. However, this special case might have a much simpler solution.</p>
 <h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references">
+<div id="refs" class="references" role="doc-bibliography">
 <div id="ref-KakimuraT14">
 <p>[1] N. Kakimura, M. Takamatsu, <strong>Matching Problems with Delta-Matroid Constraints</strong>, SIAM Journal on Discrete Mathematics. 28 (2014) 942–961 <a href="https://doi.org/10.1137/110860070">10.1137/110860070</a>.</p>
 </div>
@@ -34,7 +34,6 @@
 <p>[2] A. Hefner, P. Kleinschmidt, <strong>A constrained matching problem</strong>, Annals of Operations Research. 57 (1995) 135–145 <a href="https://doi.org/10.1007/BF02099694">10.1007/BF02099694</a>.</p>
 </div>
 </div>
-
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-06-18">2019-06-18</time>. </div>
@@ -52,36 +51,35 @@
 <p><a href="https://en.wikipedia.org/wiki/Airline_booking_ploys">Airline booking ploys</a> are ways to circumventing airlines ticket rules in order to spend less on the ticket. We consider a special case, the back-to-back ticketing/nested ticketing. <a href="https://www.tripsavvy.com/back-to-back-ticketing-468287">TripSavvy has a good article on back-to-back ticketing</a>.</p>
 <p>For many airlines, back-to-back ticketing is explicitly forbidden, this includes <a href="https://www.aa.com/i18n/customer-service/support/conditions-of-carriage.jsp?anchorEvent=false&amp;from=footer?#ticketvalidity">American Airlines</a>, <a href="https://www.delta.com/us/en/booking-information/fare-classes-and-tickets/ticket-rules-restrictions">Delta</a> and <a href="https://www.united.com/ual/en/us/fly/contract-of-carriage.html">United</a>.</p>
 <p>We want to model back-to-back ticketing into an algorithmic problem. There is a sequence of trips between two locations, and it can be grouped into different round trips. Each round trip itinerary has a different cost. A round trip itinerary is no more than a matching between two trips.</p>
-<p>This can be seen as simple matching problem. The vertices are trips, which we can assume a trip means &quot;traveling from A to B on date x&quot;. There is an edge between two trips, if there is a round trip itinerary containing the trips. The cost of the edge is the cost of buying a round trip for those two trips. Since it is also possible that we buy a one-way ticket, there are also self-loops. Also, we can consider a multigraph, where the edges are colored. Each color class represents an airline.</p>
+<p>This can be seen as simple matching problem. The vertices are trips, which we can assume a trip means “traveling from A to B on date x”. There is an edge between two trips, if there is a round trip itinerary containing the trips. The cost of the edge is the cost of buying a round trip for those two trips. Since it is also possible that we buy a one-way ticket, there are also self-loops. Also, we can consider a multigraph, where the edges are colored. Each color class represents an airline.</p>
 <p>If one does not care about the airline finding out, it is just a minimum weight perfect matching problem allowing self-loops. However, people might actually care about airline not happy about this practice. Hence we are interested in making sure in each airline, we have no overlapping itineraries. However, we do allow overlapping itineraries across airlines.</p>
 <p>For two edges <span class="math inline">\set{a,b}</span> and <span class="math inline">\set{c,d}</span> defined over integers, it is <em>independent</em> if <span class="math inline">[a,b]\cap [c,d]= \emptyset</span>. A set of edges is <em>independent</em> if the edges are pairwise independent.</p>
-<section class="theorem-environment Problem" id="Problem-1">
+<div class="theorem-environment Problem" data-index="1" type="Problem" title="Covert back-to-back ticketing problem">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">1</span><span class="name">Covert back-to-back ticketing problem</span></span>
 <p><strong>Input:</strong> A multigraph <span class="math inline">G=(V,E)</span> where <span class="math inline">V\subseteq [n]</span>, each edge can be one of <span class="math inline">k</span> colors, and there is an edge cost function <span class="math inline">c:E\to \R^+</span>.</p>
 <p><strong>Output:</strong> A perfect matching <span class="math inline">M</span> (allowing self-loops), such that each color class of <span class="math inline">M</span> is independent, and the cost is minimized.</p>
-</section>
+</div>
 <p>I suspect for arbitrary <span class="math inline">k</span>, the problem is NP-hard. We show how to solve the problem in polynomial time for <span class="math inline">k=2</span>.</p>
 <p><a href="https://yizhis.github.io/">Yizhi Song</a> stated the idea that if one edge in a color is picked, it forces some edges of the other color to be picked. We can use the idea to obtain an <span class="math inline">O(n^3)</span> time algorithm for this problem.</p>
 <p>Since we are only working with <span class="math inline">k=2</span> case, we will let <span class="math inline">\bar{a}</span> to be the color that is not <span class="math inline">a</span>. Recall <span class="math inline">[n]=\set{1,\ldots,n}</span> and <span class="math inline">[a..b] = \set{a,a+1,\ldots,b}</span>. We assume the vertices <span class="math inline">V=[n]</span>. For a graph with <span class="math inline">k</span> color classes, we define <span class="math inline">G_a</span> to be the subgraph consists of all edges of color <span class="math inline">a</span>. <span class="math inline">c_a(x,y)</span> is the cost of a color <span class="math inline">a</span> edge <span class="math inline">xy</span>. We define <span class="math inline">D(a,y,z)</span> as the optimal solution when the input graph is <span class="math inline">G_{\bar{a}}[[z-1]\setminus \set{y}] \cup G_a[[y-1]]</span>. Intuitively, this is the optimal solution where we need to match all vertices in <span class="math inline">Z = [z-1] \setminus \set{y}</span>, but can only use <span class="math inline">a</span> colored that is fully contained in <span class="math inline">[y-1]</span>, and <span class="math inline">\bar{a}</span> colored edges fully contained <span class="math inline">Z</span>. We also define <span class="math inline">C_{a}(x,y)</span> to be the optimal solution when the input graph is <span class="math inline">G_a[[x..y]]</span>. Namely, a min-cost perfect matching covering all vertices <span class="math inline">[x..y]</span> but we can only use <span class="math inline">a</span> colored edges contained in <span class="math inline">[x..y]</span>.</p>
 <p>The optimal solution is <span class="math inline">D(a,n+1,n+1)</span> for either color <span class="math inline">a</span>.</p>
-<p>We express the recursive relation. For <span class="math inline">y&lt;z</span>, we have the following. <span class="math display">\displaystyle 
+<p>We express the recursive relation. For <span class="math inline">y&lt;z</span>, we have the following. <span class="math display">
 D(a,y,z) =\min \begin{cases}
 \min_{x&lt;y} \set{ C_{\bar{a}}(y+2,z-1) + c_{\bar{a}}(x,y+1) + D(\bar{a},x,y)}\\
 C_{\bar{a}}(y+1,z-1) + D(\bar{a},y,y)
 \end{cases}
 </span> It might be beneficial to see the intuition behind the two cases through the following pictures.</p>
 <figure>
-<img src="/files/ticketing_case1.png" alt="First case." /><figcaption>First case.</figcaption>
+<img src="/files/ticketing_case1.png" alt="" /><figcaption>First case.</figcaption>
 </figure>
 <figure>
-<img src="/files/ticketing_case2.png" alt="Second case." /><figcaption>Second case.</figcaption>
+<img src="/files/ticketing_case2.png" alt="" /><figcaption>Second case.</figcaption>
 </figure>
-<p>On the other hand, when <span class="math inline">y=z</span> <span class="math display">\displaystyle 
+<p>On the other hand, when <span class="math inline">y=z</span> <span class="math display">
 D(a,y,y) =\min_{x&lt;y} \set{
 D(a,x,y) + c_a(x,y),
 D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 </span> One can easily infer the base case through definition. Note that all values of <span class="math inline">C_a</span> can be computed in <span class="math inline">O(n^2)</span> time. It takes <span class="math inline">O(n)</span> time to compute one value in <span class="math inline">D</span>. Therefore, the total running time is <span class="math inline">O(n^3)</span>.</p>
-
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-06-15">2019-06-15</time>. </div>
@@ -109,10 +107,9 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 <p>Often, one is tasked to apply permutation to an array physically. It usually ask for <span class="math inline">O(n)</span> running time and <span class="math inline">O(1)</span> space. Unfortunately, there is no way to obtain this running time for all permutations. There are some permutations where this is impossible. <a href="https://cstheory.stackexchange.com/questions/6711/complexity-of-applying-a-permutation-in-place">A discussion can be found in cstheory</a>.</p>
 <h1 id="mix-and-match"><span class="header-section-number">3</span> Mix and match</h1>
 <p><a href="https://www.linkedin.com/in/lingyu-xu-9b87a565/">Lingyu Xu</a> asked me about <a href="https://leetcode.com/problems/wiggle-sort-ii/">Wiggle Sort</a>, where the actual <strong>physical layout</strong> has to be changed, but it takes both the functional and physical view of the array.</p>
-<p>Let's consider the simple case where every element is distinct. One simple solution is the following. Partition the numbers into the median, elements smaller than median, and elements larger than the median. We map the smallest <span class="math inline">n/2</span> elements into even positions, and remaining elements into the odd position. The algorithm has <span class="math inline">O(n)</span> time. The problem is how to get constant extra place. Because it is unclear how to apply the following permutation in place. The permutation <span class="math inline">\sigma(i) = (1+2i) \% (n|1)</span>.</p>
+<p>Let’s consider the simple case where every element is distinct. One simple solution is the following. Partition the numbers into the median, elements smaller than median, and elements larger than the median. We map the smallest <span class="math inline">n/2</span> elements into even positions, and remaining elements into the odd position. The algorithm has <span class="math inline">O(n)</span> time. The problem is how to get constant extra place. Because it is unclear how to apply the following permutation in place. The permutation <span class="math inline">\sigma(i) = (1+2i) \% (n|1)</span>.</p>
 <p>However, one we take the functional view, the problem can be solved, physically too. The <a href="https://leetcode.com/problems/wiggle-sort-ii/discuss/77677/ono1-after-median-virtual-indexing/81756">answer by</a> <a href="http://www.stefan-pochmann.info/">Stefan Pochmann</a> shows one can simply do the mapping in place.</p>
 <p>What is happening in the physical location. If we applied index transform <span class="math inline">\pi</span>, then apply physical permutation <span class="math inline">\sigma</span> on the index, what happens for the physical array? It is the same as applying <span class="math inline">\pi^{-1}\sigma\pi</span> to the physical array. Note this means we can only use this trick to obtain conjugates of <span class="math inline">\sigma</span>.</p>
-
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-06-15">2019-06-15</time>. </div>
@@ -128,16 +125,16 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
     <description><![CDATA[<br />
 <div>
 <h1 id="introduction"><span class="header-section-number">1</span> Introduction</h1>
-<p>We given a collection of <span class="math inline">n</span> intervals, and we want to find its union, represented by a set of disjoint intervals. Assume the intervals are of the form <span class="math inline">[a,b)</span>, where <span class="math inline">a&lt;b</span>. However, I have to solve this problem in Hive. So this is a problem I have to solve in Hive's SQL variant.</p>
+<p>We given a collection of <span class="math inline">n</span> intervals, and we want to find its union, represented by a set of disjoint intervals. Assume the intervals are of the form <span class="math inline">[a,b)</span>, where <span class="math inline">a&lt;b</span>. However, I have to solve this problem in Hive. So this is a problem I have to solve in Hive’s SQL variant.</p>
 <p>First, here is the schema of the table and some sample inputs.</p>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">TABLE</span> t (
-  a <span class="dt">int</span>,
-  b <span class="dt">int</span>
-);
-<span class="kw">INSERT</span> <span class="kw">INTO</span> t <span class="kw">VALUES</span>
-  (<span class="dv">0</span>,<span class="dv">10</span>),
-  (<span class="dv">20</span>,<span class="dv">30</span>),
-  (<span class="dv">5</span>,<span class="dv">15</span>);</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> t (</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  a <span class="dt">int</span>,</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  b <span class="dt">int</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>);</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> t <span class="kw">VALUES</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>  (<span class="dv">0</span>,<span class="dv">10</span>),</span>
+<span id="cb1-7"><a href="#cb1-7"></a>  (<span class="dv">20</span>,<span class="dv">30</span>),</span>
+<span id="cb1-8"><a href="#cb1-8"></a>  (<span class="dv">5</span>,<span class="dv">15</span>);</span></code></pre></div>
 <p>The correct output should be the following.</p>
 <pre><code>a    b
 -------
@@ -145,78 +142,77 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 20   30</code></pre>
 <p>We do not allow empty intervals, so we cannot have <span class="math inline">a=b</span>.</p>
 <h1 id="previous-works"><span class="header-section-number">2</span> Previous Works</h1>
-<p>Note this is a common interview problem, <a href="https://leetcode.com/problems/merge-intervals/">LeetCode 56. Merge Intervals</a>. There is a <span class="math inline">\Omega(n\log n)</span> running time lower bound. There is an <span class="math inline">O(n\log p)</span> upper bound, where <span class="math inline">p</span> is the number of points required to stab all intervals. In higher dimension, this is called the <a href="https://en.wikipedia.org/wiki/Klee%27s_measure_problem">Klee's measure problem</a>.</p>
+<p>Note this is a common interview problem, <a href="https://leetcode.com/problems/merge-intervals/">LeetCode 56. Merge Intervals</a>. There is a <span class="math inline">\Omega(n\log n)</span> running time lower bound. There is an <span class="math inline">O(n\log p)</span> upper bound, where <span class="math inline">p</span> is the number of points required to stab all intervals. In higher dimension, this is called the <a href="https://en.wikipedia.org/wiki/Klee%27s_measure_problem">Klee’s measure problem</a>.</p>
 <p>However, one would wonder how efficient can we solve the problem in SQL. I was surprised find a <a href="https://stackoverflow.com/a/8120432/303863">very short solution on stackoverflow</a>.</p>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> 
-       t1.a,
-       <span class="fu">MIN</span>(t2.b) <span class="kw">AS</span> b
-<span class="kw">FROM</span> t t1 
-<span class="kw">INNER</span> <span class="kw">JOIN</span> t t2 <span class="kw">ON</span> t1.a &lt;= t2.b
-  <span class="kw">AND</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span>(<span class="kw">SELECT</span> * <span class="kw">FROM</span> t 
-                 <span class="kw">WHERE</span> t2.b &gt;= t.a <span class="kw">AND</span> t2.b &lt; t.b) 
-<span class="kw">WHERE</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span>(<span class="kw">SELECT</span> * <span class="kw">FROM</span> t
-                 <span class="kw">WHERE</span> t1.a &gt; t.a <span class="kw">AND</span> t1.a &lt;= t.b) 
-<span class="kw">GROUP</span> <span class="kw">BY</span> t1.a
-<span class="kw">ORDER</span> <span class="kw">BY</span> t1.a</code></pre></div>
-<p>Unfortunately, once you know how the entire algorithm goes, one can see its performance does not look promising. Indeed, this is a <span class="math inline">O(n^2)</span> time algorithm. After generating <span class="math inline">10000</span> random intervals in PostgreSQL, it took 13 seconds to run. Also making it work in Hive is next to impossible due to Hive's limitations on joins and subqueries.</p>
-<p><a href="http://tsql.solidq.com/">Itzik Ben-Gan</a> has <a href="https://www.itprotoday.com/development-techniques-and-management/packing-date-intervals">written</a> <a href="https://blogs.solidq.com/en/sqlserver/packing-intervals/">multiple</a> <a href="https://www.itprotoday.com/sql-server/new-solution-packing-intervals-problem">articles</a> on how to solve this problem. I recommend reading them to learn various tricks. In fact, my solution here is quite similar to one of Ben-Gan's.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb3-2"><a href="#cb3-2"></a>       t1.a,</span>
+<span id="cb3-3"><a href="#cb3-3"></a>       <span class="fu">MIN</span>(t2.b) <span class="kw">AS</span> b</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">FROM</span> t t1 </span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">INNER</span> <span class="kw">JOIN</span> t t2 <span class="kw">ON</span> t1.a <span class="op">&lt;=</span> t2.b</span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="kw">AND</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span>(<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> t </span>
+<span id="cb3-7"><a href="#cb3-7"></a>                 <span class="kw">WHERE</span> t2.b <span class="op">&gt;=</span> t.a <span class="kw">AND</span> t2.b <span class="op">&lt;</span> t.b) </span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="kw">WHERE</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span>(<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> t</span>
+<span id="cb3-9"><a href="#cb3-9"></a>                 <span class="kw">WHERE</span> t1.a <span class="op">&gt;</span> t.a <span class="kw">AND</span> t1.a <span class="op">&lt;=</span> t.b) </span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="kw">GROUP</span> <span class="kw">BY</span> t1.a</span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="kw">ORDER</span> <span class="kw">BY</span> t1.a</span></code></pre></div>
+<p>Unfortunately, once you know how the entire algorithm goes, one can see its performance does not look promising. Indeed, this is a <span class="math inline">O(n^2)</span> time algorithm. After generating <span class="math inline">10000</span> random intervals in PostgreSQL, it took 13 seconds to run. Also making it work in Hive is next to impossible due to Hive’s limitations on joins and subqueries.</p>
+<p><a href="http://tsql.solidq.com/">Itzik Ben-Gan</a> has <a href="https://www.itprotoday.com/development-techniques-and-management/packing-date-intervals">written</a> <a href="https://blogs.solidq.com/en/sqlserver/packing-intervals/">multiple</a> <a href="https://www.itprotoday.com/sql-server/new-solution-packing-intervals-problem">articles</a> on how to solve this problem. I recommend reading them to learn various tricks. In fact, my solution here is quite similar to one of Ben-Gan’s.</p>
 <p>Thanks to <a href="https://scholar.google.com/citations?user=jB4qJYEAAAAJ&amp;hl=en">Peng Yu</a> who pointed out this kind of queries is very common in sessionization.</p>
 <h1 id="using-basic-sql"><span class="header-section-number">3</span> Using basic SQL</h1>
 <p>Here we will try to implement an algorithm using the most basic of SQL, so it would even work in Hive.</p>
 <h2 id="solution-by-simulate-the-standard-sweep-line-algorithm"><span class="header-section-number">3.1</span> Solution by simulate the standard sweep-line algorithm</h2>
 <p>We first build a table, such that <span class="math inline">(a,c)</span> is in the table shows that there are <span class="math inline">c</span> intervals the endpoint directly before <span class="math inline">a</span>. Next, we notice that <span class="math inline">c=0</span> if and only if <span class="math inline">a</span> is the start of a new interval in the union. Hence we can assign everything between consecutive <span class="math inline">c=0</span> a name.</p>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">WITH</span> 
-  weighted_endpoints <span class="kw">AS</span> (
-    <span class="kw">SELECT</span> a, <span class="fu">Sum</span>(d) <span class="kw">AS</span> d
-    <span class="kw">FROM</span>   (<span class="kw">SELECT</span> a,  <span class="dv">1</span> <span class="kw">AS</span> d <span class="kw">FROM</span> t
-            <span class="kw">UNION</span> <span class="kw">ALL</span>
-            <span class="kw">SELECT</span> b, -<span class="dv">1</span> <span class="kw">AS</span> d <span class="kw">FROM</span> t) e
-    <span class="kw">GROUP</span>  <span class="kw">BY</span> a),
-  endpoints_with_coverage <span class="kw">AS</span> (
-    <span class="kw">SELECT</span> *, <span class="fu">Sum</span>(d) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> a) - d <span class="kw">AS</span> c
-    <span class="kw">FROM</span> weighted_endpoints),
-  equivalence_classes <span class="kw">AS</span> (
-    <span class="kw">SELECT</span> a, <span class="fu">COUNT</span>(<span class="kw">CASE</span> <span class="kw">WHEN</span> c=<span class="dv">0</span> <span class="kw">THEN</span> <span class="dv">1</span> <span class="kw">END</span>) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="kw">AS</span> <span class="kw">class</span>
-    <span class="kw">FROM</span> endpoints_with_coverage)
-<span class="kw">SELECT</span> <span class="fu">min</span>(a) <span class="kw">AS</span> a, <span class="fu">max</span>(a) <span class="kw">AS</span> b
-<span class="kw">FROM</span> equivalence_classes
-<span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">class</span>;</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">WITH</span> </span>
+<span id="cb4-2"><a href="#cb4-2"></a>  weighted_endpoints <span class="kw">AS</span> (</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    <span class="kw">SELECT</span> a, <span class="fu">Sum</span>(d) <span class="kw">AS</span> d</span>
+<span id="cb4-4"><a href="#cb4-4"></a>    <span class="kw">FROM</span>   (<span class="kw">SELECT</span> a,  <span class="dv">1</span> <span class="kw">AS</span> d <span class="kw">FROM</span> t</span>
+<span id="cb4-5"><a href="#cb4-5"></a>            <span class="kw">UNION</span> <span class="kw">ALL</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>            <span class="kw">SELECT</span> b, <span class="op">-</span><span class="dv">1</span> <span class="kw">AS</span> d <span class="kw">FROM</span> t) e</span>
+<span id="cb4-7"><a href="#cb4-7"></a>    <span class="kw">GROUP</span>  <span class="kw">BY</span> a),</span>
+<span id="cb4-8"><a href="#cb4-8"></a>  endpoints_with_coverage <span class="kw">AS</span> (</span>
+<span id="cb4-9"><a href="#cb4-9"></a>    <span class="kw">SELECT</span> <span class="op">*</span>, <span class="fu">Sum</span>(d) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="op">-</span> d <span class="kw">AS</span> c</span>
+<span id="cb4-10"><a href="#cb4-10"></a>    <span class="kw">FROM</span> weighted_endpoints),</span>
+<span id="cb4-11"><a href="#cb4-11"></a>  equivalence_classes <span class="kw">AS</span> (</span>
+<span id="cb4-12"><a href="#cb4-12"></a>    <span class="kw">SELECT</span> a, <span class="fu">COUNT</span>(<span class="cf">CASE</span> <span class="cf">WHEN</span> c<span class="op">=</span><span class="dv">0</span> <span class="cf">THEN</span> <span class="dv">1</span> <span class="cf">END</span>) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="kw">AS</span> <span class="kw">class</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a>    <span class="kw">FROM</span> endpoints_with_coverage)</span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="kw">SELECT</span> <span class="fu">min</span>(a) <span class="kw">AS</span> a, <span class="fu">max</span>(a) <span class="kw">AS</span> b</span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="kw">FROM</span> equivalence_classes</span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">class</span>;</span></code></pre></div>
 <p>The equivalence classes idea is from Peng Yu. This code took 100ms to handle 10000 random intervals in PostgreSQL. You can find <a href="https://www.db-fiddle.com/f/aVaF6NDTVYmxBpifsHDFBf/9">the example in DB-fiddle</a>. I am interested to seeing simpler and faster code using the simplest of SQL.</p>
 <h2 id="solution-through-gaps"><span class="header-section-number">3.2</span> Solution through gaps</h2>
-<p>There is another solution, which uses the idea of gaps. Interestingly, gaps are much easier to compute. Here we modify <a href="https://stackoverflow.com/a/53163029/303863">Oleg K's solution</a>.</p>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">WITH</span> largest_prev <span class="kw">AS</span> (<span class="kw">SELECT</span> 
-                      <span class="fu">MAX</span>(b) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="kw">AS</span> b,
-                      <span class="fu">LEAD</span>(a) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="kw">AS</span> a 
-                      <span class="kw">FROM</span> t),
-     gaps <span class="kw">AS</span> (<span class="kw">SELECT</span> * <span class="kw">FROM</span> largest_prev <span class="kw">WHERE</span> b&lt;a
-              <span class="kw">UNION</span> <span class="kw">ALL</span>
-              <span class="kw">SELECT</span> <span class="fu">min</span>(a), <span class="fu">min</span>(a) <span class="kw">from</span> t
-              <span class="kw">UNION</span> <span class="kw">ALL</span>
-              <span class="kw">SELECT</span> <span class="fu">max</span>(b), <span class="kw">null</span> <span class="kw">from</span> t),
-     intervals <span class="kw">AS</span> (<span class="kw">SELECT</span> a, <span class="fu">LEAD</span>(b) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> b) <span class="kw">as</span> b <span class="kw">FROM</span> gaps)
-<span class="kw">SELECT</span> * <span class="kw">FROM</span> intervals <span class="kw">WHERE</span> a <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">null</span>;</code></pre></div>
+<p>There is another solution, which uses the idea of gaps. Interestingly, gaps are much easier to compute. Here we modify <a href="https://stackoverflow.com/a/53163029/303863">Oleg K’s solution</a>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">WITH</span> largest_prev <span class="kw">AS</span> (<span class="kw">SELECT</span> </span>
+<span id="cb5-2"><a href="#cb5-2"></a>                      <span class="fu">MAX</span>(b) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="kw">AS</span> b,</span>
+<span id="cb5-3"><a href="#cb5-3"></a>                      <span class="fu">LEAD</span>(a) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="kw">AS</span> a </span>
+<span id="cb5-4"><a href="#cb5-4"></a>                      <span class="kw">FROM</span> t),</span>
+<span id="cb5-5"><a href="#cb5-5"></a>     gaps <span class="kw">AS</span> (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> largest_prev <span class="kw">WHERE</span> b<span class="op">&lt;</span>a</span>
+<span id="cb5-6"><a href="#cb5-6"></a>              <span class="kw">UNION</span> <span class="kw">ALL</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>              <span class="kw">SELECT</span> <span class="fu">min</span>(a), <span class="fu">min</span>(a) <span class="kw">from</span> t</span>
+<span id="cb5-8"><a href="#cb5-8"></a>              <span class="kw">UNION</span> <span class="kw">ALL</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>              <span class="kw">SELECT</span> <span class="fu">max</span>(b), <span class="kw">null</span> <span class="kw">from</span> t),</span>
+<span id="cb5-10"><a href="#cb5-10"></a>     intervals <span class="kw">AS</span> (<span class="kw">SELECT</span> a, <span class="fu">LEAD</span>(b) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> b) <span class="kw">as</span> b <span class="kw">FROM</span> gaps)</span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> intervals <span class="kw">WHERE</span> a <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">null</span>;</span></code></pre></div>
 <p>This one can also be tested on <a href="https://www.db-fiddle.com/f/k1GTRiRgaiPmRfxZoWBhTs/1">DB-fiddle</a>. This code took 70ms to handle 10000 random intervals in PostgreSQL.</p>
-<p>As a real application, for example, if we want to know the length of union of intervals grouped by some keys. The following is how we do it in hive. Note in this application, we don't have to remove the null rows because we are taking a sum.</p>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SET</span> hivevar<span class="ch">:key</span>=id1,id2;
-<span class="kw">SET</span> hivevar<span class="ch">:input</span>=t;
-<span class="kw">WITH</span> largest_prev <span class="kw">AS</span> (<span class="kw">SELECT</span>
-                      ${<span class="kw">key</span>},
-                      <span class="fu">MAX</span>(b) <span class="kw">OVER</span> (<span class="kw">PARTITION</span> <span class="kw">BY</span> ${<span class="kw">key</span>} <span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="kw">AS</span> b,
-                      <span class="fu">LEAD</span>(a) <span class="kw">OVER</span> (<span class="kw">PARTITION</span> <span class="kw">BY</span> ${<span class="kw">key</span>} <span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="kw">AS</span> a
-                      <span class="kw">FROM</span> ${input}),
-     gaps <span class="kw">AS</span> (<span class="kw">SELECT</span> * <span class="kw">FROM</span> largest_prev <span class="kw">WHERE</span> b&lt;a
-              <span class="kw">UNION</span> <span class="kw">ALL</span>
-              <span class="kw">SELECT</span> ${<span class="kw">key</span>}, <span class="fu">min</span>(a), <span class="fu">min</span>(a) <span class="kw">from</span> ${input} <span class="kw">GROUP</span> <span class="kw">BY</span> ${<span class="kw">key</span>}
-              <span class="kw">UNION</span> <span class="kw">ALL</span>
-              <span class="kw">SELECT</span> ${<span class="kw">key</span>}, <span class="fu">max</span>(b), <span class="kw">null</span> <span class="kw">from</span> ${input} <span class="kw">GROUP</span> <span class="kw">BY</span> ${<span class="kw">key</span>}),
-     intervals <span class="kw">AS</span> (<span class="kw">SELECT</span> ${<span class="kw">key</span>}, 
-                          a,
-                          <span class="fu">LEAD</span>(b) <span class="kw">OVER</span> (<span class="kw">PARTITION</span> <span class="kw">BY</span> ${<span class="kw">key</span>} <span class="kw">ORDER</span> <span class="kw">BY</span> b) <span class="kw">as</span> b
-                   <span class="kw">FROM</span> gaps)
-<span class="kw">SELECT</span> ${<span class="kw">key</span>}, <span class="fu">SUM</span>(b-a) <span class="kw">as</span> score
-<span class="kw">FROM</span> intervals
-<span class="kw">GROUP</span> <span class="kw">BY</span> ${<span class="kw">key</span>};</code></pre></div>
-
+<p>As a real application, for example, if we want to know the length of union of intervals grouped by some keys. The following is how we do it in hive. Note in this application, we don’t have to remove the null rows because we are taking a sum.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">SET</span> hivevar<span class="ch">:key</span><span class="op">=</span>id1,id2;</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">SET</span> hivevar<span class="ch">:input</span><span class="op">=</span>t;</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="kw">WITH</span> largest_prev <span class="kw">AS</span> (<span class="kw">SELECT</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>                      ${<span class="kw">key</span>},</span>
+<span id="cb6-5"><a href="#cb6-5"></a>                      <span class="fu">MAX</span>(b) <span class="kw">OVER</span> (<span class="kw">PARTITION</span> <span class="kw">BY</span> ${<span class="kw">key</span>} <span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="kw">AS</span> b,</span>
+<span id="cb6-6"><a href="#cb6-6"></a>                      <span class="fu">LEAD</span>(a) <span class="kw">OVER</span> (<span class="kw">PARTITION</span> <span class="kw">BY</span> ${<span class="kw">key</span>} <span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="kw">AS</span> a</span>
+<span id="cb6-7"><a href="#cb6-7"></a>                      <span class="kw">FROM</span> ${input}),</span>
+<span id="cb6-8"><a href="#cb6-8"></a>     gaps <span class="kw">AS</span> (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> largest_prev <span class="kw">WHERE</span> b<span class="op">&lt;</span>a</span>
+<span id="cb6-9"><a href="#cb6-9"></a>              <span class="kw">UNION</span> <span class="kw">ALL</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>              <span class="kw">SELECT</span> ${<span class="kw">key</span>}, <span class="fu">min</span>(a), <span class="fu">min</span>(a) <span class="kw">from</span> ${input} <span class="kw">GROUP</span> <span class="kw">BY</span> ${<span class="kw">key</span>}</span>
+<span id="cb6-11"><a href="#cb6-11"></a>              <span class="kw">UNION</span> <span class="kw">ALL</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a>              <span class="kw">SELECT</span> ${<span class="kw">key</span>}, <span class="fu">max</span>(b), <span class="kw">null</span> <span class="kw">from</span> ${input} <span class="kw">GROUP</span> <span class="kw">BY</span> ${<span class="kw">key</span>}),</span>
+<span id="cb6-13"><a href="#cb6-13"></a>     intervals <span class="kw">AS</span> (<span class="kw">SELECT</span> ${<span class="kw">key</span>}, </span>
+<span id="cb6-14"><a href="#cb6-14"></a>                          a,</span>
+<span id="cb6-15"><a href="#cb6-15"></a>                          <span class="fu">LEAD</span>(b) <span class="kw">OVER</span> (<span class="kw">PARTITION</span> <span class="kw">BY</span> ${<span class="kw">key</span>} <span class="kw">ORDER</span> <span class="kw">BY</span> b) <span class="kw">as</span> b</span>
+<span id="cb6-16"><a href="#cb6-16"></a>                   <span class="kw">FROM</span> gaps)</span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="kw">SELECT</span> ${<span class="kw">key</span>}, <span class="fu">SUM</span>(b<span class="op">-</span>a) <span class="kw">as</span> score</span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="kw">FROM</span> intervals</span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="kw">GROUP</span> <span class="kw">BY</span> ${<span class="kw">key</span>};</span></code></pre></div>
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-04-27">2019-04-27</time>. </div>
@@ -227,14 +223,14 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
-    <title>Maximum weight hierarchical <span class="math inline">b</span>-matching</title>
+    <title>Maximum weight hierarchical $b$-matching</title>
     <link>https://chaoxuprime.com/posts/2019-04-27-maximum-weight-hierarchical-b-matching.html</link>
     <description><![CDATA[<br />
 <div>
-<p>We consider the following problem, which appeared in <span class="citation" data-cites="EmekKSZ19">[<a href="#ref-EmekKSZ19">1</a>]</span>.</p>
+<p>We consider the following problem, which appeared in <span class="citation" data-cites="EmekKSZ19">[<a href="#ref-EmekKSZ19" role="doc-biblioref">1</a>]</span>.</p>
 <p>Let <span class="math inline">\mathcal{L}</span> be a laminar family consists of sets <span class="math inline">F_1,\ldots,F_k</span>. Let <span class="math inline">u_1,\ldots,u_k</span> to be positive integers. Consider a graph <span class="math inline">G=(V,E)</span> with a weight function <span class="math inline">w:E\to \N</span> and capacity function <span class="math inline">c:E\to \N</span>. We are interested in finding a <span class="math inline">y\leq c</span>, such that for every <span class="math inline">F_i\in \mathcal{L}</span>, we have <span class="math inline">\sum_{v\in F_i} \sum_{e:v\in e\in E} y_e \leq u_i</span>, and <span class="math inline">\sum_{e\in E} y_ew_e</span> is maximized.</p>
 <p>Formally, it is the following integer program.</p>
-<p><span class="math display">\displaystyle 
+<p><span class="math display">
 \begin{aligned}
 &amp; \max_{y\in \Z^m} &amp; &amp; \sum_{e} w_e y_e &amp; \\
 &amp; \text{s.t.} &amp; &amp; \sum_{v\in F_i} \sum_{e:v\in e\in E} y_e \leq u_i &amp; i\in [k] \\
@@ -243,14 +239,14 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 </span></p>
 <p>This is a generalization of the maximum weight <span class="math inline">c</span>-capacitated <span class="math inline">b</span>-matching problem. Indeed, we can simply set <span class="math inline">F_i = \set{v_i}</span> and <span class="math inline">u_i=b_i</span>. However, this problem is actually no more general than the maximum weight <span class="math inline">c</span>-capacitated <span class="math inline">b</span>-matching problem.</p>
 <p>Let <span class="math inline">A \in \Z^{m\times n}</span> be a matrix such that <span class="math inline">\sum_{i=1}^m |A_{i,j}|\leq 2</span> for every <span class="math inline">j</span>. We call <span class="math inline">A</span> a bidirected matrix.</p>
-<section class="theorem-environment Theorem" id="Theorem-1">
+<div class="theorem-environment Theorem" data-index="1" type="Theorem">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">1</span></span>
 <p>Given <span class="math inline">A \in \Z^{m\times n}</span> a bidirected matrix and vectors <span class="math inline">a,b\in \Z^m</span>, <span class="math inline">c,d,w\in \Z^n</span>. The integer program <span class="math inline">\max_{x\in \Z^n} \set{wx \mid a\leq Ax\leq b, c\leq x\leq d}</span> can be solved in polynomial time. In particular, it is equivalent to the maximum weight <span class="math inline">b</span>-matching problem on graph of size <span class="math inline">poly(m,n)</span>.</p>
-</section>
-<p>The above theorem can be found in <span class="citation" data-cites="Schrijver03">[<a href="#ref-Schrijver03">2</a>]</span>. Note that in Schrijver's book, one requires <span class="math inline">\sum_{i=1}^m |A_{i,j}|=2</span>. It is not hard to see the statement still holds even if we have <span class="math inline">\leq</span> in place of <span class="math inline">=</span>.</p>
-<p>We will express the maximum weight hierarchical <span class="math inline">b</span>-matching problem as an integer program over a polytope defined over a bidirected matrix. The integer program is a modification of the integer program in <span class="citation" data-cites="KaparisLM17">[<a href="#ref-KaparisLM17">3</a>]</span>. The integer program here is simpler, because we are not trying to reduce to <em>perfect</em> <span class="math inline">b</span>-matching.</p>
+</div>
+<p>The above theorem can be found in <span class="citation" data-cites="Schrijver03">[<a href="#ref-Schrijver03" role="doc-biblioref">2</a>]</span>. Note that in Schrijver’s book, one requires <span class="math inline">\sum_{i=1}^m |A_{i,j}|=2</span>. It is not hard to see the statement still holds even if we have <span class="math inline">\leq</span> in place of <span class="math inline">=</span>.</p>
+<p>We will express the maximum weight hierarchical <span class="math inline">b</span>-matching problem as an integer program over a polytope defined over a bidirected matrix. The integer program is a modification of the integer program in <span class="citation" data-cites="KaparisLM17">[<a href="#ref-KaparisLM17" role="doc-biblioref">3</a>]</span>. The integer program here is simpler, because we are not trying to reduce to <em>perfect</em> <span class="math inline">b</span>-matching.</p>
 <p>We define <span class="math inline">F_i&#39; = F_i \setminus \bigcup_{j: F_j\subsetneq F_i} F_j</span>. We also define <span class="math inline">C_i</span> to be the indices <span class="math inline">j</span>, such that for all <span class="math inline">k</span>, <span class="math inline">F_j\subseteq F_k \subsetneq F_i</span> implies <span class="math inline">j=k</span>. <span class="math inline">y_e</span> denote the amount of capacities we assign to <span class="math inline">e</span>, <span class="math inline">x_v</span> denotes the capacitated degree, hence <span class="math inline">x_v = \sum_{e:v\in e\in E} y_e</span>. We define <span class="math inline">z_i = \sum_{v\in F_i} x_v</span>, which can be transformed to <span class="math inline">z_i = \sum_{v\in F_i&#39;} x_v + \sum_{j\in C_i} z_j</span>. Therefore we obtain the following integer program by directly applying substitutions.</p>
-<p><span class="math display">\displaystyle 
+<p><span class="math display">
 \begin{aligned}
 &amp; \max_{x\in \Z^n,y\in \Z^m, z\in \Z^k} &amp; &amp; \sum_{e} w_e y_e &amp; \\
 &amp; \text{s.t.} &amp; &amp; \sum_{v\in F_i&#39;} x_v + \sum_{j\in C_i} z_j - z_i= 0 &amp; i\in [k] \\
@@ -261,7 +257,7 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 </span></p>
 <p>The matrix here is a bidirected matrix. This shows the original problem can be solved in polynomial time.</p>
 <h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references">
+<div id="refs" class="references" role="doc-bibliography">
 <div id="ref-EmekKSZ19">
 <p>[1] Y. Emek, S. Kutten, M. Shalom, S. Zaks, <strong>Hierarchical b-Matching</strong>, arXiv E-Prints. (2019) arXiv:1904.10210.</p>
 </div>
@@ -272,7 +268,6 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 <p>[3] I.M. Konstantinos Kaparis Adam N. Letchford, <strong>On matroid parity and matching polytopes</strong>, Department of Management Science, Lancaster University, 2017.</p>
 </div>
 </div>
-
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-04-27">2019-04-27</time>. </div>
@@ -289,9 +284,8 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 <div>
 <p>Given a set of data <span class="math inline">A</span>, we can plot it on a <a href="https://en.wikipedia.org/wiki/Radar_chart">radar chart</a>. One can permute the axis to make sure the area of the radar chart is maximized. This was explored in <a href="https://chaoxuprime.com/posts/2012-08-08-maximize-the-area-of-a-radar-chart.html">a previous article</a>.</p>
 <p>More interesting problem. Given two sets of data <span class="math inline">A</span> and <span class="math inline">B</span>, we are interested in finding a common radar chart, that make <span class="math inline">A</span> look as good as possible compared to <span class="math inline">B</span>. We might want to optimize the area ratio, area difference, or something else. Again, we are thinking of permuting the axis of the radar chart.</p>
-<p>I once mentioned this problem to <a href="https://www.contrib.andrew.cmu.edu/~ravi/">R Ravi</a>, and he suggest I could ask the same question for all kind of different graphs. How to mislead people with graphs while being completely honest? Indeed, this looks like a fun research project. There is a <a href="https://en.wikipedia.org/wiki/Misleading_graph">wikipedia article completely devoted to it</a>. In my <a href="https://chaoxuprime.com/posts/2019-03-28-l1-linear-regression.html">previous post</a>, I've discussed how to fitting two seemingly not that related data points through simple transformation.</p>
-<p>I'm interested in are algorithmic problems where one want to compute the most misleading chart, I think it would be a great fun project.</p>
-
+<p>I once mentioned this problem to <a href="https://www.contrib.andrew.cmu.edu/~ravi/">R Ravi</a>, and he suggest I could ask the same question for all kind of different graphs. How to mislead people with graphs while being completely honest? Indeed, this looks like a fun research project. There is a <a href="https://en.wikipedia.org/wiki/Misleading_graph">wikipedia article completely devoted to it</a>. In my <a href="https://chaoxuprime.com/posts/2019-03-28-l1-linear-regression.html">previous post</a>, I’ve discussed how to fitting two seemingly not that related data points through simple transformation.</p>
+<p>I’m interested in are algorithmic problems where one want to compute the most misleading chart, I think it would be a great fun project.</p>
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-04-06">2019-04-06</time>. </div>
@@ -302,20 +296,20 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
-    <title><span class="math inline">L_1</span> linear regression</title>
+    <title>$L_1$ linear regression</title>
     <link>https://chaoxuprime.com/posts/2019-03-28-l1-linear-regression.html</link>
     <description><![CDATA[<br />
 <div>
 <p>I read an article on the <a href="https://medium.economist.com/mistakes-weve-drawn-a-few-8cdd8a42d368">errors in visualization</a>. The example of forcing a relationship by cherry-picking scales is delightful. I recommend reading it.</p>
 <p>I am interested in misleading people while being completely honest. The article inspires the following problem. Given 2 vectors <span class="math inline">\bm{x},\bm{y}\in \R^n</span>. Let <span class="math inline">\bm{1}</span> be the all <span class="math inline">1</span> vector in <span class="math inline">\R^n</span>. We are interested in finding <span class="math inline">a,b\in \R</span>, such that <span class="math inline">\|\bm{y}-(a\bm{x}+b\bm{1})\|_p</span> is minimized. Here <span class="math inline">p</span> is either <span class="math inline">1,2</span> or <span class="math inline">\infty</span>.</p>
 <p>Note the problem is precisely the same as the linear regression problem. In the linear regression problem, we are given a point set <span class="math inline">S\subset \R^2</span> of size <span class="math inline">n</span> and we are interested in find a line <span class="math inline">f(x) = ax+b</span>, such that it minimizes the <em>error</em>, defined as</p>
-<p><span class="math display">\displaystyle 
+<p><span class="math display">
 \sum_{(x,y)\in S} \|y - f(x)\|_p
 </span></p>
-<p>For <span class="math inline">p=2</span>, there is a <span class="math inline">O(n)</span> time algorithm because there is a closed formula. For <span class="math inline">p=\infty</span>, the problem can be rewritten as a linear program with <span class="math inline">3</span> variables and <span class="math inline">n</span> constraints. Using Megiddo's result <span class="citation" data-cites="Megiddo84">[<a href="#ref-Megiddo84">1</a>]</span>, there is a <span class="math inline">O(n)</span> time algorithm to solve this problem.</p>
-<p>It is hard to find the worst case complexity when <span class="math inline">p=1</span>. This case is called the <em>least absolute deviations</em>. Statisticians just don't care about worst case running time as CS people do.</p>
+<p>For <span class="math inline">p=2</span>, there is a <span class="math inline">O(n)</span> time algorithm because there is a closed formula. For <span class="math inline">p=\infty</span>, the problem can be rewritten as a linear program with <span class="math inline">3</span> variables and <span class="math inline">n</span> constraints. Using Megiddo’s result <span class="citation" data-cites="Megiddo84">[<a href="#ref-Megiddo84" role="doc-biblioref">1</a>]</span>, there is a <span class="math inline">O(n)</span> time algorithm to solve this problem.</p>
+<p>It is hard to find the worst case complexity when <span class="math inline">p=1</span>. This case is called the <em>least absolute deviations</em>. Statisticians just don’t care about worst case running time as CS people do.</p>
 <p>There are a few methods I found. One is to write it as a linear program on <span class="math inline">n+2</span> variables and <span class="math inline">n</span> constraints and solve it using the simplex method. The linear program is as follows.</p>
-<p><span class="math display">\displaystyle 
+<p><span class="math display">
 \begin{aligned}
 &amp; \min_{a,b,t_1,\ldots,t_n}
 &amp; &amp; \sum_{i=1}^n t_i &amp; \\
@@ -324,28 +318,28 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 \end{aligned}
 </span></p>
 <p>There are a bunch of other algorithms that specializes the simplex algorithm on this particular problem. There are also some iterative methods. Unfortunately, those algorithms depends on the actual numbers in the input. I want a running time that only depends on <span class="math inline">n</span>.</p>
-<p>There exists an optimal solution that contains two points in <span class="math inline">S</span>. The native algorithm is to try all possible <span class="math inline">O(n^2)</span> lines. For each line, the algorithm can compute the error in <span class="math inline">O(n)</span> time. The naive algorithm's running time is <span class="math inline">O(n^3)</span>. There is a smarter algorithm. The optimal line that contains the point can actually be found in <span class="math inline">O(n)</span> time. Indeed, consider the line passes through the point <span class="math inline">(x,y)</span>. We consider changing the slope of the line, while maintaining it still contain <span class="math inline">(x,y)</span>. One can see a minimum will be reached at some line. Indeed, assume we reorder the points, so <span class="math inline">\frac{y_i-y}{x_i-x}\leq \frac{y_{i+1}-y}{x_{i+1}-x}</span> (namely, increasing slope). Let <span class="math inline">k</span> be the smallest integer such that the sum of <span class="math inline">\sum_{i=1}^k |x_i-x|\geq \sum_{i=k+1}^n |x_i-x|</span>. The line determined by <span class="math inline">(x,y)</span> and <span class="math inline">(x_k,y_k)</span> is the desired line. This can be computed in linear time by finding weighted median. Hence one can show the running time is <span class="math inline">O(n^2)</span>. This is the idea of <span class="citation" data-cites="BloomfieldS80">[<a href="#ref-BloomfieldS80">2</a>]</span>. As far as I know, this seems to be the state of the art in terms of worst case complexity.</p>
+<p>There exists an optimal solution that contains two points in <span class="math inline">S</span>. The native algorithm is to try all possible <span class="math inline">O(n^2)</span> lines. For each line, the algorithm can compute the error in <span class="math inline">O(n)</span> time. The naive algorithm’s running time is <span class="math inline">O(n^3)</span>. There is a smarter algorithm. The optimal line that contains the point can actually be found in <span class="math inline">O(n)</span> time. Indeed, consider the line passes through the point <span class="math inline">(x,y)</span>. We consider changing the slope of the line, while maintaining it still contain <span class="math inline">(x,y)</span>. One can see a minimum will be reached at some line. Indeed, assume we reorder the points, so <span class="math inline">\frac{y_i-y}{x_i-x}\leq \frac{y_{i+1}-y}{x_{i+1}-x}</span> (namely, increasing slope). Let <span class="math inline">k</span> be the smallest integer such that the sum of <span class="math inline">\sum_{i=1}^k |x_i-x|\geq \sum_{i=k+1}^n |x_i-x|</span>. The line determined by <span class="math inline">(x,y)</span> and <span class="math inline">(x_k,y_k)</span> is the desired line. This can be computed in linear time by finding weighted median. Hence one can show the running time is <span class="math inline">O(n^2)</span>. This is the idea of <span class="citation" data-cites="BloomfieldS80">[<a href="#ref-BloomfieldS80" role="doc-biblioref">2</a>]</span>. As far as I know, this seems to be the state of the art in terms of worst case complexity.</p>
 <p>After discussing with <a href="https://sites.google.com/site/qizhenghe96/home">Qizheng He</a>, he suggested the following approach. Consider the function <span class="math inline">g_p(s)</span> for <span class="math inline">p\in S</span>. It is defined as the error for the line of slope <span class="math inline">s</span> that contains <span class="math inline">p</span>. The function is bitonic, therefore we can do a ternary search to find the minimum. There are only <span class="math inline">n-1</span> possible slopes, hence the ternary search will take <span class="math inline">O(\log n)</span> queries, where each query asks for the error of the line that goes through <span class="math inline">p</span> and some other point.</p>
-<p>Given a line <span class="math inline">f(x)=ax+b</span>, can one compute the error quickly? It is possible to decompose it to few halfspace range counting queries (allowing weights). In halfspace counting queries problem, we are given <span class="math inline">n</span> points with weights, we can preprocess it and obtain a data structure. Each query to a data structure is a halfspace, the output is the sum of all elements in the halfspace. In <span class="math inline">2</span>D, there exists a preprocessing time <span class="math inline">\tilde{O}(n^{4/3})</span> and query time <span class="math inline">\tilde{O}(n^{1/3})</span> data structure <span class="citation" data-cites="Matousek93">[<a href="#ref-Matousek93">3</a>]</span>. Let <span class="math inline">S^+</span> be the set of points above <span class="math inline">f</span>, and <span class="math inline">S^-</span> be the set of points below <span class="math inline">f</span>. The result is precisely the following.</p>
-<p><span class="math display">\displaystyle 
+<p>Given a line <span class="math inline">f(x)=ax+b</span>, can one compute the error quickly? It is possible to decompose it to few halfspace range counting queries (allowing weights). In halfspace counting queries problem, we are given <span class="math inline">n</span> points with weights, we can preprocess it and obtain a data structure. Each query to a data structure is a halfspace, the output is the sum of all elements in the halfspace. In <span class="math inline">2</span>D, there exists a preprocessing time <span class="math inline">\tilde{O}(n^{4/3})</span> and query time <span class="math inline">\tilde{O}(n^{1/3})</span> data structure <span class="citation" data-cites="Matousek93">[<a href="#ref-Matousek93" role="doc-biblioref">3</a>]</span>. Let <span class="math inline">S^+</span> be the set of points above <span class="math inline">f</span>, and <span class="math inline">S^-</span> be the set of points below <span class="math inline">f</span>. The result is precisely the following.</p>
+<p><span class="math display">
 \sum_{(x,y)\in S^+} y - ax-b + \sum_{(x,y)\in S^-} ax+b - y
 </span></p>
-<p>Let's consider the second sum, <span class="math inline">\sum_{(x,y)\in S^-} ax+b - y = a\sum_{(x,y)\in S^-}x + |S^-|b -\sum_{(x,y)\in S^-}y</span>. Note the <span class="math inline">3</span> terms can each be solved with a halfspace counting query, consider all points lies below <span class="math inline">f</span>. This shows in <span class="math inline">6</span> halfspace counting queries.</p>
+<p>Let’s consider the second sum, <span class="math inline">\sum_{(x,y)\in S^-} ax+b - y = a\sum_{(x,y)\in S^-}x + |S^-|b -\sum_{(x,y)\in S^-}y</span>. Note the <span class="math inline">3</span> terms can each be solved with a halfspace counting query, consider all points lies below <span class="math inline">f</span>. This shows in <span class="math inline">6</span> halfspace counting queries.</p>
 <p>How can one do ternary search? This would need us to be able to pick the point that gives us the <span class="math inline">i</span>th largest slope with <span class="math inline">p</span>. We need a data structure such that it can return the <span class="math inline">i</span>th largest point in the radial ordering of the points in <span class="math inline">S</span> around <span class="math inline">p</span>. It is equivalent to <a href="https://cstheory.stackexchange.com/questions/42609/data-structure-for-radial-orderings-of-points-on-the-plane">halfspace range counting up to polylog factors</a>.</p>
 <p>Thus, the total running time after building the data structure in <span class="math inline">\tilde{O}(n^{4/3})</span> is <span class="math inline">n</span> times ternary search over <span class="math inline">n</span> elements, where each decision process takes <span class="math inline">\tilde{O}(n^{1/3})</span> time. Therefore the final running time is <span class="math inline">\tilde{O}(n^{4/3})</span> time.</p>
-<p>Qizheng mentioned the problem to <a href="http://tmc.web.engr.illinois.edu">Timothy Chan</a>, who gave us some references. There is an easy solution that obtains <span class="math inline">O(n\log^2 n)</span> time algorithm using simple parametric search <span class="citation" data-cites="MegiddoT83">[<a href="#ref-MegiddoT83">4</a>]</span>. Consider the following linear program. Let <span class="math inline">k</span> be a constant. We are given <span class="math inline">a_1,\ldots,a_k,b_1,\ldots,b_n</span>, <span class="math inline">k</span>D vectors <span class="math inline">\beta_1,\ldots,\beta_m</span> and reals <span class="math inline">\alpha_1,\ldots,\alpha_m</span>. Sets <span class="math inline">J_1,\ldots,J_n</span> a partition of <span class="math inline">[m]</span>.</p>
-<p><span class="math display">\displaystyle 
+<p>Qizheng mentioned the problem to <a href="http://tmc.web.engr.illinois.edu">Timothy Chan</a>, who gave us some references. There is an easy solution that obtains <span class="math inline">O(n\log^2 n)</span> time algorithm using simple parametric search <span class="citation" data-cites="MegiddoT83">[<a href="#ref-MegiddoT83" role="doc-biblioref">4</a>]</span>. Consider the following linear program. Let <span class="math inline">k</span> be a constant. We are given <span class="math inline">a_1,\ldots,a_k,b_1,\ldots,b_n</span>, <span class="math inline">k</span>D vectors <span class="math inline">\beta_1,\ldots,\beta_m</span> and reals <span class="math inline">\alpha_1,\ldots,\alpha_m</span>. Sets <span class="math inline">J_1,\ldots,J_n</span> a partition of <span class="math inline">[m]</span>.</p>
+<p><span class="math display">
 \begin{aligned}
 &amp; \min_{w_1,\ldots,w_k,x_1,\ldots,x_n}
 &amp; &amp; \sum_{i=1}^k a_iw_i + \sum_{i=1}^n b_ix_i &amp; \\
 &amp; \text{s.t.} &amp; &amp;  x_i \geq (\sum_{d=1}^k \beta_{j,d} w_d) - \alpha_j &amp; \forall 1 \leq i \leq n, j\in J_i
 \end{aligned}
 </span></p>
-<p>Zemel showed such linear program can be solved in <span class="math inline">O(m)</span> time for constant <span class="math inline">k</span> <span class="citation" data-cites="Zemel84">[<a href="#ref-Zemel84">5</a>]</span>. The idea is a similar algorithm to Megiddo's linear time constant dimension LP algorithm <span class="citation" data-cites="Megiddo84">[<a href="#ref-Megiddo84">1</a>]</span>. For linear regression problem in <span class="math inline">L_1</span> with <span class="math inline">n</span> data points. The linear program we derived is a special case of the above linear program when <span class="math inline">k=2</span> and <span class="math inline">m=O(n)</span>. In fact, Zemel use the same linear program to show constant dimension <span class="math inline">L_1</span> regression can be solved in linear time.</p>
+<p>Zemel showed such linear program can be solved in <span class="math inline">O(m)</span> time for constant <span class="math inline">k</span> <span class="citation" data-cites="Zemel84">[<a href="#ref-Zemel84" role="doc-biblioref">5</a>]</span>. The idea is a similar algorithm to Megiddo’s linear time constant dimension LP algorithm <span class="citation" data-cites="Megiddo84">[<a href="#ref-Megiddo84" role="doc-biblioref">1</a>]</span>. For linear regression problem in <span class="math inline">L_1</span> with <span class="math inline">n</span> data points. The linear program we derived is a special case of the above linear program when <span class="math inline">k=2</span> and <span class="math inline">m=O(n)</span>. In fact, Zemel use the same linear program to show constant dimension <span class="math inline">L_1</span> regression can be solved in linear time.</p>
 <h1 id="open-problem"><span class="header-section-number">1</span> Open problem</h1>
-<p>One can also define another metric, the lexicographical minimum. Such idea was already present in fairness related linear regression <span class="citation" data-cites="KoeppenYO14">[<a href="#ref-KoeppenYO14">6</a>]</span>. Once we sort the values of <span class="math inline">|y - f(x)|</span> for <span class="math inline">(x,y)\in S</span>, say obtaining <span class="math inline">a_1,\ldots,a_n</span>, where <span class="math inline">a_1\geq a_2 \geq \ldots \geq a_n</span>. We are interested in finding a <span class="math inline">f</span> that minimizes the sequence <span class="math inline">a_1,\ldots,a_n</span>, lexicographically. Can this problem be solved in <span class="math inline">O(n)</span> time?</p>
+<p>One can also define another metric, the lexicographical minimum. Such idea was already present in fairness related linear regression <span class="citation" data-cites="KoeppenYO14">[<a href="#ref-KoeppenYO14" role="doc-biblioref">6</a>]</span>. Once we sort the values of <span class="math inline">|y - f(x)|</span> for <span class="math inline">(x,y)\in S</span>, say obtaining <span class="math inline">a_1,\ldots,a_n</span>, where <span class="math inline">a_1\geq a_2 \geq \ldots \geq a_n</span>. We are interested in finding a <span class="math inline">f</span> that minimizes the sequence <span class="math inline">a_1,\ldots,a_n</span>, lexicographically. Can this problem be solved in <span class="math inline">O(n)</span> time?</p>
 <h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references">
+<div id="refs" class="references" role="doc-bibliography">
 <div id="ref-Megiddo84">
 <p>[1] N. Megiddo, <strong>Linear programming in linear time when the dimension is fixed</strong>, J. ACM. 31 (1984) 114–127 <a href="https://doi.org/10.1145/2422.322418">10.1145/2422.322418</a>.</p>
 </div>
@@ -365,7 +359,6 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 <p>[6] M. Köeppen, K. Yoshida, K. Ohnishi, Evolving fair linear regression for the representation of human-drawn regression lines, in: 2014 International Conference on Intelligent Networking and Collaborative Systems, 2014: pp. 296–303 <a href="https://doi.org/10.1109/INCoS.2014.89">10.1109/INCoS.2014.89</a>.</p>
 </div>
 </div>
-
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-03-28">2019-03-28</time>. </div>
@@ -384,7 +377,6 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 <p>We are interested in finding <span class="math inline">S\subset V</span>, such that <span class="math inline">w(E(S))-c(S)</span> is maximized.</p>
 <p>This is very close to the densest subgraph problem, as it is basically the Lagrangian relaxation of the problem.</p>
 <p>This problem is equivalent to a min-<span class="math inline">st</span>-cut computation on a suitable graph. Indeed, minimizing <span class="math inline">w(E(S))-c(S)</span> is equivalent to minimizing <span class="math inline">c(S) + \frac{1}{2} w(E(S,\bar{S})) + \frac{1}{2} \sum_{v\in \bar{S}} \deg(v)</span>. This can be solved easily by modeling it as a min-<span class="math inline">st</span>-cut.</p>
-
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-03-24">2019-03-24</time>. </div>
@@ -411,14 +403,13 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 <p>We are interested in implementing <code>FunctionUpdate(a,f)</code>, the output would be a representation of the sequence <span class="math inline">f_1(a_1),\ldots,f_n(a_n)</span>.</p>
 <p>Many problems actually require update to a entire interval of the sequence, which makes this extremely valuable. For example, consider the following simple problem.</p>
 <p>Maintain a sequence of integers <span class="math inline">a_1,\ldots,a_n</span>, such that we can do the operation <span class="math inline">inc(i,j)</span>, which increment all numbers from <span class="math inline">i</span>th to <span class="math inline">j</span>th index by <span class="math inline">1</span>. That is, the new sequence is <span class="math inline">a_1,\ldots,a_{i-1},a_i+1,\ldots,a_j+1,a_{j+1},\ldots,a_n</span>. Also, it has a function <span class="math inline">value(i)</span> which returns <span class="math inline">a_i</span>. This problem can be solved by finger tree with function update operation.</p>
-<p>I want an actual implementation of such data structure so I can implement the min-cost flow algorithm for series-parallel graphs <span class="citation" data-cites="Booth1993416">[<a href="#ref-Booth1993416">1</a>]</span>.</p>
+<p>I want an actual implementation of such data structure so I can implement the min-cost flow algorithm for series-parallel graphs <span class="citation" data-cites="Booth1993416">[<a href="#ref-Booth1993416" role="doc-biblioref">1</a>]</span>.</p>
 <h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references">
+<div id="refs" class="references" role="doc-bibliography">
 <div id="ref-Booth1993416">
-<p>[1] H. Booth, R. Tarjan, <strong>Finding the minimum-cost maximum flow in a series-parallel network</strong>, Journal of Algorithms. 15 (1993) 416–446 <a href="https://doi.org/10.1006/jagm.1993.1048">10.1006/jagm.1993.1048</a>.</p>
+<p>[1] H. Booth, R.E. Tarjan, <strong>Finding the minimum-cost maximum flow in a series-parallel network</strong>, Journal of Algorithms. 15 (1993) 416–446 <a href="https://doi.org/10.1006/jagm.1993.1048">10.1006/jagm.1993.1048</a>.</p>
 </div>
 </div>
-
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-03-10">2019-03-10</time>. </div>
@@ -436,15 +427,14 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 <p>A sequence is periodic if <span class="math inline">s_i = s_{i+p}</span> for all <span class="math inline">i</span>, where <span class="math inline">p&gt;0</span> is called a period. A sequence is eventually periodic if there exists a <span class="math inline">n</span> and <span class="math inline">p</span>, such that <span class="math inline">s_i = s_{i+p}</span> for all <span class="math inline">i&gt;n</span>. The sequence with index above <span class="math inline">n</span> is the <em>periodic part</em>.</p>
 <p>A sequence is called <em><span class="math inline">u</span>-normal</em>, if there exists <span class="math inline">s_i=s_{i+p}</span> for some <span class="math inline">p&gt;0</span> for all <span class="math inline">i</span> in a interval of length <span class="math inline">u</span>, then the sequence starting at <span class="math inline">s_i</span> is part of the periodic part.</p>
 <p>When does <span class="math inline">u</span>-normal sequence comes up? Consider we have a recurrence relation that produces a sequence. Say it is of the form <span class="math inline">a_n = f(a_{n-1},a_{n-2},\ldots,a_{n-u})</span>. The sequence <span class="math inline">a_1,\ldots</span> is <span class="math inline">u</span>-normal.</p>
-<section class="theorem-environment Problem" id="Problem-1">
+<div class="theorem-environment Problem" data-index="1" type="Problem">
 <span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
 <p>Given a oracle that can take input <span class="math inline">i</span> and return the <span class="math inline">i</span>th element in a <span class="math inline">u</span>-normal eventually periodic sequence <span class="math inline">a</span>. Find the smallest lexicographic pair <span class="math inline">(n,p)</span> where <span class="math inline">p&gt;0</span>, such that <span class="math inline">a_i=a_{i+p}</span> for all <span class="math inline">i&gt;n</span>.</p>
-</section>
+</div>
 <p>One can solve this problem in <span class="math inline">O(u \log \frac{n}{u})</span> time. First, consider the subsequence <span class="math inline">a_u,a_{2u},\ldots</span>. We guess an upper bound on <span class="math inline">n</span> through exponential search in the subsequence. There is a <span class="math inline">O(u)</span> time algorithm to decide if <span class="math inline">n&#39;\geq n</span>. For example using the <a href="https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm">KMP algorithm</a>. We can quickly locate a <span class="math inline">n&#39;</span> such that <span class="math inline">n\in [n&#39;-u,n&#39;]</span>.</p>
-<p>Let's take the sequence <span class="math inline">a_{n&#39;-u},\ldots,a_{n&#39;+3u}</span>. We just need to solve the following problem. Given a <span class="math inline">O(u)</span> length string, find the longest suffix that appears at least twice in the sequence. Let such suffix be <span class="math inline">s</span>. We know <span class="math inline">|s|\geq 3u</span>, which <span class="math inline">s</span> has to overlap with any other occurrence of the sequence. The claim is that the partial match table in the KMP algorithm would give us such information. Hence we can obtain <span class="math inline">n</span>. <span class="math inline">p</span> can also be obtained in the same time. Note that KMP algorithm only uses the fact one can check equality of two elements. So the sequence can contain elements from very general space.</p>
+<p>Let’s take the sequence <span class="math inline">a_{n&#39;-u},\ldots,a_{n&#39;+3u}</span>. We just need to solve the following problem. Given a <span class="math inline">O(u)</span> length string, find the longest suffix that appears at least twice in the sequence. Let such suffix be <span class="math inline">s</span>. We know <span class="math inline">|s|\geq 3u</span>, which <span class="math inline">s</span> has to overlap with any other occurrence of the sequence. The claim is that the partial match table in the KMP algorithm would give us such information. Hence we can obtain <span class="math inline">n</span>. <span class="math inline">p</span> can also be obtained in the same time. Note that KMP algorithm only uses the fact one can check equality of two elements. So the sequence can contain elements from very general space.</p>
 <p>The total running time is <span class="math inline">O(\log \frac{n}{u})</span> calls to <span class="math inline">O(u)</span> time string matching. The total running time is therefore <span class="math inline">O(u\log \frac{n}{u})</span>.</p>
-<p>In many applications, we do not get oracle access to <span class="math inline">i</span>th index of the sequence. But we can read the sequence from the beginning as a list. In that case, we don't do binary search, but linear search. Advance the index by <span class="math inline">u</span> and obtain <span class="math inline">n&#39;</span>, and test if <span class="math inline">n</span> is no larger than the current point. If so, again we have <span class="math inline">n\in [n&#39;-u,n&#39;]</span> and reduce to the previous problem. If not, advance the index by <span class="math inline">u</span> again and repeat. This gives us a <span class="math inline">O(n+u)</span> time algorithm.</p>
-
+<p>In many applications, we do not get oracle access to <span class="math inline">i</span>th index of the sequence. But we can read the sequence from the beginning as a list. In that case, we don’t do binary search, but linear search. Advance the index by <span class="math inline">u</span> and obtain <span class="math inline">n&#39;</span>, and test if <span class="math inline">n</span> is no larger than the current point. If so, again we have <span class="math inline">n\in [n&#39;-u,n&#39;]</span> and reduce to the previous problem. If not, advance the index by <span class="math inline">u</span> again and repeat. This gives us a <span class="math inline">O(n+u)</span> time algorithm.</p>
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-02-05">2019-02-05</time>. </div>
