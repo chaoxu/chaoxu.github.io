@@ -40,6 +40,16 @@
     gtag('js', new Date());
     gtag('config', 'UA-4171915-2');
   </script>
+  <!-- toggle selected publications -->
+  <script>
+    function togglePublication() {
+      var x = document.getElementsByClassName("cv-non-selected");
+      for (var i = x.length - 1; i >= 0; --i)
+        x[i].classList.remove("cv-non-selected");
+      x = document.getElementById("pub-toggle");
+      x.style.display = "none";
+    }
+  </script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
@@ -82,9 +92,12 @@
   </div>
 </div>
 </div>
-<div class="row pubtypeheader">Conference Publications</div>
+<div class="row pubtypeheader" id="pub-toggle">
+  <span>Selected Publications<br /><span style="font-size:0.6em" onclick="togglePublication()"><em><a>See all publications.</a></em></span></span> 
+</div>
+<div class="cv-non-selected row pubtypeheader">Conference Publications</div>
   <!-- LP Relaxation and Tree Packing for Minimum <span class="math">k</span>-cuts  -->
-  <div class="row cv-entry" id="kcut-revisited">
+  <div class="cv-selected row cv-entry" id="kcut-revisited">
     <input type="checkbox" class="abstract-guard" id="kcut-revisited-toggle">
     <div class="cv-left">
         <label class="showmore material-icons" for="kcut-revisited-toggle"></label>
@@ -107,7 +120,7 @@ In this paper we revisit properties of an LP relaxation for <span class="math">k
     </div>
   </div>
   <!-- Hypergraph <span class="math">k</span>-Cut in Randomized Polynomial Time  -->
-  <div class="row cv-entry" id="hypergraph-k-cut">
+  <div class="cv-selected row cv-entry" id="hypergraph-k-cut">
     <input type="checkbox" class="abstract-guard" id="hypergraph-k-cut-toggle">
     <div class="cv-left">
         <label class="showmore material-icons" for="hypergraph-k-cut-toggle"></label>
@@ -132,7 +145,7 @@ Our algorithm is based on random contractions akin to Karger's min cut algorithm
     </div>
   </div>
   <!-- Global and fixed-terminal cuts in digraphs  -->
-  <div class="row cv-entry" id="global-cuts-digraphs">
+  <div class="cv-non-selected row cv-entry" id="global-cuts-digraphs">
     <input type="checkbox" class="abstract-guard" id="global-cuts-digraphs-toggle">
     <div class="cv-left">
         <label class="showmore material-icons" for="global-cuts-digraphs-toggle"></label>
@@ -163,7 +176,7 @@ Our algorithm is based on random contractions akin to Karger's min cut algorithm
     </div>
   </div>
   <!-- A Faster Pseudopolynomial Time Algorithm for Subset Sum  -->
-  <div class="row cv-entry" id="subset-sum">
+  <div class="cv-non-selected row cv-entry" id="subset-sum">
     <input type="checkbox" class="abstract-guard" id="subset-sum-toggle">
     <div class="cv-left">
         <label class="showmore material-icons" for="subset-sum-toggle"></label>
@@ -186,7 +199,7 @@ Our algorithm is based on random contractions akin to Karger's min cut algorithm
     </div>
   </div>
   <!-- Computing minimum cuts in hypergraphs  -->
-  <div class="row cv-entry" id="hypergraph-min-cut-conf">
+  <div class="cv-non-selected row cv-entry" id="hypergraph-min-cut-conf">
     <input type="checkbox" class="abstract-guard" id="hypergraph-min-cut-conf-toggle">
     <div class="cv-left">
         <label class="showmore material-icons" for="hypergraph-min-cut-conf-toggle"></label>
@@ -215,7 +228,7 @@ We utilize vertex ordering based ideas to obtain our results. Unlike graphs we o
     </div>
   </div>
   <!-- On Element-Connectivity Preserving Graph Simplification  -->
-  <div class="row cv-entry" id="elem-connectivity">
+  <div class="cv-non-selected row cv-entry" id="elem-connectivity">
     <input type="checkbox" class="abstract-guard" id="elem-connectivity-toggle">
     <div class="cv-left">
         <label class="showmore material-icons" for="elem-connectivity-toggle"></label>
@@ -237,7 +250,7 @@ We utilize vertex ordering based ideas to obtain our results. Unlike graphs we o
     </div>
   </div>
   <!-- Detecting Weakly Simple Polygons  -->
-  <div class="row cv-entry" id="wspolygon">
+  <div class="cv-non-selected row cv-entry" id="wspolygon">
     <input type="checkbox" class="abstract-guard" id="wspolygon-toggle">
     <div class="cv-left">
         <label class="showmore material-icons" for="wspolygon-toggle"></label>
@@ -259,9 +272,9 @@ We utilize vertex ordering based ideas to obtain our results. Unlike graphs we o
         <aside class="dedication">Dedicated with thanks to our colleague <a href="http://dccg.upc.edu/people/ferran/">Ferran Hurtado</a> (1951–2014).</aside>
     </div>
   </div>
-<div class="row pubtypeheader">Journal Publications</div>
+<div class="cv-non-selected row pubtypeheader">Journal Publications</div>
   <!-- Faster Pseudopolynomial Time Algorithms for Subset Sum  -->
-  <div class="row cv-entry" id="subset-sum-journal">
+  <div class="cv-selected row cv-entry" id="subset-sum-journal">
     <input type="checkbox" class="abstract-guard" id="subset-sum-journal-toggle">
     <div class="cv-left">
         <label class="showmore material-icons" for="subset-sum-journal-toggle"></label>
@@ -284,7 +297,7 @@ Our contributions improve upon the standard dynamic programming algorithm that r
     </div>
   </div>
   <!-- Minimum cuts and sparsification in hypergraphs  -->
-  <div class="row cv-entry" id="hypergraph-min-cut-journal">
+  <div class="cv-selected row cv-entry" id="hypergraph-min-cut-journal">
     <input type="checkbox" class="abstract-guard" id="hypergraph-min-cut-journal-toggle">
     <div class="cv-left">
         <label class="showmore material-icons" for="hypergraph-min-cut-journal-toggle"></label>
@@ -330,8 +343,33 @@ problems in hypergraphs of small rank.</li>
 <p>Our results build upon properties of vertex orderings that were inspired by the maximum adjacency ordering for graphs due to Nagamochi and Ibaraki.  Unlike graphs we observe that there are several orderings for hypergraphs and these yield different insights.</p>
     </div>
   </div>
+  <!-- Beating the 2-approximation factor for global bicut  -->
+  <div class="cv-selected row cv-entry" id="global-bicut">
+    <input type="checkbox" class="abstract-guard" id="global-bicut-toggle">
+    <div class="cv-left">
+        <label class="showmore material-icons" for="global-bicut-toggle"></label>
+        <a href="files/papers/global-bicut.pdf"><i class="material-icons">description</i></a>
+        <i class="material-icons disabled">airplay</i>
+    </div>
+    <div class="cv-right">
+      <cite class="paper-title">Beating the 2-approximation factor for global bicut</cite>
+      <ul class="coauthor-list">
+        <li>
+            <a href="http://www.cs.elte.hu/~berkri/">Kristóf Bérczi</a></li><li>
+            <a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a></li><li>
+            <a href="http://www.cs.elte.hu/~tkiraly/">Tamás Király</a></li><li>
+            <a href="http://www.cs.cmu.edu/~euiwoonl/">Euiwoong Lee</a></li></ul>
+      <p><em>
+        <abbr title="Mathematical Programming">MP</abbr> <time>2019</time>.
+      </em><p>
+        <aside class="note">The preliminary version <a href="#global-cuts-digraphs">Global and fixed-terminal cuts in digraphs</a> appeared in APPROX 2017.</aside>
+    </div>
+    <div class="abstract">
+      <p>In the fixed-terminal bicut problem, the input is a directed graph with two specified nodes <span class="math">s</span> and <span class="math">t</span> and the goal is to find a smallest subset of edges whose removal ensures that <span class="math">s</span> cannot reach <span class="math">t</span> and <span class="math">t</span> cannot reach <span class="math">s</span>. In the global bicut problem, the input is a directed graph and the goal is to find a smallest subset of edges whose removal ensures that there exist two nodes <span class="math">s</span> and <span class="math">t</span> such that <span class="math">s</span> cannot reach <span class="math">t</span> and <span class="math">t</span> cannot reach <span class="math">s</span>. Fixed-terminal bicut and global bicut are natural extensions of  <span class="math">\{s,t\}</span>-min cut and global min-cut respectively, from undirected graphs to directed graphs. Fixed-terminal bicut is NP-hard, admits a simple <span class="math">2</span>-approximation, and does not admit a  <span class="math">(2-\e)</span>-approximation for any constant  <span class="math">\e&gt;0</span> assuming the unique games conjecture. In this work, we show that global bicut admits a <span class="math">(2-1/448)</span>-approximation, thus improving on the approximability of the global variant in comparison to the fixed-terminal variant.</p>
+    </div>
+  </div>
   <!-- The shortest kinship description problem  -->
-  <div class="row cv-entry" id="kinship">
+  <div class="cv-non-selected row cv-entry" id="kinship">
     <input type="checkbox" class="abstract-guard" id="kinship-toggle">
     <div class="cv-left">
         <label class="showmore material-icons" for="kinship-toggle"></label>
@@ -352,33 +390,8 @@ problems in hypergraphs of small rank.</li>
         <aside class="dedication">To the memories of Jiaqi Zhao(1994-2016)</aside>
     </div>
   </div>
-  <!-- Beating the 2-approximation factor for global bicut  -->
-  <div class="row cv-entry" id="global-bicut">
-    <input type="checkbox" class="abstract-guard" id="global-bicut-toggle">
-    <div class="cv-left">
-        <label class="showmore material-icons" for="global-bicut-toggle"></label>
-        <a href="files/papers/global-bicut.pdf"><i class="material-icons">description</i></a>
-        <i class="material-icons disabled">airplay</i>
-    </div>
-    <div class="cv-right">
-      <cite class="paper-title">Beating the 2-approximation factor for global bicut</cite>
-      <ul class="coauthor-list">
-        <li>
-            <a href="http://www.cs.elte.hu/~berkri/">Kristóf Bérczi</a></li><li>
-            <a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a></li><li>
-            <a href="http://www.cs.elte.hu/~tkiraly/">Tamás Király</a></li><li>
-            <a href="http://www.cs.cmu.edu/~euiwoonl/">Euiwoong Lee</a></li></ul>
-      <p><em>
-        <abbr title="Mathematical Programming">MP</abbr> <time>2018</time>.
-      </em><p>
-        <aside class="note">The preliminary version <a href="#global-cuts-digraphs">Global and fixed-terminal cuts in digraphs</a> appeared in APPROX 2017.</aside>
-    </div>
-    <div class="abstract">
-      <p>In the fixed-terminal bicut problem, the input is a directed graph with two specified nodes <span class="math">s</span> and <span class="math">t</span> and the goal is to find a smallest subset of edges whose removal ensures that <span class="math">s</span> cannot reach <span class="math">t</span> and <span class="math">t</span> cannot reach <span class="math">s</span>. In the global bicut problem, the input is a directed graph and the goal is to find a smallest subset of edges whose removal ensures that there exist two nodes <span class="math">s</span> and <span class="math">t</span> such that <span class="math">s</span> cannot reach <span class="math">t</span> and <span class="math">t</span> cannot reach <span class="math">s</span>. Fixed-terminal bicut and global bicut are natural extensions of  <span class="math">\{s,t\}</span>-min cut and global min-cut respectively, from undirected graphs to directed graphs. Fixed-terminal bicut is NP-hard, admits a simple <span class="math">2</span>-approximation, and does not admit a  <span class="math">(2-\e)</span>-approximation for any constant  <span class="math">\e&gt;0</span> assuming the unique games conjecture. In this work, we show that global bicut admits a <span class="math">(2-1/448)</span>-approximation, thus improving on the approximability of the global variant in comparison to the fixed-terminal variant.</p>
-    </div>
-  </div>
   <!-- Reconstructing edge-disjoint paths faster  -->
-  <div class="row cv-entry" id="edgedisjoint">
+  <div class="cv-non-selected row cv-entry" id="edgedisjoint">
     <input type="checkbox" class="abstract-guard" id="edgedisjoint-toggle">
     <div class="cv-left">
         <label class="showmore material-icons" for="edgedisjoint-toggle"></label>
@@ -396,7 +409,7 @@ problems in hypergraphs of small rank.</li>
     </div>
   </div>
   <!-- Champion spiders in the game of Graph Nim  -->
-  <div class="row cv-entry" id="spider">
+  <div class="cv-non-selected row cv-entry" id="spider">
     <input type="checkbox" class="abstract-guard" id="spider-toggle">
     <div class="cv-left">
         <label class="showmore material-icons" for="spider-toggle"></label>
@@ -419,9 +432,9 @@ problems in hypergraphs of small rank.</li>
       <p>In the game of Graph Nim, players take turns removing one or more edges incident to a chosen vertex in a graph. The player that removes the last edge in the graph wins. A spider graph is a champion if it has a Sprague-Grundy number equal to the number of edges in the graph. We investigate the the Sprague-Grundy numbers of various spider graphs when the number of paths or length of paths increase.</p>
     </div>
   </div>
-<div class="row pubtypeheader"><span>Manuscripts<br /><span style="font-size:0.6em"><em>Some manuscripts are available upon request.</em></span></span></div>
+<div class="cv-non-selected row pubtypeheader"><span>Manuscripts<br /><span style="font-size:0.6em"><em>Some manuscripts are available upon request.</em></span></span></div>
   <!-- Minimum violation vertex maps and their applications to cut problems  -->
-  <div class="row cv-entry" id="min-violation">
+  <div class="cv-non-selected row cv-entry" id="min-violation">
     <input type="checkbox" class="abstract-guard" id="min-violation-toggle">
     <div class="cv-left">
         <i class="material-icons disabled">expand_more</i>
@@ -439,7 +452,7 @@ problems in hypergraphs of small rank.</li>
     </div>
   </div>
   <!-- A near-linear time algorithm for computing the optimal landing times of a fixed sequence of planes  -->
-  <div class="row cv-entry" id="airplane">
+  <div class="cv-non-selected row cv-entry" id="airplane">
     <input type="checkbox" class="abstract-guard" id="airplane-toggle">
     <div class="cv-left">
         <i class="material-icons disabled">expand_more</i>
@@ -457,7 +470,7 @@ problems in hypergraphs of small rank.</li>
     </div>
   </div>
   <!-- High multiplicity asymmetric traveling salesman problem with feedback vertex set and its application to storage/retrieval system  -->
-  <div class="row cv-entry" id="kdepots">
+  <div class="cv-non-selected row cv-entry" id="kdepots">
     <input type="checkbox" class="abstract-guard" id="kdepots-toggle">
     <div class="cv-left">
         <i class="material-icons disabled">expand_more</i>
@@ -476,7 +489,7 @@ problems in hypergraphs of small rank.</li>
     </div>
   </div>
   <!-- An algorithm for the metric multiple depots capacitated vehicle routing problem with restocking and capacity two  -->
-  <div class="row cv-entry" id="milk">
+  <div class="cv-non-selected row cv-entry" id="milk">
     <input type="checkbox" class="abstract-guard" id="milk-toggle">
     <div class="cv-left">
         <label class="showmore material-icons" for="milk-toggle"></label>
@@ -498,7 +511,7 @@ problems in hypergraphs of small rank.</li>
     </div>
   </div>
   <!-- Marking Streets to Improve Parking Density  -->
-  <div class="row cv-entry" id="parking">
+  <div class="cv-non-selected row cv-entry" id="parking">
     <input type="checkbox" class="abstract-guard" id="parking-toggle">
     <div class="cv-left">
         <label class="showmore material-icons" for="parking-toggle"></label>
@@ -518,9 +531,9 @@ problems in hypergraphs of small rank.</li>
       <p>Street parking spots for automobiles are a scarce commodity in most urban environments. The heterogeneity of car sizes makes it inefficient to rigidly define fixed-sized spots. Instead, unmarked streets in cities like New York leave placement decisions to individual drivers, who have no direct incentive to maximize street utilization.  In this paper, we explore the effectiveness of two different behavioral interventions designed to encourage better parking, namely (1) educational campaigns to encourage parkers to "kiss the bumper" and reduce the distance between themselves and their neighbors, or (2) painting appropriately-spaced markings on the street and urging drivers to "hit the line". Through analysis and simulation, we establish that the greatest densities are achieved when lines are painted to create spots roughly twice the length of average-sized cars. Kiss-the-bumper campaigns are in principle more effective than hit-the-line for equal degrees of compliance, although we believe that the visual cues of painted lines induce better parking behavior.</p>
     </div>
   </div>
-<div class="row pubtypeheader">Thesis</div>
+<div class="cv-non-selected row pubtypeheader">Thesis</div>
   <!-- Cuts and Connectivity in Graphs and Hypergraphs  -->
-  <div class="row cv-entry" id="thesis">
+  <div class="cv-non-selected row cv-entry" id="thesis">
     <input type="checkbox" class="abstract-guard" id="thesis-toggle">
     <div class="cv-left">
         <label class="showmore material-icons" for="thesis-toggle"></label>
