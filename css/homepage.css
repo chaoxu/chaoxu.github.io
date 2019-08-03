@@ -108,6 +108,9 @@
   flex: 100%;
   flex-wrap: wrap;
 }
+.cv-non-selected {
+  display: none;
+}
 .col {
   flex: 50%;
 }

@@ -5,6 +5,7 @@ tags: tree, dynamic programming
 
 ::: Problem
   Let $T$ be a tree with non-negative weights on the edges. Partition the vertices so each side have $n/2$ vertices and minimize the sum of the weights of the edges crossing the partition.
+:::
 
 This problem can be solved in $O(n^3)$ time, and it generalizes to graphs with constant treewidth [@doi:10.1137/S009753970139567X]. 
 

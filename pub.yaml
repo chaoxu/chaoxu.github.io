@@ -73,6 +73,7 @@ type: conference
 pub: SOSA
 year: 2019
 show: [d, p]
+selected: true
 abstract: >
   Karger used spanning tree packings to derive a near
   linear-time randomized algorithm for the global minimum cut problem
@@ -110,6 +111,7 @@ authors: [Karthekeyan Chandrasekaran, Xilin Yu, Chao Xu]
 type: conference
 pub: SODA
 year: 2018
+selected: true
 notes:
   - Journal version under submission.
 abstract: >
@@ -206,6 +208,7 @@ type: journal
 show: [d]
 pub: TALG
 year: 2019
+selected: true
 notes:
   - The paper is a combination of [A Faster Pseudopolynomial Time Algorithm for Subset Sum](#subset-sum) appeared in SODA 2017 and [Subset Sum Made Simple](https://arxiv.org/abs/1807.08248). This full version among other additions, simplifies the $\tilde{O}(\sqrt{n}u)$ time algorithm and improves the bound from $\tilde{O}(u^{4/3})$ to $\tilde{O}(u^{5/4})$ time.
 abstract: >
@@ -229,6 +232,7 @@ type: journal
 show: [d]
 pub: SICOMP
 year: 2018
+selected: true
 notes:
   - The paper is a combination of [Computing minimum cuts in hypergraphs](#hypergraph-min-cut-conf) appeared in SODA 2017 and [A note on approximate strengths of edges in a hypergraph](https://arxiv.org/abs/1703.03849).
 abstract: >
@@ -266,6 +270,18 @@ abstract: >
   Nagamochi and Ibaraki.  Unlike graphs we observe that there are
   several orderings for hypergraphs and these yield different
   insights.
+---
+id: global-bicut
+show: [d]
+title: Beating the 2-approximation factor for global bicut
+authors: [Kristóf Bérczi, Karthekeyan Chandrasekaran, Tamás Király, Euiwoong Lee, Chao Xu]
+type: journal
+pub: MP
+year: 2019
+selected: true
+notes:
+  - The preliminary version [Global and fixed-terminal cuts in digraphs](#global-cuts-digraphs) appeared in APPROX 2017.
+abstract: In the fixed-terminal bicut problem, the input is a directed graph with two specified nodes $s$ and $t$ and the goal is to find a smallest subset of edges whose removal ensures that $s$ cannot reach $t$ and $t$ cannot reach $s$. In the global bicut problem, the input is a directed graph and the goal is to find a smallest subset of edges whose removal ensures that there exist two nodes $s$ and $t$ such that $s$ cannot reach $t$ and $t$ cannot reach $s$. Fixed-terminal bicut and global bicut are natural extensions of  $\{s,t\}$-min cut and global min-cut respectively, from undirected graphs to directed graphs. Fixed-terminal bicut is NP-hard, admits a simple $2$-approximation, and does not admit a  $(2-\e)$-approximation for any constant  $\e>0$ assuming the unique games conjecture. In this work, we show that global bicut admits a $(2-1/448)$-approximation, thus improving on the approximability of the global variant in comparison to the fixed-terminal variant.
 
 ---
 id: kinship
@@ -277,18 +293,6 @@ pub: IPL
 year: 2018
 dedication: To the memories of Jiaqi Zhao(1994-2016)
 abstract: We consider a problem in descriptive kinship systems, namely finding the shortest sequence of terms that describes the kinship between a person and his/her relatives. The problem reduces to finding the minimum weight path in a labeled graph where the label of the path comes from a regular language. The running time of the algorithm is $O(n^3+s)$, where $n$ and $s$ are the input size and the output size of the algorithm, respectively.
-
----
-id: global-bicut
-show: [d]
-title: Beating the 2-approximation factor for global bicut
-authors: [Kristóf Bérczi, Karthekeyan Chandrasekaran, Tamás Király, Euiwoong Lee, Chao Xu]
-type: journal
-pub: MP
-year: 2018
-notes:
-  - The preliminary version [Global and fixed-terminal cuts in digraphs](#global-cuts-digraphs) appeared in APPROX 2017.
-abstract: In the fixed-terminal bicut problem, the input is a directed graph with two specified nodes $s$ and $t$ and the goal is to find a smallest subset of edges whose removal ensures that $s$ cannot reach $t$ and $t$ cannot reach $s$. In the global bicut problem, the input is a directed graph and the goal is to find a smallest subset of edges whose removal ensures that there exist two nodes $s$ and $t$ such that $s$ cannot reach $t$ and $t$ cannot reach $s$. Fixed-terminal bicut and global bicut are natural extensions of  $\{s,t\}$-min cut and global min-cut respectively, from undirected graphs to directed graphs. Fixed-terminal bicut is NP-hard, admits a simple $2$-approximation, and does not admit a  $(2-\e)$-approximation for any constant  $\e>0$ assuming the unique games conjecture. In this work, we show that global bicut admits a $(2-1/448)$-approximation, thus improving on the approximability of the global variant in comparison to the fixed-terminal variant.
 
 --- 
 id: edgedisjoint

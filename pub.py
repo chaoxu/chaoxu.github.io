@@ -67,7 +67,10 @@ def build_paper(paper):
 
     if "dedication" in paper.keys():
         paper["dedication"] = parsei(paper["dedication"])
-    
+    if "selected" in paper.keys():
+        paper["selected"] = "cv-selected"
+    else:
+        paper["selected"] = "cv-non-selected"
     return paper
 
 def build_papers(papers):

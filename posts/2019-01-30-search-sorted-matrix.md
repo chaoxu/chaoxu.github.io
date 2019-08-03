@@ -41,7 +41,7 @@ Given $\lambda^*$ and a $n\times m$ sorted matrix such that the $i$th row has $k
 The idea is simple, we do exponential search on each row to find the largest element no larger than $\lambda^*$, but we reuse information from the previous row. This gives us the running time $O(\sum_{i} \log (k_{i+1}-k_i+1) )$. The main difficulty is to show why is is $O(n \log \frac{k}{n^2})$. 
 
 ::: Lemma
-    If $\sum_{i=1}^n k_i=k$, then $\sum_{i=1}^n \log (k_{i+1}-k_i+1)=O(n\log k/n^2)$.
+  If $\sum_{i=1}^n k_i=k$, then $\sum_{i=1}^n \log (k_{i+1}-k_i+1)=O(n\log k/n^2)$.
 :::
 
 Once we show that, we can use the theorem to obtain $O(\sqrt{k})$ running time.

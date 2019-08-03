@@ -43,6 +43,16 @@
 
     gtag('config', 'UA-4171915-2');
   </script>
+  <!-- toggle selected publications -->
+  <script>
+    function togglePublication() {
+      var x = document.getElementsByClassName("cv-non-selected");
+      for (var i = x.length - 1; i >= 0; --i)
+        x[i].classList.remove("cv-non-selected");
+      x = document.getElementById("pub-toggle");
+      x.style.display = "none";
+    }
+  </script>
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -93,11 +103,15 @@
 </div>
 
 
+<div class="row pubtypeheader" id="pub-toggle">
+  <span>Selected Publications<br /><span style="font-size:0.6em" onclick="togglePublication()"><em><a>See all publications.</a></em></span></span> 
+</div>
+
 {% for pub_type in pub_types %}
-<div class="row pubtypeheader">{{pub_type.title}}</div>
+<div class="cv-non-selected row pubtypeheader">{{pub_type.title}}</div>
   {% for paper in pub_type.papers %}
   <!-- {{paper.title}}  -->
-  <div class="row cv-entry" id="{{paper.id}}">
+  <div class="{{paper.selected}} row cv-entry" id="{{paper.id}}">
     <input type="checkbox" class="abstract-guard" id="{{paper.id}}-toggle">
     <div class="cv-left">
       {% if 'a' in paper.show %}
