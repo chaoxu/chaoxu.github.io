@@ -97,7 +97,7 @@
     </p>
     <p>I maintain a <a href="https://github.com/chaoxu/">github account</a> and a <a href="blog.html"><strong>blog</strong></a>. I frequent <a href="http://cstheory.stackexchange.com/users/314/chao-xu">cstheory</a>.</p>
 
-    <p>You can contact me through email <a href="mailto:chao.xu@verizonmedia.com"><samp itemprop="email">chao.xu@verizonmedia.com</samp></a>.</p>
+    <p>You can contact me through email <a href="mailto:thechaoxu@gmail.com"><samp itemprop="email">thechaoxu@gmail.com</samp></a>.</p>
   </div>
 </div>
 </div>
@@ -145,7 +145,11 @@
       {% if paper.bib %}
         {{paper.bib}}
       {% elif paper.pub %}
-        <abbr title="{{paper.pub.venue}}">{{paper.pub.name}}</abbr> <time>{{paper.year}}</time>.
+        {% if pub_type.title == "Journal Publications" %}
+          {{paper.pub.venue}} <time>{{paper.year}}</time>.
+        {% else %}
+          <abbr title="{{paper.pub.venue}}">{{paper.pub.name}}</abbr>, <time>{{paper.year}}</time>.
+        {% endif %}
       {% else %}
         <time>{{paper.year}}</time>.
       {% endif %}
