@@ -3,6 +3,7 @@ title: Financial Freedom Advices
 ---
 
 This article are for US person who is
+
  - Single, living and working as a salaried employee with yearly pretax income more than \$200,000. If you make less, just ignore tax related discussion. 
  - No need to liquidate a large percent of investment in a short time range (for example, downpayment for a house in 5 years).
  - You want to do *passive investments*.
@@ -87,6 +88,7 @@ I personally use M1 Finance [^m1finance] to use the leveraged ETFs.
 ### My setup
 
 My current setup
+
  - An experimental account of around 15% of my money, implementing 60% TMF and 40% UPRO
  - The remaining investments is almost all in VOO, and I'm trying to rebalance it to have more bonds. 
 
@@ -112,6 +114,7 @@ International stocks requires you to pay international tax. It can be deducted i
 The idea is putting tax inefficient items into tax efficient accounts and put tax efficient investments into taxable accounts. 
 
 A good rule of thumb
+
  - investments with high growth should be in tax exempt, then tax deferred, until you run out of such things.
  - investments generating dividends put into tax efficient accounts. 
 
@@ -120,6 +123,7 @@ Also note that [HSA can act as a retirement account](https://www.madfientist.com
 ### Maximization of tax benefits and free money
 
 For a simple example:
+
  - Salary: 160k
  - Bonus: 15% expected
  - Stock: vested value around 50k, each year
@@ -172,6 +176,7 @@ Most of the things you buy probably can use a cash back portal for some of the m
 
 ## Points and miles
 There are many reward programs with lot of points and miles (will be refereed commonly as points from now on). Here are some things to remember
+
 1. *Points devalues, therefore use them quickly*. Accumulating lot of points doesn't mean much once devaluation happen. Even ultimate reward points that translate to statement credit devalues due to inflation. 
 2. *Value points rationally*. Exactly how much *you* would accept to pay in cash is the value of the points. Those online valuations for flights usually make sense because most of the ticket prices are going to be high. However for hotels, it does not. Are you really getting \$200 value when you spend the points on a hotel? For example, if there is a \$100 hotel just around the corner and you would pick that \$100 hotel if you didn't have the points (and say you can spend \$100 to buy the points). This implies your points worth less than \$100.
 
