@@ -71,14 +71,14 @@ $k\times$杠杆ETF如果跟踪一个指标. 则指标改变了$x%$, ETF改变$kx
 | 2x     | SSO         | UBT         |
 | 3x     | UPRO        | TMF         |
 
-注意$3$倍杠杆和你用倍的钱然后去投资结果并不一样. 
+注意$3$倍杠杆和你用$3$倍的钱去投资结果并不一样. 
 
-如果只看当天的结果, 似乎是一样的(我上面提到的几个都是每天reset). 但长期是不同的. 因为跌了$x$ fraction, 则要涨$\frac{x}{1-x}$ fraction才能得到原来的结果. 所以可以很容易的得一段时间波动, 最后VOO是持平的, 但UPRO可以是负的. 波动才是最可怕的. 要了解更多可以看[inverse and leveraged ETFs](https://www.bogleheads.org/wiki/Inverse_and_leveraged_ETFs).
+如果只看当天的结果, 似乎是一样的(我上面提到的几个都是每天reset). 但长期是不同的. 因为跌了$x$ fraction, 则要涨$\frac{x}{1-x}$ fraction才能得到原来的结果. 所以VOO一段时间波动直到最后获得了持平, 但UPRO可以是负的. 波动才是最可怕的. 要了解更多可以看[inverse and leveraged ETFs](https://www.bogleheads.org/wiki/Inverse_and_leveraged_ETFs).
 
-有文章表示可以长期持有杠杆ETF[mix UPRO and TMF](https://www.bogleheads.org/forum/viewtopic.php?f=10&t=272007)来获得很有意思的结果. 前面是原讨论链接, 但是可以看看physixfan的一系列文章. [1](https://www.physixfan.com/40-upro-60-tmf/), [2](https://www.physixfan.com/risk-parity-touziceluegaijinbandongtaidiaozhenguprohetmfdebili/), [3](https://www.physixfan.com/gupiaohechangqizhaiquandefuxiangguanxingdaodishifoukeyichixu/), [4](https://www.physixfan.com/risk-parity-touzicelue-difengxianbanben/).
+有文章表示可以长期持有杠杆ETF[UPRO和TMF的组合](https://www.bogleheads.org/forum/viewtopic.php?f=10&t=272007)来获得很有意思的结果. 前面是原讨论链接, 但是可以看看physixfan的一系列文章. [1](https://www.physixfan.com/40-upro-60-tmf/), [2](https://www.physixfan.com/risk-parity-touziceluegaijinbandongtaidiaozhenguprohetmfdebili/), [3](https://www.physixfan.com/gupiaohechangqizhaiquandefuxiangguanxingdaodishifoukeyichixu/), [4](https://www.physixfan.com/risk-parity-touzicelue-difengxianbanben/).
 
 #### 经纪商
-Vanguard是个不错的经纪商因为和vanguard有关的产品几乎啥都是免费或者价格低廉的. 但他们的support没有很好.
+Vanguard是个不错的经纪商. 和Vanguard有关的产品几乎啥都是免费或者价格低廉的. 但他们的support没有很好.
 Vanguard是[*不能用*杠杆ETF的](https://investor.vanguard.com/investing/leveraged-inverse-etf-etn). 你可以考虑用其他的经纪商做. 比如我现在用M1 Finance [^m1finance].
 
 ### 我的配置
@@ -165,7 +165,7 @@ Vanguard是[*不能用*杠杆ETF的](https://investor.vanguard.com/investing/lev
 积分和里程很多有各种不同的名字, 我以下都叫积分. 需要考虑几样东西
 1. *积分会贬值, 所以要赶快用*. 获得了很多的积分没啥用, 如果某天所有积分都贬值了10%就等于薅的越多亏的越多. 就连UR这种可以直接变成statement credit的都在贬值. 因为你不当场用的话, 同样价值的钱你是可以拿去投资的. 
 2. *理性看到积分价值*. 积分换到的东西对你的价格不是官方标注的价格. 而是如果你没有积分你会为他出多少钱的价格. 网上的积分评估的想法是你一般真的是有现金的时候都会去用那些价格买东西. 所以不要全信. 
-对于机票来说, 他们的评估方法没太大问题. 因为机票定价几乎差不多而且需要机票的时候是刚需. 但是对于hotel来说, 就不一样了. 比如你可以用积分换个200美元的hotel. 但是你如果没有积分你会去住旁边的一个100美元的hotel. 那么你积分的价值并没有达到200美元, 换的积分的价值可能只有100美元. 
+对于机票来说, 他们的评估方法没太大问题. 因为机票定价几乎差不多而且需要机票的时候是刚需. 对于hotel来说就不一样了. 比如你可以用积分换个200美元的hotel. 但是你如果没有积分你会去住旁边的一个100美元的hotel. 那么你积分的价值并没有达到200美元, 换的积分的价值可能只有100美元. 
 
 ## 旅行
 旅行的话值得学会用好积分. 能早早的plan好出行那是极好的.
@@ -181,11 +181,11 @@ Vanguard是[*不能用*杠杆ETF的](https://investor.vanguard.com/investing/lev
  
 ## 餐馆
 
-少在外面吃. 但是如果[在外面吃的话可以省点钱](https://thepointsguy.com/2015/01/quadruple-dip-with-points-miles-discounts-at-restaurants/).
+少在外面吃. 但是如果[在外面吃的话尽量返现点钱](https://thepointsguy.com/2015/01/quadruple-dip-with-points-miles-discounts-at-restaurants/).
 
 ### 我的组合
 
-1. 先选餐馆 (对的, 这一步不要看任何deals).
+1. 先选餐馆 (这一步不要看任何deals).
 2. 用Seated或者Opentable订位, 如果可能的话. Seated[^seated]给你不少的返现(可以换成gift cards), 但是只在几个小城市里有用. [Opentable](https://www.opentable.com/)定也有返现.
 3. 用[Alaska dining rewards](https://mileageplan.rewardsnetwork.com), 因为他们的miles最为值钱.
 4. 看Groupon[^groupon]或Restaurant.com[^restaurant]有没有可以用的*优惠劵*. 这个你要好好的看好那个优惠券的要求, 不然会被反薅. 
@@ -202,7 +202,7 @@ Vanguard是[*不能用*杠杆ETF的](https://investor.vanguard.com/investing/lev
 
  - 危险的爱好: 有的爱好更容易受伤. 比如攀岩, 滑雪. 很容易让自己几星期不能工作. 更危险的东西还会致死. 
  - 结婚: 结婚可能会有很大的税务优惠, 但收入差不多的两个高收入人, 会存在很大的[marriage penalty](https://en.wikipedia.org/wiki/Marriage_penalty). 
- - 离婚: 离婚是非常强的彻底摧毁一个人经济的方法. 特别是两个人中一方是高收入低支出但是另一方是低收入高支出. 很多州会要求钱50/50分. 为此可能导致低价卖掉房产. 有的州还要保证离婚的一方能保证自己正常的生活质量, 导致更有钱的一方会付alimony. 有小孩然后小孩判给了对方, 还要付常常比你自己会在那个小孩身上花的钱多很多child support. 这样就是离婚之后自己的收入都会大大的减少.
+ - 离婚: 离婚是非常强的彻底摧毁一个人经济的方法. 特别是两个人中一方是高收入低支出但是另一方是低收入高支出. 很多州会要求钱50/50分. 为此可能导致低价卖掉房产. 有的州还要保证离婚的一方能保证自己正常的生活质量, 导致更有钱的一方会付alimony. 有小孩然后小孩判给了对方, 还要付常常比你自己会在那个小孩身上花的钱多很多child support. 这样离婚之后自己的收入都会大大的减少.
  - 孩子: 为了自己的孩子很多家长会付超级多的钱因为想让孩子获得最好的. 
  - 灾: 比如房子被火烧了这种. 大多的房子是自己的最大财产. 一次性就消失了.
 
@@ -219,7 +219,7 @@ Vanguard是[*不能用*杠杆ETF的](https://investor.vanguard.com/investing/lev
 用律师, 一定要用律师在失败后果非常大的事情上 [^imm].
 用会计, 如果你的税务问题比turbotax[^turbotax]上能搞定的要复杂.
 专业人士懂得比你多, 但是他们的incentive是为自己赚钱. 
-所以都应该货比三家. 因为常常第一次的consultation是免费的. 
+都应该货比三家. 常常第一次的consultation是免费的. 
 
 
 [^chasefreedomunlimited]: [Use this referral link for chase freedom unlimited](https://www.referyourchasecard.com/18/KRE9M4JY2C). Earn 3% cash back on all purchases in your first year up to $20,000 spent. After that, earn 1.5% cash back on all purchases.
