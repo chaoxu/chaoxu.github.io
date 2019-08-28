@@ -20,7 +20,7 @@ title: 经济自由的建议
 找到自己的风险容忍度. 了解自己的资产分布. 可以用Personal Capital [^personalcapital]这样的app连接自己所有的资产, 可以自动的了解现在的资产分配状况. 
 
 ### 现金
-弄一个好的checking account [^1]. 上面有*小额存款*. 可以用来解决每个月的费用. 多看点银行找到比较好用的. 我会用[Doctor of Credit](https://www.doctorofcredit.com/bank-accounts/)了解现在市面上的offer. 
+弄一个好的checking account [^checking]. 上面有*小额存款*. 可以用来解决每个月的费用. 多看点银行找到比较好用的. 我会用[Doctor of Credit](https://www.doctorofcredit.com/bank-accounts/)了解现在市面上的offer. 
 
 ### 应急资金
 大概储存个$k$个月的应急资金. 对应大的波动, 最常见的是丢了工作. 这个应该存在一个高利率的被FDIC或者NCUA保护的账户里[^savings]. 对大多数人来说$k=3$就好了. 但是根据各种因素, 比如觉得自己$3$个月找不到工作, 可以适当提高$k$. 但那个时候应该有时间把投资的钱撤出来一点.
@@ -145,7 +145,7 @@ Vanguard是[*不能用*杠杆ETF的](https://investor.vanguard.com/investing/lev
 不要被消费主义洗脑. 定下你预算, 遵守预算. 记录你用钱的地方. 买东西前找好的deals. 加入loyalty programs如果你买多次.
 
 ## 信用卡
-可以用信用卡的地方就不要用debit card. 只用到自己能还得起的钱. 创建好的信用记录. 找到好用的信用卡 [^2]. 自动付款, 并且自动付款整个balance.
+可以用信用卡的地方就不要用debit card. 只用到自己能还得起的钱. 创建好的信用记录. 找到好用的信用卡, 比如用[美国信用卡指南](https://www.uscreditcardguide.com/zh/). 自动付款, 并且自动付款整个balance.
 
 ### 我的组合
 
@@ -228,18 +228,16 @@ Vanguard是[*不能用*杠杆ETF的](https://investor.vanguard.com/investing/lev
 
 
 [^chasefreedomunlimited]: [Use this referral link for chase freedom unlimited](https://www.referyourchasecard.com/18/KRE9M4JY2C). Earn 3% cash back on all purchases in your first year up to $20,000 spent. After that, earn 1.5% cash back on all purchases.
-[^turbotax]: [Use this referral link](http://fbuy.me/nwyLa) to get up to 20% off.
-[^seated]: [Use this referral link](https://seated.app.link/j3FZwlVB1Y) and the code `CHAO19` to obtain extra \$5 dollars on your first reservation.
-[^groupon]: Please [use this referral link](https://www.groupon.com/visitor_referral/h/7a8e66c7-d3fa-467d-88c0-cb2fa0aa6384). I get \$10 and you don't get anything though.
-[^restaurant]: Please [use this referral](https://www.restaurant.com/referfriends/ReferredBy?refextid=f43f5fa8&prti=5157&ext=em_raf). I get \$10 gift card, you don't get anything though.
-[^rakuten]: Please [use this referral](https://www.rakuten.com/r/MGCCLX?eeid=28187) and get extra \$10.
-
-[^1]: [SoFi Money](https://www.sofi.com/share/money/2627476/) is a checking account with a very high APR for a checking account. Use my referral link and we both get \$50 after deposit of \$100. (You have to be a US person!) However, it is a Internet bank. If you really need physical services, I was using [chase total checking](https://accounts.chase.com/raf/share/2297938276).
-[^2]: I personally use [US credit card guide](https://www.uscreditcardguide.com) to shop for credit cards.
-[^savings]: You probably want to look at whatever is offering the highest APR. Currently [Wealthfront](https://wlth.fr/2hp96Gw) has a pretty good offer.
-[^mint]: If you are like me who only use credit cards, and there are only a few non-credit card purchase. Just link [Mint](https://mint.com) to credit cards and do some tracking. Track your checking account seperately. This is because Mint often can't figure out transfers, and end up saying my budget is crazy high.
+[^turbotax]: [Use this referral link for Turbotax](http://fbuy.me/nwyLa) to get up to 20% off.
+[^seated]: [Use this referral link for Seated](https://seated.app.link/j3FZwlVB1Y) and the code `CHAO19` to obtain extra \$5 dollars on your first reservation.
+[^groupon]: Please [use this referral link for Groupon](https://www.groupon.com/visitor_referral/h/7a8e66c7-d3fa-467d-88c0-cb2fa0aa6384). I get \$10 and you don't get anything though.
+[^restaurant]: Please [use this referral link for Restaurant.com](https://www.restaurant.com/referfriends/ReferredBy?refextid=f43f5fa8&prti=5157&ext=em_raf). I get \$10 gift card, you don't get anything though.
+[^rakuten]: Please [use this referral link for Rakuten](https://www.rakuten.com/r/MGCCLX?eeid=28187) and get extra \$10.
+[^checking]: [SoFi Money](https://www.sofi.com/share/money/2627476/) is a checking account with a very high APR for a checking account. Use my referral link and we both get \$50 after deposit of \$100. (You have to be a US person!) However, it is a Internet bank. If you really need physical services, I was using [chase total checking](https://accounts.chase.com/raf/share/2297938276).
+[^savings]: For savings, find whatever offers the highest APR. Currently [Wealthfront](https://wlth.fr/2hp96Gw) has a pretty good offer.
+[^mint]: If you are like me who only use credit cards, and there are only a few non-credit card purchase. Just link [Mint](https://mint.com) to credit cards and do some tracking. Track your checking accounts separately. This is because Mint often can't figure out transfers, and end up saying my budget is crazy high.
 [^chasefreedom]: [Chase Freedom](https://www.referyourchasecard.com/2a/XDCUJDEKPJ) is fairly nice for its 5% categories. However, I generally never use them to their fullest.  
-[^m1finance]: Use my referral for [M1 Finance](https://mbsy.co/zBs8G) and get a free \$10.
+[^m1finance]: Use my referral for [M1 Finance](https://mbsy.co/zBs8G) and get \$10 for free.
 [^personalcapital]: Use my referral for [Personal Capital](https://share.personalcapital.com/x/62x35X) to earn \$20 dollars. 
-[^wealthfront]: [Wealthfront](https://wlth.fr/2hp96Gw)
+[^wealthfront]: Use this referral link to [Wealthfront](https://wlth.fr/2hp96Gw) to obtain \$5000 more managed free.
 [^imm]: 曾经因为没有用律师弄移民导致吃了特别大的亏.

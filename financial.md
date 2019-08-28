@@ -22,7 +22,7 @@ You might still want to work even if you reach financial freedom. But at that po
 You have to figure out your risk tolerance. Unfortunately, all one knows is having more risk means more reward, but exactly how much risk you are getting for each action is unclear. In the end, diversify avoids the most risk. I personally recommends Personal Capital [^personalcapital] for tracking the status of all your assets. 
 
 ### Liquid cash
-Having a good checking account for *small* amount of cash. This allows one to handle lot of simple bill related stuff. Make sure it is sufficient to cover very short term living expenses. Get a checking account which satisfies most of your needs [^1]. You can shop around to see which one benefits you the most. Credit unions might offer more benefits over large banks. [Check doctor of credits to find ones with good rates and offers](https://www.doctorofcredit.com/bank-accounts/
+Having a good checking account for *small* amount of cash. This allows one to handle lot of simple bill related stuff. Make sure it is sufficient to cover very short term living expenses. Get a checking account which satisfies most of your needs [^checking]. You can shop around to see which one benefits you the most. Credit unions might offer more benefits over large banks. [Check doctor of credits to find ones with good rates and offers](https://www.doctorofcredit.com/bank-accounts/
 ). 
 
 ### Emergency Fund
@@ -156,7 +156,7 @@ This even includes medical ones. Where you can go around ask for second opinions
 Avoid consumerism. Make sure to budget, and spend according to the budget. Track your spendings. Look for good deals when you have to buy something. Join loyalty programs if it is something you buy more than once.
 
 ## Credit Cards
-Never use debit cards when you can use credit cards. Make sure you only use as much as you can pay back. Build good credits. Shop around for good credit cards [^2]. Auto-pay all your cards and always pay full balance. 
+Never use debit cards when you can use credit cards. Make sure you only use as much as you can pay back. Build good credits. Shop around for good credit cards, say with [US credit card guide](https://www.uscreditcardguide.com/en/). Auto-pay all your cards and always pay full balance. 
 
 ### My setup
 
@@ -240,17 +240,15 @@ Use a lawyer when it make sense. For example, dealing with immigration. I have p
 
 
 [^chasefreedomunlimited]: [Use this referral link for chase freedom unlimited](https://www.referyourchasecard.com/18/KRE9M4JY2C). Earn 3% cash back on all purchases in your first year up to $20,000 spent. After that, earn 1.5% cash back on all purchases.
-[^turbotax]: [Use this referral link](http://fbuy.me/nwyLa) to get up to 20% off.
-[^seated]: [Use this referral link](https://seated.app.link/j3FZwlVB1Y) and the code `CHAO19` to obtain extra \$5 dollars on your first reservation.
-[^groupon]: Please [use this referral link](https://www.groupon.com/visitor_referral/h/7a8e66c7-d3fa-467d-88c0-cb2fa0aa6384). I get \$10 and you don't get anything though.
-[^restaurant]: Please [use this referral](https://www.restaurant.com/referfriends/ReferredBy?refextid=f43f5fa8&prti=5157&ext=em_raf). I get \$10 gift card, you don't get anything though.
-[^rakuten]: Please [use this referral](https://www.rakuten.com/r/MGCCLX?eeid=28187) and get extra \$10.
-
-[^1]: [SoFi Money](https://www.sofi.com/share/money/2627476/) is a checking account with a very high APR for a checking account. Use my referral link and we both get \$50 after deposit of \$100. (You have to be a US person!) However, it is a Internet bank. If you really need physical services, I was using [chase total checking](https://accounts.chase.com/raf/share/2297938276).
-[^2]: I personally use [US credit card guide](https://www.uscreditcardguide.com) to shop for credit cards.
-[^savings]: You probably want to look at whatever is offering the highest APR. Currently [Wealthfront](https://wlth.fr/2hp96Gw) has a pretty good offer.
-[^mint]: If you are like me who only use credit cards, and there are only a few non-credit card purchase. Just link [Mint](https://mint.com) to credit cards and do some tracking. Track your checking account seperately. This is because Mint often can't figure out transfers, and end up saying my budget is crazy high.
+[^turbotax]: [Use this referral link for Turbotax](http://fbuy.me/nwyLa) to get up to 20% off.
+[^seated]: [Use this referral link for Seated](https://seated.app.link/j3FZwlVB1Y) and the code `CHAO19` to obtain extra \$5 dollars on your first reservation.
+[^groupon]: Please [use this referral link for Groupon](https://www.groupon.com/visitor_referral/h/7a8e66c7-d3fa-467d-88c0-cb2fa0aa6384). I get \$10 and you don't get anything though.
+[^restaurant]: Please [use this referral link for Restaurant.com](https://www.restaurant.com/referfriends/ReferredBy?refextid=f43f5fa8&prti=5157&ext=em_raf). I get \$10 gift card, you don't get anything though.
+[^rakuten]: Please [use this referral link for Rakuten](https://www.rakuten.com/r/MGCCLX?eeid=28187) and get extra \$10.
+[^checking]: [SoFi Money](https://www.sofi.com/share/money/2627476/) is a checking account with a very high APR for a checking account. Use my referral link and we both get \$50 after deposit of \$100. (You have to be a US person!) However, it is a Internet bank. If you really need physical services, I was using [chase total checking](https://accounts.chase.com/raf/share/2297938276).
+[^savings]: For savings, find whatever offers the highest APR. Currently [Wealthfront](https://wlth.fr/2hp96Gw) has a pretty good offer.
+[^mint]: If you are like me who only use credit cards, and there are only a few non-credit card purchase. Just link [Mint](https://mint.com) to credit cards and do some tracking. Track your checking accounts separately. This is because Mint often can't figure out transfers, and end up saying my budget is crazy high.
 [^chasefreedom]: [Chase Freedom](https://www.referyourchasecard.com/2a/XDCUJDEKPJ) is fairly nice for its 5% categories. However, I generally never use them to their fullest.  
-[^m1finance]: Use my referral for [M1 Finance](https://mbsy.co/zBs8G) and get a free \$10.
+[^m1finance]: Use my referral for [M1 Finance](https://mbsy.co/zBs8G) and get \$10 for free.
 [^personalcapital]: Use my referral for [Personal Capital](https://share.personalcapital.com/x/62x35X) to earn \$20 dollars. 
-[^wealthfront]: [Wealthfront](https://wlth.fr/2hp96Gw)
+[^wealthfront]: Use this referral link to [Wealthfront](https://wlth.fr/2hp96Gw) to obtain \$5000 more managed free.
