@@ -7,8 +7,46 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxuprime.com/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Tue, 18 Jun 2019 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Wed, 28 Aug 2019 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Impossibility theorem of marriage tax</title>
+    <link>https://chaoxuprime.com/posts/2019-08-28-impossibility-theorm-marriage-tax.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>It is well known that there could be <a href="https://en.wikipedia.org/wiki/Marriage_penalty">marriage penalty or marriage bonus</a>. For example, in 2019, if two people each make more than $306,175, then they have to pay more tax after getting married. In the worst case, they have to pay $8,165 more. Not that bad. However, if one person make all the money, and the other has no income, then together they will always pay a smaller amount of tax.</p>
+<p>I always thought this is because the tax code is designed to make sure in a family, there is a sole breadwinner. But recently I realized it is just mathematically impossible to have anything other than a linear tax and preserve some other nice properties.</p>
+<p>Indeed, this was shown by Lovell <span class="citation" data-cites="Lovell82">[<a href="#ref-Lovell82" role="doc-biblioref">1</a>]</span>.</p>
+<p>Let <span class="math inline">\R_+</span> be the positive reals. Consider functions <span class="math inline">S:\R_+ \to \R_+</span> and <span class="math inline">J:\R_+ \to\R_+</span>. The first is for tax paid for a single person and tax paid for a married couple file jointly. The input for married file jointly is a single number, which is the combination of the taxable income of the couple. This is called horizontal equity in marriage.</p>
+<p>Marriage neutral is precisely when <span class="math inline">S(x)+S(y) = J(x+y)</span>. We define a few notions, it is not completely the same as the ones in Lovell’s paper <span class="citation" data-cites="Lovell82">[<a href="#ref-Lovell82" role="doc-biblioref">1</a>]</span>, but it essentially demonstrate the same idea.</p>
+<p>A tax function <span class="math inline">T</span> should have the following properties.</p>
+<ol type="1">
+<li>Reasonable Tax: <span class="math inline">0\leq T(x)\leq x</span>.</li>
+<li>Principal of Progressiveness: there is some <span class="math inline">c&gt;0</span> such that <span class="math inline">\frac{T(x)}{x} &gt; \frac{T(y)}{y}</span> for all <span class="math inline">x&gt;y&gt;c</span>.</li>
+</ol>
+<p>The second one tries to tax the rich more, as in larger proportion of their money. The reasonable tax requirement makes sure <span class="math inline">S(x) = ax</span> for <span class="math inline">a\in[0,1]</span>. It is easy to see we cannot hope to have principal of progressiveness.</p>
+<div class="theorem-environment Remark" type="Remark">
+<span class="theorem-header"><span class="type">Remark</span></span>
+<p>Married filing separately is always no better than them being single and file their own taxes.</p>
+</div>
+<p>I personally think there should not be a marriage penalty at any income level to encourage marriage. Of course, people might disagree and think the rich should have a marriage penalty, since it is a small amount compare to their total income so they won’t care anyways.</p>
+<p>Anyway, consider the world where there can only be marriage bonus. That is we have the property <span class="math inline">S(x)+S(y)\geq J(x+y)</span>. An <em>easy tax function</em> is a function that has reasonable tax property, and is a piecewise-linear convex that has at least <span class="math inline">1</span> breakpoint larger than <span class="math inline">0</span>. This is strictly stronger than principal of progressiveness. This is satisfied by the current personal income tax function used by the IRS.</p>
+<p>Let <span class="math inline">S</span> be a easy tax function, then we can obtain an easy tax function <span class="math inline">J</span> that always gives a marriage bonus. Indeed, let <span class="math inline">J = \inf_{a+b=x,a,b\geq 0} S(a)+S(b)</span>. <span class="math inline">J</span> is extreme in a way that any function greater than it at any point will cause marriage penalty. <span class="math inline">J</span> is the infimal convolution of <span class="math inline">S</span> and itself, which would also be piecewise-linear convex. If <span class="math inline">S</span> is the personal income tax function for 2019, then <span class="math inline">J</span> matches the 2019 IRS married file jointly function up to $612,350! It’s just for some reason the IRS decide to cut this <span class="math inline">J</span> off at $612,350, and then impose a higher rate just to penalize families with two very high income earners.</p>
+<h1 id="bibliography" class="unnumbered">References</h1>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-Lovell82">
+<p>[1] M.C. LOVELL, <strong>ON taxing marriages</strong>, National Tax Journal. 35 (1982) 507–510.</p>
+</div>
+</div>
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-08-28">2019-08-28</time>. </div>
+    <div class="info">Tags: Tax.</div>
+</div>]]></description>
+    <pubDate>Wed, 28 Aug 2019 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/posts/2019-08-28-impossibility-theorm-marriage-tax.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title>Long distance couple back-to-back ticketing</title>
     <link>https://chaoxuprime.com/posts/2019-06-18-long-distance-couple-back-to-back-ticketing.html</link>
     <description><![CDATA[<br />
@@ -418,31 +456,6 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 </div>]]></description>
     <pubDate>Sun, 10 Mar 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxuprime.com/posts/2019-03-10-finger-tree-apply-function-to-each-element.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>Find the period of a nice eventually periodic sequence</title>
-    <link>https://chaoxuprime.com/posts/2019-02-05-eventually-periodic.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>A sequence is periodic if <span class="math inline">s_i = s_{i+p}</span> for all <span class="math inline">i</span>, where <span class="math inline">p&gt;0</span> is called a period. A sequence is eventually periodic if there exists a <span class="math inline">n</span> and <span class="math inline">p</span>, such that <span class="math inline">s_i = s_{i+p}</span> for all <span class="math inline">i&gt;n</span>. The sequence with index above <span class="math inline">n</span> is the <em>periodic part</em>.</p>
-<p>A sequence is called <em><span class="math inline">u</span>-normal</em>, if there exists <span class="math inline">s_i=s_{i+p}</span> for some <span class="math inline">p&gt;0</span> for all <span class="math inline">i</span> in a interval of length <span class="math inline">u</span>, then the sequence starting at <span class="math inline">s_i</span> is part of the periodic part.</p>
-<p>When does <span class="math inline">u</span>-normal sequence comes up? Consider we have a recurrence relation that produces a sequence. Say it is of the form <span class="math inline">a_n = f(a_{n-1},a_{n-2},\ldots,a_{n-u})</span>. The sequence <span class="math inline">a_1,\ldots</span> is <span class="math inline">u</span>-normal.</p>
-<div class="theorem-environment Problem" data-index="1" type="Problem">
-<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
-<p>Given a oracle that can take input <span class="math inline">i</span> and return the <span class="math inline">i</span>th element in a <span class="math inline">u</span>-normal eventually periodic sequence <span class="math inline">a</span>. Find the smallest lexicographic pair <span class="math inline">(n,p)</span> where <span class="math inline">p&gt;0</span>, such that <span class="math inline">a_i=a_{i+p}</span> for all <span class="math inline">i&gt;n</span>.</p>
-</div>
-<p>One can solve this problem in <span class="math inline">O(u \log \frac{n}{u})</span> time. First, consider the subsequence <span class="math inline">a_u,a_{2u},\ldots</span>. We guess an upper bound on <span class="math inline">n</span> through exponential search in the subsequence. There is a <span class="math inline">O(u)</span> time algorithm to decide if <span class="math inline">n&#39;\geq n</span>. For example using the <a href="https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm">KMP algorithm</a>. We can quickly locate a <span class="math inline">n&#39;</span> such that <span class="math inline">n\in [n&#39;-u,n&#39;]</span>.</p>
-<p>Let’s take the sequence <span class="math inline">a_{n&#39;-u},\ldots,a_{n&#39;+3u}</span>. We just need to solve the following problem. Given a <span class="math inline">O(u)</span> length string, find the longest suffix that appears at least twice in the sequence. Let such suffix be <span class="math inline">s</span>. We know <span class="math inline">|s|\geq 3u</span>, which <span class="math inline">s</span> has to overlap with any other occurrence of the sequence. The claim is that the partial match table in the KMP algorithm would give us such information. Hence we can obtain <span class="math inline">n</span>. <span class="math inline">p</span> can also be obtained in the same time. Note that KMP algorithm only uses the fact one can check equality of two elements. So the sequence can contain elements from very general space.</p>
-<p>The total running time is <span class="math inline">O(\log \frac{n}{u})</span> calls to <span class="math inline">O(u)</span> time string matching. The total running time is therefore <span class="math inline">O(u\log \frac{n}{u})</span>.</p>
-<p>In many applications, we do not get oracle access to <span class="math inline">i</span>th index of the sequence. But we can read the sequence from the beginning as a list. In that case, we don’t do binary search, but linear search. Advance the index by <span class="math inline">u</span> and obtain <span class="math inline">n&#39;</span>, and test if <span class="math inline">n</span> is no larger than the current point. If so, again we have <span class="math inline">n\in [n&#39;-u,n&#39;]</span> and reduce to the previous problem. If not, advance the index by <span class="math inline">u</span> again and repeat. This gives us a <span class="math inline">O(n+u)</span> time algorithm.</p>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-02-05">2019-02-05</time>. </div>
-    <div class="info">Tags: algorithms, infinite sequence.</div>
-</div>]]></description>
-    <pubDate>Tue, 05 Feb 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-02-05-eventually-periodic.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 
