@@ -229,7 +229,7 @@ Vanguard是[*不能用*杠杆ETF的](https://investor.vanguard.com/investing/lev
 [^restaurant]: Please [use this referral](https://www.restaurant.com/referfriends/ReferredBy?refextid=f43f5fa8&prti=5157&ext=em_raf). I get \$10 gift card, you don't get anything though.
 [^rakuten]: Please [use this referral](https://www.rakuten.com/r/MGCCLX?eeid=28187) and get extra \$10.
 
-[^1]: [SoFi Money](https://www.sofi.com/share/money/2627476/) is a checking account with a very high APR for a checking account. Use my referral link and we both get \$50 after deposit of \$100. However, it is a Internet bank. If you really need physical services, I was using [chase total checking](https://accounts.chase.com/raf/share/2297938276).
+[^1]: [SoFi Money](https://www.sofi.com/share/money/2627476/) is a checking account with a very high APR for a checking account. Use my referral link and we both get \$50 after deposit of \$100. (You have to be a US person!) However, it is a Internet bank. If you really need physical services, I was using [chase total checking](https://accounts.chase.com/raf/share/2297938276).
 [^2]: I personally use [US credit card guide](https://www.uscreditcardguide.com) to shop for credit cards.
 [^savings]: You probably want to look at whatever is offering the highest APR. Currently [Wealthfront](https://wlth.fr/2hp96Gw) has a pretty good offer.
 [^mint]: If you are like me who only use credit cards, and there are only a few non-credit card purchase. Just link [Mint](https://mint.com) to credit cards and do some tracking. Track your checking account seperately. This is because Mint often can't figure out transfers, and end up saying my budget is crazy high.
