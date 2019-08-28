@@ -4,7 +4,7 @@ title: Financial Freedom Advices
 
 This article are for US person who is
 
- - Single, living and working as a salaried employee with yearly pretax income more than \$200,000. If you make less, just ignore tax related discussion. 
+ - Single, living and working as a salaried employee, and current tax bracket higher than retirement tax bracket.
  - No need to liquidate a large percent of investment in a short time range (for example, downpayment for a house in 5 years).
  - You want to do *passive investments*.
  - Not interested in beating the market, but match the market. This means if the market goes down, money goes down, and that is fine.
