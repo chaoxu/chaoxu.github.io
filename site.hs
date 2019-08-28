@@ -35,7 +35,7 @@ main = hakyll $ do
         compile compressCssCompiler
     -- pages
     match "*.md" $ do
-        route $ setExtension "html"
+        route $ setExtension ".html"
         compile $ do 
             chaoDocCompiler
               >>= loadAndApplyTemplate "templates/default.html" postCtx

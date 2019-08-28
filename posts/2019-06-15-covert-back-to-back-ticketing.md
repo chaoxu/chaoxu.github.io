@@ -53,3 +53,5 @@ D(a,x,y) + c_a(x,y),
 D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 $$
 One can easily infer the base case through definition. Note that all values of $C_a$ can be computed in $O(n^2)$ time. It takes $O(n)$ time to compute one value in $D$. Therefore, the total running time is $O(n^3)$.
+
+One can show that even with $k$ different airlines, there is an algorithm with running time $O(n^{O(k)})$.
