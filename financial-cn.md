@@ -6,8 +6,8 @@ title: 经济自由的建议
 
  - 美国的单身年轻拿薪水的人群, 以及现在的tax bracket比退休的时候要高.
  - 不需要很多流动性资产 (比如不准备很快买房)
- - 主要想要被动收入
- - 不期望跑过市场. 就是市场跌了自己跌, 心态也能正常
+ - 想要被动收入
+ - 不期望跑过市场. 就是市场跌了自己跌, 心态也能正常.
  - 想要早点经济自由
 
 这些是最近几年学到的东西. 要达到经济自由就要开源节流. 达到自己的被动收入超过支出. 
@@ -17,7 +17,7 @@ title: 经济自由的建议
 
 ## 资产分配
 
-找到自己的风险容忍度. 了解自己的资产分布. 可以用Personal Capital [^personalcapital]这样的app连接自己所有的资产, 可以自动的了解现在的状况. 
+找到自己的风险容忍度. 了解自己的资产分布. 可以用Personal Capital [^personalcapital]这样的app连接自己所有的资产, 可以自动的了解现在的资产分配状况. 
 
 ### 现金
 弄一个好的checking account [^1]. 上面有*小额存款*. 可以用来解决每个月的费用. 多看点银行找到比较好用的. 我会用[Doctor of Credit](https://www.doctorofcredit.com/bank-accounts/)了解现在市面上的offer. 
@@ -50,9 +50,9 @@ title: 经济自由的建议
 为了保证时间上投资也是分散的, 你应该将薪水的一部分自动的定投. 
 
 当然, 真正的分散定投的话, 你应该在你一生的每一年投出去一样的钱. 但是你现在的收入可能是你以后的很少一部分. 这就是为什么可以考虑使用一定量的杠杆. 暂时对于年轻人来说最常见的刚刚就是房贷. 
-用多了杠杆就不太容易是passive investment了. 有一种是加了杠杆ETF(不是真的杠杆), 有人提到了如何长期持有.
+用多了杠杆就不太容易是passive investment了. 有一种是加了杠杆ETF(不是真的杠杆), 一般只是当天买卖用的(只有当天买卖才和真的杠杆一模一样). 后面会提到了如何长期持有.
 
-有时你一次性获得一大笔钱, 比如奖金, 你也可以invest over time, 比如一年的时间. 但是如果你知道未来奖金会拿到多少, 不如提前考虑到这个, 改变你每个月的投资, 这样拿到奖金钱多投一点. 当然这有一定的risk, 就是你没有拿到那么多奖金, 可能会摧毁你的现金流. 
+有时你一次性获得一大笔钱, 比如奖金, 你也可以invest over time, 比如一年的时间慢慢定投. 但是如果你知道未来奖金会拿到多少, 不如提前考虑到这个, 增加你每个月的投资, 平均下来. 当然这有一定的风险, 就是你没有拿到那么多奖金, 可能会摧毁你的现金流. 
 
 #### 公司股票
 公司有时会发股票给你. 你应该做的是当场卖掉你不想持有的股票.
@@ -66,17 +66,17 @@ title: 经济自由的建议
 
 $k\times$杠杆ETF如果跟踪一个指标. 则指标改变了$x%$, ETF改变$kx%$.
 
-|杠杆     | 标普 500     | 20+ 年国债   |
-| ------ | ----------- | ----------- |
-| 1x     | VOO         | TLT         |
-| 2x     | SSO         | UBT         |
-| 3x     | UPRO        | TMF         |
+|杠杆        | 标普 500     | 20+ 年国债   |
+| --------- | ----------- | ----------- |
+| $1\times$ | VOO         | TLT         |
+| $2\times$ | SSO         | UBT         |
+| $3\times$ | UPRO        | TMF         |
 
 注意$3$倍杠杆和你用$3$倍的钱去投资结果并不一样. 
 
 如果只看当天的结果, 似乎是一样的(我上面提到的几个都是每天reset). 但长期是不同的. 因为跌了$x$ fraction, 则要涨$\frac{x}{1-x}$ fraction才能得到原来的结果. 所以VOO一段时间波动直到最后获得了持平, 但UPRO可以是负的. 波动才是最可怕的. 要了解更多可以看[inverse and leveraged ETFs](https://www.bogleheads.org/wiki/Inverse_and_leveraged_ETFs).
 
-有文章表示可以长期持有杠杆ETF[UPRO和TMF的组合](https://www.bogleheads.org/forum/viewtopic.php?f=10&t=272007)来获得很有意思的结果. 前面是原讨论链接, 但是可以看看physixfan的一系列文章. [1](https://www.physixfan.com/40-upro-60-tmf/), [2](https://www.physixfan.com/risk-parity-touziceluegaijinbandongtaidiaozhenguprohetmfdebili/), [3](https://www.physixfan.com/gupiaohechangqizhaiquandefuxiangguanxingdaodishifoukeyichixu/), [4](https://www.physixfan.com/risk-parity-touzicelue-difengxianbanben/).
+有文章表示可以长期持有杠杆ETF [UPRO和TMF的组合](https://www.bogleheads.org/forum/viewtopic.php?f=10&t=272007)来获得很有意思的结果. 前面是原讨论链接, 但是可以看看physixfan的一系列文章. [1](https://www.physixfan.com/40-upro-60-tmf/), [2](https://www.physixfan.com/risk-parity-touziceluegaijinbandongtaidiaozhenguprohetmfdebili/), [3](https://www.physixfan.com/gupiaohechangqizhaiquandefuxiangguanxingdaodishifoukeyichixu/), [4](https://www.physixfan.com/risk-parity-touzicelue-difengxianbanben/).
 
 #### 经纪商
 Vanguard是个不错的经纪商. 和Vanguard有关的产品几乎啥都是免费或者价格低廉的. 但他们的support没有很好.
@@ -85,6 +85,7 @@ Vanguard是[*不能用*杠杆ETF的](https://investor.vanguard.com/investing/lev
 ### 我的配置
 
 现在的配置
+
  - 15%的钱在 60% TMF, 40% UPRO.
  - 其他的几乎都在VOO
 
@@ -93,7 +94,6 @@ Vanguard是[*不能用*杠杆ETF的](https://investor.vanguard.com/investing/lev
  - 70% VOO + TLT using monthly rebalancing through risk parity
  - 20% UPRO + TMF using monthly rebalancing through risk parity
  - 10% Foreign stock
-
 
 ### 房产
 
@@ -137,7 +137,7 @@ Vanguard是[*不能用*杠杆ETF的](https://investor.vanguard.com/investing/lev
 ## 各种谈判
 
 很多东西可以谈的, 最常见的是你的薪水. 永远应该讨论你的薪水, 也在觉得自己做的好的时候去要求涨工资.
-这不仅仅是为了你, 还是为了你的公司. 这样其他公司就不会轻易的给你市场价就把你挖走了. 这样你和公司都受到了损失. 
+这不仅仅是为了你, 还是为了你的公司. 这样其他公司就不会轻易的给你市场价就把你挖走了. 这样你和公司都受到了损失. [薪资谈判可以看这个文章](https://www.1point3acres.com/how-to-negotiate-salary/).
 很多大型的消费也是可以谈出来的. 比如医疗手术. 这种都可以货比三家的.
 
 # 节流
@@ -166,14 +166,16 @@ Vanguard是[*不能用*杠杆ETF的](https://investor.vanguard.com/investing/lev
 ## 积分和里程
 积分和里程很多有各种不同的名字, 我以下都叫积分. 需要考虑几样东西
 
-1. *积分会贬值, 所以要赶快用*. 获得了很多的积分没啥用, 如果某天所有积分都贬值了10%就等于薅的越多亏的越多. 就连UR这种可以直接变成statement credit的都在贬值. 因为你不当场用的话, 同样价值的钱你是可以拿去投资的. 
+1. *积分会贬值, 所以要赶快用*. 囤积积分没啥用, 某天积分都贬值了10%就等于囤的越多亏的越多. 就连UR这种可以直接变成statement credit的都在贬值. 因为你不当场用的话, 同样价值的钱你是可以拿去投资的. 
 2. *理性看到积分价值*. 积分换到的东西对你的价格不是官方标注的价格. 而是如果你没有积分你会为他出多少钱的价格. 网上的积分评估的想法是你一般真的是有现金的时候都会去用那些价格买东西. 所以不要全信. 
-对于机票来说, 他们的评估方法没太大问题. 因为机票定价几乎差不多而且需要机票的时候是刚需. 对于hotel来说就不一样了. 比如你可以用积分换个200美元的hotel. 但是你如果没有积分你会去住旁边的一个100美元的hotel. 那么你积分的价值并没有达到200美元, 换的积分的价值可能只有100美元. 
+对于机票来说, 他们的评估方法没太大问题(虽然还是有点上浮, 因为他们喜欢兑换商务舱). 机票定价几乎差不多而且需要机票的时候是刚需. 对于hotel来说就不一样了, 因为一个地区常常存在更便宜的hotel. 比如你可以用积分换个200美元的hotel. 但是你如果没有积分你会去住旁边的一个100美元的hotel. 那么你积分的价值并没有达到200美元, 换的积分的价值可能只有100美元. 
 
 ## 旅行
 旅行的话值得学会用好积分. 能早早的plan好出行那是极好的.
-航空公司的积分系统比较重要. 因为hotel总是可能有更便宜的. 关注几个重要的航空公司, 就是你的家旁边的是谁的hub. 用[AwardHacker](https://www.awardhacker.com/)找到哪些类型的航班有可能用上积分. 更加有经验的人可能会去研究[flyertalk](https://www.flyertalk.com/)上的文章.  
-但是学习很多航空积分有关的东西耗时太久. 你只需要知道哪些技术大概是可行的, 买票前再去研究. 
+航空公司的积分系统比较重要, 因为hotel总是可能有更便宜的. 用[Awardmapper](http://www.awardmapper.com/map.html)了解hotel的兑换状况.
+关注几个重要的航空公司, 知道你[家旁边的机场是什么公司的hub](https://www.uscreditcardguide.com/airline-hubs/). 用[AwardHacker](https://www.awardhacker.com/)或者[Flyermiler](http://www.flyermiler.com/)找到哪些类型的航班有可能用上积分. 更加有经验的人可能会去研究[flyertalk](https://www.flyertalk.com/)上的文章. 
+但是学习很多航空积分有关的东西耗时太久. 你只需要知道哪些技术大概是可行的, 买票前再去研究. 推荐看看[航空综述系列](https://www.uscreditcardguide.com/category/airline-miles-guide-zh/airline-summary/).
+自己用现金买票的话了解一下[常见技巧](https://www.uscreditcardguide.com/why-is-my-flight-ticket-so-expensive/). 
 
 ### 我的组合
 

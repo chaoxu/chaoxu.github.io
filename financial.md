@@ -185,9 +185,7 @@ Credit card bonuses with points are usually sufficient if you do not travel ofte
 
 Airline programs are more important than hotel programs. There are always cheap hotels. However there are only so many airlines. So if you have to focus, focus on airline program over hotel programs.
 
-It is usually a huge time sink to learn too many airline programs. You just have to be aware of what is possible most of the time. There are many hacks possible for flying. If you are interested starting with [flyertalk](https://www.flyertalk.com/).
-
-Plan travel ahead if possible.
+It is usually a huge time sink to learn too many airline programs. You just have to be aware of what is possible most of the time. There are many hacks possible for flying. If you pay cash, [read this](https://thriftynomads.com/booking-cheapest-flight-possible-anywhere/). If you are interested with even more techniques, start with [flyertalk](https://www.flyertalk.com/).
 
 ### My setup
 
