@@ -80,6 +80,7 @@ D(a,y,y) =\min_{x&lt;y} \set{
 D(a,x,y) + c_a(x,y),
 D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 </span> One can easily infer the base case through definition. Note that all values of <span class="math inline">C_a</span> can be computed in <span class="math inline">O(n^2)</span> time. It takes <span class="math inline">O(n)</span> time to compute one value in <span class="math inline">D</span>. Therefore, the total running time is <span class="math inline">O(n^3)</span>.</p>
+<p>One can show that even with <span class="math inline">k</span> different airlines, there is an algorithm with running time <span class="math inline">O(n^{O(k)})</span>.</p>
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-06-15">2019-06-15</time>. </div>
