@@ -105,13 +105,13 @@ Vanguard是[*不能用*杠杆ETF的](https://investor.vanguard.com/investing/lev
 
 有两个主要的税率. 一个是ordinary income tax. 一个是(long term) capital gain tax. 
 当我们说税率的时候, 我们说的是effective ordinary income tax rate. 就是tax/income. 而不是marginal tax rate.
-capital gain tax rate低于effective ordinary income tax rate(需要收入足够高)
-简单点就是说, 有的投资产生的税务比较重, 有的产生的少. 那么应该把税务重的投资放在免税或者延税账户.
+Capital gain tax rate一般低于effective ordinary income tax rate.
+有的投资产生的税务比较重, 有的产生的少. 那么应该把税务重的投资放在免税或者延税账户.
 
  - 特别大增值的投资放在免税账户.
  - 特别大收入的投资放在免税或者延税账户. 
 
-### 几个不同的退休账户
+### 几个不同的退休账户的偏序
 
 讨论一下3种收税的方式.
 
@@ -137,15 +137,11 @@ capital gain tax rate低于effective ordinary income tax rate(需要收入足够
 | E  | 1         | 1           | 1           |
 
 
-A类: 只有[HSA](https://www.madfientist.com/ultimate-retirement-account/). 取出的钱必须用于医疗. 取出来用于其他的话就需要收税.
-
-B类: Pre-tax 401(k), 低收入人群的Traditional IRA. 注意, 高收入人群不享有Traditional IRA的放入税前收入的属性. A类最多能放\$19000. 
-
-C类: Roth IRA, Roth 401(k). 这种账户只能放入税后收入, 但是提取的时候不用交税. 这类型账号5年之后本金可以拿出. 
-
-D类: After-tax 401(k), 高收入人群的Traditional IRA. 高收入人群放钱进入Traditional IRA都是税后收入. 
-
-E类: 普通账号. 任何时候都要交税. 但是好处是你可以随意的用它的钱.
+- A类: 只有[HSA](https://www.madfientist.com/ultimate-retirement-account/). 取出的钱必须用于医疗. 取出来用于其他的话就需要收税.
+- B类: Pre-tax 401(k), 低收入人群的Traditional IRA. 注意, 高收入人群不享有Traditional IRA的放入税前收入的属性. A类最多能放\$19000. 
+- C类: Roth IRA, Roth 401(k). 这种账户只能放入税后收入, 但是提取的时候不用交税. 这类型账号5年之后本金可以拿出. 
+- D类: After-tax 401(k), 高收入人群的Traditional IRA. 高收入人群放钱进入Traditional IRA都是税后收入. 
+- E类: 普通账号. 任何时候都要交税. 但是好处是你可以随意的用它的钱.
 
 如果盈利是正的, 那么任何类别都比E好. 如果盈利是负的, 那么只有E类才能利用负盈利获得tax-credit. 
 
@@ -168,6 +164,7 @@ E类: 普通账号. 任何时候都要交税. 但是好处是你可以随意的�
 - $X_n = (1+\alpha)X_{n-1} + \beta(1-by)X_{n-1} = (1+\alpha+\beta-\beta by)X_{n-1} = (1+\alpha+\beta-\beta by)^n X_0$
 
 注意pre-tax和after-tax contribution的一大区别, 最后算税的时候按照income tax还是capital gain tax来计算.
+
 - pre-tax: $Y = (1-cx')X_k = (1-cx')(1+\alpha+\beta-\beta by)^k X_0$.
 - after-tax: $Y = (1-cy')(X_k-X_0) + X_0 = (1-cy')X_k - cy'X_0$
 
@@ -183,7 +180,8 @@ E类: 普通账号. 任何时候都要交税. 但是好处是你可以随意的�
 
 纯粹依靠改变资金分布就能改变同一美元最终的效果. 简单的金钱分配制度应该是获得了收入就是放满A类然后B类以此类推.
 
-*常见问题*
+**常见问题**
+
 Q: 计算有问题, effective tax rate是根据具体收入改变的呀. 收入不一样了为什么会认为effective tax rate一样?
 A: 没有错, 所以上面的数值比较是有问题的, 但那数值结果不改变排序结果. 
 
