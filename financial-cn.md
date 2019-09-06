@@ -215,7 +215,7 @@ A: 是的, 如果非常怕税率涨, 就用C类. 如果怕税率跌, 就用B类.
  - 最大化HSA (\$3500)
  - 最大化Commuter Benefits (\$3180)
  - 最大化401k (no change)
- - 最大化after tax 401k, traditional IRA, 然后 [roll over to Roth IRA](https://www.forbes.com/sites/ashleaebeling/2012/01/23/the-backdoor-roth-ira-advanced-version/#f2f12d355ada) (\$56000 - \$28600 + \$6000 = \$33000)
+ - 最大化after tax 401k, traditional IRA, 然后 [backdoor Roth](https://www.forbes.com/sites/ashleaebeling/2012/01/23/the-backdoor-roth-ira-advanced-version/#f2f12d355ada)和[mega backdoor roth](https://www.madfientist.com/after-tax-contributions/)转到Roth IRA (\$56000 - \$28600 + \$6000 = \$33000)
  
 极限挑战后,\$62000一年会在你的养老账户里. 其中\$33000可以5年后拿出来. 剩下的需要放在里面直到退休(实际上有技巧55岁拿出). \$3500给医疗用, \$3180给commuting用(并且必须当年用掉).
 其中\$19000+\$3500+\$3180=\$25680是税前. \$33000是税后.
