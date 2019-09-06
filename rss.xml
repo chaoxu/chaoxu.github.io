@@ -7,8 +7,42 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxuprime.com/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Wed, 28 Aug 2019 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Fri, 06 Sep 2019 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Traditional vs Roth IRA under fixed amount of investment</title>
+    <link>https://chaoxuprime.com/posts/2019-09-06-traditional-ira-vs-roth-ira.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>I’ve read a lot of articles on Traditional vs Roth IRA, however one can do a serious mathematical analysis of which one is better, given that you want to invest a total of <span class="math inline">x</span> income into the account for a particular year. This means, money over than the contribution limit will be put in a normal investment account.</p>
+<p>There is a widely held belief that if your effective tax rate is higher today than when you cash out, it is always better to do pre-tax contribution (Traditional IRA). However, we can show this is not always the case. You need effective tax rate to be somewhat lower unless you are in the lowest of tax bracket. Assume for simplicity, you live in a place without state taxes.</p>
+<p>We make the assumption you have enough money to maximize the contribution, but you have even more money left to put in a normal account.</p>
+<p>Here are the 3 options.</p>
+<ul>
+<li>Type 1: (Traditional IRA, 401(k)) No tax when contributing, taxed as ordinary income afterwards.</li>
+<li>Type 2: (Roth IRA, Roth 401(k) Taxed when contributing, and no taxes afterwards.</li>
+<li>Type 3: Normal account, taxed when contributing, and tax with either ordinary income or capital gain taxes depending on type.</li>
+</ul>
+<p>Consider the simplest model. You have a stock that you buy and hold. It generates no dividends. At the time when you sell it, it worths <span class="math inline">k</span> times more. All your money will be going into that stock.</p>
+<p>Assume you allocate <span class="math inline">x</span> income into <span class="math inline">x_1,x_2,x_3</span>, which is the amount of income allocated into Type <span class="math inline">1,2,3</span> accounts, respectively.</p>
+<p>How much after tax income is generated when you sell the stock?</p>
+<p>Let <span class="math inline">\alpha</span> be the (approximate) effective tax rate today, <span class="math inline">\alpha&#39;</span> is an (approximate) effective tax rate when you sell. <span class="math inline">\beta&#39;</span> is the capital gain tax rate.</p>
+<p>The after-tax income contributed by each account is - Type 1: <span class="math inline">kx_1(1-\alpha&#39;)</span> - Type 2: <span class="math inline">kx_2(1-\alpha)</span> - Type 3: <span class="math inline">(k-1)x_3(1-\alpha)(1-\beta&#39;) + x_3(1-\alpha) = x_3(1-\alpha)((k-1)(1-\beta&#39;)+1)</span></p>
+<p>Now, we also have the following constraint. <span class="math inline">x_1+x_2(1-\alpha)=B</span>, <span class="math inline">x_1+x_2+x_3=x</span>, etc. Since <span class="math inline">B</span> and <span class="math inline">x</span> are fixed. We have <span class="math inline">x_2 = \frac{B-x_1}{1-\alpha}</span>, and <span class="math inline">x_3 = x-x_1-\frac{B-x_1}{1-\alpha}</span></p>
+<p>Define <span class="math inline">f(x_1)=kx_1(1-\alpha&#39;) + k(B-x_1) + (x-x_1-\frac{B-x_1}{1-\alpha})(1-\alpha)((k-1)(1-\beta&#39;)+1)</span>, which is a linear function. We take the derivative of <span class="math inline">f</span> and obtain the slope if <span class="math inline">k(\alpha-\alpha&#39;)- (k-1)\alpha\beta&#39;</span>. If the slope is positive, it means when should maximize type <span class="math inline">1</span> account, and if the slope is negative, we should maximize type <span class="math inline">2</span> account.</p>
+<p>In order for the inequality to work for all <span class="math inline">k&gt;1</span>, we need <span class="math inline">\alpha-\alpha&#39;\geq \alpha\beta&#39;</span>. In other words, we need <span class="math inline">\alpha&#39;\leq \alpha(1-\beta&#39;)</span> in order to safely say it is better to maximize type 1.</p>
+<p>We didn’t even consider what happens if there are dividend involved. It would shift the scale even more toward type 2.</p>
+<p>I think the moral of the story is you have to be careful and actually model everything correctly. Also, since there is no way to know the tax rate in the future, some people hedge by putting money in both type 1 and type 2 accounts.</p>
+<p>Good thing is that it still suggest pre-tax is better than after-tax if your tax rate is much higher than your future tax rate. Which might not be true if you are very conscious about saving money (for example, save 80% of your income), even you are in the highest tax bracket.</p>
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-09-06">2019-09-06</time>. </div>
+    <div class="info">Tags: Tax.</div>
+</div>]]></description>
+    <pubDate>Fri, 06 Sep 2019 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/posts/2019-09-06-traditional-ira-vs-roth-ira.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title>Impossibility theorem of marriage tax</title>
     <link>https://chaoxuprime.com/posts/2019-08-28-impossibility-theorm-marriage-tax.html</link>
     <description><![CDATA[<br />
@@ -423,39 +457,6 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 </div>]]></description>
     <pubDate>Sun, 24 Mar 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxuprime.com/posts/2019-03-24-densest-subgraph-variation.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>Finger tree allowing apply functions to each element</title>
-    <link>https://chaoxuprime.com/posts/2019-03-10-finger-tree-apply-function-to-each-element.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>Let <span class="math inline">(M,+)</span> be a monoid. We are interested in maintaining a sequence <span class="math inline">a = a_1,\ldots,a_n\in M</span> under all updates currently supported by finger tree. However, we are also interested in adding another update, which we call the function update.</p>
-<p>Let <span class="math inline">f = f_1,\ldots,f_n\in M\to M</span>.</p>
-<p>The functions satisfies the following property.</p>
-<p><span class="math inline">f_1(x_1)+\ldots+f_n(x_n) = f_1(y_1)+\ldots+f_n(y_n)</span> if <span class="math inline">\sum_{i=1}^n x_i = \sum_{i=1}^n y_i</span>.</p>
-<p>The sequence <span class="math inline">f</span> is given implicitly, where it has two methods:</p>
-<ul>
-<li><code>evaluate(X)</code>: It returns <span class="math inline">f_1(x_1) + \ldots +f_n(x_n)</span> for any sequence <span class="math inline">x_1,\ldots,x_n</span> such that <span class="math inline">\sum_{i=1}^n x_i = X</span>.</li>
-<li><code>split(j)</code>: returns a representation for <span class="math inline">f_1,\ldots,f_j</span> and <span class="math inline">f_{j+1},\ldots,f_n</span>.</li>
-</ul>
-<p>We are interested in implementing <code>FunctionUpdate(a,f)</code>, the output would be a representation of the sequence <span class="math inline">f_1(a_1),\ldots,f_n(a_n)</span>.</p>
-<p>Many problems actually require update to a entire interval of the sequence, which makes this extremely valuable. For example, consider the following simple problem.</p>
-<p>Maintain a sequence of integers <span class="math inline">a_1,\ldots,a_n</span>, such that we can do the operation <span class="math inline">inc(i,j)</span>, which increment all numbers from <span class="math inline">i</span>th to <span class="math inline">j</span>th index by <span class="math inline">1</span>. That is, the new sequence is <span class="math inline">a_1,\ldots,a_{i-1},a_i+1,\ldots,a_j+1,a_{j+1},\ldots,a_n</span>. Also, it has a function <span class="math inline">value(i)</span> which returns <span class="math inline">a_i</span>. This problem can be solved by finger tree with function update operation.</p>
-<p>I want an actual implementation of such data structure so I can implement the min-cost flow algorithm for series-parallel graphs <span class="citation" data-cites="Booth1993416">[<a href="#ref-Booth1993416" role="doc-biblioref">1</a>]</span>.</p>
-<h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references" role="doc-bibliography">
-<div id="ref-Booth1993416">
-<p>[1] H. Booth, R.E. Tarjan, <strong>Finding the minimum-cost maximum flow in a series-parallel network</strong>, Journal of Algorithms. 15 (1993) 416–446 <a href="https://doi.org/10.1006/jagm.1993.1048">10.1006/jagm.1993.1048</a>.</p>
-</div>
-</div>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-03-10">2019-03-10</time>. </div>
-    <div class="info">Tags: data structure, lazy propagation.</div>
-</div>]]></description>
-    <pubDate>Sun, 10 Mar 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-03-10-finger-tree-apply-function-to-each-element.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 
