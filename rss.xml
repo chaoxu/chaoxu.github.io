@@ -19,14 +19,19 @@
 <p>Here are the 3 options.</p>
 <ul>
 <li>Type 1: (Traditional IRA, 401(k)) No tax when contributing, taxed as ordinary income afterwards.</li>
-<li>Type 2: (Roth IRA, Roth 401(k) Taxed when contributing, and no taxes afterwards.</li>
+<li>Type 2: (Roth IRA, Roth 401(k)) Taxed when contributing, and no taxes afterwards.</li>
 <li>Type 3: Normal account, taxed when contributing, and tax with either ordinary income or capital gain taxes depending on type.</li>
 </ul>
 <p>Consider the simplest model. You have a stock that you buy and hold. It generates no dividends. At the time when you sell it, it worths <span class="math inline">k</span> times more. All your money will be going into that stock.</p>
 <p>Assume you allocate <span class="math inline">x</span> income into <span class="math inline">x_1,x_2,x_3</span>, which is the amount of income allocated into Type <span class="math inline">1,2,3</span> accounts, respectively.</p>
 <p>How much after tax income is generated when you sell the stock?</p>
 <p>Let <span class="math inline">\alpha</span> be the (approximate) effective tax rate today, <span class="math inline">\alpha&#39;</span> is an (approximate) effective tax rate when you sell. <span class="math inline">\beta&#39;</span> is the capital gain tax rate.</p>
-<p>The after-tax income contributed by each account is - Type 1: <span class="math inline">kx_1(1-\alpha&#39;)</span> - Type 2: <span class="math inline">kx_2(1-\alpha)</span> - Type 3: <span class="math inline">(k-1)x_3(1-\alpha)(1-\beta&#39;) + x_3(1-\alpha) = x_3(1-\alpha)((k-1)(1-\beta&#39;)+1)</span></p>
+<p>The after-tax income contributed by each account is</p>
+<ul>
+<li>Type 1: <span class="math inline">kx_1(1-\alpha&#39;)</span></li>
+<li>Type 2: <span class="math inline">kx_2(1-\alpha)</span></li>
+<li>Type 3: <span class="math inline">(k-1)x_3(1-\alpha)(1-\beta&#39;) + x_3(1-\alpha) = x_3(1-\alpha)((k-1)(1-\beta&#39;)+1)</span></li>
+</ul>
 <p>Now, we also have the following constraint. <span class="math inline">x_1+x_2(1-\alpha)=B</span>, <span class="math inline">x_1+x_2+x_3=x</span>, etc. Since <span class="math inline">B</span> and <span class="math inline">x</span> are fixed. We have <span class="math inline">x_2 = \frac{B-x_1}{1-\alpha}</span>, and <span class="math inline">x_3 = x-x_1-\frac{B-x_1}{1-\alpha}</span></p>
 <p>Define <span class="math inline">f(x_1)=kx_1(1-\alpha&#39;) + k(B-x_1) + (x-x_1-\frac{B-x_1}{1-\alpha})(1-\alpha)((k-1)(1-\beta&#39;)+1)</span>, which is a linear function. We take the derivative of <span class="math inline">f</span> and obtain the slope if <span class="math inline">k(\alpha-\alpha&#39;)- (k-1)\alpha\beta&#39;</span>. If the slope is positive, it means when should maximize type <span class="math inline">1</span> account, and if the slope is negative, we should maximize type <span class="math inline">2</span> account.</p>
 <p>In order for the inequality to work for all <span class="math inline">k&gt;1</span>, we need <span class="math inline">\alpha-\alpha&#39;\geq \alpha\beta&#39;</span>. In other words, we need <span class="math inline">\alpha&#39;\leq \alpha(1-\beta&#39;)</span> in order to safely say it is better to maximize type 1.</p>
