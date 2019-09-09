@@ -12,7 +12,7 @@ We make the assumption you have enough money to maximize the contribution, but y
 Here are the 3 options.
 
 - Type 1: (Traditional IRA, 401(k)) No tax when contributing, taxed as ordinary income afterwards.
-- Type 2: (Roth IRA, Roth 401(k) Taxed when contributing, and no taxes afterwards.
+- Type 2: (Roth IRA, Roth 401(k)) Taxed when contributing, and no taxes afterwards.
 - Type 3: Normal account, taxed when contributing, and tax with either ordinary income or capital gain taxes depending on type. 
 
 Consider the simplest model. You have a stock that you buy and hold. It generates no dividends. At the time when you sell it, it worths $k$ times more. All your money will be going into that stock.
@@ -24,6 +24,7 @@ How much after tax income is generated when you sell the stock?
 Let $\alpha$ be the (approximate) effective tax rate today, $\alpha'$ is an (approximate) effective tax rate when you sell. $\beta'$ is the capital gain tax rate.
 
 The after-tax income contributed by each account is
+
  - Type 1: $kx_1(1-\alpha')$
  - Type 2: $kx_2(1-\alpha)$
  - Type 3: $(k-1)x_3(1-\alpha)(1-\beta') + x_3(1-\alpha) = x_3(1-\alpha)((k-1)(1-\beta')+1)$
