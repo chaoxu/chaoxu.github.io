@@ -29,8 +29,7 @@ The after-tax income contributed by each account is
  - Type 2: $kx_2(1-\alpha)$
  - Type 3: $(k-1)x_3(1-\alpha)(1-\beta') + x_3(1-\alpha) = x_3(1-\alpha)((k-1)(1-\beta')+1)$
 
-Now, we also have the following constraint. $x_1+x_2(1-\alpha)=B$, $x_1+x_2+x_3=x$, etc. Since $B$ and $x$ are fixed. 
-We have $x_2 = \frac{B-x_1}{1-\alpha}$, and $x_3 = x-x_1-\frac{B-x_1}{1-\alpha}$
+Now, we also have the following constraint. $x_1+x_2(1-\alpha)=B$, where $B$ is the maximum contribution into type 1 and type 2 accounts. This happens because they share the same bound (this is true for both 401(k) and IRA). $x_1+x_2+x_3=x$. Since $B$ and $x$ are fixed, we have $x_2 = \frac{B-x_1}{1-\alpha}$, and $x_3 = x-x_1-\frac{B-x_1}{1-\alpha}$
 
 Define $f(x_1)=kx_1(1-\alpha') + k(B-x_1) + (x-x_1-\frac{B-x_1}{1-\alpha})(1-\alpha)((k-1)(1-\beta')+1)$, which is a linear function. We take the derivative of $f$ and obtain the slope if $k(\alpha-\alpha')- (k-1)\alpha\beta'$. If the slope is positive, it means when should maximize type $1$ account, and if the slope is negative, we should maximize type $2$ account.
 
