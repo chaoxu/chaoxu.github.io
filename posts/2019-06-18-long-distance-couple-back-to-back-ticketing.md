@@ -25,4 +25,13 @@ If we just enforce one property -- paired or split -- then it is solvable in pol
 Indeed, both are matching under restrictions. We are interested in finding a matching $M$, such that the vertices covered by $M$ is in some special structure. Namely $\Delta$-matroid. 
 Since the paired property is a very special $\Delta$-matroid [@KakimuraT14], which was first solved in [@HefnerK95]. The second property is partition matroid, which can be handled by [hierarchical $b$-matching](/posts/2019-04-27-maximum-weight-hierarchical-b-matching.html). Reader can see each individual restriction, the problem can be turned into a maximum weight perfect matching. 
 
-If we enforce both property, the problem seems to be open. Although the structure is still very special, it is an [even $\Delta$-matroid](https://en.wikipedia.org/wiki/Delta-matroid). I'm pretty sure this is an major open problem. However, this special case might have a much simpler solution. 
+If we enforce both property, the problem is open. Although the structure is still very special, it is an [even $\Delta$-matroid](https://en.wikipedia.org/wiki/Delta-matroid).
+[Naonori Kakimura](http://www.math.keio.ac.jp/~kakimura/) communicated a more fundamental problem which can be solved by this problem.
+
+::: {.Problem title="Matching with disjoint pair constraints"}
+
+Given a graph where the edges are partitioned into pairs. Find a maximum matching where it uses at most one edge of each pair. 
+
+:::
+
+I would be very interested to know the solution to that problem.
