@@ -3,3 +3,4 @@ _site/
 .stack-work/
 .DS_Store
 tmp.txt
+*.lock

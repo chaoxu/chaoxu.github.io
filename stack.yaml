@@ -15,7 +15,7 @@
 # resolver:
 #  name: custom-snapshot
 #  location: "./custom-snapshot.yaml"
-resolver: nightly-2019-06-28
+resolver: lts-14.5
 
 # User packages to be built.
 # Various formats can be used as shown in the example below.
@@ -39,7 +39,7 @@ packages:
 - '.'
 # Dependency packages to be pulled from upstream that are not in the resolver
 # (e.g., acme-missiles-0.3)
-extra-deps: [hakyll-4.12.5.2,lrucache-1.2.0.1,"pandoc-2.7.3@sha256:948cc90a0a4cf2031d93154e88cfd1dec3943282dc86e1ab7d5da9206ccb36bf","pandoc-citeproc-0.16.2@sha256:d3437d6492ebe6c479d29c5ecf30f074d209a5c9479693edce55d1841c50f17c"]
+extra-deps: [hakyll-4.13.0.0,lrucache-1.2.0.1]
 
 # Override default flag values for local packages and extra-deps
 flags: {}

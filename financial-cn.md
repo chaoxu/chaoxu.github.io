@@ -27,7 +27,7 @@ title: 财务自由的建议
 
 ### 投资
 
-我接下来说的投资, 是去除了所有现金和应急资金的. return = cash + beta + alpha. 你想被动投资, 就只能获得beta. 
+我接下来说的投资, 是去除了所有现金和应急资金的. return = cash + beta + alpha. 你想被动投资, 就只能获得beta. 推荐阅读的书籍: [The Bogleheads' Guide to Investing](https://www.amazon.com/gp/product/1118921283/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=chaoxu-20&creative=9325&linkCode=as2&creativeASIN=1118921283&linkId=2ae64a2b8e5c0c4a5742210aff4a2494). 是我看的被动投资方面最好的书了.
 
 #### 分散投资-资产类别
 
