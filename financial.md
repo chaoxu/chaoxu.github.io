@@ -31,11 +31,11 @@ Always have around $k$ months living expense in the emergency fund. The emergenc
 ### Investments
 
 When I say portfolio, I excludes all liquid cash and emergency funds (since they should not be a huge part of your total asset).
-Note that return = cash + beta + alpha. You want to invest passively, then you can only hope to capture beta.
+Note that return = cash + beta + alpha. You want to invest passively, then you can only hope to capture beta. I recommend [The Bogleheads' Guide to Investing](https://www.amazon.com/gp/product/1118921283/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=chaoxu-20&creative=9325&linkCode=as2&creativeASIN=1118921283&linkId=2ae64a2b8e5c0c4a5742210aff4a2494). It is the best book out of the bunch I have read. 
 
 #### Diversification over asset class
 
-Diverse portfolio. If you truly don't care, not even thinking about setting up a simple allocations, then just use Wealthfront [^wealthfront] or [betterment](https://www.betterment.com/). They do automatic investment techniques knowing your risk.
+Diverse portfolio. If you truly don't care, not even thinking about setting up a simple allocations, then just use Wealthfront [^wealthfront] or [betterment](https://www.betterment.com/). They do automatic investment techniques knowing your risk. 
 
 However if you trust yourself and want to save that little fees they charge. The easiest is a 3 fund portfolio. Total US stock (or S&P 500), Total international stock and Total US bond. Any low fee fund is sufficient. For example, a 80% stock, 20% bond portfolio using vanguard ETFs:
 
