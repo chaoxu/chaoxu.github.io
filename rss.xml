@@ -7,8 +7,41 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxuprime.com/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Fri, 06 Sep 2019 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Thu, 19 Sep 2019 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Word break with cost</title>
+    <link>https://chaoxuprime.com/posts/2019-09-19-word-break-with-cost.html</link>
+    <description><![CDATA[<br />
+<div>
+<div class="theorem-environment Problem" data-index="1" type="Problem">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span></span>
+<p>Given a set of strings <span class="math inline">W</span>, a cost function <span class="math inline">c:W\to \R</span> and a string <span class="math inline">s</span>. Find elements <span class="math inline">w_1,\ldots,w_k\in W</span> such that <span class="math inline">s=w_1\ldots w_k</span>, and <span class="math inline">\sum_{i=1}^k c(w_i)</span> is minimized.</p>
+</div>
+<p>This problem is a generalization of the <a href="https://leetcode.com/problems/word-break/">word break</a> problem on leetcode.</p>
+<p>There is a simple dynamic programming algorithm with running time <span class="math inline">O(nm)</span> that generalizes the dynamic programming algorithm for word break. Here <span class="math inline">n</span> is the length of the string <span class="math inline">s</span> and <span class="math inline">m=\sum_{w\in W}|w|</span>.</p>
+<p>There is a faster algorithm. We consider the following graph <span class="math inline">G=(V,E)</span>, where <span class="math inline">V=\set{0,\ldots,n}</span>, and there is an edge from <span class="math inline">i</span> and <span class="math inline">j</span>, if <span class="math inline">s[i+1..j]=w\in W</span>, and the label of the edge <span class="math inline">(i,j)</span> is the string <span class="math inline">w</span>, and the cost is <span class="math inline">c(w)</span>. The graph has size <span class="math inline">O(n\sqrt{m})</span>. Indeed, the sum of the length of the labels of all outgoing edges cannot be more than <span class="math inline">m</span>, and the length of each label is different. Hence each vertex can have at most <span class="math inline">O(\sqrt{m})</span> outgoing edges. The graph is a DAG, so we can find the shortest path from <span class="math inline">0</span> to <span class="math inline">n</span> in linear time with respect to the number of edges. This shows if we can compute the graph in <span class="math inline">O(n\sqrt{m}+m)</span> time, then we solve the problem in <span class="math inline">O(n\sqrt{m}+m)</span> time.</p>
+<p>We can build the Aho–Corasick automaton for <span class="math inline">W</span> in <span class="math inline">O(m)</span> time. It can be used to find all substrings of <span class="math inline">s</span> that matches something in <span class="math inline">W</span> by traversing the automaton once. The running time is the total number of substrings matched, which is <span class="math inline">O(n\sqrt{m})</span>. Hence building the graph takes <span class="math inline">O(n\sqrt{m}+m)</span> time. Actually, let <span class="math inline">p=|W|</span>, then what we proved is actually a running time of <span class="math inline">O(np+m)</span>, it is just in the worst case <span class="math inline">p=\Omega(\sqrt{m})</span>.</p>
+<p>If we only want to know if there exists a solution, then there is a <span class="math inline">\tilde{O}(nm^{1/3}+m)</span> time algorithm <span class="citation" data-cites="BringmannGL17">[<a href="#ref-BringmannGL17" role="doc-biblioref">1</a>]</span>, and it is optimal assuming the algorithm is combinatorial, and the alphabet can be arbitrarily large.</p>
+<p>Can we also obtain similar running time for the word break with cost problem? There are evidence against it. If the alphabet is unary, this problem is equivalent to the unbounded knapsack problem, which likely does not have an algorithm with running time <span class="math inline">O((n+p)^{2-\e})</span> for any <span class="math inline">\e&gt;0</span> <span class="citation" data-cites="CyganMWW19">[<a href="#ref-CyganMWW19" role="doc-biblioref">2</a>]</span> and <span class="math inline">p</span> can be as large as <span class="math inline">\Omega(m)</span>. Of course, this does not mean there might not be a <span class="math inline">O(nm^{1/3}+m)</span> time algorithm, since the reduction involved in the paper might not hold when we require <span class="math inline">p=\Omega(\sqrt{m})</span>.</p>
+<h1 id="bibliography" class="unnumbered">References</h1>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-BringmannGL17">
+<p>[1] K. Bringmann, A. Grønlund, K.G. Larsen, A dichotomy for regular expression membership testing, in: 2017 Ieee 58th Annual Symposium on Foundations of Computer Science (Focs), 2017: pp. 307–318 <a href="https://doi.org/10.1109/FOCS.2017.36">10.1109/FOCS.2017.36</a>.</p>
+</div>
+<div id="ref-CyganMWW19">
+<p>[2] M. Cygan, M. Mucha, K. Węgrzycki, M. W, <strong>On problems equivalent to (min,+)-convolution</strong>, ACM Trans. Algorithms. 15 (2019) 14:1–14:25 <a href="https://doi.org/10.1145/3293465">10.1145/3293465</a>.</p>
+</div>
+</div>
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-09-19">2019-09-19</time>. </div>
+    <div class="info">Tags: Algorithm.</div>
+</div>]]></description>
+    <pubDate>Thu, 19 Sep 2019 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/posts/2019-09-19-word-break-with-cost.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title>Traditional vs Roth IRA under fixed amount of investment</title>
     <link>https://chaoxuprime.com/posts/2019-09-06-traditional-ira-vs-roth-ira.html</link>
     <description><![CDATA[<br />
@@ -101,7 +134,12 @@
 <p>Unfortunately, I don’t see how to solve this problem in polynomial time. I could convert this problem to something that might be solved in polynomial time in the future.</p>
 <p>Note we can split the vertices. That is, for vertex <span class="math inline">i</span>, we split it into <span class="math inline">(i,R)</span> and <span class="math inline">(i,B)</span> for its blue and red counter part. A matching is <em>paired</em> if <span class="math inline">(2i,C)</span> and <span class="math inline">(2i-1,C)</span> both has to be matched, where <span class="math inline">C\in \set{R,B}</span>. The matching is <em>split</em> if <span class="math inline">(i,R)</span> and <span class="math inline">(i,B)</span> cannot be both in the matching.</p>
 <p>If we just enforce one property – paired or split – then it is solvable in polynomial time. Indeed, both are matching under restrictions. We are interested in finding a matching <span class="math inline">M</span>, such that the vertices covered by <span class="math inline">M</span> is in some special structure. Namely <span class="math inline">\Delta</span>-matroid. Since the paired property is a very special <span class="math inline">\Delta</span>-matroid <span class="citation" data-cites="KakimuraT14">[<a href="#ref-KakimuraT14" role="doc-biblioref">1</a>]</span>, which was first solved in <span class="citation" data-cites="HefnerK95">[<a href="#ref-HefnerK95" role="doc-biblioref">2</a>]</span>. The second property is partition matroid, which can be handled by <a href="/posts/2019-04-27-maximum-weight-hierarchical-b-matching.html">hierarchical <span class="math inline">b</span>-matching</a>. Reader can see each individual restriction, the problem can be turned into a maximum weight perfect matching.</p>
-<p>If we enforce both property, the problem seems to be open. Although the structure is still very special, it is an <a href="https://en.wikipedia.org/wiki/Delta-matroid">even <span class="math inline">\Delta</span>-matroid</a>. I’m pretty sure this is an major open problem. However, this special case might have a much simpler solution.</p>
+<p>If we enforce both property, the problem is open. Although the structure is still very special, it is an <a href="https://en.wikipedia.org/wiki/Delta-matroid">even <span class="math inline">\Delta</span>-matroid</a>. <a href="http://www.math.keio.ac.jp/~kakimura/">Naonori Kakimura</a> communicated a more fundamental problem which can be solved by this problem.</p>
+<div class="theorem-environment Problem" data-index="2" type="Problem" title="Matching with disjoint pair constraints">
+<span class="theorem-header"><span class="type">Problem</span><span class="index">2</span><span class="name">Matching with disjoint pair constraints</span></span>
+<p>Given a graph where the edges are partitioned into pairs. Find a maximum matching where it uses at most one edge of each pair.</p>
+</div>
+<p>I would be very interested to know the solution to that problem.</p>
 <h1 id="bibliography" class="unnumbered">References</h1>
 <div id="refs" class="references" role="doc-bibliography">
 <div id="ref-KakimuraT14">
@@ -444,24 +482,6 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 </div>]]></description>
     <pubDate>Thu, 28 Mar 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxuprime.com/posts/2019-03-28-l1-linear-regression.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>Densest subgraph variation</title>
-    <link>https://chaoxuprime.com/posts/2019-03-24-densest-subgraph-variation.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>Let <span class="math inline">G=(V,E)</span> be a graph. Consider an edge weight function <span class="math inline">w:E\to \R^+</span> and a vertex cost function <span class="math inline">c:V\to \R^+</span>.</p>
-<p>We are interested in finding <span class="math inline">S\subset V</span>, such that <span class="math inline">w(E(S))-c(S)</span> is maximized.</p>
-<p>This is very close to the densest subgraph problem, as it is basically the Lagrangian relaxation of the problem.</p>
-<p>This problem is equivalent to a min-<span class="math inline">st</span>-cut computation on a suitable graph. Indeed, minimizing <span class="math inline">w(E(S))-c(S)</span> is equivalent to minimizing <span class="math inline">c(S) + \frac{1}{2} w(E(S,\bar{S})) + \frac{1}{2} \sum_{v\in \bar{S}} \deg(v)</span>. This can be solved easily by modeling it as a min-<span class="math inline">st</span>-cut.</p>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-03-24">2019-03-24</time>. </div>
-    <div class="info">Tags: combinatorial optimization.</div>
-</div>]]></description>
-    <pubDate>Sun, 24 Mar 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-03-24-densest-subgraph-variation.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 
