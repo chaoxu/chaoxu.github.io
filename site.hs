@@ -34,12 +34,20 @@ main = hakyll $ do
         route   idRoute
         compile compressCssCompiler
     -- pages
-    match "*.md" $ do
-        route $ setExtension ".html"
+    match "pages/*.md" $ do
+        route   $ setExtension ".html"
         compile $ do 
             chaoDocCompiler
               >>= loadAndApplyTemplate "templates/default.html" postCtx
               >>= katexFilter
+    -- some pages not in pages for some reason (looking at you, README.md, 404.md)
+    match "*.md" $ do
+        route   $ setExtension ".html"
+        compile $ do 
+            chaoDocCompiler
+              >>= loadAndApplyTemplate "templates/default.html" postCtx
+              >>= katexFilter
+    -- posts
     match "posts/*.md" $ do
         route   $ setExtension ".html"
         compile $ do

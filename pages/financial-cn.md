@@ -64,7 +64,7 @@ title: 财务自由的建议
 
 ##### 杠杆ETF
 
-$k\times$杠杆ETF如果跟踪一个指标. 则指标改变了$x%$, ETF改变$kx%$.
+$k\times$杠杆ETF如果跟踪一个指标. 则指标一定时间内改变了$x%$, ETF会改变$kx%$. 以下是几个当日的杠杆ETF.  
 
 |杠杆        | 标普 500     | 20+ 年国债   |
 | --------- | ----------- | ----------- |
@@ -74,9 +74,11 @@ $k\times$杠杆ETF如果跟踪一个指标. 则指标改变了$x%$, ETF改变$kx
 
 注意$3$倍杠杆ETF和你用$3$倍的钱去投资结果并不一样. 
 
-如果只看当天的结果, 似乎是一样的(我上面提到的几个都是每天reset). 但长期是不同的. 因为跌了$x$ fraction, 则要涨$\frac{x}{1-x}$ fraction才能得到原来的结果. 所以VOO一段时间波动直到最后获得了持平, 但UPRO可以是负的. 波动才是最可怕的. 要了解更多可以看[inverse and leveraged ETFs](https://www.bogleheads.org/wiki/Inverse_and_leveraged_ETFs).
+如果只看当天的结果, 是完全一样的. 你可以想象3倍杠杆ETF是当天借给你了钱, 当天结束的时候就强制你还钱. 长期的话当然结果会不同. 因为跌了$x$ fraction, 则要涨$\frac{x}{1-x}$ fraction才能得到原来的结果. 所以VOO一段时间波动直到最后获得了持平, 但UPRO可以是负的. 波动才是最可怕的. 要了解更多可以看[inverse and leveraged ETFs](https://www.bogleheads.org/wiki/Inverse_and_leveraged_ETFs). 
 
 有文章表示可以长期持有杠杆ETF [UPRO和TMF的组合](https://www.bogleheads.org/forum/viewtopic.php?f=10&t=272007)来获得很有意思的结果. 前面是原讨论链接, 但是可以看看physixfan的一系列文章. [1](https://www.physixfan.com/40-upro-60-tmf/), [2](https://www.physixfan.com/risk-parity-touziceluegaijinbandongtaidiaozhenguprohetmfdebili/), [3](https://www.physixfan.com/gupiaohechangqizhaiquandefuxiangguanxingdaodishifoukeyichixu/), [4](https://www.physixfan.com/risk-parity-touzicelue-difengxianbanben/).
+
+但如果真的相信自己的投资策略, 则总是应该适当的加一些杠杆.
 
 #### 经纪商
 Vanguard是个不错的经纪商. 和Vanguard有关的产品几乎啥都是免费或者价格低廉的. 但他们的support没有很好.
@@ -97,7 +99,9 @@ Vanguard是[*不能用*杠杆ETF的](https://investor.vanguard.com/investing/lev
 
 ### 房产
 
-房贷是最便宜的贷款了. 这是一个很好的杠杆. 而且有很多税上的优惠. 很适合开始做房地产business或者投资. 而且后期可以用这种杠杆获得越来越多的房产. 推荐个[最基本的对于房产投资有所了解的文](https://www.physixfan.com/fangchantouzixuexibiji/). 但具体怎么房产投资, 我也是在学习之中, 无法给出意见. 
+房贷是最便宜的贷款了. 这是一个很好的杠杆. 而且有很多税上的优惠. 很适合开始做房地产business或者投资. 而且后期可以用这种杠杆获得越来越多的房产. 推荐个[最基本的对于房产投资有所了解的文](https://www.physixfan.com/fangchantouzixuexibiji/). 
+房产想要真的完全击败股市, 就必须把房产做成一个business. 
+也就是说, 这不能全算是投资, 而是自己的一个工作了.
 
 ## 税务
 
@@ -149,7 +153,7 @@ Capital gain tax rate一般低于effective ordinary income tax rate.
 
 可以看出在这些假设上$A>C$, $A>B$, $C>E$, $B>E$.
 
-*假设*: 现在的税率比取钱出来的税率高.
+*假设*: 现在的税率比取钱时的税率高.
 
 这个假设还能获得$B>C$. 因为假如$x$是现在税率, $x'$是取出的税率. 则有1的收入, 放入$B$, 得到$k$倍收入, 取出来就是$(1-x')k$. 放入$C$类的话, 进去就是$1-x$, 取出来是$(1-x)k$.
 
@@ -213,7 +217,7 @@ $(w-b-\frac{1-b}{1-x})(1-x)(1+(k-1) (1-y')) + (kb)(1-x') + k(1-b)$. 这个是一
  - 最大化401k (no change)
  - 最大化after tax 401k, traditional IRA, 然后 [backdoor Roth](https://www.forbes.com/sites/ashleaebeling/2012/01/23/the-backdoor-roth-ira-advanced-version/#f2f12d355ada)和[mega backdoor roth](https://www.madfientist.com/after-tax-contributions/)转到Roth IRA (\$56000 - \$28600 + \$6000 = \$33000)
  
-极限挑战后,\$62000一年会在你的养老账户里. 其中\$33000可以5年后拿出来. 剩下的需要放在里面直到退休(实际上有技巧55岁拿出). \$3500给医疗用, \$3180给commuting用(并且必须当年用掉).
+做完这些\$62000一年会在养老账户里. 其中\$33000可以5年后拿出来. 剩下的需要放在里面直到退休年龄(有技巧55岁拿出, 但还是很久以后). \$3500给医疗用, \$3180给commuting用(并且必须当年用掉).
 其中\$19000+\$3500+\$3180=\$25680是税前. \$33000是税后.
 
 可以用[个税计算器](https://smartasset.com/taxes/income-taxes)得知以上的人税后应该有\$150000. 则最后存了上面的钱之后, 还剩\$117000(假设股票没变价值). 应该也是完全够一个人生活的了, 还可以做其他投资.
@@ -241,6 +245,7 @@ $(w-b-\frac{1-b}{1-x})(1-x)(1+(k-1) (1-y')) + (kb)(1-x') + k(1-b)$. 这个是一
 
 ## 返现
 你买的不少东西都有返现的机会. 其中一些和你的信用卡或者航空公司有关. 应该先去[Cashback Monitor](https://www.cashbackmonitor.com/)上有没有返现. 也可以去自己的有offer的portals看看有没有offer.
+Gift Cards有的能在Raise上便宜的买到. 而Raise本身也有返现可以用 [^raise].
 
 ### 我的组合
 
@@ -253,6 +258,7 @@ $(w-b-\frac{1-b}{1-x})(1-x)(1+(k-1) (1-y')) + (kb)(1-x') + k(1-b)$. 这个是一
 1. *积分会贬值, 所以要赶快用*. 囤积积分没啥用, 某天积分都贬值了10%就等于囤的越多亏的越多. 就连UR这种可以直接变成statement credit的都在贬值. 因为你不当场用的话, 同样价值的钱你是可以拿去投资的. 
 2. *理性看到积分价值*. 积分换到的东西对你的价格不是官方标注的价格. 而是如果你没有积分你会为他出多少钱的价格. 网上的积分评估的想法是你一般真的是有现金的时候都会去用那些价格买东西. 所以不要全信. 
 对于机票来说, 他们的评估方法没太大问题(虽然还是有点上浮, 因为他们喜欢兑换商务舱). 机票定价几乎差不多而且需要机票的时候是刚需. 对于hotel来说就不一样了, 因为一个地区常常存在更便宜的hotel. 比如你可以用积分换个200美元的hotel. 但是你如果没有积分你会去住旁边的一个100美元的hotel. 那么你积分的价值并没有达到200美元, 换的积分的价值可能只有100美元. 
+3. *积分变现*. 对于消费类别不属于travel的人, 积分很难变现. 有各种黑色产业可以变现, 但要小心被封号.
 
 ## 旅行
 旅行的话值得学会用好积分. 能早早的plan好出行那是极好的.
@@ -265,8 +271,8 @@ $(w-b-\frac{1-b}{1-x})(1-x)(1+(k-1) (1-y')) + (kb)(1-x') + k(1-b)$. 这个是一
 
  - 我的主要航空公司为Delta和Alaska.
  - 如果有很好的获得其他航空公司的积分的deal应该去获得 (一般是开卡奖励). 
- - 国际旅行的话, 一般会用积分换取商务舱. 其他时间积分换取经济舱(或者直接现金买). 
- - Hotel只要有积分就能用掉就用掉. 
+ - 国际旅行的话, 如果比较值就会用积分换取商务舱. 其他时间积分换取经济舱(或者直接现金买). 
+ - Hotel要有积分就能用掉就用掉. 
  
 ## 餐馆
 
@@ -275,7 +281,7 @@ $(w-b-\frac{1-b}{1-x})(1-x)(1+(k-1) (1-y')) + (kb)(1-x') + k(1-b)$. 这个是一
 ### 我的组合
 
 1. 先选餐馆 (这一步不要看任何deals).
-2. 用Seated或者Opentable订位, 如果可能的话. Seated[^seated]给你不少的返现(可以换成gift cards), 但是只在几个小城市里有用. [Opentable](https://www.opentable.com/)定也有返现.
+2. 用Seated或者Opentable订位, 如果可能的话. Seated[^seated]给你不少的返现(可以换成gift cards), 但是只在几个大城市里有用. [Opentable](https://www.opentable.com/)订位也有返现.
 3. 用[Alaska dining rewards](https://mileageplan.rewardsnetwork.com), 因为他们的miles最为值钱.
 4. 看Groupon[^groupon]或Restaurant.com[^restaurant]有没有可以用的*优惠劵*. 这个你要好好的看好那个优惠券的要求, 不然会被反薅. 
 
@@ -287,12 +293,12 @@ $(w-b-\frac{1-b}{1-x})(1-x)(1+(k-1) (1-y')) + (kb)(1-x') + k(1-b)$. 这个是一
 # 风险
 
 一切都是风险. 任何对身体有损伤的事情都会获得经济风险. 当然风险一般对应的是高回报.
-我来描述一些高风险的一般人不认为是投资的类型的事情.
+这里描述一些高风险的而且一般人不认为是投资的类型的事情.
 
  - 危险的爱好: 有的爱好更容易受伤. 比如攀岩, 滑雪. 很容易让自己几星期不能工作. 更危险的东西还会致死. 
  - 结婚: 结婚可能会有很大的税务优惠, 但收入差不多的两个高收入人, 会存在很大的[marriage penalty](https://en.wikipedia.org/wiki/Marriage_penalty). 
- - 离婚: 离婚是非常强的彻底摧毁一个人经济的方法. 特别是两个人中一方是高收入低支出但是另一方是低收入高支出. 很多州会要求钱50/50分. 为此可能导致低价卖掉房产. 有的州还要保证离婚的一方能保证自己正常的生活质量, 导致更有钱的一方会付alimony. 有小孩然后小孩判给了对方, 还要付常常比你自己会在那个小孩身上花的钱多很多child support. 这样离婚之后自己的收入都会大大的减少.
- - 孩子: 为了自己的孩子很多家长会付超级多的钱因为想让孩子获得最好的. 
+ - 离婚: 离婚是非常强的彻底摧毁一个人经济的方法. 不少中产瞬间降低生活质量的事件. 特别是两个人中一方是高收入低支出但是另一方是低收入高支出. 很多州会要求钱50/50分. 为此可能导致低价卖掉房产. 有的州还要保证离婚的一方能保证自己正常的生活质量, 导致更有钱的一方会付alimony. 有小孩然后小孩判给了对方, 还要付常常比你自己会在那个小孩身上花的钱多很多child support. 这样离婚之后自己的收入都会大大的减少.
+ - 孩子: 为了自己的孩子很多家长会付超级多的钱因为想让孩子获得最好的. 特别是习惯内卷的东亚人士, 小孩身上的花费非常可怕. 
  - 灾: 比如房子被火烧了这种. 大多的房子是自己的最大财产. 一次性就消失了.
 
 我不是说因此人就不要做危险的运动结婚小孩买房了.
@@ -307,8 +313,7 @@ $(w-b-\frac{1-b}{1-x})(1-x)(1+(k-1) (1-y')) + (kb)(1-x') + k(1-b)$. 这个是一
 你不可能一切都自己做, 虽然自己做可能更便宜.
 用律师, 一定要用律师在失败后果非常大的事情上 [^imm].
 用会计, 如果你的税务问题比turbotax[^turbotax]上能搞定的要复杂.
-专业人士懂得比你多, 但是他们的incentive是为自己赚钱. 
-都应该货比三家. 常常第一次的consultation是免费的. 
+专业人士懂得比你多, 但是他们的incentive是为自己赚钱, 所以应该货比三家. 常常第一次的consultation是免费的. 
 
 
 [^chasefreedomunlimited]: [Use this referral link for chase freedom unlimited](https://www.referyourchasecard.com/18/KRE9M4JY2C). Earn 3% cash back on all purchases in your first year up to $20,000 spent. After that, earn 1.5% cash back on all purchases.
@@ -316,6 +321,7 @@ $(w-b-\frac{1-b}{1-x})(1-x)(1+(k-1) (1-y')) + (kb)(1-x') + k(1-b)$. 这个是一
 [^seated]: [Use this referral link for Seated](https://seated.app.link/j3FZwlVB1Y) and the code `CHAO19` to obtain extra \$5 dollars on your first reservation.
 [^groupon]: Please [use this referral link for Groupon](https://www.groupon.com/visitor_referral/h/7a8e66c7-d3fa-467d-88c0-cb2fa0aa6384). I get \$10 and you don't get anything though.
 [^restaurant]: Please [use this referral link for Restaurant.com](https://www.restaurant.com/referfriends/ReferredBy?refextid=f43f5fa8&prti=5157&ext=em_raf). I get \$10 gift card, you don't get anything though.
+[^raise]: [Use this link to obtain \$5 when you join Raise](https://www.raise.com/raise-rewards/8179).
 [^rakuten]: Please [use this referral link for Rakuten](https://www.rakuten.com/r/MGCCLX?eeid=28187) and get extra \$10.
 [^checking]: [SoFi Money](https://www.sofi.com/share/money/2627476/) is a checking account with a very high APR for a checking account. Use my referral link and we both get \$50 after deposit of \$100. (You have to be a US person!) However, it is a Internet bank. If you really need physical services, I was using [chase total checking](https://accounts.chase.com/raf/share/2297938276).
 [^savings]: For savings, find whatever offers the highest APR. Currently [Wealthfront](https://wlth.fr/2hp96Gw) has a pretty good offer.

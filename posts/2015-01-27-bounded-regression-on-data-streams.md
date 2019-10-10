@@ -59,6 +59,7 @@ Here is what we know.
 1. $L_1$ error: This post shows it can be solved in $O(n\log n)$ time using the min-cost circulation formulation. It matches the running time of specialized algorithms.
 2. $L_2$ error: It can be solved in $O(n)$ time, but doesn't come from the quadratic cost min-cost circulation formulation. 
 3. $L_\infty$ error: It can be solved in $O(n)$ time. However, it doesn't come from the minimax circulation problem. (In the minimax circulation, the cost is the largest edge cost incurred by the circulation).
+4. $L_0$ error: It can be solved in $O(n\log n)$ time. This is equivalent to the longest non-decreasing subsequence problem. 
 
 This prompt the following two natural problems: 
 
