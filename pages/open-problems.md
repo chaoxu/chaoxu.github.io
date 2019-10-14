@@ -16,7 +16,7 @@ Here are some problems that are either open to the best of my knowledge, or aske
   \frac{\sum_{i=1}^n a_{\pi(i)}a_{\pi(i+1)}}{\sum_{i=1}^n b_{\pi(i)}b_{\pi(i+1)}}
   \]
   is minimized, where we define $\pi(n+1)=\pi(1)$.
-  Is this problem NP-hard? Can we find approximation algorithm for this? 
+  Is this problem NP-hard? Can we find an approximation algorithm for this? 
 :::
 Motivation: One want to permute the axis of a radar chart to maximize the ratio of the areas of two data sets.
 

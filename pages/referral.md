@@ -8,7 +8,8 @@ Here are useful referral links. Some has descriptions.
   - [Chase Freedom](https://www.referyourchasecard.com/2a/XDCUJDEKPJ)
   - [Chase Freedom Unlimited](https://www.referyourchasecard.com/18/KRE9M4JY2C). Earn 3% cash back on all purchases in your first year up to $20,000 spent. After that, earn 1.5% cash back on all purchases.
   - [American Express Gold](http://refer.amex.us/CHAOXYETv?XLINK=MYCP)
-  - [American Express Platinum](http://refer.amex.us/CHAOXPqSn?XLINK=MYCP)
+  - [American Express Platinum](http://refer.amex.us/CHAOXPqSn?XLINK=MYCP) Use this link, and then you can apply any american express cards.
+
 - Bank
   - [Chase Total Checking](https://accounts.chase.com/raf/share/2297938276)
   - [SoFi Money](https://www.sofi.com/share/money/2627476/). You and I both get $50 for you putting in $100. 
@@ -31,5 +32,6 @@ Here are useful referral links. Some has descriptions.
   - [Wealthfront](https://wlth.fr/2hp96Gw) to obtain \$15000 managed free.
   - [Rakuten](https://www.rakuten.com/r/MGCCLX?eeid=28187) and get extra \$10.
   - [Giving Assistant](https://givingassistant.org/?rid=m0xQN7mkws) we both get \$5.
+  - [Grubhub](https://www.grubhub.com/referral/0be831e6-487f-11e4-9697-9cb654858910)
 
 

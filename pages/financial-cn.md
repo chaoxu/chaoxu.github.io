@@ -246,6 +246,7 @@ $(w-b-\frac{1-b}{1-x})(1-x)(1+(k-1) (1-y')) + (kb)(1-x') + k(1-b)$. 这个是一
 ## 返现
 你买的不少东西都有返现的机会. 其中一些和你的信用卡或者航空公司有关. 应该先去[Cashback Monitor](https://www.cashbackmonitor.com/)上有没有返现. 也可以去自己的有offer的portals看看有没有offer.
 Gift Cards有的能在Raise上便宜的买到. 而Raise本身也有返现可以用 [^raise].
+注意不少有referral的service, 用referral可以赚钱. 而且可能获得extra money如果去看看[Signups For Pay](https://www.reddit.com/r/signupsforpay/).
 
 ### 我的组合
 
