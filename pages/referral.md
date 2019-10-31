@@ -20,7 +20,12 @@ Here are useful referral links. Some has descriptions.
   - [M1 Finance](https://mbsy.co/zBs8G) get \$10 for free.
   - [Webull](https://act.webull.com/promotion/invitation/share.html?inviteCode=aLAjUEefqsHf) get a free stock.
   - [Robinhood](https://invite.robinhood.com/chaox29) get a free stock.
-  - [Coinbase](https://www.coinbase.com/join/xu_2ga) get \$10 when you trade \$100.
+  - Crypto
+    - [Coinbase](https://www.coinbase.com/join/xu_2ga) get \$10 when you trade \$100.
+    - [eToro](https://etoro.tw/36290vI) get \$50 when you deposit $50
+    - [Voyager](https://go.onelink.me/4gTR/referral?af_sub5=2IVZK6). Download the app and trade $100 to get $25 of free Bitcoin. Use code `2IVZK6`.
+    - [Abra](https://invite.abra.com/UNrByPvi70). Use my link to sign up and get $25 in free bitcoin after your first Bank/Amex deposit(\$5 minimum), or 1.5% cash back when you exchange cryptos.
+
 - Other
   - [Mint Mobile](http://fbuy.me/nVuJX) get \$15 off renewal.
   - [Personal Capital](https://share.personalcapital.com/x/62x35X) to get \$20 dollars. 
@@ -33,5 +38,6 @@ Here are useful referral links. Some has descriptions.
   - [Rakuten](https://www.rakuten.com/r/MGCCLX?eeid=28187) and get extra \$10.
   - [Giving Assistant](https://givingassistant.org/?rid=m0xQN7mkws) we both get \$5.
   - [Grubhub](https://www.grubhub.com/referral/0be831e6-487f-11e4-9697-9cb654858910)
+  - [Dosh](https://link.dosh.cash/CHAOX1) get \$1 for verifying your credit card (but you can only take out money when you reach \$25)
 
 
