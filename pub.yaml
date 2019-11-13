@@ -107,13 +107,13 @@ abstract: >
 id: hypergraph-k-cut
 show: [d,p]
 title: Hypergraph $k$-Cut in Randomized Polynomial Time
-authors: [Karthekeyan Chandrasekaran, Xilin Yu, Chao Xu]
+authors: [Karthekeyan Chandrasekaran, Chao Xu, Xilin Yu]
 type: conference
 pub: SODA
 year: 2018
-selected: true
+selected: false
 notes:
-  - Journal version under submission.
+  - The [journal version](#hypergraph-k-cut-journal) was serialized in Mathematical Programming. 
 abstract: >
     In the hypergraph $k$-cut problem, the input is a hypergraph, and the goal is to find a smallest subset of hyperedges whose removal ensures that the remaining hypergraph has at least $k$ connected components. This problem is known to be at least as hard as the densest $k$-subgraph problem when k is part of the input ([Chekuri-Li, 2015](http://chekuri.cs.illinois.edu/papers/hypergraph-kcut.pdf)). We present a randomized polynomial time algorithm to solve the hypergraph $k$-cut problem for constant $k$.
 
@@ -198,8 +198,35 @@ year: 2015
 dedication: Dedicated with thanks to our colleague [Ferran Hurtado](http://dccg.upc.edu/people/ferran/) (1951–2014).
 abstract: A closed curve in the plane is weakly simple if it is the limit (in the Fréchet metric) of a sequence of simple closed curves. We describe an algorithm to determine whether a closed walk of length n in a simple plane graph is weakly simple in $O(n \log n)$ time, improving an earlier $O(n^3)$-time algorithm of [Cortese et al.](http://www.sciencedirect.com/science/article/pii/S0012365X07010680). As an immediate corollary, we obtain the first efficient algorithm to determine whether an arbitrary n-vertex polygon is weakly simple; our algorithm runs in $O(n^2 \log n)$ time. We also describe algorithms that detect weak simplicity in $O(n \log n)$ time for two interesting classes of polygons. Finally, we discuss subtle errors in several previously published definitions of weak simplicity.
 
-
+---
 # journal publications
+id: hypergraph-k-cut-journal
+show: [d,p]
+title: Hypergraph $k$-Cut in Randomized Polynomial Time
+authors: [Karthekeyan Chandrasekaran, Chao Xu, Xilin Yu]
+type: journal
+pub: MP
+year: 2019
+selected: true
+notes:
+  - An [extended abstract](#hypergraph-k-cut) of this work appeared in SODA 2018.
+abstract: >
+    For a fixed integer $k\geq 2$, the hypergraph $k$-cut problem asks for a smallest subset 
+    of hyperedges whose removal leads to at least $k$ connected components in the remaining 
+    hypergraph. While graph $k$-cut is solvable efficiently (Goldschmidt and Hochbaum in Math. 
+    Oper. Res. 19(1):24–37, 1994), the complexity of hypergraph $k$-cut has been open. In this 
+    work, we present a randomized polynomial time algorithm to solve the hypergraph $k$-cut 
+    problem. Our algorithmic technique extends to solve the more general hedge $k$-cut problem 
+    when the subgraph induced by every hedge has a constant number of connected components. 
+    Our algorithm is based on random contractions akin to Karger’s min cut algorithm. 
+    Our main technical contribution is a non-uniform distribution over the hedges (hyperedges) 
+    so that random contraction of hedges (hyperedges) chosen from the distribution succeeds in 
+    returning an optimum solution with large probability. In addition, we present an alternative 
+    contraction based randomized polynomial time approximation scheme for hedge $k$-cut in arbitrary 
+    hedgegraphs (i.e., hedgegraphs whose hedges could have a large number of connected components).
+    Our algorithm and analysis also lead to bounds on the number of optimal solutions to the 
+    respective problems.
+
 ---
 id: subset-sum-journal
 title: Faster Pseudopolynomial Time Algorithms for Subset Sum

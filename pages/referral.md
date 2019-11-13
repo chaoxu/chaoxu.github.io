@@ -25,9 +25,13 @@ Here are useful referral links. Some has descriptions.
     - [eToro](https://etoro.tw/36290vI) get \$50 when you deposit $50
     - [Voyager](https://go.onelink.me/4gTR/referral?af_sub5=2IVZK6). Download the app and trade $100 to get $25 of free Bitcoin. Use code `2IVZK6`.
     - [Abra](https://invite.abra.com/UNrByPvi70). Use my link to sign up and get $25 in free bitcoin after your first Bank/Amex deposit(\$5 minimum), or 1.5% cash back when you exchange cryptos.
-
+- Cashback
+  - [Rakuten](https://www.rakuten.com/r/MGCCLX?eeid=28187) and get extra \$10.
+  - [TopCashBack](https://www.topcashback.com/ref/member714586458114) we both get \$10.
+  - [Giving Assistant](https://givingassistant.org/?rid=m0xQN7mkws) we both get \$5.
 - Other
   - [Mint Mobile](http://fbuy.me/nVuJX) get \$15 off renewal.
+  - [Xoom](https://refer.xoom.com/s/thechaoxu) earn \$25 if you do a international transfer of \$50 after you register.
   - [Personal Capital](https://share.personalcapital.com/x/62x35X) to get \$20 dollars. 
   - [Seated](https://seated.app.link/j3FZwlVB1Y) and the code `CHAO19` to obtain extra \$5 dollars on your first reservation.
   - [Groupon](https://www.groupon.com/visitor_referral/h/7a8e66c7-d3fa-467d-88c0-cb2fa0aa6384) I get \$10 and you don't get anything though.
@@ -35,9 +39,8 @@ Here are useful referral links. Some has descriptions.
   - [Restaurant.com](https://www.restaurant.com/referfriends/ReferredBy?refextid=f43f5fa8&prti=5157&ext=em_raf) I get \$10 gift card, you don't get anything though.
   - [Raise](https://www.raise.com/raise-rewards/8179) get \$5 when you join Raise.
   - [Wealthfront](https://wlth.fr/2hp96Gw) to obtain \$15000 managed free.
-  - [Rakuten](https://www.rakuten.com/r/MGCCLX?eeid=28187) and get extra \$10.
-  - [Giving Assistant](https://givingassistant.org/?rid=m0xQN7mkws) we both get \$5.
   - [Grubhub](https://www.grubhub.com/referral/0be831e6-487f-11e4-9697-9cb654858910)
   - [Dosh](https://link.dosh.cash/CHAOX1) get \$1 for verifying your credit card (but you can only take out money when you reach \$25)
+  - Freebird referral code `c39ff`. You and I both get \$10
 
 
