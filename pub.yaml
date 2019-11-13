@@ -111,7 +111,6 @@ authors: [Karthekeyan Chandrasekaran, Chao Xu, Xilin Yu]
 type: conference
 pub: SODA
 year: 2018
-selected: false
 notes:
   - The [journal version](#hypergraph-k-cut-journal) was serialized in Mathematical Programming. 
 abstract: >
