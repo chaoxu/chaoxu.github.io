@@ -13,7 +13,7 @@
     <link>https://chaoxuprime.com/posts/2019-11-27-bounds-on-cuts.html</link>
     <description><![CDATA[<br />
 <div>
-<p>Recently there are some advances on counting number of min-cut in graphs.</p>
+<p>Recently there are some advances on counting the number of min-cut in graphs.</p>
 <p>Consider we have an undirected graph <span class="math inline">G=(V,E)</span> of <span class="math inline">n</span> vertices, and there are <em>positive</em> cost <span class="math inline">c:E\to \R^+</span> on the edges. We define <span class="math inline">c(F)=\sum_{e\in F}c(e)</span>, to be the cost (value) of <span class="math inline">F\subset E</span>.</p>
 <p>Let <span class="math inline">\mathcal{P}</span> be a partition of <span class="math inline">V</span> where each partition class is non-empty. We define <span class="math inline">E(\mathcal{P})</span> to be the set of edges with end points in two different partition classes. A set of edges <span class="math inline">F</span> is called a <em><span class="math inline">k</span>-cut</em>, if <span class="math inline">F=E(\mathcal{P})</span> for some <span class="math inline">\mathcal{P}</span> such that <span class="math inline">|\mathcal{P}|\geq k</span>.</p>
 <p>We stress that by this definition, a <span class="math inline">k</span>-cut is a <span class="math inline">k-1</span>-cut. A <em>cut</em> is a <span class="math inline">2</span>-cut. A min-<span class="math inline">k</span>-cut is a <span class="math inline">k</span>-cut of minimum value (cost). We let <span class="math inline">\lambda_k</span> to denote the value of the min-<span class="math inline">k</span>-cut.</p>
@@ -107,16 +107,17 @@
 <p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c_\mu(F) &lt; \alpha \lambda_{\mu,k}</span> for some <span class="math inline">c_\mu\geq 0</span> is <span class="math inline">O(n^{\ceil{\alpha k}+d-2})</span>.</p>
 </div>
 <h1 id="projected-cut-bounds"><span class="header-section-number">4</span> Projected cut bounds</h1>
-<p>Let <span class="math inline">\tau_e</span> be the minimum over all <span class="math inline">c(F)</span>, where <span class="math inline">F</span> is a cut containing <span class="math inline">e</span>. Fung et. al. showed a projected generalization of the cut counting bound <span class="citation" data-cites="FungHHP19">[<a href="#ref-FungHHP19" role="doc-biblioref">8</a>]</span>. Here I state a nicer form that appeared in <a href="https://www.win.tue.nl/~nikhil/courses/2013/2WO08/Nick-sparsification.pdf">Harvey’s lecture notes on sparsification</a>.</p>
+<p>Let <span class="math inline">\tau_e = \min_{U:e\in \delta(U)}c(\delta(U))</span>. Fung et. al. showed a projected generalization of the cut counting bound <span class="citation" data-cites="FungHHP19">[<a href="#ref-FungHHP19" role="doc-biblioref">8</a>]</span>. Here I state a nicer form that appeared in <a href="https://www.win.tue.nl/~nikhil/courses/2013/2WO08/Nick-sparsification.pdf">Harvey’s lecture notes on sparsification</a>.</p>
 <div class="theorem-environment Theorem" data-index="17" type="Theorem">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">17</span></span>
-<p>Let <span class="math inline">B\subset E</span>, and <span class="math inline">\tau_B = \min_{e\in B} \tau_e</span>, the number of sets of the form <span class="math inline">F\cap B</span> where <span class="math inline">c(F)\leq \alpha \tau_B</span> is <span class="math inline">O(n^{2\alpha})</span>.</p>
+<p>Let <span class="math inline">B\subset E</span>, and <span class="math inline">\tau_B = \min_{e\in B} \tau_e</span>, the number of sets of the form <span class="math inline">F\cap B</span> where <span class="math inline">F</span> is a cut such that <span class="math inline">c(F)\leq \alpha \tau_B</span> is <span class="math inline">O(n^{2\alpha})</span>.</p>
 </div>
+<p>If we let <span class="math inline">B=E</span>, this is precisely the approximate cut counting bound.</p>
 <p>We can of course ask if all our theorem can be applied to projected cuts. We don’t even know if it extends to <span class="math inline">k</span>-cuts. However, we can expect the following ultimate conjecture.</p>
 <p>Let <span class="math inline">\tau_{\mu,k,e}</span> be the minimum over all <span class="math inline">c_{\mu}(F)</span>, where <span class="math inline">F</span> is a <span class="math inline">k</span>-cut containing <span class="math inline">e</span>. Let <span class="math inline">\tau_{\mu,k,B} = \min_{e\in B} \tau_{\mu,k,e}</span>.</p>
 <div class="theorem-environment Conjecture" data-index="18" type="Conjecture">
 <span class="theorem-header"><span class="type">Conjecture</span><span class="index">18</span></span>
-<p>Let <span class="math inline">B\subset E</span>, the number of sets of the form <span class="math inline">F\cap B</span> where <span class="math inline">c_{\mu}(F)&lt; \alpha \tau_{\mu,k,B}</span> for some <span class="math inline">c_\mu\geq 0</span> is <span class="math inline">O(n^{\ceil{\alpha k}+d-2})</span>.</p>
+<p>Let <span class="math inline">B\subset E</span>, the number of sets of the form <span class="math inline">F\cap B</span> where <span class="math inline">F</span> is a cut such that <span class="math inline">c_{\mu}(F)&lt; \alpha \tau_{\mu,k,B}</span> for some <span class="math inline">c_\mu\geq 0</span> is <span class="math inline">O(n^{\ceil{\alpha k}+d-2})</span>.</p>
 </div>
 <h1 id="bibliography" class="unnumbered">References</h1>
 <div id="refs" class="references" role="doc-bibliography">
