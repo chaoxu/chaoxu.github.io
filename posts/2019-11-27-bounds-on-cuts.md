@@ -3,7 +3,7 @@ title: Bounds on number of cuts
 tags: Graph Theory
 ---
 
-Recently there are some advances on counting number of min-cut in graphs.
+Recently there are some advances on counting the number of min-cut in graphs.
 
 Consider we have an undirected graph $G=(V,E)$ of $n$ vertices, and there are _positive_ cost $c:E\to \R^+$ on the edges. We define $c(F)=\sum_{e\in F}c(e)$, to be the cost (value) of $F\subset E$. 
 
@@ -162,13 +162,15 @@ The following would be even stronger conjecture.
 
 # Projected cut bounds
 
-Let $\tau_e$ be the minimum over all $c(F)$, where $F$ is a cut containing $e$. Fung et. al. showed a projected generalization of the cut counting bound [@FungHHP19]. Here I state a nicer form that appeared in [Harvey's lecture notes on sparsification](https://www.win.tue.nl/~nikhil/courses/2013/2WO08/Nick-sparsification.pdf).
+Let $\tau_e = \min_{U:e\in \delta(U)}c(\delta(U))$. Fung et. al. showed a projected generalization of the cut counting bound [@FungHHP19]. Here I state a nicer form that appeared in [Harvey's lecture notes on sparsification](https://www.win.tue.nl/~nikhil/courses/2013/2WO08/Nick-sparsification.pdf).
 
 ::: Theorem
   
-  Let $B\subset E$, and $\tau_B = \min_{e\in B} \tau_e$, the number of sets of the form $F\cap B$ where $c(F)\leq \alpha \tau_B$ is $O(n^{2\alpha})$.
+  Let $B\subset E$, and $\tau_B = \min_{e\in B} \tau_e$, the number of sets of the form $F\cap B$ where $F$ is a cut such that $c(F)\leq \alpha \tau_B$ is $O(n^{2\alpha})$.
 
 :::
+
+If we let $B=E$, this is precisely the approximate cut counting bound. 
 
 We can of course ask if all our theorem can be applied to projected cuts. We don't even know if it extends to $k$-cuts. However, we can expect the following ultimate conjecture.
 
@@ -177,6 +179,6 @@ Let $\tau_{\mu,k,B} = \min_{e\in B} \tau_{\mu,k,e}$.
 
 ::: Conjecture
   
-  Let $B\subset E$, the number of sets of the form $F\cap B$ where $c_{\mu}(F)< \alpha \tau_{\mu,k,B}$ for some $c_\mu\geq 0$ is $O(n^{\ceil{\alpha k}+d-2})$.
+  Let $B\subset E$, the number of sets of the form $F\cap B$ where $F$ is a cut such that $c_{\mu}(F)< \alpha \tau_{\mu,k,B}$ for some $c_\mu\geq 0$ is $O(n^{\ceil{\alpha k}+d-2})$.
 
 :::
