@@ -162,23 +162,23 @@ The following would be even stronger conjecture.
 
 # Projected cut bounds
 
-Let $\tau_e = \min_{U:e\in \delta(U)}c(\delta(U))$. Fung et. al. showed a projected generalization of the cut counting bound [@FungHHP19]. Here I state a nicer form that appeared in [Harvey's lecture notes on sparsification](https://www.win.tue.nl/~nikhil/courses/2013/2WO08/Nick-sparsification.pdf).
+Let $\tau_e = \min_{U:e\in \delta(U)}c(\delta(U))$. Fung et. al. showed a projected generalization of the cut counting bound [@FungHHP19]. Let $E_\lambda = \set{ e | \tau_e \geq x }$.
 
 ::: Theorem
   
-  Let $B\subset E$, and $\tau_B = \min_{e\in B} \tau_e$, the number of sets of the form $F\cap B$ where $F$ is a cut such that $c(F)\leq \alpha \tau_B$ is $O(n^{2\alpha})$.
+  The number of sets of the form $F\cap E_\lambda$ where $F$ is a cut such that $c(F)\leq \alpha \lambda$ is $O(n^{2\alpha})$.
 
 :::
 
-If we let $B=E$, this is precisely the approximate cut counting bound. 
+If we let $\lambda$ be the min-cut value, this is precisely the approximate cut counting bound. 
 
 We can of course ask if all our theorem can be applied to projected cuts. We don't even know if it extends to $k$-cuts. However, we can expect the following ultimate conjecture.
 
 Let $\tau_{\mu,k,e}$ be the minimum over all $c_{\mu}(F)$, where $F$ is a $k$-cut containing $e$. 
-Let $\tau_{\mu,k,B} = \min_{e\in B} \tau_{\mu,k,e}$.
+Let $E_{\mu,k,\lambda} = \set{e | \tau_{\mu,k,e} \geq \lambda}$.
 
 ::: Conjecture
   
-  Let $B\subset E$, the number of sets of the form $F\cap B$ where $F$ is a cut such that $c_{\mu}(F)< \alpha \tau_{\mu,k,B}$ for some $c_\mu\geq 0$ is $O(n^{\ceil{\alpha k}+d-2})$.
+  The number of sets of the form $F\cap E_{\mu,k,\lambda}$ where $F$ is a cut such that $c_{\mu}(F)< \alpha \lambda$ for some $c_\mu\geq 0$ is $O(n^{\ceil{\alpha k}+d-2})$.
 
 :::
