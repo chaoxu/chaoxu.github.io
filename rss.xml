@@ -107,17 +107,17 @@
 <p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c_\mu(F) &lt; \alpha \lambda_{\mu,k}</span> for some <span class="math inline">c_\mu\geq 0</span> is <span class="math inline">O(n^{\ceil{\alpha k}+d-2})</span>.</p>
 </div>
 <h1 id="projected-cut-bounds"><span class="header-section-number">4</span> Projected cut bounds</h1>
-<p>Let <span class="math inline">\tau_e = \min_{U:e\in \delta(U)}c(\delta(U))</span>. Fung et. al. showed a projected generalization of the cut counting bound <span class="citation" data-cites="FungHHP19">[<a href="#ref-FungHHP19" role="doc-biblioref">8</a>]</span>. Here I state a nicer form that appeared in <a href="https://www.win.tue.nl/~nikhil/courses/2013/2WO08/Nick-sparsification.pdf">Harvey’s lecture notes on sparsification</a>.</p>
+<p>Let <span class="math inline">\tau_e = \min_{U:e\in \delta(U)}c(\delta(U))</span>. Fung et. al. showed a projected generalization of the cut counting bound <span class="citation" data-cites="FungHHP19">[<a href="#ref-FungHHP19" role="doc-biblioref">8</a>]</span>. Let <span class="math inline">E_\lambda = \set{ e | \tau_e \geq x }</span>.</p>
 <div class="theorem-environment Theorem" data-index="17" type="Theorem">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">17</span></span>
-<p>Let <span class="math inline">B\subset E</span>, and <span class="math inline">\tau_B = \min_{e\in B} \tau_e</span>, the number of sets of the form <span class="math inline">F\cap B</span> where <span class="math inline">F</span> is a cut such that <span class="math inline">c(F)\leq \alpha \tau_B</span> is <span class="math inline">O(n^{2\alpha})</span>.</p>
+<p>The number of sets of the form <span class="math inline">F\cap E_\lambda</span> where <span class="math inline">F</span> is a cut such that <span class="math inline">c(F)\leq \alpha \lambda</span> is <span class="math inline">O(n^{2\alpha})</span>.</p>
 </div>
-<p>If we let <span class="math inline">B=E</span>, this is precisely the approximate cut counting bound.</p>
+<p>If we let <span class="math inline">\lambda</span> be the min-cut value, this is precisely the approximate cut counting bound.</p>
 <p>We can of course ask if all our theorem can be applied to projected cuts. We don’t even know if it extends to <span class="math inline">k</span>-cuts. However, we can expect the following ultimate conjecture.</p>
-<p>Let <span class="math inline">\tau_{\mu,k,e}</span> be the minimum over all <span class="math inline">c_{\mu}(F)</span>, where <span class="math inline">F</span> is a <span class="math inline">k</span>-cut containing <span class="math inline">e</span>. Let <span class="math inline">\tau_{\mu,k,B} = \min_{e\in B} \tau_{\mu,k,e}</span>.</p>
+<p>Let <span class="math inline">\tau_{\mu,k,e}</span> be the minimum over all <span class="math inline">c_{\mu}(F)</span>, where <span class="math inline">F</span> is a <span class="math inline">k</span>-cut containing <span class="math inline">e</span>. Let <span class="math inline">E_{\mu,k,\lambda} = \set{e | \tau_{\mu,k,e} \geq \lambda}</span>.</p>
 <div class="theorem-environment Conjecture" data-index="18" type="Conjecture">
 <span class="theorem-header"><span class="type">Conjecture</span><span class="index">18</span></span>
-<p>Let <span class="math inline">B\subset E</span>, the number of sets of the form <span class="math inline">F\cap B</span> where <span class="math inline">F</span> is a cut such that <span class="math inline">c_{\mu}(F)&lt; \alpha \tau_{\mu,k,B}</span> for some <span class="math inline">c_\mu\geq 0</span> is <span class="math inline">O(n^{\ceil{\alpha k}+d-2})</span>.</p>
+<p>The number of sets of the form <span class="math inline">F\cap E_{\mu,k,\lambda}</span> where <span class="math inline">F</span> is a cut such that <span class="math inline">c_{\mu}(F)&lt; \alpha \lambda</span> for some <span class="math inline">c_\mu\geq 0</span> is <span class="math inline">O(n^{\ceil{\alpha k}+d-2})</span>.</p>
 </div>
 <h1 id="bibliography" class="unnumbered">References</h1>
 <div id="refs" class="references" role="doc-bibliography">
