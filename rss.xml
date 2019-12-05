@@ -7,8 +7,154 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxuprime.com/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Thu, 19 Sep 2019 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Wed, 27 Nov 2019 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Bounds on number of cuts</title>
+    <link>https://chaoxuprime.com/posts/2019-11-27-bounds-on-cuts.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>Recently there are some advances on counting number of min-cut in graphs.</p>
+<p>Consider we have an undirected graph <span class="math inline">G=(V,E)</span> of <span class="math inline">n</span> vertices, and there are <em>positive</em> cost <span class="math inline">c:E\to \R^+</span> on the edges. We define <span class="math inline">c(F)=\sum_{e\in F}c(e)</span>, to be the cost (value) of <span class="math inline">F\subset E</span>.</p>
+<p>Let <span class="math inline">\mathcal{P}</span> be a partition of <span class="math inline">V</span> where each partition class is non-empty. We define <span class="math inline">E(\mathcal{P})</span> to be the set of edges with end points in two different partition classes. A set of edges <span class="math inline">F</span> is called a <em><span class="math inline">k</span>-cut</em>, if <span class="math inline">F=E(\mathcal{P})</span> for some <span class="math inline">\mathcal{P}</span> such that <span class="math inline">|\mathcal{P}|\geq k</span>.</p>
+<p>We stress that by this definition, a <span class="math inline">k</span>-cut is a <span class="math inline">k-1</span>-cut. A <em>cut</em> is a <span class="math inline">2</span>-cut. A min-<span class="math inline">k</span>-cut is a <span class="math inline">k</span>-cut of minimum value (cost). We let <span class="math inline">\lambda_k</span> to denote the value of the min-<span class="math inline">k</span>-cut.</p>
+<p>It is well known that the number of min-cuts in a graph is <span class="math inline">{n\choose 2} = O(n^2)</span>. <span class="citation" data-cites="KargerS96">[<a href="#ref-KargerS96" role="doc-biblioref">1</a>]</span></p>
+<p>In the entire article, unless specifically stated, we assume <span class="math inline">k</span> is a fixed integer at least <span class="math inline">2</span>, and <span class="math inline">\alpha</span> is a fixed value at least <span class="math inline">1</span>.</p>
+<p>We can express the state alternatively.</p>
+<div class="theorem-environment Theorem" data-index="1" type="Theorem">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">1</span></span>
+<p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c(F)\leq \lambda_2</span> is <span class="math inline">O(n^2)</span>.</p>
+</div>
+<h1 id="bounds-related-to-scaling-of-the-min-cut"><span class="header-section-number">1</span> Bounds related to scaling of the min-cut</h1>
+<p>What happens when we want to know about the number of cuts with value at most <span class="math inline">\alpha \lambda_2</span>?</p>
+<p>By simply analyzing Karger’s algorithm, one can obtain the following.</p>
+<div class="theorem-environment Theorem" data-index="2" type="Theorem">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">2</span></span>
+<p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c(F)\leq \alpha \lambda_2</span> is <span class="math inline">O(n^{2\alpha})</span>.</p>
+</div>
+<p>With more careful analysis using tree packing, Karger obtained the following <span class="citation" data-cites="Karger00">[<a href="#ref-Karger00" role="doc-biblioref">2</a>]</span>.</p>
+<div class="theorem-environment Theorem" data-index="3" type="Theorem">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">3</span></span>
+<p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c(F)\leq \alpha \lambda_2</span> is <span class="math inline">O(n^{\floor{2\alpha}})</span>.</p>
+</div>
+<p>Indeed, we do have a lower bound of <span class="math inline">{n \choose \floor{2\alpha}}</span>. Just consider an unweighted cycle, where min-cut has value <span class="math inline">2</span>. We can pick any <span class="math inline">\floor{2\alpha}</span> edges, which forms a cut of value at most <span class="math inline">\alpha</span> times the min-cut.</p>
+<p>Note that we require <span class="math inline">\alpha</span> to a fixed value. This is because there is a dependency on <span class="math inline">\alpha</span> hidden inside the big <span class="math inline">O</span>. Our lower bound is absolute and does not depending on <span class="math inline">\alpha</span> being fixed. It be interesting to obtain a matching upper bound. Hence we can consider the problem with strict inequality.</p>
+<div id="approxcutconjecture" class="theorem-environment Conjecture" data-index="4" type="Conjecture">
+<span class="theorem-header"><span class="type">Conjecture</span><span class="index">4</span></span>
+<p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c(F)&lt; \alpha \lambda_2</span> is <span class="math inline">O(n^{\ceil{2\alpha}-1})</span>.</p>
+</div>
+<p>Henzinger and Williamson showed the conjecture true for all <span class="math inline">\alpha\leq \frac{3}{2}</span> <span class="citation" data-cites="HenzingerW96">[<a href="#ref-HenzingerW96" role="doc-biblioref">3</a>]</span>.</p>
+<h1 id="bounds-related-to-min-k-cut"><span class="header-section-number">2</span> Bounds related to min-<span class="math inline">k</span>-cut</h1>
+<p>There are multiple ways to obtain the following theorem. For example, directly generalize Karger’s argument for cut counting.</p>
+<div class="theorem-environment Theorem" data-index="5" type="Theorem">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">5</span></span>
+<p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c(F)\leq \lambda_k</span> is <span class="math inline">O(n^{2(k-1)})</span>.</p>
+</div>
+<p>There were many attempts, and people can only obtain lower bounds of the form <span class="math inline">{n\choose k}</span>. Again, a cycle would be an example of such lower bound. The min-<span class="math inline">k</span>-cut has value <span class="math inline">k</span>, and can be obtained by picking any <span class="math inline">k</span> edges. The gap is pretty large. Hence one would tempt to conjecture the following.</p>
+<div id="kcutconjecture" class="theorem-environment Conjecture" data-index="6" type="Conjecture">
+<span class="theorem-header"><span class="type">Conjecture</span><span class="index">6</span></span>
+<p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c(F)\leq \lambda_k</span> is <span class="math inline">O(n^k)</span>.</p>
+</div>
+<p>Recently, Gupta, Lee and Li almost closes the gap <span class="citation" data-cites="GuptaLL19">[<a href="#ref-GuptaLL19" role="doc-biblioref">4</a>]</span>.</p>
+<div class="theorem-environment Theorem" data-index="7" type="Theorem">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">7</span></span>
+<p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c(F)\leq \lambda_k</span> is <span class="math inline">\hat{O}(n^k)</span>.</p>
+</div>
+<p>Here <span class="math inline">\hat{O}</span> hides a factor smaller than any <span class="math inline">n^\epsilon</span>. While closing the gap, they showed thhe following interesting theorem.</p>
+<div class="theorem-environment Theorem" data-index="8" type="Theorem">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">8</span></span>
+<p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c(F)\leq \frac{(2-\epsilon)\lambda_k}{k}</span> is <span class="math inline">O(n)</span>.</p>
+</div>
+<div class="theorem-environment Conjecture" data-index="9" type="Conjecture">
+<span class="theorem-header"><span class="type">Conjecture</span><span class="index">9</span></span>
+<p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c(F)&lt; \frac{2\lambda_k}{k}</span> is <span class="math inline">O(n)</span>.</p>
+</div>
+<p>Note this theorem is basically shows we can also obtain interesting results for <span class="math inline">\alpha = \frac{2-\epsilon}{k} &lt; 1</span>.</p>
+<p>How about approximate min-<span class="math inline">k</span>-cuts? Chekuri, Quanrud and I extended the tree packing analysis of Karger, and obtained the following result for <span class="math inline">k</span>-cuts <span class="citation" data-cites="ChekuriQX19">[<a href="#ref-ChekuriQX19" role="doc-biblioref">5</a>]</span>.</p>
+<div class="theorem-environment Theorem" data-index="10" type="Theorem">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">10</span></span>
+<p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c(F)\leq \alpha \lambda_k</span> is <span class="math inline">O(n^{\floor{\alpha 2(k-1)}})</span>.</p>
+</div>
+<p>Combining the <a href="#kcutconjecture" title="Conjecture 6">Conjecture 6</a> and <a href="#approxcutconjecture" title="Conjecture 4">Conjecture 4</a>, we get a unified conjecture, even for <span class="math inline">\alpha&lt;1</span>.</p>
+<div class="theorem-environment Conjecture" data-index="11" type="Conjecture">
+<span class="theorem-header"><span class="type">Conjecture</span><span class="index">11</span></span>
+<p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c(F)&lt; \alpha \lambda_k</span> is <span class="math inline">O(n^{\ceil{\alpha k}-1})</span>.</p>
+</div>
+<h1 id="bounds-on-parametric-cuts"><span class="header-section-number">3</span> Bounds on parametric cuts</h1>
+<p>Now, let’s consider parametric cuts. Consider we have <span class="math inline">d</span> weight functions <span class="math inline">c_1,\ldots,c_d:E\to \R_{\geq 0}</span>. Define <span class="math inline">c_\mu(e) = \sum_{i=1}^d \mu_i c_i(e)</span>. We interested in knowing about cuts <span class="math inline">F</span> such that <span class="math inline">c_\mu(F)</span> is bounded by <span class="math inline">\alpha \lambda_{\mu,k}</span>, where <span class="math inline">\lambda_{\mu,k}</span> is the min-<span class="math inline">k</span>-cut value when the cost function is <span class="math inline">c_\mu</span>.</p>
+<p>Karger showed the following <span class="citation" data-cites="Karger16">[<a href="#ref-Karger16" role="doc-biblioref">6</a>]</span>.</p>
+<div class="theorem-environment Theorem" data-index="12" type="Theorem">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">12</span></span>
+<p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c_\mu(F)\leq \lambda_{\mu,2}</span> for some <span class="math inline">\mu\in \R_{\geq 0}^d</span> is <span class="math inline">O(n^{d+1})</span>.</p>
+</div>
+<p>A even more general theorem follows.</p>
+<div class="theorem-environment Theorem" data-index="13" type="Theorem">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">13</span></span>
+<p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c_\mu(F)\leq \alpha \lambda_{\mu,k}</span> for some <span class="math inline">\mu\in \R_{\geq 0}^d</span> is <span class="math inline">O(n^{2\alpha(k-1)+d-1})</span>.</p>
+</div>
+<p>Hence, we would have the following conjecture.</p>
+<div class="theorem-environment Conjecture" data-index="14" type="Conjecture">
+<span class="theorem-header"><span class="type">Conjecture</span><span class="index">14</span></span>
+<p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c_\mu(F)&lt; \alpha \lambda_{\mu,k}</span> for some <span class="math inline">\mu\in \R_{\geq 0}^d</span> is <span class="math inline">O(n^{\ceil{\alpha k}+d-2})</span>.</p>
+</div>
+<p>Note, we might relax the requirement that all <span class="math inline">c_i</span> and <span class="math inline">\mu</span> are non-negative. Aissi et. al. showed the following <span class="citation" data-cites="AissiMMQ15">[<a href="#ref-AissiMMQ15" role="doc-biblioref">7</a>]</span>.</p>
+<div class="theorem-environment Theorem" data-index="15" type="Theorem">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">15</span></span>
+<p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c_\mu(F)\leq \lambda_{\mu}</span> for some <span class="math inline">c_\mu\geq 0</span> is <span class="math inline">O(m^d n^2\log^{d-1} n)</span>.</p>
+</div>
+<p>The following would be even stronger conjecture.</p>
+<div class="theorem-environment Conjecture" data-index="16" type="Conjecture">
+<span class="theorem-header"><span class="type">Conjecture</span><span class="index">16</span></span>
+<p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c_\mu(F) &lt; \alpha \lambda_{\mu,k}</span> for some <span class="math inline">c_\mu\geq 0</span> is <span class="math inline">O(n^{\ceil{\alpha k}+d-2})</span>.</p>
+</div>
+<h1 id="projected-cut-bounds"><span class="header-section-number">4</span> Projected cut bounds</h1>
+<p>Let <span class="math inline">\tau_e</span> be the minimum over all <span class="math inline">c(F)</span>, where <span class="math inline">F</span> is a cut containing <span class="math inline">e</span>. Fung et. al. showed a projected generalization of the cut counting bound <span class="citation" data-cites="FungHHP19">[<a href="#ref-FungHHP19" role="doc-biblioref">8</a>]</span>. Here I state a nicer form that appeared in <a href="https://www.win.tue.nl/~nikhil/courses/2013/2WO08/Nick-sparsification.pdf">Harvey’s lecture notes on sparsification</a>.</p>
+<div class="theorem-environment Theorem" data-index="17" type="Theorem">
+<span class="theorem-header"><span class="type">Theorem</span><span class="index">17</span></span>
+<p>Let <span class="math inline">B\subset E</span>, and <span class="math inline">\tau_B = \min_{e\in B} \tau_e</span>, the number of sets of the form <span class="math inline">F\cap B</span> where <span class="math inline">c(F)\leq \alpha \tau_B</span> is <span class="math inline">O(n^{2\alpha})</span>.</p>
+</div>
+<p>We can of course ask if all our theorem can be applied to projected cuts. We don’t even know if it extends to <span class="math inline">k</span>-cuts. However, we can expect the following ultimate conjecture.</p>
+<p>Let <span class="math inline">\tau_{\mu,k,e}</span> be the minimum over all <span class="math inline">c_{\mu}(F)</span>, where <span class="math inline">F</span> is a <span class="math inline">k</span>-cut containing <span class="math inline">e</span>. Let <span class="math inline">\tau_{\mu,k,B} = \min_{e\in B} \tau_{\mu,k,e}</span>.</p>
+<div class="theorem-environment Conjecture" data-index="18" type="Conjecture">
+<span class="theorem-header"><span class="type">Conjecture</span><span class="index">18</span></span>
+<p>Let <span class="math inline">B\subset E</span>, the number of sets of the form <span class="math inline">F\cap B</span> where <span class="math inline">c_{\mu}(F)&lt; \alpha \tau_{\mu,k,B}</span> for some <span class="math inline">c_\mu\geq 0</span> is <span class="math inline">O(n^{\ceil{\alpha k}+d-2})</span>.</p>
+</div>
+<h1 id="bibliography" class="unnumbered">References</h1>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-KargerS96">
+<p>[1] D. Karger, C. Stein, <strong>A new approach to the minimum cut problem</strong>, Journal of ACM. 43 (1996) 601–640.</p>
+</div>
+<div id="ref-Karger00">
+<p>[2] D.R. Karger, <strong>Minimum cuts in near-linear time</strong>, J. ACM. 47 (2000) 46–76 <a href="https://doi.org/10.1145/331605.331608">10.1145/331605.331608</a>.</p>
+</div>
+<div id="ref-HenzingerW96">
+<p>[3] M. Henzinger, D.P. Williamson, <strong>On the number of small cuts in a graph</strong>, Information Processing Letters. 59 (1996) 41–44 <a href="https://doi.org/https://doi.org/10.1016/0020-0190(96)00079-8">https://doi.org/10.1016/0020-0190(96)00079-8</a>.</p>
+</div>
+<div id="ref-GuptaLL19">
+<p>[4] A. Gupta, E. Lee, J. Li, <strong>The Karger-Stein Algorithm is Optimal for <span class="math inline">k</span>-cut</strong>, arXiv E-Prints. (2019) arXiv:1911.09165.</p>
+</div>
+<div id="ref-ChekuriQX19">
+<p>[5] C. Chekuri, K. Quanrud, C. Xu, LP Relaxation and Tree Packing for Minimum k-cuts, in: J.T. Fineman, M. Mitzenmacher (Eds.), 2nd Symposium on Simplicity in Algorithms (<strong>Sosa</strong> 2019), Schloss Dagstuhl–Leibniz-Zentrum fuer Informatik, Dagstuhl, Germany, 2018: pp. 7:1–7:18 <a href="https://doi.org/10.4230/OASIcs.SOSA.2019.7">10.4230/OASIcs.SOSA.2019.7</a>.</p>
+</div>
+<div id="ref-Karger16">
+<p>[6] D.R. Karger, Enumerating parametric global minimum cuts by random interleaving, in: Proceedings of the Forty-Eighth Annual Acm Symposium on Theory of Computing, ACM, New York, NY, USA, 2016: pp. 542–555 <a href="https://doi.org/10.1145/2897518.2897578">10.1145/2897518.2897578</a>.</p>
+</div>
+<div id="ref-AissiMMQ15">
+<p>[7] H. Aissi, A.R. Mahjoub, S.T. McCormick, M. Queyranne, <strong>Strongly polynomial bounds for multiobjective and parametric global minimum cuts in graphs and hypergraphs</strong>, Mathematical Programming. 154 (2015) 3–28 <a href="https://doi.org/10.1007/s10107-015-0944-8">10.1007/s10107-015-0944-8</a>.</p>
+</div>
+<div id="ref-FungHHP19">
+<p>[8] W.-S. Fung, R. Hariharan, N.J.A. Harvey, D. Panigrahi, <strong>A general framework for graph sparsification</strong>, SIAM Journal on Computing. 48 (2019) 1196–1223 <a href="https://doi.org/10.1137/16M1091666">10.1137/16M1091666</a>.</p>
+</div>
+</div>
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-11-27">2019-11-27</time>. </div>
+    <div class="info">Tags: Graph Theory.</div>
+</div>]]></description>
+    <pubDate>Wed, 27 Nov 2019 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/posts/2019-11-27-bounds-on-cuts.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title>Word break with cost</title>
     <link>https://chaoxuprime.com/posts/2019-09-19-word-break-with-cost.html</link>
     <description><![CDATA[<br />
@@ -21,7 +167,7 @@
 <p>Consider the following graph <span class="math inline">G=(V,E)</span>, where <span class="math inline">V=\set{0,\ldots,n}</span>, and there is an edge from <span class="math inline">i</span> and <span class="math inline">j</span>, if <span class="math inline">s[i+1..j]=w\in W</span>, and the label of the edge <span class="math inline">(i,j)</span> is the string <span class="math inline">w</span>, and the cost is <span class="math inline">c(w)</span>. Let <span class="math inline">z</span> be number of substrings in <span class="math inline">s</span> matches some element in <span class="math inline">W</span>. The graph has <span class="math inline">z</span> edges. Note <span class="math inline">z=O(n\sqrt{L})</span>. Indeed, the sum of the length of the labels of all outgoing edges cannot be more than <span class="math inline">L</span>, and the length of each label is different. Hence each vertex can have at most <span class="math inline">O(\sqrt{L})</span> outgoing edges. The graph is a DAG, so we can find the shortest path from <span class="math inline">0</span> to <span class="math inline">n</span> in linear time with respect to the number of edges. This shows if we can compute the graph in <span class="math inline">O(z+L)</span> time, then we solve the problem in <span class="math inline">O(z+L)</span> time.</p>
 <p>We can build the Aho–Corasick automaton for <span class="math inline">W</span> in <span class="math inline">O(L)</span> time. It can be used to find all substrings of <span class="math inline">s</span> that matches something in <span class="math inline">W</span> by traversing the automaton once. The running time is the total number of substrings matched, which is <span class="math inline">O(z)</span>. Hence building the graph takes <span class="math inline">O(z+L)</span> time. <span class="math inline">z</span> is clearly no more than <span class="math inline">nm</span>, where <span class="math inline">m=|W|</span>. Also, it is also clear <span class="math inline">z=O(n\sqrt{L})</span>. Indeed, there can be at most <span class="math inline">O(\sqrt{L})</span> edges start from <span class="math inline">i</span>, since each edge has a label of different length, and sum of those length labels is no larger than <span class="math inline">L</span>.</p>
 <p>If we only want to know if there exists a solution, then there is a <span class="math inline">\tilde{O}(nL^{1/3}+L)</span> time algorithm <span class="citation" data-cites="BringmannGL17">[<a href="#ref-BringmannGL17" role="doc-biblioref">1</a>]</span>. The algorithm is close to optimal assuming the algorithm is combinatorial and the alphabet can be arbitrarily large.</p>
-<p>Can we obtain similar running time for the word break with cost problem? There are evidence against it. If the alphabet is unary, this problem is equivalent to the unbounded knapsack problem, which likely does not have an algorithm with running time <span class="math inline">O((n+n)^{2-\e})</span> for any <span class="math inline">\e&gt;0</span> <span class="citation" data-cites="CyganMWW19">[<a href="#ref-CyganMWW19" role="doc-biblioref">2</a>]</span> and <span class="math inline">m</span> can be as large as <span class="math inline">\Omega(\sqrt{L})</span>. Of course, this does not mean there might not be a <span class="math inline">O(nL^{1/3}+L)</span> time algorithm, since the reduction involved in the paper might not hold when we require <span class="math inline">m=\Omega(\sqrt{L})</span>.</p>
+<p>Can we obtain similar running time for the word break with cost problem? There are evidence against it. If the alphabet is unary, this problem is equivalent to the unbounded knapsack problem, which likely does not have an algorithm with running time <span class="math inline">O((n+L)^{2-\e})</span> for any <span class="math inline">\e&gt;0</span> <span class="citation" data-cites="CyganMWW19">[<a href="#ref-CyganMWW19" role="doc-biblioref">2</a>]</span> and <span class="math inline">m</span> can be as large as <span class="math inline">\Omega(\sqrt{L})</span>. Of course, this does not mean there might not be a <span class="math inline">O(nL^{1/3}+L)</span> time algorithm, since the reduction involved in the paper might not hold when we require <span class="math inline">m=\Omega(\sqrt{L})</span>.</p>
 <h1 id="bibliography" class="unnumbered">References</h1>
 <div id="refs" class="references" role="doc-bibliography">
 <div id="ref-BringmannGL17">
@@ -408,79 +554,6 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 </div>]]></description>
     <pubDate>Sat, 06 Apr 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxuprime.com/posts/2019-04-06-misleading-while-being-honest.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>$L_1$ linear regression</title>
-    <link>https://chaoxuprime.com/posts/2019-03-28-l1-linear-regression.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>I read an article on the <a href="https://medium.economist.com/mistakes-weve-drawn-a-few-8cdd8a42d368">errors in visualization</a>. The example of forcing a relationship by cherry-picking scales is delightful. I recommend reading it.</p>
-<p>I am interested in misleading people while being completely honest. The article inspires the following problem. Given 2 vectors <span class="math inline">\bm{x},\bm{y}\in \R^n</span>. Let <span class="math inline">\bm{1}</span> be the all <span class="math inline">1</span> vector in <span class="math inline">\R^n</span>. We are interested in finding <span class="math inline">a,b\in \R</span>, such that <span class="math inline">\|\bm{y}-(a\bm{x}+b\bm{1})\|_p</span> is minimized. Here <span class="math inline">p</span> is either <span class="math inline">1,2</span> or <span class="math inline">\infty</span>.</p>
-<p>Note the problem is precisely the same as the linear regression problem. In the linear regression problem, we are given a point set <span class="math inline">S\subset \R^2</span> of size <span class="math inline">n</span> and we are interested in find a line <span class="math inline">f(x) = ax+b</span>, such that it minimizes the <em>error</em>, defined as</p>
-<p><span class="math display">
-\sum_{(x,y)\in S} \|y - f(x)\|_p
-</span></p>
-<p>For <span class="math inline">p=2</span>, there is a <span class="math inline">O(n)</span> time algorithm because there is a closed formula. For <span class="math inline">p=\infty</span>, the problem can be rewritten as a linear program with <span class="math inline">3</span> variables and <span class="math inline">n</span> constraints. Using Megiddo’s result <span class="citation" data-cites="Megiddo84">[<a href="#ref-Megiddo84" role="doc-biblioref">1</a>]</span>, there is a <span class="math inline">O(n)</span> time algorithm to solve this problem.</p>
-<p>It is hard to find the worst case complexity when <span class="math inline">p=1</span>. This case is called the <em>least absolute deviations</em>. Statisticians just don’t care about worst case running time as CS people do.</p>
-<p>There are a few methods I found. One is to write it as a linear program on <span class="math inline">n+2</span> variables and <span class="math inline">n</span> constraints and solve it using the simplex method. The linear program is as follows.</p>
-<p><span class="math display">
-\begin{aligned}
-&amp; \min_{a,b,t_1,\ldots,t_n}
-&amp; &amp; \sum_{i=1}^n t_i &amp; \\
-&amp; \text{s.t.} &amp; &amp;  t_i \geq (ax_i+b)-y_i &amp; \forall 1 \leq i \leq n \\
-&amp; &amp; &amp;  t_i \leq y_i-(ax_i+b) &amp; \forall 1 \leq i \leq n \\
-\end{aligned}
-</span></p>
-<p>There are a bunch of other algorithms that specializes the simplex algorithm on this particular problem. There are also some iterative methods. Unfortunately, those algorithms depends on the actual numbers in the input. I want a running time that only depends on <span class="math inline">n</span>.</p>
-<p>There exists an optimal solution that contains two points in <span class="math inline">S</span>. The native algorithm is to try all possible <span class="math inline">O(n^2)</span> lines. For each line, the algorithm can compute the error in <span class="math inline">O(n)</span> time. The naive algorithm’s running time is <span class="math inline">O(n^3)</span>. There is a smarter algorithm. The optimal line that contains the point can actually be found in <span class="math inline">O(n)</span> time. Indeed, consider the line passes through the point <span class="math inline">(x,y)</span>. We consider changing the slope of the line, while maintaining it still contain <span class="math inline">(x,y)</span>. One can see a minimum will be reached at some line. Indeed, assume we reorder the points, so <span class="math inline">\frac{y_i-y}{x_i-x}\leq \frac{y_{i+1}-y}{x_{i+1}-x}</span> (namely, increasing slope). Let <span class="math inline">k</span> be the smallest integer such that the sum of <span class="math inline">\sum_{i=1}^k |x_i-x|\geq \sum_{i=k+1}^n |x_i-x|</span>. The line determined by <span class="math inline">(x,y)</span> and <span class="math inline">(x_k,y_k)</span> is the desired line. This can be computed in linear time by finding weighted median. Hence one can show the running time is <span class="math inline">O(n^2)</span>. This is the idea of <span class="citation" data-cites="BloomfieldS80">[<a href="#ref-BloomfieldS80" role="doc-biblioref">2</a>]</span>. As far as I know, this seems to be the state of the art in terms of worst case complexity.</p>
-<p>After discussing with <a href="https://sites.google.com/site/qizhenghe96/home">Qizheng He</a>, he suggested the following approach. Consider the function <span class="math inline">g_p(s)</span> for <span class="math inline">p\in S</span>. It is defined as the error for the line of slope <span class="math inline">s</span> that contains <span class="math inline">p</span>. The function is bitonic, therefore we can do a ternary search to find the minimum. There are only <span class="math inline">n-1</span> possible slopes, hence the ternary search will take <span class="math inline">O(\log n)</span> queries, where each query asks for the error of the line that goes through <span class="math inline">p</span> and some other point.</p>
-<p>Given a line <span class="math inline">f(x)=ax+b</span>, can one compute the error quickly? It is possible to decompose it to few halfspace range counting queries (allowing weights). In halfspace counting queries problem, we are given <span class="math inline">n</span> points with weights, we can preprocess it and obtain a data structure. Each query to a data structure is a halfspace, the output is the sum of all elements in the halfspace. In <span class="math inline">2</span>D, there exists a preprocessing time <span class="math inline">\tilde{O}(n^{4/3})</span> and query time <span class="math inline">\tilde{O}(n^{1/3})</span> data structure <span class="citation" data-cites="Matousek93">[<a href="#ref-Matousek93" role="doc-biblioref">3</a>]</span>. Let <span class="math inline">S^+</span> be the set of points above <span class="math inline">f</span>, and <span class="math inline">S^-</span> be the set of points below <span class="math inline">f</span>. The result is precisely the following.</p>
-<p><span class="math display">
-\sum_{(x,y)\in S^+} y - ax-b + \sum_{(x,y)\in S^-} ax+b - y
-</span></p>
-<p>Let’s consider the second sum, <span class="math inline">\sum_{(x,y)\in S^-} ax+b - y = a\sum_{(x,y)\in S^-}x + |S^-|b -\sum_{(x,y)\in S^-}y</span>. Note the <span class="math inline">3</span> terms can each be solved with a halfspace counting query, consider all points lies below <span class="math inline">f</span>. This shows in <span class="math inline">6</span> halfspace counting queries.</p>
-<p>How can one do ternary search? This would need us to be able to pick the point that gives us the <span class="math inline">i</span>th largest slope with <span class="math inline">p</span>. We need a data structure such that it can return the <span class="math inline">i</span>th largest point in the radial ordering of the points in <span class="math inline">S</span> around <span class="math inline">p</span>. It is equivalent to <a href="https://cstheory.stackexchange.com/questions/42609/data-structure-for-radial-orderings-of-points-on-the-plane">halfspace range counting up to polylog factors</a>.</p>
-<p>Thus, the total running time after building the data structure in <span class="math inline">\tilde{O}(n^{4/3})</span> is <span class="math inline">n</span> times ternary search over <span class="math inline">n</span> elements, where each decision process takes <span class="math inline">\tilde{O}(n^{1/3})</span> time. Therefore the final running time is <span class="math inline">\tilde{O}(n^{4/3})</span> time.</p>
-<p>Qizheng mentioned the problem to <a href="http://tmc.web.engr.illinois.edu">Timothy Chan</a>, who gave us some references. There is an easy solution that obtains <span class="math inline">O(n\log^2 n)</span> time algorithm using simple parametric search <span class="citation" data-cites="MegiddoT83">[<a href="#ref-MegiddoT83" role="doc-biblioref">4</a>]</span>. Consider the following linear program. Let <span class="math inline">k</span> be a constant. We are given <span class="math inline">a_1,\ldots,a_k,b_1,\ldots,b_n</span>, <span class="math inline">k</span>D vectors <span class="math inline">\beta_1,\ldots,\beta_m</span> and reals <span class="math inline">\alpha_1,\ldots,\alpha_m</span>. Sets <span class="math inline">J_1,\ldots,J_n</span> a partition of <span class="math inline">[m]</span>.</p>
-<p><span class="math display">
-\begin{aligned}
-&amp; \min_{w_1,\ldots,w_k,x_1,\ldots,x_n}
-&amp; &amp; \sum_{i=1}^k a_iw_i + \sum_{i=1}^n b_ix_i &amp; \\
-&amp; \text{s.t.} &amp; &amp;  x_i \geq (\sum_{d=1}^k \beta_{j,d} w_d) - \alpha_j &amp; \forall 1 \leq i \leq n, j\in J_i
-\end{aligned}
-</span></p>
-<p>Zemel showed such linear program can be solved in <span class="math inline">O(m)</span> time for constant <span class="math inline">k</span> <span class="citation" data-cites="Zemel84">[<a href="#ref-Zemel84" role="doc-biblioref">5</a>]</span>. The idea is a similar algorithm to Megiddo’s linear time constant dimension LP algorithm <span class="citation" data-cites="Megiddo84">[<a href="#ref-Megiddo84" role="doc-biblioref">1</a>]</span>. For linear regression problem in <span class="math inline">L_1</span> with <span class="math inline">n</span> data points. The linear program we derived is a special case of the above linear program when <span class="math inline">k=2</span> and <span class="math inline">m=O(n)</span>. In fact, Zemel use the same linear program to show constant dimension <span class="math inline">L_1</span> regression can be solved in linear time.</p>
-<h1 id="open-problem"><span class="header-section-number">1</span> Open problem</h1>
-<p>One can also define another metric, the lexicographical minimum. Such idea was already present in fairness related linear regression <span class="citation" data-cites="KoeppenYO14">[<a href="#ref-KoeppenYO14" role="doc-biblioref">6</a>]</span>. Once we sort the values of <span class="math inline">|y - f(x)|</span> for <span class="math inline">(x,y)\in S</span>, say obtaining <span class="math inline">a_1,\ldots,a_n</span>, where <span class="math inline">a_1\geq a_2 \geq \ldots \geq a_n</span>. We are interested in finding a <span class="math inline">f</span> that minimizes the sequence <span class="math inline">a_1,\ldots,a_n</span>, lexicographically. Can this problem be solved in <span class="math inline">O(n)</span> time?</p>
-<h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references" role="doc-bibliography">
-<div id="ref-Megiddo84">
-<p>[1] N. Megiddo, <strong>Linear programming in linear time when the dimension is fixed</strong>, J. ACM. 31 (1984) 114–127 <a href="https://doi.org/10.1145/2422.322418">10.1145/2422.322418</a>.</p>
-</div>
-<div id="ref-BloomfieldS80">
-<p>[2] P. Bloomfield, W. Steiger, <strong>Least absolute deviations curve-fitting</strong>, SIAM Journal on Scientific and Statistical Computing. 1 (1980) 290–301 <a href="https://doi.org/10.1137/0901019">10.1137/0901019</a>.</p>
-</div>
-<div id="ref-Matousek93">
-<p>[3] J. Matoušek, <strong>Range searching with efficient hierarchical cuttings</strong>, Discrete &amp; Computational Geometry. 10 (1993) 157–182 <a href="https://doi.org/10.1007/BF02573972">10.1007/BF02573972</a>.</p>
-</div>
-<div id="ref-MegiddoT83">
-<p>[4] N. Megiddo, A. Tamir, <strong>Finding Least-Distances Lines</strong>, SIAM Journal on Algebraic Discrete Methods. 4 (1983) 207–211 <a href="https://doi.org/10.1137/0604021">10.1137/0604021</a>.</p>
-</div>
-<div id="ref-Zemel84">
-<p>[5] E. Zemel, <strong>An O(n) algorithm for the linear multiple choice knapsack problem and related problems</strong>, 18 (1984) 123–128 <a href="https://doi.org/10.1016/0020-0190(84)90014-0">10.1016/0020-0190(84)90014-0</a>.</p>
-</div>
-<div id="ref-KoeppenYO14">
-<p>[6] M. Köeppen, K. Yoshida, K. Ohnishi, Evolving fair linear regression for the representation of human-drawn regression lines, in: 2014 International Conference on Intelligent Networking and Collaborative Systems, 2014: pp. 296–303 <a href="https://doi.org/10.1109/INCoS.2014.89">10.1109/INCoS.2014.89</a>.</p>
-</div>
-</div>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-03-28">2019-03-28</time>. </div>
-    <div class="info">Tags: combinatorial optimization.</div>
-</div>]]></description>
-    <pubDate>Thu, 28 Mar 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-03-28-l1-linear-regression.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 
