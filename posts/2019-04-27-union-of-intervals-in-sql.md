@@ -53,7 +53,7 @@ GROUP BY t1.a
 ORDER BY t1.a
 ```
 
-Unfortunately, once you know how the entire algorithm goes, one can see its performance does not look promising. Indeed, this is a $O(n^2)$ time algorithm. After generating $10000$ random intervals in PostgreSQL, it took 13 seconds to run. Also making it work in Hive is next to impossible due to Hive's limitations on joins and subqueries.
+Unfortunately, the performance is not promising. Indeed, this is a $O(n^2)$ time algorithm. After generating $10000$ random intervals in PostgreSQL, it took 13 seconds to run. Also making it work in Hive is next to impossible due to Hive's limitations on joins and subqueries.
 
 [Itzik Ben-Gan](http://tsql.solidq.com/) has [written](https://www.itprotoday.com/development-techniques-and-management/packing-date-intervals) [multiple](https://blogs.solidq.com/en/sqlserver/packing-intervals/) [articles](https://www.itprotoday.com/sql-server/new-solution-packing-intervals-problem) on how to solve this problem. I recommend reading them to learn various tricks. In fact, my solution here is quite similar to one of Ben-Gan's. 
 
