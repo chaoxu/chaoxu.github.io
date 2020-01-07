@@ -17,6 +17,10 @@ footer {
     clear: both;
 }
 
+iframe {
+    border-width: 0px;
+    width: 100%;
+}
 
 /* HTML element control
 ----------------------------------------------- */
