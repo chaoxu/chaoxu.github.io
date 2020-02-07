@@ -47,6 +47,6 @@ Here are useful referral links. Some has descriptions.
   - [Wealthfront](https://wlth.fr/2hp96Gw) to obtain \$15000 managed free.
   - [Grubhub](https://www.grubhub.com/referral/0be831e6-487f-11e4-9697-9cb654858910)
   - [Dosh](https://link.dosh.cash/CHAOX1) get \$1 for verifying your credit card (but you can only take out money when you reach \$25)
-  - Freebird referral code `c39ff`. You and I both get \$10
+  - [Freebird](https://my.fbird.co/15XvTTafW1): 我的promo`c39ff` 我们每人都能拿$10美元.Freebird referral code `c39ff`. You and I both get \$10
 
 
