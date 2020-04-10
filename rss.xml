@@ -7,8 +7,37 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxuprime.com/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Wed, 27 Nov 2019 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Fri, 10 Apr 2020 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Maximize Cash Back</title>
+    <link>https://chaoxuprime.com/posts/2020-04-10-maximize-cash-back.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>Credit cards often offers rewards for purchases. For example, a card that gives 5% cash back for grocery stores. Also, credit cards often can be used to buy gift cards for specific stores.</p>
+<p>For example, one can use Chase Ink Cash (CIC) and go to Staples and buy gift card for Amazon for effectively 7.5% off Amazon.</p>
+<p>However, there is usually a limit. CIC caps the reward spending to $2000. Still, it would translate to $1875 of savings. Anything afterwards only earns 1.5%.</p>
+<p>I often do large purchases at some retailers, and I have huge number of credit cards. It make sense for me to optimize spending. I use historical data to estimate amount of spending at retailers, and come up with a nice optimization problem.</p>
+<p>There are <span class="math inline">k</span> stores, we want to purchase an item of value <span class="math inline">d_i</span> in store <span class="math inline">i</span>, and want spend the least amount of money.</p>
+<p>Stores can also sell gift cards for specific stores (some gives cash back), and one can use the gift card to buy item from other stores. For simplicity, we assume gift card for a particular store can be used to buy gift cards (so it work just like cash). <span class="math inline">g_{i,j}</span> is the cash back one obtain for buying <span class="math inline">1</span> unit of gift card for store <span class="math inline">j</span> from store <span class="math inline">i</span>.</p>
+<p>We also have <span class="math inline">n</span> credit cards. Each credit card have an upper limit <span class="math inline">u_i</span>. For credit card <span class="math inline">i</span>, it gives cash back of <span class="math inline">c_{i,j}</span> per unit on store <span class="math inline">j</span> if total spend of the credit card is no larger than <span class="math inline">u_i</span>, otherwise it give cash back <span class="math inline">c&#39;_{i,j}</span>.</p>
+<p>This is a min-cost flow problem. Indeed, let’s build the graph. Edges default to have infinite capacity and 0 cost. Node default to have 0 demand.</p>
+<p>For credit card <span class="math inline">i</span>, we create <span class="math inline">3</span> nodes, <span class="math inline">a_i, b_i^+, b_i^-</span>. There is is edge <span class="math inline">(a_i,b_i^+)</span> with capacity <span class="math inline">u_i</span>, there is an edge <span class="math inline">(a_i,b_i^-)</span> with infinite capacity. For each store, we create a node <span class="math inline">s_i</span>, and there are edges <span class="math inline">(s_i,s_j)</span> with cost <span class="math inline">-g_{i,j}</span>. The demand on <span class="math inline">s_i</span> is <span class="math inline">d_i</span>. For each credit card <span class="math inline">i</span> and store <span class="math inline">j</span>, there is an edge <span class="math inline">(b_i^+,s_i)</span> with cost <span class="math inline">-c_{i,j}</span>, and an edge <span class="math inline">(b_i^-,s_i)</span> with cost <span class="math inline">-c&#39;_{i,j}</span>. Finally add a source node connect to each <span class="math inline">a_i</span>. Source node has demand <span class="math inline">-\sum_{i} d_i</span>.</p>
+<p>Some stores does not allow gift card to be used to purchase more gift cards. Indeed, this was not the case a long time ago, until people abused the price difference to generate infinite money.</p>
+<p>This can be fixed by duplicate this store into a cash version, so <span class="math inline">s_{c,i}</span> and gift card version <span class="math inline">s_{g,i}</span>. We redirect edges to the correct ones. Namely credit card goes to <span class="math inline">s_{c,i}</span> and edges from stores goes to <span class="math inline">s_{g,i}</span>. Also, create edges <span class="math inline">(s_{c,i},s_i)</span> and <span class="math inline">(s_{g,i},s_i)</span>.</p>
+<p>We are only thinking about cash backs, but there could also be discounts. It is fairly rare to see discounts, especially for companies that sell other gift cards. The difference between cash back and discount is when you obtain your money back. Cash back you get your money back after the transaction. For discounts, you pay less.</p>
+<p>Adding discounts <em>fundamentally</em> changes the problem. In the min-cost flow formulation, the cost keeps track of cash backs, and demand is keep track of how much money is spent. This does not work when there are discounts.</p>
+<p>Instead, we have to venture into generalized flow. There is an extra factor of <span class="math inline">\gamma</span> on each edge, such that the flow going in is <span class="math inline">1</span>, then the flow going out is <span class="math inline">\gamma</span>.</p>
+<p>Anyway, one thing I learned is using credit cards to buy gift cards from grocery store (Amex Gold) or staples (using Chase Ink Cash) are amazing. Netting you large discounts on many vendors you usually cannot get a huge discount for.</p>
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2020-04-10">2020-04-10</time>. </div>
+    <div class="info">Tags: math, life.</div>
+</div>]]></description>
+    <pubDate>Fri, 10 Apr 2020 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/posts/2020-04-10-maximize-cash-back.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title>Bounds on number of cuts</title>
     <link>https://chaoxuprime.com/posts/2019-11-27-bounds-on-cuts.html</link>
     <description><![CDATA[<br />
@@ -537,24 +566,6 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 </div>]]></description>
     <pubDate>Sat, 27 Apr 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxuprime.com/posts/2019-04-27-maximum-weight-hierarchical-b-matching.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>Misleading while being honest</title>
-    <link>https://chaoxuprime.com/posts/2019-04-06-misleading-while-being-honest.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>Given a set of data <span class="math inline">A</span>, we can plot it on a <a href="https://en.wikipedia.org/wiki/Radar_chart">radar chart</a>. One can permute the axis to make sure the area of the radar chart is maximized. This was explored in <a href="https://chaoxuprime.com/posts/2012-08-08-maximize-the-area-of-a-radar-chart.html">a previous article</a>.</p>
-<p>More interesting problem. Given two sets of data <span class="math inline">A</span> and <span class="math inline">B</span>, we are interested in finding a common radar chart, that make <span class="math inline">A</span> look as good as possible compared to <span class="math inline">B</span>. We might want to optimize the area ratio, area difference, or something else. Again, we are thinking of permuting the axis of the radar chart.</p>
-<p>I once mentioned this problem to <a href="https://www.contrib.andrew.cmu.edu/~ravi/">R Ravi</a>, and he suggest I could ask the same question for all kind of different graphs. How to mislead people with graphs while being completely honest? Indeed, this looks like a fun research project. There is a <a href="https://en.wikipedia.org/wiki/Misleading_graph">wikipedia article completely devoted to it</a>. In my <a href="https://chaoxuprime.com/posts/2019-03-28-l1-linear-regression.html">previous post</a>, I’ve discussed how to fitting two seemingly not that related data points through simple transformation.</p>
-<p>I’m interested in are algorithmic problems where one want to compute the most misleading chart, I think it would be a great fun project.</p>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-04-06">2019-04-06</time>. </div>
-    <div class="info">Tags: data visualization.</div>
-</div>]]></description>
-    <pubDate>Sat, 06 Apr 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-04-06-misleading-while-being-honest.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 
