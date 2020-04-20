@@ -14,8 +14,8 @@
     <description><![CDATA[<br />
 <div>
 <p>Credit cards often offers rewards for purchases. For example, a card that gives 5% cash back for grocery stores. Also, credit cards often can be used to buy gift cards for specific stores.</p>
-<p>For example, one can use Chase Ink Cash (CIC) and go to Staples and buy gift card for Amazon for effectively 7.5% off Amazon.</p>
-<p>However, there is usually a limit. CIC caps the reward spending to $2000. Still, it would translate to $1875 of savings. Anything afterwards only earns 1.5%.</p>
+<p>For example, one can use Chase Ink Cash (CIC) and go to Staples and buy gift card for Amazon for effectively 7.5% off Amazon (I value UR at 1.5 cents each).</p>
+<p>However, there is usually a limit. CIC caps the reward spending to $25000. Still, it would translate to $1875 of savings. Anything afterwards only earns 1.5%.</p>
 <p>I often do large purchases at some retailers, and I have huge number of credit cards. It make sense for me to optimize spending. I use historical data to estimate amount of spending at retailers, and come up with a nice optimization problem.</p>
 <p>There are <span class="math inline">k</span> stores, we want to purchase an item of value <span class="math inline">d_i</span> in store <span class="math inline">i</span>, and want spend the least amount of money.</p>
 <p>Stores can also sell gift cards for specific stores (some gives cash back), and one can use the gift card to buy item from other stores. For simplicity, we assume gift card for a particular store can be used to buy gift cards (so it work just like cash). <span class="math inline">g_{i,j}</span> is the cash back one obtain for buying <span class="math inline">1</span> unit of gift card for store <span class="math inline">j</span> from store <span class="math inline">i</span>.</p>
@@ -28,6 +28,7 @@
 <p>Adding discounts <em>fundamentally</em> changes the problem. In the min-cost flow formulation, the cost keeps track of cash backs, and demand is keep track of how much money is spent. This does not work when there are discounts.</p>
 <p>Instead, we have to venture into generalized flow. There is an extra factor of <span class="math inline">\gamma</span> on each edge, such that the flow going in is <span class="math inline">1</span>, then the flow going out is <span class="math inline">\gamma</span>.</p>
 <p>Anyway, one thing I learned is using credit cards to buy gift cards from grocery store (Amex Gold) or staples (using Chase Ink Cash) are amazing. Netting you large discounts on many vendors you usually cannot get a huge discount for.</p>
+<p>Some more interesting things to add. Buying gift cards from grocery stores can obtain fuel points. Fuel points translate to discounts on gas. However, there is only so much gas one can use (unless you selling it to others). So one can view grocery stores as having a higher discount up to a certain limit. This can also be modeled in the graph.</p>
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2020-04-10">2020-04-10</time>. </div>
