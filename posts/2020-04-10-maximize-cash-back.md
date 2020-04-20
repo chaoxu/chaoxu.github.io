@@ -7,9 +7,9 @@ Credit cards often offers rewards for purchases.
 For example, a card that gives 5% cash back for grocery stores. 
 Also, credit cards often can be used to buy gift cards for specific stores. 
 
-For example, one can use Chase Ink Cash (CIC) and go to Staples and buy gift card for Amazon for effectively 7.5% off Amazon.
+For example, one can use Chase Ink Cash (CIC) and go to Staples and buy gift card for Amazon for effectively 7.5% off Amazon (I value UR at 1.5 cents each).
 
-However, there is usually a limit. CIC caps the reward spending to \$2000. Still, it would translate to \$1875 of savings. Anything afterwards only earns 1.5%.
+However, there is usually a limit. CIC caps the reward spending to \$25000. Still, it would translate to \$1875 of savings. Anything afterwards only earns 1.5%.
 
 I often do large purchases at some retailers, and I have huge number of credit cards. It make sense for me to optimize spending. I use historical data to estimate amount of spending at retailers, and come up with a nice optimization problem. 
 
@@ -37,3 +37,5 @@ Adding discounts *fundamentally* changes the problem. In the min-cost flow formu
 Instead, we have to venture into generalized flow. There is an extra factor of $\gamma$ on each edge, such that the flow going in is $1$, then the flow going out is $\gamma$. 
 
 Anyway, one thing I learned is using credit cards to buy gift cards from grocery store (Amex Gold) or staples (using Chase Ink Cash) are amazing. Netting you large discounts on many vendors you usually cannot get a huge discount for. 
+
+Some more interesting things to add. Buying gift cards from grocery stores can obtain fuel points. Fuel points translate to discounts on gas. However, there is only so much gas one can use (unless you selling it to others). So one can view grocery stores as having a higher discount up to a certain limit. This can also be modeled in the graph. 
