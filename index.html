@@ -74,7 +74,7 @@
   </div>
   <div class="intro-right">
     <p>
-      I'm a Software Engineer at <a href="https://voleon.com/">Voleon</a>.
+      I'm a Software Engineer at <a href="https://voleon.com/">Voleon</a>. (See <a href="https://jobs.lever.co/voleon?lever-via=c59MSzDNqF">open positions</a>)
       My research interests are <span itemprop="knowsAbout">algorithms</span>, <span itemprop="knowsAbout">combinatorial optimization</span> and <span itemprop="knowsAbout">computational geometry</span>. I'm also interested in more applied problems with nice theoretical components. 
       Here is my <a href="files/cv.pdf">CV</a>(last updated May 2019) and <a href="files/research_statement.pdf">old research statement</a>.
     </p>
@@ -98,6 +98,34 @@
   <span>Selected Publications<br /><span style="font-size:0.6em" onclick="togglePublication()"><em><a>See all publications.</a></em></span></span> 
 </div>
 <div class="cv-non-selected row pubtypeheader">Conference Publications</div>
+  <!-- Multicritera Cuts and Size-Constrained <span class="math">k</span>-cuts in Hypergraphs  -->
+  <div class="cv-selected row cv-entry" id="multicritera-cuts">
+    <input type="checkbox" class="abstract-guard" id="multicritera-cuts-toggle">
+    <div class="cv-left">
+        <label class="showmore material-icons" for="multicritera-cuts-toggle"></label>
+        <i class="material-icons disabled">description</i>
+        <i class="material-icons disabled">airplay</i>
+    </div>
+    <div class="cv-right">
+      <cite class="paper-title">Multicritera Cuts and Size-Constrained <span class="math">k</span>-cuts in Hypergraphs</cite>
+      <ul class="coauthor-list">
+        <li>
+            Calvin Beideman</li><li>
+            <a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a></li></ul>
+      <p><em>
+          <abbr title="International Conference on Randomization and Computation">RANDOM</abbr>, <time>2020</time>.
+      </em><p>
+    </div>
+    <div class="abstract">
+      <p>We address counting and optimization variants of multicriteria global min-cut and size-constrained min-<span class="math">k</span>-cut in hypergraphs.</p>
+<ol>
+<li>For an <span class="math">r</span>-rank <span class="math">n</span>-vertex hypergraph endowed with <span class="math">t</span> hyperedge-cost functions, we show that the number of multiobjective min-cuts is <span class="math">O(r2^{tr}n^{3t−1})</span>. In particular, this shows that the number of parametric min-cuts in constant rank hypergraphs for a constant number of criteria is strongly polynomial, thus resolving an open question by Aissi, Mahjoub, McCormick, and Queyranne (Math Programming, 2015). In addition, we give randomized algorithms to enumerate all multiobjective min-cuts and all pareto-optimal cuts in strongly polynomial-time.</li>
+<li>We also address node-budgeted multiobjective min-cuts: For an <span class="math">n</span>-vertex hypergraph endowed with t vertex-weight functions, we show that the number of node-budgeted multiobjective min-cuts is <span class="math">O(r2^{r}nt+2), where </span>r<span class="math"> is the rank of the hypergraph, and the number of node-budgeted </span>b<span class="math">-multiobjective min-cuts for a fixed budget-vector </span>b<span class="math"> is </span>O(n^2)$.</li>
+<li>We show that min-<span class="math">k</span>-cut in hypergraphs subject to constant lower bounds on part sizes is solvable in polynomial-time for constant <span class="math">k</span>, thus resolving an open problem posed by Queyranne. Our technique also shows that the number of optimal solutions is polynomial.
+All of our results build on the random contraction approach of Karger (SODA, 1993). Our techniques illustrate the versatility of the random contraction approach to address counting and algorithmic problems concerning multiobjective min-cuts and size-constrained <span class="math">k</span>-cuts in hypergraphs.</li>
+</ol>
+    </div>
+  </div>
   <!-- LP Relaxation and Tree Packing for Minimum <span class="math">k</span>-cuts  -->
   <div class="cv-selected row cv-entry" id="kcut-revisited">
     <input type="checkbox" class="abstract-guard" id="kcut-revisited-toggle">
@@ -111,10 +139,11 @@
       <ul class="coauthor-list">
         <li>
             <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a></li><li>
-            <a href="http://web.engr.illinois.edu/~quanrud2/">Kent Quanrud</a></li></ul>
+            <a href="https://kentquanrud.com/">Kent Quanrud</a></li></ul>
       <p><em>
           <abbr title="Symposium on Simplicity in Algorithms">SOSA</abbr>, <time>2019</time>.
       </em><p>
+        <aside class="cv-non-selected note">The <a href="#kcut-revisited-journal">journal version</a> was serialized in SIAM Journal on Discrete Mathematics.</aside>
     </div>
     <div class="abstract">
       <p>Karger used spanning tree packings to derive a near linear-time randomized algorithm for the global minimum cut problem as well as a bound on the number of approximate minimum cuts. This is a different approach from his well-known random contraction algorithm. Thorup developed a fast deterministic algorithm for the minimum <span class="math">k</span>-cut problem via greedy <em>recursive</em> tree packings.
@@ -275,6 +304,30 @@ We utilize vertex ordering based ideas to obtain our results. Unlike graphs we o
     </div>
   </div>
 <div class="cv-non-selected row pubtypeheader">Journal Publications</div>
+  <!-- LP Relaxation and Tree Packing for Minimum <span class="math">k</span>-Cut  -->
+  <div class="cv-selected row cv-entry" id="kcut-revisited-journal">
+    <input type="checkbox" class="abstract-guard" id="kcut-revisited-journal-toggle">
+    <div class="cv-left">
+        <label class="showmore material-icons" for="kcut-revisited-journal-toggle"></label>
+        <a href="files/papers/kcut-revisited-journal.pdf"><i class="material-icons">description</i></a>
+        <i class="material-icons disabled">airplay</i>
+    </div>
+    <div class="cv-right">
+      <cite class="paper-title">LP Relaxation and Tree Packing for Minimum <span class="math">k</span>-Cut</cite>
+      <ul class="coauthor-list">
+        <li>
+            <a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a></li><li>
+            <a href="https://kentquanrud.com/">Kent Quanrud</a></li></ul>
+      <p><em>
+          SIAM Journal on Discrete Mathematics <time>2020</time>.
+      </em><p>
+        <aside class="cv-non-selected note">An <a href="#kcut-revisited">extended abstract</a> of this work appeared in SOSA 2019.</aside>
+    </div>
+    <div class="abstract">
+      <p>Karger used spanning tree packings [D. R. Karger, J. ACM, 47 (2000), pp. 46--76] to derive a near linear-time randomized algorithm for the global minimum cut problem as well as a bound on the number of approximate minimum cuts. This is a different approach from his well-known random contraction algorithm [D. R. Karger, Random Sampling in Graph Optimization Problems, Ph.D. thesis, Stanford University, Stanford, CA, 1995, D. R. Karger and C. Stein, J. ACM, 43 (1996), pp. 601--640]. Thorup developed a fast deterministic algorithm for the minimum <span class="math">k</span>-cut problem via greedy recursive tree packings [M. Thorup, Minimum <span class="math">k</span>-way cuts via deterministic greedy tree packing, in Proceedings of the Fortieth Annual ACM Symposium on Theory of Computing, ACM, 2008, pp. 159--166].
+In this paper we revisit properties of an LP relaxation for cͅut proposed by Naor and Rabani [Tree packing and approximating <span class="math">k</span>-cuts, in Proceedings of the Twelfth Annual ACM-SIAM Symposium on Discrete Algorithms, Vol. 103, SIAM, Philadelphia, 2001, pp. 26--27], and analyzed in [C. Chekuri, S. Guha, and J. Naor, SIAM J. Discrete Math., 20 (2006), pp. 261--271]. We show that the dual of the LP yields a tree packing that, when combined with an upper bound on the integrality gap for the LP, easily and transparently extends Karger's analysis for mincut to the <span class="math">k</span>-cut problem. In addition to the simplicity of the algorithm and its analysis, this allows us to improve the running time of Thorup's algorithm by a factor of <span class="math">n</span>. We also improve the bound on the number of <span class="math">\alpha</span>-approximate <span class="math">k</span>-cuts. Second, we give a simple proof that the integrality gap of the LP is <span class="math">2(1-1/n)</span>. Third, we show that an optimum solution to the LP relaxation, for all values of <span class="math">k</span>, is fully determined by the principal sequence of partitions of the input graph. This allows us to relate the LP relaxation to the Lagrangean relaxation approach of Barahona [Oper. Res. Lett., 26 (2000), pp. 99--105] and Ravi and Sinha [European J. Oper. Res., 186 (2008), pp. 77--90]; it also shows that the idealized recursive tree packing considered by Thorup gives an optimum dual solution to the LP.</p>
+    </div>
+  </div>
   <!-- Hypergraph <span class="math">k</span>-Cut in Randomized Polynomial Time  -->
   <div class="cv-selected row cv-entry" id="hypergraph-k-cut-journal">
     <input type="checkbox" class="abstract-guard" id="hypergraph-k-cut-journal-toggle">
