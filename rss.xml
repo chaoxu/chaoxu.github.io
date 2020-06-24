@@ -7,8 +7,29 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxuprime.com/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Fri, 10 Apr 2020 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Fri, 05 Jun 2020 00:00:00 UT</lastBuildDate>
         <item>
+    <title>The value of a gift card in beancount</title>
+    <link>https://chaoxuprime.com/posts/2020-06-05-the-value-of-a-gift-card.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>I’m using beancount to do accounting. In beancount, you are allowed to have commodities. One can view gift card as commodity, but also as a currency.</p>
+<p>Say, I bought an $100 Amazon gift card for $90, I would write <code>100 AMAZON {0.9 USD}</code>, which means 100 units of Amazon with unit cost $0.9. Later on, I used $50 Amazon gift card, then I can write <code>50 AMAZON {0.9 USD} @ 1 USD</code>. Here <code>@ 1 USD</code> means the price is $1, and <code>{0.9 USD}</code> tells the program to look for 50 unit of Amazon with unit cost $0.9.</p>
+<p>Of course, often one do not care which amazon gift card was used. So beancount allows one to write <code>50 AMAZON {} @ 1 USD</code>, and beancount automatically finds 50 units of amazon gift card through some predefined rules (For example, first in first out). I sold the remaining $50 Amazon gift card for $47.5. So I would write <code>50 AMAZON {} @ 0.95 USD</code>.</p>
+<p>During the event where the gift card is used, we can record the profit by subtract cost from price. So just like stocks, we can obtain realized profit and loses. This is great and all, except a simple operations is impossible in beancount. It is impossible to move these amazon gift card to another account without losing all the cost information. This actually happens in real life. I might buy amazon gift card, but load gift card to different accounts. In beancount, I have no way of relaying this info.</p>
+<p>Here is a hack. Having a proxy price.</p>
+<p>The idea is amazon gift card should always have a value of $x. Whenever you buy amazon gift card for $y per unit, you record a profit/loss of $x - $y. Whenever you use your amazon gift card at value $z per unit, you record a profit/loss of $z-$x.</p>
+<p>Here you can set <span class="math inline">x</span> to be anything. But for simplifying calculation, 1 is sufficient. Setting it to <span class="math inline">1</span> is the best option since it simplifies the computation.</p>
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2020-06-05">2020-06-05</time>. </div>
+    <div class="info">Tags: accounting.</div>
+</div>]]></description>
+    <pubDate>Fri, 05 Jun 2020 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/posts/2020-06-05-the-value-of-a-gift-card.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title>Maximize Cash Back</title>
     <link>https://chaoxuprime.com/posts/2020-04-10-maximize-cash-back.html</link>
     <description><![CDATA[<br />
@@ -512,61 +533,6 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 </div>]]></description>
     <pubDate>Sat, 27 Apr 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxuprime.com/posts/2019-04-27-union-of-intervals-in-sql.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>Maximum weight hierarchical $b$-matching</title>
-    <link>https://chaoxuprime.com/posts/2019-04-27-maximum-weight-hierarchical-b-matching.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>We consider the following problem, which appeared in <span class="citation" data-cites="EmekKSZ19">[<a href="#ref-EmekKSZ19" role="doc-biblioref">1</a>]</span>.</p>
-<p>Let <span class="math inline">\mathcal{L}</span> be a laminar family consists of sets <span class="math inline">F_1,\ldots,F_k</span>. Let <span class="math inline">u_1,\ldots,u_k</span> to be positive integers. Consider a graph <span class="math inline">G=(V,E)</span> with a weight function <span class="math inline">w:E\to \N</span> and capacity function <span class="math inline">c:E\to \N</span>. We are interested in finding a <span class="math inline">y\leq c</span>, such that for every <span class="math inline">F_i\in \mathcal{L}</span>, we have <span class="math inline">\sum_{v\in F_i} \sum_{e:v\in e\in E} y_e \leq u_i</span>, and <span class="math inline">\sum_{e\in E} y_ew_e</span> is maximized.</p>
-<p>Formally, it is the following integer program.</p>
-<p><span class="math display">
-\begin{aligned}
-&amp; \max_{y\in \Z^m} &amp; &amp; \sum_{e} w_e y_e &amp; \\
-&amp; \text{s.t.} &amp; &amp; \sum_{v\in F_i} \sum_{e:v\in e\in E} y_e \leq u_i &amp; i\in [k] \\
-&amp; &amp; &amp;  0\leq y_e \leq c_e &amp; \forall e\in E \\
-\end{aligned}
-</span></p>
-<p>This is a generalization of the maximum weight <span class="math inline">c</span>-capacitated <span class="math inline">b</span>-matching problem. Indeed, we can simply set <span class="math inline">F_i = \set{v_i}</span> and <span class="math inline">u_i=b_i</span>. However, this problem is actually no more general than the maximum weight <span class="math inline">c</span>-capacitated <span class="math inline">b</span>-matching problem.</p>
-<p>Let <span class="math inline">A \in \Z^{m\times n}</span> be a matrix such that <span class="math inline">\sum_{i=1}^m |A_{i,j}|\leq 2</span> for every <span class="math inline">j</span>. We call <span class="math inline">A</span> a bidirected matrix.</p>
-<div class="theorem-environment Theorem" data-index="1" type="Theorem">
-<span class="theorem-header"><span class="type">Theorem</span><span class="index">1</span></span>
-<p>Given <span class="math inline">A \in \Z^{m\times n}</span> a bidirected matrix and vectors <span class="math inline">a,b\in \Z^m</span>, <span class="math inline">c,d,w\in \Z^n</span>. The integer program <span class="math inline">\max_{x\in \Z^n} \set{wx \mid a\leq Ax\leq b, c\leq x\leq d}</span> can be solved in polynomial time. In particular, it is equivalent to the maximum weight <span class="math inline">b</span>-matching problem on graph of size <span class="math inline">poly(m,n)</span>.</p>
-</div>
-<p>The above theorem can be found in <span class="citation" data-cites="Schrijver03">[<a href="#ref-Schrijver03" role="doc-biblioref">2</a>]</span>. Note that in Schrijver’s book, one requires <span class="math inline">\sum_{i=1}^m |A_{i,j}|=2</span>. It is not hard to see the statement still holds even if we have <span class="math inline">\leq</span> in place of <span class="math inline">=</span>.</p>
-<p>We will express the maximum weight hierarchical <span class="math inline">b</span>-matching problem as an integer program over a polytope defined over a bidirected matrix. The integer program is a modification of the integer program in <span class="citation" data-cites="KaparisLM17">[<a href="#ref-KaparisLM17" role="doc-biblioref">3</a>]</span>. The integer program here is simpler, because we are not trying to reduce to <em>perfect</em> <span class="math inline">b</span>-matching.</p>
-<p>We define <span class="math inline">F_i&#39; = F_i \setminus \bigcup_{j: F_j\subsetneq F_i} F_j</span>. We also define <span class="math inline">C_i</span> to be the indices <span class="math inline">j</span>, such that for all <span class="math inline">k</span>, <span class="math inline">F_j\subseteq F_k \subsetneq F_i</span> implies <span class="math inline">j=k</span>. <span class="math inline">y_e</span> denote the amount of capacities we assign to <span class="math inline">e</span>, <span class="math inline">x_v</span> denotes the capacitated degree, hence <span class="math inline">x_v = \sum_{e:v\in e\in E} y_e</span>. We define <span class="math inline">z_i = \sum_{v\in F_i} x_v</span>, which can be transformed to <span class="math inline">z_i = \sum_{v\in F_i&#39;} x_v + \sum_{j\in C_i} z_j</span>. Therefore we obtain the following integer program by directly applying substitutions.</p>
-<p><span class="math display">
-\begin{aligned}
-&amp; \max_{x\in \Z^n,y\in \Z^m, z\in \Z^k} &amp; &amp; \sum_{e} w_e y_e &amp; \\
-&amp; \text{s.t.} &amp; &amp; \sum_{v\in F_i&#39;} x_v + \sum_{j\in C_i} z_j - z_i= 0 &amp; i\in [k] \\
-&amp; &amp; &amp;  \sum_{e: v\in e\in E} y_e -x_v = 0 &amp; \forall v\in V \\
-&amp; &amp; &amp;  0\leq y_e \leq c_e &amp; \forall e\in E \\
-&amp; &amp; &amp;  0\leq z_i \leq u_i &amp; \forall i\in [k] \\
-\end{aligned}
-</span></p>
-<p>The matrix here is a bidirected matrix. This shows the original problem can be solved in polynomial time.</p>
-<h1 id="bibliography" class="unnumbered">References</h1>
-<div id="refs" class="references" role="doc-bibliography">
-<div id="ref-EmekKSZ19">
-<p>[1] Y. Emek, S. Kutten, M. Shalom, S. Zaks, <strong>Hierarchical b-Matching</strong>, arXiv E-Prints. (2019) arXiv:1904.10210.</p>
-</div>
-<div id="ref-Schrijver03">
-<p>[2] A. Schrijver, <strong>Combinatorial Optimization (3 volume, A, B, &amp; C)</strong>, Springer, 2003.</p>
-</div>
-<div id="ref-KaparisLM17">
-<p>[3] I.M. Konstantinos Kaparis Adam N. Letchford, <strong>On matroid parity and matching polytopes</strong>, Department of Management Science, Lancaster University, 2017.</p>
-</div>
-</div>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-04-27">2019-04-27</time>. </div>
-    <div class="info">Tags: combinatorial optimization, matching, matroid.</div>
-</div>]]></description>
-    <pubDate>Sat, 27 Apr 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-04-27-maximum-weight-hierarchical-b-matching.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 
