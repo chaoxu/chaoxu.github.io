@@ -111,7 +111,6 @@ type: conference
 pub: SOSA
 year: 2019
 show: [d, p]
-selected: false
 notes:
   - The [journal version](#kcut-revisited-journal) was serialized in SIAM Journal on Discrete Mathematics. 
 abstract: >
