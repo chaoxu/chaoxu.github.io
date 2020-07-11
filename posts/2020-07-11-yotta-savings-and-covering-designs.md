@@ -20,7 +20,8 @@ There are many ways to win, but we only need to concentrate on the following, th
 - If $b=y$ and $|X\cap Y|=3$, then $f(u,v)=10$.
 - If $b\neq y$ and $|X\cap Y|=3$, then $f(u,v)=0.4$.
 
-It is easy to see if you have 25 tickets, you can win at least \$0.1 by picking each possible $y$.
+It is easy to see just by looking at $y$, if you have 25 tickets, you can win at least \$0.1 weekly by picking each possible $y$. This gives you already a 0.83\% APR by simply saving \$625.
+
 How about $X$? Let $a_0=.1, a_1=.2, a_2=.8$. If we can find a small family of $6$ element subsets, such that every set of size $i$ are covered, then we can earn at least $a_i$.
 
 ::: Definition
@@ -39,18 +40,20 @@ So we are looking for a $(70,6,k)$ design of small size. [Dan Gordon](https://w
 
 [The $(70,6,2)$-covering design by Jan de Heer and Steve Muir](https://ljcr.dmgordon.org/show_cover.php?v=70&k=6&t=2) is a nice design.
 
-At $12\times 25=300$ tickets, we can guarantee a win of $.2+11\times .1=1.3$ by creating 25 copies of the $(70,6,1)$-covering design. Similarly, at $172\times 25=4300$ tickets, one can guarantee at least a win of $.8$ by creating 25 copies of the $(70,6,2)$-covering design. Due to it is also a nice design, each element appears at least 14 times. So we are looking at $.8+13\times .2 + 158\times .1=19.2$. So \$19.2 earnings per week for \$107,500 investment, which is a 0.93\% APR. 
+At $12\times 25=300$ tickets, we can guarantee a win of $.2+11\times .1=1.3$ by creating 25 copies of the $(70,6,1)$-covering design. This is 0.9\% APR if you put in \$7500.
+
+Similarly, at $172\times 25=4300$ tickets, one can guarantee at least a win of $.8$ by creating 25 copies of the $(70,6,2)$-covering design. Due to it is also a nice design, each element appears at least 14 times. So we are looking at $.8+13\times .2 + 158\times .1=19.2$, which is a 0.93\% APR for a investment of \$107,500. 
 
 This is only a lower bound to the optimization problem, so maybe even more APR can be obtained through better design. Together with the 0.2\% interest you earn a guaranteed 1.13\% APR for having a lot of money. 
 
-We can do more if certain design exists. If we can find a $(70,6,3)$-covering design of $25 \times n$ blocks that can be partitioned into 25 nice $(70,6,2)$ designs, then we can do more. In theory, a nice $(70,6,2)$-covering design has a lower bound of 164 blocks. So taking $n=164$, we are looking at:
+We can do more if certain design exists. If we can find a $(70,6,3)$-covering design of $25 \times n$ blocks that can be partitioned into 25 nice $(70,6,2)$-covering designs, then we can do more. In theory, a nice $(70,6,2)$-covering design has a lower bound of 164 blocks. So taking $n=164$, we are looking at:
 
  1. 1 ticket of .8 winning,
  2. 1 ticket of .4 winning,
  3. 13 tickets of .2 winning,
  4. 150 tickets of .1 winning.
 
-A total of \$18.8 per week over investment of \$102,500. A 0.96\% APR.
+So you get 0.96\% APR for \$102,500 in savings. 
 My guess is there is a potential of finding a spot of 1\% APR by solving the optimization problem exactly. 
 
 Input the entire design into the Yotta system every week is *a crazy amount* of work, and clearly not worth the time. It is better to be not paranoid and let the algorithm give you random numbers. Or hope one day Yotta allows one to import a list of numbers.
