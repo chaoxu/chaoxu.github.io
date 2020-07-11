@@ -7,8 +7,43 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxuprime.com/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Fri, 05 Jun 2020 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sat, 11 Jul 2020 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Yotta Savings and covering designs</title>
+    <link>https://chaoxuprime.com/posts/2020-07-11-yotta-savings-and-covering-designs.html</link>
+    <description><![CDATA[<br />
+<div>
+<p><a href="https://www.withyotta.com/">Yotta Savings</a> is a FDIC insured savings account that give you “interest” in another way. It has a 0.2% APY. It is much better than the APY of many banks, but much worse than actual high APY savings accounts, e.g. Marcus, Ally. However, for each $25, Yotta gives you a weekly entry to their drawing, which you would have some chance of winning big amount of money. This is very close to <a href="https://en.wikipedia.org/wiki/Premium_Bond">Premium Bond</a> in the UK.</p>
+<p>What if one want to actually figure out what is the actual APY one can hope for. People at <a href="https://news.ycombinator.com/item?id=23780062">Hacker News</a> already did a lot of analysis, but in expectation you are looking at more than 3% APY.</p>
+<p>What about worst case guaranteed return? So even if I’m the most unlucky person in the world, I can still get pretty nice returns.</p>
+<p>Note we can have at most 10000 tickets. So maximum investment is $250,000.</p>
+<p>Recall <span class="math inline">[n]=\set{1,\ldots,n}</span>. Each ticket allows you to pick a size <span class="math inline">6</span> subset <span class="math inline">X</span> of <span class="math inline">[70]</span>, and a single element <span class="math inline">y</span> from <span class="math inline">[25]</span>. At end of the week, Yotta also would have a <span class="math inline">6</span> element subset <span class="math inline">A</span> of <span class="math inline">[70]</span>, and a single element <span class="math inline">b</span> from <span class="math inline">[25]</span>. Let a combination <span class="math inline">(X,y)</span> be called a ticket, and <span class="math inline">T</span> is the space of all tickets. A draw is also a ticket.</p>
+<p>To actually find the optimum, you can write a huge optimization problem. Assume we have a valuation function <span class="math inline">f:T\times T\to \R</span>, where <span class="math inline">f(u,v)</span> returns the value given ticket <span class="math inline">u</span> and the draw <span class="math inline">v</span>. For <span class="math inline">m</span> ticket, the optimum guaranteed return is <span class="math inline">\max_{F\in T^m} \min_{v\in T} \sum_{u\in F} f(u,v)</span>. This problem is too large to solve exactly. So let’s look at if we can use some existing tools to get a quick approximation.</p>
+<p>There are many ways to win, but we only need to concentrate on the following:</p>
+<p>Let <span class="math inline">u=(X,y), v=(A,b)</span>.</p>
+<ol type="1">
+<li>If <span class="math inline">b=y</span> and <span class="math inline">|X\cap Y|=0</span>, then <span class="math inline">f(u,v)=.1</span>.</li>
+<li>If <span class="math inline">b=y</span> and <span class="math inline">|X\cap Y|=1</span>, then <span class="math inline">f(u,v)=.2</span>.</li>
+<li>If <span class="math inline">b=y</span> and <span class="math inline">|X\cap Y|=2</span>, then <span class="math inline">f(u,v)=.8</span>.</li>
+<li>If <span class="math inline">b=y</span> and <span class="math inline">|X\cap Y|=3</span>, then <span class="math inline">f(u,v)=10</span>.</li>
+<li>If <span class="math inline">b\neq y</span> and <span class="math inline">|X\cap Y|=3</span>, then <span class="math inline">f(u,v)=.4</span>.</li>
+</ol>
+<p>It is easy to see if you have 25 tickets, you can win at least $0.1 by picking each possible <span class="math inline">y</span>.</p>
+<p>How about <span class="math inline">X</span>? Let <span class="math inline">a_0=.1, a_1=.2, a_2=.8</span>. If we can find a small family of <span class="math inline">6</span> element subsets, such that every set of size <span class="math inline">i</span> are covered, then we can earn at least <span class="math inline">a_i</span>.</p>
+<p>A <span class="math inline">(v,k,t)</span>-covering design are family of <span class="math inline">k</span>-element subsets of <span class="math inline">[v]</span>, such that every <span class="math inline">t</span>-element subset of <span class="math inline">[v]</span> is covered. The <span class="math inline">k</span>-element subsets are called <em>blocks</em>. So we are looking for a <span class="math inline">(70,6,k)</span> design of small size. <a href="https://www.dmgordon.org">Dan Gordon</a> has curated a good <a href="https://www.dmgordon.org/cover/">collection of covering designs</a>. The smallest known covering designs for each <span class="math inline">k</span> are <span class="math inline">12, 172, 3258</span>.</p>
+<p>At <span class="math inline">12\times 25=300</span> tickets, we can guarantee a win of <span class="math inline">.2+11\times .1=1.3</span> by create 25 copies of the <span class="math inline">(70,6,1)</span> covering design. Similarly, at <span class="math inline">172\times 25=4300</span> tickets, can guarantee at least a win of <span class="math inline">.8+171\times .1=17.9</span> by create 25 copies of the <span class="math inline">(70,6,2)</span> covering design. However, some of them might also win <span class="math inline">.2</span> instead of <span class="math inline">.1</span>. So if our design also have the nice property that each element is covered roughly the amount of times, say 14, then we are looking at <span class="math inline">.8+13\times .2 + 157\times .1=19.1</span>. This might not be true, but likely because designs are usually very symmetric.</p>
+<p>If we can find a <span class="math inline">(70,6,3)</span> covering design of <span class="math inline">m</span> elements that can be partitioned into 25 <span class="math inline">(70,6,2)</span> designs each with the above nice property, then we are looking at something like <span class="math inline">.8+13\times 0.2 + (m/25-1)\times .1+0.4</span>. I don’t know if <em>such design exists</em> though. Let’s be hopeful assume it exists for <span class="math inline">m=4300</span>. Then we are looking at $20.9 earning per week for $107,500 investment. Basically just a bit over 1% APY. Together with the APY you earn a guaranteed 1.2% APY for having a lot of money.</p>
+<p>Input the entire design into the Yotta system every week is <em>a crazy amount</em> of work, and clearly not worth the time. It is better to just let the algorithm give you random numbers. Or maybe ask Yotta to have a excel import, but they don’t allow ANY automation.</p>
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2020-07-11">2020-07-11</time>. </div>
+    <div class="info">Tags: banking.</div>
+</div>]]></description>
+    <pubDate>Sat, 11 Jul 2020 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/posts/2020-07-11-yotta-savings-and-covering-designs.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title>The value of a gift card in beancount</title>
     <link>https://chaoxuprime.com/posts/2020-06-05-the-value-of-a-gift-card.html</link>
     <description><![CDATA[<br />
@@ -430,109 +465,6 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 </div>]]></description>
     <pubDate>Sat, 15 Jun 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxuprime.com/posts/2019-06-15-array-and-permutation.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>Union of intervals in SQL</title>
-    <link>https://chaoxuprime.com/posts/2019-04-27-union-of-intervals-in-sql.html</link>
-    <description><![CDATA[<br />
-<div>
-<h1 id="introduction"><span class="header-section-number">1</span> Introduction</h1>
-<p>We given a collection of <span class="math inline">n</span> intervals, and we want to find its union, represented by a set of disjoint intervals. Assume the intervals are of the form <span class="math inline">[a,b)</span>, where <span class="math inline">a&lt;b</span>. However, I have to solve this problem in Hive. So this is a problem I have to solve in Hive’s SQL variant.</p>
-<p>First, here is the schema of the table and some sample inputs.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> t (</span>
-<span id="cb1-2"><a href="#cb1-2"></a>  a <span class="dt">int</span>,</span>
-<span id="cb1-3"><a href="#cb1-3"></a>  b <span class="dt">int</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>);</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> t <span class="kw">VALUES</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>  (<span class="dv">0</span>,<span class="dv">10</span>),</span>
-<span id="cb1-7"><a href="#cb1-7"></a>  (<span class="dv">20</span>,<span class="dv">30</span>),</span>
-<span id="cb1-8"><a href="#cb1-8"></a>  (<span class="dv">5</span>,<span class="dv">15</span>);</span></code></pre></div>
-<p>The correct output should be the following.</p>
-<pre><code>a    b
--------
-0    15
-20   30</code></pre>
-<p>We do not allow empty intervals, so we cannot have <span class="math inline">a=b</span>.</p>
-<h1 id="previous-works"><span class="header-section-number">2</span> Previous Works</h1>
-<p>Note this is a common interview problem, <a href="https://leetcode.com/problems/merge-intervals/">LeetCode 56. Merge Intervals</a>. There is a <span class="math inline">\Omega(n\log n)</span> running time lower bound. There is an <span class="math inline">O(n\log p)</span> upper bound, where <span class="math inline">p</span> is the number of points required to stab all intervals. In higher dimension, this is called the <a href="https://en.wikipedia.org/wiki/Klee%27s_measure_problem">Klee’s measure problem</a>.</p>
-<p>However, one would wonder how efficient can we solve the problem in SQL. I was surprised find a <a href="https://stackoverflow.com/a/8120432/303863">very short solution on stackoverflow</a>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">SELECT</span> </span>
-<span id="cb3-2"><a href="#cb3-2"></a>       t1.a,</span>
-<span id="cb3-3"><a href="#cb3-3"></a>       <span class="fu">MIN</span>(t2.b) <span class="kw">AS</span> b</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">FROM</span> t t1 </span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">INNER</span> <span class="kw">JOIN</span> t t2 <span class="kw">ON</span> t1.a <span class="op">&lt;=</span> t2.b</span>
-<span id="cb3-6"><a href="#cb3-6"></a>  <span class="kw">AND</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span>(<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> t </span>
-<span id="cb3-7"><a href="#cb3-7"></a>                 <span class="kw">WHERE</span> t2.b <span class="op">&gt;=</span> t.a <span class="kw">AND</span> t2.b <span class="op">&lt;</span> t.b) </span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="kw">WHERE</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span>(<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> t</span>
-<span id="cb3-9"><a href="#cb3-9"></a>                 <span class="kw">WHERE</span> t1.a <span class="op">&gt;</span> t.a <span class="kw">AND</span> t1.a <span class="op">&lt;=</span> t.b) </span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="kw">GROUP</span> <span class="kw">BY</span> t1.a</span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="kw">ORDER</span> <span class="kw">BY</span> t1.a</span></code></pre></div>
-<p>Unfortunately, the performance is not promising. Indeed, this is a <span class="math inline">O(n^2)</span> time algorithm. After generating <span class="math inline">10000</span> random intervals in PostgreSQL, it took 13 seconds to run. Also making it work in Hive is next to impossible due to Hive’s limitations on joins and subqueries.</p>
-<p><a href="http://tsql.solidq.com/">Itzik Ben-Gan</a> has <a href="https://www.itprotoday.com/development-techniques-and-management/packing-date-intervals">written</a> <a href="https://blogs.solidq.com/en/sqlserver/packing-intervals/">multiple</a> <a href="https://www.itprotoday.com/sql-server/new-solution-packing-intervals-problem">articles</a> on how to solve this problem. I recommend reading them to learn various tricks. In fact, my solution here is quite similar to one of Ben-Gan’s.</p>
-<p>Thanks to <a href="https://scholar.google.com/citations?user=jB4qJYEAAAAJ&amp;hl=en">Peng Yu</a> who pointed out this kind of queries is very common in sessionization.</p>
-<h1 id="using-basic-sql"><span class="header-section-number">3</span> Using basic SQL</h1>
-<p>Here we will try to implement an algorithm using the most basic of SQL, so it would even work in Hive.</p>
-<h2 id="solution-by-simulate-the-standard-sweep-line-algorithm"><span class="header-section-number">3.1</span> Solution by simulate the standard sweep-line algorithm</h2>
-<p>We first build a table, such that <span class="math inline">(a,c)</span> is in the table shows that there are <span class="math inline">c</span> intervals the endpoint directly before <span class="math inline">a</span>. Next, we notice that <span class="math inline">c=0</span> if and only if <span class="math inline">a</span> is the start of a new interval in the union. Hence we can assign everything between consecutive <span class="math inline">c=0</span> a name.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">WITH</span> </span>
-<span id="cb4-2"><a href="#cb4-2"></a>  weighted_endpoints <span class="kw">AS</span> (</span>
-<span id="cb4-3"><a href="#cb4-3"></a>    <span class="kw">SELECT</span> a, <span class="fu">Sum</span>(d) <span class="kw">AS</span> d</span>
-<span id="cb4-4"><a href="#cb4-4"></a>    <span class="kw">FROM</span>   (<span class="kw">SELECT</span> a,  <span class="dv">1</span> <span class="kw">AS</span> d <span class="kw">FROM</span> t</span>
-<span id="cb4-5"><a href="#cb4-5"></a>            <span class="kw">UNION</span> <span class="kw">ALL</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>            <span class="kw">SELECT</span> b, <span class="op">-</span><span class="dv">1</span> <span class="kw">AS</span> d <span class="kw">FROM</span> t) e</span>
-<span id="cb4-7"><a href="#cb4-7"></a>    <span class="kw">GROUP</span>  <span class="kw">BY</span> a),</span>
-<span id="cb4-8"><a href="#cb4-8"></a>  endpoints_with_coverage <span class="kw">AS</span> (</span>
-<span id="cb4-9"><a href="#cb4-9"></a>    <span class="kw">SELECT</span> <span class="op">*</span>, <span class="fu">Sum</span>(d) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="op">-</span> d <span class="kw">AS</span> c</span>
-<span id="cb4-10"><a href="#cb4-10"></a>    <span class="kw">FROM</span> weighted_endpoints),</span>
-<span id="cb4-11"><a href="#cb4-11"></a>  equivalence_classes <span class="kw">AS</span> (</span>
-<span id="cb4-12"><a href="#cb4-12"></a>    <span class="kw">SELECT</span> a, <span class="fu">COUNT</span>(<span class="cf">CASE</span> <span class="cf">WHEN</span> c<span class="op">=</span><span class="dv">0</span> <span class="cf">THEN</span> <span class="dv">1</span> <span class="cf">END</span>) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="kw">AS</span> <span class="kw">class</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a>    <span class="kw">FROM</span> endpoints_with_coverage)</span>
-<span id="cb4-14"><a href="#cb4-14"></a><span class="kw">SELECT</span> <span class="fu">min</span>(a) <span class="kw">AS</span> a, <span class="fu">max</span>(a) <span class="kw">AS</span> b</span>
-<span id="cb4-15"><a href="#cb4-15"></a><span class="kw">FROM</span> equivalence_classes</span>
-<span id="cb4-16"><a href="#cb4-16"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">class</span>;</span></code></pre></div>
-<p>The equivalence classes idea is from Peng Yu. This code took 100ms to handle 10000 random intervals in PostgreSQL. You can find <a href="https://www.db-fiddle.com/f/aVaF6NDTVYmxBpifsHDFBf/9">the example in DB-fiddle</a>. I am interested to seeing simpler and faster code using the simplest of SQL.</p>
-<h2 id="solution-through-gaps"><span class="header-section-number">3.2</span> Solution through gaps</h2>
-<p>There is another solution, which uses the idea of gaps. Interestingly, gaps are much easier to compute. Here we modify <a href="https://stackoverflow.com/a/53163029/303863">Oleg K’s solution</a>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">WITH</span> largest_prev <span class="kw">AS</span> (<span class="kw">SELECT</span> </span>
-<span id="cb5-2"><a href="#cb5-2"></a>                      <span class="fu">MAX</span>(b) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="kw">AS</span> b,</span>
-<span id="cb5-3"><a href="#cb5-3"></a>                      <span class="fu">LEAD</span>(a) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="kw">AS</span> a </span>
-<span id="cb5-4"><a href="#cb5-4"></a>                      <span class="kw">FROM</span> t),</span>
-<span id="cb5-5"><a href="#cb5-5"></a>     gaps <span class="kw">AS</span> (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> largest_prev <span class="kw">WHERE</span> b<span class="op">&lt;</span>a</span>
-<span id="cb5-6"><a href="#cb5-6"></a>              <span class="kw">UNION</span> <span class="kw">ALL</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a>              <span class="kw">SELECT</span> <span class="fu">min</span>(a), <span class="fu">min</span>(a) <span class="kw">from</span> t</span>
-<span id="cb5-8"><a href="#cb5-8"></a>              <span class="kw">UNION</span> <span class="kw">ALL</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a>              <span class="kw">SELECT</span> <span class="fu">max</span>(b), <span class="kw">null</span> <span class="kw">from</span> t),</span>
-<span id="cb5-10"><a href="#cb5-10"></a>     intervals <span class="kw">AS</span> (<span class="kw">SELECT</span> a, <span class="fu">LEAD</span>(b) <span class="kw">OVER</span> (<span class="kw">ORDER</span> <span class="kw">BY</span> b) <span class="kw">as</span> b <span class="kw">FROM</span> gaps)</span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> intervals <span class="kw">WHERE</span> a <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">null</span>;</span></code></pre></div>
-<p>This one can also be tested on <a href="https://www.db-fiddle.com/f/k1GTRiRgaiPmRfxZoWBhTs/1">DB-fiddle</a>. This code took 70ms to handle 10000 random intervals in PostgreSQL.</p>
-<p>As a real application, for example, if we want to know the length of union of intervals grouped by some keys. The following is how we do it in hive. Note in this application, we don’t have to remove the null rows because we are taking a sum.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">SET</span> hivevar<span class="ch">:key</span><span class="op">=</span>id1,id2;</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">SET</span> hivevar<span class="ch">:input</span><span class="op">=</span>t;</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="kw">WITH</span> largest_prev <span class="kw">AS</span> (<span class="kw">SELECT</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>                      ${<span class="kw">key</span>},</span>
-<span id="cb6-5"><a href="#cb6-5"></a>                      <span class="fu">MAX</span>(b) <span class="kw">OVER</span> (<span class="kw">PARTITION</span> <span class="kw">BY</span> ${<span class="kw">key</span>} <span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="kw">AS</span> b,</span>
-<span id="cb6-6"><a href="#cb6-6"></a>                      <span class="fu">LEAD</span>(a) <span class="kw">OVER</span> (<span class="kw">PARTITION</span> <span class="kw">BY</span> ${<span class="kw">key</span>} <span class="kw">ORDER</span> <span class="kw">BY</span> a) <span class="kw">AS</span> a</span>
-<span id="cb6-7"><a href="#cb6-7"></a>                      <span class="kw">FROM</span> ${input}),</span>
-<span id="cb6-8"><a href="#cb6-8"></a>     gaps <span class="kw">AS</span> (<span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> largest_prev <span class="kw">WHERE</span> b<span class="op">&lt;</span>a</span>
-<span id="cb6-9"><a href="#cb6-9"></a>              <span class="kw">UNION</span> <span class="kw">ALL</span></span>
-<span id="cb6-10"><a href="#cb6-10"></a>              <span class="kw">SELECT</span> ${<span class="kw">key</span>}, <span class="fu">min</span>(a), <span class="fu">min</span>(a) <span class="kw">from</span> ${input} <span class="kw">GROUP</span> <span class="kw">BY</span> ${<span class="kw">key</span>}</span>
-<span id="cb6-11"><a href="#cb6-11"></a>              <span class="kw">UNION</span> <span class="kw">ALL</span></span>
-<span id="cb6-12"><a href="#cb6-12"></a>              <span class="kw">SELECT</span> ${<span class="kw">key</span>}, <span class="fu">max</span>(b), <span class="kw">null</span> <span class="kw">from</span> ${input} <span class="kw">GROUP</span> <span class="kw">BY</span> ${<span class="kw">key</span>}),</span>
-<span id="cb6-13"><a href="#cb6-13"></a>     intervals <span class="kw">AS</span> (<span class="kw">SELECT</span> ${<span class="kw">key</span>}, </span>
-<span id="cb6-14"><a href="#cb6-14"></a>                          a,</span>
-<span id="cb6-15"><a href="#cb6-15"></a>                          <span class="fu">LEAD</span>(b) <span class="kw">OVER</span> (<span class="kw">PARTITION</span> <span class="kw">BY</span> ${<span class="kw">key</span>} <span class="kw">ORDER</span> <span class="kw">BY</span> b) <span class="kw">as</span> b</span>
-<span id="cb6-16"><a href="#cb6-16"></a>                   <span class="kw">FROM</span> gaps)</span>
-<span id="cb6-17"><a href="#cb6-17"></a><span class="kw">SELECT</span> ${<span class="kw">key</span>}, <span class="fu">SUM</span>(b<span class="op">-</span>a) <span class="kw">as</span> score</span>
-<span id="cb6-18"><a href="#cb6-18"></a><span class="kw">FROM</span> intervals</span>
-<span id="cb6-19"><a href="#cb6-19"></a><span class="kw">GROUP</span> <span class="kw">BY</span> ${<span class="kw">key</span>};</span></code></pre></div>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-04-27">2019-04-27</time>. </div>
-    <div class="info">Tags: SQL, algorithm.</div>
-</div>]]></description>
-    <pubDate>Sat, 27 Apr 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-04-27-union-of-intervals-in-sql.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 
