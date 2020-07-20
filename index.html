@@ -120,7 +120,7 @@
       <p>We address counting and optimization variants of multicriteria global min-cut and size-constrained min-<span class="math">k</span>-cut in hypergraphs.</p>
 <ol>
 <li>For an <span class="math">r</span>-rank <span class="math">n</span>-vertex hypergraph endowed with <span class="math">t</span> hyperedge-cost functions, we show that the number of multiobjective min-cuts is <span class="math">O(r2^{tr}n^{3t−1})</span>. In particular, this shows that the number of parametric min-cuts in constant rank hypergraphs for a constant number of criteria is strongly polynomial, thus resolving an open question by Aissi, Mahjoub, McCormick, and Queyranne (Math Programming, 2015). In addition, we give randomized algorithms to enumerate all multiobjective min-cuts and all pareto-optimal cuts in strongly polynomial-time.</li>
-<li>We also address node-budgeted multiobjective min-cuts: For an <span class="math">n</span>-vertex hypergraph endowed with t vertex-weight functions, we show that the number of node-budgeted multiobjective min-cuts is <span class="math">O(r2^{r}nt+2), where </span>r<span class="math"> is the rank of the hypergraph, and the number of node-budgeted </span>b<span class="math">-multiobjective min-cuts for a fixed budget-vector </span>b<span class="math"> is </span>O(n^2)$.</li>
+<li>We also address node-budgeted multiobjective min-cuts: For an <span class="math">n</span>-vertex hypergraph endowed with t vertex-weight functions, we show that the number of node-budgeted multiobjective min-cuts is <span class="math">O(r2^{r}nt+2)</span>, where <span class="math">r</span> is the rank of the hypergraph, and the number of node-budgeted <span class="math">b</span>-multiobjective min-cuts for a fixed budget-vector <span class="math">b</span> is <span class="math">O(n^2)</span>.</li>
 <li>We show that min-<span class="math">k</span>-cut in hypergraphs subject to constant lower bounds on part sizes is solvable in polynomial-time for constant <span class="math">k</span>, thus resolving an open problem posed by Queyranne. Our technique also shows that the number of optimal solutions is polynomial.
 All of our results build on the random contraction approach of Karger (SODA, 1993). Our techniques illustrate the versatility of the random contraction approach to address counting and algorithmic problems concerning multiobjective min-cuts and size-constrained <span class="math">k</span>-cuts in hypergraphs.</li>
 </ol>
@@ -551,7 +551,7 @@ problems in hypergraphs of small rank.</li>
   <div class="cv-non-selected row cv-entry" id="kdepots">
     <input type="checkbox" class="abstract-guard" id="kdepots-toggle">
     <div class="cv-left">
-        <i class="material-icons disabled">expand_more</i>
+        <label class="showmore material-icons" for="kdepots-toggle"></label>
         <i class="material-icons disabled">description</i>
         <a href="files/presentations/kdepots.pdf"><i class="material-icons">airplay</i></a>
     </div>
@@ -562,8 +562,11 @@ problems in hypergraphs of small rank.</li>
             <a href="https://www.csun.edu/som/amir-gharehgozli">Amir Gharehgozli</a></li><li>
             <a href="https://www.linkedin.com/in/wenda-zhang-a5359a36/">Wenda Zhang</a></li></ul>
       <p><em>
-        <time>2018</time>.
+        Accepted by EJOR
       </em><p>
+    </div>
+    <div class="abstract">
+      <p>We describe an algorithm for the high multiplicity asymmetric traveling salesman problem with feedback vertex set of size <span class="math">k</span> (HMTSPFVS-<span class="math">k</span>FVS) where each vertex can be visited a certain number of times and each cycle in a solution contains at least one vertex from the feedback vertex set. We show how it can be used to improve algorithms in automated storage and retrieval systems. An automated storage and retrieval system includes storage blocks and storage and retrieval machines that either move to retrieve unit loads from their current locations in the system to a depot or take unit loads from a depot and store them to specific locations in the system. Given <span class="math">n</span> storage and retrieval requests in a system with <span class="math">k</span> depots and one storage and retrieval machine, we show that our algorithm for HMTSPFVS-<span class="math">k</span>FVS can solve the problem of minimizing total traveling time of the storage and retrieval machine in <span class="math">O(n^k+n^3)</span> time when all depots are specialized (each depot fulfills one type of requests) and in <span class="math">O(n^{2k}+n^3)</span> time when depots are regular (each depot fulfills both types of requests). The best previous algorithm only solves the special case of the problem with <span class="math">2</span> regular depots in <span class="math">O(n^6)</span> time. The applicability of our algorithm for several generalizations and special cases of the problem is also discussed. Furthermore, to evaluate the performance of our solution method, we perform extensive numerical experiments.</p>
     </div>
   </div>
   <!-- An algorithm for the metric multiple depots capacitated vehicle routing problem with restocking and capacity two  -->
