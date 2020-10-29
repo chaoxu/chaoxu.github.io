@@ -238,6 +238,21 @@ abstract: A closed curve in the plane is weakly simple if it is the limit (in th
 
 
 # journal publications
+--- 
+id: min-violation
+show: [p]
+title: Minimum violation vertex maps and their applications to cut problems
+type: journal
+year: 2020
+authors: [Ken-ichi Kawarabayashi, Chao Xu]
+abstract: >
+  The minimum violation problem asks for a vertex map from a digraph to a pattern digraph that minimizes violation, 
+  the total weight of the edges not mapped to an edge. We are interested in surjective mappings. We characterize all
+  patterns where a minimum violation map that fixes some vertices can be computed in polynomial time. We also make
+  progress in the case where we do not fix any vertex in the mapping, including when the digraph is disconnected,
+  when the graph is in the variety of finite paths. Moreover, we obtain a dichotomy result for trees. We apply
+  the result to some cut problems, including $k$-cut with size lower bounds and length bounded $k$-cuts.
+
 ---
 id: kdepots
 show: [p]
@@ -450,23 +465,6 @@ abstract: >
 
 
 # manuscripts
---- 
-id: min-violation
-show: [p]
-title: Minimum violation vertex maps and their applications to cut problems
-type: manuscript
-year: 2020
-bib: Accepted by SIDMA
-authors: [Ken-ichi Kawarabayashi, Chao Xu]
-abstract: >
-  The minimum violation problem asks for a vertex map from a digraph to a pattern digraph that minimizes violation, 
-  the total weight of the edges not mapped to an edge. We are interested in surjective mappings. 
-  We characterize all patterns where a minimum violation map that fixes some vertices can 
-  be computed in polynomial time. We also make progress in the case where we do not 
-  fix any vertex in the mapping, including when the digraph is disconnected, 
-  when the graph is in the variety of finite paths. Moreover, we obtain a dichotomy result for trees.
-  We apply the result to some cut problems, including 
-  $k$-cut with size lower bounds and length bounded $k$-cuts.
 
 ---
 id: airplane
