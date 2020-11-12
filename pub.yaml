@@ -69,6 +69,19 @@ types:
 
 # conference publications
 ---
+id: parking
+show: [d]
+title: Marking Streets to Improve Parking Density
+authors: [Chao Xu, Steven Skiena]
+type: conference
+pub: Urban Complex Systems
+year: 2020
+abstract: >
+  Street parking spots for automobiles are a scarce commodity in most urban environments. The heterogeneity of car sizes makes it inefficient to rigidly define fixed-sized spots. Instead, unmarked streets in cities like New York leave placement decisions to individual drivers, who have no direct incentive to maximize street utilization. 
+  In this paper, we explore the effectiveness of two different behavioral interventions designed to encourage better parking, namely (1) educational campaigns to encourage parkers to "kiss the bumper" and reduce the distance between themselves and their neighbors, or (2) painting appropriately-spaced markings on the street and urging drivers to "hit the line". Through analysis and simulation, we establish that the greatest densities are achieved when lines are painted to create spots roughly twice the length of average-sized cars. Kiss-the-bumper campaigns are in principle more effective than hit-the-line for equal degrees of compliance, although we believe that the visual cues of painted lines induce better parking behavior.
+
+
+---
 id: multicritera-cuts
 title: Multicritera Cuts and Size-Constrained $k$-cuts in Hypergraphs
 authors: [Calvin Beideman, Karthekeyan Chandrasekaran, Chao Xu]
@@ -429,7 +442,7 @@ abstract: >
 ---
 id: kinship
 title: The shortest kinship description problem
-show: [d]
+show: [d, p]
 authors: [Chao Xu, Qian Zhang]
 type: journal
 pub: IPL
@@ -511,17 +524,6 @@ abstract: >
 #   class, as a striking example of a divide-and-conquer algorithm that uses FFT to
 #   a problem that seems (at first) unrelated. In particular, the algorithm and its
 #   analysis can be described in full detail in two pages (see pages 3-5).
-
----
-id: parking
-show: [d]
-title: Marking Streets to Improve Parking Density
-authors: [Chao Xu, Steven Skiena]
-type: manuscript
-year: 2015
-abstract: >
-  Street parking spots for automobiles are a scarce commodity in most urban environments. The heterogeneity of car sizes makes it inefficient to rigidly define fixed-sized spots. Instead, unmarked streets in cities like New York leave placement decisions to individual drivers, who have no direct incentive to maximize street utilization. 
-  In this paper, we explore the effectiveness of two different behavioral interventions designed to encourage better parking, namely (1) educational campaigns to encourage parkers to "kiss the bumper" and reduce the distance between themselves and their neighbors, or (2) painting appropriately-spaced markings on the street and urging drivers to "hit the line". Through analysis and simulation, we establish that the greatest densities are achieved when lines are painted to create spots roughly twice the length of average-sized cars. Kiss-the-bumper campaigns are in principle more effective than hit-the-line for equal degrees of compliance, although we believe that the visual cues of painted lines induce better parking behavior.
 
 ---
 id: thesis
