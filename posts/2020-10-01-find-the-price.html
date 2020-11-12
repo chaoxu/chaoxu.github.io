@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok">
+    <meta property="og:title" content="Find the price">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="The Art Gallery Guardian">
+    <meta property="article:tag" content="accounting">
+    <title>Find the price</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-4171915-2');
+  </script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="https://chaoxuprime.com/rss.xml">
+  </head>
+  <body>
+    <header class="hide-on-print">
+        <div id="site-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+        <div style="display: none;">
+          <img src="/files/chao/chao_thumb.jpg">
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1 id="article-title">Find the price</h1>
+        <br>
+<div>
+<p>Cost basis is the original value of an asset. When every transaction is between a single currency and asset. It is fairly easy to compute the cost basis. Indeed, when one buys a stock, the cost basis is precisely the market value of that stock.</p>
+<p>A single number is sufficient to record the cost basis.</p>
+<p>However, things become complicated when there is no known market value. Or, when one cannot determin the market value.</p>
+<p>In that case, we can still store the <em>exchange rate</em> for a particular transaction.</p>
+<p>Let <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi></mrow><annotation encoding="application/x-tex">D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span style="margin-right: 0.02778em;" class="mord mathdefault">D</span></span></span></span></span> be the set of <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathdefault">n</span></span></span></span></span> different commodities, and we have vectors <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="double-struck">R</mi><mi>D</mi></msup></mrow><annotation encoding="application/x-tex">\R^D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.8413309999999999em; vertical-align: 0em;"></span><span class="mord"><span class="mord"><span class="mord mathbb">R</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8413309999999999em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span style="margin-right: 0.02778em;" class="mord mathdefault mtight">D</span></span></span></span></span></span></span></span></span></span></span></span>.</p>
+<p>A transaction is just a vector <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>v</mi><mi>n</mi></msub><mo stretchy="false">)</mo><mo>∈</mo><msup><mi mathvariant="double-struck">R</mi><mi>D</mi></msup></mrow><annotation encoding="application/x-tex">(v_1,\ldots,v_n) \in \R^D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mopen">(</span><span class="mord"><span style="margin-right: 0.03588em;" class="mord mathdefault">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.30110799999999993em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.03588em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.16666666666666666em;"></span><span class="mord"><span style="margin-right: 0.03588em;" class="mord mathdefault">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.151392em;"><span class="" style="top: -2.5500000000000003em; margin-left: -0.03588em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right: 0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height: 0.8413309999999999em; vertical-align: 0em;"></span><span class="mord"><span class="mord"><span class="mord mathbb">R</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.8413309999999999em;"><span class="" style="top: -3.063em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span style="margin-right: 0.02778em;" class="mord mathdefault mtight">D</span></span></span></span></span></span></span></span></span></span></span></span>.</p>
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2020-10-01">2020-10-01</time>. </div>
+    <div class="info">Tags: accounting.</div>
+</div>
+      </article>
+    </main>
+    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com" rel="author">Chao Xu</a>. Licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+    <a href="/README.html">Blog README</a>.</footer>
+  
+
+</body></html>
