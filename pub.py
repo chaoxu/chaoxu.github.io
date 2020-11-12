@@ -57,8 +57,8 @@ def build_paper(paper):
         paper["notes"] = map(parsei,paper["notes"])
     if "pub" in paper.keys():
         a = {}
-        a["name"] = paper["pub"]
-        a["venue"] = venues[paper["pub"]]
+        a["name"] = paper["pub"] 
+        a["venue"] = venues.get(paper["pub"],paper["pub"])
         # print paper["pub"]
         paper["pub"] = a
     if "abstract" in paper.keys():
