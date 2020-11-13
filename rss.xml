@@ -7,28 +7,8 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxuprime.com/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Thu, 01 Oct 2020 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sat, 11 Jul 2020 00:00:00 UT</lastBuildDate>
         <item>
-    <title>Find the price</title>
-    <link>https://chaoxuprime.com/posts/2020-10-01-find-the-price.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>Cost basis is the original value of an asset. When every transaction is between a single currency and asset. It is fairly easy to compute the cost basis. Indeed, when one buys a stock, the cost basis is precisely the market value of that stock.</p>
-<p>A single number is sufficient to record the cost basis.</p>
-<p>However, things become complicated when there is no known market value. Or, when one cannot determin the market value.</p>
-<p>In that case, we can still store the <em>exchange rate</em> for a particular transaction.</p>
-<p>Let <span class="math inline">D</span> be the set of <span class="math inline">n</span> different commodities, and we have vectors <span class="math inline">\R^D</span>.</p>
-<p>A transaction is just a vector <span class="math inline">(v_1,\ldots,v_n) \in \R^D</span>.</p>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2020-10-01">2020-10-01</time>. </div>
-    <div class="info">Tags: accounting.</div>
-</div>]]></description>
-    <pubDate>Thu, 01 Oct 2020 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2020-10-01-find-the-price.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
     <title>Yotta Savings and covering designs</title>
     <link>https://chaoxuprime.com/posts/2020-07-11-yotta-savings-and-covering-designs.html</link>
     <description><![CDATA[<br />
@@ -470,6 +450,36 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 </div>]]></description>
     <pubDate>Sat, 15 Jun 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxuprime.com/posts/2019-06-15-covert-back-to-back-ticketing.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
+    <title>Arrays and permutation</title>
+    <link>https://chaoxuprime.com/posts/2019-06-15-array-and-permutation.html</link>
+    <description><![CDATA[<br />
+<div>
+<h1 id="permutation-functional-form"><span class="header-section-number">1</span> Permutation, functional form</h1>
+<p>What exactly is an array. In functional form, an array just have to support the following two operations in constant time.</p>
+<ol type="1">
+<li><span class="math inline">get(A,i)</span>: returns <span class="math inline">A[i]</span>.</li>
+<li><span class="math inline">set(A,i,x)</span>: update the array <span class="math inline">A</span> such that <span class="math inline">A[i]</span> returns <span class="math inline">x</span>.</li>
+</ol>
+<p>So in some sense, array is just encoding a function <span class="math inline">f:[n]\to X</span>. A permutation would be a bijective function <span class="math inline">\pi:[n]\to [n]</span>. If we are interested in applying a permutation <span class="math inline">\pi</span>, then to program it is easy, we need to output a new function <span class="math inline">g</span> such that <span class="math inline">g(i) = f(\pi(i))</span>.</p>
+<p>This allows us to apply permutations pretty easily by composing functions and cache outputs. In the purely functional view, the layout of the array in memory and the indexing can be different.</p>
+<h1 id="permutation-physically"><span class="header-section-number">2</span> Permutation, physically</h1>
+<p>Sometimes one might ask to physically apply the permutation to an array. That is, the <span class="math inline">i</span>th position in the array contains the element in <span class="math inline">\pi(i)</span>. This is helpful because it helps with cache locality: accessing consecutive elements would be in the same location. Although if the ordering of loops does not matter, there is no harm considering the functional view.</p>
+<p>Often, one is tasked to apply permutation to an array physically. It usually ask for <span class="math inline">O(n)</span> running time and <span class="math inline">O(1)</span> space. Unfortunately, there is no way to obtain this running time for all permutations. There are some permutations where this is impossible. <a href="https://cstheory.stackexchange.com/questions/6711/complexity-of-applying-a-permutation-in-place">A discussion can be found in cstheory</a>.</p>
+<h1 id="mix-and-match"><span class="header-section-number">3</span> Mix and match</h1>
+<p><a href="https://www.linkedin.com/in/lingyu-xu-9b87a565/">Lingyu Xu</a> asked me about <a href="https://leetcode.com/problems/wiggle-sort-ii/">Wiggle Sort</a>, where the actual <strong>physical layout</strong> has to be changed, but it takes both the functional and physical view of the array.</p>
+<p>Let’s consider the simple case where every element is distinct. One simple solution is the following. Partition the numbers into the median, elements smaller than median, and elements larger than the median. We map the smallest <span class="math inline">n/2</span> elements into even positions, and remaining elements into the odd position. The algorithm has <span class="math inline">O(n)</span> time. The problem is how to get constant extra place. Because it is unclear how to apply the following permutation in place. The permutation <span class="math inline">\sigma(i) = (1+2i) \% (n|1)</span>.</p>
+<p>However, one we take the functional view, the problem can be solved, physically too. The <a href="https://leetcode.com/problems/wiggle-sort-ii/discuss/77677/ono1-after-median-virtual-indexing/81756">answer by</a> <a href="http://www.stefan-pochmann.info/">Stefan Pochmann</a> shows one can simply do the mapping in place.</p>
+<p>What is happening in the physical location. If we applied index transform <span class="math inline">\pi</span>, then apply physical permutation <span class="math inline">\sigma</span> on the index, what happens for the physical array? It is the same as applying <span class="math inline">\pi^{-1}\sigma\pi</span> to the physical array. Note this means we can only use this trick to obtain conjugates of <span class="math inline">\sigma</span>.</p>
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-06-15">2019-06-15</time>. </div>
+    <div class="info">Tags: Permutation.</div>
+</div>]]></description>
+    <pubDate>Sat, 15 Jun 2019 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/posts/2019-06-15-array-and-permutation.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 
