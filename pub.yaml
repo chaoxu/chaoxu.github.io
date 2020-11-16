@@ -258,6 +258,7 @@ title: Minimum violation vertex maps and their applications to cut problems
 type: journal
 year: 2020
 authors: [Ken-ichi Kawarabayashi, Chao Xu]
+pub: SIDMA
 selected: true
 abstract: >
   The minimum violation problem asks for a vertex map from a digraph to a pattern digraph that minimizes violation, 
