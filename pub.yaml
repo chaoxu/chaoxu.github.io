@@ -253,7 +253,7 @@ abstract: A closed curve in the plane is weakly simple if it is the limit (in th
 # journal publications
 --- 
 id: min-violation
-show: [p]
+show: [d,p]
 title: Minimum violation vertex maps and their applications to cut problems
 type: journal
 year: 2020
@@ -270,7 +270,7 @@ abstract: >
 
 ---
 id: kdepots
-show: [p]
+show: [d,p]
 title: High multiplicity asymmetric traveling salesman problem with feedback vertex set and its application to storage/retrieval system
 authors: [Amir Gharehgozli, Chao Xu, Wenda Zhang]
 type: journal
