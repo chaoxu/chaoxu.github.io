@@ -1,3 +1,4 @@
+{-# LANGUAGE OverloadedStrings #-}
 module ChaoDoc ( chaoDocRead, chaoDocWrite, theoremFilter, chaoDocInline) where
 import Text.Pandoc
 import Text.Regex (mkRegex, matchRegex)
@@ -29,8 +30,8 @@ chaoDocWrite = def{writerHTMLMathMethod = KaTeX "",
                    --writerHighlightStyle = Just syntaxHighlightingStyle,
                    writerNumberSections = True}
 
-chaoDocToPandoc :: String -> Pandoc
-chaoDocToPandoc x = fromRight (Pandoc nullMeta []) $ runPure (readMarkdown chaoDocRead (pack x))
+chaoDocToPandoc :: Text -> Pandoc
+chaoDocToPandoc x = fromRight (Pandoc nullMeta []) $ runPure (readMarkdown chaoDocRead x)
 
 getInline :: Inline -> [Inline]
 getInline x = [x]
@@ -38,11 +39,11 @@ getInline x = [x]
 pandocToInline :: Pandoc -> [Inline]
 pandocToInline x = query getInline x
 
-writeDocT :: Pandoc -> String
-writeDocT x = unpack $ fromRight (pack "") $ runPure $ writeHtml5String chaoDocWrite x
+writeDocT :: Pandoc -> Text
+writeDocT x = fromRight "" $ runPure $ writeHtml5String chaoDocWrite x
 
-chaoDocInline :: String->String
-chaoDocInline x = removeP $ writeDocT $ chaoDocToPandoc x
+chaoDocInline :: Text -> String
+chaoDocInline x = removeP $ unpack $ writeDocT $ chaoDocToPandoc x
   where removeP x = drop 3 (take (length x - 4) x) 
 
 incrementalBlock = ["Theorem",
@@ -57,13 +58,13 @@ otherBlock = ["Proof","Remark"]
 theoremClasses = incrementalBlock ++ otherBlock
 
 -- create a filter for theorems
-getClass :: Attr -> [String]
+getClass :: Attr -> [Text]
 getClass (_,c,_) = c
 
-addClass :: Attr -> String -> Attr
+addClass :: Attr -> Text -> Attr
 addClass (a,b,c) d = (a,d:b,c)
 
-addAttr :: Attr -> String -> String -> Attr
+addAttr :: Attr -> Text -> Text -> Attr
 addAttr (a,b,c) x y = (a,b,(x,y):c)
 
 -- For each theorem, add a number, and also add add class theorem
@@ -72,7 +73,7 @@ preprocessTheorems (Div attr xs)
  | isIncremental = do
           curId <- get
           put (curId + 1)
-          return $ Div (addAttr attr' "index" (show curId)) xs
+          return $ Div (addAttr attr' "index" (pack $ show curId)) xs
  | isOtherBlock = return $ Div attr' xs
  | otherwise = return (Div attr xs)
  where isIncremental= getClass attr `intersect` incrementalBlock /= []
@@ -85,7 +86,7 @@ theoremFilter :: Pandoc -> Pandoc
 theoremFilter doc = walk makeTheorem $ autorefFilter $ evalState (walkM preprocessTheorems doc) 1
 
 --    [index, type, id]
-theoremIndex :: Block -> [(String, (String, String))]
+theoremIndex :: Block -> [(Text, (Text, Text))]
 theoremIndex (Div attr xs) 
  | isNothing t = []
  | isIncremental = [(id,(fromJust t,fromJust index))]
@@ -96,14 +97,14 @@ theoremIndex (Div attr xs)
        isIncremental = fromJust t `elem` incrementalBlock
 theoremIndex _ = []
 
-autoref :: [(String, (String, String))] -> Inline -> Inline
+autoref :: [(Text, (Text, Text))] -> Inline -> Inline
 autoref x (Cite citations inlines)
- | valid     = Link nullAttr [Str linkTitle] ("#"++citeid, linkTitle)
+ | valid     = Link nullAttr [Str linkTitle] ("#" <> citeid, linkTitle)
  | otherwise = Cite citations inlines
  where citeid = citationId $ head citations 
        valid = citeid `elem` map fst x
        (theoremType,num) = fromJust $ lookup citeid x
-       linkTitle = theoremType ++" "++ num
+       linkTitle = theoremType <> " " <> num
 autoref _ y = y
 
 autorefFilter :: Pandoc -> Pandoc

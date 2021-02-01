@@ -13,6 +13,7 @@ import           Control.Monad
 import           Control.Applicative        ((<$>), Alternative (..), (<$>))
 import           Data.Maybe
 import           Data.Monoid
+import           Data.Text (Text, unpack, pack)
 import qualified Data.Map as M
 import           Hakyll.Web.Pandoc.Biblio 
 import qualified Text.CSL as CSL
@@ -117,7 +118,7 @@ main = hakyll $ do
 
     match "templates/*" $ compile templateCompiler
 
---mathDoc :: Item String -> Compiler (Item String)
+--mathDoc :: Item Text -> Compiler (Item String)
 --mathDoc = return . fmap mathdoc
 
 --mathCompiler = getResourceBody >>= mathDoc
@@ -130,7 +131,7 @@ idPages = ["favicon.ico",
            "CNAME",
            "index.html"]
 
-htmlTitleField :: Context String
+htmlTitleField :: Context String 
 htmlTitleField = Context $ \k _ i -> 
     if (k /= "htmltitle")
     then do empty
@@ -142,7 +143,7 @@ betterTitleField = Context $ \k _ i ->
     if (k /= "richtitle")
     then do empty
     else do value <- getMetadataField (itemIdentifier i) "title"
-            return $ StringField (chaoDocInline $ if isNothing value then "" else fromJust value)
+            return $ StringField (chaoDocInline $ if isNothing value then "" else (pack $ fromJust value))
 
 sourceField key = field key $
     fmap (maybe empty (sourceUrl . toUrl)) . getRoute . itemIdentifier
@@ -158,7 +159,7 @@ feedConfiguration = FeedConfiguration
   , feedRoot = "https://chaoxuprime.com"}
 
 --------------------------------------------------------------------------------
-postCtx :: Context String
+postCtx :: Context String 
 postCtx =
     sourceField "source"  `mappend`
     dateField "date" "%F" `mappend`
@@ -169,7 +170,7 @@ postCtx =
     constField "tags"  "" `mappend`
     missingField
 --------------------------------------------------------------------------------
-postList :: ([Item String] -> Compiler [Item String]) -> Compiler String
+postList :: ([Item String] -> Compiler [Item String]) -> Compiler String 
 postList sortFilter = do
     posts   <- sortFilter =<< loadAll ("posts/*" .&&. hasNoVersion)
     itemTpl <- loadBody "templates/post-item.html"
