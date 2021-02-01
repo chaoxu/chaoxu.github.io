@@ -125,7 +125,7 @@
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">1</span></span>
 <p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c(F)\leq \lambda_2</span> is <span class="math inline">O(n^2)</span>.</p>
 </div>
-<h1 id="bounds-related-to-scaling-of-the-min-cut"><span class="header-section-number">1</span> Bounds related to scaling of the min-cut</h1>
+<h1 data-number="1" id="bounds-related-to-scaling-of-the-min-cut"><span class="header-section-number">1</span> Bounds related to scaling of the min-cut</h1>
 <p>What happens when we want to know about the number of cuts with value at most <span class="math inline">\alpha \lambda_2</span>?</p>
 <p>By simply analyzing Karger’s algorithm, one can obtain the following.</p>
 <div class="theorem-environment Theorem" data-index="2" type="Theorem">
@@ -144,7 +144,7 @@
 <p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c(F)&lt; \alpha \lambda_2</span> is <span class="math inline">O(n^{\ceil{2\alpha}-1})</span>.</p>
 </div>
 <p>Henzinger and Williamson showed the conjecture true for all <span class="math inline">\alpha\leq \frac{3}{2}</span> <span class="citation" data-cites="HenzingerW96">[<a href="#ref-HenzingerW96" role="doc-biblioref">3</a>]</span>.</p>
-<h1 id="bounds-related-to-min-k-cut"><span class="header-section-number">2</span> Bounds related to min-<span class="math inline">k</span>-cut</h1>
+<h1 data-number="2" id="bounds-related-to-min-k-cut"><span class="header-section-number">2</span> Bounds related to min-<span class="math inline">k</span>-cut</h1>
 <p>There are multiple ways to obtain the following theorem. For example, directly generalize Karger’s argument for cut counting.</p>
 <div class="theorem-environment Theorem" data-index="5" type="Theorem">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">5</span></span>
@@ -180,7 +180,7 @@
 <span class="theorem-header"><span class="type">Conjecture</span><span class="index">11</span></span>
 <p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c(F)&lt; \alpha \lambda_k</span> is <span class="math inline">O(n^{\ceil{\alpha k}-1})</span>.</p>
 </div>
-<h1 id="bounds-on-parametric-cuts"><span class="header-section-number">3</span> Bounds on parametric cuts</h1>
+<h1 data-number="3" id="bounds-on-parametric-cuts"><span class="header-section-number">3</span> Bounds on parametric cuts</h1>
 <p>Now, let’s consider parametric cuts. Consider we have <span class="math inline">d</span> weight functions <span class="math inline">c_1,\ldots,c_d:E\to \R_{\geq 0}</span>. Define <span class="math inline">c_\mu(e) = \sum_{i=1}^d \mu_i c_i(e)</span>. We interested in knowing about cuts <span class="math inline">F</span> such that <span class="math inline">c_\mu(F)</span> is bounded by <span class="math inline">\alpha \lambda_{\mu,k}</span>, where <span class="math inline">\lambda_{\mu,k}</span> is the min-<span class="math inline">k</span>-cut value when the cost function is <span class="math inline">c_\mu</span>.</p>
 <p>Karger showed the following <span class="citation" data-cites="Karger16">[<a href="#ref-Karger16" role="doc-biblioref">6</a>]</span>.</p>
 <div class="theorem-environment Theorem" data-index="12" type="Theorem">
@@ -207,7 +207,7 @@
 <span class="theorem-header"><span class="type">Conjecture</span><span class="index">16</span></span>
 <p>The number of cuts <span class="math inline">F</span> such that <span class="math inline">c_\mu(F) &lt; \alpha \lambda_{\mu,k}</span> for some <span class="math inline">c_\mu\geq 0</span> is <span class="math inline">O(n^{\ceil{\alpha k}+d-2})</span>.</p>
 </div>
-<h1 id="projected-cut-bounds"><span class="header-section-number">4</span> Projected cut bounds</h1>
+<h1 data-number="4" id="projected-cut-bounds"><span class="header-section-number">4</span> Projected cut bounds</h1>
 <p>Let <span class="math inline">\tau_e = \min_{U:e\in \delta(U)}c(\delta(U))</span>. Fung et. al. showed a projected generalization of the cut counting bound <span class="citation" data-cites="FungHHP19">[<a href="#ref-FungHHP19" role="doc-biblioref">8</a>]</span>. Let <span class="math inline">E_\lambda = \set{ e | \tau_e \geq x }</span>.</p>
 <div class="theorem-environment Theorem" data-index="17" type="Theorem">
 <span class="theorem-header"><span class="type">Theorem</span><span class="index">17</span></span>
@@ -220,7 +220,7 @@
 <span class="theorem-header"><span class="type">Conjecture</span><span class="index">18</span></span>
 <p>The number of sets of the form <span class="math inline">F\cap E_{\mu,k,\lambda}</span> where <span class="math inline">F</span> is a cut such that <span class="math inline">c_{\mu}(F)&lt; \alpha \lambda</span> for some <span class="math inline">c_\mu\geq 0</span> is <span class="math inline">O(n^{\ceil{\alpha k}+d-2})</span>.</p>
 </div>
-<h1 id="bibliography" class="unnumbered">References</h1>
+<h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references" role="doc-bibliography">
 <div id="ref-KargerS96">
 <p>[1] D. Karger, C. Stein, <strong>A new approach to the minimum cut problem</strong>, Journal of ACM. 43 (1996) 601–640.</p>
@@ -269,7 +269,7 @@
 <p>Consider the following graph <span class="math inline">G=(V,E)</span>, where <span class="math inline">V=\set{0,\ldots,n}</span>, and there is an edge from <span class="math inline">i</span> and <span class="math inline">j</span>, if <span class="math inline">s[i+1..j]=w\in W</span>, and the label of the edge <span class="math inline">(i,j)</span> is the string <span class="math inline">w</span>, and the cost is <span class="math inline">c(w)</span>. Let <span class="math inline">z</span> be number of substrings in <span class="math inline">s</span> matches some element in <span class="math inline">W</span>. The graph has <span class="math inline">z</span> edges. Note <span class="math inline">z=O(n\sqrt{L})</span>. Indeed, the sum of the length of the labels of all outgoing edges cannot be more than <span class="math inline">L</span>, and the length of each label is different. Hence each vertex can have at most <span class="math inline">O(\sqrt{L})</span> outgoing edges. The graph is a DAG, so we can find the shortest path from <span class="math inline">0</span> to <span class="math inline">n</span> in linear time with respect to the number of edges. This shows if we can compute the graph in <span class="math inline">O(z+L)</span> time, then we solve the problem in <span class="math inline">O(z+L)</span> time.</p>
 <p>We can build the Aho–Corasick automaton for <span class="math inline">W</span> in <span class="math inline">O(L)</span> time. It can be used to find all substrings of <span class="math inline">s</span> that matches something in <span class="math inline">W</span> by traversing the automaton once. The running time is the total number of substrings matched, which is <span class="math inline">O(z)</span>. Hence building the graph takes <span class="math inline">O(z+L)</span> time. <span class="math inline">z</span> is clearly no more than <span class="math inline">nm</span>, where <span class="math inline">m=|W|</span>. Also, it is also clear <span class="math inline">z=O(n\sqrt{L})</span>. Indeed, there can be at most <span class="math inline">O(\sqrt{L})</span> edges start from <span class="math inline">i</span>, since each edge has a label of different length, and sum of those length labels is no larger than <span class="math inline">L</span>.</p>
 <p>If we only want to know if there exists a solution, then there is a <span class="math inline">\tilde{O}(nL^{1/3}+L)</span> time algorithm <span class="citation" data-cites="BringmannGL17">[<a href="#ref-BringmannGL17" role="doc-biblioref">1</a>]</span>. The algorithm is close to optimal assuming the algorithm is combinatorial and the alphabet can be arbitrarily large. A recent progress showed the version with minimum cost is also solvable in <span class="math inline">\tilde{O}(nL^{1/3}+L)</span> time <span class="citation" data-cites="ChanH20">[<a href="#ref-ChanH20" role="doc-biblioref">2</a>]</span>.</p>
-<h1 id="bibliography" class="unnumbered">References</h1>
+<h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references" role="doc-bibliography">
 <div id="ref-BringmannGL17">
 <p>[1] K. Bringmann, A. Grønlund, K.G. Larsen, A dichotomy for regular expression membership testing, in: 2017 Ieee 58th Annual Symposium on Foundations of Computer Science (Focs), 2017: pp. 307–318 <a href="https://doi.org/10.1109/FOCS.2017.36">10.1109/FOCS.2017.36</a>.</p>
@@ -349,7 +349,7 @@
 <p>I personally think there should not be a marriage penalty at any income level to encourage marriage. Of course, people might disagree and think the rich should have a marriage penalty, since it is a small amount compare to their total income so they won’t care anyways.</p>
 <p>Anyway, consider the world where there can only be marriage bonus. That is we have the property <span class="math inline">S(x)+S(y)\geq J(x+y)</span>. An <em>easy tax function</em> is a function that has reasonable tax property, and is a piecewise-linear convex that has at least <span class="math inline">1</span> breakpoint larger than <span class="math inline">0</span>. This is strictly stronger than principal of progressiveness. This is satisfied by the current personal income tax function used by the IRS.</p>
 <p>Let <span class="math inline">S</span> be a easy tax function, then we can obtain an easy tax function <span class="math inline">J</span> that always gives a marriage bonus. Indeed, let <span class="math inline">J = \inf_{a+b=x,a,b\geq 0} S(a)+S(b)</span>. <span class="math inline">J</span> is extreme in a way that any function greater than it at any point will cause marriage penalty. <span class="math inline">J</span> is the infimal convolution of <span class="math inline">S</span> and itself, which would also be piecewise-linear convex. If <span class="math inline">S</span> is the personal income tax function for 2019, then <span class="math inline">J</span> matches the 2019 IRS married file jointly function up to $612,350! For some reason I do not know, the IRS decide to cut this <span class="math inline">J</span> off at $612,350, and then impose a higher rate just to penalize families with two very high income earners.</p>
-<h1 id="bibliography" class="unnumbered">References</h1>
+<h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references" role="doc-bibliography">
 <div id="ref-Lovell82">
 <p>[1] M.C. LOVELL, <strong>ON taxing marriages</strong>, National Tax Journal. 35 (1982) 507–510.</p>
@@ -386,7 +386,7 @@
 <p>Given a graph where the edges are partitioned into pairs. Find a maximum matching where it uses at most one edge of each pair.</p>
 </div>
 <p>I would be very interested to know the solution to that problem.</p>
-<h1 id="bibliography" class="unnumbered">References</h1>
+<h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references" role="doc-bibliography">
 <div id="ref-KakimuraT14">
 <p>[1] N. Kakimura, M. Takamatsu, <strong>Matching Problems with Delta-Matroid Constraints</strong>, SIAM Journal on Discrete Mathematics. 28 (2014) 942–961 <a href="https://doi.org/10.1137/110860070">10.1137/110860070</a>.</p>
@@ -431,10 +431,10 @@ C_{\bar{a}}(y+1,z-1) + D(\bar{a},y,y)
 \end{cases}
 </span> It might be beneficial to see the intuition behind the two cases through the following pictures.</p>
 <figure>
-<img src="/files/ticketing_case1.png" alt="" /><figcaption>First case.</figcaption>
+<img src="/files/ticketing_case1.png" alt="First case." /><figcaption aria-hidden="true">First case.</figcaption>
 </figure>
 <figure>
-<img src="/files/ticketing_case2.png" alt="" /><figcaption>Second case.</figcaption>
+<img src="/files/ticketing_case2.png" alt="Second case." /><figcaption aria-hidden="true">Second case.</figcaption>
 </figure>
 <p>On the other hand, when <span class="math inline">y=z</span> <span class="math display">
 D(a,y,y) =\min_{x&lt;y} \set{
@@ -456,7 +456,7 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
     <link>https://chaoxuprime.com/posts/2019-06-15-array-and-permutation.html</link>
     <description><![CDATA[<br />
 <div>
-<h1 id="permutation-functional-form"><span class="header-section-number">1</span> Permutation, functional form</h1>
+<h1 data-number="1" id="permutation-functional-form"><span class="header-section-number">1</span> Permutation, functional form</h1>
 <p>What exactly is an array. In functional form, an array just have to support the following two operations in constant time.</p>
 <ol type="1">
 <li><span class="math inline">get(A,i)</span>: returns <span class="math inline">A[i]</span>.</li>
@@ -464,10 +464,10 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 </ol>
 <p>So in some sense, array is just encoding a function <span class="math inline">f:[n]\to X</span>. A permutation would be a bijective function <span class="math inline">\pi:[n]\to [n]</span>. If we are interested in applying a permutation <span class="math inline">\pi</span>, then to program it is easy, we need to output a new function <span class="math inline">g</span> such that <span class="math inline">g(i) = f(\pi(i))</span>.</p>
 <p>This allows us to apply permutations pretty easily by composing functions and cache outputs. In the purely functional view, the layout of the array in memory and the indexing can be different.</p>
-<h1 id="permutation-physically"><span class="header-section-number">2</span> Permutation, physically</h1>
+<h1 data-number="2" id="permutation-physically"><span class="header-section-number">2</span> Permutation, physically</h1>
 <p>Sometimes one might ask to physically apply the permutation to an array. That is, the <span class="math inline">i</span>th position in the array contains the element in <span class="math inline">\pi(i)</span>. This is helpful because it helps with cache locality: accessing consecutive elements would be in the same location. Although if the ordering of loops does not matter, there is no harm considering the functional view.</p>
 <p>Often, one is tasked to apply permutation to an array physically. It usually ask for <span class="math inline">O(n)</span> running time and <span class="math inline">O(1)</span> space. Unfortunately, there is no way to obtain this running time for all permutations. There are some permutations where this is impossible. <a href="https://cstheory.stackexchange.com/questions/6711/complexity-of-applying-a-permutation-in-place">A discussion can be found in cstheory</a>.</p>
-<h1 id="mix-and-match"><span class="header-section-number">3</span> Mix and match</h1>
+<h1 data-number="3" id="mix-and-match"><span class="header-section-number">3</span> Mix and match</h1>
 <p><a href="https://www.linkedin.com/in/lingyu-xu-9b87a565/">Lingyu Xu</a> asked me about <a href="https://leetcode.com/problems/wiggle-sort-ii/">Wiggle Sort</a>, where the actual <strong>physical layout</strong> has to be changed, but it takes both the functional and physical view of the array.</p>
 <p>Let’s consider the simple case where every element is distinct. One simple solution is the following. Partition the numbers into the median, elements smaller than median, and elements larger than the median. We map the smallest <span class="math inline">n/2</span> elements into even positions, and remaining elements into the odd position. The algorithm has <span class="math inline">O(n)</span> time. The problem is how to get constant extra place. Because it is unclear how to apply the following permutation in place. The permutation <span class="math inline">\sigma(i) = (1+2i) \% (n|1)</span>.</p>
 <p>However, one we take the functional view, the problem can be solved, physically too. The <a href="https://leetcode.com/problems/wiggle-sort-ii/discuss/77677/ono1-after-median-virtual-indexing/81756">answer by</a> <a href="http://www.stefan-pochmann.info/">Stefan Pochmann</a> shows one can simply do the mapping in place.</p>
