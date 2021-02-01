@@ -67,13 +67,12 @@
   position: relative;
 }
 .Proof:after {
-    content: '∎';
-    display: inline-block;
-    font-size: 130%;
-    bottom: 0%;
-    right: 0%;
-    position: absolute;
+  content: '◾️';
+  position: absolute;
+  right: -12px;
+  bottom: -2px;
 }
+
 table.postindex{
   width: 100%;
 }
