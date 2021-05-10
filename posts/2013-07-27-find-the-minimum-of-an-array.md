@@ -16,8 +16,9 @@ The idea is to use ternary search, which works well when all values are distinct
 
 First, we present a lemma.
 
-{Lemma}
-    If there exist a index $i < j < k$, such that $a[i]=a[j]=a[k]$, then at least $\min(j-i,k-j)$ positions in the array has the same value as $a[i]$.
+::: Lemma
+  If there exist a index $i < j < k$, such that $a[i]=a[j]=a[k]$, then at least $\min(j-i,k-j)$ positions in the array has the same value as $a[i]$.
+:::
 
 ![The specified positions](/files/decinc.png)
 <br /><sup>Image Credit: [Vanessa Li](http://vanessa.li).</sup>

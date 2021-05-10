@@ -202,7 +202,7 @@ pub: SODA
 year: 2017
 notes:
   - Not practical. [Discussion/implementation](https://gist.github.com/chaoxu/c9350bcdd4d7f44ca1a1d7e9c8c905d9).
-  - The [journal version](#subset-sum-journal) combines with [Subset Sum Made Simple](https://arxiv.org/abs/1807.08248), features an additional $\tilde{O}(u^{5/4})$ time algorithm, and a unified presentation. 
+  - Please see the ***[journal version](#subset-sum-journal)*** instead of this one. It combines with [Subset Sum Made Simple](https://arxiv.org/abs/1807.08248), features an additional $\tilde{O}(u^{5/4})$ time algorithm, and a unified and simplfied presentation. 
 abstract: Given a multiset $S$ of $n$ positive integers and a target integer $t$, the subset sum problem is to decide if there is a subset of $S$ that sums up to $t$. We present a new divide-and-conquer algorithm that computes all the realizable subset sums up to an integer $u$ in $\tilde{O}\left(\min\{n\sqrt{u},u^{4/3},\sigma\}\right)$, where $\sigma$ is the sum of all elements in $S$ and $\tilde{O}$ hides polylogarithmic factors. This result improves upon the standard dynamic programming algorithm that runs in $O(nu)$ time. To the best of our knowledge, the new algorithm is the fastest general algorithm for this problem. We also present a modified algorithm for cyclic groups, which computes all the realizable subset sums within the group in $\tilde{O}\left(\min\{n\sqrt{m},m^{5/4}\}\right)$ time, where m is the order of the group.
 
 ---
@@ -368,6 +368,7 @@ year: 2019
 selected: true
 notes:
   - The paper is a combination of [A Faster Pseudopolynomial Time Algorithm for Subset Sum](#subset-sum) appeared in SODA 2017 and [Subset Sum Made Simple](https://arxiv.org/abs/1807.08248). This full version among other additions, simplifies the $\tilde{O}(\sqrt{n}u)$ time algorithm and improves the bound from $\tilde{O}(u^{4/3})$ to $\tilde{O}(u^{5/4})$ time.
+  - An implementation of the simple algorithm can be found [here](https://gist.github.com/chaoxu/a5e3b353d9501ddb93e3c24213acd2eb).
 abstract: >
   Given a (multi) set $S$ of $n$ positive integers and a target integer $u$, the subset sum problem is 
   to decide if there is a subset of $S$ that sums up to $u$. We present a series of new algorithms that 
