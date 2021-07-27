@@ -27,10 +27,10 @@ title: 财务自由的建议的一些更新 (2021)
         2. 自己管理的401k也有其他好处，比如能拿去投资证券以外的东西。
         3. 每个**无关**的401k plan是*分开的*。公司和自己的after tax contribution**都能拉满**。自己的pre-tax/roth contribution是所有plan合起来的。
     2. 多数人开个S-corp是比自己当sole proprietorship有更多的税务优惠的。收入一部分变成工资发给自己，另一部分变成分红发给自己。
-    3. 如果公司是那种capital intensive的，并且准备开很多年，希望钱在公司里越滚越多，开个C-corp也可以。之后能用各种不同的方法来短暂的avoid double taxiation。比如可以从自己的公司贷款。不过现在看起来除非你认为这个公司增长会连续多年非常的高。如果[Biden Tax Plan 通过](https://taxfoundation.org/double-taxation-of-corporate-income/)，double taxiation未来应该是很严重的问题.
+    3. 如果公司是那种capital intensive的，并且准备开很多年，希望钱在公司里越滚越多，开个C-corp也可以。之后能用各种不同的方法来短暂的avoid double taxiation。比如可以从自己的公司贷款。不过现在看起来除非你认为这个公司增长会连续多年非常的高，还是不要开C-corp了。[Biden Tax Plan 通过](https://taxfoundation.org/double-taxation-of-corporate-income/)，double taxiation是很严重的问题.
     4. 开公司当然就更容易弄一些loans。SBA有些很favorable的loan可以用。
 6. 信用卡: 信用卡羊毛还会薅。但自己的流水比不上公司的流水，个人羊毛的意义就小了许多。我现在只能走极简路线的一卡流：[Penfed Power Cash Rewards](https://www.penfed.org/credit-cards/power-cash-rewards-visa)。 如果能申请到，[AoD Visa Signature](https://www.aodfcu.com/visa-signature-credit-card/)是一卡流之王。非常难申。
-7. 投资分配：在2020/3月大跌的时候我撤出了VOO，但是买回来的时候太晚了。还不如什么都不做。再次给“普通投资者直接扔大盘就对了”增加了一个数据点。我现在普通账户全仓VOO。税务优化的账户全仓TQQQ。如何对冲风险呢？老婆账户她自己决定怎么投资，暂时看起来我们的账户没有什么correlation。
+7. 投资分配：在2020/3月大跌的时候我撤出了VOO，但是买回来的时候太晚了。还不如什么都不做。再次给“普通投资者直接扔大盘就对了”增加了一个数据点。我现在普通账户全仓VOO。税务优化的账户全仓TQQQ。如何对冲风险呢？老婆账户她自己决定怎么投资，暂时看起来我们的账户没有什么相关性。
 
 
 [^solo401k]: 我个人用的是[Solo 401k](https://www.solo401k.com/). 可以找我要Refer. 
