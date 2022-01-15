@@ -89,7 +89,8 @@ type: conference
 pub: RANDOM
 year: 2020
 show: [d]
-selected: true
+notes:
+  - The [journal version](#multicritera-cuts-journal) was serialized in Mathematical Programming. 
 abstract: >
     We address counting and optimization variants of multicriteria global min-cut
     and size-constrained min-$k$-cut in hypergraphs.
@@ -251,6 +252,39 @@ abstract: A closed curve in the plane is weakly simple if it is the limit (in th
 
 
 # journal publications
+---
+id: multicritera-cuts-journal
+title: Multicritera Cuts and Size-Constrained $k$-cuts in Hypergraphs
+authors: [Calvin Beideman, Karthekeyan Chandrasekaran, Chao Xu]
+type: journal
+pub: MP
+year: 2021
+show: [d]
+selected: true
+note:
+  - An [extended abstract](#multicritera-cuts) of this work appeared in RANDOM 2020.
+abstract: >
+  We address counting and optimization variants of multicriteria global min-cut and size-constrained min-$k$-cut in hypergraphs.
+
+  1. For an $r$-rank $n$-vertex hypergraph endowed with $t$ hyperedge-cost functions, we show that the number of multiobjective 
+  min-cuts is $O(r2^{tr}n^{3t−1})$. In particular, this shows that the number of parametric min-cuts in constant rank hypergraphs 
+  for a constant number of criteria is strongly polynomial, thus resolving an open question by 
+  Aissi et al. (Math Program 154(1–2):3–28, 2015). 
+  In addition, we give randomized algorithms to enumerate all multiobjective min-cuts and all pareto-optimal cuts in 
+  strongly polynomial-time.
+
+  2. We also address node-budgeted multiobjective min-cuts: For an $n$-vertex hypergraph endowed with $t$ vertex-weight functions,
+  we show that the number of node-budgeted multiobjective min-cuts is $O(r2^{r}nt+2)$, where $r$ is the rank of the hypergraph, 
+  and the number of node-budgeted $b$-multiobjective min-cuts for a fixed budget-vector $b\in\R^t_{\geq 0}$ is $O(n^2)$.
+
+  3. We show that min-$k$-cut in hypergraphs subject to constant lower bounds on part sizes is solvable in polynomial-time 
+  for constant $k$, thus resolving an open problem posed by Guinez and Queyranne (Unpublished manuscript. . See also , 2012). 
+  Our technique also shows that the number of optimal solutions is polynomial.
+
+  All of our results build on the random contraction approach of Karger 
+  (Proceedings of the 4th annual ACM-SIAM symposium on discrete algorithms, SODA, pp 21–30, 1993). 
+  Our techniques illustrate the versatility of the random contraction approach to address counting
+  and algorithmic problems concerning multiobjective min-cuts and size-constrained $k$-cuts in hypergraphs.
 --- 
 id: min-violation
 show: [d,p]
