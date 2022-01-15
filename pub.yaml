@@ -261,7 +261,7 @@ pub: MP
 year: 2021
 show: [d]
 selected: true
-note:
+notes:
   - An [extended abstract](#multicritera-cuts) of this work appeared in RANDOM 2020.
 abstract: >
   We address counting and optimization variants of multicriteria global min-cut and size-constrained min-$k$-cut in hypergraphs.
