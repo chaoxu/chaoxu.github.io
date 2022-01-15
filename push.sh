@@ -5,6 +5,9 @@ git stash
 # Verify correct branch
 git checkout develop
 
+# make sure node path contains global
+export NODE_PATH=$(npm root --quiet -g)
+
 # Build new files
 # stack build
 # stack exec chaosite clean
