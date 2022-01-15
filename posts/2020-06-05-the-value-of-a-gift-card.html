@@ -10,7 +10,7 @@
     <meta property="article:tag" content="accounting">
     <title>The value of a gift card in beancount</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
   <script>
@@ -54,7 +54,7 @@
 <p>During the event where the gift card is used, we can record the profit by subtract cost from price. So just like stocks, we can obtain realized profit and loses. This is great and all, except a simple operations is impossible in beancount. It is impossible to move these amazon gift card to another account without losing all the cost information. This actually happens in real life. I might buy amazon gift card, but load gift card to different accounts. In beancount, I have no way of relaying this info.</p>
 <p>Here is a hack. Having a proxy price.</p>
 <p>The idea is amazon gift card should always have a value of $x. Whenever you buy amazon gift card for $y per unit, you record a profit/loss of $x - $y. Whenever you use your amazon gift card at value $z per unit, you record a profit/loss of $z-$x.</p>
-<p>Here you can set <span class="math inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">x</span></span></span></span></span> to be anything. But for simplifying calculation, 1 is sufficient. Setting it to <span class="math inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span> is the best option since it simplifies the computation.</p>
+<p>Here you can set <span class="math inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></span> to be anything. But for simplifying calculation, 1 is sufficient. Setting it to <span class="math inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.6444em;"></span><span class="mord">1</span></span></span></span></span> is the best option since it simplifies the computation.</p>
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2020-06-05">2020-06-05</time>. </div>
