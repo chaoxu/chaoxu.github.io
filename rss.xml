@@ -7,8 +7,78 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxuprime.com/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sat, 11 Jul 2020 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sun, 30 Jan 2022 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Test conjectures on $k$-partitions over submodular function</title>
+    <link>https://chaoxuprime.com/posts/2022-01-30-test-conjectures-on-k-partitions.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>This article we consider tools one can use to quickly test conjectures. Testing conjectures quickly run into realm of infeasibility due to the combinatorial explosion. We look through an actual example and learn a few techniques. We use <a href="https://www.sagemath.org/">Sage</a> and any fast linear program solver, like <a href="https://www.gurobi.com/">Gurobi</a>.</p>
+<h1 data-number="1" id="a-conjecture-on-k-partitions-of-submodular-function"><span class="header-section-number">1</span> A conjecture on <span class="math inline">k</span>-partitions of submodular function</h1>
+<p>A set of <span class="math inline">k</span> non-empty and disjoint sets that partitions <span class="math inline">V</span> is called a <span class="math inline">k</span>-partition. Let <span class="math inline">f:2^V\to \R</span> be a submodular function, a minimum <span class="math inline">k</span>-partition is a <span class="math inline">k</span>-partition <span class="math inline">\mathcal{X}</span> of <span class="math inline">V</span> such that <span class="math inline">\sum_{X\in \mathcal{X}} f(X)</span> is minimized.</p>
+<p>A <span class="math inline">k</span>-partition <span class="math inline">\mathcal{X}</span> and a <span class="math inline">j</span>-partition <span class="math inline">\mathcal{Y}</span> is noncrossing, if <span class="math inline">X\subseteq Y</span> for some <span class="math inline">X\in \mathcal{X}</span> and <span class="math inline">Y\in \mathcal{Y}</span>. We denote it <span class="math inline">\mathcal{X}\lhd\mathcal{Y}</span>.</p>
+<p>For two partitions, <span class="math inline">\mathcal{X}\sqcap \mathcal{Y} = \set{ X\cap Y | X\in \mathcal{X}, Y\in\mathcal{Y}}</span>.</p>
+<p>For two partitions <span class="math inline">\mathcal{X}</span> and <span class="math inline">\mathcal{Y}</span>, <span class="math inline">\mathcal{X}\leq \mathcal{Y}</span> if for each <span class="math inline">X\in\mathcal{X}</span>, <span class="math inline">X\subseteq Y</span> for some <span class="math inline">Y\in\mathcal{Y}</span>.</p>
+<div class="theorem-environment Conjecture" data-index="1" type="Conjecture">
+<span class="theorem-header"><span class="type">Conjecture</span><span class="index">1</span></span>
+<p><span class="math inline">f:2^V\to \R</span> is a submodular function with <span class="math inline">|V|\geq k</span>. Let <span class="math inline">\mathcal{X}</span> be a minimum <span class="math inline">k-1</span>-partition and <span class="math inline">\mathcal{Y}</span> be a minimum <span class="math inline">k</span>-partition. There exists a minimum <span class="math inline">k</span>-partition <span class="math inline">\mathcal{Y}&#39;</span> such that <span class="math inline">\mathcal{X}\lhd \mathcal{Y}&#39;</span> and <span class="math inline">\mathcal{X}\sqcap \mathcal{Y} \leq \mathcal{Y}&#39;</span>.</p>
+</div>
+<p>We are interested in writing a program to test the conjecture for small <span class="math inline">k</span>. The idea is to find different ways <span class="math inline">\mathcal{X}</span> can intersect with <span class="math inline">\mathcal{Y}</span>, a matrix that encodes such information are called configurations. For each configuration, we want to know under such configuration, can we find the desired <span class="math inline">\mathcal{Y}&#39;</span>.</p>
+<h1 data-number="2" id="enumerate-non-isomorphic-configurations"><span class="header-section-number">2</span> Enumerate non-isomorphic configurations</h1>
+<p>Given <span class="math inline">\mathcal{X} = \set{X_1,\ldots,X_{k-1}}</span> and <span class="math inline">\mathcal{Y} = \set{Y_1,\ldots,Y_{k}}</span>. Let <span class="math inline">Z_{i,j} = X_i\cap Y_j</span>.</p>
+<p>We want to show some <span class="math inline">\mathcal{Y}&#39;</span> is a min <span class="math inline">k</span>-partition, where each <span class="math inline">Z_{i,j}</span> is a subset. In particular, each partition class of <span class="math inline">\mathcal{Y}</span> has to be the union of some <span class="math inline">Z_{i,j}</span>s.</p>
+<p>What matters is if <span class="math inline">Z_{i,j}</span> is empty or not. It doesn’t matter if <span class="math inline">Z_{i,j}</span> has <span class="math inline">100</span> or <span class="math inline">1</span> vertices. Consider a matrix <span class="math inline">M_{i,j} = \max(1,|Z_{i,j}|)</span>. Such a matrix is called a <em>configuration</em>. Define two configurations are isomorphic, if one can be obtained by swapping rows and columns of the other.</p>
+<p>We are interested in enumerate the possible configurations up to isomorphism.</p>
+<p>Find integer <span class="math inline">\set{0,1}</span> matrices and then modulo the action of a permutation group (that defines the isomorphism) can be done in Sage. There is a function that generates all integer vectors modulo a permutation group, and the vectors has length <span class="math inline">\ell</span> with elements in <span class="math inline">\set{0,\ldots,n}</span>. See the reference on <a href="https://doc.sagemath.org/html/en/reference/combinat/sage/combinat/integer_vectors_mod_permgroup.html">Integer vectors modulo the action of a permutation group</a>.</p>
+<pre><code>IntegerVectorsModPermutationGroup(P, max_part=1)</code></pre>
+<p>Once we have the output, we filter the vectors to maintain the required properties.</p>
+<p>The input of the sage function, however, has to take the desired permutation group <span class="math inline">P</span>.</p>
+<p>One might think we just take <span class="math inline">S_{k-1}\times S_k</span> to obtain <span class="math inline">P</span>. Unfortunately, this is not correct. This gives you the action on the rows and columns, but what we really need, is what happens to each element in the matrix.</p>
+<p>The correct way is to use the wreath products. We want <span class="math inline">S_{k-1} \wr S_k</span> intersect with <span class="math inline">S_k \wr S_{k-1}</span>. However, we have to make sure the mapping of the elements are correct. The following is the code in Sage, and the elements are numbers <span class="math inline">1</span> to <span class="math inline">k(k-1)</span>.</p>
+<pre><code>a = SymmetricGroup(k-1)
+b = SymmetricGroup(k)
+
+matrix = [[k*x+y+1 for y in range(k-1)] for x in range(k)]
+pi = list(itertools.chain.from_iterable(map(list, zip(*matrix))))
+
+GG = gap.WreathProduct(gap(a),gap(b))
+HH = gap.WreathProduct(gap(b),gap(a))
+
+G = PermutationGroup(gap_group = GG.AsPermGroup())
+Hbad = PermutationGroup(gap_group = HH.AsPermGroup())
+H = PermutationGroup([perm_replace(pi,g) for g in Hbad.gens()])
+
+P = H.intersection(G)</code></pre>
+<p>At this point, we obtain all possible configurations. In particular, for <span class="math inline">k=3,4,5,6</span>, the number of configurations are <span class="math inline">13, 87, 1053, 28576</span>.</p>
+<p>If we restrict to configurations where there is at least a <span class="math inline">1</span> in each row and at least a <span class="math inline">1</span> in each column, it cuts down the configurations to <span class="math inline">5,42,633,20755</span>. We can further observe that for some configurations, it implies <span class="math inline">\mathcal{X}\lhd \mathcal{Y}</span> already, so we do not have to check such configurations. Let’s call configurations after the above filtering good configurations. The number of good configurations for <span class="math inline">k=3,4,5,6</span> are <span class="math inline">3, 23, 353, 12828</span>.</p>
+<h1 data-number="3" id="test-if-there-is-a-noncrossing-mathcaly-for-a-configuration-m"><span class="header-section-number">3</span> Test if there is a noncrossing <span class="math inline">\mathcal{Y}&#39;</span> for a configuration <span class="math inline">M</span></h1>
+<p>We now have a configuration <span class="math inline">M</span>, and now we are interested in creating a linear program to solve it. For a given <span class="math inline">M</span>, we can use it to recover <span class="math inline">\mathcal{X}</span> and <span class="math inline">\mathcal{Y}</span>.</p>
+<p>Let <span class="math inline">V</span> be the set of vertices, which equals to the index of <span class="math inline">1</span>s in <span class="math inline">M</span>. Let <span class="math inline">P_k(V)</span> be the set of <span class="math inline">k</span> partitions of <span class="math inline">V</span>. For each <span class="math inline">U\subseteq V</span>, we create a variable <span class="math inline">x_U</span>. It represents the value of <span class="math inline">f(x_U)</span>. We also create a variable <span class="math inline">z</span>.</p>
+<p>For a partition <span class="math inline">\mathcal{S}</span>, <span class="math inline">x_\mathcal{S}</span> is just <span class="math inline">\sum_{S\in \mathcal{S}} x_S</span>.</p>
+<p>Consider the following linear program.</p>
+<p><span class="math display">
+\begin{aligned}
+&amp; \max        &amp; &amp; z &amp;\\
+&amp; \text{s.t.} &amp; &amp; x_{S\cup \{a\}} + x_{S\cup \{b\}} \geq x_{S\cup \{a,b\}} + x_{S} &amp; \forall S\subseteq V, a,b\in V\setminus S\\
+&amp;             &amp; &amp; x_\mathcal{X} \leq x_{\mathcal{X}&#39;} &amp; \forall \mathcal{X}&#39;\in P_{k-1}(V)\\
+&amp;             &amp; &amp; x_\mathcal{Y} \leq x_{\mathcal{Y}&#39;} &amp; \forall \mathcal{Y}&#39;\in P_{k}(V)\\
+&amp;             &amp; &amp; x_\mathcal{Y} = 1 &amp; \\
+&amp;             &amp; &amp; z \leq x_{\mathcal{Y}&#39;} &amp; \forall \mathcal{Y}&#39;\in P_{k}(V), \mathcal{X} \lhd \mathcal{Y}&#39;\\
+\end{aligned}
+</span></p>
+<p>If the objective value <span class="math inline">z=1</span>, then this shows there exists a <span class="math inline">\mathcal{Y}&#39;</span> satisfies the requirement of the conjecture.</p>
+<h1 data-number="4" id="results"><span class="header-section-number">4</span> Results</h1>
+<p>Using the above, it can easily prove the result for <span class="math inline">k=3,4</span>, and it runs into difficulty with <span class="math inline">k=5</span>, but seems to be still in the realm of possbility for a single computer and more optimized code. <span class="math inline">k=6</span> is still impossible unless we get a huge boost in computational power.</p>
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2022-01-30">2022-01-30</time>. </div>
+    <div class="info">Tags: Conjectures, computational experiments, submodular, partition.</div>
+</div>]]></description>
+    <pubDate>Sun, 30 Jan 2022 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/posts/2022-01-30-test-conjectures-on-k-partitions.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title>Yotta Savings and covering designs</title>
     <link>https://chaoxuprime.com/posts/2020-07-11-yotta-savings-and-covering-designs.html</link>
     <description><![CDATA[<br />
@@ -449,36 +519,6 @@ D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
 </div>]]></description>
     <pubDate>Sat, 15 Jun 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxuprime.com/posts/2019-06-15-covert-back-to-back-ticketing.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>Arrays and permutation</title>
-    <link>https://chaoxuprime.com/posts/2019-06-15-array-and-permutation.html</link>
-    <description><![CDATA[<br />
-<div>
-<h1 data-number="1" id="permutation-functional-form"><span class="header-section-number">1</span> Permutation, functional form</h1>
-<p>What exactly is an array. In functional form, an array just have to support the following two operations in constant time.</p>
-<ol type="1">
-<li><span class="math inline">get(A,i)</span>: returns <span class="math inline">A[i]</span>.</li>
-<li><span class="math inline">set(A,i,x)</span>: update the array <span class="math inline">A</span> such that <span class="math inline">A[i]</span> returns <span class="math inline">x</span>.</li>
-</ol>
-<p>So in some sense, array is just encoding a function <span class="math inline">f:[n]\to X</span>. A permutation would be a bijective function <span class="math inline">\pi:[n]\to [n]</span>. If we are interested in applying a permutation <span class="math inline">\pi</span>, then to program it is easy, we need to output a new function <span class="math inline">g</span> such that <span class="math inline">g(i) = f(\pi(i))</span>.</p>
-<p>This allows us to apply permutations pretty easily by composing functions and cache outputs. In the purely functional view, the layout of the array in memory and the indexing can be different.</p>
-<h1 data-number="2" id="permutation-physically"><span class="header-section-number">2</span> Permutation, physically</h1>
-<p>Sometimes one might ask to physically apply the permutation to an array. That is, the <span class="math inline">i</span>th position in the array contains the element in <span class="math inline">\pi(i)</span>. This is helpful because it helps with cache locality: accessing consecutive elements would be in the same location. Although if the ordering of loops does not matter, there is no harm considering the functional view.</p>
-<p>Often, one is tasked to apply permutation to an array physically. It usually ask for <span class="math inline">O(n)</span> running time and <span class="math inline">O(1)</span> space. Unfortunately, there is no way to obtain this running time for all permutations. There are some permutations where this is impossible. <a href="https://cstheory.stackexchange.com/questions/6711/complexity-of-applying-a-permutation-in-place">A discussion can be found in cstheory</a>.</p>
-<h1 data-number="3" id="mix-and-match"><span class="header-section-number">3</span> Mix and match</h1>
-<p><a href="https://www.linkedin.com/in/lingyu-xu-9b87a565/">Lingyu Xu</a> asked me about <a href="https://leetcode.com/problems/wiggle-sort-ii/">Wiggle Sort</a>, where the actual <strong>physical layout</strong> has to be changed, but it takes both the functional and physical view of the array.</p>
-<p>Let’s consider the simple case where every element is distinct. One simple solution is the following. Partition the numbers into the median, elements smaller than median, and elements larger than the median. We map the smallest <span class="math inline">n/2</span> elements into even positions, and remaining elements into the odd position. The algorithm has <span class="math inline">O(n)</span> time. The problem is how to get constant extra place. Because it is unclear how to apply the following permutation in place. The permutation <span class="math inline">\sigma(i) = (1+2i) \% (n|1)</span>.</p>
-<p>However, one we take the functional view, the problem can be solved, physically too. The <a href="https://leetcode.com/problems/wiggle-sort-ii/discuss/77677/ono1-after-median-virtual-indexing/81756">answer by</a> <a href="http://www.stefan-pochmann.info/">Stefan Pochmann</a> shows one can simply do the mapping in place.</p>
-<p>What is happening in the physical location. If we applied index transform <span class="math inline">\pi</span>, then apply physical permutation <span class="math inline">\sigma</span> on the index, what happens for the physical array? It is the same as applying <span class="math inline">\pi^{-1}\sigma\pi</span> to the physical array. Note this means we can only use this trick to obtain conjugates of <span class="math inline">\sigma</span>.</p>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-06-15">2019-06-15</time>. </div>
-    <div class="info">Tags: Permutation.</div>
-</div>]]></description>
-    <pubDate>Sat, 15 Jun 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-06-15-array-and-permutation.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 
