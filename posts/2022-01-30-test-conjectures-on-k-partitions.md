@@ -1,5 +1,5 @@
 ---
-title: Test conjectures on $k$-partitions over submodular function
+title: Test conjectures on $k$-partitions over submodular functions
 tags: Conjectures, computational experiments, submodular, partition
 ---
 
