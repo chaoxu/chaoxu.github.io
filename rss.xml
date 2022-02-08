@@ -7,8 +7,79 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxuprime.com/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sun, 30 Jan 2022 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sun, 06 Feb 2022 00:00:00 UT</lastBuildDate>
         <item>
+    <title>The related employer controlled group</title>
+    <link>https://chaoxuprime.com/posts/2022-02-06-related-companies-and-controlled-groups.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>Disclaimer: Not an accountant nor a lawyer.</p>
+<p>For employees in the US, employers (not just the employee) can contribute to the employee’s retirement fund 401(k). There is an maximum limit. It is <span class="math inline">M = \$61,000</span> for 2022.</p>
+<p>If a person works for multiple <em>unrelated</em> employers, each employer, in theory, can contribute <span class="math inline">M</span> to their 401(k). This is because such limit is based on the plan, and not based on the person.</p>
+<p>See <a href="https://www.kitces.com/blog/coordinating-contributions-multiple-employer-sponsored-defined-contribution-plans-401k-defined-benefit/">Michael Kitces’s excellent article about the problem</a>.</p>
+<p>Kitce’s article outlined there are two ways to determine if some entities are related. Here we focus on the easier one, the controlled group. Another good source for controlled groups is <a href="https://www.betterment.com/401k/resources/controlled-groups">betterment’s article</a>.</p>
+<p>We will be very specific about the statement, what is <em>unrelated</em>? Unfortunately. What IRS defined as controlled group does not give us a equivalence relation. So here is an overview of what is actually happening.</p>
+<p>The IRS produce rules that group companies into sets of what is called controlled groups. The idea is these companies are controlled by the same entity. So they could as well be made into a single company. So if they are a single company, they should not be contributing more than <span class="math inline">M</span> to a employers 401(k).</p>
+<p>However, there are overlap of the groups. So a partition must be created. This partition, which I call it the controlled partition, need to have the property that each partition class is a subset of some controlled group.</p>
+<p><a href="https://www.law.cornell.edu/uscode/text/26/1563">The actual code states what to do with the overlaps</a>.</p>
+<blockquote>
+<p>The determination as to the group of which such corporation is a component member shall be made under regulations prescribed by the Secretary which are consistent with the purposes of this part.</p>
+</blockquote>
+<p>If a person works for companies that spans <span class="math inline">k</span> different classes of the controlled partition, then the employers in each partition class can contribute at most <span class="math inline">M</span> to the person’s 401(k).</p>
+<p>Now, we want to distill the information to a mathematically formal one.</p>
+<p>Consider we have a directed graph. The edges has a weight function <span class="math inline">w:V\times V \to [0,1]</span>. Note for simplicity of exposition, <span class="math inline">w(a,b)</span> for an edge that doesn’t exists is defined as <span class="math inline">0</span>. For each vertex, it satisfies sum of the weight of in edges is at most <span class="math inline">1</span>.</p>
+<p>The intuition is <span class="math inline">w(a,b)</span> means the proportion of <span class="math inline">b</span> that is owned by <span class="math inline">a</span>.</p>
+<p>There is a special subset of vertices <span class="math inline">U</span>. It correspond to individual, trusts and/or estates.</p>
+<p>We define a few terms.</p>
+<ol type="1">
+<li>A set <span class="math inline">S</span> of entities is a P-set, if <span class="math inline">S</span> have the following property.</li>
+</ol>
+<ul>
+<li>there exists a special vertex <span class="math inline">p\in S</span>, called the parent.</li>
+<li><span class="math inline">\sum_{u\in S} w(uv) \geq 0.8</span> for all <span class="math inline">v\in S\setminus \set{p}</span>.</li>
+<li><span class="math inline">w(pv)\geq 0.8</span> for at least two distinct vertices in <span class="math inline">S\setminus \set{p}</span>.</li>
+</ul>
+<ol start="2" type="1">
+<li>A set <span class="math inline">S</span> is a B-set, if <span class="math inline">|S|\geq 2</span>, and there exists a set <span class="math inline">T\subseteq U</span> such that <span class="math inline">|T|\leq 5</span>, and</li>
+</ol>
+<ul>
+<li><span class="math inline">\sum_{t\in T} w(tv)\geq 0.8</span> for each <span class="math inline">v\in S</span>,</li>
+<li><span class="math inline">\sum_{t\in T} \min_{v\in S} \set{w(tv)} \geq 0.5</span>.</li>
+</ul>
+<ol start="3" type="1">
+<li>A set <span class="math inline">S</span> is a C-set, if <span class="math inline">|S|\geq 3</span> and</li>
+</ol>
+<ul>
+<li>for each <span class="math inline">v\in S</span>, <span class="math inline">v</span> is in a P-set contained in <span class="math inline">S</span>, or a B-set contained in <span class="math inline">S</span>.</li>
+<li>at least one vertex <span class="math inline">v\in S</span> is a parent vertex of some P-set contained in <span class="math inline">S</span>, and is also a vertex of a B-set contained in <span class="math inline">S</span>.</li>
+</ul>
+<p>The P-set, B-set and C-set reflects Parent-Subsidiary Controlled Group, Brother-Sister Controlled Group and Combined Controlled Group, respecitvely. Note I’m still simplfying here. There are some attribution problems. For example, someone could own a trust which owns a company, and this has to be taken into consideration for the controlled groups.</p>
+<p>Here I found a few useful facts.</p>
+<ol type="1">
+<li>It’s possible that two B-set <span class="math inline">A</span> and <span class="math inline">B</span> intersects, but <span class="math inline">A\cup B</span> is not a B-set:</li>
+</ol>
+<p>Consider there are two sets of size <span class="math inline">5</span> in <span class="math inline">U</span>, <span class="math inline">T_1</span> and <span class="math inline">T_2</span>. <span class="math inline">|T_1\cap T_2| = 1</span>.</p>
+<p>Consider two sets <span class="math inline">A = \set{a,c}</span> and <span class="math inline">B=\set{b,c}</span>. For each vertex <span class="math inline">v\in T_1\setminus T_2</span>, there is an edge <span class="math inline">va</span> with weight <span class="math inline">7/40</span>, and edge <span class="math inline">vc</span> with weight <span class="math inline">1/20</span>. For each vertex <span class="math inline">v\in T_2\setminus T_1</span>, there is an edge <span class="math inline">vb</span> with weight <span class="math inline">7/40</span>, and edge <span class="math inline">vc</span> with weight <span class="math inline">1/20</span>. For <span class="math inline">v\in T_1\cap T_2</span>, there is an edge <span class="math inline">vc</span> with weight <span class="math inline">3/5</span>, <span class="math inline">va</span>, <span class="math inline">vb</span> with weight <span class="math inline">3/10</span>.</p>
+<p>The claim is that <span class="math inline">A</span> and <span class="math inline">B</span> are both B-set, but <span class="math inline">A\cup B</span> is not. This is because no subset of <span class="math inline">T_1\cup T_2</span> with size no larger than <span class="math inline">5</span> can make sure incoming weights for each vertex in <span class="math inline">A\cup B</span> is at least <span class="math inline">0.8</span>.</p>
+<ol start="2" type="1">
+<li><p><span class="math inline">A\subseteq B</span> and <span class="math inline">B</span> is a B-set, then <span class="math inline">A</span> is a B-set if <span class="math inline">|A|\geq 2</span>.</p></li>
+<li><p>Two P-sets <span class="math inline">A</span> and <span class="math inline">B</span> such that <span class="math inline">A\cap B\neq \emptyset</span>, then <span class="math inline">A\cup B</span> is a P-set.</p></li>
+</ol>
+<p>This mean there is a unique maximal P-set containing a particular vertex.</p>
+<ol start="4" type="1">
+<li>If any set is a C-set, then the union of all P-sets and B-sets is a C-set.</li>
+</ol>
+<p>Looking at the letter of the law, any C-set together with some other P-set and B-set is still a C-set. This means two companies that is not related in any way can be classified to be related.</p>
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2022-02-06">2022-02-06</time>. </div>
+    <div class="info">Tags: tax, 401(k).</div>
+</div>]]></description>
+    <pubDate>Sun, 06 Feb 2022 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/posts/2022-02-06-related-companies-and-controlled-groups.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title>Test conjectures on $k$-partitions over submodular functions</title>
     <link>https://chaoxuprime.com/posts/2022-01-30-test-conjectures-on-k-partitions.html</link>
     <description><![CDATA[<br />
@@ -472,53 +543,6 @@ P = H.intersection(G)</code></pre>
 </div>]]></description>
     <pubDate>Tue, 18 Jun 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxuprime.com/posts/2019-06-18-long-distance-couple-back-to-back-ticketing.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>An algorithm for covert back-to-back ticketing</title>
-    <link>https://chaoxuprime.com/posts/2019-06-15-covert-back-to-back-ticketing.html</link>
-    <description><![CDATA[<br />
-<div>
-<p><a href="https://en.wikipedia.org/wiki/Airline_booking_ploys">Airline booking ploys</a> are ways to circumventing airlines ticket rules in order to spend less on the ticket. We consider a special case, the back-to-back ticketing/nested ticketing. <a href="https://www.tripsavvy.com/back-to-back-ticketing-468287">TripSavvy has a good article on back-to-back ticketing</a>.</p>
-<p>For many airlines, back-to-back ticketing is explicitly forbidden, this includes <a href="https://www.aa.com/i18n/customer-service/support/conditions-of-carriage.jsp?anchorEvent=false&amp;from=footer?#ticketvalidity">American Airlines</a>, <a href="https://www.delta.com/us/en/booking-information/fare-classes-and-tickets/ticket-rules-restrictions">Delta</a> and <a href="https://www.united.com/ual/en/us/fly/contract-of-carriage.html">United</a>.</p>
-<p>We want to model back-to-back ticketing into an algorithmic problem. There is a sequence of trips between two locations, and it can be grouped into different round trips. Each round trip itinerary has a different cost. A round trip itinerary is no more than a matching between two trips.</p>
-<p>This can be seen as simple matching problem. The vertices are trips, which we can assume a trip means “traveling from A to B on date x”. There is an edge between two trips, if there is a round trip itinerary containing the trips. The cost of the edge is the cost of buying a round trip for those two trips. Since it is also possible that we buy a one-way ticket, there are also self-loops. Also, we can consider a multigraph, where the edges are colored. Each color class represents an airline.</p>
-<p>If one does not care about the airline finding out, it is just a minimum weight perfect matching problem allowing self-loops. However, people might actually care about airline not happy about this practice. Hence we are interested in making sure in each airline, we have no overlapping itineraries. However, we do allow overlapping itineraries across airlines.</p>
-<p>For two edges <span class="math inline">\set{a,b}</span> and <span class="math inline">\set{c,d}</span> defined over integers, it is <em>independent</em> if <span class="math inline">[a,b]\cap [c,d]= \emptyset</span>. A set of edges is <em>independent</em> if the edges are pairwise independent.</p>
-<div class="theorem-environment Problem" data-index="1" type="Problem" title="Covert back-to-back ticketing problem">
-<span class="theorem-header"><span class="type">Problem</span><span class="index">1</span><span class="name">Covert back-to-back ticketing problem</span></span>
-<p><strong>Input:</strong> A multigraph <span class="math inline">G=(V,E)</span> where <span class="math inline">V\subseteq [n]</span>, each edge can be one of <span class="math inline">k</span> colors, and there is an edge cost function <span class="math inline">c:E\to \R^+</span>.</p>
-<p><strong>Output:</strong> A perfect matching <span class="math inline">M</span> (allowing self-loops), such that each color class of <span class="math inline">M</span> is independent, and the cost is minimized.</p>
-</div>
-<p>I suspect for arbitrary <span class="math inline">k</span>, the problem is NP-hard. We show how to solve the problem in polynomial time for <span class="math inline">k=2</span>.</p>
-<p><a href="https://yizhis.github.io/">Yizhi Song</a> stated the idea that if one edge in a color is picked, it forces some edges of the other color to be picked. We can use the idea to obtain an <span class="math inline">O(n^3)</span> time algorithm for this problem.</p>
-<p>Since we are only working with <span class="math inline">k=2</span> case, we will let <span class="math inline">\bar{a}</span> to be the color that is not <span class="math inline">a</span>. Recall <span class="math inline">[n]=\set{1,\ldots,n}</span> and <span class="math inline">[a..b] = \set{a,a+1,\ldots,b}</span>. We assume the vertices <span class="math inline">V=[n]</span>. For a graph with <span class="math inline">k</span> color classes, we define <span class="math inline">G_a</span> to be the subgraph consists of all edges of color <span class="math inline">a</span>. <span class="math inline">c_a(x,y)</span> is the cost of a color <span class="math inline">a</span> edge <span class="math inline">xy</span>. We define <span class="math inline">D(a,y,z)</span> as the optimal solution when the input graph is <span class="math inline">G_{\bar{a}}[[z-1]\setminus \set{y}] \cup G_a[[y-1]]</span>. Intuitively, this is the optimal solution where we need to match all vertices in <span class="math inline">Z = [z-1] \setminus \set{y}</span>, but can only use <span class="math inline">a</span> colored that is fully contained in <span class="math inline">[y-1]</span>, and <span class="math inline">\bar{a}</span> colored edges fully contained <span class="math inline">Z</span>. We also define <span class="math inline">C_{a}(x,y)</span> to be the optimal solution when the input graph is <span class="math inline">G_a[[x..y]]</span>. Namely, a min-cost perfect matching covering all vertices <span class="math inline">[x..y]</span> but we can only use <span class="math inline">a</span> colored edges contained in <span class="math inline">[x..y]</span>.</p>
-<p>The optimal solution is <span class="math inline">D(a,n+1,n+1)</span> for either color <span class="math inline">a</span>.</p>
-<p>We express the recursive relation. For <span class="math inline">y&lt;z</span>, we have the following. <span class="math display">
-D(a,y,z) =\min \begin{cases}
-\min_{x&lt;y} \set{ C_{\bar{a}}(y+2,z-1) + c_{\bar{a}}(x,y+1) + D(\bar{a},x,y)}\\
-C_{\bar{a}}(y+1,z-1) + D(\bar{a},y,y)
-\end{cases}
-</span> It might be beneficial to see the intuition behind the two cases through the following pictures.</p>
-<figure>
-<img src="/files/ticketing_case1.png" alt="First case." /><figcaption aria-hidden="true">First case.</figcaption>
-</figure>
-<figure>
-<img src="/files/ticketing_case2.png" alt="Second case." /><figcaption aria-hidden="true">Second case.</figcaption>
-</figure>
-<p>On the other hand, when <span class="math inline">y=z</span> <span class="math display">
-D(a,y,y) =\min_{x&lt;y} \set{
-D(a,x,y) + c_a(x,y),
-D(\bar{a},x,y) + c_{\bar{a}}(x,y)}
-</span> One can easily infer the base case through definition. Note that all values of <span class="math inline">C_a</span> can be computed in <span class="math inline">O(n^2)</span> time. It takes <span class="math inline">O(n)</span> time to compute one value in <span class="math inline">D</span>. Therefore, the total running time is <span class="math inline">O(n^3)</span>.</p>
-<p>One can show that even with <span class="math inline">k</span> different airlines, there is an algorithm with running time <span class="math inline">O(n^{O(k)})</span>.</p>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-06-15">2019-06-15</time>. </div>
-    <div class="info">Tags: Optimization, algorithm, airline.</div>
-</div>]]></description>
-    <pubDate>Sat, 15 Jun 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-06-15-covert-back-to-back-ticketing.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 
