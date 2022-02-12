@@ -7,7 +7,6 @@ import Text.Pandoc.Writers.HTML
 import Data.Text (Text, unpack, pack)
 import Data.Set (insert)
 import System.Environment (getArgs)
-import Text.CSL.Pandoc
 import System.IO.Unsafe
 import Data.Array((!))
 import Data.Bits((.|.))

@@ -16,8 +16,11 @@ import           Data.Monoid
 import           Data.Text (Text, unpack, pack)
 import qualified Data.Map as M
 import           Hakyll.Web.Pandoc.Biblio 
-import qualified Text.CSL as CSL
-import           Text.CSL.Pandoc
+-- import qualified Text.CSL as CSL
+import           Text.Pandoc.Options
+import           Text.Pandoc.Citeproc
+import           System.IO.Unsafe
+import           Data.Either
 --------------------------------------------------------------------------------
 
 cslFile = "bib_style.csl" 
@@ -180,10 +183,8 @@ postList sortFilter = do
 --------------------------------------------------------------------------------
 chaoDocCompiler :: Compiler (Item String)
 chaoDocCompiler = do
-    csl <- load cslFile
-    bib <- load bibFile
     getResourceBody >>=
-        myReadPandocBiblio chaoDocRead csl bib theoremFilter >>=
+        myReadPandocBiblio chaoDocRead (pack cslFile) (pack bibFile) theoremFilter >>=
         return . writePandocWith chaoDocWrite
 
 -- chaoDocCompiler = pandocCompilerWithTransform chaoDocRead chaoDocWrite theoremFilter
@@ -195,23 +196,24 @@ addMeta name value (Pandoc meta a) =
   in  Pandoc newMeta a
 
 myReadPandocBiblio :: ReaderOptions
-                   -> Item CSL
-                   -> Item Biblio
+                   -> Text  -- csl file name
+                   -> Text
                    -> (Pandoc -> Pandoc)           -- apply a filter before citeproc
                    -> Item String
                    -> Compiler (Item Pandoc)
 myReadPandocBiblio ropt csl biblio filter item  = do
     -- Parse CSL file, if given
-    style <- unsafeCompiler $ CSL.readCSLFile Nothing . toFilePath . itemIdentifier $ csl
+    -- style <- unsafeCompiler $ CSL.readCSLFile Nothing . toFilePath . itemIdentifier $ csl
 
     -- We need to know the citation keys, add then *before* actually parsing the
     -- actual page. If we don't do this, pandoc won't even consider them
     -- citations!
-    let Biblio refs = itemBody biblio
+    -- let Biblio refs = itemBody biblio
     pandoc <- itemBody <$> readPandocWith ropt item
-    let pandoc' = processCites style refs $ 
+    let pandoc' = fromRight pandoc $ unsafePerformIO $ runIO $ processCitations $ addMeta "bibliography" (MetaList [MetaString biblio]) $ 
+                  addMeta "csl" (MetaString csl) $ 
                   addMeta "link-citations" (MetaBool True) $ 
                   addMeta "reference-section-title" (MetaInlines [Str "References"]) $
                   filter pandoc -- here's the change
-
+    --let a x = itemSetBody (pandoc' x) 
     return $ fmap (const pandoc') item

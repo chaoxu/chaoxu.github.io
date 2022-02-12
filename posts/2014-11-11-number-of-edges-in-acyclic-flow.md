@@ -8,7 +8,7 @@ The graph in this post are simple graphs with unit edge capacity.
 ::: {.Theorem title="Main Theorem"}
   Let $G=(V,E)$ be a graph with $n$ vertices and $m$ edges, then an acyclic integer flow of value $v$ saturates $O(n\sqrt{v})$ edges.
 ::: 
-Everything here is in the Karger and Levine's paper[@Karger1998], I'm writing this down for my own sake.
+Everything here is in the Karger and Levine's paper[@KargerL98], I'm writing this down for my own sake.
 
 ::: Theorem
   Let $d$ to be the distance of the shortest path between $s$ and $t$. Let $v$ to be the value of a $s$-$t$-flow, then $v\leq 2(n/d)^2$ and $v\leq 2 m/d$.
