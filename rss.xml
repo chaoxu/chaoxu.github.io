@@ -362,30 +362,30 @@ P = H.intersection(G)</code></pre>
 <p>The number of sets of the form <span class="math inline">F\cap E_{\mu,k,\lambda}</span> where <span class="math inline">F</span> is a cut such that <span class="math inline">c_{\mu}(F)&lt; \alpha \lambda</span> for some <span class="math inline">c_\mu\geq 0</span> is <span class="math inline">O(n^{\ceil{\alpha k}+d-2})</span>.</p>
 </div>
 <h1 class="unnumbered" id="bibliography">References</h1>
-<div id="refs" class="references" role="doc-bibliography">
-<div id="ref-KargerS96">
-<p>[1] D. Karger, C. Stein, <strong>A new approach to the minimum cut problem</strong>, Journal of ACM. 43 (1996) 601–640.</p>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-KargerS96" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">D. Karger, C. Stein, <strong>A new approach to the minimum cut problem</strong>, Journal of ACM. 43 (1996) 601–640.</div>
 </div>
-<div id="ref-Karger00">
-<p>[2] D.R. Karger, <strong>Minimum cuts in near-linear time</strong>, J. ACM. 47 (2000) 46–76 <a href="https://doi.org/10.1145/331605.331608">10.1145/331605.331608</a>.</p>
+<div id="ref-Karger00" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">D.R. Karger, <strong>Minimum cuts in near-linear time</strong>, J. ACM. 47 (2000) 46–76 <a href="https://doi.org/10.1145/331605.331608">10.1145/331605.331608</a>.</div>
 </div>
-<div id="ref-HenzingerW96">
-<p>[3] M. Henzinger, D.P. Williamson, <strong>On the number of small cuts in a graph</strong>, Information Processing Letters. 59 (1996) 41–44 <a href="https://doi.org/https://doi.org/10.1016/0020-0190(96)00079-8">https://doi.org/10.1016/0020-0190(96)00079-8</a>.</p>
+<div id="ref-HenzingerW96" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">M. Henzinger, D.P. Williamson, <strong>On the number of small cuts in a graph</strong>, Information Processing Letters. 59 (1996) 41–44 <a href="https://doi.org/10.1016/0020-0190(96)00079-8">https://doi.org/10.1016/0020-0190(96)00079-8</a>.</div>
 </div>
-<div id="ref-GuptaLL19">
-<p>[4] A. Gupta, E. Lee, J. Li, <strong>The Karger-Stein Algorithm is Optimal for <span class="math inline">k</span>-cut</strong>, arXiv E-Prints. (2019) arXiv:1911.09165.</p>
+<div id="ref-GuptaLL19" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">A. Gupta, E. Lee, J. Li, <strong><span class="nocase">The Karger-Stein Algorithm is Optimal for <span class="math inline">k</span>-cut</span></strong>, arXiv e-Prints. (2019) arXiv:1911.09165.</div>
 </div>
-<div id="ref-ChekuriQX19">
-<p>[5] C. Chekuri, K. Quanrud, C. Xu, LP Relaxation and Tree Packing for Minimum k-cuts, in: J.T. Fineman, M. Mitzenmacher (Eds.), 2nd Symposium on Simplicity in Algorithms (<strong>Sosa</strong> 2019), Schloss Dagstuhl–Leibniz-Zentrum fuer Informatik, Dagstuhl, Germany, 2018: pp. 7:1–7:18 <a href="https://doi.org/10.4230/OASIcs.SOSA.2019.7">10.4230/OASIcs.SOSA.2019.7</a>.</p>
+<div id="ref-ChekuriQX19" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">C. Chekuri, K. Quanrud, C. Xu, <span class="nocase">LP Relaxation and Tree Packing for Minimum k-cuts</span>, in: J.T. Fineman, M. Mitzenmacher (Eds.), 2nd Symposium on Simplicity in Algorithms (<strong>SOSA</strong> 2019), Schloss Dagstuhl–Leibniz-Zentrum fuer Informatik, Dagstuhl, Germany, 2018: pp. 7:1–7:18 <a href="https://doi.org/10.4230/OASIcs.SOSA.2019.7">10.4230/OASIcs.SOSA.2019.7</a>.</div>
 </div>
-<div id="ref-Karger16">
-<p>[6] D.R. Karger, Enumerating parametric global minimum cuts by random interleaving, in: Proceedings of the Forty-Eighth Annual Acm Symposium on Theory of Computing, ACM, New York, NY, USA, 2016: pp. 542–555 <a href="https://doi.org/10.1145/2897518.2897578">10.1145/2897518.2897578</a>.</p>
+<div id="ref-Karger16" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">D.R. Karger, Enumerating parametric global minimum cuts by random interleaving, in: Proceedings of the Forty-Eighth Annual ACM Symposium on Theory of Computing, ACM, New York, NY, USA, 2016: pp. 542–555 <a href="https://doi.org/10.1145/2897518.2897578">10.1145/2897518.2897578</a>.</div>
 </div>
-<div id="ref-AissiMMQ15">
-<p>[7] H. Aissi, A.R. Mahjoub, S.T. McCormick, M. Queyranne, <strong>Strongly polynomial bounds for multiobjective and parametric global minimum cuts in graphs and hypergraphs</strong>, Mathematical Programming. 154 (2015) 3–28 <a href="https://doi.org/10.1007/s10107-015-0944-8">10.1007/s10107-015-0944-8</a>.</p>
+<div id="ref-AissiMMQ15" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">H. Aissi, A.R. Mahjoub, S.T. McCormick, M. Queyranne, <strong>Strongly polynomial bounds for multiobjective and parametric global minimum cuts in graphs and hypergraphs</strong>, Mathematical Programming. 154 (2015) 3–28 <a href="https://doi.org/10.1007/s10107-015-0944-8">10.1007/s10107-015-0944-8</a>.</div>
 </div>
-<div id="ref-FungHHP19">
-<p>[8] W.-S. Fung, R. Hariharan, N.J.A. Harvey, D. Panigrahi, <strong>A general framework for graph sparsification</strong>, SIAM Journal on Computing. 48 (2019) 1196–1223 <a href="https://doi.org/10.1137/16M1091666">10.1137/16M1091666</a>.</p>
+<div id="ref-FungHHP19" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">W.-Shing. Fung, Ramesh. Hariharan, N.J.A. Harvey, Debmalya. Panigrahi, <strong>A general framework for graph sparsification</strong>, SIAM Journal on Computing. 48 (2019) 1196–1223 <a href="https://doi.org/10.1137/16M1091666">10.1137/16M1091666</a>.</div>
 </div>
 </div>
 </div>
@@ -411,12 +411,12 @@ P = H.intersection(G)</code></pre>
 <p>We can build the Aho–Corasick automaton for <span class="math inline">W</span> in <span class="math inline">O(L)</span> time. It can be used to find all substrings of <span class="math inline">s</span> that matches something in <span class="math inline">W</span> by traversing the automaton once. The running time is the total number of substrings matched, which is <span class="math inline">O(z)</span>. Hence building the graph takes <span class="math inline">O(z+L)</span> time. <span class="math inline">z</span> is clearly no more than <span class="math inline">nm</span>, where <span class="math inline">m=|W|</span>. Also, it is also clear <span class="math inline">z=O(n\sqrt{L})</span>. Indeed, there can be at most <span class="math inline">O(\sqrt{L})</span> edges start from <span class="math inline">i</span>, since each edge has a label of different length, and sum of those length labels is no larger than <span class="math inline">L</span>.</p>
 <p>If we only want to know if there exists a solution, then there is a <span class="math inline">\tilde{O}(nL^{1/3}+L)</span> time algorithm <span class="citation" data-cites="BringmannGL17">[<a href="#ref-BringmannGL17" role="doc-biblioref">1</a>]</span>. The algorithm is close to optimal assuming the algorithm is combinatorial and the alphabet can be arbitrarily large. A recent progress showed the version with minimum cost is also solvable in <span class="math inline">\tilde{O}(nL^{1/3}+L)</span> time <span class="citation" data-cites="ChanH20">[<a href="#ref-ChanH20" role="doc-biblioref">2</a>]</span>.</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
-<div id="refs" class="references" role="doc-bibliography">
-<div id="ref-BringmannGL17">
-<p>[1] K. Bringmann, A. Grønlund, K.G. Larsen, A dichotomy for regular expression membership testing, in: 2017 Ieee 58th Annual Symposium on Foundations of Computer Science (Focs), 2017: pp. 307–318 <a href="https://doi.org/10.1109/FOCS.2017.36">10.1109/FOCS.2017.36</a>.</p>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-BringmannGL17" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">K. Bringmann, A. Grønlund, K.G. Larsen, A dichotomy for regular expression membership testing, in: 2017 IEEE 58th Annual Symposium on Foundations of Computer Science (FOCS), 2017: pp. 307–318 <a href="https://doi.org/10.1109/FOCS.2017.36">10.1109/FOCS.2017.36</a>.</div>
 </div>
-<div id="ref-ChanH20">
-<p>[2] T.M. Chan, Q. He, More on Change-Making and Related Problems, in: F. Grandoni, G. Herman, P. Sanders (Eds.), 28th Annual European Symposium on Algorithms (Esa 2020), Schloss Dagstuhl–Leibniz-Zentrum für Informatik, Dagstuhl, Germany, 2020: pp. 29:1–29:14 <a href="https://doi.org/10.4230/LIPIcs.ESA.2020.29">10.4230/LIPIcs.ESA.2020.29</a>.</p>
+<div id="ref-ChanH20" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">T.M. Chan, Q. He, <span class="nocase">More on Change-Making and Related Problems</span>, in: F. Grandoni, G. Herman, P. Sanders (Eds.), 28th Annual European Symposium on Algorithms (ESA 2020), Schloss Dagstuhl–Leibniz-Zentrum f<span>ü</span>r Informatik, Dagstuhl, Germany, 2020: pp. 29:1–29:14 <a href="https://doi.org/10.4230/LIPIcs.ESA.2020.29">10.4230/LIPIcs.ESA.2020.29</a>.</div>
 </div>
 </div>
 </div>
@@ -491,9 +491,9 @@ P = H.intersection(G)</code></pre>
 <p>Anyway, consider the world where there can only be marriage bonus. That is we have the property <span class="math inline">S(x)+S(y)\geq J(x+y)</span>. An <em>easy tax function</em> is a function that has reasonable tax property, and is a piecewise-linear convex that has at least <span class="math inline">1</span> breakpoint larger than <span class="math inline">0</span>. This is strictly stronger than principal of progressiveness. This is satisfied by the current personal income tax function used by the IRS.</p>
 <p>Let <span class="math inline">S</span> be a easy tax function, then we can obtain an easy tax function <span class="math inline">J</span> that always gives a marriage bonus. Indeed, let <span class="math inline">J = \inf_{a+b=x,a,b\geq 0} S(a)+S(b)</span>. <span class="math inline">J</span> is extreme in a way that any function greater than it at any point will cause marriage penalty. <span class="math inline">J</span> is the infimal convolution of <span class="math inline">S</span> and itself, which would also be piecewise-linear convex. If <span class="math inline">S</span> is the personal income tax function for 2019, then <span class="math inline">J</span> matches the 2019 IRS married file jointly function up to $612,350! For some reason I do not know, the IRS decide to cut this <span class="math inline">J</span> off at $612,350, and then impose a higher rate just to penalize families with two very high income earners.</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
-<div id="refs" class="references" role="doc-bibliography">
-<div id="ref-Lovell82">
-<p>[1] M.C. LOVELL, <strong>ON taxing marriages</strong>, National Tax Journal. 35 (1982) 507–510.</p>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-Lovell82" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">M.C. LOVELL, <strong>ON TAXING MARRIAGES</strong>, National Tax Journal. 35 (1982) 507–510.</div>
 </div>
 </div>
 </div>
@@ -526,14 +526,17 @@ P = H.intersection(G)</code></pre>
 <span class="theorem-header"><span class="type">Problem</span><span class="index">2</span><span class="name">Matching with disjoint pair constraints</span></span>
 <p>Given a graph where the edges are partitioned into pairs. Find a maximum matching where it uses at most one edge of each pair.</p>
 </div>
-<p>I would be very interested to know the solution to that problem.</p>
+<p>This problem can be used to solve special case of rainbow matching. A graph where each edge has a color, a matching is a rainbow matching if every edge in the matching has a different color. It is known that for graphs where each color appears twice, finding a rainbow matching is NP-hard <span class="citation" data-cites="LeP14">[<a href="#ref-LeP14" role="doc-biblioref">3</a>]</span>. The couple back-to-back ticketing problem is also NP-hard.</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
-<div id="refs" class="references" role="doc-bibliography">
-<div id="ref-KakimuraT14">
-<p>[1] N. Kakimura, M. Takamatsu, <strong>Matching Problems with Delta-Matroid Constraints</strong>, SIAM Journal on Discrete Mathematics. 28 (2014) 942–961 <a href="https://doi.org/10.1137/110860070">10.1137/110860070</a>.</p>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-KakimuraT14" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">N. Kakimura, M. Takamatsu, <strong><span class="nocase">Matching Problems with Delta-Matroid Constraints</span></strong>, SIAM Journal on Discrete Mathematics. 28 (2014) 942–961 <a href="https://doi.org/10.1137/110860070">10.1137/110860070</a>.</div>
 </div>
-<div id="ref-HefnerK95">
-<p>[2] A. Hefner, P. Kleinschmidt, <strong>A constrained matching problem</strong>, Annals of Operations Research. 57 (1995) 135–145 <a href="https://doi.org/10.1007/BF02099694">10.1007/BF02099694</a>.</p>
+<div id="ref-HefnerK95" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">A. Hefner, P. Kleinschmidt, <strong><span class="nocase">A constrained matching problem</span></strong>, Annals of Operations Research. 57 (1995) 135–145 <a href="https://doi.org/10.1007/BF02099694">10.1007/BF02099694</a>.</div>
+</div>
+<div id="ref-LeP14" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">V.B. Le, F. Pfender, <strong>Complexity results for rainbow matchings</strong>, Theoretical Computer Science. 524 (2014) 27–33 <a href="https://doi.org/10.1016/j.tcs.2013.12.013">https://doi.org/10.1016/j.tcs.2013.12.013</a>.</div>
 </div>
 </div>
 </div>

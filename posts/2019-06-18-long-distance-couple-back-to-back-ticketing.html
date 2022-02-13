@@ -11,15 +11,6 @@
     <title>Long distance couple back-to-back ticketing</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-4171915-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-4171915-2');
-  </script>
 
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
@@ -64,14 +55,17 @@
 <span class="theorem-header"><span class="type">Problem</span><span class="index">2</span><span class="name">Matching with disjoint pair constraints</span></span>
 <p>Given a graph where the edges are partitioned into pairs. Find a maximum matching where it uses at most one edge of each pair.</p>
 </div>
-<p>I would be very interested to know the solution to that problem.</p>
+<p>This problem can be used to solve special case of rainbow matching. A graph where each edge has a color, a matching is a rainbow matching if every edge in the matching has a different color. It is known that for graphs where each color appears twice, finding a rainbow matching is NP-hard <span class="citation" data-cites="LeP14">[<a href="#ref-LeP14" role="doc-biblioref">3</a>]</span>. The couple back-to-back ticketing problem is also NP-hard.</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
-<div id="refs" class="references" role="doc-bibliography">
-<div id="ref-KakimuraT14">
-<p>[1] N. Kakimura, M. Takamatsu, <strong>Matching Problems with Delta-Matroid Constraints</strong>, SIAM Journal on Discrete Mathematics. 28 (2014) 942–961 <a href="https://doi.org/10.1137/110860070">10.1137/110860070</a>.</p>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-KakimuraT14" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">N. Kakimura, M. Takamatsu, <strong><span class="nocase">Matching Problems with Delta-Matroid Constraints</span></strong>, SIAM Journal on Discrete Mathematics. 28 (2014) 942–961 <a href="https://doi.org/10.1137/110860070">10.1137/110860070</a>.</div>
 </div>
-<div id="ref-HefnerK95">
-<p>[2] A. Hefner, P. Kleinschmidt, <strong>A constrained matching problem</strong>, Annals of Operations Research. 57 (1995) 135–145 <a href="https://doi.org/10.1007/BF02099694">10.1007/BF02099694</a>.</p>
+<div id="ref-HefnerK95" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">A. Hefner, P. Kleinschmidt, <strong><span class="nocase">A constrained matching problem</span></strong>, Annals of Operations Research. 57 (1995) 135–145 <a href="https://doi.org/10.1007/BF02099694">10.1007/BF02099694</a>.</div>
+</div>
+<div id="ref-LeP14" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">V.B. Le, F. Pfender, <strong>Complexity results for rainbow matchings</strong>, Theoretical Computer Science. 524 (2014) 27–33 <a href="https://doi.org/10.1016/j.tcs.2013.12.013">https://doi.org/10.1016/j.tcs.2013.12.013</a>.</div>
 </div>
 </div>
 </div>
