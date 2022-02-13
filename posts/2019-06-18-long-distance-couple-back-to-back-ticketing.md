@@ -34,4 +34,4 @@ Given a graph where the edges are partitioned into pairs. Find a maximum matchin
 
 :::
 
-I would be very interested to know the solution to that problem.
+This problem can be used to solve special case of rainbow matching. A graph where each edge has a color, a matching is a rainbow matching if every edge in the matching has a different color. It is known that for graphs where each color appears twice, finding a rainbow matching is NP-hard [@LeP14]. The couple back-to-back ticketing problem is also NP-hard. 
