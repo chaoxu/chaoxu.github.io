@@ -41,16 +41,19 @@ Given $\lambda^*$ and a $n\times m$ sorted matrix such that the $i$th row has $k
 The idea is simple, we do exponential search on each row to find the largest element no larger than $\lambda^*$, but we reuse information from the previous row. This gives us the running time $O(\sum_{i} \log (k_{i+1}-k_i+1) )$. The main difficulty is to show why is is $O(n \log \frac{k}{n^2})$. 
 
 ::: Lemma
-  If $\sum_{i=1}^n k_i=k$, then $\sum_{i=1}^n \log (k_{i+1}-k_i+1)=O(n\log k/n^2)$.
+  If $\sum_{i=1}^n k_i=k$, then $\sum_{i=1}^n \log (k_{i+1}-k_i+1)=O(n\log k/n^2) = O(n\log k/n)$.
 :::
 
 Once we show that, we can use the theorem to obtain $O(\sqrt{k})$ running time.
 
-In fact, we can also get a very simple algorithm with running time $O(h \log(k/h^2))$, where $h$ is the number of stairs in the staircase shape. However, it also uses $O(h\log(k/h^2)$ oracle calls. The idea is to use exponential search to find the boundary of the staircase, but we switch between boundaries: horizontal then vertical. 
-It is open if we can obtain $O(h\log(k/h^2))$ running time and $O(\log k)$ oracle calls. 
+In fact, we can also get a very simple algorithm with running time $O(h \log(k/h))$, where $h$ is the number of stairs in the staircase shape. However, it also uses $O(h\log(k/h)$ oracle calls. The idea is to use exponential search to find the boundary of the staircase, but we switch between boundaries: horizontal then vertical. 
 
-# Remark
+What about the best of both worlds? That is, $O(h\log(k/h))$ running time and $O(\log k)$ oracle calls. 
 
-There is an alternative algorithm which can be found in [@JacobR08]. The alternative algorithm is quite close to a post about [selection in a sorted matrix](https://chaoxuprime.com/posts/2014-04-02-selection-in-a-sorted-matrix.html).
+There is an alternative algorithm which can be found in [@JacobR08]. The alternative algorithm is quite close to a post about [selection in a sorted matrix](https://chaoxuprime.com/posts/2014-04-02-selection-in-a-sorted-matrix.html). The careful reader might observe the known search algorithms follow the exact same structure as algorithms for selection. Indeed, we *are* doing selection but we do not know the rank of the element. Intuitively, many selection algorithm, the rank is *only used* to remove the correct set of candidates. Hence this suggest one can modify the algorithm to use the oracle call in place of the rank. 
 
-The careful reader might observe the known search algorithms follow the exact same structure as algorithms for selection. Indeed, we *are* doing selection but we do not know the rank of the element. Intuitively, many selection algorithm, the rank is *only used* to remove the correct set of candidates. Hence this suggest one can modify the algorithm to use the oracle call in place of the rank. 
+The paper [@JacobR08] actually also have an optimum algorithm. 
+
+::: Theorem
+Given a $n\times m$ sorted matrix where $n\leq m$ and there are $h$ stairs, and an oracle that decide if a value is greater, lesser of equal to $\lambda^*$. We can find $\lambda^*$ in $O(p \log \frac{m}{p})$ time and matrix access, and $O(\log (nm))$ oracle calls. 
+:::
