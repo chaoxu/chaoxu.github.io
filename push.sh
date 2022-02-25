@@ -9,7 +9,7 @@ git checkout develop
 export NODE_PATH=$(npm root --quiet -g)
 
 # Build new files
-# stack build
+# stack build --ghc-options=-O2
 # stack exec chaosite clean
 stack exec chaosite build
 

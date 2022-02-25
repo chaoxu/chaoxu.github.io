@@ -101,7 +101,7 @@ main = hakyll $ do
             posts <- fmap (take 10) . recentFirst =<<
                 loadAllSnapshots "posts/*" "content"
             renderRss feedConfiguration feedCtx posts
-    
+
     -- Index
     match "blog.html" $ do
         route idRoute
@@ -121,13 +121,7 @@ main = hakyll $ do
 
     match "templates/*" $ compile templateCompiler
 
---mathDoc :: Item Text -> Compiler (Item String)
---mathDoc = return . fmap mathdoc
-
---mathCompiler = getResourceBody >>= mathDoc
---mathCompiler = getResourceString >>= mathDoc
-
-katexFilter = withItemBody (unixFilter "node" ["math_katex_offline.js"])
+katexFilter = withItemBody (unixFilter "./katex_cli" [])
 
 idPages = ["favicon.ico",
            "googled46bf4e1cd540289.html",
