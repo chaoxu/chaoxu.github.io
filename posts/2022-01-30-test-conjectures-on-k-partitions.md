@@ -73,7 +73,7 @@ Let's call configurations after the above filtering good configurations. The num
 
 We now have a configuration $M$, and now we are interested in creating a linear program to solve it. For a given $M$, we can use it to recover $\mathcal{X}$ and $\mathcal{Y}$.
 
-Let $V$ be the set of vertices, which equals to the index of $1$s in $M$. Let $P_k(V)$ be the set of $k$ partitions of $V$. For each $U\subseteq V$, we create a variable $x_U$. It represents the value of $f(x_U)$.
+Let $V$ be the set of vertices, which equals to the index of $1$s in $M$. Let $P_k(V)$ be the set of $k$ partitions of $V$. For each $U\subseteq V$, we create a variable $x_U$. It represents the value of $f(U)$.
 We also create a variable $z$.
 
 For a partition $\mathcal{S}$, $x_\mathcal{S}$ is just $\sum_{S\in \mathcal{S}} x_S$.
