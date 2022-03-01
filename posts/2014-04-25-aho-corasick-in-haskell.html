@@ -1,21 +1,24 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="The Art Gallery Guardian">
     <meta name="author" content="Chao Xu">
-    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok">
-    <meta property="og:title" content="The Aho–Corasick Automaton in Haskell">
-    <meta property="og:type" content="article">
-    <meta property="og:site_name" content="The Art Gallery Guardian">
-    <meta property="article:tag" content="Algorithm, Haskell">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta property="og:title" content="The Aho–Corasick Automaton in Haskell" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="The Art Gallery Guardian" />
+    <meta property="article:tag" content="Algorithm, Haskell" />
     <title>The Aho–Corasick Automaton in Haskell</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
   <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="https://chaoxuprime.com/rss.xml">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+      href="https://chaoxuprime.com/rss.xml">
   </head>
   <body>
     <header class="hide-on-print">
@@ -23,7 +26,7 @@
             <a href="/blog.html">The Art Gallery Guardian</a>
         </div>
         <div style="display: none;">
-          <img src="/files/chao/chao_thumb.jpg">
+          <img src="/files/chao/chao_thumb.jpg" >
         </div>
     </header>
     <nav class="hide-on-print">
@@ -37,9 +40,9 @@
     <main>
       <article>
         <h1 id="article-title">The Aho–Corasick Automaton in Haskell</h1>
-        <br>
+        <br />
 <div>
-<p>It is common that one might want to match <span class="math inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.6944em;"></span><span style="margin-right: 0.0315em;" class="mord mathnormal">k</span></span></span></span></span> different strings against one single text of length <span class="math inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></span>. One can of course apply the <a href="/posts/2014-04-11-the-kmp-algorithm-in-haskell.html">KMP algorithm</a> individually, and result an algorithm that runs in <span class="math inline"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span style="margin-right: 0.0278em;" class="mord mathnormal">O</span><span class="mopen">(</span><span class="mord mathnormal">km</span><span class="mclose">)</span></span></span></span></span> time.</p>
+<p>It is common that one might want to match <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> different strings against one single text of length <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>. One can of course apply the <a href="/posts/2014-04-11-the-kmp-algorithm-in-haskell.html">KMP algorithm</a> individually, and result an algorithm that runs in <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">km</span><span class="mclose">)</span></span></span></span> time.</p>
 <p>Faster algorithms are known. The idea is to build an finite state transducer that can output which strings is the suffix of the string it read. The Aho-Corasick automaton is a compressed version of such transducer, as the size does not depend on the size of the alphabet.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span>           <span class="dt">Control.Arrow</span> (first)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span>           <span class="dt">Data.Function</span> (on)</span>
@@ -74,11 +77,11 @@
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ot">match ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> <span class="dt">Automaton</span> a b <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [b]</span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>match a xs <span class="ot">=</span> <span class="fu">map</span> output <span class="op">$</span> <span class="fu">scanl</span> delta a xs</span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ot">match' ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> [[a]] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [[[a]]]</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>match' pat <span class="ot">=</span> match (buildAutomaton <span class="op">$</span> <span class="fu">map</span> (\x<span class="ot">-&gt;</span> (x,[x])) pat)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ot">match&#39; ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> [[a]] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> [[[a]]]</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>match&#39; pat <span class="ot">=</span> match (buildAutomaton <span class="op">$</span> <span class="fu">map</span> (\x<span class="ot">-&gt;</span> (x,[x])) pat)</span>
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ot">isInfixOf' ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>isInfixOf' xs ys <span class="ot">=</span> getAll <span class="op">$</span> <span class="fu">mconcat</span> <span class="op">$</span> match (buildAutomaton [(xs, <span class="dt">All</span> <span class="dt">True</span>)]) ys</span></code></pre></div>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ot">isInfixOf&#39; ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>isInfixOf&#39; xs ys <span class="ot">=</span> getAll <span class="op">$</span> <span class="fu">mconcat</span> <span class="op">$</span> match (buildAutomaton [(xs, <span class="dt">All</span> <span class="dt">True</span>)]) ys</span></code></pre></div>
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2014-04-25">2014-04-25</time>. </div>
@@ -88,6 +91,5 @@
     </main>
     <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxuprime.com" rel="author">Chao Xu</a>. Licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
     <a href="/README.html">Blog README</a>.</footer>
-  
-
-</body></html>
+  </body>
+</html>
