@@ -13,4 +13,4 @@ ACM-ICPC的选手，依靠刷题增加自己的经验。做理论研究也能用
 还有哪里找到各种问题？
  - Lovasz的Combinatorial Problems and Exercises里面的题目全部做出来，对自己有很高的提升。
  - 每个topic一般都有对应的MIT的课程。他们课堂内容常常是公开的。会有很好的problem set值得去做。
- - 许多大学的理论计算机的博士qualifying exam有不错的题目。如[UIUC](https://sarielhp.org/research/algorithms/quals/)和[Georgia Tech ACO](https://aco.gatech.edu/academics/past-examinations)。如果里面的题大多都能做出来，你在技巧上就就达到了top学校理论组的平均水平了。
+ - 许多大学的理论计算机的博士qualifying exam有不错的题目。如[UIUC](https://sarielhp.org/research/algorithms/quals/)和[Georgia Tech ACO](https://aco.gatech.edu/academics/past-examinations)。如果里面的题大多都能做出来，你在技巧上就就达到了top学校理论组的博士生第二年的平均水平了。
