@@ -14,6 +14,7 @@ Write everything down.
 为此，能在白板上演示个东西的时候，应该事先能写出一个notes，这样在你不在白板前的时候，大家也能知道你做了什么。
 
 学会使用LaTeX输入数学公式。
+
  - 一个[简单的reference](http://mohu.org/info/symbols/symbols.htm).
  - 如果有个symbol你不知道怎么输入，试试[Detexify](https://detexify.kirelabs.org/classify.html)
  - 尽量不要使用排版功能
