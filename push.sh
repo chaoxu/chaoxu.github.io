@@ -4,6 +4,7 @@ git stash
 
 # Verify correct branch
 git checkout develop
+git pull
 
 # make sure node path contains global
 export NODE_PATH=$(npm root --quiet -g)
