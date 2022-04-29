@@ -10,8 +10,9 @@ title: 招人
  - 计算机（算法）
  - 管理，运筹，工业工程（优化）
 
-可以想象这边想培养出[CMU ACO](https://www.cmu.edu/tepper/programs/phd/program/joint-phd-programs/algorithms-combinatorics-and-optimization/index.html)和[Georgia Tech ACO](https://aco.gatech.edu/)项目一样的人才。 你也可以提前[训练](/pages/training.html)自己的理论方向的问题解决能力。
+可以想象这边想培养出[CMU ACO](https://www.cmu.edu/tepper/programs/phd/program/joint-phd-programs/algorithms-combinatorics-and-optimization/index.html)和[Georgia Tech ACO](https://aco.gatech.edu/)项目一样的人才。 你也可以提前[训练](/pages/training.html)自己的理论方向的问题解决能力，和使用一些[研究工具](/pages/research-tools.html)。
 
+除了纯理论研究，我还有些[非纯理论的项目](/pages/non-theory-projects.html)可以做。
 
 # 硕士博士生
 
@@ -28,9 +29,8 @@ title: 招人
 
 以下几个属性里满足的越多越好。
 
-  - 有竞赛经验（OI，ACM-ICPC，数学竞赛）
-  - 有很强的编程水平
-  - 会使用常见的优化，数学软件和工具
+  - 解题能力: 一般体现在有竞赛经验（OI，ACM-ICPC，数学竞赛）
+  - 实践能力: 有很强的编程水平，或者会使用常见的优化，数学软件和工具
   - 对理论计算机方向有很大的兴趣
   - 对[这里面的问题](https://coauthor.tcsuestc.com/Public)会感觉有点兴趣
 
@@ -45,3 +45,4 @@ title: 招人
  - 很强的编程能力，以及使用优化（如Gruobi）和数学软件（如Sage）。
  - 可以管理网站以及处理很多杂事。
  - 理论计算机方向很强的研究能力。
+

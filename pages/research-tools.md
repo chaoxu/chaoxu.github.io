@@ -36,4 +36,4 @@ Write everything down.
 
 其中我们有个自己的[coauthor](https://coauthor.tcsuestc.com/), [coauthor这里我写了个介绍](https://coauthor.tcsuestc.com/Public/m/MnXmhH8mXXhiYwDFn)。
 
-有个ipad之类的工具，在上面用apple pencil做个白板还是蛮舒服的。
+有个ipad之类的工具，在上面用apple pencil做个白板还是非常高效的。我本人用Notability做notes和弄画板。

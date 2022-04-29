@@ -6,7 +6,7 @@ Here are some tools and writing that might be useful.
 
 Writing: 
 
-Financial Freedom Advices: [English](https://chaoxuprime.com/financial.html)/[中文](https://chaoxuprime.com/financial-cn.html).
+Financial Freedom Advices (For people in the US): [English](https://chaoxuprime.com/financial.html)/[中文](https://chaoxuprime.com/financial-cn.html).
 
 Scripts:
 
