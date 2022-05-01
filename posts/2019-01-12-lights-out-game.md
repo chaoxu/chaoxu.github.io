@@ -9,10 +9,10 @@ tags: algorithm, algebra
 The problem is equivalent to the [lights out game](https://en.wikipedia.org/wiki/Lights_Out_%28game%29). Each vertex has state $0$ or $1$. Activate a vertex flips the state of itself and all its neighbors. Find a set of activations that turns all state into $0$.
 Originally I thought this problem can be solved in $O(n^{\omega/2})$ when $G$ is planar graph on $n$ vertices by [nested dissection](https://en.wikipedia.org/wiki/Nested_dissection). However, only recently I found out the matrix must be non-singular. Therefore nested dissection does not apply. 
 
-Recently I saw an algorithm that shows if the graph is a $n\times n$ grid, then it can be solved in $O(n^3)$ time. The solution in Chinese and can be seen [here](https://zhuanlan.zhihu.com/p/53646257).
+In particular, if the graph is a $n\times n$ grid, then solving the linear system takes $O(n^6)$ tmie. Recently, I saw an $O(n^3)$ time solution. The solution in Chinese and can be seen [here](https://zhuanlan.zhihu.com/p/53646257). Here I gave my interpertation of the algorithm. 
 
 Given a $n\times n$ grid graph. Let $v_{i,j}$ be the node on the $i$th row and $j$th column. 
-Let $b_{i,j}$ be the state of the vertex $v_{i,j}$. The state is in $\F_2$
+Let $b_{i,j}$ be the state of the vertex $v_{i,j}$. Each state is in $\F_2$.
 If we activates a node, the state of the node and its neighbors change by $1$.
 The set of activated node is called the activation set.
 
@@ -26,6 +26,7 @@ Let $S$ be the activation set, and $S_1$ to be the activation set of the first r
 ::: Proof
   Indeed, consider apply activation to the nodes in $S_1$. Consider any vertex in row $1$. If it $0$, then the remaining neighbor (on the second row) cannot be activated. If it is $1$, then the remaining neighbor has to be activated. 
 :::
+
 Let $D[i,j]$ indicates if we activate $v_{i,j}$ or not.
 We create formal variables $Z=\set{z_1,\ldots,z_n}$. Here $z_i$ is an indicator variable that represents if $v_{1,i}$ is activated or not.
 The base case $D[1,j] = z_j$.
@@ -54,8 +55,5 @@ Also, there is no reason we have to work in $\F_2$, any arbitrary field is fine.
 ::: Theorem
   Let $G$ be a $m\times n$ grid and $A$ is a matrix where the non-zero entires are precisely the position of $1$s in the adjacency matrix of $A$. Finding $Ax=b$ can be done in $O(m^2n)$ time. 
 :::
-I did not think too much into it, but maybe it works for all integral domains too.
-Interestingly, this algorithm is so special, that we have no idea how to extend it to other graphs. 
-Maybe it works for directed graph, maybe it works for subgraph of the grid graphs.
 
-It would be really interesting to see an algorithm with running time $O(n^{3/2})$ for a planar graph of $n$ vertices.
+How can this be generalized to other graphs? I haven't thought deeply with it. It would be interesting to see an algorithm with running time $O(n^{3/2})$ for a planar graph of $n$ vertices.
