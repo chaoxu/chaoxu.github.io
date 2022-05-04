@@ -11,7 +11,7 @@ The problem is equivalent to the [lights out game](https://en.wikipedia.org/wiki
 
 Originally I thought this problem can be solved in $O(n^{\omega/2})$ when $G$ is planar graph on $n$ vertices by [nested dissection](https://en.wikipedia.org/wiki/Nested_dissection). However, only recently I found out the matrix must be non-singular [@alon_matrix_2013]. Therefore, nested dissection does not apply. In particular, even grid graphs can have singular adjacency matrix. For example, a $2\times 3$ grid. 
 
-If the graph is a $n\times n$ grid, then solving the linear system takes $O(n^6)$ tmie. Recently, I saw an $O(n^3)$ time solution. The solution by Zheng Wang and can be seen [here](https://zhuanlan.zhihu.com/p/53646257)(in Chinese). Here I gave my interpretation of the algorithm. 
+If the graph is a $n\times n$ grid, then solving the linear system takes $O(n^6)$ time. Recently, I saw an $O(n^3)$ time solution. The solution by Zheng Wang and can be seen [here](https://zhuanlan.zhihu.com/p/53646257)(in Chinese). Here I gave my interpretation of the algorithm. 
 
 # The algorithm
 
@@ -61,7 +61,19 @@ One can generalize this further. We can obtain $O(m^2n)$ running time for a $m\t
 Also, there is no reason we have to work in $\F_2$, any field is fine. 
 
 ::: Theorem
-  Let $G$ be a $m\times n$ grid and $A$ is a matrix where the non-zero entries are precisely the position of $1$s in the adjacency matrix of $A$. Finding $Ax=b$ can be done in $O(m^2n)$ time. 
+  Let $G$ be a $m\times n$ grid and $A$ is a matrix where the non-zero entries are precisely the position of $1$s in the adjacency matrix of $G$. Finding $Ax=b$ can be done in $O(m^2n)$ time. 
 :::
 
-How can this be generalized to other graphs? I haven't thought deeply about it. It would be interesting to see an algorithm with running time $O(n^{3/2})$ for a planar graph of $n$ vertices. 
+How can this be generalized to other graphs? 
+
+Turns out this is related to the zero forcing set [@aim2008]. Consider the vertices are colored black and white. If a black vertex has only a single white neighbor, color the white neighbor black. If eventually all vertices become black, then we say the set of black vertices in the beginning is a *zero forcing set*. The *zero forcing number* of $G$ is the size of the smallest zero forcing set of $G$. 
+
+::: Theorem
+  Let $G$ be a graph and $A$ is a matrix where the non-zero entries are precisely the position of $1$s in the adjacency matrix of $G$. If we are given a zero forcing set of size $k$. Finding $Ax=b$ can be done in $O(k^2n)$ time. 
+:::
+
+Unfortunately, minimum (weighted) zero forcing set is NP-hard to find [@AazamiAshkan2008]. It is also very large for simple graphs. Caterpillars have a $\Omega(n)$ size zero forcing set.
+
+Is this a new viable algorithm for solving system of linear equations? 
+
+The zero forcing number is at least the pathwidth [@AazamiAshkan2008], which is in turn at least the treewidth, which implies there are good separators. This should mean Nested dissection is better than this zero forcing number algorithm for non-singular matrices.
