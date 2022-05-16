@@ -69,11 +69,11 @@ How can this be generalized to other graphs?
 Turns out this is related to the zero forcing set [@aim2008]. Consider the vertices are colored black and white. If a black vertex has only a single white neighbor, color the white neighbor black. If eventually all vertices become black, then we say the set of black vertices in the beginning is a *zero forcing set*. The *zero forcing number* of $G$ is the size of the smallest zero forcing set of $G$. 
 
 ::: Theorem
-  Let $G$ be a graph and $A$ is a matrix where the non-zero entries are precisely the position of $1$s in the adjacency matrix of $G$. If we are given a zero forcing set of size $k$. Finding $Ax=b$ can be done in $O(k^2n)$ time. 
+  Let $G$ be a graph with $m$ edges and $A$ is a matrix where the non-zero entries are precisely the position of $1$s in the adjacency matrix of $G$. If we are given a zero forcing set of size $k$. Finding $Ax=b$ can be done in $O(km+k^3)$ time.
 :::
 
 Unfortunately, minimum (weighted) zero forcing set is NP-hard to find [@AazamiAshkan2008]. It is also very large for simple graphs. Caterpillars have a $\Omega(n)$ size zero forcing set.
 
 Is this a new viable algorithm for solving system of linear equations? 
 
-The zero forcing number is at least the pathwidth [@AazamiAshkan2008], which is in turn at least the treewidth, which implies there are good separators. This should mean Nested dissection is better than this zero forcing number algorithm for non-singular matrices.
+The zero forcing number is at least the pathwidth [@AazamiAshkan2008], which is in turn at least the treewidth, which implies there are good separators. This should mean nested dissection is better than this zero forcing number algorithm for non-singular matrices.
