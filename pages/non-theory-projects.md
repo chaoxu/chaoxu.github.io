@@ -11,4 +11,4 @@ title: 非理论项目
 
 # 为数学家设计的知识管理系统
 
-[我为此写的想法](https://hackmd.io/LoFPSapEQhWjBfCFVfytVQ)。 后期还会支持多人合作编辑数学文档。
+我为此写的想法[可以在Hackmd上看到](https://hackmd.io/LoFPSapEQhWjBfCFVfytVQ)， 后期还会支持多人合作编辑数学文档。
