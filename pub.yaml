@@ -517,6 +517,18 @@ abstract: >
 # manuscripts
 
 ---
+id: cyclic-cover
+title: Almost optimum $\ell$-covering of $\Z_n$
+type: manuscript
+year: 2022
+bib: <time>2022</time>, Submitted.
+authors: [Ke Shi, Chao Xu]
+abstract: >
+  A subset $B$ of ring $\Z_n$ is called a $\ell$-covering set if $\{ ab \pmod n \mid 0\leq a \leq \ell, b\in B\} = \Z_n$.
+  We show there exists a $\ell$-covering set of $\Z_n$ of size $O(\frac{n}{\ell}\log n)$ for all $n$ and $\ell$, and how to construct such set.
+  We also show examples where any $\ell$-covering set must have size $\Omega(\frac{n}{\ell}\frac{\log n}{\log \log n})$. The proof uses a refined bound for relative totient function obtained through sieve theory, and existence of a large divisor with linear divisor sum.
+
+---
 id: airplane
 title: A near-linear time algorithm for computing the optimal landing times of a fixed sequence of planes
 type: manuscript

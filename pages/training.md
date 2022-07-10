@@ -2,6 +2,18 @@
 title: 训练
 ---
 
+
+# 基本算法
+
+如果刚开始没有任何算法基础, 下面是我推荐的几个书籍.
+
+
+ 1. [Algorithms, Jeff Erickson](https://jeffe.cs.illinois.edu/teaching/algorithms/)
+ 2. [Algorithm Design, Kleinberg and Tardos](https://ict.iitk.ac.in/wp-content/uploads/CS345-Algorithms-II-Algorithm-Design-by-Jon-Kleinberg-Eva-Tardos.pdf)
+ 3. [Algorithms, Dasgupta, Papadimitriou, Vazirani](http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf)
+
+学习算法的时候需要做后面的习题。最好几个人一起刷书。
+
 # 算法技术
 
 研究是需要技巧的。而技巧是在使用的时候磨炼出来的。
