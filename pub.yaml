@@ -17,12 +17,13 @@ venues:
 
 people:
   Chao Xu: https://chaoxuprime.com
-  Kristóf Bérczi: http://www.cs.elte.hu/~berkri/
+  Kristóf Bérczi: https://berkri.web.elte.hu/
   Ken-ichi Kawarabayashi: http://research.nii.ac.jp/~k_keniti/
   Bin Cao: https://scholar.google.com/citations?user=4DRkxEoAAAAJ&hl=en
   Amir Gharehgozli: https://www.csun.edu/som/amir-gharehgozli
   Wenda Zhang: https://www.linkedin.com/in/wenda-zhang-a5359a36/
   Yichen Yang:
+  Ke Shi: https://keshih.github.io/
   Qian Zhang: http://qianzhang.me/
   Chandra Chekuri: http://chekuri.cs.illinois.edu/
   Kent Quanrud: https://kentquanrud.com/
@@ -30,16 +31,16 @@ people:
   Xilin Yu: http://xilinyu2.web.engr.illinois.edu/
   Tamás Király: http://www.cs.elte.hu/~tkiraly/
   Euiwoong Lee: http://www.cs.cmu.edu/~euiwoonl/
-  Konstantinos Koiliaris: http://koiliaris.com/
+  Konstantinos Koiliaris: https://koiliaris.com/
   Thapanapong Rukkanchanunt: https://dblp.org/pers/hd/r/Rukkanchanunt:Thapanapong
   Jeff Erickson: http://jeffe.cs.illinois.edu/
   Hsien-Chih Chang: https://users.cs.duke.edu/~hc252/
-  Neil J. Calkin: http://www.math.clemson.edu/~calkin/
+  Neil J. Calkin: https://www.math.clemson.edu/~calkin/
   Janine E. Janoski:
   Allison Nelson:
   Sydney Ryan:
   Calvin Beideman:
-  Steven Skiena: http://www3.cs.stonybrook.edu/~skiena/
+  Steven Skiena: https://www3.cs.stonybrook.edu/~skiena/
   Boris Aronov: https://engineering.nyu.edu/faculty/boris-aronov
 
 types:
@@ -520,6 +521,7 @@ abstract: >
 id: cyclic-cover
 title: Almost optimum $\ell$-covering of $\Z_n$
 type: manuscript
+show: [d]
 year: 2022
 bib: <time>2022</time>, Submitted.
 authors: [Ke Shi, Chao Xu]
