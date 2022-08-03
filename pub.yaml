@@ -14,6 +14,8 @@ venues:
   Congr. Numer.: Congressus Numerantium
   SIDMA: SIAM Journal on Discrete Mathematics
   RANDOM: International Conference on Randomization and Computation
+  MFCS: International Symposium on Mathematical Foundations of Computer Science
+  NeurIPS: Conference on Neural Information Processing Systems
 
 people:
   Chao Xu: https://chaoxuprime.com
@@ -24,6 +26,9 @@ people:
   Wenda Zhang: https://www.linkedin.com/in/wenda-zhang-a5359a36/
   Yichen Yang:
   Ke Shi: https://keshih.github.io/
+  Yuhao Liu:
+  Tsuyoshi Hirayama:
+  Kazuhisa Makino: https://www.kurims.kyoto-u.ac.jp/en/list/makino.html
   Qian Zhang: http://qianzhang.me/
   Chandra Chekuri: http://chekuri.cs.illinois.edu/
   Kent Quanrud: https://kentquanrud.com/
@@ -39,9 +44,14 @@ people:
   Janine E. Janoski:
   Allison Nelson:
   Sydney Ryan:
-  Calvin Beideman:
+  Calvin Beideman: https://www.calvinbeideman.com/
+  Jingyang Zhao:
+  Mingyu Xiao: https://sites.google.com/site/myxiao/
   Steven Skiena: https://www3.cs.stonybrook.edu/~skiena/
   Boris Aronov: https://engineering.nyu.edu/faculty/boris-aronov
+  Peng Yu: 
+  Albert Bifet: https://albertbifet.com/
+  Jesse Read: https://jmread.github.io/
 
 types:
   conference: Conference Publications
@@ -70,10 +80,25 @@ types:
 
 # conference publications
 ---
+id: ttp
+show: []
+title: Improved Approximation Algorithms for The Traveling Tournament Problem
+authors: [Jingyang Zhao, Mingyu Xiao, Chao Xu]
+type: conference
+pub: MFCS (to appear)
+year: 2022
+abstract: >
+  The Traveling Tournament Problem (TTP) is a well-known benchmark problem in the field of tournament timetabling, which asks us to design a double round-robin schedule such that each pair of teams plays one game in each other's home venue, minimizing the total distance traveled by all $n$ teams ($n$ is even).
+  TTP-$k$ is the problem with one more constraint that each team can have at most $k$ consecutive home games or away games. The case where $k=3$, TTP-3, is one of the most investigated cases. In this paper, we improve the approximation ratio of TTP-3 from $(1.667+\epsilon)$ to $(1.598+\epsilon)$, for any $\epsilon>0$. Previous schedules were constructed based on a Hamiltonian cycle of the graph.
+  We propose a novel construction based on triangle packing. Then, by combining our triangle packing schedule with the Hamiltonian cycle schedule, we obtain the improved approximation ratio.
+  The idea of our construction can also be extended to $k\geq 4$. We demonstrate that the approximation ratio of TTP-4 can be improved from $(1.750+\epsilon)$ to $(1.700+\epsilon)$ by the same method.
+  As an additional product, we also improve the approximation ratio of LDTTP-3 (TTP-3 where all teams are allocated on a straight line) from $4/3$ to $(6/5+\epsilon)$.
+
+---
 id: parking
 show: [d]
 title: Marking Streets to Improve Parking Density
-authors: [Chao Xu, Steven Skiena]
+authors: [Steven Skiena, Chao Xu]
 type: conference
 pub: Urban Complex Systems
 year: 2020
@@ -516,7 +541,6 @@ abstract: >
 
 
 # manuscripts
-
 ---
 id: cyclic-cover
 title: Almost optimum $\ell$-covering of $\Z_n$
@@ -549,6 +573,7 @@ bib: 2019, Submitted.
 abstract: >
   The capacitated vehicle routing problem (CVRP) is one of the most well known NP-hard combinatorial optimization problems. Single depot CVRP with a general metric is NP-hard even for fixed capacity 3, while polynomial time solvable for fixed capacity 2. We consider the variant of CVRP where restocking is available.
   We show that if there is a constant number of depots, then the problem can be solved in polynomial time when capacity is $2$.
+
 
 # --- 
 # id: subset-sum-simple

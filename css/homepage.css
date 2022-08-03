@@ -130,14 +130,14 @@
   display:inline;
   margin:0px;
 }
-.coauthor-list::before { 
+/*.coauthor-list::before { 
   content: "(with ";
 }
 .coauthor-list::after { 
   content: ")";
-}
+}*/
 .coauthor-list li+li::before {
-  content: " and ";
+  content: ", ";
 }
 abbr[title] {
   text-decoration: none;

@@ -28,7 +28,7 @@ parse=compose(mk,math)
 parsei=compose(mki,math)
 
 def coauthor_list(xs, links):
-    xs = [x for x in xs if x!="Chao Xu"]
+    # xs = [x for x in xs if x!="Chao Xu"]
     y = []
     for x in xs:
         a = {}
