@@ -52,6 +52,8 @@ people:
   Peng Yu: 
   Albert Bifet: https://albertbifet.com/
   Jesse Read: https://jmread.github.io/
+  Jianbo Wang: https://wangchienbo.github.io/
+  Siyun Zhou: 
 
 types:
   conference: Conference Publications
@@ -541,6 +543,21 @@ abstract: >
 
 
 # manuscripts
+---
+id: zeroforcing
+show: [d]
+title: Solving systems of linear equations through zero forcing set and application to lights out
+authors: [Jianbo Wang, Chao Xu, Siyun Zhou]
+type: manuscript
+year: 2022
+abstract: >
+  Let $\mathbb{F}$ be any field, we consider solving $Ax=b$ repeatedly for a matrix 
+  $A\in\mathbb{F}^{n\times n}$ of $m$ non-zero elements, and multiple different 
+  $b\in\mathbb{F}^{n}$. If we are given a zero forcing set of $A$ of size $k$,
+  we can then build a data structure in $O(mk)$ time, such that each instance of
+  $Ax=b$ can be solved in $O(k^2+m)$ time. As an application, we show how the lights
+  out game in an $n\times n$ grid is solved in $O(n^3)$ time, and then improve the running
+  time to $O(n^\omega\log n)$ by exploiting the repeated structure in grids.
 ---
 id: cyclic-cover
 title: Almost optimum $\ell$-covering of $\Z_n$
