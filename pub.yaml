@@ -83,7 +83,7 @@ types:
 # conference publications
 ---
 id: ttp
-show: []
+show: [d]
 title: Improved Approximation Algorithms for The Traveling Tournament Problem
 authors: [Jingyang Zhao, Mingyu Xiao, Chao Xu]
 type: conference
