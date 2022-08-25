@@ -87,7 +87,7 @@ show: [d]
 title: Improved Approximation Algorithms for The Traveling Tournament Problem
 authors: [Jingyang Zhao, Mingyu Xiao, Chao Xu]
 type: conference
-pub: MFCS (to appear)
+pub: MFCS
 year: 2022
 abstract: >
   The Traveling Tournament Problem (TTP) is a well-known benchmark problem in the field of tournament timetabling, which asks us to design a double round-robin schedule such that each pair of teams plays one game in each other's home venue, minimizing the total distance traveled by all $n$ teams ($n$ is even).
@@ -313,23 +313,6 @@ abstract: >
   (Proceedings of the 4th annual ACM-SIAM symposium on discrete algorithms, SODA, pp 21–30, 1993). 
   Our techniques illustrate the versatility of the random contraction approach to address counting
   and algorithmic problems concerning multiobjective min-cuts and size-constrained $k$-cuts in hypergraphs.
---- 
-id: min-violation
-show: [d,p]
-title: Minimum violation vertex maps and their applications to cut problems
-type: journal
-year: 2020
-authors: [Ken-ichi Kawarabayashi, Chao Xu]
-pub: SIDMA
-selected: true
-abstract: >
-  The minimum violation problem asks for a vertex map from a digraph to a pattern digraph that minimizes violation, 
-  the total weight of the edges not mapped to an edge. We are interested in surjective mappings. We characterize all
-  patterns where a minimum violation map that fixes some vertices can be computed in polynomial time. We also make
-  progress in the case where we do not fix any vertex in the mapping, including when the digraph is disconnected,
-  when the graph is in the variety of finite paths. Moreover, we obtain a dichotomy result for trees. We apply
-  the result to some cut problems, including $k$-cut with size lower bounds and length bounded $k$-cuts.
-
 ---
 id: kdepots
 show: [d,p]
@@ -337,7 +320,7 @@ title: High multiplicity asymmetric traveling salesman problem with feedback ver
 authors: [Amir Gharehgozli, Chao Xu, Wenda Zhang]
 type: journal
 pub: EJOR
-year: 2020
+year: 2021
 abstract: >
   We describe an algorithm for the high multiplicity asymmetric traveling salesman problem with feedback
   vertex set of size $k$ (HMTSPFVS-$k$FVS) where each vertex can be visited a certain number of times and each
@@ -354,6 +337,22 @@ abstract: >
   The best previous algorithm only solves the special case of the problem with $2$ regular depots in $O(n^6)$ time.
   The applicability of our algorithm for several generalizations and special cases of the problem is also discussed.
   Furthermore, to evaluate the performance of our solution method, we perform extensive numerical experiments.
+--- 
+id: min-violation
+show: [d,p]
+title: Minimum violation vertex maps and their applications to cut problems
+type: journal
+year: 2020
+authors: [Ken-ichi Kawarabayashi, Chao Xu]
+pub: SIDMA
+selected: true
+abstract: >
+  The minimum violation problem asks for a vertex map from a digraph to a pattern digraph that minimizes violation, 
+  the total weight of the edges not mapped to an edge. We are interested in surjective mappings. We characterize all
+  patterns where a minimum violation map that fixes some vertices can be computed in polynomial time. We also make
+  progress in the case where we do not fix any vertex in the mapping, including when the digraph is disconnected,
+  when the graph is in the variety of finite paths. Moreover, we obtain a dichotomy result for trees. We apply
+  the result to some cut problems, including $k$-cut with size lower bounds and length bounded $k$-cuts.
 
 ---
 id: kcut-revisited-journal
