@@ -5,9 +5,10 @@ tags: algorithmic toolkit
 
 # Introduction
 
-:: Problem
+::: Problem
   Consider a knapsack of capacity $C$ and a empty sequence of objects. One can update the sequence by add or delete objects from either end of the sequence. Construct a data structure, such that we can output the maximum possible value of the knapsack after every update if we pack the knapsack using the objects in the sequence.
 :::
+
 This is a generalization of the [online knapsack problem](http://codeforces.com/blog/entry/14366), which is an generalization of a hard [offline knapsack problem](https://www.hackerrank.com/contests/cs-quora/challenges/quora-feed-optimizer) used by Quora. 
 
 A naive algorithm just recompute the knapsack each time using a dynamic programming algorithm. 
