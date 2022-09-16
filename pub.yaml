@@ -16,6 +16,7 @@ venues:
   RANDOM: International Conference on Randomization and Computation
   MFCS: International Symposium on Mathematical Foundations of Computer Science
   NeurIPS: Conference on Neural Information Processing Systems
+  FSTTCS: Foundations of Software Technology and Theoretical Computer Science
 
 people:
   Chao Xu: https://chaoxuprime.com
@@ -81,6 +82,42 @@ types:
 
 
 # conference publications
+
+---
+id: lineartreeshap
+show: []
+title: Linear TreeShap
+authors: [Peng Yu, Chao Xu, Albert Bifet, Jesse Read]
+type: conference
+year: 2022
+pub: NeurIPS (to appear)
+abstract: >
+  Decision trees are well-known due to their ease of interpretability.
+  To improve accuracy, we need to grow deep trees or ensembles of trees.
+  These are hard to interpret, offsetting their original benefits. 
+  Shapley values have recently become a popular way to explain the predictions of tree-based machine learning models. 
+  It provides a linear weighting to features independent of the tree structure. 
+  The rise in popularity is mainly due to TreeShap, which solves a general exponential complexity problem in polynomial time. 
+  Following extensive adoption in the industry, more efficient algorithms are required. 
+  This paper presents a more efficient and straightforward algorithm: Linear TreeShap.
+  Like TreeShap, Linear TreeShap is exact and requires the same amount of memory.
+
+---
+id: approxbyhypergraph
+show: []
+title: Approximate Representation of Symmetric Submodular Functions via Hypergraph Cut Functions
+authors: [Calvin Beideman, Karthekeyan Chandrasekaran, Chandra Chekuri, Chao Xu]
+type: conference
+year: 2022
+bib: FSTTCS (to appear)
+abstract: >
+  Submodular functions are fundamental to combinatorial optimization. Many interesting problems can be formulated as special cases of problems involving submodular functions. 
+  In this work, we consider the problem of approximating symmetric submodular functions everywhere using hypergraph cut functions. 
+  Devanur, Dughmi, Schwartz, Sharma, and Singh showed that symmetric submodular functions over $n$-element ground sets 
+  cannot be approximated 
+  within $(n/8)$-factor using a graph cut function and raised the question of approximating them using hypergraph cut functions. 
+  Our main result is that there exist symmetric submodular functions over $n$-element ground sets that cannot be approximated within a $o(n^{1/3}/\log^2 n)$-factor using a hypergraph cut function. On the positive side, we show that symmetrized concave linear functions and symmetrized rank functions of uniform matroids and partition matroids can be constant-approximated using hypergraph cut functions. 
+
 ---
 id: ttp
 show: [d]
@@ -107,7 +144,6 @@ year: 2020
 abstract: >
   Street parking spots for automobiles are a scarce commodity in most urban environments. The heterogeneity of car sizes makes it inefficient to rigidly define fixed-sized spots. Instead, unmarked streets in cities like New York leave placement decisions to individual drivers, who have no direct incentive to maximize street utilization. 
   In this paper, we explore the effectiveness of two different behavioral interventions designed to encourage better parking, namely (1) educational campaigns to encourage parkers to "kiss the bumper" and reduce the distance between themselves and their neighbors, or (2) painting appropriately-spaced markings on the street and urging drivers to "hit the line". Through analysis and simulation, we establish that the greatest densities are achieved when lines are painted to create spots roughly twice the length of average-sized cars. Kiss-the-bumper campaigns are in principle more effective than hit-the-line for equal degrees of compliance, although we believe that the visual cues of painted lines induce better parking behavior.
-
 
 ---
 id: multicritera-cuts
