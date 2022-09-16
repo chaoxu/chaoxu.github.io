@@ -145,7 +145,7 @@
         {% if pub_type.title == "Journal Publications" %}
           {{paper.pub.venue}} <time>{{paper.year}}</time>.
         {% else %}
-          <abbr title="{{paper.pub.venue}}">{{paper.pub.name}}</abbr>, <time>{{paper.year}}</time>.
+          <abbr title="{{paper.pub.venue}}">{{paper.pub.name}}</abbr> <time>{{paper.year}}</time>.
         {% endif %}
       {% else %}
         <time>{{paper.year}}</time>.

@@ -109,7 +109,7 @@ title: Approximate Representation of Symmetric Submodular Functions via Hypergra
 authors: [Calvin Beideman, Karthekeyan Chandrasekaran, Chandra Chekuri, Chao Xu]
 type: conference
 year: 2022
-bib: FSTTCS (to appear)
+pub: FSTTCS (to appear)
 abstract: >
   Submodular functions are fundamental to combinatorial optimization. Many interesting problems can be formulated as special cases of problems involving submodular functions. 
   In this work, we consider the problem of approximating symmetric submodular functions everywhere using hypergraph cut functions. 
