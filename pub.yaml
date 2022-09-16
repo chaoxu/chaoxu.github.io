@@ -50,7 +50,7 @@ people:
   Mingyu Xiao: https://sites.google.com/site/myxiao/
   Steven Skiena: https://www3.cs.stonybrook.edu/~skiena/
   Boris Aronov: https://engineering.nyu.edu/faculty/boris-aronov
-  Peng Yu: 
+  Peng Yu: https://yupbank.github.io/
   Albert Bifet: https://albertbifet.com/
   Jesse Read: https://jmread.github.io/
   Jianbo Wang: https://wangchienbo.github.io/
@@ -85,7 +85,7 @@ types:
 
 ---
 id: lineartreeshap
-show: []
+show: [d]
 title: Linear TreeShap
 authors: [Peng Yu, Chao Xu, Albert Bifet, Jesse Read]
 type: conference
