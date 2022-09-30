@@ -55,6 +55,8 @@ If we solve the equation $Cz=u$, we find $z_1,\ldots,z_n$, which implies we find
 
 Building the table $D$ takes $O(n^3)$ time, solving $Cz=u$ also takes $O(n^3)$ time, compute $S$ from $S_1$ takes $O(n^2)$ time. The total running time is $O(n^3)$. 
 
+However, why is this algorithm correct? Zheng did not provide a proof, hence leaving a gap to fill.
+
 # Remarks
 
 One can see this is similar to the [light chasing technique](https://en.wikipedia.org/wiki/Lights_Out_%28game%29#Light_chasing). There is no need to access a precomputed lookup table, since we compute the correct first row on the fly.
@@ -71,8 +73,10 @@ How can this be generalized to other graphs?
 Turns out this is related to the zero forcing set [@aim2008]. Consider the vertices are colored black and white. If a black vertex has only a single white neighbor, color the white neighbor black. If eventually all vertices become black, then we say the set of black vertices in the beginning is a *zero forcing set*. The *zero forcing number* of $G$ is the size of the smallest zero forcing set of $G$. 
 
 ::: Theorem
-  Let $G$ be a graph with $m$ edges and $A$ is a matrix where the non-zero entries are precisely the position of $1$s in the adjacency matrix of $G$. If we are given a zero forcing set of size $k$. Finding $Ax=b$ can be done in $O(km+k^3)$ time and $O(nk)$ space.
+  Let $G$ be a graph with $m$ edges and $A$ is a matrix where the non-zero entries are precisely the position of $1$s in the adjacency matrix of $G$. If we are given a zero forcing set of size $k$. Finding $Ax=b$ can be done in $O(km+k^\omega)$ time.
 :::
+
+[Jianbo Wang](https://wangchienbo.github.io/), Siyun Zhou and I [wrote up a paper](https://chaoxuprime.com/files/papers/zeroforcing.pdf) on this. We also improved the running time for solving the $n\times n$ grid lights out game to $O(n^\omega\log n)$.
 
 Unfortunately, minimum (weighted) zero forcing set is NP-hard to find [@AazamiAshkan2008]. It is also very large for simple graphs. Caterpillars have a $\Omega(n)$ size zero forcing set.
 
