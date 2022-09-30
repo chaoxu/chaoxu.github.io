@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>The Art Gallery Guardian</title>
+        <link>https://chaoxuprime.com</link>
+        <description><![CDATA[Mostly notes on algorithms]]></description>
+        <atom:link href="https://chaoxuprime.com/cnrss.xml" rel="self"
+                   type="application/rss+xml" />
+        <lastBuildDate>Sun, 10 Jul 2022 00:00:00 UT</lastBuildDate>
+        <item>
+    <title>一个覆盖问题</title>
+    <link>https://chaoxuprime.com/cnposts/2022-07-10-a-covering-problem.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>让<span class="math inline">A</span>为<span class="math inline">\{0,\ldots,\ell\}</span>，最小的<span class="math inline">B</span>有多大，使得<span class="math inline">AB=\{ab\pmod n | a\in A, b\in B\}=\Z_n</span>?</p>
+<p>大三本科生<a href="https://keshi.pro/">史可</a>与我证明了可以找到满足条件的<span class="math inline">B</span>并且<span class="math inline">|B|=O(\frac{n}{\ell} \log n)</span> 。文章可以<a href="https://chaoxuprime.com/files/papers/cyclic-cover.pdf">这里提取</a>。</p>
+<p>我很喜欢这个结果，耗时几个月，每次都是过段时间突然有个新想法于是做了点提高。最后的版本和之前的版本差距还蛮大的。以前的文章的最好结果是<span class="math inline">\ell</span>不是太小或者太大的时候<span class="math inline">B</span>的大小为<span class="math inline">O(\frac{n}{\ell}\log n\log \log n)</span>。我们刚开始消灭了<span class="math inline">\ell</span>不是太小的需求，之后一段时间消灭了<span class="math inline">\ell</span>不是太大的需求。那个时候史可就在我们<a href="https://tcsuestc.com/2022/06/10/almost-tight-ell-covering-of-z_n/">每周seminar上做了个presentation（有slides）</a>。最近一个月突然想通了如何再消掉一个<span class="math inline">\log \log n</span>，并且大大简化之前的结论。有兴趣的可以看全文。</p>
+</div>
+<div class="hide-on-print">
+    <div class="info"><a href="https://chaoxuprime.com">许超</a>与<time datetime="2022-07-10">2022-07-10</time>发布</div>
+    <div class="info">标签: </div>
+</div>]]></description>
+    <pubDate>Sun, 10 Jul 2022 00:00:00 UT</pubDate>
+    <guid>https://chaoxuprime.com/cnposts/2022-07-10-a-covering-problem.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+
+    </channel>
+</rss>
