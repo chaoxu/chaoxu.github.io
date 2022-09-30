@@ -61,6 +61,16 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" postCtx
                 >>= katexFilter
 
+    -- cnposts
+    match "cnposts/*.md" $ do
+        route   $ setExtension ".html"
+        compile $ do
+            chaoDocCompiler
+                >>= loadAndApplyTemplate "templates/cnpost.html" postCtx
+                >>= saveSnapshot "content"
+                >>= loadAndApplyTemplate "templates/cndefault.html" postCtx
+                >>= katexFilter
+
     -- drafts
     {-
     match "drafts/*.md" $ do
@@ -93,6 +103,7 @@ main = hakyll $ do
             -- make the item and apply our sitemap template
             makeItem ""
                 >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
+
     -- rss 
     create ["rss.xml"] $ do
         route idRoute
@@ -100,6 +111,15 @@ main = hakyll $ do
             let feedCtx = postCtx <> bodyField "description"
             posts <- fmap (take 10) . recentFirst =<<
                 loadAllSnapshots "posts/*" "content"
+            renderRss feedConfiguration feedCtx posts
+
+    -- cnrss 
+    create ["cnrss.xml"] $ do
+        route idRoute
+        compile $ do
+            let feedCtx = postCtx <> bodyField "description"
+            posts <- fmap (take 10) . recentFirst =<<
+                loadAllSnapshots "cnposts/*" "content"
             renderRss feedConfiguration feedCtx posts
 
     -- Index
@@ -114,6 +134,19 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" postCtx
                 >>= katexFilter
             --    >>= relativizeUrls
+
+    -- Index
+    match "cnblog.html" $ do
+        route idRoute
+        compile $ do
+            let indexCtx = field "cnposts" $ \_ ->
+                                cnpostList recentFirst
+
+            getResourceBody
+                >>= applyAsTemplate indexCtx
+                >>= loadAndApplyTemplate "templates/cndefault.html" postCtx
+                >>= katexFilter
+
     -- bib
 
     match "bib_style.csl" $ compile cslCompiler
@@ -173,6 +206,15 @@ postList sortFilter = do
     itemTpl <- loadBody "templates/post-item.html"
     list    <- applyTemplateList itemTpl postCtx posts
     return list
+
+--------------------------------------------------------------------------------
+cnpostList :: ([Item String] -> Compiler [Item String]) -> Compiler String 
+cnpostList sortFilter = do
+    posts   <- sortFilter =<< loadAll ("cnposts/*" .&&. hasNoVersion)
+    itemTpl <- loadBody "templates/post-item.html"
+    list    <- applyTemplateList itemTpl postCtx posts
+    return list
+
 
 --------------------------------------------------------------------------------
 chaoDocCompiler :: Compiler (Item String)
