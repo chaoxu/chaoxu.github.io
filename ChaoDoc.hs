@@ -52,8 +52,16 @@ incrementalBlock = ["Theorem",
                   "Lemma",
                   "Problem",
                   "Proposition",
-                  "Corollary"]
-otherBlock = ["Proof","Remark"]             
+                  "Corollary",
+                  "定理",
+                  "猜想",
+                  "定义",
+                  "例",
+                  "引理",
+                  "问题",
+                  "命题",
+                  "推论"]
+otherBlock = ["Proof","Remark","证明","备注"]             
 theoremClasses = incrementalBlock ++ otherBlock
 
 -- create a filter for theorems
