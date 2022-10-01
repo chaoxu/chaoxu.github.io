@@ -24,7 +24,7 @@ axpokl 3年前写下了[点灯游戏Flip Game的$O(n^3)$算法](https://zhuanlan
 
 为了解决这个问题，我终于知道了最general的解线性方程组的算法是使用LSP分解[@Jeann.2006]（非常像LUP分解）。对于一个$r$秩$m\times n$矩阵，LSP分解的复杂度是$O(mnr^{\omega-2})$。
 
-## 未解问题
+# 未解问题
 
 1. 找到最小逼零集是NP-hard的。是否存在快速的近似算法？
 2. $O(mk)$的部分是否可以提升到$O(nk^{\omega-1})$或者$O(n^2k{\omega-2})$的算法？
