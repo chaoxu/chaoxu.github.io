@@ -2,11 +2,11 @@
 title: Family news
 ---
 
-News:
+# News
 
 Nora Xu is almost 1 year old!
 
-Members:
+# Members
 
-1. Daughter: Nora Xu
-2. Wife: Lingyu Xu
+ - Daughter: Nora Xu
+ - Wife: Lingyu Xu
