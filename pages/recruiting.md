@@ -10,7 +10,7 @@ title: 招人
  - 计算机（算法）
  - 管理，运筹，工业工程（优化）
 
-可以想象这边想培养出[CMU ACO](https://www.cmu.edu/tepper/programs/phd/program/joint-phd-programs/algorithms-combinatorics-and-optimization/index.html)和[Georgia Tech ACO](https://aco.gatech.edu/)项目一样的人才。 你也可以提前[训练](/pages/training.html)自己的理论方向的问题解决能力，和使用一些[研究工具](/pages/research-tools.html)。
+可以想象这边想培养出[CMU ACO](https://www.cmu.edu/tepper/programs/phd/program/joint-phd-programs/algorithms-combinatorics-and-optimization/index.html)和[Georgia Tech ACO](https://aco.gatech.edu/)项目一样的人才。 你也可以提前[训练](/pages/training.html)自己的理论方向的问题解决能力，和使用一些[研究工具](/pages/research-tools.html)。[文章会发这样的地方](/pages/where-to-publish.html)。
 
 除了纯理论研究，我还有些[非纯理论的项目](/pages/non-theory-projects.html)可以做。
 

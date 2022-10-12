@@ -4,7 +4,7 @@ title: 发文章有关的信息
 
 发文章是求认可。根据自己需要谁认可来选择发哪里。
 
-发了一堆STOC，一个UTD 24都没有，管理学院是不会怎么睬你的。
+发了一堆STOC，一个UTD24都没有，管理学院是不会睬你的。
 发文章要需要为了一定的目的来优化。
 
 1. 如果是为了国内发展，尽量发CCF上榜的地方，Journal发JCR 1区。
@@ -40,6 +40,7 @@ title: 发文章有关的信息
   - Mathematics of Operations Research也蛮好。但是JCR 2区。
   - EJOR是很神奇的。JCR 1区但又蛮容易发。不过中科院区似乎把它降级了。
   - INFORMS journal on computing。这个是个UTD 24，管院会很看重，但分区很一般。
+  - 我们研究的东西也可以往OR, MS, MSOM, POM, TS发。
 
 ## 组合，离散数学
 

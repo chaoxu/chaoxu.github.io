@@ -84,6 +84,24 @@ types:
 # conference publications
 
 ---
+id: sub4part
+show: []
+title: A Polynomial Time Algorithm for Finding a Minimum 4-Partition of a Submodular Function
+authors: [Tsuyoshi Hirayama, Yuhao Liu, Kazuhisa Makino, Ke Shi, Chao Xu]
+type: conference
+year: 2023
+pub: SODA (to appear)
+selected: true
+abstract: >
+  In this paper, we study the minimum $k$-partition problem of submodular functions, i.e., 
+  given a finite set $V$ and a submodular function $f:2^V\to \R$,  
+  computing a $k$-partition $ \{ V_1, \ldots, V_k \}$ of $V$ 
+  with the minimum $\sum_{i=1}^k f(V_i)$.  
+  The problem is a natural generalization of the minimum $k$-cut problem in graphs and hypergraphs. 
+  It is known that the problem is NP-hard for general $k$, and solvable in polynomial time for $k \leq 3$.  
+  In this paper, we construct the first polynomial-time algorithm for the minimum $4$-partition problem.
+
+---
 id: lineartreeshap
 show: [d]
 title: Linear TreeShap
