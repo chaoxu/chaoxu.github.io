@@ -6,7 +6,7 @@ import functools
 import sys
 from jinja2 import Template
 import io
-mk = mistune.Markdown(parse_block_html=True)
+mk = mistune.create_markdown()
 from bs4 import BeautifulSoup as bs
 import cgi
 
