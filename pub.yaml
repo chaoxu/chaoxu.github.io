@@ -85,7 +85,7 @@ types:
 
 ---
 id: sub4part
-show: []
+show: [d]
 title: A Polynomial Time Algorithm for Finding a Minimum 4-Partition of a Submodular Function
 authors: [Tsuyoshi Hirayama, Yuhao Liu, Kazuhisa Makino, Ke Shi, Chao Xu]
 type: conference
