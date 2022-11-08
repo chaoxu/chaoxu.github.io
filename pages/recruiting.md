@@ -34,7 +34,7 @@ Mathematical Maturity非常重要。
   - 对理论计算机方向有很大的兴趣
   - 对[这里面的问题](https://coauthor.tcsuestc.com/Public)会感觉有点兴趣
 
-有兴趣想要了解更多的请直接邮件我 (cxu@uestc.edu.cn)
+有兴趣想要了解更多的请直接邮件我 (thechaoxu@gmail.com)
 
 # 博士后
 

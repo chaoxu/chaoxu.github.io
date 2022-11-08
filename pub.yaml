@@ -109,6 +109,8 @@ authors: [Peng Yu, Chao Xu, Albert Bifet, Jesse Read]
 type: conference
 year: 2022
 pub: NeurIPS (to appear)
+notes:
+  - Selected as Oral.
 abstract: >
   Decision trees are well-known due to their ease of interpretability.
   To improve accuracy, we need to grow deep trees or ensembles of trees.
