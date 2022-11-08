@@ -43,16 +43,9 @@
         <h1 id="article-title">The Aho–Corasick Automaton in Haskell</h1>
         <br />
 <div>
-<p>It is common that one might want to match <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> different strings against one single text
-of length <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>. One can of course apply
-the <a href="/posts/2014-04-11-the-kmp-algorithm-in-haskell.html">KMP
-algorithm</a> individually, and result an algorithm that runs in <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">km</span><span class="mclose">)</span></span></span></span> time.</p>
-<p>Faster algorithms are known. The idea is to build an finite state
-transducer that can output which strings is the suffix of the string it
-read. The Aho-Corasick automaton is a compressed version of such
-transducer, as the size does not depend on the size of the alphabet.</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span>           <span class="dt">Control.Arrow</span> (first)</span>
+<p>It is common that one might want to match <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> different strings against one single text of length <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>. One can of course apply the <a href="/posts/2014-04-11-the-kmp-algorithm-in-haskell.html">KMP algorithm</a> individually, and result an algorithm that runs in <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">km</span><span class="mclose">)</span></span></span></span> time.</p>
+<p>Faster algorithms are known. The idea is to build an finite state transducer that can output which strings is the suffix of the string it read. The Aho-Corasick automaton is a compressed version of such transducer, as the size does not depend on the size of the alphabet.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span>           <span class="dt">Control.Arrow</span> (first)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span>           <span class="dt">Data.Function</span> (on)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span>           <span class="dt">Data.List</span>     (lookup, partition)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span>           <span class="dt">Data.Maybe</span>    (fromMaybe, <span class="dt">Maybe</span> (..))</span>
