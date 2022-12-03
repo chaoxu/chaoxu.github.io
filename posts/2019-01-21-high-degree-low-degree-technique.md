@@ -36,8 +36,8 @@ There is a dominating set incident to $O(n\sqrt{n\log n})$ edges.
 :::
 ::: Proof
 Fix a $\delta$. We repeatedly removing vertices with degree no more than $\delta$ from the graph, and add it into a set $D$. The total degree of $D$ is at most $n\delta$. Now the remaining vertices has degree at least $\delta$. 
-Using the set cover theorem, and let the distribution to be the uniform distribution. If all elements are covered at least by $\e$ fraction of the set, then we obtain a set cover of size $O(\frac{\log u}{\e})$. Now, let the sets $N(v)$ for each $v$. Since degree is bounded by at most $n$, we can obtain a dominating set of size $O(\frac{n\log n}{e})$. We set $\e=\delta/n$. Since the degree of each vertex is at least $\delta$, then there is a covering of $O(\frac{n^2\log n}{\delta})$. Add the vertices induces this set cover to $D$.
-$D$ is a dominating set, and its size is $O(n\delta +\frac{n^2\log n}{\delta})$, set $\delta=\sqrt{n\log n}$ and we obtain the desired result.
+Using the set cover theorem, and let the distribution to be the uniform distribution. If all elements are covered at least by $\e$ fraction of the set, then we obtain a set cover of size $O(\frac{\log u}{\e})$. Indeed, just let the sets $N(v)$ for each $v$, and we pick them uniformly. We set $\e=\delta/n$. Since the degree of each vertex is at least $\delta$, then there is a dominating set of size $O(\frac{n\log n}{\delta})$, and incident to $O(\frac{n^2\log n}{\delta})$ edges. Add the dominating set to $D$.
+$D$ is a dominating set, and the number of edges incident to it is $O(n\delta +\frac{n^2\log n}{\delta})$, set $\delta=\sqrt{n\log n}$ and we obtain the desired result.
 :::
 
 One can show the above result is almost optimal, as there exists graphs where every dominating set incidents $\Omega(n^{3/2})$ edges. The same bound holds for weakly connected dominating set, that is a dominating set $D$ such that the edges incident to $D$ forms a connected graph. The stronger modification of this result was used in deciding the $4$-connectivity of a matroid [@Rajan87]. 
@@ -66,7 +66,7 @@ The naive algorithm, for each $3$ vertices, we decide if it forms a triangle.
 There is a $O(m^{3/2})$ time algorithm to decide if the graph has a triangle. 
 ::: 
 ::: Proof
-Let $t$ be a parameter we will find later. Apply the above algorithm by picking the vertex with the smallest degree, until the next vertex has degree at least $t$. It will use at most $O(mt)$ time. Now, for the remaining graph, it is clear the maximum degree is at least $t$. Note, there can be at most $n/t$ vertices. We use the $O(n^3)$ time algorithm. The final running time is $O(mt+(m/t)^3)$. Set $t=\sqrt{m}$ and we are done. 
+Let $t$ be a parameter we will find later. Apply the above algorithm by picking the vertex with the smallest degree, until the next vertex has degree at least $t$. It will use at most $O(mt)$ time. Now, for the remaining graph, it is clear the maximum degree is at least $t$. Note, there can be at most $\frac{m}{t}$ vertices. We use the $O(n^3)$ time algorithm. The final running time is $O(mt+(m/t)^3)$. Set $t=\sqrt{m}$ and we are done. 
 :::
 ::: {.Proof title="Alternative"}
 We modify the algorithm a little. For each vertex $v$, we consider its neighbor $u$, and check if $u$ has a neighbor that is in $v$. Then we delete $v$, and move on to next vertex. The running time become $\sum_{v\in V} (\deg(v)+\sum_{u\in N(v)} \deg(u))$. Now, assume we pick vertices by the _largest_ to _smallest_ in term of degrees. We rearrange the sum and obtain $\sum_{v\in V}  (\deg(v)+\sum_{u\in N(v)} \deg(u)) = \sum_{v\in V} \deg(v) + 2 \sum_{uv\in E} \min(\deg(u),\deg(v)) = O(\alpha m)$. 
@@ -81,7 +81,7 @@ Let $S_1,\ldots,S_n$ be sets with total of $m$ elements. How quickly can we find
 
 This section we use technique that follows from [@AlonYZ97]. Although we are into finding $C_4$, but some theorems are more general for $K_{2,\ell}$, so we will state them too. Note finding a colored $K_{2,2}$ and finding a $K_{2,2}$ is the same problem due to symmetry. 
 
-Let $v_1,\ldots,v_n$ be an ordering such that $\deg(v_i)\geq \deg(v_j)$. There exists an algorithm that finds an ordering of vertices $v_1,\ldots,v_n$, and returns $N_i(v_i)\cap N_i(v_j)$ for each $i$ and $j>i$. Here $N_i(v)$ is the set of neighbors of $v$ in $G[\set{v_i,\ldots,v_n}]$.
+Let $v_1,\ldots,v_n$ be an ordering such that $\deg(v_i)\geq \deg(v_{i+1})$. There exists an algorithm that finds an ordering of vertices $v_1,\ldots,v_n$, and returns $N_i(v_i)\cap N_i(v_j)$ for each $i$ and $j>i$. Here $N_i(v)$ is the set of neighbors of $v$ in $G[\set{v_i,\ldots,v_n}]$.
 Here we show an algorithm solves the above problem when the arboricity is small. 
 
 The algorithm is as follows [@ChibaN85]. Take $v$, we consider each neighbor $u$. Maintain a set $S_w$ for each vertex $w$ distance $2$ from $v$. Add $u$ into each of $u$'s neighbor in $w$. $S_w$ would give us information of $N(v)\cap N(w)$. We delete $v$ and keep going. It is known the algorithm takes $O(\alpha(G)m)$ time. This allows us to compute $C_4$ in the same time. Hence we directly obtain $O(m^{3/2})$ running time. However, we show something better is possible if we are not interested in finding all $C_4$, but find any $C_4$. We also need the following theorem.
