@@ -108,7 +108,7 @@ title: Linear TreeShap
 authors: [Peng Yu, Chao Xu, Albert Bifet, Jesse Read]
 type: conference
 year: 2022
-pub: NeurIPS (to appear)
+pub: NeurIPS
 notes:
   - Selected as Oral.
 abstract: >
@@ -129,7 +129,7 @@ title: Approximate Representation of Symmetric Submodular Functions via Hypergra
 authors: [Calvin Beideman, Karthekeyan Chandrasekaran, Chandra Chekuri, Chao Xu]
 type: conference
 year: 2022
-pub: FSTTCS (to appear)
+pub: FSTTCS
 abstract: >
   Submodular functions are fundamental to combinatorial optimization. Many interesting problems can be formulated as special cases of problems involving submodular functions. 
   In this work, we consider the problem of approximating symmetric submodular functions everywhere using hypergraph cut functions. 
