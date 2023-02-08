@@ -15,7 +15,10 @@ title: README
 12. To compile just `ChaoDoc.hs`, you need `pandoc` and `citeproc`. To compile the `site.hs`, additionally you need `hakyll`.
 13. For the homepage, I generate with python. Needs to run `pip install pyyaml mistune jinja2 bs4` on a new machine. 
 14. KaTeX offline compilation. Requires [katex_cli](https://github.com/chaoxu/katex_cli). Build it and copy the executable into the base directory, and name it `katex_cli`.
+15. Make sure install llvm 13 for things to work correctly. This will be an issue until Hakyll start to work for higher pandoc version.
+
 
 # Notes
 
 - I made an [syntax highlighting file](https://gist.github.com/chaoxu/195ce33124f384a2f4e4) for sublime 3, so in Markdown it can also highlight latex codes.
+
