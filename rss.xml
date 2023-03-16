@@ -382,8 +382,8 @@ minimum <span class="math inline">k</span>-partition. Therefore the
 conjecture is true if and only for every configuration <span
 class="math inline">M</span>, the above linear program has optimum <span
 class="math inline">1</span>.</p>
-<h1 data-number="4" id="results"><span
-class="header-section-number">4</span> Results</h1>
+<h1 data-number="4" id="redundant-constraints"><span
+class="header-section-number">4</span> Redundant constraints</h1>
 <p>One can easily prove the conjecture for <span
 class="math inline">k=3,4</span> by directly using the above linear
 program over all good configurations. However, it runs into difficulty
@@ -399,6 +399,88 @@ redundant due to symmetry. It be interesting to see if we can cut it
 down to a manageable size. If so, maybe the conjecture for <span
 class="math inline">k=5</span> or even <span
 class="math inline">k=6</span> might be solvable.</p>
+<p>To do this, we consider the following definition. Consider a vector
+<span class="math inline">s=(s_1,\ldots,s_k)</span>. We say a family of
+<span class="math inline">k</span>-partitions <span
+class="math inline">\mathcal{F}</span> is <span
+class="math inline">s</span>-complete, if <span
+class="math inline">f(\mathcal{P})\geq f(\mathcal{Y})</span> for all
+<span class="math inline">\mathcal{P}\in \mathcal{C}</span>, then <span
+class="math inline">f(\mathcal{P})\geq f(\mathcal{Y})</span> for all
+<span class="math inline">k</span>-partition <span
+class="math inline">\mathcal{P}</span>. Here <span
+class="math inline">\mathcal{Y}=\{Y_1,\ldots,Y_k\}</span> is a <span
+class="math inline">k</span>-partition such that <span
+class="math inline">|Y_i|=s_i</span>. Let <span
+class="math inline">\lambda(s)</span> to be the size of the minimum
+<span class="math inline">s</span>-complete family. So instead of
+considering all <span class="math inline">k</span>-partitions for the
+constraints, we just have to consider the <span
+class="math inline">s</span>-complete family for some <span
+class="math inline">s</span>. If <span
+class="math inline">\lambda(s)</span> is very small, then there is hope
+to solve the problem quickly.</p>
+<p>Let <span class="math inline">t</span> be a <span
+class="math inline">k</span>-tuple consists of only <span
+class="math inline">d</span>’s, then we define <span
+class="math inline">\lambda_k(d) = \lambda(t)</span>. It would be very
+interesting to see how large <span
+class="math inline">\lambda_k(d)</span> is.</p>
+<p>As an example, we show a simple result on <span
+class="math inline">\lambda(a,b)</span>.</p>
+<div class="theorem-environment Theorem" data-index="2" type="Theorem">
+<span class="theorem-header"><span class="type">Theorem</span><span
+class="index">2</span></span>
+<p><span class="math inline">\lambda(a,b)\leq 2^a+2^b-3</span>.</p>
+</div>
+<div class="theorem-environment Proof" type="Proof">
+<span class="theorem-header"><span class="type">Proof</span></span>
+<p>Indeed, let <span class="math inline">\mathcal{Y}=(Y_1,Y_2)</span>
+consists of <span class="math inline">a</span> and <span
+class="math inline">b</span> elements.</p>
+<p>Consider the following family <span
+class="math inline">\mathcal{F}</span>: For each non-empty set <span
+class="math inline">S</span> such that either <span
+class="math inline">S\subsetneq Y_1</span> or <span
+class="math inline">S\subsetneq Y_2</span>, <span
+class="math inline">(S,V-S)\in \mathcal{F}</span>. Also, let <span
+class="math inline">\mathcal{Y}\in \mathcal{F}</span>.</p>
+<p>So there are <span class="math inline">2^a-2 + 2^b-2 + 1</span> sets
+in <span class="math inline">\mathcal{F}</span>.</p>
+<p>Next, we show <span class="math inline">\mathcal{F}</span> is an
+<span class="math inline">(a,b)</span>-complete family. Consider any
+<span class="math inline">(X_1,X_2)</span> not in <span
+class="math inline">\mathcal{F}</span> and consider the intersection
+with <span class="math inline">(Y_1,Y_2)</span>. Let <span
+class="math inline">Z_{i,j} = X_i\cap Y_j</span>.</p>
+<p>Let <span class="math inline">|Z_{1,1}|=x</span> and <span
+class="math inline">|Z_{2,1}|=y</span>, then we have <span
+class="math inline">|Z_{1,2}|=a-x</span> and <span
+class="math inline">|Z_{2,2}|=b-x</span>. Consider when all <span
+class="math inline">Z_{i,j}</span> is non-empty.</p>
+<p><span class="math display">\begin{align*}
+\sum_{i=1}^2 \sum_{j=1}^2 f(X_i)+f(Y_j) &amp;=
+2(f(X_1)+f(X_2)+f(Y_1)+f(Y_2))\\
+                                        &amp;\geq \sum_{i=1}^2
+\sum_{j=1}^2 f(Z_{i,j}) + f(X_i\cup Y_j)\\
+                                        &amp;=\sum_{i=1}^2 \sum_{j=1}^2
+f(Z_{i,j})+f(\bar{Z_{i,j}})\\
+                                        &amp;\geq 4(f(Y_1)+f(Y_2))
+\end{align*}</span></p>
+<p>Which shows <span class="math inline">f(X_1)+f(X_2)\geq
+f(Y_1)+f(Y_2)</span>.</p>
+<p>Otherwise, if some <span class="math inline">Z_{i,j}</span> is empty,
+then we have <span class="math inline">(X_1,X_2)=(Y_1,Y_2)\in
+\mathcal{F}</span>.</p>
+</div>
+<p>In particular, <span class="math inline">\lambda_2(d)\leq
+2^{d+1}</span>.</p>
+<div class="theorem-environment Conjecture" data-index="3"
+type="Conjecture">
+<span class="theorem-header"><span class="type">Conjecture</span><span
+class="index">3</span></span>
+<p><span class="math inline">\lambda_k(d) = O(k^d)</span>.</p>
+</div>
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2022-01-30">2022-01-30</time>. </div>
