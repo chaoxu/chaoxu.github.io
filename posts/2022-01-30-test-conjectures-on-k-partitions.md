@@ -96,7 +96,45 @@ The first set of constraints are the submodular inequalities. The second shows $
 
 If the objective value $z=1$, then this means there is at least $1$ $k$-partition $\mathcal{Y}'$ that is non-crossing with $\mathcal{X}$ has the value same as the minimum $k$-partition. Therefore the conjecture is true if and only for every configuration $M$, the above linear program has optimum $1$.
 
-# Results
+# Redundant constraints
 
 One can easily prove the conjecture for $k=3,4$ by directly using the above linear program over all good configurations. However, it runs into difficulty with $k=5$. This is because the linear program is way too large. The number of $k$ partitions for $n$ elements is the Stirling number of the second kind $\left\{{n\atop k}\right\}$.
 $\left\{{20\atop 5}\right\} = 749206090500$ and $\left\{{20\atop 4}\right\} = 45232115901$. However, it seems many constraints are redundant due to symmetry. It be interesting to see if we can cut it down to a manageable size. If so, maybe the conjecture for $k=5$ or even $k=6$ might be solvable.
+
+To do this, we consider the following definition. Consider a vector $s=(s_1,\ldots,s_k)$. We say a family of $k$-partitions $\mathcal{F}$ is $s$-complete, if $f(\mathcal{P})\geq f(\mathcal{Y})$ for all $\mathcal{P}\in \mathcal{C}$, then $f(\mathcal{P})\geq f(\mathcal{Y})$ for all $k$-partition $\mathcal{P}$. Here $\mathcal{Y}=\{Y_1,\ldots,Y_k\}$ is a $k$-partition such that $|Y_i|=s_i$. Let $\lambda(s)$ to be the size of the minimum $s$-complete family. So instead of considering all $k$-partitions for the constraints, we just have to consider the $s$-complete family for some $s$. If $\lambda(s)$ is very small, then there is hope to solve the problem quickly.
+
+Let $t$ be a $k$-tuple consists of only $d$'s, then we define $\lambda_k(d) = \lambda(t)$. It would be very interesting to see how large $\lambda_k(d)$ is.
+
+As an example, we show a simple result on $\lambda(a,b)$.
+
+::: Theorem
+$\lambda(a,b)\leq 2^a+2^b-3$.
+:::
+::: Proof
+Indeed, let $\mathcal{Y}=(Y_1,Y_2)$ consists of $a$ and $b$ elements.
+
+Consider the following family $\mathcal{F}$: For each non-empty set $S$ such that either $S\subsetneq Y_1$ or $S\subsetneq Y_2$, $(S,V-S)\in \mathcal{F}$. Also, let $\mathcal{Y}\in \mathcal{F}$.
+
+So there are $2^a-2 + 2^b-2 + 1$ sets in $\mathcal{F}$.
+
+Next, we show $\mathcal{F}$ is an $(a,b)$-complete family. Consider any $(X_1,X_2)$ not in $\mathcal{F}$ and consider the intersection with $(Y_1,Y_2)$. Let $Z_{i,j} = X_i\cap Y_j$. 
+
+Let $|Z_{1,1}|=x$ and $|Z_{2,1}|=y$, then we have $|Z_{1,2}|=a-x$ and $|Z_{2,2}|=b-x$. Consider when all $Z_{i,j}$ is non-empty.
+
+\begin{align*}
+\sum_{i=1}^2 \sum_{j=1}^2 f(X_i)+f(Y_j) &= 2(f(X_1)+f(X_2)+f(Y_1)+f(Y_2))\\
+                                        &\geq \sum_{i=1}^2 \sum_{j=1}^2 f(Z_{i,j}) + f(X_i\cup Y_j)\\
+                                        &=\sum_{i=1}^2 \sum_{j=1}^2 f(Z_{i,j})+f(\bar{Z_{i,j}})\\
+                                        &\geq 4(f(Y_1)+f(Y_2))
+\end{align*}
+
+Which shows $f(X_1)+f(X_2)\geq f(Y_1)+f(Y_2)$.
+
+Otherwise, if some $Z_{i,j}$ is empty, then we have $(X_1,X_2)=(Y_1,Y_2)\in \mathcal{F}$.
+:::
+
+In particular, $\lambda_2(d)\leq 2^{d+1}$.
+
+::: Conjecture
+$\lambda_k(d) = O(k^d)$.
+:::
