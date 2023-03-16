@@ -249,18 +249,17 @@ class="math inline">\mathcal{Y} = \set{Y_1,\ldots,Y_{k}}</span>. Let
 <span class="math inline">Z_{i,j} = X_i\cap Y_j</span>.</p>
 <p>We want to show some <span
 class="math inline">\mathcal{Y}&#39;</span> is a min <span
-class="math inline">k</span>-partition, where each <span
-class="math inline">Z_{i,j}</span> is a subset. In particular, each
-partition class of <span class="math inline">\mathcal{Y}</span> has to
-be the union of some <span class="math inline">Z_{i,j}</span>s.</p>
-<p>What matters is if <span class="math inline">Z_{i,j}</span> is empty
-or not. It doesn’t matter if <span class="math inline">Z_{i,j}</span>
-has <span class="math inline">100</span> or <span
-class="math inline">1</span> vertices. Consider a matrix <span
-class="math inline">M_{i,j} = \max(1,|Z_{i,j}|)</span>. Such a matrix is
-called a <em>configuration</em>. Define two configurations are
-isomorphic, if one can be obtained by swapping rows and columns of the
-other.</p>
+class="math inline">k</span>-partition, where each partition class of
+<span class="math inline">\mathcal{Y}&#39;</span> has to be the union of
+some <span class="math inline">Z_{i,j}</span>s.</p>
+<p>It doesn’t matter if <span class="math inline">Z_{i,j}</span> has
+<span class="math inline">100</span> or <span
+class="math inline">1</span> vertices, only the emptyness matters.
+Consider a matrix <span class="math inline">M_{i,j} =
+\max(1,|Z_{i,j}|)</span>. Such a matrix is called a
+<em>configuration</em>. Define two configurations are
+<em>isomorphic</em>, if one can be obtained by swapping rows and columns
+of the other.</p>
 <p>We are interested in enumerate the possible configurations up to
 isomorphism.</p>
 <p>Find integer <span class="math inline">\set{0,1}</span> matrices and
@@ -273,33 +272,39 @@ href="https://doc.sagemath.org/html/en/reference/combinat/sage/combinat/integer_
 vectors modulo the action of a permutation group</a>.</p>
 <pre><code>IntegerVectorsModPermutationGroup(P, max_part=1)</code></pre>
 <p>Once we have the output, we filter the vectors to maintain the
-required properties.</p>
-<p>The input of the sage function, however, has to take the desired
-permutation group <span class="math inline">P</span>.</p>
+required properties, for example, has at least a <span
+class="math inline">1</span> on each row.</p>
+<p>The input of the Sage function has to take the desired permutation
+group <span class="math inline">P</span>.</p>
 <p>One might think we just take <span class="math inline">S_{k-1}\times
-S_k</span> to obtain <span class="math inline">P</span>. Unfortunately,
-this is not correct. This gives you the action on the rows and columns,
-but what we really need, is what happens to each element in the
-matrix.</p>
-<p>The correct way is to use the wreath products. We want <span
-class="math inline">S_{k-1} \wr S_k</span> intersect with <span
+S_k</span> to obtain <span class="math inline">P</span>, where <span
+class="math inline">S_k</span> is the symmetric group of order <span
+class="math inline">k</span>. Unfortunately, this is not correct. This
+gives you the action on the rows and columns, but what we really need,
+is what happens to each element in the matrix.</p>
+<p>The correct way is to use the wreath products. We want to consider
+<span class="math inline">S_{k-1} \wr S_k</span> intersect with <span
 class="math inline">S_k \wr S_{k-1}</span>. However, we have to make
 sure the mapping of the elements are correct. The following is the code
-in Sage, and the elements are numbers <span class="math inline">1</span>
-to <span class="math inline">k(k-1)</span>.</p>
+in SAGE, and the elements are numbers <span class="math inline">1</span>
+to <span class="math inline">k(k-1)</span>. Note we made sure the
+mapping has the same labels through permutation <code>pi</code>.</p>
 <pre><code>a = SymmetricGroup(k-1)
 b = SymmetricGroup(k)
 
 matrix = [[k*x+y+1 for y in range(k-1)] for x in range(k)]
 pi = list(itertools.chain.from_iterable(map(list, zip(*matrix))))
 
+# we have to use SAGE to access GAP
 GG = gap.WreathProduct(gap(a),gap(b))
 HH = gap.WreathProduct(gap(b),gap(a))
 
 G = PermutationGroup(gap_group = GG.AsPermGroup())
 Hbad = PermutationGroup(gap_group = HH.AsPermGroup())
+# make sure the elements are labelled correctly.
 H = PermutationGroup([perm_replace(pi,g) for g in Hbad.gens()])
 
+# The correct permutation group
 P = H.intersection(G)</code></pre>
 <p>At this point, we obtain all possible configurations. In particular,
 for <span class="math inline">k=3,4,5,6</span>, the number of
@@ -316,20 +321,24 @@ the above filtering good configurations. The number of good
 configurations for <span class="math inline">k=3,4,5,6</span> are <span
 class="math inline">3, 23, 353, 12828</span>.</p>
 <h1 data-number="3"
-id="test-if-there-is-a-noncrossing-mathcaly-for-a-configuration-m"><span
-class="header-section-number">3</span> Test if there is a noncrossing
-<span class="math inline">\mathcal{Y}&#39;</span> for a configuration
-<span class="math inline">M</span></h1>
+id="test-if-there-exists-a-noncrossing-mathcaly-for-a-configuration-m"><span
+class="header-section-number">3</span> Test if there exists a
+noncrossing <span class="math inline">\mathcal{Y}&#39;</span> for a
+configuration <span class="math inline">M</span></h1>
 <p>We now have a configuration <span class="math inline">M</span>, and
-now we are interested in creating a linear program to solve it. For a
-given <span class="math inline">M</span>, we can use it to recover <span
+now we are interested in creating a linear program to decide if there
+always exists a minimum <span class="math inline">k</span>-partition
+<span class="math inline">\mathcal{Y}&#39;</span> that is non-crossing
+with the minimum <span class="math inline">(k-1)</span>-partition <span
+class="math inline">\mathcal{X}</span>. For a given <span
+class="math inline">M</span>, one can always recover <span
 class="math inline">\mathcal{X}</span> and <span
 class="math inline">\mathcal{Y}</span>.</p>
 <p>Let <span class="math inline">V</span> be the set of vertices, which
-equals to the index of <span class="math inline">1</span>s in <span
+equals to the number of <span class="math inline">1</span>s in <span
 class="math inline">M</span>. Let <span
 class="math inline">P_k(V)</span> be the set of <span
-class="math inline">k</span> partitions of <span
+class="math inline">k</span>-partitions of <span
 class="math inline">V</span>. For each <span
 class="math inline">U\subseteq V</span>, we create a variable <span
 class="math inline">x_U</span>. It represents the value of <span
@@ -354,18 +363,42 @@ S\\
 \mathcal{Y}&#39;\in P_{k}(V), \mathcal{X} \lhd \mathcal{Y}&#39;\\
 \end{aligned}
 </span></p>
+<p>The first set of constraints are the submodular inequalities. The
+second shows <span class="math inline">\mathcal{X}</span> is a minimum
+<span class="math inline">k-1</span>-partition, and the third shows
+<span class="math inline">\mathcal{Y}</span> is a minimum <span
+class="math inline">k</span>-partition. We also set the value of the
+minimum <span class="math inline">k</span>-partition to be <span
+class="math inline">1</span>. Finally, we consider every <span
+class="math inline">k</span>-partition that is non-crossing with <span
+class="math inline">\mathcal{X}</span>, and <span
+class="math inline">z</span> is a lower bound of their value.</p>
 <p>If the objective value <span class="math inline">z=1</span>, then
-this shows there exists a <span
-class="math inline">\mathcal{Y}&#39;</span> satisfies the requirement of
-the conjecture.</p>
+this means there is at least <span class="math inline">1</span> <span
+class="math inline">k</span>-partition <span
+class="math inline">\mathcal{Y}&#39;</span> that is non-crossing with
+<span class="math inline">\mathcal{X}</span> has the value same as the
+minimum <span class="math inline">k</span>-partition. Therefore the
+conjecture is true if and only for every configuration <span
+class="math inline">M</span>, the above linear program has optimum <span
+class="math inline">1</span>.</p>
 <h1 data-number="4" id="results"><span
 class="header-section-number">4</span> Results</h1>
-<p>Using the above, it can easily prove the result for <span
-class="math inline">k=3,4</span>, and it runs into difficulty with <span
-class="math inline">k=5</span>, but seems to be still in the realm of
-possbility for a single computer and more optimized code. <span
-class="math inline">k=6</span> is still impossible unless we get a huge
-boost in computational power.</p>
+<p>One can easily prove the conjecture for <span
+class="math inline">k=3,4</span> by directly using the above linear
+program over all good configurations. However, it runs into difficulty
+with <span class="math inline">k=5</span>. This is because the linear
+program is way too large. The number of <span
+class="math inline">k</span> partitions for <span
+class="math inline">n</span> elements is the Stirling number of the
+second kind <span class="math inline">\left\{{n\atop k}\right\}</span>.
+<span class="math inline">\left\{{20\atop 5}\right\} =
+749206090500</span> and <span class="math inline">\left\{{20\atop
+4}\right\} = 45232115901</span>. However, it seems many constraints are
+redundant due to symmetry. It be interesting to see if we can cut it
+down to a manageable size. If so, maybe the conjecture for <span
+class="math inline">k=5</span> or even <span
+class="math inline">k=6</span> might be solvable.</p>
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2022-01-30">2022-01-30</time>. </div>
