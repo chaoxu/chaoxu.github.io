@@ -10,7 +10,7 @@ git pull
 export NODE_PATH=$(npm root --quiet -g)
 
 # make sure katex_cli is here
-cp ~/Documents/katex_cli/target/release/katex_cli katex_cli
+cp ~/Documents/GitHub/katex_cli/target/release/katex_cli katex_cli
 # Build new files
 # stack build --ghc-options=-O2
 # stack exec chaosite clean
