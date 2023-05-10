@@ -1,0 +1,661 @@
+---
+title: "The Complexity of Offline Unit Capacity Dial-a-Ride Problem in Warehouses"
+author: "Yike Chen, **Chao Xu**, Jianbo Wang"
+format: 
+  revealjs:
+    incremental: false
+    css: custom.css
+    html-math-method: mathjax
+callout-icon: false
+bibliography: dial-a-ride.bib
+---
+
+
+## My Background
+ 
+$\newcommand{\R}{\mathbb{R}}$
+$\newcommand{\Z}{\mathbb{Z}}$
+$\newcommand{\N}{\mathbb{N}}$
+
+ - Work primarily in combinatorial optimization
+ - Theoretical computer science background
+    - care about complexity of algorithms
+    - care less about finding solutions in parctice.
+
+<!--
+So I'm someone with a theoretical computer science background. So I'm interested in algorithms.
+This topic is a very nice study in the sense that it shows how to solve some combinatorial problems, through other classical combinatorial problems.
+-->
+
+## Dial-a-Ride problem
+
+![](uw-dial-a-ride.png){fig-align=center}
+
+<!-- 
+So in a dial-a-ride problem, there are some request, which is to take a passenger from point a to point b. You want to schedule the vechicles so they are efficient. For example, say take the minimum distance.
+-->
+
+## Stacker Crane Problem
+
+![](stacker_crane.webp)
+
+Image courtesy [@GiuliaAJ21]
+
+## Dial-a-Ride
+
+ - Online [@LOISZ17] [@Baligacs22]
+ - Multiple Vehicles [@Desrosiers88]
+ - Capacities [@CharikarR98]
+ - Time windows [@DELEPLANQUE20131256]
+ - Preemptive [@10.1007/11830924_20]
+ - Approximation algorithms. [@FredericksonHK78] [@CharikarR98]
+ - ...
+
+## Our focus is in the most special case
+
+- offline
+- unit capacity
+- non-preemptive
+- single vehicle
+- vehicle need to return to original position after completing all requests
+
+## Known results
+
+Let $MST(n)$ be the time to compute a minimum spanning tree on a $n$ vertex graph. Let $n$ to be the number of requests.
+
+Solving the dial-a-ride problem on the following graphs:
+
+::: {.incremental}
+  - Path $-$: [$O(MST(n))$ time. [@AtallahK88]]{.fragment} 
+  - Cycle $\bigcirc$: [$O(MST(n))$ time. [@Frederickson93]]{.fragment} 
+  - Trees: [**NP-hard**! [@FredericksonG93]]{.fragment}
+  - $\boxminus$ shape: [Unknown]{.fragment}
+  - $\top$ shape: [Unknown]{.fragment}
+:::
+
+
+## Topology of Warehouses
+
+A fixed warehouse topology is quite simple.
+
+![](warehouse.png){fig-align="center"}
+
+Image courtesy [@RoodbergenK01]
+
+## Our result
+
+::: {style="background: #fff1e8; padding:10px; margin:10px"}
+The dial-a-ride problem can be solved in polynomial time for "warehouse topologies".
+:::
+
+::: {.fragment style="background: #fff1e8; padding:10px; margin:10px"}
+The dial-a-ride problem can be solved in polynomial time for $\boxminus$.
+:::
+
+ 
+
+<!--
+::: {style="background: #fff1e8; padding:10px;"}
+Assuming the space of solutions for a certain problem is small, then dial-a-ride problem can be solved in $O(f(k,p)n^c)$ time.
+:::
+-->
+
+
+## In This talk
+  
+  - Review an example of a Dial-A-Ride problem
+  - Review how Dial-a-Ride was solved on paths and cycles
+  - Show how to generalize the algorithm to general graphs
+
+# Dial-a-ride, a simple example
+
+## Dial-a-ride on a graph
+
+For a graph $G=(V,E)$ with weights on the edges. A single robot with capacity 1 is at position $s_0\in V$.
+
+- There are $n$ requests of the form $(s_i,t_i) \in {V\choose 2}$
+- The robot pick up item $i$ from $s_i$, and move it to $t_i$.
+- The robot must return to $s_0$ after completing all requests.
+- Goal: minimizes the total weight of the edges traveled by the robot. 
+
+## Dial-a-ride on a path
+
+![](line1.png){fig-align="center"}
+
+
+## Dial-a-ride on a path {auto-animate=true}
+:::{.absolute top=150 left=40 data-id="s_0"}
+$s_0$
+:::
+:::{.absolute top=150 left=585 data-id="s_1"}
+$\color{blue}{s_1}$
+:::
+:::{.absolute top=150 left=235 data-id="t_1"}
+$\color{blue}{t_1}$
+:::
+:::{.absolute top=150 left=382 data-id="s_2"}
+$\color{red}{s_2}$
+:::
+:::{.absolute top=150 left=835 data-id="t_2"}
+$\color{red}{t_2}$
+:::
+
+![](house.svg){.absolute top=200 left=800 width="100" height="60" .filter_red data-id="red-house"}
+![](house.svg){.absolute top=200 left=200 width="100" height="60" .filter_blue data-id="blue-house"}
+![](tv.svg){.absolute top=200 left=350 width="100" height="60" .filter_red data-id="red-item"}
+![](box.svg){.absolute top=200 left=550 width="100" height="60" .filter_blue data-id="blue-item"}
+
+![](truck.svg){.absolute top=250 left=0 width="100" height="60" data-id="truck"}
+
+## Dial-a-ride on a path {auto-animate=true}
+:::{.absolute top=150 left=40 data-id="s_0"}
+$s_0$
+:::
+:::{.absolute top=150 left=585 data-id="s_1"}
+$\color{blue}{s_1}$
+:::
+:::{.absolute top=150 left=235 data-id="t_1"}
+$\color{blue}{t_1}$
+:::
+:::{.absolute top=150 left=382 data-id="s_2"}
+$\color{red}{s_2}$
+:::
+:::{.absolute top=150 left=835 data-id="t_2"}
+$\color{red}{t_2}$
+:::
+
+![](house.svg){.absolute top=200 left=800 width="100" height="60" .filter_red data-id="red-house"}
+![](house.svg){.absolute top=200 left=200 width="100" height="60" .filter_blue data-id="blue-house"}
+![](tv.svg){.absolute top=200 left=350 width="100" height="60" .filter_red data-id="red-item"}
+![](box.svg){.absolute top=200 left=550 width="100" height="60" .filter_blue data-id="blue-item"}
+
+![](truck.svg){.absolute top=250 left=350 width="100" height="60" data-id="truck"}
+
+::: {.absolute data-id="1" top=350 left=50}
+[]{.absolute style="height: 3px;background: black;" width="350"} []{.absolute .arrow .arrowright top=9 left=342}
+:::
+
+## Dial-a-ride on a path {auto-animate=true}
+:::{.absolute top=150 left=40 data-id="s_0"}
+$s_0$
+:::
+:::{.absolute top=150 left=585 data-id="s_1"}
+$\color{blue}{s_1}$
+:::
+:::{.absolute top=150 left=235 data-id="t_1"}
+$\color{blue}{t_1}$
+:::
+:::{.absolute top=150 left=382 data-id="s_2"}
+$\color{red}{s_2}$
+:::
+:::{.absolute top=150 left=835 data-id="t_2"}
+$\color{red}{t_2}$
+:::
+
+![](house.svg){.absolute top=200 left=800 width="100" height="60" .filter_red data-id="red-house"}
+![](house.svg){.absolute top=200 left=200 width="100" height="60" .filter_blue data-id="blue-house"}
+![](tv.svg){.absolute top=200 left=800 width="100" height="60" .filter_red data-id="red-item"}
+![](box.svg){.absolute top=200 left=550 width="100" height="60" .filter_blue data-id="blue-item"}
+
+![](truck.svg){.absolute top=250 left=800 width="100" height="60" data-id="truck"}
+
+::: {.absolute data-id="1" top=350 left=50}
+[]{.absolute style="height: 3px;background: black;" width="350"} []{.absolute .arrow .arrowright top=9 left=342}
+:::
+
+::: {.absolute data-id="2" top=400 left=400}
+[]{.absolute style="height: 3px;background: red;" width="450"} []{.absolute .arrow .arrowright style="border-color: red;" top=9 left=440}
+:::
+
+
+## Dial-a-ride on a path {auto-animate=true}
+:::{.absolute top=150 left=40 data-id="s_0"}
+$s_0$
+:::
+:::{.absolute top=150 left=585 data-id="s_1"}
+$\color{blue}{s_1}$
+:::
+:::{.absolute top=150 left=235 data-id="t_1"}
+$\color{blue}{t_1}$
+:::
+:::{.absolute top=150 left=382 data-id="s_2"}
+$\color{red}{s_2}$
+:::
+:::{.absolute top=150 left=835 data-id="t_2"}
+$\color{red}{t_2}$
+:::
+
+![](house.svg){.absolute top=200 left=800 width="100" height="60" .filter_red data-id="red-house"}
+![](house.svg){.absolute top=200 left=200 width="100" height="60" .filter_blue data-id="blue-house"}
+![](tv.svg){.absolute top=200 left=800 width="100" height="60" .filter_red data-id="red-item"}
+![](box.svg){.absolute top=200 left=550 width="100" height="60" .filter_blue data-id="blue-item"}
+
+![](truck_left.svg){.absolute top=250 left=550 width="100" height="60" data-id="truck"}
+
+::: {.absolute data-id="1" top=350 left=50}
+[]{.absolute style="height: 3px;background: black;" width="350"} []{.absolute .arrow .arrowright top=9 left=342}
+:::
+
+::: {.absolute data-id="2" top=400 left=400}
+[]{.absolute style="height: 3px;background: red;" width="450"} []{.absolute .arrow .arrowright style="border-color: red;" top=9 left=440}
+:::
+
+::: {.absolute data-id="3" top=450 left=600}
+[]{.absolute style="height: 3px;background: black;" width="250"} []{.absolute .arrow .arrowleft top=9 left=0}
+:::
+
+
+
+## Dial-a-ride on a path {auto-animate=true}
+:::{.absolute top=150 left=40 data-id="s_0"}
+$s_0$
+:::
+:::{.absolute top=150 left=585 data-id="s_1"}
+$\color{blue}{s_1}$
+:::
+:::{.absolute top=150 left=235 data-id="t_1"}
+$\color{blue}{t_1}$
+:::
+:::{.absolute top=150 left=382 data-id="s_2"}
+$\color{red}{s_2}$
+:::
+:::{.absolute top=150 left=835 data-id="t_2"}
+$\color{red}{t_2}$
+:::
+
+![](house.svg){.absolute top=200 left=800 width="100" height="60" .filter_red data-id="red-house"}
+![](house.svg){.absolute top=200 left=200 width="100" height="60" .filter_blue data-id="blue-house"}
+![](tv.svg){.absolute top=200 left=800 width="100" height="60" .filter_red data-id="red-item"}
+![](box.svg){.absolute top=200 left=200 width="100" height="60" .filter_blue data-id="blue-item"}
+
+![](truck_left.svg){.absolute top=250 left=200 width="100" height="60" data-id="truck"}
+
+::: {.absolute data-id="1" top=350 left=50}
+[]{.absolute style="height: 3px;background: black;" width="350"} []{.absolute .arrow .arrowright top=9 left=342}
+:::
+
+::: {.absolute data-id="2" top=400 left=400}
+[]{.absolute style="height: 3px;background: red;" width="450"} []{.absolute .arrow .arrowright style="border-color: red;" top=9 left=440}
+:::
+
+::: {.absolute data-id="3" top=450 left=600}
+[]{.absolute style="height: 3px;background: black;" width="250"} []{.absolute .arrow .arrowleft top=9 left=0}
+:::
+
+::: {.absolute data-id="4" top=500 left=250}
+[]{.absolute style="height: 3px;background: blue;" width="350"} []{.absolute .arrow .arrowleft style="border-color: blue;" top=9 left=0}
+:::
+
+## Dial-a-ride on a path {auto-animate=true}
+:::{.absolute top=150 left=40 data-id="s_0"}
+$s_0$
+:::
+:::{.absolute top=150 left=585 data-id="s_1"}
+$\color{blue}{s_1}$
+:::
+:::{.absolute top=150 left=235 data-id="t_1"}
+$\color{blue}{t_1}$
+:::
+:::{.absolute top=150 left=382 data-id="s_2"}
+$\color{red}{s_2}$
+:::
+:::{.absolute top=150 left=835 data-id="t_2"}
+$\color{red}{t_2}$
+:::
+
+![](house.svg){.absolute top=200 left=800 width="100" height="60" .filter_red data-id="red-house"}
+![](house.svg){.absolute top=200 left=200 width="100" height="60" .filter_blue data-id="blue-house"}
+![](tv.svg){.absolute top=200 left=800 width="100" height="60" .filter_red data-id="red-item"}
+![](box.svg){.absolute top=200 left=200 width="100" height="60" .filter_blue data-id="blue-item"}
+
+![](truck_left.svg){.absolute top=250 left=0 width="100" height="60" data-id="truck"}
+
+::: {.absolute data-id="1" top=350 left=50}
+[]{.absolute style="height: 3px;background: black;" width="350"} []{.absolute .arrow .arrowright top=9 left=342}
+:::
+
+::: {.absolute data-id="2" top=400 left=400}
+[]{.absolute style="height: 3px;background: red;" width="450"} []{.absolute .arrow .arrowright style="border-color: red;" top=9 left=440}
+:::
+
+::: {.absolute data-id="3" top=450 left=600}
+[]{.absolute style="height: 3px;background: black;" width="250"} []{.absolute .arrow .arrowleft top=9 left=0}
+:::
+
+::: {.absolute data-id="4" top=500 left=250}
+[]{.absolute style="height: 3px;background: blue;" width="350"} []{.absolute .arrow .arrowleft style="border-color: blue;" top=9 left=0}
+:::
+
+::: {.absolute data-id="5" top=550 left=50}
+[]{.absolute style="height: 3px;background: black;" width="200"} []{.absolute .arrow .arrowleft top=9 left=0}
+:::
+
+
+## Dial-a-ride on a path (Not as good) {auto-animate=true}
+:::{.absolute top=150 left=40 data-id="s_0"}
+$s_0$
+:::
+:::{.absolute top=150 left=585 data-id="s_1"}
+$\color{blue}{s_1}$
+:::
+:::{.absolute top=150 left=235 data-id="t_1"}
+$\color{blue}{t_1}$
+:::
+:::{.absolute top=150 left=382 data-id="s_2"}
+$\color{red}{s_2}$
+:::
+:::{.absolute top=150 left=835 data-id="t_2"}
+$\color{red}{t_2}$
+:::
+
+![](house.svg){.absolute top=200 left=800 width="100" height="60" .filter_red data-id="red-house"}
+![](house.svg){.absolute top=200 left=200 width="100" height="60" .filter_blue data-id="blue-house"}
+![](tv.svg){.absolute top=200 left=800 width="100" height="60" .filter_red data-id="red-item"}
+![](box.svg){.absolute top=200 left=200 width="100" height="60" .filter_blue data-id="blue-item"}
+
+![](truck_left.svg){.absolute top=250 left=0 width="100" height="60" data-id="truck"}
+
+::: {.absolute data-id="1" top=350 left=50}
+[]{.absolute style="height: 3px;background: black;" width="550"} []{.absolute .arrow .arrowright top=9 left=542}
+:::
+
+::: {.absolute data-id="2" top=400 left=250}
+[]{.absolute style="height: 3px;background: blue;" width="350"} []{.absolute .arrow .arrowleft style="border-color: blue;" top=9 left=0}
+:::
+
+::: {.absolute data-id="3" top=450 left=250}
+[]{.absolute style="height: 3px;background: black;" width="150"} []{.absolute .arrow .arrowright style="border-color: black;" top=9 left=142}
+:::
+
+::: {.absolute data-id="4" top=500 left=400}
+[]{.absolute style="height: 3px;background: red;" width="450"} []{.absolute .arrow .arrowright style="border-color: red;" top=9 left=442}
+:::
+
+::: {.absolute data-id="5" top=550 left=50}
+[]{.absolute style="height: 3px;background: black;" width="800"} []{.absolute .arrow .arrowleft style="border-color: black;" top=9 left=0}
+:::
+
+## Dial-A-Ride feels like TSP
+ - Permutation $\pi:[n]\to [n]$, such that $\pi(i)$ is the $i$th completed request. 
+ - The cost of a permutation $c(\pi)$ is $\sum_{i=0}^n d(s_{\pi(i)},t_{\pi(i)}) + d(t_{\pi(i)},s_{\pi(i+1 \pmod {n+1})})$.
+ - Find a permutation of minimum cost.
+
+## Dial-a-Ride vs TSP
+
+::: {.incremental}
+ - Finding a traveling salesman tour on a graph $G=(V,E)$ is equivalent to solving the dial-a-ride problem on $G$, where the requests are $\{(v,v)|v\in V\}$.
+ - Dial-a-Ride is strictly harder than TSP:
+   - (Steiner) TSP is polynomial time solvable on trees
+   - Dial-a-Ride is NP-hard on Trees.
+:::
+
+# Solve Dial-a-Ride on paths and cycles
+
+
+Algorithms of [@AtallahK88;@Frederickson93].
+
+## Forward and backward traversal
+Any tour traverse through a edge forward and backward the same number of times.
+
+ ![](line4.png){fig-align="center"}
+
+## 
+
+The tour must traverse through $s_i$ to $t_i$.
+
+ ![](line5.png){fig-align="center"}
+
+## 
+
+We can add paths to make sure traverse number is equal both ways 
+
+ ![](line6.png){fig-align="center"}
+
+## 
+
+Add opposing edges to make sure the tour is connected.
+
+ ![](line7.png){fig-align="center"}
+
+## How to find the connecting edges?
+
+Contract all the components, and find a set of edges that connects all those components. This is a minimum Steiner tree problem.
+
+
+A Steiner tree for a set of terminal vertices $T$ is a tree that contains all vertices in $T$.
+
+::: {.callout-note .epic-callout-body}
+# Minimum Steiner Tree
+Given a weighted $n$ vertex graph $G=(V,E)$ and a set of terminal vertices $T\subseteq V$. Find a minimum weight Steiner tree that connects the vertices in $T$.
+:::
+
+## Minimum Steiner Tree Problem
+
+::: {.incremental}
+  - Finding a minimum steiner tree is NP-hard.
+  - Our graph is special: All non-terminal vertices has degree $2$!
+  - Finding a minimum steiner tree when there are at most $k$ non-terminal vertices with degree at most $3$ can be reduced to $2^k$ calls finding minimum spanning tree.
+  - The minimum Steiner tree in our graph can be found in $MST(n)$ time.
+:::
+
+## 
+
+Obtain a complete solution by construct a tour through the chosen edges.
+
+ ![](line8.png){fig-align="center"}
+
+
+## Dial-a-ride on a cycle
+
+forward - backward = 0?
+
+![](cycle1.png){fig-align="center"}
+
+## Winding Number
+ - the number of times forward - backward is equal. It is the *winding number*.
+
+![](cycle2.png){fig-align="center"}
+
+
+## Solution with winding number = 1
+First, add the request paths.
+
+![](cycle3.png){fig-align="center"}
+
+## Solution with winding number = 1
+Add edges to make sure each edge forward - backword = 1
+
+![](cycle4.png){fig-align="center"}
+
+## Solution with winding number = 1
+Run minimum Steiner tree to get the set opposing edges to connect the tour.
+
+![](cycle4.png){fig-align="center"}
+
+## A complete solution for cycles
+
+::: {.incremental}
+ - Guess all possible winding numbers.
+ - The guess is in between $[-n,n]$.
+ - For each guess $w$, compute a optimum solution with winding number $w$.
+ - $O(n MST(n))$ running time.
+ - Remove a factor of $n$ by guess a number at most $1$ away from $w^*$. 
+:::
+
+# Dial-a-Ride on general graphs
+
+## What did we do?
+
+::: {.incremental}
+ - Find a *invariant*.
+ - Fix a value for this invariant. 
+ - Add the minimum possible edges to satisfy the invariant.
+ - Connect opposing edges without violating the invariant.
+:::
+
+## What is this invariant?
+
+::: {.incremental}
+ - Topologists: It's just the 1st homology group of the graph, where graph is viewed as $1$-complex.
+ - Graph theory: The coefficient of a linear combination of cycles. 
+:::
+
+## Cycle space
+
+ - $\R^E$ a vector space indexed by the edges.  
+ - Define some arbitrary orientation of the edges: a directed graph $D=(V,\vec{E})$. 
+ - $x\in \mathcal{C}$ if and only if $\sum_{uv\in \vec{E}} x_{uv} - \sum_{vu\in \vec{E}} x_{uv} = 0$ for each $v$.
+ - $x$ is called a cycle.
+ - $\mathcal{C}$ is the space of (real weight) cycles.
+ - $\mathcal{C}$ is a subspace of $\R^E$.
+
+## Cycle space example
+
+![](cycles.png){fig-align="center"}
+
+## Cycle basis, Fundamental Cycles
+
+::: {.incremental}
+ - $\mathcal{C}$ is a vector space, its dimension is the circuit rank.
+ - For path graph, the dimension is $0$.
+ - For cycle graph, the dimension is $1$.
+ - In general: $\dim(\mathcal{C})=|E|-|V|+1$.
+:::
+
+::: {.fragment}
+::: {.callout-note .epic-callout-body}
+# Fundamental Cycle
+Let $T$ be a spanning tree of $G$. The fundamental cycle $C_e$ is the cycle consists of the edge $e$ and the unique path in $T$ connecting the end points of $e$.
+:::
+:::
+
+::: {.fragment}
+The fundamental cycles for all $e\not\in T$ is the ***fundamental cycle basis***.
+:::
+
+## Graph encodes the request information
+ Obtain $G'$ from $G$ by adding edges $(s_i,t_i)$ for each $i$ with cost $d(s_i,t_i)$. (request edges)
+ 
+ ![](line2.png){fig-align="center"}
+
+## Defining a tour
+ - A flow is $f:V\times V \to \N$.
+ - A tour (also called circulation) is a flow such that $f$, so $\sum_{v} f(u,v) - \sum_{v} f(v,u) = 0$ for all $u$.
+ - A connected tour is a tour such that $\{ uv | f(u,v)>0\}$ is connected. 
+ - Find a minimum cost connected tour in $G'$ such that $f(s_i,t_i)=1$ and $f(t_i,s_i)=0$. 
+
+## Why cycle basis?
+
+ - Every tour $f$ maps to an element $x\in \Z^E\cap \mathcal{C}$. 
+ - Take $x_{uv} = f(u,v)-f(v,u)$, call this the natural map.
+ - Tours contain more information than $\mathcal{C}$. 
+ - Traversing an edge forward and back gets cancelled out. 
+
+## Example of tour vs cycle
+
+![](tours.png){fig-align="center"}
+
+## The algorithm
+ 
+ - For every cycle where no cycle gets traversed more than $n$ times
+   - Find the optimum tour with the natural map to that cycle
+   - Find minimum Steiner tree to connect the tour
+ 
+## Results
+:::{style="background: #fff1e8; padding:10px; margin:10px"}
+ For a graph with at most $k$ vertices with degree at least $3$, and circuit rank $p$, the running time of the algorithm is $O( n^p 2^k MST(n))$.
+:::
+
+
+ As a special case.
+
+:::{.fragment style="background: #fff1e8; padding:10px; margin:10px"}
+ The dial-a-ride problem can be solved in $O(n^2 MST(n))$ for $\boxminus$.
+:::
+
+:::{.fragment style="background: #fff1e8; padding:10px; margin:10px"}
+ The dial-a-ride problem can be solved in $O(n MST(n))$ for $\bigcirc$.
+:::
+
+## Open problem
+
+:::{style="background: #fff1e8; padding:10px; margin:10px"}
+Does there exists a function $f$, such that the dial-a-ride problem be solved in $O( f(p) 2^k MST(n))$ for $n$ requests on a graph with at most $k$ degree $\geq 3$ vertices and circuit rank $p$?
+:::
+
+In particular, this shows for many classes of warehouse graphs, the running time would be $O(MST(n))$, matching the optimum bound.
+
+## Open problem
+
+::: {.callout-note .epic-callout-body}
+# Conjecture
+Let
+
+ - $a_1,\ldots,a_n\in \{0,1\}^d$
+ - $b_1,\ldots,b_n\in \R$
+ - $f^\lambda(x) = \sum_{i=1}^n \max(|a_i\cdot x + b_i|,\lambda)$
+
+There exist $x^0\in \arg\min f^0$ and $x^\lambda \in \arg\min f^\lambda$ such that $\|x^0 - x^\lambda\|_\infty \leq \lambda 2^d$.
+:::
+
+<!--
+## The technique
+::: {.incremental}
+ - The solution is a optimum connected tour of *some* homology class.
+ - Find the optimum connected tour for a small collection homology class and return the minimum.
+   - how to find the optimum connected tour for a given homology class?
+   - how small is the collection?
+   - how to find the collection quickly?
+:::
+
+## Finding optimum connected tour
+ - Not connected, so we have to connect them.
+ - All the edges we add must be in the $0$ homology class.
+ - Transforms to Steiner tree problem.
+ - Different from Steiner TSP problem.
+
+## Homology class for optimum tour vs connected tour
+ - $x$ is a homology class containing the optimum tour.
+ 
+::: {style="background: #fff1e8; padding:10px;"}
+There exists a homology class $y$, such that $\|x-y\|_\infty \leq 2$, and $y$ contains the optimum connected tour. 
+:::
+
+Claim: We only have to test $5^p$ different homology classes after finding $x$.
+
+
+## Bounds {auto-animate=true}
+
+
+![](f1.svg){.absolute top=50 left=200 width="800" height="800" data-id="f1" .fragment}
+
+![](f2.svg){.absolute top=50 left=200 width="800" height="800" .filter_blue data-id="f2" .fragment}
+
+![](f3.svg){.absolute top=50 left=200 width="800" height="800" .filter_red data-id="f3" .fragment}
+
+
+## Nice {auto-animate=true}
+
+![](f1.svg){.absolute top=0 left=0 width="500" height="500" data-id="f1"}
+
+![](f2.svg){.absolute top=0 left=500 width="500" height="500" .filter_blue data-id="f2"}
+
+![](f3.svg){.absolute top=450 left=300 width="500" height="500" .filter_red data-id="f3"}
+
+
+## Finding the optimum tour
+
+Reduces to a min-cost flow problem?
+
+## Running time analysis
+
+
+## Open problems
+
+ - Is it possible to improve the base $5$ to $3$? 
+ - Is it possible to completely remove exponential dependency on $p$?
+
+
+--->
+
+## References

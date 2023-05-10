@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="-234 -3 247 186" width="247" height="186">
+  <defs/>
+  <g id="Canvas_3" stroke="none" stroke-opacity="1" fill-opacity="1" stroke-dasharray="none" fill="none">
+    <title>Canvas 3</title>
+    <g id="Canvas_3_Layer_3">
+      <title>Layer 3</title>
+      <g id="Group_52">
+        <g id="Graphic_55">
+          <line x1="-49.63903" y1="89.93048" x2="-171.54634" y2="89.93048" stroke="black" stroke-opacity=".698039" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+        </g>
+        <g id="Graphic_54">
+          <line x1="-232.5" y1="-1.5" x2="-171.54634" y2="89.93048" stroke="black" stroke-opacity=".698039" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+        </g>
+        <g id="Graphic_53">
+          <line x1="11.314624" y1="-1.5" x2="-49.63903" y2="89.93048" stroke="black" stroke-opacity=".698039" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

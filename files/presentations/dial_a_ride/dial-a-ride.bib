@@ -1,0 +1,233 @@
+@inproceedings{DLY21,
+author = {Dong, Sally and Lee, Yin Tat and Ye, Guanghao},
+title = {A Nearly-Linear Time Algorithm for Linear Programs with Small Treewidth: A Multiscale Representation of Robust Central Path},
+year = {2021},
+isbn = {9781450380539},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3406325.3451056},
+doi = {10.1145/3406325.3451056},
+abstract = {Arising from structural graph theory, treewidth has become a focus of study in fixed-parameter tractable algorithms. Many NP-hard problems are known to be solvable in O(n · 2O(τ)) time, where τ is the treewidth of the input graph. Analogously, many problems in P should be solvable in O(n · τO(1)) time; however, due to the lack of appropriate tools, only a few such results are currently known. In our paper, we show this holds for linear programs: Given a linear program of the form minAx=b,ℓ ≤ x≤ u c⊤ x whose dual graph GA has treewidth τ, and a corresponding width-τ tree decomposition, we show how to solve it in time O(n&nbsp;·&nbsp;τ2&nbsp;log(1/ε)), where n is the number of variables and ε is the relative accuracy. When a tree decomposition is not given, we use existing techniques in vertex separators to obtain algorithms with O(n · τ4 log(1/ε)) and O(n · τ2 log(1/ε) + n1.5) run-times. Besides being the first of its kind, our algorithm has run-time nearly matching the fastest run-time for solving the sub-problem Ax=b (under the assumption that no fast matrix multiplication is used). We obtain these results by combining recent techniques in interior-point methods (IPMs), sketching, and a novel representation of the solution under a multiscale basis similar to the wavelet basis. This representation further yields the first IPM with o(rank(A)) time per iteration when the treewidth is small.},
+booktitle = {Proceedings of the 53rd Annual ACM SIGACT Symposium on Theory of Computing},
+pages = {1784–1797},
+numpages = {14},
+keywords = {linear program, interior point method, treewidth, parameterized complexity},
+location = {Virtual, Italy},
+series = {STOC 2021}
+}
+@article{AtallahK88,
+  title = {Efficient {{Solutions}} to {{Some Transportation Problems}} with {{Applications}} to {{Minimizing Robot Arm Travel}}},
+  author = {Atallah, Mikhail J. and Kosaraju, S. Rao},
+  year = {1988},
+  month = oct,
+  journal = {SIAM Journal on Computing},
+  volume = {17},
+  number = {5},
+  pages = {849--869},
+  issn = {0097-5397, 1095-7111},
+  doi = {10.1137/0217053},
+  abstract = {We give efficient solutions to transportation problems motivated by the following robotics problem. A robot arm has the task of rearranging m objects between n stations in the plane. Each object is initially at one of these n stations and needs to be moved to another station. The robot arm consists of a single link that rotates about a fixed pivot. The link can extend in and out (like a telescope) so that its length is a variable. At the end of this "telescoping" link lies a gripper that is capable of grasping any one of the m given objects (the gripper cannot be holding more than one object at the same time). The robot arm must transport each of the m objects to its destination and come back to where it started. Since the problem of scheduling the motion of the gripper so as to minimize the total distance traveled is NP-hard, we focus on the problem of minimizing only the total angular motion (rotation of the link about the pivot), or only the telescoping motion. We give algorithms for two different modes of operation: (i) No-drops. No object can be dropped before its destination is reached. (ii) With-drops. Any object can be dropped at any number of intermediate points. Our algorithm for case (i) runs in O(m+ n log n) time for angular motion and in O(m+ na(n)) time for telescoping motion. Our algorithm for case (ii) runs in O(m+n) time for angular motion and with the same time bound for telescoping motion. The most interesting problem turns out to be that of minimizing angular motion for the with-drops mode of operation.},
+  langid = {english},
+  file = {/Users/chaoxu/Zotero/storage/BKVT5JT7/Atallah and Kosaraju - 1988 - Efficient Solutions to Some Transportation Problem.pdf;/Users/chaoxu/Zotero/storage/KI6QTDZH/Atallah_Kosaraju_1988_Efficient Solutions to Some Transportation Problems with Applications to.pdf}
+}
+
+@article{FredericksonG93,
+  title = {Nonpreemptive {{Ensemble Motion Planning}} on a {{Tree}}},
+  author = {Frederickson, G.N. and Guan, D.J.},
+  year = {1993},
+  month = jul,
+  journal = {Journal of Algorithms},
+  volume = {15},
+  number = {1},
+  pages = {29--60},
+  issn = {01966774},
+  doi = {10.1006/jagm.1993.1029},
+  langid = {english},
+  file = {/Users/chaoxu/Zotero/storage/UAFNU472/jagm.1993.1029 (2).pdf}
+}
+@InProceedings{10.1007/11830924_20,
+author="G{\o}rtz, Inge Li",
+editor="D{\'i}az, Josep
+and Jansen, Klaus
+and Rolim, Jos{\'e} D. P.
+and Zwick, Uri",
+title="Hardness of Preemptive Finite Capacity Dial-a-Ride",
+booktitle="Approximation, Randomization, and Combinatorial Optimization. Algorithms and Techniques",
+year="2006",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="200--211",
+abstract="In the Finite Capacity Dial-a-Ride problem the input is a metric space, a set of objects {\{}di{\}}, each specifying a source siand a destination ti, and an integer k---the capacity of the vehicle used for making the deliveries. The goal is to compute a shortest tour for the vehicle in which all objects can be delivered from their sources to their destinations while ensuring that the vehicle carries at most k objects at any point in time. In the preemptive version an object may be dropped at intermediate locations and picked up later and delivered. Let N be the number of nodes in the input graph. Charikar and Raghavachari [FOCS '98] gave a min {\{}O(logN),O(k){\}}-approximation algorithm for the preemptive version of the problem. In this paper has no min {\{}O(log{\$}^{\{}{\backslash}rm 1/4-{\{}{\backslash}it {\backslash}epsilon{\}}{\}}{\$}N),k1{\thinspace}−{\thinspace}$\epsilon${\}}-approximation algorithm for any $\epsilon$> 0 unless all problems in NP can be solved by randomized algorithms with expected running time O(npolylog n).",
+isbn="978-3-540-38045-0"
+}
+
+
+@article{DELEPLANQUE20131256,
+title = {Dial-a-Ride Problem with time windows, transshipments, and dynamic transfer points},
+journal = {IFAC Proceedings Volumes},
+volume = {46},
+number = {9},
+pages = {1256-1261},
+year = {2013},
+note = {7th IFAC Conference on Manufacturing Modelling, Management, and Control},
+issn = {1474-6670},
+doi = {https://doi.org/10.3182/20130619-3-RU-3018.00435},
+url = {https://www.sciencedirect.com/science/article/pii/S1474667016344640},
+author = {Samuel Deleplanque and Alain Quilliot},
+keywords = {Dial-a-Ride Problem, transshipments, transfer points, constraints propagation},
+abstract = {Dial-a-ride problems deal with on demand transportation. Today, this type of shared transport is used for elderly and disabled people for short distances. People provide a request for transport from an origin to a destination, both specific for a particular demand. Time constraints deal with maximum user ride time, time windows, maximum route duration limits and precedence. In this paper we try to solve these dial-a-ride problems, including the possibility of one transshipment from a dynamic transfer point by request. We propose an algorithm based on insertion techniques and constraints propagation.}
+}
+
+@InProceedings{Desrosiers88,
+author="Desrosiers, Jacques
+and Dumas, Yvan
+and Soumis, Fran{\c{c}}ois",
+editor="Daduna, Joachim R.
+and Wren, Anthony",
+title="The Multiple Vehicle DIAL-A-RIDE Problem",
+booktitle="Computer-Aided Transit Scheduling",
+year="1988",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="15--27",
+abstract="This article examines the use of mathematical optimization algorithms to construct vehicle routes in a large scale multi-vehicle many-to-many system in the context of the transportation of the handicapped. The main contributions of this paper are the innovative concept of the mini-clusters, the generalisation of the column generation algorithm for the m-TSP with time windows (Desrosiers, Soumis and Desrochers [11]) to solve problems with several depots and availability constraints, and in addition, a method of decomposition into time slices to handle very large problems.",
+isbn="978-3-642-85966-3"
+}
+
+
+@InProceedings{Baligacs22,
+author="Balig{\'a}cs, J{\'u}lia
+and Disser, Yann
+and Mosis, Nils
+and Weckbecker, David",
+editor="Chalermsook, Parinya
+and Laekhanukit, Bundit",
+title="An Improved Algorithm for Open Online Dial-a-Ride",
+booktitle="Approximation and Online Algorithms",
+year="2022",
+publisher="Springer International Publishing",
+address="Cham",
+pages="154--171",
+abstract="We consider the open online dial-a-ride problem, where transportation requests appear online in a metric space and need to be served by a single server. The objective is to minimize the completion time until all requests have been served. We present a new, parameterized algorithm for this problem and prove that it attains a competitive ratio of {\$}{\$}1 + {\backslash}varphi {\backslash}approx 2.618{\$}{\$}1+$\phi$≈2.618for some choice of its parameter, where {\$}{\$}{\backslash}varphi {\$}{\$}$\phi$is the golden ratio. This improves the best known bounds for open online dial-a-ride both for general metric spaces as well as for the real line. We also give a lower bound of 2.457 for the competitive ratio of our algorithm for any parameter choice.",
+isbn="978-3-031-18367-6"
+}
+
+
+
+@article{LOISZ17,
+title = {Online algorithm for dynamic dial a ride problem and its metrics},
+journal = {Transportation Research Procedia},
+volume = {24},
+pages = {377-384},
+year = {2017},
+note = {3rd Conference on Sustainable Urban Mobility, 3rd CSUM 2016, 26 – 27 May 2016, Volos, Greece},
+issn = {2352-1465},
+doi = {https://doi.org/10.1016/j.trpro.2017.05.097},
+url = {https://www.sciencedirect.com/science/article/pii/S2352146517303782},
+author = {Athanasios Lois and Athanasios Ziliaskopoulos},
+keywords = {Online dial-a-ride, regret optimization, cost metrics, profits metrics, performance metrics},
+abstract = {In this paper, an online regret based dial-a-ride (OR-DARP) algorithm is introduced and its performance evaluated on an actual demand responsive transit (DRT) system. The innovative part of the algorithm is the design of the optimization engine. A signal communication scheme between the trip dispatcher and the algorithm is used to improve utilization of the available idle time that can then be devoted to the optimization engine. The basic concept is as follows: a. Every trip request is treated as an emergency request demanding an immediate answer, b. The optimization engine runs continuously, thereby consuming every idle time fragment unless interrupted by a new trip request. The trip data are real, and they are sourced from a DRT system operating at a municipality in northern Greece where a static dial-a-ride algorithm was used as the optimization engine. Given the fact that these trips data provide all trip details plus the show-up time (the most important feature for our study), these data are the ideal basis for an “a posteriori” evaluation of the proposed online approach. Another contribution of this paper is the identification of the critical parameters in the trade-off between benefits gained from continuing to optimize an online system versus the losses of non-served demands. This important issue when applying online algorithms has not been studied extensively in the literature so far (to the best of our knowledge).}
+}
+
+
+@INPROCEEDINGS{CharikarR98,
+  author={Charikar, M. and Raghavachari, B.},
+  booktitle={Proceedings 39th Annual Symposium on Foundations of Computer Science (Cat. No.98CB36280)}, 
+  title={The finite capacity dial-a-ride problem}, 
+  year={1998},
+  volume={},
+  number={},
+  pages={458-467},
+  doi={10.1109/SFCS.1998.743496}}
+@article{FredericksonHK78,
+author = {Frederickson, Greg N. and Hecht, Matthew S. and Kim, Chul E.},
+title = {Approximation Algorithms for Some Routing Problems},
+journal = {SIAM Journal on Computing},
+volume = {7},
+number = {2},
+pages = {178-193},
+year = {1978},
+doi = {10.1137/0207017},
+
+URL = { 
+    
+        https://doi.org/10.1137/0207017
+    
+    
+
+},
+eprint = { 
+    
+        https://doi.org/10.1137/0207017
+    
+    
+
+}
+,
+    abstract = { Several polynomial time approximation algorithms for some \$NP\$-complete routing problems are presented, and the worst-case ratios of the cost of the obtained route to that of an optimal are determined. A mixed-strategy heuristic with a bound of 9/5 is presented for the stacker-crane problem (a modified traveling salesman problem). A tour-splitting heuristic is given for k-person variants of the traveling salesman problem, the Chinese postman problem, and the stacker-crane problem, for which a minimax solution is sought. This heuristic has a bound of \$e + 1 - 1/k\$, where e is the bound for the corresponding 1-person algorithm. }
+}
+
+
+@article{Frederickson93,
+  title = {A {{Note}} on the {{Complexity}} of a {{Simple Transportation Problem}}},
+  author = {Frederickson, Greg N.},
+  year = {1993},
+  month = feb,
+  journal = {SIAM Journal on Computing},
+  volume = {22},
+  number = {1},
+  pages = {57--61},
+  issn = {0097-5397, 1095-7111},
+  doi = {10.1137/0222005},
+  abstract = {Consider the problem of using a vehicle to transport k objects one at a time between a stations on a circular track. Let the cost of the transportation be the total distance traveled by the vehicle on the track. An O(k + M(a, q)) time algorithm is presented to find a minimum cost transportation, where M (m, n) is the time to solve a minimum spanning tree problem on a graph with m edges and n vertices, and q {$<\_$} min\{k, \} is the number of strongly connected components in an associated balanced problem. Also, the minimum spanning tree problem on a graph with m edges and n vertices is reduced to a transportation problem on a linear track with O(m) stations, O(m) objects, and O(n) strongly connected components in O(m) time.},
+  langid = {english},
+}
+@article{RoodbergenK01,
+author = { Kees   Jan   Roodbergen  and  RenÉde   Koster },
+title = {Routing methods for warehouses with multiple cross aisles},
+journal = {International Journal of Production Research},
+volume = {39},
+number = {9},
+pages = {1865-1883},
+year  = {2001},
+publisher = {Taylor & Francis},
+doi = {10.1080/00207540110028128},
+
+URL = { 
+    
+        https://doi.org/10.1080/00207540110028128
+    
+    
+
+},
+eprint = { 
+    
+        https://doi.org/10.1080/00207540110028128
+    
+    
+
+}
+
+}
+
+@InProceedings{GiuliaAJ21,
+author="Siciliano, Giulia
+and Durek-Linn, Anna
+and Fottner, Johannes",
+editor="Shi, Xianliang
+and Boh{\'a}cs, G{\'a}bor
+and Ma, Yixuan
+and Gong, Daqing
+and Shang, Xiaopu",
+title="Development and Evaluation of Configurations and Control Strategies to Coordinate Several Stacker Cranes in a Single Aisle for a New Dynamic Hybrid Pallet Warehouse",
+booktitle="LISS 2021",
+year="2022",
+publisher="Springer Nature Singapore",
+address="Singapore",
+pages="606--626",
+abstract="In this paper we propose and evaluate different configurations and control strategies for the stacker-crane-based automated storage and retrieval system (AS/RS), part of a new dynamic hybrid pallet warehouse (DHPW). A DHPW is composed of an AS/RS and an autonomous vehicle storage and retrieval system (AVS/RS). First, we present a brief description of the DHPW system under consideration. We then review some solutions from the literature to improve the performance of an AS/RS. Next, we propose relevant configurations and control strategies for the stacker-crane system of a DHPW, followed by a discrete event simulation and an evaluation of the concepts according to the level of performance they enable, thus their capability to alleviate the throughput bottleneck of the stacker cranes for a DHPW. Finally, we discuss the main results of this study.",
+isbn="978-981-16-8656-6"
+}
+
+
+

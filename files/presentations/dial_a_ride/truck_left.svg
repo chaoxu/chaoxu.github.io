@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <rect fill="none" height="256" width="256" transform="matrix(-1, 0, 0, 1, 0, 0)" x="-256"/>
+  <path d="M 16 120 L 58.6 120 C 61.862 120.021 64.802 118.035 66 115 L 80 80" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="12" transform="matrix(-1, 0, 0, -1, 96, 200.000168)"/>
+  <line fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="12" x1="80" x2="240" y1="144" y2="144" transform="matrix(-1, 0, 0, -1, 320, 288)"/>
+  <circle cx="-68" cy="192" fill="none" r="24" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="12" transform="matrix(-1, 0, 0, 1, 0, 0)"/>
+  <circle cx="-188" cy="192" fill="none" r="24" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="12" transform="matrix(-1, 0, 0, 1, 0, 0)"/>
+  <line fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="12" x1="164" x2="92" y1="192" y2="192" transform="matrix(-1, 0, 0, -1, 256, 384)"/>
+  <path d="M 108 64 L 88 64 C 83.582 64 80 67.582 80 72 L 80 184 C 80 188.418 83.582 192 88 192 L 240 192 L 240 84.8" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="12" transform="matrix(-1, 0, 0, -1, 320, 256)"/>
+  <path d="M 16 192 L 80 192 L 80 128 C 80 123.582 76.418 120 72 120 L 52 120" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="12" transform="matrix(-1, 0, 0, -1, 96, 312)"/>
+</svg>
