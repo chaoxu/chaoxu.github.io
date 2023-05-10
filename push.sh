@@ -28,6 +28,7 @@ rsync -a --checksum --filter='P _site/' --filter='P _cache/' --filter='P .git/' 
 rm -r drafts
 
 # Commit
+touch .nojekyll
 git add -A
 git commit -m "Publish."
 
