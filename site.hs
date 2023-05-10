@@ -159,7 +159,8 @@ katexFilter = withItemBody (unixFilter "./katex_cli" [])
 idPages = ["favicon.ico",
            "googled46bf4e1cd540289.html",
            "CNAME",
-           "index.html"]
+           "index.html",
+           ".nojekyll"]
 
 htmlTitleField :: Context String 
 htmlTitleField = Context $ \k _ i -> 
