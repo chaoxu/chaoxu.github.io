@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="-234 -3 247 186" width="247" height="186">
+  <defs/>
+  <g id="Canvas_1" stroke="none" stroke-opacity="1" fill-opacity="1" stroke-dasharray="none" fill="none">
+    <title>Canvas 1</title>
+    <g id="Canvas_1_Layer_2">
+      <title>Layer 2</title>
+      <g id="Group_49">
+        <g id="Graphic_51">
+          <line x1="-110.59269" y1="181.36097" x2="-232.5" y2="-1.5" stroke="black" stroke-opacity=".698039" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+        </g>
+        <g id="Graphic_50">
+          <line x1="11.314624" y1="-1.5" x2="-110.59269" y2="181.36097" stroke="black" stroke-opacity=".698039" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

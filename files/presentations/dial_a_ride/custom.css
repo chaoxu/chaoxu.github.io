@@ -1,0 +1,31 @@
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+.arrowright {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+.arrowleft {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+.filter_red{
+  filter: invert(31%) sepia(66%) saturate(6513%) hue-rotate(334deg) brightness(91%) contrast(134%);
+}
+.filter_blue{
+  filter: invert(39%) sepia(94%) saturate(1524%) hue-rotate(194deg) brightness(93%) contrast(91%);
+}
+
+.callout-body{
+    font-size: var(--r-main-font-size) !important;
+}
+.callout-caption{
+    font-size: var(--r-heading3-size) !important;
+}
+.callout{
+    border-left: solid 1px !important;
+}
+
