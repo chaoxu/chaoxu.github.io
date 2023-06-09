@@ -5,6 +5,7 @@ format:
   revealjs:
     incremental: false
     html-math-method: mathjax
+    chalkboard: true
 callout-icon: false
 bibliography: matroid_congruency_constraint.bib
 ---
