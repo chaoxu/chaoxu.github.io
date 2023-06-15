@@ -3,14 +3,14 @@
     xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
         <title>The Art Gallery Guardian</title>
-        <link>https://chaoxuprime.com</link>
+        <link>https://chaoxu.prof</link>
         <description><![CDATA[Mostly notes on algorithms]]></description>
-        <atom:link href="https://chaoxuprime.com/cnrss.xml" rel="self"
+        <atom:link href="https://chaoxu.prof/cnrss.xml" rel="self"
                    type="application/rss+xml" />
         <lastBuildDate>Thu, 18 Aug 2022 00:00:00 UT</lastBuildDate>
         <item>
     <title>逼零集，点灯游戏和解线性方程组</title>
-    <link>https://chaoxuprime.com/cnposts/2022-08-18-zero-forcing.html</link>
+    <link>https://chaoxu.prof/cnposts/2022-08-18-zero-forcing.html</link>
     <description><![CDATA[<br />
 <div>
 <p>axpokl 3年前写下了<a
@@ -56,7 +56,7 @@ class="math inline">O(k^2+m)</span>时间找到<span
 class="math inline">Ax=b</span>的解。</p>
 </div>
 <p>文章<a
-href="https://chaoxuprime.com/files/papers/zeroforcing.pdf">可以这里看到</a>。我们也顺便将点灯游戏的复杂度降到了<span
+href="https://chaoxu.prof/files/papers/zeroforcing.pdf">可以这里看到</a>。我们也顺便将点灯游戏的复杂度降到了<span
 class="math inline">O(n^{\omega}\log n)</span>，这部分倒是非常显然。</p>
 <p>我线性代数已经忘得差不多了，基本简单证明都不会搞。所以在这个问题上，两位学生做出了比我要多很多贡献。</p>
 <p>为了解决这个问题，我终于知道了最general的解线性方程组的算法是使用LSP分解<span
@@ -94,16 +94,16 @@ href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </section>
 </div>
 <div class="hide-on-print">
-    <div class="info"><a href="https://chaoxuprime.com">许超</a>与<time datetime="2022-08-18">2022-08-18</time>发布</div>
+    <div class="info"><a href="https://chaoxu.prof">许超</a>与<time datetime="2022-08-18">2022-08-18</time>发布</div>
     <div class="info">标签: </div>
 </div>]]></description>
     <pubDate>Thu, 18 Aug 2022 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/cnposts/2022-08-18-zero-forcing.html</guid>
+    <guid>https://chaoxu.prof/cnposts/2022-08-18-zero-forcing.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>一个覆盖问题</title>
-    <link>https://chaoxuprime.com/cnposts/2022-07-10-a-covering-problem.html</link>
+    <link>https://chaoxu.prof/cnposts/2022-07-10-a-covering-problem.html</link>
     <description><![CDATA[<br />
 <div>
 <p>让<span class="math inline">A</span>为<span
@@ -114,7 +114,7 @@ class="math inline">AB=\{ab\pmod n | a\in A, b\in B\}=\Z_n</span>?</p>
 href="https://keshi.pro/">史可</a>与我证明了可以找到满足条件的<span
 class="math inline">B</span>并且<span
 class="math inline">|B|=O(\frac{n}{\ell} \log n)</span> 。文章可以<a
-href="https://chaoxuprime.com/files/papers/cyclic-cover.pdf">这里提取</a>。</p>
+href="https://chaoxu.prof/files/papers/cyclic-cover.pdf">这里提取</a>。</p>
 <p>我很喜欢这个结果，耗时几个月，每次都是过段时间突然有个新想法于是做了点提高。最后的版本和之前的版本差距还蛮大的。以前的文章的最好结果是<span
 class="math inline">\ell</span>不是太小或者太大的时候<span
 class="math inline">B</span>的大小为<span
@@ -127,11 +127,11 @@ class="math inline">\log \log
 n</span>，并且大大简化之前的结论。有兴趣的可以看全文。</p>
 </div>
 <div class="hide-on-print">
-    <div class="info"><a href="https://chaoxuprime.com">许超</a>与<time datetime="2022-07-10">2022-07-10</time>发布</div>
+    <div class="info"><a href="https://chaoxu.prof">许超</a>与<time datetime="2022-07-10">2022-07-10</time>发布</div>
     <div class="info">标签: </div>
 </div>]]></description>
     <pubDate>Sun, 10 Jul 2022 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/cnposts/2022-07-10-a-covering-problem.html</guid>
+    <guid>https://chaoxu.prof/cnposts/2022-07-10-a-covering-problem.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 

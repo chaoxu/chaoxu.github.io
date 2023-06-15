@@ -3,14 +3,14 @@
     xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
         <title>The Art Gallery Guardian</title>
-        <link>https://chaoxuprime.com</link>
+        <link>https://chaoxu.prof</link>
         <description><![CDATA[Mostly notes on algorithms]]></description>
-        <atom:link href="https://chaoxuprime.com/rss.xml" rel="self"
+        <atom:link href="https://chaoxu.prof/rss.xml" rel="self"
                    type="application/rss+xml" />
         <lastBuildDate>Sun, 06 Feb 2022 00:00:00 UT</lastBuildDate>
         <item>
     <title>The related employer controlled group</title>
-    <link>https://chaoxuprime.com/posts/2022-02-06-related-companies-and-controlled-groups.html</link>
+    <link>https://chaoxu.prof/posts/2022-02-06-related-companies-and-controlled-groups.html</link>
     <description><![CDATA[<br />
 <div>
 <p>Disclaimer: Not an accountant nor a lawyer.</p>
@@ -168,16 +168,16 @@ P-set and B-set is still a C-set. This means two companies that is not
 related in any way can be classified to be related.</p>
 </div>
 <div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2022-02-06">2022-02-06</time>. </div>
+    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2022-02-06">2022-02-06</time>. </div>
     <div class="info">Tags: tax, 401(k).</div>
 </div>]]></description>
     <pubDate>Sun, 06 Feb 2022 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2022-02-06-related-companies-and-controlled-groups.html</guid>
+    <guid>https://chaoxu.prof/posts/2022-02-06-related-companies-and-controlled-groups.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>Test conjectures on $k$-partitions over submodular functions</title>
-    <link>https://chaoxuprime.com/posts/2022-01-30-test-conjectures-on-k-partitions.html</link>
+    <link>https://chaoxu.prof/posts/2022-01-30-test-conjectures-on-k-partitions.html</link>
     <description><![CDATA[<br />
 <div>
 <p>This article we consider tools one can use to quickly test
@@ -483,16 +483,16 @@ class="index">3</span></span>
 </div>
 </div>
 <div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2022-01-30">2022-01-30</time>. </div>
+    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2022-01-30">2022-01-30</time>. </div>
     <div class="info">Tags: Conjectures, computational experiments, submodular, partition.</div>
 </div>]]></description>
     <pubDate>Sun, 30 Jan 2022 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2022-01-30-test-conjectures-on-k-partitions.html</guid>
+    <guid>https://chaoxu.prof/posts/2022-01-30-test-conjectures-on-k-partitions.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>Yotta Savings and covering designs</title>
-    <link>https://chaoxuprime.com/posts/2020-07-11-yotta-savings-and-covering-designs.html</link>
+    <link>https://chaoxu.prof/posts/2020-07-11-yotta-savings-and-covering-designs.html</link>
     <description><![CDATA[<br />
 <div>
 <p><a href="https://www.withyotta.com/">Yotta Savings</a> is a FDIC
@@ -639,16 +639,16 @@ to be not paranoid and let the algorithm give you random numbers. Or
 hope one day Yotta allows one to import a list of numbers.</p>
 </div>
 <div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2020-07-11">2020-07-11</time>. </div>
+    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2020-07-11">2020-07-11</time>. </div>
     <div class="info">Tags: banking, probability.</div>
 </div>]]></description>
     <pubDate>Sat, 11 Jul 2020 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2020-07-11-yotta-savings-and-covering-designs.html</guid>
+    <guid>https://chaoxu.prof/posts/2020-07-11-yotta-savings-and-covering-designs.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>The value of a gift card in beancount</title>
-    <link>https://chaoxuprime.com/posts/2020-06-05-the-value-of-a-gift-card.html</link>
+    <link>https://chaoxu.prof/posts/2020-06-05-the-value-of-a-gift-card.html</link>
     <description><![CDATA[<br />
 <div>
 <p>I’m using beancount to do accounting. In beancount, you are allowed
@@ -685,16 +685,16 @@ class="math inline">1</span> is the best option since it simplifies the
 computation.</p>
 </div>
 <div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2020-06-05">2020-06-05</time>. </div>
+    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2020-06-05">2020-06-05</time>. </div>
     <div class="info">Tags: accounting.</div>
 </div>]]></description>
     <pubDate>Fri, 05 Jun 2020 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2020-06-05-the-value-of-a-gift-card.html</guid>
+    <guid>https://chaoxu.prof/posts/2020-06-05-the-value-of-a-gift-card.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>Maximize Cash Back</title>
-    <link>https://chaoxuprime.com/posts/2020-04-10-maximize-cash-back.html</link>
+    <link>https://chaoxu.prof/posts/2020-04-10-maximize-cash-back.html</link>
     <description><![CDATA[<br />
 <div>
 <p>Credit cards often offers rewards for purchases. For example, a card
@@ -786,16 +786,16 @@ discount up to a certain limit. This can also be modeled in the
 graph.</p>
 </div>
 <div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2020-04-10">2020-04-10</time>. </div>
+    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2020-04-10">2020-04-10</time>. </div>
     <div class="info">Tags: math, life.</div>
 </div>]]></description>
     <pubDate>Fri, 10 Apr 2020 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2020-04-10-maximize-cash-back.html</guid>
+    <guid>https://chaoxu.prof/posts/2020-04-10-maximize-cash-back.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>Bounds on number of cuts</title>
-    <link>https://chaoxuprime.com/posts/2019-11-27-bounds-on-cuts.html</link>
+    <link>https://chaoxu.prof/posts/2019-11-27-bounds-on-cuts.html</link>
     <description><![CDATA[<br />
 <div>
 <p>Recently there are some advances on counting the number of min-cut in
@@ -1138,16 +1138,16 @@ href="https://doi.org/10.1137/16M1091666">10.1137/16M1091666</a>.</div>
 </div>
 </div>
 <div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-11-27">2019-11-27</time>. </div>
+    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2019-11-27">2019-11-27</time>. </div>
     <div class="info">Tags: Graph Theory.</div>
 </div>]]></description>
     <pubDate>Wed, 27 Nov 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-11-27-bounds-on-cuts.html</guid>
+    <guid>https://chaoxu.prof/posts/2019-11-27-bounds-on-cuts.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>Word break with cost</title>
-    <link>https://chaoxuprime.com/posts/2019-09-19-word-break-with-cost.html</link>
+    <link>https://chaoxu.prof/posts/2019-09-19-word-break-with-cost.html</link>
     <description><![CDATA[<br />
 <div>
 <div class="theorem-environment Problem" data-index="1" type="Problem">
@@ -1242,16 +1242,16 @@ href="https://doi.org/10.4230/LIPIcs.ESA.2020.29">10.4230/LIPIcs.ESA.2020.29</a>
 </div>
 </div>
 <div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-09-19">2019-09-19</time>. </div>
+    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2019-09-19">2019-09-19</time>. </div>
     <div class="info">Tags: Algorithm.</div>
 </div>]]></description>
     <pubDate>Thu, 19 Sep 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-09-19-word-break-with-cost.html</guid>
+    <guid>https://chaoxu.prof/posts/2019-09-19-word-break-with-cost.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>Traditional vs Roth IRA under fixed amount of investment</title>
-    <link>https://chaoxuprime.com/posts/2019-09-06-traditional-ira-vs-roth-ira.html</link>
+    <link>https://chaoxu.prof/posts/2019-09-06-traditional-ira-vs-roth-ira.html</link>
     <description><![CDATA[<br />
 <div>
 <p>I’ve read a lot of articles on Traditional vs Roth IRA. One can do a
@@ -1333,16 +1333,16 @@ better than Roth IRA if your current tax rate is <em>much higher</em>
 than your future tax rate.</p>
 </div>
 <div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-09-06">2019-09-06</time>. </div>
+    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2019-09-06">2019-09-06</time>. </div>
     <div class="info">Tags: Tax.</div>
 </div>]]></description>
     <pubDate>Fri, 06 Sep 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-09-06-traditional-ira-vs-roth-ira.html</guid>
+    <guid>https://chaoxu.prof/posts/2019-09-06-traditional-ira-vs-roth-ira.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>Impossibility theorem of marriage tax</title>
-    <link>https://chaoxuprime.com/posts/2019-08-28-impossibility-theorm-marriage-tax.html</link>
+    <link>https://chaoxu.prof/posts/2019-08-28-impossibility-theorm-marriage-tax.html</link>
     <description><![CDATA[<br />
 <div>
 <p>It is well known that there could be <a
@@ -1433,20 +1433,20 @@ MARRIAGES</a></strong>, National Tax Journal. 35 (1982) 507–510.</div>
 </div>
 </div>
 <div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-08-28">2019-08-28</time>. </div>
+    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2019-08-28">2019-08-28</time>. </div>
     <div class="info">Tags: Tax.</div>
 </div>]]></description>
     <pubDate>Wed, 28 Aug 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-08-28-impossibility-theorm-marriage-tax.html</guid>
+    <guid>https://chaoxu.prof/posts/2019-08-28-impossibility-theorm-marriage-tax.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 <item>
     <title>Long distance couple back-to-back ticketing</title>
-    <link>https://chaoxuprime.com/posts/2019-06-18-long-distance-couple-back-to-back-ticketing.html</link>
+    <link>https://chaoxu.prof/posts/2019-06-18-long-distance-couple-back-to-back-ticketing.html</link>
     <description><![CDATA[<br />
 <div>
 <p>The reason I explored <a
-href="https://chaoxuprime.com/posts/2019-06-15-covert-back-to-back-ticketing.html">an
+href="https://chaoxu.prof/posts/2019-06-15-covert-back-to-back-ticketing.html">an
 algorithm for covert back-to-back ticketing</a> in the previous blog
 post, was because as someone currently in a long distance relationship.
 It is important to save money on travel.</p>
@@ -1550,11 +1550,11 @@ href="https://doi.org/10.1016/j.tcs.2013.12.013">https://doi.org/10.1016/j.tcs.2
 </div>
 </div>
 <div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxuprime.com">Chao Xu</a> on <time datetime="2019-06-18">2019-06-18</time>. </div>
+    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2019-06-18">2019-06-18</time>. </div>
     <div class="info">Tags: Optimization, algorithm, airline.</div>
 </div>]]></description>
     <pubDate>Tue, 18 Jun 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxuprime.com/posts/2019-06-18-long-distance-couple-back-to-back-ticketing.html</guid>
+    <guid>https://chaoxu.prof/posts/2019-06-18-long-distance-couple-back-to-back-ticketing.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 
