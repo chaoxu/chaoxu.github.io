@@ -8,18 +8,18 @@
   xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
 >
   <url>
-    <loc>https://chaoxuprime.com</loc>
+    <loc>https://chaoxu.prof</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://chaoxuprime.com/blog.html</loc>
+    <loc>https://chaoxu.prof/blog.html</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 $for(pages)$
   <url>
-    <loc>https://chaoxuprime.com$url$</loc>
+    <loc>https://chaoxu.prof$url$</loc>
     <lastmod>$if(updated)$$updated$$else$$if(date)$$date$$endif$$endif$</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

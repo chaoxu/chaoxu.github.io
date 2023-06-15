@@ -3,7 +3,7 @@ title: Long distance couple back-to-back ticketing
 tags: Optimization, algorithm, airline
 ---
 
-The reason I explored [an algorithm for covert back-to-back ticketing ](https://chaoxuprime.com/posts/2019-06-15-covert-back-to-back-ticketing.html) in the previous blog post, was because as someone currently in a long distance relationship. It is important to save money on travel. 
+The reason I explored [an algorithm for covert back-to-back ticketing ](https://chaoxu.prof/posts/2019-06-15-covert-back-to-back-ticketing.html) in the previous blog post, was because as someone currently in a long distance relationship. It is important to save money on travel. 
 
 For long distance couples, two people can fly. Consider if the couple decides be together each weekend, one can fly to the city of the other on Friday night, and comes back on Sunday night. Again we can take advantage of the back-to-back ticketing.
 

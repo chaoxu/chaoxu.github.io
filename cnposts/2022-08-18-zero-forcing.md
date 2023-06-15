@@ -18,7 +18,7 @@ axpokl 3年前写下了[点灯游戏Flip Game的$O(n^3)$算法](https://zhuanlan
 
 :::
 
-文章[可以这里看到](https://chaoxuprime.com/files/papers/zeroforcing.pdf)。我们也顺便将点灯游戏的复杂度降到了$O(n^{\omega}\log n)$，这部分倒是非常显然。
+文章[可以这里看到](https://chaoxu.prof/files/papers/zeroforcing.pdf)。我们也顺便将点灯游戏的复杂度降到了$O(n^{\omega}\log n)$，这部分倒是非常显然。
 
 我线性代数已经忘得差不多了，基本简单证明都不会搞。所以在这个问题上，两位学生做出了比我要多很多贡献。
 

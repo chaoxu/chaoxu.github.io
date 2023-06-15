@@ -31,7 +31,7 @@ The name Supnick comes from [Supnick matrix](http://en.wikipedia.org/wiki/Supnic
 
   2. is maximized when $\pi = (n ~ 2 ~ (n-2) ~ 4 ~ (n-4) ~\ldots~5~ (n-3) ~3~ (n-1)~1)$.
 :::
-Supnick matrices appears at many places. For example, [maximize the area of a radar chart](http://www.chaoxuprime.com/posts/2012-08-08-maximize-the-area-of-a-radar-chart.html) and [find a permutation maximize sum of adjacent distance](http://cstheory.stackexchange.com/questions/27808/finding-a-permutation-x-p-1x-p-2-x-p-n-of-x-1-x-2-x-n-whi).
+Supnick matrices appears at many places. For example, [maximize the area of a radar chart](http://www.chaoxu.prof/posts/2012-08-08-maximize-the-area-of-a-radar-chart.html) and [find a permutation maximize sum of adjacent distance](http://cstheory.stackexchange.com/questions/27808/finding-a-permutation-x-p-1x-p-2-x-p-n-of-x-1-x-2-x-n-whi).
 
 It is a special case of a even larger class of problem that has the above permutation as solution: Quadratic assignment problem where the matrices are monotone antimonge and benevolent symmetric toeplitz matrix [@burkardQA]. 
  

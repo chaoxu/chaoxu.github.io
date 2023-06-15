@@ -14,7 +14,7 @@ Assuming there are at most $k$ elements no larger than $\lambda^*$, and we know 
 
 Let's first consider the case when $n$ and $m$ is known and $n\leq m$. It is [Leetcode 240. Search a 2D Matrix II](https://leetcode.com/problems/search-a-2d-matrix-ii/). However, our problem is more general, because comparison with $\lambda^*$ can only be done through the oracle. 
 Craig Gidney wrote about an [optimal algorithm](http://twistedoakstudios.com/blog/Post5365_searching-a-sorted-matrix-faster) with $O(n\log \frac{m}{n})$ running time, matrix access algorithm. 
-However, the oracle access is too large. There are times where the oracle access is slow. For example, when using it as a subroutine for finding a [bottleneck $k$-link path](https://chaoxuprime.com/posts/2019-01-31-bottleneck-k-link-path.html).
+However, the oracle access is too large. There are times where the oracle access is slow. For example, when using it as a subroutine for finding a [bottleneck $k$-link path](https://chaoxu.prof/posts/2019-01-31-bottleneck-k-link-path.html).
 There is an algorithm with optimal running time and $O(\log(nm))$ oracle access. 
 
 Let's consider a special case, where $n=m=2^i$ for some $i$. This case was shown in [@FredericksonZ17].
@@ -50,7 +50,7 @@ In fact, we can also get a very simple algorithm with running time $O(h \log(k/h
 
 What about the best of both worlds? That is, $O(h\log(k/h))$ running time and $O(\log k)$ oracle calls. 
 
-There is an alternative algorithm which can be found in [@JacobR08]. The alternative algorithm is quite close to a post about [selection in a sorted matrix](https://chaoxuprime.com/posts/2014-04-02-selection-in-a-sorted-matrix.html). The careful reader might observe the known search algorithms follow the exact same structure as algorithms for selection. Indeed, we *are* doing selection but we do not know the rank of the element. Intuitively, many selection algorithm, the rank is *only used* to remove the correct set of candidates. Hence this suggest one can modify the algorithm to use the oracle call in place of the rank. 
+There is an alternative algorithm which can be found in [@JacobR08]. The alternative algorithm is quite close to a post about [selection in a sorted matrix](https://chaoxu.prof/posts/2014-04-02-selection-in-a-sorted-matrix.html). The careful reader might observe the known search algorithms follow the exact same structure as algorithms for selection. Indeed, we *are* doing selection but we do not know the rank of the element. Intuitively, many selection algorithm, the rank is *only used* to remove the correct set of candidates. Hence this suggest one can modify the algorithm to use the oracle call in place of the rank. 
 
 The paper [@JacobR08] actually also have an optimum algorithm. 
 

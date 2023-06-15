@@ -2,7 +2,7 @@
 title: 财务自由的建议
 ---
 
-**注:** 看完这个文章之后可以[看一些2021年的更新](https://chaoxuprime.com/pages/financial-cn-2021.html)。
+**注:** 看完这个文章之后可以[看一些2021年的更新](https://chaoxu.prof/pages/financial-cn-2021.html)。
 
 文章是给
 

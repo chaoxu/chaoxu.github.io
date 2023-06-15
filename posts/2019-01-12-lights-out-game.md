@@ -76,7 +76,7 @@ Turns out this is related to the zero forcing set [@aim2008]. Consider the verti
   Let $G$ be a graph with $m$ edges and $A$ is a matrix where the non-zero entries are precisely the position of $1$s in the adjacency matrix of $G$. If we are given a zero forcing set of size $k$. Finding $Ax=b$ can be done in $O(km+k^\omega)$ time.
 :::
 
-[Jianbo Wang](https://wangchienbo.github.io/), Siyun Zhou and I [wrote up a paper](https://chaoxuprime.com/files/papers/zeroforcing.pdf) on this. We also improved the running time for solving the $n\times n$ grid lights out game to $O(n^\omega\log n)$.
+[Jianbo Wang](https://wangchienbo.github.io/), Siyun Zhou and I [wrote up a paper](https://chaoxu.prof/files/papers/zeroforcing.pdf) on this. We also improved the running time for solving the $n\times n$ grid lights out game to $O(n^\omega\log n)$.
 
 Unfortunately, minimum (weighted) zero forcing set is NP-hard to find [@AazamiAshkan2008]. It is also very large for simple graphs. Caterpillars have a $\Omega(n)$ size zero forcing set.
 
