@@ -1,0 +1,374 @@
+---
+title: "A polynomial time algorithm for submodular 4-partition"
+author: "Tsuyoshi Hirayama, Yuhao Liu, Kazuhisa Makino, Ke Shi, **Chao Xu**"
+format: 
+  revealjs:
+    incremental: true
+    html-math-method: mathjax
+callout-icon: false
+bibliography: ref.bib
+---
+
+
+## Submodular $k$-partition
+$\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}$
+
+  - A function $f:2^V\to \R$ is **submodular** if $f(A)+f(B)\geq f(A\cup B)+f(A\cap B)$ for all $A,B\subset V$. \pause
+  - $\{V_1,\ldots,V_k\}$ is a **$k$-partition** of $V$ if they are non-empty, pairwise disjoint, and $V=\bigcup_{i=1}^k V_i$.
+  - A $k$-partition $\mathcal{X}$ is minimum if $\sum_{X\in \mathcal{X}} f(X)$ is minimized.
+  - *Submodular $k$-partition problem*: Find a minimum $k$-partition.
+  - Goal: A polynomial time algorithm for *fixed* $k$.
+
+
+## Example: Min $k$-cut in graphs
+
+::: {.columns}
+
+::: {.column width="40%"}
+  ![Elephant](figures/graph.png)
+    $G=(V,E)$ is a graph.
+:::
+
+::: {.column width="60%"}
+  - $F$ is a $k$-cut if $G-F$ has at least $k$ components. 
+  - $c$ is the cut function, $c(S)$ is number of edges with $1$ vertex in $S$ and one outside of $S$. 
+  - $c$ is submodular.
+  - **min-$k$-cut = min submodular $k$-partition of $c$**.
+:::
+
+:::
+
+
+## Example: Min $k$-cut in hypergraphs
+
+::: {.columns}
+
+::: {.column width="40%"}
+  ![Hypergraph](figures/hypergraphcut.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+  - min $k$-partition: min submodular $k$-partition of the cut function $c$.
+  - min $k$-cut: same definition as graph minimum $k$-cut.
+  - hypergraph $k$-partition $\neq$ hypergraph $k$-cut!
+:::
+
+:::
+
+
+## Example: Min $k$-cut in hypergraphs
+
+::: {.columns}
+
+::: {.column width="40%"}
+  ![Hypergraph](figures/hypergraphcut.png){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+  - Let $h(e)\in e$ be a designated vertex of $e$. $f(S)$ is number of edges with $h(e)\in S$ and some vertex of $e$ outside of $S$.
+  - min-$k$-cut = min submodular $k$-partition of $f$.
+:::
+
+:::
+
+## Previous works on GRAPH $k$-cut
+   
+  - Fix a partition class: $n^{\Theta(k^2)}$ [@GH]. 
+  - Randomized contraction: $\tilde{O}(n^{2(k-1)})$ [@karger_new_1996]. 
+  - Divide and conquer: $O(n^{(4+o(1))k})$ [@KYN], $O(n^{(4-o(1))k})$ [@Xiao08].
+  - Tree packing: $\tilde{O}(n^{2k})$ [@Thorup], $\tilde{O}(n^{2k-1})$ [@chekuri_lp_2020]
+  - Optimum randomized contraction $\tilde{O}(n^k)$ [@gupta_karger-stein_2019].
+
+##  Previous works on HYPERGRAPH $k$-cut
+  - $k=2$: Vertex ordering: [@Klimmek1996;@Queyranne1998;@mak_fast_2000].
+  - $k=2$: Randomized contraction: [@Ghaffari2017]. 
+  - $k=3$: Deterministic contraction [@xiao_finding_2010].
+  - Constant rank: Hypertree packing [@Fukunaga]. 
+  - Fixed $k$: randomized algorithm [@chandrasekaranHypergraphKcutRandomized2021;@fox2019minimum]. 
+  - Fixed $k$: deterministic algorithm [@Chand.C2022].
+
+
+## Submodular $k$-partition
+
+ - $k=2$: Reduces to symmetric submodular minimization. i.e. $g(S)=f(S)+f(V\setminus S)$.
+ - $k=3$: Generalizes hypergraph 3-cut [@Okumoto2010]
+ - Symmetric submodular $k+1$ partition reduces to submodular $k$-partition in polynomial time [@Chand.C2022]
+ - Open for $k\geq 4$.
+
+
+
+## Technique:Deletion
+Deletion: Solve $j$-partition on $f_{\setminus X}$ and $k-j$-partition on $f_{\setminus (V\setminus X)}$ where $0<j<k$.
+
+![](figures/deletion.png){fig-align="center"}
+
+## Technique:Contraction
+Contraction: Solve $k$-partition on $f_{/X}$, such that $X$ does not cross some minimum $k$-partition. 
+
+![](figures/contraction.png){fig-align="center"}
+
+
+
+## Previous Results by Technique
+
+
+| Technique | Graph | Hypergraph | Submodular|
+|------|------|------|------|
+| Deletion    | $k$    | $k$    |    ?  |
+| Contraction    | $k$ (randomized)    | $k$ (randomzied)  |  3    |
+| Tree Packing    | $k$    | $k$ (constant rank)    |  ?    |
+
+
+
+## New Result
+
+| Technique | Graph | Hypergraph | Submodular|
+|------|------|------|------|
+| Deletion    | $k$    | $k$    |    ?  |
+| Contraction    | $k$ (randomized)    | $k$ (randomzied)  |  **4**    |
+| Tree Packing    | $k$    | $k$ (constant rank)    |  ?    |
+
+## Our results
+
+$\tau(n)$ time to minimize a submodular function on $n$ vertices.
+
+
+::: {.callout-note}
+# Theorem
+There exists a $O(n^6\tau(n))$ time algorithm for submodular 4-partition.
+:::
+
+::: {.callout-note}
+# Theorem
+There exists a $O(n^{14}\tau(n))$ time algorithm for symmetric submodular 5-partition.
+:::
+
+
+# Warmup: Submodular $3$-partition
+## Submodular $3$-partition
+
+- A partition is *$h$-size* if all its components contain at least $h$ elements. 
+- A partition is *non-trivial* if at least two partition classes has size at least $2$.
+
+::: {.columns}
+
+::: {.column width="40%"}
+  ![](figures/2size.png)
+:::
+
+::: {.column width="45%"}
+  ![](figures/trivial.png)
+:::
+
+:::
+
+## Warmup: Submodular $3$-partition
+
+A partition ${\cal X}$ is noncrossing with a partition ${\cal Y}$
+if there is a component of $\mathcal{X}$ that is contained in some component of $\mathcal{Y}$.
+
+![](figures/noncrossing.png){fig-align="center"}
+
+## Main observation
+
+::: {.callout-note}
+# Theorem
+Let $f$ be a submodular function on at least 7 vertices. If all minimum $3$-partition are $2$-size, then every minimum non-trivial $2$-partition is noncrossing with some minimum $3$-partition.
+:::
+
+![](figures/alg1.png){fig-align="center"}
+
+
+## Running Time Analysis
+
+\begin{align*}
+T(n) &= \max_{\substack{a+b=n\\ 1\leq a\leq b \leq n-2}} T(a+1)+T(b+1)+O(n \tau(n))\\
+     &= O(n^2 \tau(n))
+\end{align*}
+
+## Proof
+
+
+::: {.callout-note}
+# Theorem
+Let $f$ be a submodular function on at least 7 vertices. If all minimum $3$-partition are $2$-size, then every minimum non-trivial $2$-partition is noncrossing with some minimum $3$-partition.
+:::
+
+A configuration between two partitions $\mathcal{X}$ and $\mathcal{Y}$ is a matrix $M$ such that $M_{i,j} = |X_i\cap Y_j|$.
+
+## Case 1: A row with two $0$s
+
+$\mathcal{X}$ a minimum non-trivial $2$-partition.
+$\mathcal{Y}$ a minimum $3$-partition that is $2$-size.
+
+![](figures/config1.png){fig-align="center"}
+
+$n^+$ means at least $n$, $n$ means exactly $n$. $X_1\subset Y_1$. DONE.
+
+
+## Case 2: A row with one $0$
+
+::: {.columns}
+::: {.column width=30%}
+![](figures/config2.png){fig-align="center"}
+:::
+::: {.column width=70%}
+![](figures/xy2.png){fig-align="center"}
+:::
+:::
+$\mathcal{X}$ is noncrossing with $\mathcal{Y}'$.
+\begin{align*}
+&f(\mathcal{X})+f(\mathcal{Y})\\
+=&f(X_1)+f(X_2)+f(Y_1)+f(Y_2)+f(Y_3)\\
+\geq& f(X_1\cap Y_1) + f(X_1\cup Y_1)+f(X_2)+f(Y_2)+f(Y_3)\\
+\geq& f(X_1\cap Y_1) + f(X_1\cup Y_1\cup Y_2)+f(X_1\cap Y_2) \\
+    &+f(X_2)+f(Y_3)\\
+=& f(\mathcal{X'})+f(\mathcal{Y'}) \geq f(\mathcal{X})+f(\mathcal{Y})
+\end{align*}
+
+## Case 3: No $0$s in any row
+![](figures/config3.png){fig-align="center"}
+
+![](figures/xy3.png){fig-align="center"}
+
+$\mathcal{X}$ is noncrossing with $\mathcal{Y}'$.
+
+# Submodular $4$-partition
+
+## Try the same thing?
+
+ - Noncrossing is insufficient for polynomial time algorithm.
+ - $X\subset Y$, contract $1$ of the $3$ partitions.
+ - Let $\mathcal{X}=\{X_1,X_2,X_3\}$ such that $|X_1|=n-4$, $|X_2|,|X_3|=2$.
+ - $T(n) \geq 2T(n-1) + O(n^c)$
+ - $T(n)$ is exponential.
+
+## Submodular $4$-partition
+
+::: {.columns}
+
+::: {.column width=50%}
+::: {.callout-note}
+# Definition (Noncrossing)   
+A partition ${\cal X}$ is noncrossing with a partition ${\cal Y}$ if there is a component of $\mathcal{X}$ that is contained in some component of $\mathcal{Y}$.
+::: 
+
+::: {.callout-note}
+# Definition (Compatible)
+A partition $\mathcal{X}$ is compatible with partition $\mathcal{Y}$, if there are $|\mathcal{X}|-1$ components of $\mathcal{X}$ that each is contained inside some component of $\mathcal{Y}$.
+::: 
+:::
+
+::: {.column width=50%}
+
+![](figures/compatible.png)
+Noncrossing = Compatible if $|\mathcal{X}|=2$. 
+:::
+:::
+
+## Structrual theorem for 4-partition
+
+::: {.callout-note}
+# Theorem
+Let $f$ be a submodular function on at least $(2\times 3)+1$ vertices. If all minimum $3$-partition are $2$-size, then every minimum non-trivial $2$-partition is compatible with some minimum $3$-partition.
+::: 
+
+::: {.callout-note}
+# Theorem
+Let $f$ be a submodular function on at least $(3\times 4)+1$ vertices. If all minimum $4$-partition are $3$-size, then every minimum non-trivial $3$-partition is compatible with some minimum $4$-partition.
+:::
+
+Compatible allows us to contract $|\mathcal{X}|-1$ sets at the same time.
+
+
+## Algorithm for 4-partition
+
+![](figures/alg2.png){fig-align="center"}
+
+## Analysis of running time
+
+::: {.nonincremental}
+
+ - Minimum $3$-partition takes $O(n^2\tau(n))$ time.
+ - Minimum non-trivial 3-partition takes $O(n^5\tau(n))$ time.
+
+:::
+
+\begin{align}T(n) &= \max_{\substack{a_1+a_2+a_3=n\\ 1\leq a_1\leq a_2\leq a_3\leq n-3}} \sum_{i=1}^3 T(a_i+2)+O(n^5\tau(n))\\
+ &= O(n^6\tau(n)).
+\end{align}
+
+
+
+## Proof?
+::: {.callout-note}
+# Theorem
+Let $f$ be a submodular function on at least $(3\times 4)+1$ vertices. If all minimum $4$-partition are $3$-size, then every minimum non-trivial $3$-partition is compatible with some minimum $4$-partition.
+::: 
+
+ - The theorem seems to be an obvious generalization
+ - but only in hindsight
+ - There are many possible generalizations, all of them require lot of cases analysis.
+ - How did we arrive at the correct theorem?
+
+## Computer search!
+
+
+ - Assumption: For any $\mathcal{X}=\{X_1,X_2,X_3\}$ min-$3$-partition and any $\mathcal{Y}=\{Y_1,Y_2,Y_3,Y_4\}$ min-$4$-partition. There exists a min-4-partition can be obtained by grouping $Z_{ij} = X_i\cap Y_j$. 
+ - We only have to look at the configurations!
+ - Fix a configuration (so also corresponding $\mathcal{X}$ and $\mathcal{Y}$)
+ - If there exists a counterexample, then it exists on a $12$ vertex submodular function.
+ - (not exactly, but close)
+
+## Space of submodular functions?
+
+Encode the space of submodular function on $12$ elements through linear constraints. Let $x_S$ to be the variable encode the value of $f$ on set $S$.
+
+- $f(A)+f(B)\leq f(A\cup B)+f(A\cap B)$ for all $A,B\subseteq V$.
+- $x_A+x_B\leq x_{A\cup B}+x_{A\cap B}$.
+- $(2^{12})^2=16777216$ constraints. 
+- $f(X\cup \{x_1\})+f(X\cup \{x_2\}) \geq f(X\cup\{x_1,x_2\})+f(X)$ for all $x_1\neq x_2$ and $x_1,x_2\in V\setminus X$. No more than ${12 \choose 2} 2^{12} = 270336$ constraints. (actually, 67584)
+
+## Encode min-$k$-partitions
+ 
+ - Encode $\mathcal{X}$ as a min-$3$-partition. So $\sum_{X\in \mathcal{X}} f(X)\leq \sum_{X\in \mathcal{X'}} f(X)$ for all $3$-partition $\mathcal{X}'$ ($86526$ constraints)
+ - Similarly for min-$4$-partition, and set its value to be $1$ ($611501$ constraints). 
+ - Almost 800k constraints with 4k variables!
+ - We can be smart: most constraints are redundant,
+ - but in this day and age, that is nothing for Gurobi ![](figures/gurobi.png){width=1em} 🤷
+
+## Remaining LP
+ - Let $z\leq \sum_{Y\in \mathcal{Y'}} f(Y)$ for all $\mathcal{Y'}$ compatible to $\mathcal{X}$.
+ - Run the linear program maximizing $z$. 
+ - The theorem is true if $z=1$ for every choice of $\mathcal{X}$ and $\mathcal{Y}$ ($611501\times 86526 = 52910735526$, but use symmetry and other magic, we can cut it down to $23$).
+ - So we ran $23$ LPs and in a few minutes we know the theorem is correct.
+ - Find a simple way to prove it by hand.
+
+## How about larger $k$?
+::: {.callout-note}
+# Conjecture
+Let $f$ be a submodular function on at least $(k-1)\times k+1$ vertices. If all minimum $k$-partition are $k-1$-size, then every minimum non-trivial $k-1$-partition is compatible with some minimum $k$-partition.
+::: 
+
+FALSE! Even for graphs!
+
+::: {.columns}
+::: {.column width=40%}
+![](figures/counterexample.png){fig-align="center"}
+:::
+
+::: {.column width=50%}
+All edge has weight $2$, except the light edge, which has weight $1$.
+:::
+:::
+
+## Open problems
+
+ - Polynomial time algorithm for $k \geq 5$?
+ - Every min $k$-partition is non-crossing with respect to a min $k+1$-partition?
+ - Every min $k$-partition has at least $\lceil k/2\rceil$ parts contained in some parts of a min $k+1$-partition?
+ - What are the redundant constraints for the LP? 
+
+## References
