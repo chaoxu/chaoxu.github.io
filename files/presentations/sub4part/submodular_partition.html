@@ -418,8 +418,8 @@ Tsuyoshi Hirayama, Yuhao Liu, Kazuhisa Makino, Ke Shi, <strong>Chao Xu</strong>
 </div>
 </div>
 </section>
-<section id="previous-works-on-graph-k-cut" class="slide level2">
-<h2>Previous works on GRAPH <span class="math inline">\(k\)</span>-cut</h2>
+<section id="graph-k-cut" class="slide level2">
+<h2>GRAPH <span class="math inline">\(k\)</span>-cut</h2>
 <ul>
 <li class="fragment">Fix a partition class: <span class="math inline">\(n^{\Theta(k^2)}\)</span> <span class="citation" data-cites="GH">(<a href="#/references" role="doc-biblioref" onclick="">Goldschmidt and Hochbaum 1994</a>)</span>.</li>
 <li class="fragment">Randomized contraction: <span class="math inline">\(\tilde{O}(n^{2(k-1)})\)</span> <span class="citation" data-cites="karger_new_1996">(<a href="#/references" role="doc-biblioref" onclick="">Karger and Stein 1996</a>)</span>.</li>
@@ -428,8 +428,8 @@ Tsuyoshi Hirayama, Yuhao Liu, Kazuhisa Makino, Ke Shi, <strong>Chao Xu</strong>
 <li class="fragment">Optimum randomized contraction <span class="math inline">\(\tilde{O}(n^k)\)</span> <span class="citation" data-cites="gupta_karger-stein_2019">(<a href="#/references" role="doc-biblioref" onclick="">Gupta, Lee, and Li 2019</a>)</span>.</li>
 </ul>
 </section>
-<section id="previous-works-on-hypergraph-k-cut" class="slide level2">
-<h2>Previous works on HYPERGRAPH <span class="math inline">\(k\)</span>-cut</h2>
+<section id="hypergraph-k-cut" class="slide level2">
+<h2>HYPERGRAPH <span class="math inline">\(k\)</span>-cut</h2>
 <ul>
 <li class="fragment"><span class="math inline">\(k=2\)</span>: Vertex ordering: <span class="citation" data-cites="Klimmek1996 Queyranne1998 mak_fast_2000">(<a href="#/references" role="doc-biblioref" onclick="">Klimmek and Wagner 1996</a>; <a href="#/references" role="doc-biblioref" onclick="">Queyranne 1998</a>; <a href="#/references" role="doc-biblioref" onclick="">Mak and Wong 2000</a>)</span>.</li>
 <li class="fragment"><span class="math inline">\(k=2\)</span>: Randomized contraction: <span class="citation" data-cites="Ghaffari2017">(<a href="#/references" role="doc-biblioref" onclick="">Ghaffari, Karger, and Panigrahi 2017</a>)</span>.</li>
@@ -630,7 +630,7 @@ T(n) &amp;= \max_{\substack{a+b=n\\ 1\leq a\leq b \leq n-2}} T(a+1)+T(b+1)+O(n \
 </div>
 </div>
 </div>
-<p><span class="math inline">\(\mathcal{X}\)</span> is noncrossing with <span class="math inline">\(\mathcal{Y}'\)</span>. <span class="math display">\[\begin{align*}
+<p><span class="math display">\[\begin{align*}
 &amp;f(\mathcal{X})+f(\mathcal{Y})\\
 =&amp;f(X_1)+f(X_2)+f(Y_1)+f(Y_2)+f(Y_3)\\
 \geq&amp; f(X_1\cap Y_1) + f(X_1\cup Y_1)+f(X_2)+f(Y_2)+f(Y_3)\\
@@ -758,20 +758,29 @@ T(n) &amp;= \max_{\substack{a+b=n\\ 1\leq a\leq b \leq n-2}} T(a+1)+T(b+1)+O(n \
 </section>
 <section id="computer-search" class="slide level2">
 <h2>Computer search!</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Conjecture</strong></p>
+</div>
+<div class="callout-content">
+<p>Every min-<span class="math inline">\(3\)</span>-partition is compatible with some min-<span class="math inline">\(4\)</span>-partition.</p>
+</div>
+</div>
+</div>
 <ul>
-<li class="fragment">Assumption: For any <span class="math inline">\(\mathcal{X}=\{X_1,X_2,X_3\}\)</span> min-<span class="math inline">\(3\)</span>-partition and any <span class="math inline">\(\mathcal{Y}=\{Y_1,Y_2,Y_3,Y_4\}\)</span> min-<span class="math inline">\(4\)</span>-partition. There exists a min-4-partition can be obtained by grouping <span class="math inline">\(Z_{ij} = X_i\cap Y_j\)</span>.</li>
+<li class="fragment">Assumption: For any <span class="math inline">\(\mathcal{X}=\{X_1,X_2,X_3\}\)</span> min-<span class="math inline">\(3\)</span>-partition and any <span class="math inline">\(\mathcal{Y}=\{Y_1,Y_2,Y_3,Y_4\}\)</span> min-<span class="math inline">\(4\)</span>-partition. There exists a compatible min-4-partition can be obtained by grouping <span class="math inline">\(Z_{ij} = X_i\cap Y_j\)</span>.</li>
 <li class="fragment">We only have to look at the configurations!</li>
 <li class="fragment">Fix a configuration (so also corresponding <span class="math inline">\(\mathcal{X}\)</span> and <span class="math inline">\(\mathcal{Y}\)</span>)</li>
 <li class="fragment">If there exists a counterexample, then it exists on a <span class="math inline">\(12\)</span> vertex submodular function.</li>
-<li class="fragment">(not exactly, but close)</li>
 </ul>
 </section>
 <section id="space-of-submodular-functions" class="slide level2">
 <h2>Space of submodular functions?</h2>
 <p>Encode the space of submodular function on <span class="math inline">\(12\)</span> elements through linear constraints. Let <span class="math inline">\(x_S\)</span> to be the variable encode the value of <span class="math inline">\(f\)</span> on set <span class="math inline">\(S\)</span>.</p>
 <ul>
-<li class="fragment"><span class="math inline">\(f(A)+f(B)\leq f(A\cup B)+f(A\cap B)\)</span> for all <span class="math inline">\(A,B\subseteq V\)</span>.</li>
-<li class="fragment"><span class="math inline">\(x_A+x_B\leq x_{A\cup B}+x_{A\cap B}\)</span>.</li>
+<li class="fragment"><span class="math inline">\(f(A)+f(B)\geq f(A\cup B)+f(A\cap B)\)</span> for all <span class="math inline">\(A,B\subseteq V\)</span>.</li>
+<li class="fragment"><span class="math inline">\(x_A+x_B\geq x_{A\cup B}+x_{A\cap B}\)</span>.</li>
 <li class="fragment"><span class="math inline">\((2^{12})^2=16777216\)</span> constraints.</li>
 <li class="fragment"><span class="math inline">\(f(X\cup \{x_1\})+f(X\cup \{x_2\}) \geq f(X\cup\{x_1,x_2\})+f(X)\)</span> for all <span class="math inline">\(x_1\neq x_2\)</span> and <span class="math inline">\(x_1,x_2\in V\setminus X\)</span>. No more than <span class="math inline">\({12 \choose 2} 2^{12} = 270336\)</span> constraints. (actually, 67584)</li>
 </ul>
@@ -779,8 +788,8 @@ T(n) &amp;= \max_{\substack{a+b=n\\ 1\leq a\leq b \leq n-2}} T(a+1)+T(b+1)+O(n \
 <section id="encode-min-k-partitions" class="slide level2">
 <h2>Encode min-<span class="math inline">\(k\)</span>-partitions</h2>
 <ul>
-<li class="fragment">Encode <span class="math inline">\(\mathcal{X}\)</span> as a min-<span class="math inline">\(3\)</span>-partition. So <span class="math inline">\(\sum_{X\in \mathcal{X}} f(X)\leq \sum_{X\in \mathcal{X'}} f(X)\)</span> for all <span class="math inline">\(3\)</span>-partition <span class="math inline">\(\mathcal{X}'\)</span> (<span class="math inline">\(86526\)</span> constraints)</li>
-<li class="fragment">Similarly for min-<span class="math inline">\(4\)</span>-partition, and set its value to be <span class="math inline">\(1\)</span> (<span class="math inline">\(611501\)</span> constraints).</li>
+<li class="fragment">Encode <span class="math inline">\(\mathcal{X}\)</span> as a min-<span class="math inline">\(3\)</span>-partition. So <span class="math inline">\(\sum_{X\in \mathcal{X}} f(X)\leq \sum_{X\in \mathcal{X'}} f(X)\)</span> for all <span class="math inline">\(3\)</span>-partition <span class="math inline">\(\mathcal{X}'\)</span> (<span class="math inline">\({12 \brace 3}=86526\)</span> constraints)</li>
+<li class="fragment">Similarly for min-<span class="math inline">\(4\)</span>-partition, and set its value to be <span class="math inline">\(1\)</span> (<span class="math inline">\({12 \brace 4}=611501\)</span> constraints).</li>
 <li class="fragment">Almost 800k constraints with 4k variables!</li>
 <li class="fragment">We can be smart: most constraints are redundant,</li>
 <li class="fragment">but in this day and age, that is nothing for Gurobi <img data-src="figures/gurobi.png" style="width:1em"> 🤷</li>
@@ -791,7 +800,7 @@ T(n) &amp;= \max_{\substack{a+b=n\\ 1\leq a\leq b \leq n-2}} T(a+1)+T(b+1)+O(n \
 <ul>
 <li class="fragment">Let <span class="math inline">\(z\leq \sum_{Y\in \mathcal{Y'}} f(Y)\)</span> for all <span class="math inline">\(\mathcal{Y'}\)</span> compatible to <span class="math inline">\(\mathcal{X}\)</span>.</li>
 <li class="fragment">Run the linear program maximizing <span class="math inline">\(z\)</span>.</li>
-<li class="fragment">The theorem is true if <span class="math inline">\(z=1\)</span> for every choice of <span class="math inline">\(\mathcal{X}\)</span> and <span class="math inline">\(\mathcal{Y}\)</span> (<span class="math inline">\(611501\times 86526 = 52910735526\)</span>, but use symmetry and other magic, we can cut it down to <span class="math inline">\(23\)</span>).</li>
+<li class="fragment">The theorem is true if <span class="math inline">\(z=1\)</span> for every choice of <span class="math inline">\(\mathcal{X}\)</span> and <span class="math inline">\(\mathcal{Y}\)</span> (every (useful) configuration, <span class="math inline">\(23\)</span> of them)</li>
 <li class="fragment">So we ran <span class="math inline">\(23\)</span> LPs and in a few minutes we know the theorem is correct.</li>
 <li class="fragment">Find a simple way to prove it by hand.</li>
 </ul>
@@ -808,6 +817,7 @@ T(n) &amp;= \max_{\substack{a+b=n\\ 1\leq a\leq b \leq n-2}} T(a+1)+T(b+1)+O(n \
 </div>
 </div>
 </div>
+<div class="fragment">
 <p>FALSE! Even for graphs!</p>
 <div class="columns">
 <div class="column" style="width:40%;">
@@ -820,6 +830,15 @@ T(n) &amp;= \max_{\substack{a+b=n\\ 1\leq a\leq b \leq n-2}} T(a+1)+T(b+1)+O(n \
 <p>All edge has weight <span class="math inline">\(2\)</span>, except the light edge, which has weight <span class="math inline">\(1\)</span>.</p>
 </div>
 </div>
+</div>
+</section>
+<section id="open-problems" class="slide level2">
+<h2>Open problems</h2>
+<ul>
+<li class="fragment">Polynomial time algorithm for <span class="math inline">\(k \geq 5\)</span>?</li>
+<li class="fragment">Every min <span class="math inline">\(k\)</span>-partition is non-crossing with respect to a min <span class="math inline">\(k+1\)</span>-partition?</li>
+<li class="fragment">How many constraints does one need to encode a particular <span class="math inline">\(k\)</span>-partition is a min-<span class="math inline">\(k\)</span>-partition for a submodular function? Note <span class="math inline">\(\left\{{20\atop 5}\right\} = 749206090500\)</span>.</li>
+</ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>

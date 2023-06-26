@@ -73,7 +73,7 @@ $\newcommand{\N}{\mathbb{N}}
 
 :::
 
-## Previous works on GRAPH $k$-cut
+## GRAPH $k$-cut
    
   - Fix a partition class: $n^{\Theta(k^2)}$ [@GH]. 
   - Randomized contraction: $\tilde{O}(n^{2(k-1)})$ [@karger_new_1996]. 
@@ -81,7 +81,7 @@ $\newcommand{\N}{\mathbb{N}}
   - Tree packing: $\tilde{O}(n^{2k})$ [@Thorup], $\tilde{O}(n^{2k-1})$ [@chekuri_lp_2020]
   - Optimum randomized contraction $\tilde{O}(n^k)$ [@gupta_karger-stein_2019].
 
-##  Previous works on HYPERGRAPH $k$-cut
+## HYPERGRAPH $k$-cut
   - $k=2$: Vertex ordering: [@Klimmek1996;@Queyranne1998;@mak_fast_2000].
   - $k=2$: Randomized contraction: [@Ghaffari2017]. 
   - $k=3$: Deterministic contraction [@xiao_finding_2010].
@@ -218,7 +218,7 @@ $n^+$ means at least $n$, $n$ means exactly $n$. $X_1\subset Y_1$. DONE.
 ![](figures/xy2.png){fig-align="center"}
 :::
 :::
-$\mathcal{X}$ is noncrossing with $\mathcal{Y}'$.
+
 \begin{align*}
 &f(\mathcal{X})+f(\mathcal{Y})\\
 =&f(X_1)+f(X_2)+f(Y_1)+f(Y_2)+f(Y_3)\\
@@ -315,26 +315,29 @@ Let $f$ be a submodular function on at least $(3\times 4)+1$ vertices. If all mi
 
 ## Computer search!
 
+::: {.callout-note}
+# Conjecture
+Every min-$3$-partition is compatible with some min-$4$-partition. 
+:::  
 
- - Assumption: For any $\mathcal{X}=\{X_1,X_2,X_3\}$ min-$3$-partition and any $\mathcal{Y}=\{Y_1,Y_2,Y_3,Y_4\}$ min-$4$-partition. There exists a min-4-partition can be obtained by grouping $Z_{ij} = X_i\cap Y_j$. 
+ - Assumption: For any $\mathcal{X}=\{X_1,X_2,X_3\}$ min-$3$-partition and any $\mathcal{Y}=\{Y_1,Y_2,Y_3,Y_4\}$ min-$4$-partition. There exists a compatible min-4-partition can be obtained by grouping $Z_{ij} = X_i\cap Y_j$. 
  - We only have to look at the configurations!
  - Fix a configuration (so also corresponding $\mathcal{X}$ and $\mathcal{Y}$)
  - If there exists a counterexample, then it exists on a $12$ vertex submodular function.
- - (not exactly, but close)
 
 ## Space of submodular functions?
 
 Encode the space of submodular function on $12$ elements through linear constraints. Let $x_S$ to be the variable encode the value of $f$ on set $S$.
 
-- $f(A)+f(B)\leq f(A\cup B)+f(A\cap B)$ for all $A,B\subseteq V$.
-- $x_A+x_B\leq x_{A\cup B}+x_{A\cap B}$.
+- $f(A)+f(B)\geq  f(A\cup B)+f(A\cap B)$ for all $A,B\subseteq V$.
+- $x_A+x_B\geq x_{A\cup B}+x_{A\cap B}$.
 - $(2^{12})^2=16777216$ constraints. 
 - $f(X\cup \{x_1\})+f(X\cup \{x_2\}) \geq f(X\cup\{x_1,x_2\})+f(X)$ for all $x_1\neq x_2$ and $x_1,x_2\in V\setminus X$. No more than ${12 \choose 2} 2^{12} = 270336$ constraints. (actually, 67584)
 
 ## Encode min-$k$-partitions
  
- - Encode $\mathcal{X}$ as a min-$3$-partition. So $\sum_{X\in \mathcal{X}} f(X)\leq \sum_{X\in \mathcal{X'}} f(X)$ for all $3$-partition $\mathcal{X}'$ ($86526$ constraints)
- - Similarly for min-$4$-partition, and set its value to be $1$ ($611501$ constraints). 
+ - Encode $\mathcal{X}$ as a min-$3$-partition. So $\sum_{X\in \mathcal{X}} f(X)\leq \sum_{X\in \mathcal{X'}} f(X)$ for all $3$-partition $\mathcal{X}'$ (${12 \brace 3}=86526$ constraints)
+ - Similarly for min-$4$-partition, and set its value to be $1$ (${12 \brace 4}=611501$ constraints). 
  - Almost 800k constraints with 4k variables!
  - We can be smart: most constraints are redundant,
  - but in this day and age, that is nothing for Gurobi ![](figures/gurobi.png){width=1em} 🤷
@@ -342,7 +345,7 @@ Encode the space of submodular function on $12$ elements through linear constrai
 ## Remaining LP
  - Let $z\leq \sum_{Y\in \mathcal{Y'}} f(Y)$ for all $\mathcal{Y'}$ compatible to $\mathcal{X}$.
  - Run the linear program maximizing $z$. 
- - The theorem is true if $z=1$ for every choice of $\mathcal{X}$ and $\mathcal{Y}$ ($611501\times 86526 = 52910735526$, but use symmetry and other magic, we can cut it down to $23$).
+ - The theorem is true if $z=1$ for every choice of $\mathcal{X}$ and $\mathcal{Y}$ (every (useful) configuration, $23$ of them)
  - So we ran $23$ LPs and in a few minutes we know the theorem is correct.
  - Find a simple way to prove it by hand.
 
@@ -351,6 +354,8 @@ Encode the space of submodular function on $12$ elements through linear constrai
 # Conjecture
 Let $f$ be a submodular function on at least $(k-1)\times k+1$ vertices. If all minimum $k$-partition are $k-1$-size, then every minimum non-trivial $k-1$-partition is compatible with some minimum $k$-partition.
 ::: 
+ 
+. . .
 
 FALSE! Even for graphs!
 
@@ -368,7 +373,6 @@ All edge has weight $2$, except the light edge, which has weight $1$.
 
  - Polynomial time algorithm for $k \geq 5$?
  - Every min $k$-partition is non-crossing with respect to a min $k+1$-partition?
- - Every min $k$-partition has at least $\lceil k/2\rceil$ parts contained in some parts of a min $k+1$-partition?
- - What are the redundant constraints for the LP? 
+ - How many constraints does one need to encode a particular $k$-partition is a min-$k$-partition for a submodular function? Note $\left\{{20\atop 5}\right\} = 749206090500$.
 
 ## References
