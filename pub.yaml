@@ -17,6 +17,7 @@ venues:
   MFCS: International Symposium on Mathematical Foundations of Computer Science
   NeurIPS: Conference on Neural Information Processing Systems
   FSTTCS: Foundations of Software Technology and Theoretical Computer Science
+  COCOON: International Computing and Combinatorics Conference
 
 people:
   Chao Xu: https://chaoxu.prof
@@ -83,6 +84,21 @@ types:
 
 # conference publications
 
+---
+id: zeroforcing
+show: [d]
+title: Solving systems of linear equations through zero forcing set
+authors: [Jianbo Wang, Chao Xu, Siyun Zhou]
+type: conference
+year: 2023
+pub: COCOON (to appear)
+abstract: >
+  Let $\mathbb{F}$ be any field, we consider solving $Ax=b$ for a matrix $A\in\mathbb{F}^{n\times n}$
+  of $m$ non-zero elements and $b\in\mathbb{F}^{n}$. If we are given a zero forcing set of $A$ of size
+  $k$, we can solve the linear equation in $O(mk+k^\omega)$ time, where $\omega$ is the matrix
+  multiplication exponent. As an application, we show how the lights out game in an $n\times n$
+  grid is solved in $O(n^3)$ time, and then improve the running time to $O(n^\omega\log n)$ by
+  exploiting the repeated structure in grids.
 ---
 id: sub4part
 show: [d,p]
@@ -598,21 +614,6 @@ abstract: >
 
 
 # manuscripts
----
-id: zeroforcing
-show: [d]
-title: Solving systems of linear equations through zero forcing set and application to lights out
-authors: [Jianbo Wang, Chao Xu, Siyun Zhou]
-type: manuscript
-year: 2022
-abstract: >
-  Let $\mathbb{F}$ be any field, we consider solving $Ax=b$ repeatedly for a matrix 
-  $A\in\mathbb{F}^{n\times n}$ of $m$ non-zero elements, and multiple different 
-  $b\in\mathbb{F}^{n}$. If we are given a zero forcing set of $A$ of size $k$,
-  we can then build a data structure in $O(mk+k^\omega)$ time, such that each instance of
-  $Ax=b$ can be solved in $O(k^2+m)$ time. As an application, we show how the lights
-  out game in an $n\times n$ grid is solved in $O(n^3)$ time, and then improve the running
-  time to $O(n^\omega\log n)$ by exploiting the repeated structure in grids.
 ---
 id: cyclic-cover
 title: Almost optimum $\ell$-covering of $\Z_n$
