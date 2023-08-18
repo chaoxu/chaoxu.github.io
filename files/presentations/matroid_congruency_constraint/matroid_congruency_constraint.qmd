@@ -10,63 +10,72 @@ callout-icon: false
 bibliography: matroid_congruency_constraint.bib
 ---
 
-## Combinatorial optimization problem
+## Combinatorial search problem
 
 $\newcommand{\R}{\mathbb{R}}$
 $\newcommand{\Z}{\mathbb{Z}}$
 $\newcommand{\N}{\mathbb{N}}$
 
-A combinatorial optimization problem:
-
  - A groundset of elements $E$ 
  - Feasible sets $\mathcal{F}\subseteq 2^E$
- - Weight function $w:E\to \R_+$
- - $w(X) = \sum_{x\in X} w(x)$ for $X\subseteq E$
+ - Find an element in the feasible set
 
-Find $\min_{F\in \mathcal{F}} w(F)$.
-
-::: {.incremental}
-
-- $w=0$: feasibility.
-- $w=1$: unweighted.
-:::
-
-
-## Combinatorial optimization problem with congruency constraint
+## Combinatorial search problem with congruency constraint
 
 ::: {.incremental}
  - $\Z_k=\{0,\ldots,k-1\}$. Addition is defined as $a+b = a+b \pmod k$.
  - Given a label function $\ell:E\to \Z_k$ and $b\in \Z_k$. Let $\ell(X)=\sum_{x\in X}\ell(x)$.
  - $b$-feasible sets are $\mathcal{F}_b = \{\ell(F) =  b | F\in \mathcal{F}\}$. 
- - Goal: find $\min_{F\in \mathcal{F}_b} w(F)$.
+ - Goal: find a set in $\mathcal{F}_b$.
  - When $k=2$, we call it parity constraint.
 :::
 
 ## Alternative formulation for parity constraint
 
 - A set of red elements $R\subseteq E$.
-- Finding a minimum weight feasible set with odd (even) number of red elements.
+- Find a feasible set with odd (even) number of red elements.
+
+## Major Question {background-color="aquamarine"}
+
+For what kind of feasible family $\mathcal{F}$, is search over $\mathcal{F}_b$ is easy?
 
 ## Example: Cycles
 
 ::: {.callout-note}
-## Shortest cycle
-Given a (directed) graph with non-negative weight, find a cycle of minimum weight.
+## Cycle
+Given a (directed) graph, find a cycle.
 :::
 
-Dijkstra from each vertex.
+:::: {.columns}
 
-## Congruency constrained cycle
+::: {.column width="60%"}
+::: {.incremental}
+ - Find a cycle: depth first search.
+ - odd length cycle: odd closed walk
+:::
+:::
+
+::: {.column width="40%"}
+![](cycle.png)
+:::
+
+::::
+
+
+
+## Example: Cycles
+
+::: {.callout-note}
+## Cycle
+Given a (directed) graph, find a cycle.
+:::
 
 ::: {.incremental}
- - Shortest odd length cycle = shortest odd closed walk.
- - Shortest even length cycle :
+ - even length cycle:
    - Undirected graphs: Reduce to matching
-   - Directed graphs: 
-     - feasibility [@RobertsonST99]
-     - unweighted [@BjorklundHK22], randomized
-     - general weight, OPEN!
- - Find a cycle of length divisible by $3$. OPEN!
+   - Directed graphs: [@RobertsonST99]
+ - a cycle of length divisible by $3$.
+   - OPEN!
 :::
 
 ## Example: Matching
@@ -75,32 +84,33 @@ Dijkstra from each vertex.
  - Find a perfect matching with even number of red edges:
    - Bipartite graphs: Find an odd red alternating cycle.
    - General graphs: Using Lovász's matching lattice [@MaaloulySW22].
- - Find a min weight perfect matching with even number of red edges:
-   - Bipartite graphs: Find a shortest odd red alternating cycle.
-   - General graphs: OPEN!
+ - Find a perfect matching with $0 \pmod 3$ red edges: RP, unknown if it is in P.
 :::
 
-## Example: Exact Knapsack
+![](matching.jpg){fig-align="center"}
+
+## Example: Modular Subset sum
 
 :::  {.incremental}
-- All sets are feasible.
-- Find a subset of elements of minimum weight, that sums to $b$.
-- Dynamic programming algorithm with running time $O(nk)$. 
-- Feasibility version was shown to be solveable in $\tilde{O}(n+k)$ time [@AxiotisBJTW19;@CardinalI21;@AxiotisBBJNTW21].
+- $\mathcal{F}=2^E$.
+- Find a subset of elements that sums to $b \pmod k$.
+- Standard dynamic programming algorithm with running time $O(nk)$. 
+- Pseudopolynomial time!
+- Faster algorithm of $\tilde{O}(n+k)$ time exists [@AxiotisBJTW19;@CardinalI21;@AxiotisBBJNTW21].
 :::
 
 ## Matroid
 
 ::: {.callout-note}
-## Minimum weight zero base
-Given a matroid $M$, $w:E\to\R_+$ and $\ell:E\to \Z_k$. Find a base $B$ such that $\ell(B)=0$, and the weight is minimized. 
+## Zero Base Problem
+Given a matroid $M$ and $\ell:E\to \Z_k$. Find a base $B$ such that $\ell(B)=0$.
 :::
 
 ::: {.incremental}
  - Label sum $0$ is for convenience. 
  - Folklore algorithm: Reduce to $n^{O(k)}$ matroid intersection.
  - Does this problem have a pseudopolynomial time algorithm [@PapadimitriouY82]?
- - Is the problem in FPT with respect to $k$? Even for feasibility version?
+ - Is the problem in FPT with respect to $k$?
 :::
 
 ## Our result
@@ -111,19 +121,28 @@ If $k$ is a prime power or product of two primes, then for any base $B$, if ther
 :::
 
 ::: {.callout-note}
-## Theorem (Feasibility)
-If $k$ is a prime power or product of two primes, then there exists an algorithm to find a zero base in $O((2k-1)^{k-1}n^c)$ time.
+## Theorem (Algorithm)
+If $k$ is a prime power or product of two primes, then there exists an algorithm to find a zero base in a $\Z_k$ labelled matroid of $n$ elements in $O((2k-1)^{k-1}n^c)$ time.
 :::
+
+Zero base problem is FPT!
 
 ## Matroid backgrounds
 
 - Let $M=(E,\mathcal{I})$ is a set system. 
 - $\mathcal{I}\subseteq 2^E$ are the independent sets.
+- The rank of $X\subseteq E$ is $r(X) = \max \{ |I| \mid I\subseteq X, I\in \mathcal{I} \}$.
+
+
+## Matroid backgrounds
+
 - $\mathcal{B}$ the set of bases are the maximal independent sets.
 - $M=(E,\mathcal{I})$ is a matroid if 
    - $\mathcal{B}$ is non-empty
    - If $A,B\in \mathcal{B}$, then for every $a\in A\setminus B$, there exists $b\in B\setminus A$ such that $A-a+b\in \mathcal{B}$.
-- The rank of $X\subseteq E$ is $r(X) = \max \{ |I| \mid I\subseteq X, I\in \mathcal{I} \}$.
+
+
+![](replacement.png){fig-align="center"}
 
 ## Matroid backgrounds
 
@@ -132,6 +151,9 @@ If $k$ is a prime power or product of two primes, then there exists an algorithm
 A matroid $M=(E,\mathcal{I})$ is a partition matroid if there is a partition $E_1,\ldots,E_k$ of $E$ and capacities $a_1,\ldots,a_k$, such that a set $I$ is independent if and only if $|I\cap E_i|\leq a_i$.
 :::
 
+![](partition_matroid.png){fig-align="center"}
+
+## Matroid backgrounds
 
 ::: {.callout-note}
 ## Definition (Matroid Intersection)
@@ -139,7 +161,6 @@ For two matroids $M_1=(E,\mathcal{I}_1)$ and $M_2=(E,\mathcal{I}_2)$, the matroi
 :::
 
 Optimization over matroid intersection takes polynomial time.
-We assume zero base exists.
 
 ## Folklore algorithm
 
@@ -147,40 +168,36 @@ We assume zero base exists.
   - $E_i = \{ e \mid e\in E, \ell(e)=i\}$.
   - Enumerate all $a_0,\ldots,a_{k-1}$ such that $\sum_{i=0}^{k-1} i\cdot a_i = 0$, and $0\leq a_i\leq |E_i|$
   - For each $a_0,\ldots,a_{k-1}$, run matroid intersection between $M$ and the partition matroid over the partition $E_0,\ldots,E_{k-1}$ with capacities $a_0,\ldots,a_{k-1}$.
-  - return the minimum result over each matroid intersection.
-- Correctness: If $B$ be the optimum base, then it would be found by the matroid intersection with capacities $|E_0\cap B|,\ldots,|E_{k-1}\cap B|$.
+  - return the result of any feasible matroid intersection.
+- Correctness: If $B$ be the zero base, then it would be found by the matroid intersection with capacities $|E_0\cap B|,\ldots,|E_{k-1}\cap B|$.
 :::
 
-## Parity constraint base
+## Simpler algorithm
 
-The algorithm for finding optimum zero base over $\Z_2$.
+ - Hard to explain to anyone who never seen matroid intersection before.
+ - Can we handle parity case with an easier algorithm?
 
- 1. Find any optimum base $B$, if it is an zero base, return $B$.
- 2. If it is not an zero base, then find a pair $e\in B$ and $f\not\in B$, such that $\ell(e)+\ell(f)=1$, $B-e+f$ is a base, and $-w(e)+w(f)$ is minimized.
- 3. Return $B-e+f$.
-
-## Correctness
-::: {.callout-note}
-## Theorem 
-Let $B$ be the optimum base, then there exists an optimum zero base $D$ such that $|B\setminus D|\leq 1$.
-:::
+## Structural theorem for parity
 
 ::: {.callout-note}
 ## Lemma (Brualdi 1969)
 Let $B$ and $D$ be bases, then there exists a bijection $f:B\setminus D\to D\setminus B$, such that for all $e\in B\setminus D$, $B-e+f(e)$ is a base.
 :::
 
-## Proof of the theorem
-
-Let $B$ be the optimum base and $D$ is an optimum zero base.
-
-::: {.incremental}
- - If $B=D$, then we are done. Otherwise, consider $f$ in the lemma. 
- - $-w(e)+w(f(e))\geq 0$ for all $e\in B\setminus D$.
- - There is a $e\in B\setminus D$ such that $\ell(e)\neq \ell(f(e))$. 
- - $w(D) \leq w(B-e+f(e))$, $\leq w(B)-\sum_{e\in B\setminus D} w(e) + \sum_{e\in B\setminus D} w(f(e)) = w(D)$.
- - $B-e+f(e)$ is an optimum zero base, and $|(B-e+f(e))\setminus B|=1$
+::: {.callout-note}
+## Theorem
+If a matroid has a zero base in $\Z_2$, then for any base $B$, there exists an zero base $D$ such that $|B\setminus D|\leq 1$.
 :::
+
+Proof: If $B$ is a zero base, then we are done. Otherwise, $B$ is a $1$ base, then consider a bijection $f:B\setminus D \to D\setminus B$. At least 1 $e\in B\setminus D$, $\ell(f(e))+\ell(e) = 1$. $B-e+f(e)$ is a zero base.
+
+## Parity constraint zero base
+
+The algorithm for finding a zero base over $\Z_2$.
+
+ 1. Find any base $B$, if it is an zero base, return $B$.
+ 2. If it is not an zero base, then find a pair $e\in B$ and $f\not\in B$, such that $\ell(e)+\ell(f)=1$, $B-e+f$ is a base. Return $B-e+f$.
+ 3. Otherwise, no such base exists.
 
 ## What about larger modulus?
 
@@ -189,62 +206,86 @@ Let $B$ be the optimum base and $D$ is an optimum zero base.
 A matroid is strongly base-orderable, if for any bases $B$ and $D$, there exists a bijection $f:B\setminus D\to D\setminus B$, such that for all $X\subseteq B\setminus D$, $B-X+f(X)$ is a base.
 :::
 
-We can modify the previous proof and obtain the following theorem. 
+Similar proof show
 
 ::: {.callout-note}
-## Theorem 
-For strongly base-orderable matroids, if $B$ be the optimum base, then there exists an optimum zero base $D$, such that $|B\setminus D|\leq k-1$.
+## Theorem
+If a strongly base-orderable matroid has a zero base, then for any base $B$, there exists an zero base $D$ such that $|B\setminus D|\leq k-1$.
 :::
 
-However, we can't prove this for general matroids.
 
 ## A sensible conjecture 
 
 ::: {.callout-note}
-## Conjecture (Optimization)
-Let $B$ be the optimum base, there exists a optimum zero base $D$ such that $|B\setminus D|\leq k-1$.
+## Proximity Conjecture
+If the matroid has a zero base in $\Z_k$. Let $B$ be the a base, there exists a zero base $D$ such that $|B\setminus D|\leq k-1$.
 :::
 
-::: {.incremental}
- - $k-1$ is the best possible. 
+## $k-1$ is the best possible
+
+ ![](block.png){fig-align="center"}
+
  - A block matroid is a matroid where $E$ can be partitioned into two bases (called blocks).
- - A block matroid where one base $B$ has all $0$ label and the disjoint base $\bar{B}$ has all $1$ label.
  - Note for any base $D$, $\ell(D\setminus B) = |D\setminus B|\pmod k$. 
-:::
+
+
+## Implications of the conjecture
+A $O(n^{2(k-1)})$ time algorithm:
+
+ - Find any base $B$
+ - For $k'\leq k-1$
+   - For each $S$ a subset $B$ of size $k'$, $T$ a subset of $E\setminus B$ of size $k'$
+     - Test if $(B\setminus S)\cup T$ is a zero base, if so, return.
+ - No zero base exists
+
+
 
 ## FPT algorithm given conjecture is true
 
-- Find optimum base $B$, and let $v = (|E_0\cap B|,\ldots,|E_{k-1}\cap B|)$.
+- Find a base $B$, and let $v = (|E_0\cap B|,\ldots,|E_{k-1}\cap B|)$.
 - For every $u$ such that $\|v-u\|_1 \leq k-1$ and $\sum_{i=0}^{k-1} i \cdot u_i = b$, we compute the matroid intesection of $M$ and $M'$, a partition matroid over $E_0,\ldots,E_{k-1}$ with capacities $u_0,\ldots,u_{k-1}$.
-- Output the minimum weight common base.
+- Output a common base.
 
 Total running time is $(2k-1)^k$ times matroid intersection.
+
+## Observations
+
+::: {.callout-note}
+# Conjecture (Strong Proximity)
+Let $B$ be any base, for each $b\in \Z_k$, if there exists a base $D'$ such that $\ell(D')=b$, then there exists a base $D$ such that $\ell(D)=b$ and $|B\setminus D|\leq k-1$.
+:::
+
+Observations:
+
+ - Minimal counterexample would be a block matroid of rank $k$
+ - $B$ and $D$ are disjoint.
+ - $\ell(D')$ is unique, that is no other base $D$ has $\ell(D)=b$.
+
+A labelling isolates a base, if no other base has the same label sum.
+
+## Combinatorial characterization
+
+Our main conjecture equivalent to the following:
+
+::: {.callout-note}
+# Conjecture (Isolation)
+For every block matroid of rank $k$, there is no $\Z_k$ labelling that isolates a block. 
+:::
+
+For a fixed $k$, number of block matroid of rank $k$ is finite. 
+One can check the theorem is true for small $k$!
+
+We've tested for $k=2,3,4,5$, all of which are true. 
+
 
 ## Prime case
 
 ::: {.callout-note}
-
-# Theorem (Prime Feasibility)
-Let $B$ be any base, for each $b\in \Z_p$, if there exists a base $D'$ such that $\ell(D')=b$, then there exists a base $D$ such that $\ell(D)=b$ and $|B\setminus D|\leq p-1$.
+# Theorem (Isolation)
+Let $p$ be a prime. For every block matroid of rank $p$, there is no $\Z_p$ labelling that isolates a block. 
 :::
 
-Observations:
- 
- - Minimal counterexample would be a block matroid of rank $p$
- - $B$ and $D$ are disjoint.
- - $\ell(D)$ is unique, that is no other base $D'$ has $\ell(D')=b$.
-
-A labelling isolates a base, if no other base has the same label sum.
-
-## Equivalent theorem
-
-The Prime Feasibility theorem is equivalent to the following:
-
-::: {.callout-note}
-# Theorem (Prime Isolation)
-Let $p$ be a prime number, for every block matroid of rank $p$, there is no labelling that isolates a block. 
-:::
-
+## Proof
 Consider disjoint bases $B$ and $D$.
 
 . . .
@@ -255,26 +296,27 @@ A pair $e\in D$ and $e'\not\in D$ is called trivially exchangeable, if $\ell(e)=
 
 If $D$ has a trivially exchangeable pair, then we are done.
 
+
 ## Proof
-If $D$ does not have a trivially exchangable pair with label $x$, then we claim $r(\ell^{-1}(x)) = r(\ell^{-1}(x)\cap B)+r(\ell^{-1}(x)\cap D)$. 
+If $D$ does not have a trivially exchangable pair with label $i$, then we claim $r(E_i) = r(E_i\cap B)+r(E_i\cap D)$. 
 
 ::: {.callout-note}
-# Theorem (Schrijver-Seymour)
+# Theorem [@SchrijverS90]
 Let $M$ be a matroid with bases $\mathcal{B}$, let $p$ be a prime number, $\ell:E\to \Z_p$ a label function. 
 
-$$|\ell(\mathcal{B})|\geq \min\{p, \sum_{g\in \Z_p} r(\ell^{-1}(g))-r(M)+1)\}.$$
+$$|\ell(\mathcal{B})|\geq \min\{p, \sum_{i\in \Z_p} r(E_i-r(M)+1)\}.$$
 :::
 
-## Proof
-Consider the matroid $M'=M-e$ for any $e\in D$.
+## 
+Pick a $e\in D$, and consider the matroid $M'=M-e$.
 $$\begin{aligned}
-&\sum_{g\in \Z_p} r(\ell^{-1}(g)) - r(M')+1\\
-\geq& \sum_{g\in \Z_p,\ell(e)\neq g} r(\ell^{-1}(g)\cap B) + r(\ell^{-1}(g)\cap D)\\
-    & + r(\ell^{-1}(\ell(e))\cap B) + (r(\ell^{-1}(\ell(e))\cap D)-1) - p + 1\\
+&\left(\sum_{i\in \Z_p} r(E_i)\right) - r(M')+1\\
+\geq& \left(\sum_{i\in \Z_p,\ell(e)\neq i} r(E_i\cap B) + r(E_i\cap D) \right)\\
+    & + r(E_{\ell(e)}\cap B) + (r(E_{\ell(e)}\cap D)-1) - p + 1\\
 =& 2p-p \\
 =& p\\
 \end{aligned}$$
-By Schrijver-Seymour, $M'$ has a base with label $\ell(D)$, hence $M$ has another base with label $\ell(D)$.
+$M'$ has a base of every sum. There is a base $D'$ in $M'$ s.t $\ell(D')=\ell(D)$, which is also a base in $M$.
 
 ## Generalizations
 
@@ -305,7 +347,7 @@ Let $k$ be a power of a prime, or product of two primes. For a matroid $M$, let 
 ## Open Problems
 
 ::: {.callout-tip}
-## Conjecture (Optimization)
+## Conjecture (Proximity for Optimization)
 For any optimum base $B$, there exists an optimum base $D$ such that $|B\setminus D|\leq k-1$. 
 :::
 

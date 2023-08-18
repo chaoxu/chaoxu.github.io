@@ -357,32 +357,23 @@ Siyue Liu, <strong>Chao Xu</strong>
 </div>
 
 </section>
-<section id="combinatorial-optimization-problem" class="slide level2">
-<h2>Combinatorial optimization problem</h2>
+<section id="combinatorial-search-problem" class="slide level2">
+<h2>Combinatorial search problem</h2>
 <p><span class="math inline">\(\newcommand{\R}{\mathbb{R}}\)</span> <span class="math inline">\(\newcommand{\Z}{\mathbb{Z}}\)</span> <span class="math inline">\(\newcommand{\N}{\mathbb{N}}\)</span></p>
-<p>A combinatorial optimization problem:</p>
 <ul>
 <li>A groundset of elements <span class="math inline">\(E\)</span></li>
 <li>Feasible sets <span class="math inline">\(\mathcal{F}\subseteq 2^E\)</span></li>
-<li>Weight function <span class="math inline">\(w:E\to \R_+\)</span></li>
-<li><span class="math inline">\(w(X) = \sum_{x\in X} w(x)\)</span> for <span class="math inline">\(X\subseteq E\)</span></li>
+<li>Find an element in the feasible set</li>
 </ul>
-<p>Find <span class="math inline">\(\min_{F\in \mathcal{F}} w(F)\)</span>.</p>
-<div>
-<ul>
-<li class="fragment"><span class="math inline">\(w=0\)</span>: feasibility.</li>
-<li class="fragment"><span class="math inline">\(w=1\)</span>: unweighted.</li>
-</ul>
-</div>
 </section>
-<section id="combinatorial-optimization-problem-with-congruency-constraint" class="slide level2">
-<h2>Combinatorial optimization problem with congruency constraint</h2>
+<section id="combinatorial-search-problem-with-congruency-constraint" class="slide level2">
+<h2>Combinatorial search problem with congruency constraint</h2>
 <div>
 <ul>
 <li class="fragment"><span class="math inline">\(\Z_k=\{0,\ldots,k-1\}\)</span>. Addition is defined as <span class="math inline">\(a+b = a+b \pmod k\)</span>.</li>
 <li class="fragment">Given a label function <span class="math inline">\(\ell:E\to \Z_k\)</span> and <span class="math inline">\(b\in \Z_k\)</span>. Let <span class="math inline">\(\ell(X)=\sum_{x\in X}\ell(x)\)</span>.</li>
 <li class="fragment"><span class="math inline">\(b\)</span>-feasible sets are <span class="math inline">\(\mathcal{F}_b = \{\ell(F) = b | F\in \mathcal{F}\}\)</span>.</li>
-<li class="fragment">Goal: find <span class="math inline">\(\min_{F\in \mathcal{F}_b} w(F)\)</span>.</li>
+<li class="fragment">Goal: find a set in <span class="math inline">\(\mathcal{F}_b\)</span>.</li>
 <li class="fragment">When <span class="math inline">\(k=2\)</span>, we call it parity constraint.</li>
 </ul>
 </div>
@@ -391,39 +382,61 @@ Siyue Liu, <strong>Chao Xu</strong>
 <h2>Alternative formulation for parity constraint</h2>
 <ul>
 <li>A set of red elements <span class="math inline">\(R\subseteq E\)</span>.</li>
-<li>Finding a minimum weight feasible set with odd (even) number of red elements.</li>
+<li>Find a feasible set with odd (even) number of red elements.</li>
 </ul>
+</section>
+<section id="major-question" class="slide level2" data-background-color="aquamarine">
+<h2>Major Question</h2>
+<p>For what kind of feasible family <span class="math inline">\(\mathcal{F}\)</span>, is search over <span class="math inline">\(\mathcal{F}_b\)</span> is easy?</p>
 </section>
 <section id="example-cycles" class="slide level2">
 <h2>Example: Cycles</h2>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Shortest cycle</strong></p>
+<p><strong>Cycle</strong></p>
 </div>
 <div class="callout-content">
-<p>Given a (directed) graph with non-negative weight, find a cycle of minimum weight.</p>
+<p>Given a (directed) graph, find a cycle.</p>
 </div>
 </div>
 </div>
-<p>Dijkstra from each vertex.</p>
-</section>
-<section id="congruency-constrained-cycle" class="slide level2">
-<h2>Congruency constrained cycle</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <div>
 <ul>
-<li class="fragment">Shortest odd length cycle = shortest odd closed walk.</li>
-<li class="fragment">Shortest even length cycle :
+<li class="fragment">Find a cycle: depth first search.</li>
+<li class="fragment">odd length cycle: odd closed walk</li>
+</ul>
+</div>
+</div><div class="column" style="width:40%;">
+<p><img data-src="cycle.png"></p>
+</div>
+</div>
+</section>
+<section id="example-cycles-1" class="slide level2">
+<h2>Example: Cycles</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Cycle</strong></p>
+</div>
+<div class="callout-content">
+<p>Given a (directed) graph, find a cycle.</p>
+</div>
+</div>
+</div>
+<div>
+<ul>
+<li class="fragment">even length cycle:
 <ul>
 <li class="fragment">Undirected graphs: Reduce to matching</li>
-<li class="fragment">Directed graphs:
+<li class="fragment">Directed graphs: <span class="citation" data-cites="RobertsonST99">(<a href="#/references" role="doc-biblioref" onclick="">Robertson, Seymour, and Thomas 1999</a>)</span></li>
+</ul></li>
+<li class="fragment">a cycle of length divisible by <span class="math inline">\(3\)</span>.
 <ul>
-<li class="fragment">feasibility <span class="citation" data-cites="RobertsonST99">(<a href="#/references" role="doc-biblioref" onclick="">Robertson, Seymour, and Thomas 1999</a>)</span></li>
-<li class="fragment">unweighted <span class="citation" data-cites="BjorklundHK22">(<a href="#/references" role="doc-biblioref" onclick="">Björklund, Husfeldt, and Kaski 2022</a>)</span>, randomized</li>
-<li class="fragment">general weight, OPEN!</li>
+<li class="fragment">OPEN!</li>
 </ul></li>
-</ul></li>
-<li class="fragment">Find a cycle of length divisible by <span class="math inline">\(3\)</span>. OPEN!</li>
 </ul>
 </div>
 </section>
@@ -436,22 +449,20 @@ Siyue Liu, <strong>Chao Xu</strong>
 <li class="fragment">Bipartite graphs: Find an odd red alternating cycle.</li>
 <li class="fragment">General graphs: Using Lovász’s matching lattice <span class="citation" data-cites="MaaloulySW22">(<a href="#/references" role="doc-biblioref" onclick="">Maalouly, Steiner, and Wulf 2022</a>)</span>.</li>
 </ul></li>
-<li class="fragment">Find a min weight perfect matching with even number of red edges:
-<ul>
-<li class="fragment">Bipartite graphs: Find a shortest odd red alternating cycle.</li>
-<li class="fragment">General graphs: OPEN!</li>
-</ul></li>
+<li class="fragment">Find a perfect matching with <span class="math inline">\(0 \pmod 3\)</span> red edges: RP, unknown if it is in P.</li>
 </ul>
 </div>
-</section>
-<section id="example-exact-knapsack" class="slide level2">
-<h2>Example: Exact Knapsack</h2>
+
+<img data-src="matching.jpg" class="r-stretch quarto-figure-center"></section>
+<section id="example-modular-subset-sum" class="slide level2">
+<h2>Example: Modular Subset sum</h2>
 <div>
 <ul>
-<li class="fragment">All sets are feasible.</li>
-<li class="fragment">Find a subset of elements of minimum weight, that sums to <span class="math inline">\(b\)</span>.</li>
-<li class="fragment">Dynamic programming algorithm with running time <span class="math inline">\(O(nk)\)</span>.</li>
-<li class="fragment">Feasibility version was shown to be solveable in <span class="math inline">\(\tilde{O}(n+k)\)</span> time <span class="citation" data-cites="AxiotisBJTW19 CardinalI21 AxiotisBBJNTW21">(<a href="#/references" role="doc-biblioref" onclick="">Axiotis et al. 2019</a>, <a href="#/references" role="doc-biblioref" onclick="">2021</a>; <a href="#/references" role="doc-biblioref" onclick="">Cardinal and Iacono 2021</a>)</span>.</li>
+<li class="fragment"><span class="math inline">\(\mathcal{F}=2^E\)</span>.</li>
+<li class="fragment">Find a subset of elements that sums to <span class="math inline">\(b \pmod k\)</span>.</li>
+<li class="fragment">Standard dynamic programming algorithm with running time <span class="math inline">\(O(nk)\)</span>.</li>
+<li class="fragment">Pseudopolynomial time!</li>
+<li class="fragment">Faster algorithm of <span class="math inline">\(\tilde{O}(n+k)\)</span> time exists <span class="citation" data-cites="AxiotisBJTW19 CardinalI21 AxiotisBBJNTW21">(<a href="#/references" role="doc-biblioref" onclick="">Axiotis et al. 2019</a>, <a href="#/references" role="doc-biblioref" onclick="">2021</a>; <a href="#/references" role="doc-biblioref" onclick="">Cardinal and Iacono 2021</a>)</span>.</li>
 </ul>
 </div>
 </section>
@@ -460,10 +471,10 @@ Siyue Liu, <strong>Chao Xu</strong>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Minimum weight zero base</strong></p>
+<p><strong>Zero Base Problem</strong></p>
 </div>
 <div class="callout-content">
-<p>Given a matroid <span class="math inline">\(M\)</span>, <span class="math inline">\(w:E\to\R_+\)</span> and <span class="math inline">\(\ell:E\to \Z_k\)</span>. Find a base <span class="math inline">\(B\)</span> such that <span class="math inline">\(\ell(B)=0\)</span>, and the weight is minimized.</p>
+<p>Given a matroid <span class="math inline">\(M\)</span> and <span class="math inline">\(\ell:E\to \Z_k\)</span>. Find a base <span class="math inline">\(B\)</span> such that <span class="math inline">\(\ell(B)=0\)</span>.</p>
 </div>
 </div>
 </div>
@@ -472,7 +483,7 @@ Siyue Liu, <strong>Chao Xu</strong>
 <li class="fragment">Label sum <span class="math inline">\(0\)</span> is for convenience.</li>
 <li class="fragment">Folklore algorithm: Reduce to <span class="math inline">\(n^{O(k)}\)</span> matroid intersection.</li>
 <li class="fragment">Does this problem have a pseudopolynomial time algorithm <span class="citation" data-cites="PapadimitriouY82">(<a href="#/references" role="doc-biblioref" onclick="">Papadimitriou and Yannakakis 1982</a>)</span>?</li>
-<li class="fragment">Is the problem in FPT with respect to <span class="math inline">\(k\)</span>? Even for feasibility version?</li>
+<li class="fragment">Is the problem in FPT with respect to <span class="math inline">\(k\)</span>?</li>
 </ul>
 </div>
 </section>
@@ -491,29 +502,36 @@ Siyue Liu, <strong>Chao Xu</strong>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Theorem (Feasibility)</strong></p>
+<p><strong>Theorem (Algorithm)</strong></p>
 </div>
 <div class="callout-content">
-<p>If <span class="math inline">\(k\)</span> is a prime power or product of two primes, then there exists an algorithm to find a zero base in <span class="math inline">\(O((2k-1)^{k-1}n^c)\)</span> time.</p>
+<p>If <span class="math inline">\(k\)</span> is a prime power or product of two primes, then there exists an algorithm to find a zero base in a <span class="math inline">\(\Z_k\)</span> labelled matroid of <span class="math inline">\(n\)</span> elements in <span class="math inline">\(O((2k-1)^{k-1}n^c)\)</span> time.</p>
 </div>
 </div>
 </div>
+<p>Zero base problem is FPT!</p>
 </section>
 <section id="matroid-backgrounds" class="slide level2">
 <h2>Matroid backgrounds</h2>
 <ul>
 <li>Let <span class="math inline">\(M=(E,\mathcal{I})\)</span> is a set system.</li>
 <li><span class="math inline">\(\mathcal{I}\subseteq 2^E\)</span> are the independent sets.</li>
+<li>The rank of <span class="math inline">\(X\subseteq E\)</span> is <span class="math inline">\(r(X) = \max \{ |I| \mid I\subseteq X, I\in \mathcal{I} \}\)</span>.</li>
+</ul>
+</section>
+<section id="matroid-backgrounds-1" class="slide level2">
+<h2>Matroid backgrounds</h2>
+<ul>
 <li><span class="math inline">\(\mathcal{B}\)</span> the set of bases are the maximal independent sets.</li>
 <li><span class="math inline">\(M=(E,\mathcal{I})\)</span> is a matroid if
 <ul>
 <li><span class="math inline">\(\mathcal{B}\)</span> is non-empty</li>
 <li>If <span class="math inline">\(A,B\in \mathcal{B}\)</span>, then for every <span class="math inline">\(a\in A\setminus B\)</span>, there exists <span class="math inline">\(b\in B\setminus A\)</span> such that <span class="math inline">\(A-a+b\in \mathcal{B}\)</span>.</li>
 </ul></li>
-<li>The rank of <span class="math inline">\(X\subseteq E\)</span> is <span class="math inline">\(r(X) = \max \{ |I| \mid I\subseteq X, I\in \mathcal{I} \}\)</span>.</li>
 </ul>
-</section>
-<section id="matroid-backgrounds-1" class="slide level2">
+
+<img data-src="replacement.png" class="r-stretch quarto-figure-center"></section>
+<section id="matroid-backgrounds-2" class="slide level2">
 <h2>Matroid backgrounds</h2>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -525,6 +543,10 @@ Siyue Liu, <strong>Chao Xu</strong>
 </div>
 </div>
 </div>
+
+<img data-src="partition_matroid.png" class="r-stretch quarto-figure-center"></section>
+<section id="matroid-backgrounds-3" class="slide level2">
+<h2>Matroid backgrounds</h2>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -535,7 +557,7 @@ Siyue Liu, <strong>Chao Xu</strong>
 </div>
 </div>
 </div>
-<p>Optimization over matroid intersection takes polynomial time. We assume zero base exists.</p>
+<p>Optimization over matroid intersection takes polynomial time.</p>
 </section>
 <section id="folklore-algorithm" class="slide level2">
 <h2>Folklore algorithm</h2>
@@ -544,32 +566,20 @@ Siyue Liu, <strong>Chao Xu</strong>
 <li class="fragment"><span class="math inline">\(E_i = \{ e \mid e\in E, \ell(e)=i\}\)</span>.</li>
 <li class="fragment">Enumerate all <span class="math inline">\(a_0,\ldots,a_{k-1}\)</span> such that <span class="math inline">\(\sum_{i=0}^{k-1} i\cdot a_i = 0\)</span>, and <span class="math inline">\(0\leq a_i\leq |E_i|\)</span></li>
 <li class="fragment">For each <span class="math inline">\(a_0,\ldots,a_{k-1}\)</span>, run matroid intersection between <span class="math inline">\(M\)</span> and the partition matroid over the partition <span class="math inline">\(E_0,\ldots,E_{k-1}\)</span> with capacities <span class="math inline">\(a_0,\ldots,a_{k-1}\)</span>.</li>
-<li class="fragment">return the minimum result over each matroid intersection.</li>
-<li class="fragment">Correctness: If <span class="math inline">\(B\)</span> be the optimum base, then it would be found by the matroid intersection with capacities <span class="math inline">\(|E_0\cap B|,\ldots,|E_{k-1}\cap B|\)</span>.</li>
+<li class="fragment">return the result of any feasible matroid intersection.</li>
+<li class="fragment">Correctness: If <span class="math inline">\(B\)</span> be the zero base, then it would be found by the matroid intersection with capacities <span class="math inline">\(|E_0\cap B|,\ldots,|E_{k-1}\cap B|\)</span>.</li>
 </ul>
 </div>
 </section>
-<section id="parity-constraint-base" class="slide level2">
-<h2>Parity constraint base</h2>
-<p>The algorithm for finding optimum zero base over <span class="math inline">\(\Z_2\)</span>.</p>
-<ol type="1">
-<li>Find any optimum base <span class="math inline">\(B\)</span>, if it is an zero base, return <span class="math inline">\(B\)</span>.</li>
-<li>If it is not an zero base, then find a pair <span class="math inline">\(e\in B\)</span> and <span class="math inline">\(f\not\in B\)</span>, such that <span class="math inline">\(\ell(e)+\ell(f)=1\)</span>, <span class="math inline">\(B-e+f\)</span> is a base, and <span class="math inline">\(-w(e)+w(f)\)</span> is minimized.</li>
-<li>Return <span class="math inline">\(B-e+f\)</span>.</li>
-</ol>
+<section id="simpler-algorithm" class="slide level2">
+<h2>Simpler algorithm</h2>
+<ul>
+<li>Hard to explain to anyone who never seen matroid intersection before.</li>
+<li>Can we handle parity case with an easier algorithm?</li>
+</ul>
 </section>
-<section id="correctness" class="slide level2">
-<h2>Correctness</h2>
-<div class="callout callout-note no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Theorem</strong></p>
-</div>
-<div class="callout-content">
-<p>Let <span class="math inline">\(B\)</span> be the optimum base, then there exists an optimum zero base <span class="math inline">\(D\)</span> such that <span class="math inline">\(|B\setminus D|\leq 1\)</span>.</p>
-</div>
-</div>
-</div>
+<section id="structural-theorem-for-parity" class="slide level2">
+<h2>Structural theorem for parity</h2>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -580,19 +590,26 @@ Siyue Liu, <strong>Chao Xu</strong>
 </div>
 </div>
 </div>
-</section>
-<section id="proof-of-the-theorem" class="slide level2">
-<h2>Proof of the theorem</h2>
-<p>Let <span class="math inline">\(B\)</span> be the optimum base and <span class="math inline">\(D\)</span> is an optimum zero base.</p>
-<div>
-<ul>
-<li class="fragment">If <span class="math inline">\(B=D\)</span>, then we are done. Otherwise, consider <span class="math inline">\(f\)</span> in the lemma.</li>
-<li class="fragment"><span class="math inline">\(-w(e)+w(f(e))\geq 0\)</span> for all <span class="math inline">\(e\in B\setminus D\)</span>.</li>
-<li class="fragment">There is a <span class="math inline">\(e\in B\setminus D\)</span> such that <span class="math inline">\(\ell(e)\neq \ell(f(e))\)</span>.</li>
-<li class="fragment"><span class="math inline">\(w(D) \leq w(B-e+f(e))\)</span>, <span class="math inline">\(\leq w(B)-\sum_{e\in B\setminus D} w(e) + \sum_{e\in B\setminus D} w(f(e)) = w(D)\)</span>.</li>
-<li class="fragment"><span class="math inline">\(B-e+f(e)\)</span> is an optimum zero base, and <span class="math inline">\(|(B-e+f(e))\setminus B|=1\)</span></li>
-</ul>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem</strong></p>
 </div>
+<div class="callout-content">
+<p>If a matroid has a zero base in <span class="math inline">\(\Z_2\)</span>, then for any base <span class="math inline">\(B\)</span>, there exists an zero base <span class="math inline">\(D\)</span> such that <span class="math inline">\(|B\setminus D|\leq 1\)</span>.</p>
+</div>
+</div>
+</div>
+<p>Proof: If <span class="math inline">\(B\)</span> is a zero base, then we are done. Otherwise, <span class="math inline">\(B\)</span> is a <span class="math inline">\(1\)</span> base, then consider a bijection <span class="math inline">\(f:B\setminus D \to D\setminus B\)</span>. At least 1 <span class="math inline">\(e\in B\setminus D\)</span>, <span class="math inline">\(\ell(f(e))+\ell(e) = 1\)</span>. <span class="math inline">\(B-e+f(e)\)</span> is a zero base.</p>
+</section>
+<section id="parity-constraint-zero-base" class="slide level2">
+<h2>Parity constraint zero base</h2>
+<p>The algorithm for finding a zero base over <span class="math inline">\(\Z_2\)</span>.</p>
+<ol type="1">
+<li>Find any base <span class="math inline">\(B\)</span>, if it is an zero base, return <span class="math inline">\(B\)</span>.</li>
+<li>If it is not an zero base, then find a pair <span class="math inline">\(e\in B\)</span> and <span class="math inline">\(f\not\in B\)</span>, such that <span class="math inline">\(\ell(e)+\ell(f)=1\)</span>, <span class="math inline">\(B-e+f\)</span> is a base. Return <span class="math inline">\(B-e+f\)</span>.</li>
+<li>Otherwise, no such base exists.</li>
+</ol>
 </section>
 <section id="what-about-larger-modulus" class="slide level2">
 <h2>What about larger modulus?</h2>
@@ -606,82 +623,114 @@ Siyue Liu, <strong>Chao Xu</strong>
 </div>
 </div>
 </div>
-<p>We can modify the previous proof and obtain the following theorem.</p>
+<p>Similar proof show</p>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <p><strong>Theorem</strong></p>
 </div>
 <div class="callout-content">
-<p>For strongly base-orderable matroids, if <span class="math inline">\(B\)</span> be the optimum base, then there exists an optimum zero base <span class="math inline">\(D\)</span>, such that <span class="math inline">\(|B\setminus D|\leq k-1\)</span>.</p>
+<p>If a strongly base-orderable matroid has a zero base, then for any base <span class="math inline">\(B\)</span>, there exists an zero base <span class="math inline">\(D\)</span> such that <span class="math inline">\(|B\setminus D|\leq k-1\)</span>.</p>
 </div>
 </div>
 </div>
-<p>However, we can’t prove this for general matroids.</p>
 </section>
 <section id="a-sensible-conjecture" class="slide level2">
 <h2>A sensible conjecture</h2>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Conjecture (Optimization)</strong></p>
+<p><strong>Proximity Conjecture</strong></p>
 </div>
 <div class="callout-content">
-<p>Let <span class="math inline">\(B\)</span> be the optimum base, there exists a optimum zero base <span class="math inline">\(D\)</span> such that <span class="math inline">\(|B\setminus D|\leq k-1\)</span>.</p>
+<p>If the matroid has a zero base in <span class="math inline">\(\Z_k\)</span>. Let <span class="math inline">\(B\)</span> be the a base, there exists a zero base <span class="math inline">\(D\)</span> such that <span class="math inline">\(|B\setminus D|\leq k-1\)</span>.</p>
 </div>
 </div>
 </div>
-<div>
-<ul>
-<li class="fragment"><span class="math inline">\(k-1\)</span> is the best possible.</li>
-<li class="fragment">A block matroid is a matroid where <span class="math inline">\(E\)</span> can be partitioned into two bases (called blocks).</li>
-<li class="fragment">A block matroid where one base <span class="math inline">\(B\)</span> has all <span class="math inline">\(0\)</span> label and the disjoint base <span class="math inline">\(\bar{B}\)</span> has all <span class="math inline">\(1\)</span> label.</li>
-<li class="fragment">Note for any base <span class="math inline">\(D\)</span>, <span class="math inline">\(\ell(D\setminus B) = |D\setminus B|\pmod k\)</span>.</li>
+</section>
+<section id="k-1-is-the-best-possible" class="slide level2">
+<h2><span class="math inline">\(k-1\)</span> is the best possible</h2>
+
+<img data-src="block.png" class="r-stretch quarto-figure-center"><ul>
+<li>A block matroid is a matroid where <span class="math inline">\(E\)</span> can be partitioned into two bases (called blocks).</li>
+<li>Note for any base <span class="math inline">\(D\)</span>, <span class="math inline">\(\ell(D\setminus B) = |D\setminus B|\pmod k\)</span>.</li>
 </ul>
-</div>
+</section>
+<section id="implications-of-the-conjecture" class="slide level2">
+<h2>Implications of the conjecture</h2>
+<p>A <span class="math inline">\(O(n^{2(k-1)})\)</span> time algorithm:</p>
+<ul>
+<li>Find any base <span class="math inline">\(B\)</span></li>
+<li>For <span class="math inline">\(k'\leq k-1\)</span>
+<ul>
+<li>For each <span class="math inline">\(S\)</span> a subset <span class="math inline">\(B\)</span> of size <span class="math inline">\(k'\)</span>, <span class="math inline">\(T\)</span> a subset of <span class="math inline">\(E\setminus B\)</span> of size <span class="math inline">\(k'\)</span>
+<ul>
+<li>Test if <span class="math inline">\((B\setminus S)\cup T\)</span> is a zero base, if so, return.</li>
+</ul></li>
+</ul></li>
+<li>No zero base exists</li>
+</ul>
 </section>
 <section id="fpt-algorithm-given-conjecture-is-true" class="slide level2">
 <h2>FPT algorithm given conjecture is true</h2>
 <ul>
-<li>Find optimum base <span class="math inline">\(B\)</span>, and let <span class="math inline">\(v = (|E_0\cap B|,\ldots,|E_{k-1}\cap B|)\)</span>.</li>
+<li>Find a base <span class="math inline">\(B\)</span>, and let <span class="math inline">\(v = (|E_0\cap B|,\ldots,|E_{k-1}\cap B|)\)</span>.</li>
 <li>For every <span class="math inline">\(u\)</span> such that <span class="math inline">\(\|v-u\|_1 \leq k-1\)</span> and <span class="math inline">\(\sum_{i=0}^{k-1} i \cdot u_i = b\)</span>, we compute the matroid intesection of <span class="math inline">\(M\)</span> and <span class="math inline">\(M'\)</span>, a partition matroid over <span class="math inline">\(E_0,\ldots,E_{k-1}\)</span> with capacities <span class="math inline">\(u_0,\ldots,u_{k-1}\)</span>.</li>
-<li>Output the minimum weight common base.</li>
+<li>Output a common base.</li>
 </ul>
 <p>Total running time is <span class="math inline">\((2k-1)^k\)</span> times matroid intersection.</p>
+</section>
+<section id="observations" class="slide level2">
+<h2>Observations</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Conjecture (Strong Proximity)</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <span class="math inline">\(B\)</span> be any base, for each <span class="math inline">\(b\in \Z_k\)</span>, if there exists a base <span class="math inline">\(D'\)</span> such that <span class="math inline">\(\ell(D')=b\)</span>, then there exists a base <span class="math inline">\(D\)</span> such that <span class="math inline">\(\ell(D)=b\)</span> and <span class="math inline">\(|B\setminus D|\leq k-1\)</span>.</p>
+</div>
+</div>
+</div>
+<p>Observations:</p>
+<ul>
+<li>Minimal counterexample would be a block matroid of rank <span class="math inline">\(k\)</span></li>
+<li><span class="math inline">\(B\)</span> and <span class="math inline">\(D\)</span> are disjoint.</li>
+<li><span class="math inline">\(\ell(D')\)</span> is unique, that is no other base <span class="math inline">\(D\)</span> has <span class="math inline">\(\ell(D)=b\)</span>.</li>
+</ul>
+<p>A labelling isolates a base, if no other base has the same label sum.</p>
+</section>
+<section id="combinatorial-characterization" class="slide level2">
+<h2>Combinatorial characterization</h2>
+<p>Our main conjecture equivalent to the following:</p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Conjecture (Isolation)</strong></p>
+</div>
+<div class="callout-content">
+<p>For every block matroid of rank <span class="math inline">\(k\)</span>, there is no <span class="math inline">\(\Z_k\)</span> labelling that isolates a block.</p>
+</div>
+</div>
+</div>
+<p>For a fixed <span class="math inline">\(k\)</span>, number of block matroid of rank <span class="math inline">\(k\)</span> is finite. One can check the theorem is true for small <span class="math inline">\(k\)</span>!</p>
+<p>We’ve tested for <span class="math inline">\(k=2,3,4,5\)</span>, all of which are true.</p>
 </section>
 <section id="prime-case" class="slide level2">
 <h2>Prime case</h2>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Theorem (Prime Feasibility)</strong></p>
+<p><strong>Theorem (Isolation)</strong></p>
 </div>
 <div class="callout-content">
-<p>Let <span class="math inline">\(B\)</span> be any base, for each <span class="math inline">\(b\in \Z_p\)</span>, if there exists a base <span class="math inline">\(D'\)</span> such that <span class="math inline">\(\ell(D')=b\)</span>, then there exists a base <span class="math inline">\(D\)</span> such that <span class="math inline">\(\ell(D)=b\)</span> and <span class="math inline">\(|B\setminus D|\leq p-1\)</span>.</p>
+<p>Let <span class="math inline">\(p\)</span> be a prime. For every block matroid of rank <span class="math inline">\(p\)</span>, there is no <span class="math inline">\(\Z_p\)</span> labelling that isolates a block.</p>
 </div>
 </div>
 </div>
-<p>Observations:</p>
-<ul>
-<li>Minimal counterexample would be a block matroid of rank <span class="math inline">\(p\)</span></li>
-<li><span class="math inline">\(B\)</span> and <span class="math inline">\(D\)</span> are disjoint.</li>
-<li><span class="math inline">\(\ell(D)\)</span> is unique, that is no other base <span class="math inline">\(D'\)</span> has <span class="math inline">\(\ell(D')=b\)</span>.</li>
-</ul>
-<p>A labelling isolates a base, if no other base has the same label sum.</p>
 </section>
-<section id="equivalent-theorem" class="slide level2">
-<h2>Equivalent theorem</h2>
-<p>The Prime Feasibility theorem is equivalent to the following:</p>
-<div class="callout callout-note no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Theorem (Prime Isolation)</strong></p>
-</div>
-<div class="callout-content">
-<p>Let <span class="math inline">\(p\)</span> be a prime number, for every block matroid of rank <span class="math inline">\(p\)</span>, there is no labelling that isolates a block.</p>
-</div>
-</div>
-</div>
+<section id="proof" class="slide level2">
+<h2>Proof</h2>
 <p>Consider disjoint bases <span class="math inline">\(B\)</span> and <span class="math inline">\(D\)</span>.</p>
 <div class="fragment">
 <p>A pair <span class="math inline">\(e\in D\)</span> and <span class="math inline">\(e'\not\in D\)</span> is called trivially exchangeable, if <span class="math inline">\(\ell(e)=\ell(e')\)</span> and <span class="math inline">\(D-e+e'\)</span> is a base.</p>
@@ -690,30 +739,30 @@ Siyue Liu, <strong>Chao Xu</strong>
 <p>If <span class="math inline">\(D\)</span> has a trivially exchangeable pair, then we are done.</p>
 </div>
 </section>
-<section id="proof" class="slide level2">
+<section id="proof-1" class="slide level2">
 <h2>Proof</h2>
-<p>If <span class="math inline">\(D\)</span> does not have a trivially exchangable pair with label <span class="math inline">\(x\)</span>, then we claim <span class="math inline">\(r(\ell^{-1}(x)) = r(\ell^{-1}(x)\cap B)+r(\ell^{-1}(x)\cap D)\)</span>.</p>
+<p>If <span class="math inline">\(D\)</span> does not have a trivially exchangable pair with label <span class="math inline">\(i\)</span>, then we claim <span class="math inline">\(r(E_i) = r(E_i\cap B)+r(E_i\cap D)\)</span>.</p>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Theorem (Schrijver-Seymour)</strong></p>
+<p><strong>Theorem <span class="citation" data-cites="SchrijverS90">(<a href="#/references" role="doc-biblioref" onclick="">Schrijver and Seymour 1990</a>)</span></strong></p>
 </div>
 <div class="callout-content">
 <p>Let <span class="math inline">\(M\)</span> be a matroid with bases <span class="math inline">\(\mathcal{B}\)</span>, let <span class="math inline">\(p\)</span> be a prime number, <span class="math inline">\(\ell:E\to \Z_p\)</span> a label function.</p>
-<p><span class="math display">\[|\ell(\mathcal{B})|\geq \min\{p, \sum_{g\in \Z_p} r(\ell^{-1}(g))-r(M)+1)\}.\]</span></p>
+<p><span class="math display">\[|\ell(\mathcal{B})|\geq \min\{p, \sum_{i\in \Z_p} r(E_i-r(M)+1)\}.\]</span></p>
 </div>
 </div>
 </div>
 </section>
-<section id="proof-1" class="slide level2">
-<h2>Proof</h2>
-<p>Consider the matroid <span class="math inline">\(M'=M-e\)</span> for any <span class="math inline">\(e\in D\)</span>. <span class="math display">\[\begin{aligned}
-&amp;\sum_{g\in \Z_p} r(\ell^{-1}(g)) - r(M')+1\\
-\geq&amp; \sum_{g\in \Z_p,\ell(e)\neq g} r(\ell^{-1}(g)\cap B) + r(\ell^{-1}(g)\cap D)\\
-    &amp; + r(\ell^{-1}(\ell(e))\cap B) + (r(\ell^{-1}(\ell(e))\cap D)-1) - p + 1\\
+<section id="section" class="slide level2">
+<h2></h2>
+<p>Pick a <span class="math inline">\(e\in D\)</span>, and consider the matroid <span class="math inline">\(M'=M-e\)</span>. <span class="math display">\[\begin{aligned}
+&amp;\left(\sum_{i\in \Z_p} r(E_i)\right) - r(M')+1\\
+\geq&amp; \left(\sum_{i\in \Z_p,\ell(e)\neq i} r(E_i\cap B) + r(E_i\cap D) \right)\\
+    &amp; + r(E_{\ell(e)}\cap B) + (r(E_{\ell(e)}\cap D)-1) - p + 1\\
 =&amp; 2p-p \\
 =&amp; p\\
-\end{aligned}\]</span> By Schrijver-Seymour, <span class="math inline">\(M'\)</span> has a base with label <span class="math inline">\(\ell(D)\)</span>, hence <span class="math inline">\(M\)</span> has another base with label <span class="math inline">\(\ell(D)\)</span>.</p>
+\end{aligned}\]</span> <span class="math inline">\(M'\)</span> has a base of every sum. There is a base <span class="math inline">\(D'\)</span> in <span class="math inline">\(M'\)</span> s.t <span class="math inline">\(\ell(D')=\ell(D)\)</span>, which is also a base in <span class="math inline">\(M\)</span>.</p>
 </section>
 <section id="generalizations" class="slide level2">
 <h2>Generalizations</h2>
@@ -768,7 +817,7 @@ Siyue Liu, <strong>Chao Xu</strong>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Conjecture (Optimization)</strong></p>
+<p><strong>Conjecture (Proximity for Optimization)</strong></p>
 </div>
 <div class="callout-content">
 <p>For any optimum base <span class="math inline">\(B\)</span>, there exists an optimum base <span class="math inline">\(D\)</span> such that <span class="math inline">\(|B\setminus D|\leq k-1\)</span>.</p>
@@ -805,9 +854,6 @@ Axiotis, Kyriakos, Arturs Backurs, Karl Bringmann, Ce Jin, Vasileios Nakos, Chri
 <div id="ref-AxiotisBJTW19" class="csl-entry" role="listitem">
 Axiotis, Kyriakos, Arturs Backurs, Ce Jin, Christos Tzamos, and Hongxun Wu. 2019. <span>“Fast Modular Subset Sum Using Linear Sketching.”</span> In <em>Proceedings of the Thirtieth Annual ACM-SIAM Symposium on Discrete Algorithms</em>, 58–69. SODA ’19. USA: Society for Industrial; Applied Mathematics.
 </div>
-<div id="ref-BjorklundHK22" class="csl-entry" role="listitem">
-Björklund, Andreas, Thore Husfeldt, and Petteri Kaski. 2022. <span>“The Shortest Even Cycle Problem Is Tractable.”</span> In <em>Proceedings of the 54th Annual ACM SIGACT Symposium on Theory of Computing</em>, 117–30. STOC 2022. New York, NY, USA: Association for Computing Machinery. <a href="https://doi.org/10.1145/3519935.3520030">https://doi.org/10.1145/3519935.3520030</a>.
-</div>
 <div id="ref-CardinalI21" class="csl-entry" role="listitem">
 Cardinal, Jean, and John Iacono. 2021. <span>“Modular Subset Sum, Dynamic Strings, and Zero-Sum Sets.”</span> In <em>Symposium on Simplicity in Algorithms (SOSA)</em>, 45–56. <a href="https://doi.org/10.1137/1.9781611976496.5">https://doi.org/10.1137/1.9781611976496.5</a>.
 </div>
@@ -822,6 +868,9 @@ Papadimitriou, Christos H., and Mihalis Yannakakis. 1982. <span>“The Complexit
 </div>
 <div id="ref-RobertsonST99" class="csl-entry" role="listitem">
 Robertson, Neil, P. D. Seymour, and Robin Thomas. 1999. <span>“Permanents, Pfaffian Orientations, and Even Directed Circuits.”</span> <em>Annals of Mathematics. Second Series</em> 150 (3): 929–75. <a href="http://eudml.org/doc/120561">http://eudml.org/doc/120561</a>.
+</div>
+<div id="ref-SchrijverS90" class="csl-entry" role="listitem">
+Schrijver, Alexander, and Paul D. Seymour. 1990. <span>“Spanning Trees of Different Weights.”</span> In <em>Polyhedral Combinatorics, Proceedings of a <span>DIMACS</span> Workshop, Morristown, New Jersey, USA, June 12-16, 1989</em>, edited by William J. Cook and Paul D. Seymour, 1:281. <span>DIMACS</span> Series in Discrete Mathematics and Theoretical Computer Science. <span>DIMACS/AMS</span>. <a href="https://doi.org/10.1090/dimacs/001/21">https://doi.org/10.1090/dimacs/001/21</a>.
 </div>
 </div>
 </section>
