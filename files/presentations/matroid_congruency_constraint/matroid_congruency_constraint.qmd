@@ -76,6 +76,8 @@ Given a (directed) graph, find a cycle.
    - Directed graphs: [@RobertsonST99]
  - a cycle of length divisible by $3$.
    - OPEN!
+ - a directed cycle of length $1 \pmod 3$.
+   - NP-hard! [@APY91]
 :::
 
 ## Example: Matching
@@ -348,7 +350,7 @@ Let $k$ be a power of a prime, or product of two primes. For a matroid $M$, let 
 
 ::: {.callout-tip}
 ## Conjecture (Proximity for Optimization)
-For any optimum base $B$, there exists an optimum base $D$ such that $|B\setminus D|\leq k-1$. 
+For any optimum base $B$, either there exists an optimum zero base $D$ such that $|B\setminus D|\leq k-1$, or there is no zero base.
 :::
 
 We verified this is true for $\Z_3$ and $\Z_4$.
@@ -361,7 +363,7 @@ $D(G)$ can be much smaller than $|G|$, but $D(G)=|G|$ if $G=\Z_k$.
 
 ::: {.callout-note}
 ## Theorem
-Let $G$ be a group and $M$ be a strongly base-orderable matroid. For any optimum base $B$, there exists a optimum zero base $D$, such that $|B\setminus D|\leq D(G)-1$.
+Let $G$ be a group and $M$ be a strongly base-orderable matroid. For any optimum base $B$, either there exists a optimum zero base $D$, such that $|B\setminus D|\leq D(G)-1$, or there is no zero base.
 :::
 
 Does the above theorem generalize to all matroids? 
