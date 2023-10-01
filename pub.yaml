@@ -39,7 +39,7 @@ people:
   Tamás Király: http://www.cs.elte.hu/~tkiraly/
   Euiwoong Lee: http://www.cs.cmu.edu/~euiwoonl/
   Konstantinos Koiliaris: https://koiliaris.com/
-  Thapanapong Rukkanchanunt: https://dblp.org/pers/hd/r/Rukkanchanunt:Thapanapong
+  Thapanapong Rukkanchanunt: https://www2.cs.science.cmu.ac.th/staff/THAPANAPONG/doku.php
   Jeff Erickson: http://jeffe.cs.illinois.edu/
   Hsien-Chih Chang: https://users.cs.duke.edu/~hc252/
   Neil J. Calkin: https://www.math.clemson.edu/~calkin/
@@ -55,7 +55,7 @@ people:
   Albert Bifet: https://albertbifet.com/
   Jesse Read: https://jmread.github.io/
   Jianbo Wang: https://wangchienbo.github.io/
-  Siyun Zhou: 
+  Siyun Zhou: https://lazykko.github.io/
 
 types:
   conference: Conference Publications
@@ -91,7 +91,7 @@ title: Solving systems of linear equations through zero forcing sets
 authors: [Jianbo Wang, Chao Xu, Siyun Zhou]
 type: conference
 year: 2023
-pub: COCOON (to appear)
+bib: COCOON 2023 (to appear)
 abstract: >
   Let $\mathbb{F}$ be any field, we consider solving $Ax=b$ for a matrix $A\in\mathbb{F}^{n\times n}$
   of $m$ non-zero elements and $b\in\mathbb{F}^{n}$. If we are given a zero forcing set of $A$ of size
