@@ -10,21 +10,6 @@ callout-icon: false
 bibliography: dial-a-ride.bib
 ---
 
-<!--
-## My Background
- 
-
-
- - Work primarily in combinatorial optimization
- - Theoretical computer science background
-    - care about complexity of algorithms
-    - care less about finding solutions in parctice.
-
-<!--
-So I'm someone with a theoretical computer science background. So I'm interested in algorithms.
-This topic is a very nice study in the sense that it shows how to solve some combinatorial problems, through other classical combinatorial problems.
--->
-
 ## Stacker Crane Problem
 $\newcommand{\R}{\mathbb{R}}$
 $\newcommand{\Z}{\mathbb{Z}}$
