@@ -8,10 +8,10 @@
 <link href="dial_a_ride_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="dial_a_ride_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="dial_a_ride_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.340">
+  <meta name="generator" content="quarto-1.3.361">
 
   <meta name="author" content="Yike Chen, Chao Xu, Jianbo Wang">
-  <title>The Complexity of Offline Unit Capacity Dial-a-Ride Problem in Warehouses</title>
+  <title>The Complexity of Stacker Crane Problem in Fixed Topologies</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -49,7 +49,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="dial_a_ride_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="dial_a_ride_files/libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="custom.css">
   <link href="dial_a_ride_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="dial_a_ride_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -345,7 +345,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">The Complexity of Offline Unit Capacity Dial-a-Ride Problem in Warehouses</h1>
+  <h1 class="title">The Complexity of Stacker Crane Problem in Fixed Topologies</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -372,103 +372,30 @@ So I'm someone with a theoretical computer science background. So I'm interested
 This topic is a very nice study in the sense that it shows how to solve some combinatorial problems, through other classical combinatorial problems.
 -->
 </section>
-<section id="dial-a-ride-problem" class="slide level2">
-<h2>Dial-a-Ride problem</h2>
-
-<!-- 
-So in a dial-a-ride problem, there are some request, which is to take a passenger from point a to point b. You want to schedule the vechicles so they are efficient. For example, say take the minimum distance.
--->
-<img data-src="uw-dial-a-ride.png" class="r-stretch quarto-figure-center"></section>
 <section id="stacker-crane-problem" class="slide level2">
 <h2>Stacker Crane Problem</h2>
 
 <img data-src="stacker_crane.webp" class="r-stretch"><p>Image courtesy <span class="citation" data-cites="GiuliaAJ21">(<a href="#/references" role="doc-biblioref" onclick="">Siciliano, Durek-Linn, and Fottner 2022</a>)</span></p>
+<p>A vehicle of capacity 1, completing pick up and delivery tasks. <!-- 
+So in a Stacker Crane Problem, there are some request, which is to take a passenger from point a to point b. You want to schedule the vechicles so they are efficient. For example, say take the minimum distance.
+--></p>
 </section>
-<section id="dial-a-ride" class="slide level2">
-<h2>Dial-a-Ride</h2>
-<ul>
-<li>Online <span class="citation" data-cites="LOISZ17">(<a href="#/references" role="doc-biblioref" onclick="">Lois and Ziliaskopoulos 2017</a>)</span> <span class="citation" data-cites="Baligacs22">(<a href="#/references" role="doc-biblioref" onclick="">Baligács et al. 2022</a>)</span></li>
-<li>Multiple Vehicles <span class="citation" data-cites="Desrosiers88">(<a href="#/references" role="doc-biblioref" onclick="">Desrosiers, Dumas, and Soumis 1988</a>)</span></li>
-<li>Capacities <span class="citation" data-cites="CharikarR98">(<a href="#/references" role="doc-biblioref" onclick="">Charikar and Raghavachari 1998</a>)</span></li>
-<li>Time windows <span class="citation" data-cites="DELEPLANQUE20131256">(<a href="#/references" role="doc-biblioref" onclick="">Deleplanque and Quilliot 2013</a>)</span></li>
-<li>Preemptive <span class="citation" data-cites="10.1007/11830924_20">(<a href="#/references" role="doc-biblioref" onclick="">Gørtz 2006</a>)</span></li>
-<li>Approximation algorithms. <span class="citation" data-cites="FredericksonHK78">(<a href="#/references" role="doc-biblioref" onclick="">Greg N. Frederickson, Hecht, and Kim 1978</a>)</span> <span class="citation" data-cites="CharikarR98">(<a href="#/references" role="doc-biblioref" onclick="">Charikar and Raghavachari 1998</a>)</span></li>
-<li>…</li>
-</ul>
-</section>
-<section id="our-focus-is-in-the-most-special-case" class="slide level2">
-<h2>Our focus is in the most special case</h2>
-<ul>
-<li>offline</li>
-<li>unit capacity</li>
-<li>non-preemptive</li>
-<li>single vehicle</li>
-<li>vehicle need to return to original position after completing all requests</li>
-</ul>
-</section>
-<section id="known-results" class="slide level2">
-<h2>Known results</h2>
-<p>Let <span class="math inline">\(MST(n)\)</span> be the time to compute a minimum spanning tree on a <span class="math inline">\(n\)</span> vertex graph. Let <span class="math inline">\(n\)</span> to be the number of requests.</p>
-<p>Solving the dial-a-ride problem on the following graphs:</p>
-<div>
-<ul>
-<li class="fragment">Path <span class="math inline">\(-\)</span>: <span class="fragment"><span class="math inline">\(O(MST(n))\)</span> time. <span class="citation" data-cites="AtallahK88">(<a href="#/references" role="doc-biblioref" onclick="">Atallah and Kosaraju 1988</a>)</span></span></li>
-<li class="fragment">Cycle <span class="math inline">\(\bigcirc\)</span>: <span class="fragment"><span class="math inline">\(O(MST(n))\)</span> time. <span class="citation" data-cites="Frederickson93">(<a href="#/references" role="doc-biblioref" onclick="">Greg N. Frederickson 1993</a>)</span></span></li>
-<li class="fragment">Trees: <span class="fragment"><strong>NP-hard</strong>! <span class="citation" data-cites="FredericksonG93">(<a href="#/references" role="doc-biblioref" onclick="">G. N. Frederickson and Guan 1993</a>)</span></span></li>
-<li class="fragment"><span class="math inline">\(\boxminus\)</span> shape: <span class="fragment">Unknown</span></li>
-<li class="fragment"><span class="math inline">\(\top\)</span> shape: <span class="fragment">Unknown</span></li>
-</ul>
-</div>
-</section>
-<section id="topology-of-warehouses" class="slide level2">
-<h2>Topology of Warehouses</h2>
-<p>A fixed warehouse topology is quite simple.</p>
-
-<img data-src="warehouse.png" class="r-stretch quarto-figure-center"><p>Image courtesy <span class="citation" data-cites="RoodbergenK01">(<a href="#/references" role="doc-biblioref" onclick="">Roodbergen and Koster 2001</a>)</span></p>
-</section>
-<section id="our-result" class="slide level2">
-<h2>Our result</h2>
-<div style="background: #fff1e8; padding:10px; margin:10px">
-<p>The dial-a-ride problem can be solved in polynomial time for “warehouse topologies”.</p>
-</div>
-<div class="fragment" style="background: #fff1e8; padding:10px; margin:10px">
-<p>The dial-a-ride problem can be solved in polynomial time for <span class="math inline">\(\boxminus\)</span>.</p>
-</div>
-<!--
-::: {style="background: #fff1e8; padding:10px;"}
-Assuming the space of solutions for a certain problem is small, then dial-a-ride problem can be solved in $O(f(k,p)n^c)$ time.
-:::
--->
-</section>
-<section id="in-this-talk" class="slide level2">
-<h2>In This talk</h2>
-<ul>
-<li>Review an example of a Dial-A-Ride problem</li>
-<li>Review how Dial-a-Ride was solved on paths and cycles</li>
-<li>Show how to generalize the algorithm to general graphs</li>
-</ul>
-</section>
-<section>
-<section id="dial-a-ride-a-simple-example" class="title-slide slide level1 center">
-<h1>Dial-a-ride, a simple example</h1>
-
-</section>
-<section id="dial-a-ride-on-a-graph" class="slide level2">
-<h2>Dial-a-ride on a graph</h2>
-<p>For a graph <span class="math inline">\(G=(V,E)\)</span> with weights on the edges. A single robot with capacity 1 is at position <span class="math inline">\(s_0\in V\)</span>.</p>
+<section id="stacker-crane-on-a-graph" class="slide level2">
+<h2>Stacker Crane on a graph</h2>
+<p>For a graph <span class="math inline">\(G=(V,E)\)</span> with weights on the edges. A single vehicle with capacity 1 is at position <span class="math inline">\(s_0\in V\)</span>.</p>
 <ul>
 <li>There are <span class="math inline">\(n\)</span> requests of the form <span class="math inline">\((s_i,t_i) \in {V\choose 2}\)</span></li>
-<li>The robot pick up item <span class="math inline">\(i\)</span> from <span class="math inline">\(s_i\)</span>, and move it to <span class="math inline">\(t_i\)</span>.</li>
-<li>The robot must return to <span class="math inline">\(s_0\)</span> after completing all requests.</li>
-<li>Goal: minimizes the total weight of the edges traveled by the robot.</li>
+<li>The vehicle pick up item <span class="math inline">\(i\)</span> from <span class="math inline">\(s_i\)</span>, and move it to <span class="math inline">\(t_i\)</span>.</li>
+<li>The vehicle must return to <span class="math inline">\(s_0\)</span> after completing all requests.</li>
+<li>Goal: minimizes the total weight of the edges traveled by the vehicle.</li>
 </ul>
 </section>
-<section id="dial-a-ride-on-a-path" class="slide level2">
-<h2>Dial-a-ride on a path</h2>
+<section id="stacker-crane-on-a-path" class="slide level2">
+<h2>Stacker Crane on a path</h2>
 
 <img data-src="line1.png" class="r-stretch quarto-figure-center"></section>
-<section id="dial-a-ride-on-a-path-1" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Dial-a-ride on a path</h2>
+<section id="stacker-crane-on-a-path-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Stacker crane on a path</h2>
 <div class="absolute" data-id="s_0" style="top: 150px; left: 40px; ">
 <p><span class="math inline">\(s_0\)</span></p>
 </div>
@@ -487,8 +414,8 @@ Assuming the space of solutions for a certain problem is small, then dial-a-ride
 <p><img data-src="house.svg" class="absolute filter_red" style="top: 200px; left: 800px; width: 100px; height: 60px; " data-id="red-house"> <img data-src="house.svg" class="absolute filter_blue" style="top: 200px; left: 200px; width: 100px; height: 60px; " data-id="blue-house"> <img data-src="tv.svg" class="absolute filter_red" style="top: 200px; left: 350px; width: 100px; height: 60px; " data-id="red-item"> <img data-src="box.svg" class="absolute filter_blue" style="top: 200px; left: 550px; width: 100px; height: 60px; " data-id="blue-item"></p>
 <p><img data-src="truck.svg" class="absolute" style="top: 250px; left: 0px; width: 100px; height: 60px; " data-id="truck"></p>
 </section>
-<section id="dial-a-ride-on-a-path-2" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Dial-a-ride on a path</h2>
+<section id="stacker-crane-on-a-path-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Stacker crane on a path</h2>
 <div class="absolute" data-id="s_0" style="top: 150px; left: 40px; ">
 <p><span class="math inline">\(s_0\)</span></p>
 </div>
@@ -510,8 +437,8 @@ Assuming the space of solutions for a certain problem is small, then dial-a-ride
 <p><span class="absolute" style="height: 3px;background: black;width: 350px; "></span> <span class="absolute arrow arrowright" style="top: 9px; left: 342px; "></span></p>
 </div>
 </section>
-<section id="dial-a-ride-on-a-path-3" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Dial-a-ride on a path</h2>
+<section id="stacker-crane-on-a-path-3" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Stacker crane on a path</h2>
 <div class="absolute" data-id="s_0" style="top: 150px; left: 40px; ">
 <p><span class="math inline">\(s_0\)</span></p>
 </div>
@@ -536,8 +463,8 @@ Assuming the space of solutions for a certain problem is small, then dial-a-ride
 <p><span class="absolute" style="height: 3px;background: red;width: 450px; "></span> <span class="absolute arrow arrowright" style="border-color: red;top: 9px; left: 440px; "></span></p>
 </div>
 </section>
-<section id="dial-a-ride-on-a-path-4" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Dial-a-ride on a path</h2>
+<section id="stacker-crane-on-a-path-4" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Stacker crane on a path</h2>
 <div class="absolute" data-id="s_0" style="top: 150px; left: 40px; ">
 <p><span class="math inline">\(s_0\)</span></p>
 </div>
@@ -565,8 +492,8 @@ Assuming the space of solutions for a certain problem is small, then dial-a-ride
 <p><span class="absolute" style="height: 3px;background: black;width: 250px; "></span> <span class="absolute arrow arrowleft" style="top: 9px; left: 0px; "></span></p>
 </div>
 </section>
-<section id="dial-a-ride-on-a-path-5" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Dial-a-ride on a path</h2>
+<section id="stacker-crane-on-a-path-5" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Stacker crane on a path</h2>
 <div class="absolute" data-id="s_0" style="top: 150px; left: 40px; ">
 <p><span class="math inline">\(s_0\)</span></p>
 </div>
@@ -597,8 +524,8 @@ Assuming the space of solutions for a certain problem is small, then dial-a-ride
 <p><span class="absolute" style="height: 3px;background: blue;width: 350px; "></span> <span class="absolute arrow arrowleft" style="border-color: blue;top: 9px; left: 0px; "></span></p>
 </div>
 </section>
-<section id="dial-a-ride-on-a-path-6" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Dial-a-ride on a path</h2>
+<section id="stacker-crane-on-a-path-6" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Stacker crane on a path</h2>
 <div class="absolute" data-id="s_0" style="top: 150px; left: 40px; ">
 <p><span class="math inline">\(s_0\)</span></p>
 </div>
@@ -632,8 +559,8 @@ Assuming the space of solutions for a certain problem is small, then dial-a-ride
 <p><span class="absolute" style="height: 3px;background: black;width: 200px; "></span> <span class="absolute arrow arrowleft" style="top: 9px; left: 0px; "></span></p>
 </div>
 </section>
-<section id="dial-a-ride-on-a-path-not-as-good" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Dial-a-ride on a path (Not as good)</h2>
+<section id="stacker-crane-on-a-path-not-as-good" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Stacker crane on a path (Not as good)</h2>
 <div class="absolute" data-id="s_0" style="top: 150px; left: 40px; ">
 <p><span class="math inline">\(s_0\)</span></p>
 </div>
@@ -667,30 +594,88 @@ Assuming the space of solutions for a certain problem is small, then dial-a-ride
 <p><span class="absolute" style="height: 3px;background: black;width: 800px; "></span> <span class="absolute arrow arrowleft" style="border-color: black;top: 9px; left: 0px; "></span></p>
 </div>
 </section>
-<section id="dial-a-ride-feels-like-tsp" class="slide level2">
-<h2>Dial-A-Ride feels like TSP</h2>
+<section id="stacker-crane-extensions" class="slide level2">
+<h2>Stacker Crane Extensions</h2>
+<ul>
+<li>Online <span class="citation" data-cites="LOISZ17">(<a href="#/references" role="doc-biblioref" onclick="">Lois and Ziliaskopoulos 2017</a>)</span> <span class="citation" data-cites="Baligacs22">(<a href="#/references" role="doc-biblioref" onclick="">Baligács et al. 2022</a>)</span></li>
+<li>Multiple Vehicles <span class="citation" data-cites="Desrosiers88">(<a href="#/references" role="doc-biblioref" onclick="">Desrosiers, Dumas, and Soumis 1988</a>)</span></li>
+<li>Capacities <span class="citation" data-cites="CharikarR98">(<a href="#/references" role="doc-biblioref" onclick="">Charikar and Raghavachari 1998</a>)</span></li>
+<li>Time windows <span class="citation" data-cites="DELEPLANQUE20131256">(<a href="#/references" role="doc-biblioref" onclick="">Deleplanque and Quilliot 2013</a>)</span></li>
+<li>Preemptive <span class="citation" data-cites="10.1007/11830924_20">(<a href="#/references" role="doc-biblioref" onclick="">Gørtz 2006</a>)</span></li>
+<li>Approximation algorithms. <span class="citation" data-cites="FredericksonHK78">(<a href="#/references" role="doc-biblioref" onclick="">Greg N. Frederickson, Hecht, and Kim 1978</a>)</span> <span class="citation" data-cites="CharikarR98">(<a href="#/references" role="doc-biblioref" onclick="">Charikar and Raghavachari 1998</a>)</span></li>
+<li>…</li>
+</ul>
+</section>
+<section id="known-results" class="slide level2">
+<h2>Known results</h2>
+<p>Let <span class="math inline">\(MST(n)\)</span> be the time to compute a minimum spanning tree on a <span class="math inline">\(n\)</span> vertex graph. Let <span class="math inline">\(n\)</span> to be the number of requests.</p>
+<p>Solving the stacker crane problem on the following graphs:</p>
+<div>
+<ul>
+<li class="fragment">Path <span class="math inline">\(-\)</span>: <span class="fragment"><span class="math inline">\(O(MST(n))\)</span> time. <span class="citation" data-cites="AtallahK88">(<a href="#/references" role="doc-biblioref" onclick="">Atallah and Kosaraju 1988</a>)</span></span></li>
+<li class="fragment">Cycle <span class="math inline">\(\bigcirc\)</span>: <span class="fragment"><span class="math inline">\(O(MST(n))\)</span> time. <span class="citation" data-cites="Frederickson93">(<a href="#/references" role="doc-biblioref" onclick="">Greg N. Frederickson 1993</a>)</span></span></li>
+<li class="fragment">Trees: <span class="fragment"><strong>NP-hard</strong>! <span class="citation" data-cites="FredericksonG93">(<a href="#/references" role="doc-biblioref" onclick="">G. N. Frederickson and Guan 1993</a>)</span></span></li>
+<li class="fragment"><span class="math inline">\(\boxminus\)</span> shape: <span class="fragment">Unknown</span></li>
+<li class="fragment"><span class="math inline">\(\top\)</span> shape: <span class="fragment">Unknown</span></li>
+</ul>
+</div>
+</section>
+<section id="topology-of-warehouses" class="slide level2">
+<h2>Topology of Warehouses</h2>
+<p>A fixed warehouse topology is quite simple.</p>
+
+<img data-src="warehouse.png" class="r-stretch quarto-figure-center"><p>Image courtesy <span class="citation" data-cites="RoodbergenK01">(<a href="#/references" role="doc-biblioref" onclick="">Roodbergen and Koster 2001</a>)</span></p>
+</section>
+<section id="fixed-topology" class="slide level2">
+<h2>Fixed topology</h2>
+<p>A class of graphs <span class="math inline">\(\mathcal{C}\)</span> have a fixed topology, if there exists a graph <span class="math inline">\(G\)</span> such that every graph <span class="math inline">\(H\in\mathcal{C}\)</span> can be obtained through applying subdivisions of <span class="math inline">\(G\)</span>.</p>
+<p><img data-src="subdivision1.png" data-fig-align="center"> <img data-src="subdivision2.png" data-fig-align="center"></p>
+</section>
+<section id="our-result" class="slide level2">
+<h2>Our result</h2>
+<div style="background: #fff1e8; padding:10px; margin:10px">
+<p>The stacker crane problem can be solved in polynomial time for fixed topologies.</p>
+</div>
+<div class="fragment" style="background: #fff1e8; padding:10px; margin:10px">
+<p>The stacker crane problem can be solved in polynomial time for <span class="math inline">\(\boxminus\)</span>.</p>
+</div>
+<!--
+::: {style="background: #fff1e8; padding:10px;"}
+Assuming the space of solutions for a certain problem is small, then stacker crane problem can be solved in $O(f(k,p)n^c)$ time.
+:::
+-->
+</section>
+<section id="in-this-talk" class="slide level2">
+<h2>In This talk</h2>
+<ul>
+<li>Review the algorithm for paths and cycles</li>
+<li>Show how to generalize the algorithm to general graphs</li>
+</ul>
+</section>
+<section id="stacker-crane-feels-like-tsp" class="slide level2">
+<h2>Stacker crane feels like TSP</h2>
 <ul>
 <li>Permutation <span class="math inline">\(\pi:[n]\to [n]\)</span>, such that <span class="math inline">\(\pi(i)\)</span> is the <span class="math inline">\(i\)</span>th completed request.</li>
 <li>The cost of a permutation <span class="math inline">\(c(\pi)\)</span> is <span class="math inline">\(\sum_{i=0}^n d(s_{\pi(i)},t_{\pi(i)}) + d(t_{\pi(i)},s_{\pi(i+1 \pmod {n+1})})\)</span>.</li>
 <li>Find a permutation of minimum cost.</li>
 </ul>
 </section>
-<section id="dial-a-ride-vs-tsp" class="slide level2">
-<h2>Dial-a-Ride vs TSP</h2>
+<section id="stacker-crane-vs-tsp" class="slide level2">
+<h2>Stacker crane vs TSP</h2>
 <div>
 <ul>
-<li class="fragment">Finding a traveling salesman tour on a graph <span class="math inline">\(G=(V,E)\)</span> is equivalent to solving the dial-a-ride problem on <span class="math inline">\(G\)</span>, where the requests are <span class="math inline">\(\{(v,v)|v\in V\}\)</span>.</li>
-<li class="fragment">Dial-a-Ride is strictly harder than TSP:
+<li class="fragment">Finding a traveling salesman tour on a graph <span class="math inline">\(G=(V,E)\)</span> is equivalent to solving the stacker crane problem on <span class="math inline">\(G\)</span>, where the requests are <span class="math inline">\(\{(v,v)|v\in V\}\)</span>.</li>
+<li class="fragment">stacker crane is strictly harder than TSP:
 <ul>
 <li class="fragment">(Steiner) TSP is polynomial time solvable on trees</li>
-<li class="fragment">Dial-a-Ride is NP-hard on Trees.</li>
+<li class="fragment">stacker crane is NP-hard on Trees.</li>
 </ul></li>
 </ul>
 </div>
-</section></section>
+</section>
 <section>
-<section id="solve-dial-a-ride-on-paths-and-cycles" class="title-slide slide level1 center">
-<h1>Solve Dial-a-Ride on paths and cycles</h1>
+<section id="solve-scp-on-paths-and-cycles" class="title-slide slide level1 center">
+<h1>Solve SCP on paths and cycles</h1>
 <p>Algorithms of <span class="citation" data-cites="AtallahK88 Frederickson93">(<a href="#/references" role="doc-biblioref" onclick="">Atallah and Kosaraju 1988</a>; <a href="#/references" role="doc-biblioref" onclick="">Greg N. Frederickson 1993</a>)</span>.</p>
 </section>
 <section id="forward-and-backward-traversal" class="slide level2">
@@ -744,8 +729,8 @@ Assuming the space of solutions for a certain problem is small, then dial-a-ride
 <p>Obtain a complete solution by construct a tour through the chosen edges.</p>
 
 <img data-src="line8.png" class="r-stretch quarto-figure-center"></section>
-<section id="dial-a-ride-on-a-cycle" class="slide level2">
-<h2>Dial-a-ride on a cycle</h2>
+<section id="scp-on-a-cycle" class="slide level2">
+<h2>SCP on a cycle</h2>
 <p>forward - backward = 0?</p>
 
 <img data-src="cycle1.png" class="r-stretch quarto-figure-center"></section>
@@ -784,8 +769,8 @@ Assuming the space of solutions for a certain problem is small, then dial-a-ride
 </div>
 </section></section>
 <section>
-<section id="dial-a-ride-on-general-graphs" class="title-slide slide level1 center">
-<h1>Dial-a-Ride on general graphs</h1>
+<section id="scp-on-general-graphs" class="title-slide slide level1 center">
+<h1>SCP on general graphs</h1>
 
 </section>
 <section id="what-did-we-do" class="slide level2">
@@ -894,20 +879,13 @@ Assuming the space of solutions for a certain problem is small, then dial-a-ride
 </div>
 <p>As a special case.</p>
 <div class="fragment" style="background: #fff1e8; padding:10px; margin:10px">
-<p>The dial-a-ride problem can be solved in <span class="math inline">\(O(n^2 MST(n))\)</span> for <span class="math inline">\(\boxminus\)</span>.</p>
+<p>SCP can be solved in <span class="math inline">\(O(n^2 MST(n))\)</span> for <span class="math inline">\(\boxminus\)</span>.</p>
 </div>
 <div class="fragment" style="background: #fff1e8; padding:10px; margin:10px">
-<p>The dial-a-ride problem can be solved in <span class="math inline">\(O(n MST(n))\)</span> for <span class="math inline">\(\bigcirc\)</span>.</p>
+<p>SCP problem can be solved in <span class="math inline">\(O(n MST(n))\)</span> for <span class="math inline">\(\bigcirc\)</span>.</p>
 </div>
 </section>
 <section id="open-problem" class="slide level2">
-<h2>Open problem</h2>
-<div style="background: #fff1e8; padding:10px; margin:10px">
-<p>Does there exists a function <span class="math inline">\(f\)</span>, such that the dial-a-ride problem be solved in <span class="math inline">\(O( f(p) 2^k MST(n))\)</span> for <span class="math inline">\(n\)</span> requests on a graph with at most <span class="math inline">\(k\)</span> degree <span class="math inline">\(\geq 3\)</span> vertices and circuit rank <span class="math inline">\(p\)</span>?</p>
-</div>
-<p>In particular, this shows for many classes of warehouse graphs, the running time would be <span class="math inline">\(O(MST(n))\)</span>, matching the optimum bound.</p>
-</section>
-<section id="open-problem-1" class="slide level2">
 <h2>Open problem</h2>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -915,16 +893,11 @@ Assuming the space of solutions for a certain problem is small, then dial-a-ride
 <p><strong>Conjecture</strong></p>
 </div>
 <div class="callout-content">
-<p>Let</p>
-<ul>
-<li><span class="math inline">\(a_1,\ldots,a_n\in \{0,1\}^d\)</span></li>
-<li><span class="math inline">\(b_1,\ldots,b_n\in \R\)</span></li>
-<li><span class="math inline">\(f^\lambda(x) = \sum_{i=1}^n \max(|a_i\cdot x + b_i|,\lambda)\)</span></li>
-</ul>
-<p>There exist <span class="math inline">\(x^0\in \arg\min f^0\)</span> and <span class="math inline">\(x^\lambda \in \arg\min f^\lambda\)</span> such that <span class="math inline">\(\|x^0 - x^\lambda\|_\infty \leq \lambda 2^d\)</span>.</p>
+<p>There exists a function <span class="math inline">\(f\)</span>, such that SCP be solved in <span class="math inline">\(O( f(p) 2^k MST(n))\)</span> for <span class="math inline">\(n\)</span> requests on a graph with at most <span class="math inline">\(k\)</span> degree <span class="math inline">\(\geq 3\)</span> vertices and circuit rank <span class="math inline">\(p\)</span>.</p>
 </div>
 </div>
 </div>
+<p>In particular, this would show for fixed topology graphs, the running time would be <span class="math inline">\(O(MST(n))\)</span>, matching the optimum bound.</p>
 <!--
 ## The technique
 ::: {.incremental}
