@@ -1,5 +1,5 @@
 ---
-title: "The Complexity of Offline Unit Capacity Dial-a-Ride Problem in Warehouses"
+title: "The Complexity of Stacker Crane Problem in Fixed Topologies"
 author: "Yike Chen, **Chao Xu**, Jianbo Wang"
 format: 
   revealjs:
@@ -27,103 +27,32 @@ So I'm someone with a theoretical computer science background. So I'm interested
 This topic is a very nice study in the sense that it shows how to solve some combinatorial problems, through other classical combinatorial problems.
 -->
 
-## Dial-a-Ride problem
-
-![](uw-dial-a-ride.png){fig-align=center}
-
-<!-- 
-So in a dial-a-ride problem, there are some request, which is to take a passenger from point a to point b. You want to schedule the vechicles so they are efficient. For example, say take the minimum distance.
--->
-
 ## Stacker Crane Problem
 
 ![](stacker_crane.webp)
 
 Image courtesy [@GiuliaAJ21]
 
-## Dial-a-Ride
-
- - Online [@LOISZ17] [@Baligacs22]
- - Multiple Vehicles [@Desrosiers88]
- - Capacities [@CharikarR98]
- - Time windows [@DELEPLANQUE20131256]
- - Preemptive [@10.1007/11830924_20]
- - Approximation algorithms. [@FredericksonHK78] [@CharikarR98]
- - ...
-
-## Our focus is in the most special case
-
-- offline
-- unit capacity
-- non-preemptive
-- single vehicle
-- vehicle need to return to original position after completing all requests
-
-## Known results
-
-Let $MST(n)$ be the time to compute a minimum spanning tree on a $n$ vertex graph. Let $n$ to be the number of requests.
-
-Solving the dial-a-ride problem on the following graphs:
-
-::: {.incremental}
-  - Path $-$: [$O(MST(n))$ time. [@AtallahK88]]{.fragment} 
-  - Cycle $\bigcirc$: [$O(MST(n))$ time. [@Frederickson93]]{.fragment} 
-  - Trees: [**NP-hard**! [@FredericksonG93]]{.fragment}
-  - $\boxminus$ shape: [Unknown]{.fragment}
-  - $\top$ shape: [Unknown]{.fragment}
-:::
-
-
-## Topology of Warehouses
-
-A fixed warehouse topology is quite simple.
-
-![](warehouse.png){fig-align="center"}
-
-Image courtesy [@RoodbergenK01]
-
-## Our result
-
-::: {style="background: #fff1e8; padding:10px; margin:10px"}
-The dial-a-ride problem can be solved in polynomial time for "warehouse topologies".
-:::
-
-::: {.fragment style="background: #fff1e8; padding:10px; margin:10px"}
-The dial-a-ride problem can be solved in polynomial time for $\boxminus$.
-:::
-
- 
-
-<!--
-::: {style="background: #fff1e8; padding:10px;"}
-Assuming the space of solutions for a certain problem is small, then dial-a-ride problem can be solved in $O(f(k,p)n^c)$ time.
-:::
+A vehicle of capacity 1, completing pick up and delivery tasks.
+<!-- 
+So in a Stacker Crane Problem, there are some request, which is to take a passenger from point a to point b. You want to schedule the vechicles so they are efficient. For example, say take the minimum distance.
 -->
 
+## Stacker Crane on a graph
 
-## In This talk
-  
-  - Review an example of a Dial-A-Ride problem
-  - Review how Dial-a-Ride was solved on paths and cycles
-  - Show how to generalize the algorithm to general graphs
-
-# Dial-a-ride, a simple example
-
-## Dial-a-ride on a graph
-
-For a graph $G=(V,E)$ with weights on the edges. A single robot with capacity 1 is at position $s_0\in V$.
+For a graph $G=(V,E)$ with weights on the edges. A single vehicle with capacity 1 is at position $s_0\in V$.
 
 - There are $n$ requests of the form $(s_i,t_i) \in {V\choose 2}$
-- The robot pick up item $i$ from $s_i$, and move it to $t_i$.
-- The robot must return to $s_0$ after completing all requests.
-- Goal: minimizes the total weight of the edges traveled by the robot. 
+- The vehicle pick up item $i$ from $s_i$, and move it to $t_i$.
+- The vehicle must return to $s_0$ after completing all requests.
+- Goal: minimizes the total weight of the edges traveled by the vehicle. 
 
-## Dial-a-ride on a path
+## Stacker Crane on a path
 
 ![](line1.png){fig-align="center"}
 
 
-## Dial-a-ride on a path {auto-animate=true}
+## Stacker crane on a path {auto-animate=true}
 :::{.absolute top=150 left=40 data-id="s_0"}
 $s_0$
 :::
@@ -147,7 +76,7 @@ $\color{red}{t_2}$
 
 ![](truck.svg){.absolute top=250 left=0 width="100" height="60" data-id="truck"}
 
-## Dial-a-ride on a path {auto-animate=true}
+## Stacker crane on a path {auto-animate=true}
 :::{.absolute top=150 left=40 data-id="s_0"}
 $s_0$
 :::
@@ -175,7 +104,7 @@ $\color{red}{t_2}$
 []{.absolute style="height: 3px;background: black;" width="350"} []{.absolute .arrow .arrowright top=9 left=342}
 :::
 
-## Dial-a-ride on a path {auto-animate=true}
+## Stacker crane on a path {auto-animate=true}
 :::{.absolute top=150 left=40 data-id="s_0"}
 $s_0$
 :::
@@ -208,7 +137,7 @@ $\color{red}{t_2}$
 :::
 
 
-## Dial-a-ride on a path {auto-animate=true}
+## Stacker crane on a path {auto-animate=true}
 :::{.absolute top=150 left=40 data-id="s_0"}
 $s_0$
 :::
@@ -246,7 +175,7 @@ $\color{red}{t_2}$
 
 
 
-## Dial-a-ride on a path {auto-animate=true}
+## Stacker crane on a path {auto-animate=true}
 :::{.absolute top=150 left=40 data-id="s_0"}
 $s_0$
 :::
@@ -286,7 +215,7 @@ $\color{red}{t_2}$
 []{.absolute style="height: 3px;background: blue;" width="350"} []{.absolute .arrow .arrowleft style="border-color: blue;" top=9 left=0}
 :::
 
-## Dial-a-ride on a path {auto-animate=true}
+## Stacker crane on a path {auto-animate=true}
 :::{.absolute top=150 left=40 data-id="s_0"}
 $s_0$
 :::
@@ -331,7 +260,7 @@ $\color{red}{t_2}$
 :::
 
 
-## Dial-a-ride on a path (Not as good) {auto-animate=true}
+## Stacker crane on a path (Not as good) {auto-animate=true}
 :::{.absolute top=150 left=40 data-id="s_0"}
 $s_0$
 :::
@@ -375,21 +304,85 @@ $\color{red}{t_2}$
 []{.absolute style="height: 3px;background: black;" width="800"} []{.absolute .arrow .arrowleft style="border-color: black;" top=9 left=0}
 :::
 
-## Dial-A-Ride feels like TSP
+## Stacker Crane Extensions
+
+ - Online [@LOISZ17] [@Baligacs22]
+ - Multiple Vehicles [@Desrosiers88]
+ - Capacities [@CharikarR98]
+ - Time windows [@DELEPLANQUE20131256]
+ - Preemptive [@10.1007/11830924_20]
+ - Approximation algorithms. [@FredericksonHK78] [@CharikarR98]
+ - ...
+
+## Known results
+
+Let $MST(n)$ be the time to compute a minimum spanning tree on a $n$ vertex graph. Let $n$ to be the number of requests.
+
+Solving the stacker crane problem on the following graphs:
+
+::: {.incremental}
+  - Path $-$: [$O(MST(n))$ time. [@AtallahK88]]{.fragment} 
+  - Cycle $\bigcirc$: [$O(MST(n))$ time. [@Frederickson93]]{.fragment} 
+  - Trees: [**NP-hard**! [@FredericksonG93]]{.fragment}
+  - $\boxminus$ shape: [Unknown]{.fragment}
+  - $\top$ shape: [Unknown]{.fragment}
+:::
+
+
+## Topology of Warehouses
+
+A fixed warehouse topology is quite simple.
+
+![](warehouse.png){fig-align="center"}
+
+Image courtesy [@RoodbergenK01]
+
+## Fixed topology
+
+A class of graphs $\mathcal{C}$ have a fixed topology, if there exists a graph $G$ such that every graph $H\in\mathcal{C}$ can be obtained through applying subdivisions of $G$.
+
+![](subdivision1.png){fig-align="center"}
+![](subdivision2.png){fig-align="center"}
+
+## Our result
+
+::: {style="background: #fff1e8; padding:10px; margin:10px"}
+The stacker crane problem can be solved in polynomial time for fixed topologies.
+:::
+
+::: {.fragment style="background: #fff1e8; padding:10px; margin:10px"}
+The stacker crane problem can be solved in polynomial time for $\boxminus$.
+:::
+
+ 
+
+<!--
+::: {style="background: #fff1e8; padding:10px;"}
+Assuming the space of solutions for a certain problem is small, then stacker crane problem can be solved in $O(f(k,p)n^c)$ time.
+:::
+-->
+
+
+## In This talk
+  
+  - Review the algorithm for paths and cycles
+  - Show how to generalize the algorithm to general graphs
+
+## Stacker crane feels like TSP
  - Permutation $\pi:[n]\to [n]$, such that $\pi(i)$ is the $i$th completed request. 
  - The cost of a permutation $c(\pi)$ is $\sum_{i=0}^n d(s_{\pi(i)},t_{\pi(i)}) + d(t_{\pi(i)},s_{\pi(i+1 \pmod {n+1})})$.
  - Find a permutation of minimum cost.
 
-## Dial-a-Ride vs TSP
+## Stacker crane vs TSP
 
 ::: {.incremental}
- - Finding a traveling salesman tour on a graph $G=(V,E)$ is equivalent to solving the dial-a-ride problem on $G$, where the requests are $\{(v,v)|v\in V\}$.
- - Dial-a-Ride is strictly harder than TSP:
+ - Finding a traveling salesman tour on a graph $G=(V,E)$ is equivalent to solving the stacker crane problem on $G$, where the requests are $\{(v,v)|v\in V\}$.
+ - stacker crane is strictly harder than TSP:
    - (Steiner) TSP is polynomial time solvable on trees
-   - Dial-a-Ride is NP-hard on Trees.
+   - stacker crane is NP-hard on Trees.
 :::
 
-# Solve Dial-a-Ride on paths and cycles
+# Solve SCP on paths and cycles
 
 
 Algorithms of [@AtallahK88;@Frederickson93].
@@ -445,7 +438,7 @@ Obtain a complete solution by construct a tour through the chosen edges.
  ![](line8.png){fig-align="center"}
 
 
-## Dial-a-ride on a cycle
+## SCP on a cycle
 
 forward - backward = 0?
 
@@ -482,7 +475,7 @@ Run minimum Steiner tree to get the set opposing edges to connect the tour.
  - Remove a factor of $n$ by guess a number at most $1$ away from $w^*$. 
 :::
 
-# Dial-a-Ride on general graphs
+# SCP on general graphs
 
 ## What did we do?
 
@@ -570,33 +563,21 @@ The fundamental cycles for all $e\not\in T$ is the ***fundamental cycle basis***
  As a special case.
 
 :::{.fragment style="background: #fff1e8; padding:10px; margin:10px"}
- The dial-a-ride problem can be solved in $O(n^2 MST(n))$ for $\boxminus$.
+ SCP can be solved in $O(n^2 MST(n))$ for $\boxminus$.
 :::
 
 :::{.fragment style="background: #fff1e8; padding:10px; margin:10px"}
- The dial-a-ride problem can be solved in $O(n MST(n))$ for $\bigcirc$.
+ SCP problem can be solved in $O(n MST(n))$ for $\bigcirc$.
 :::
-
-## Open problem
-
-:::{style="background: #fff1e8; padding:10px; margin:10px"}
-Does there exists a function $f$, such that the dial-a-ride problem be solved in $O( f(p) 2^k MST(n))$ for $n$ requests on a graph with at most $k$ degree $\geq 3$ vertices and circuit rank $p$?
-:::
-
-In particular, this shows for many classes of warehouse graphs, the running time would be $O(MST(n))$, matching the optimum bound.
 
 ## Open problem
 
 ::: {.callout-note .epic-callout-body}
 # Conjecture
-Let
-
- - $a_1,\ldots,a_n\in \{0,1\}^d$
- - $b_1,\ldots,b_n\in \R$
- - $f^\lambda(x) = \sum_{i=1}^n \max(|a_i\cdot x + b_i|,\lambda)$
-
-There exist $x^0\in \arg\min f^0$ and $x^\lambda \in \arg\min f^\lambda$ such that $\|x^0 - x^\lambda\|_\infty \leq \lambda 2^d$.
+There exists a function $f$, such that SCP be solved in $O( f(p) 2^k MST(n))$ for $n$ requests on a graph with at most $k$ degree $\geq 3$ vertices and circuit rank $p$.
 :::
+
+In particular, this would show for fixed topology graphs, the running time would be $O(MST(n))$, matching the optimum bound.
 
 <!--
 ## The technique
