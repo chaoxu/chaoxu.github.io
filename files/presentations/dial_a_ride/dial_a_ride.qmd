@@ -10,12 +10,10 @@ callout-icon: false
 bibliography: dial-a-ride.bib
 ---
 
-
+<!--
 ## My Background
  
-$\newcommand{\R}{\mathbb{R}}$
-$\newcommand{\Z}{\mathbb{Z}}$
-$\newcommand{\N}{\mathbb{N}}$
+
 
  - Work primarily in combinatorial optimization
  - Theoretical computer science background
@@ -28,6 +26,9 @@ This topic is a very nice study in the sense that it shows how to solve some com
 -->
 
 ## Stacker Crane Problem
+$\newcommand{\R}{\mathbb{R}}$
+$\newcommand{\Z}{\mathbb{Z}}$
+$\newcommand{\N}{\mathbb{N}}$
 
 ![](stacker_crane.webp)
 
