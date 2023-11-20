@@ -56,6 +56,7 @@ people:
   Jesse Read: https://jmread.github.io/
   Jianbo Wang: https://wangchienbo.github.io/
   Siyun Zhou: https://lazykko.github.io/
+  Siyue Liu: https://www.cmu.edu/tepper/programs/phd/program/student-profiles/phd-student-liu-siyue.html
 
 types:
   conference: Conference Publications
@@ -614,6 +615,23 @@ abstract: >
 
 
 # manuscripts
+---
+id: matroid-congruency-constraint
+title: On the Congruency-Constrained Matroid Base
+type: manuscript
+show: [d]
+year: 2023
+bib: <time>2023</time>, Submitted.
+authors: [Siyue Liu, Chao Xu]
+abstract: >
+  Consider a matroid where all elements are labeled with an element from
+  $\mathbb{Z}_m$. We are interested in finding a base where the sum of the labels
+  is congruent to $g \pmod m$. We show that this problem can be solved in
+  $O(m^{2m} n r \log r)$ time for a matroid with $n$ elements and rank $r$, when
+  $m$ is either the product of two primes or a prime power. The algorithm
+  generalizes to all moduli, and in fact, to all abelian groups, if a classic
+  additive combinatorics conjecture of Schrijver and Seymour is true. We also
+  discuss the optimization version of the problem.
 ---
 id: cyclic-cover
 title: Almost optimum $\ell$-covering of $\Z_n$
