@@ -6,26 +6,41 @@ import functools
 import sys
 from jinja2 import Template
 import io
-mk = mistune.Markdown(parse_block_html=True)
 from bs4 import BeautifulSoup as bs
 import cgi
 
-def compose(*functions):
-    return functools.reduce(lambda f, g: lambda x: f(g(x)), functions, lambda x: x)
+def render_inline_math(renderer, text):
+    return r'<span class="math">' + text + r'</span>'
+
+def parse_inline_math(inline, m, state):
+    text = m.group('math')
+    state.append_token({'type': 'inline_math', 'raw': text})
+    return m.end()
+
+# parsing markdown with a modified built-in math plugin
+INLINE_MATH_PATTERN = r'\$(?P<math>.+?)\$'
+mk=mistune.create_markdown(escape=False)
+mk.inline.register('inline_math', INLINE_MATH_PATTERN, parse_inline_math, before='link')
+mk.renderer.register('inline_math', render_inline_math)
+
+# def compose(*functions):
+#     return functools.reduce(lambda f, g: lambda x: f(g(x)), functions, lambda x: x)
 
 def mki(x): 
     return mk(x)[3:-5]
 
-def math(string):
-    def my_replace(match):
-        return '<span class="math">'+html.escape(match.group(1))+'</span>'
+# def math(string):
+#     def my_replace(match):
+#         return '<span class="math">'+html.escape(match.group(1))+'</span>'
 
-    # find $ $ pairs
-    return re.sub(r'\$(.*?)\$', my_replace, string)
+#     # find $ $ pairs
+#     return re.sub(r'\$(.*?)\$', my_replace, string)
 
-parse=compose(mk,math)
+parse = mk
+# parse=compose(mk,math)
 # inline parse, strip the <p> tag
-parsei=compose(mki,math)
+# parsei=compose(mki,math)
+parsei = mki
 
 def coauthor_list(xs, links):
     # xs = [x for x in xs if x!="Chao Xu"]
@@ -51,7 +66,8 @@ def build_paper(paper):
     if "show" not in paper.keys():
         paper["show"] = []
 
-    paper["title"] = math(paper["title"])
+    #paper["title"] = math(paper["title"])
+    paper["title"] = parsei(paper["title"])
     paper["authors"] = coauthor_list(paper["authors"],people)
     if "notes" in paper.keys():
         paper["notes"] = map(parsei,paper["notes"])
