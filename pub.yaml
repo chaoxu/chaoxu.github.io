@@ -108,7 +108,6 @@ authors: [Tsuyoshi Hirayama, Yuhao Liu, Kazuhisa Makino, Ke Shi, Chao Xu]
 type: conference
 year: 2023
 pub: SODA
-selected: true
 abstract: >
   In this paper, we study the minimum $k$-partition problem of submodular functions, i.e., 
   given a finite set $V$ and a submodular function $f:2^V\to \R$,  
@@ -353,6 +352,24 @@ abstract: A closed curve in the plane is weakly simple if it is the limit (in th
 
 
 # journal publications
+---
+id: sub4part-journal
+title: A polynomial time algorithm for finding a minimum 4-partition of a submodular function
+authors: [Tsuyoshi Hirayama, Yuhao Liu, Kazuhisa Makino, Ke Shi, Chao Xu]
+type: journal
+year: 2023
+pub: MP
+selected: true
+abstract: >
+  In this paper, we study the minimum $k$-partition problem of submodular functions, i.e., given a finite set $V$ 
+  and a submodular function $f:2^V\to \mathbb{R}$, computing a $k$-partition $\{V_1,\ldots,V_k\}$ of $V$ 
+  with minimum $\sum_{i=1}^k f(V_i)$. The problem is a natural generalization 
+  of the minimum $k$-cut problem in graphs and hypergraphs. It is known that the problem is
+  NP-hard for general $k$, and solvable in polynomial time for fixed $k\leq 3$. In this paper, we construct the first polynomial-time algorithm for 
+  the minimum 4-partition problem.
+notes:
+  - An [extended abstract](#sub4part) of this work appeared in SODA 2023.
+
 ---
 id: multicritera-cuts-journal
 title: Multicritera Cuts and Size-Constrained $k$-cuts in Hypergraphs
