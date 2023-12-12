@@ -22,6 +22,7 @@ Ideal candidates should be interested in one or more of the following topics:
  - Optimization in matroids and submodular functions
  - Integer programming
  - Constraint solvers
+ - Programming languages/formal verification
 
 However, candidates interested in theoretical computer science and/or combinatorial optimization in general are also encouraged to apply.
 
