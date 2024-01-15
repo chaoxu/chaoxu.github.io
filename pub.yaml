@@ -92,7 +92,7 @@ title: Solving systems of linear equations through zero forcing sets
 authors: [Jianbo Wang, Chao Xu, Siyun Zhou]
 type: conference
 year: 2023
-bib: COCOON 2023 (to appear)
+bib: COCOON 2023
 abstract: >
   Let $\mathbb{F}$ be any field, we consider solving $Ax=b$ for a matrix $A\in\mathbb{F}^{n\times n}$
   of $m$ non-zero elements and $b\in\mathbb{F}^{n}$. If we are given a zero forcing set of $A$ of size
