@@ -359,6 +359,7 @@ authors: [Tsuyoshi Hirayama, Yuhao Liu, Kazuhisa Makino, Ke Shi, Chao Xu]
 type: journal
 year: 2023
 pub: MP
+show: [d]
 selected: true
 abstract: >
   In this paper, we study the minimum $k$-partition problem of submodular functions, i.e., given a finite set $V$ 
