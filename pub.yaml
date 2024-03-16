@@ -90,6 +90,7 @@ id: matroid-congruency-constraint
 title: On the Congruency-Constrained Matroid Base
 type: conference
 show: [d]
+selected: true
 year: 2024
 bib: IPCO 2024 (To appear)
 authors: [Siyue Liu, Chao Xu]
