@@ -18,6 +18,7 @@ venues:
   NeurIPS: Conference on Neural Information Processing Systems
   FSTTCS: Foundations of Software Technology and Theoretical Computer Science
   COCOON: International Computing and Combinatorics Conference
+  IPCO: Conference on Integer Programming and Combinatorial Optimization
 
 people:
   Chao Xu: https://chaoxu.prof
@@ -84,7 +85,23 @@ types:
 
 
 # conference publications
-
+---
+id: matroid-congruency-constraint
+title: On the Congruency-Constrained Matroid Base
+type: conference
+show: [d]
+year: 2024
+bib: IPCO 2024 (To appear)
+authors: [Siyue Liu, Chao Xu]
+abstract: >
+  Consider a matroid where all elements are labeled with an element in $\mathbb{Z}$.
+  We are interested in finding a base where the sum of the labels is congruent to
+  $g \pmod m$. We show that this problem can be solved in $\tilde{O}(2^{4m} n r^{5/6})$
+  time for a matroid with $n$ elements and rank $r$, when $m$ is either the product of
+  two primes or a prime power. The algorithm can be generalized to all moduli and,
+  in fact, to all abelian groups if a classic additive combinatorics conjecture
+  by Schrijver and Seymour holds true. We also discuss the optimization version
+  of the problem.
 ---
 id: zeroforcing
 show: [d]
@@ -92,7 +109,7 @@ title: Solving systems of linear equations through zero forcing sets
 authors: [Jianbo Wang, Chao Xu, Siyun Zhou]
 type: conference
 year: 2023
-bib: COCOON 2023
+pub: COCOON
 abstract: >
   Let $\mathbb{F}$ be any field, we consider solving $Ax=b$ for a matrix $A\in\mathbb{F}^{n\times n}$
   of $m$ non-zero elements and $b\in\mathbb{F}^{n}$. If we are given a zero forcing set of $A$ of size
@@ -633,23 +650,7 @@ abstract: >
 
 
 # manuscripts
----
-id: matroid-congruency-constraint
-title: On the Congruency-Constrained Matroid Base
-type: manuscript
-show: [d]
-year: 2023
-bib: <time>2023</time>, Submitted.
-authors: [Siyue Liu, Chao Xu]
-abstract: >
-  Consider a matroid where all elements are labeled with an element from
-  $\mathbb{Z}_m$. We are interested in finding a base where the sum of the labels
-  is congruent to $g \pmod m$. We show that this problem can be solved in
-  $O(m^{2m} n r \log r)$ time for a matroid with $n$ elements and rank $r$, when
-  $m$ is either the product of two primes or a prime power. The algorithm
-  generalizes to all moduli, and in fact, to all abelian groups, if a classic
-  additive combinatorics conjecture of Schrijver and Seymour is true. We also
-  discuss the optimization version of the problem.
+
 ---
 id: cyclic-cover
 title: Almost optimum $\ell$-covering of $\Z_n$
