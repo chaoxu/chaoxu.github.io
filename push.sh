@@ -16,6 +16,10 @@ cp ~/Documents/GitHub/katex_cli/target/release/katex_cli katex_cli
 # stack exec chaosite clean
 stack exec chaosite build
 
+# make python environment
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
 # Build index
 python3 pub.py > _site/index.html
 
