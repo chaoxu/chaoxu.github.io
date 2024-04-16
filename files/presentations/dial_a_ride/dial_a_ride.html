@@ -850,24 +850,25 @@ Assuming the space of solutions for a certain problem is small, then stacker cra
 <section id="the-algorithm" class="slide level2">
 <h2>The algorithm</h2>
 <ul>
-<li>For every cycle where no cycle gets traversed more than <span class="math inline">\(n\)</span> times
+<li>For every tour where no edge gets traversed more than <span class="math inline">\(n\)</span> times
 <ul>
-<li>Find the optimum tour with the natural map to that cycle</li>
+<li>Find the optimum cycle with the natural map to that tour</li>
 <li>Find minimum Steiner tree to connect the tour</li>
 </ul></li>
 </ul>
+<p>How: One can show the coefficients of each fundamental cycle is at most <span class="math inline">\(|n^2|\)</span>, so we reduce the search space to <span class="math inline">\((2n^2+1)^{p}\)</span>.</p>
 </section>
 <section id="results" class="slide level2">
 <h2>Results</h2>
 <div style="background: #fff1e8; padding:10px; margin:10px">
-<p>For a graph with at most <span class="math inline">\(k\)</span> vertices with degree at least <span class="math inline">\(3\)</span>, and circuit rank <span class="math inline">\(p\)</span>, the running time of the algorithm is <span class="math inline">\(O( n^p 2^k MST(n))\)</span>.</p>
+<p>For a graph with at most <span class="math inline">\(k\)</span> vertices with degree at least <span class="math inline">\(3\)</span>, and circuit rank <span class="math inline">\(p\)</span>, the running time of the algorithm is <span class="math inline">\(O((2n^2+1)^{p} 2^k MST(n))\)</span>.</p>
 </div>
 <p>As a special case.</p>
 <div class="fragment" style="background: #fff1e8; padding:10px; margin:10px">
-<p>SCP can be solved in <span class="math inline">\(O(n^2 MST(n))\)</span> for <span class="math inline">\(\boxminus\)</span>.</p>
+<p>SCP can be solved in <span class="math inline">\(O(n^4 MST(n))\)</span> for <span class="math inline">\(\boxminus\)</span>.</p>
 </div>
 <div class="fragment" style="background: #fff1e8; padding:10px; margin:10px">
-<p>SCP problem can be solved in <span class="math inline">\(O(n MST(n))\)</span> for <span class="math inline">\(\bigcirc\)</span>.</p>
+<p>SCP problem can be solved in <span class="math inline">\(O(n^2 MST(n))\)</span> for <span class="math inline">\(\bigcirc\)</span>.</p>
 </div>
 </section>
 <section id="open-problem" class="slide level2">
