@@ -536,24 +536,26 @@ The fundamental cycles for all $e\not\in T$ is the ***fundamental cycle basis***
 
 ## The algorithm
  
- - For every cycle where no cycle gets traversed more than $n$ times
-   - Find the optimum tour with the natural map to that cycle
+ - For every tour where no edge gets traversed more than $n$ times
+   - Find the optimum cycle with the natural map to that tour
    - Find minimum Steiner tree to connect the tour
+
+How: One can show the coefficients of each fundamental cycle is at most $|n^2|$, so we reduce the search space to $(2n^2+1)^{p}$.
  
 ## Results
 :::{style="background: #fff1e8; padding:10px; margin:10px"}
- For a graph with at most $k$ vertices with degree at least $3$, and circuit rank $p$, the running time of the algorithm is $O( n^p 2^k MST(n))$.
+ For a graph with at most $k$ vertices with degree at least $3$, and circuit rank $p$, the running time of the algorithm is $O((2n^2+1)^{p} 2^k MST(n))$.
 :::
 
 
  As a special case.
 
 :::{.fragment style="background: #fff1e8; padding:10px; margin:10px"}
- SCP can be solved in $O(n^2 MST(n))$ for $\boxminus$.
+ SCP can be solved in $O(n^4 MST(n))$ for $\boxminus$.
 :::
 
 :::{.fragment style="background: #fff1e8; padding:10px; margin:10px"}
- SCP problem can be solved in $O(n MST(n))$ for $\bigcirc$.
+ SCP problem can be solved in $O(n^2 MST(n))$ for $\bigcirc$.
 :::
 
 ## Open problem
