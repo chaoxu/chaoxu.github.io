@@ -96,7 +96,7 @@ Karger showed the following [@Karger16].
 
 ::: Theorem
 
-  The number of cuts $F$ such that $c_\mu(F)\leq \lambda_{\mu,2}$ for some $\mu\in \R_{\geq 0}^d$ is $O(n^{d+1})$.
+  The number of cuts $F$ such that $c^\mu(F)\leq \lambda_{\mu,2}$ for some $\mu\in \R_{\geq 0}^d$ is $O(n^{d+1})$.
 
 :::
 
@@ -104,7 +104,7 @@ A even more general theorem follows, allowing $\alpha$-approximate $k$-cuts.
 
 ::: Theorem
 
-  The number of cuts $F$ such that $c_\mu(F)\leq \alpha \lambda_{\mu,k}$ for some $\mu\in \R_{\geq 0}^d$ is $O(n^{2\alpha(k-1)+d-1})$.
+  The number of cuts $F$ such that $c^\mu(F)\leq \alpha \lambda_{\mu,k}$ for some $\mu\in \R_{\geq 0}^d$ is $O(n^{2\alpha(k-1)+d-1})$.
 
 :::
 
@@ -112,19 +112,19 @@ Of course, knowing the current result for number of $\alpha$-approximate $k$-cut
 
 ::: Conjecture
 
-  The number of cuts $F$ such that $c_\mu(F) \leq \alpha \lambda_{\mu,k}$ for $\mu\in \R_{\geq 0}^d$ is $O(n^{\alpha k+d-1})$.
+  The number of cuts $F$ such that $c^\mu(F) \leq \alpha \lambda_{\mu,k}$ for $\mu\in \R_{\geq 0}^d$ is $O(n^{\alpha k+d-1})$.
 
 :::
 
-Note, we might relax the requirement that all $c_i$ and $\mu$ are non-negative. Aissi et. al. showed the following [@AissiMMQ15], only assuming $c_\mu \geq 0$.
+Note, we might relax the requirement that all $c_i$ and $\mu$ are non-negative. Aissi et. al. showed the following [@AissiMMQ15], only assuming $c^\mu \geq 0$.
 
 ::: Theorem
 
-  The number of cuts $F$ such that $c_\mu(F)\leq \lambda_{\mu}$ for some $c_\mu\geq 0$ is $O(m^d n^2\log^{d-1} n)$.
+  The number of cuts $F$ such that $c^\mu(F)\leq \lambda_{\mu}$ for some $c_\mu\geq 0$ is $O(m^d n^2\log^{d-1} n)$.
 
 :::
 
-Can we obtain a stronger bound for $c_\mu \geq 0$? 
+Can we obtain a stronger bound for $c^\mu \geq 0$? 
 
 Parametric min-cut is related to multicriteria min-cut, which also have a lot of open problems [@BeidemanCX23]. 
 
