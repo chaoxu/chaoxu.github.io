@@ -798,8 +798,6 @@ graph.</p>
     <link>https://chaoxu.prof/posts/2019-11-27-bounds-on-cuts.html</link>
     <description><![CDATA[<br />
 <div>
-<p>Recently there are some advances on counting the number of min-cut in
-graphs.</p>
 <p>Consider we have an undirected graph <span
 class="math inline">G=(V,E)</span> of <span class="math inline">n</span>
 vertices, and there are <em>positive</em> cost <span
@@ -816,18 +814,22 @@ class="math inline">F=E(\mathcal{P})</span> for some <span
 class="math inline">\mathcal{P}</span> such that <span
 class="math inline">|\mathcal{P}|\geq k</span>.</p>
 <p>We stress that by this definition, a <span
-class="math inline">k</span>-cut is a <span
-class="math inline">k-1</span>-cut. A <em>cut</em> is a <span
+class="math inline">k</span>-cut is always a <span
+class="math inline">j</span>-cut for <span class="math inline">j\leq
+k</span>. A <em>cut</em> is defined as a <span
 class="math inline">2</span>-cut. A min-<span
 class="math inline">k</span>-cut is a <span
 class="math inline">k</span>-cut of minimum value (cost). We let <span
 class="math inline">\lambda_k</span> to denote the value of the
-min-<span class="math inline">k</span>-cut.</p>
+min-<span class="math inline">k</span>-cut. A <span
+class="math inline">\alpha</span>-approximate <span
+class="math inline">k</span>-cut is a cut of value at most <span
+class="math inline">\alpha\lambda_k</span>.</p>
 <p>It is well known that the number of min-cuts in a graph is <span
-class="math inline">{n\choose 2} = O(n^2)</span>. <span class="citation"
+class="math inline">{n\choose 2}</span>. <span class="citation"
 data-cites="KargerS96">[<a href="#ref-KargerS96"
 role="doc-biblioref">1</a>]</span></p>
-<p>In the entire article, unless specifically stated, we assume <span
+<p>Unless specifically stated, we assume <span
 class="math inline">k</span> is a fixed integer at least <span
 class="math inline">2</span>, and <span
 class="math inline">\alpha</span> is a fixed value at least <span
@@ -840,9 +842,9 @@ class="index">1</span></span>
 class="math inline">c(F)\leq \lambda_2</span> is <span
 class="math inline">O(n^2)</span>.</p>
 </div>
-<h1 data-number="1" id="bounds-related-to-scaling-of-the-min-cut"><span
-class="header-section-number">1</span> Bounds related to scaling of the
-min-cut</h1>
+<h1 data-number="1" id="bounds-related-to-approximate-min-cuts"><span
+class="header-section-number">1</span> Bounds related to approximate
+min-cuts</h1>
 <p>What happens when we want to know about the number of cuts with value
 at most <span class="math inline">\alpha \lambda_2</span>?</p>
 <p>By simply analyzing Karger’s algorithm, one can obtain the
@@ -854,9 +856,10 @@ class="index">2</span></span>
 class="math inline">c(F)\leq \alpha \lambda_2</span> is <span
 class="math inline">O(n^{2\alpha})</span>.</p>
 </div>
-<p>With more careful analysis using tree packing, Karger obtained the
-following <span class="citation" data-cites="Karger00">[<a
-href="#ref-Karger00" role="doc-biblioref">2</a>]</span>.</p>
+<p>With more careful analysis using tree packing, Karger added a floor
+function to the exponent <span class="citation"
+data-cites="Karger00">[<a href="#ref-Karger00"
+role="doc-biblioref">2</a>]</span>.</p>
 <div class="theorem-environment Theorem" data-index="3" type="Theorem">
 <span class="theorem-header"><span class="type">Theorem</span><span
 class="index">3</span></span>
@@ -874,9 +877,10 @@ min-cut.</p>
 fixed value. This is because there is a dependency on <span
 class="math inline">\alpha</span> hidden inside the big <span
 class="math inline">O</span>. Our lower bound is absolute and does not
-depending on <span class="math inline">\alpha</span> being fixed. It be
-interesting to obtain a matching upper bound. Hence we can consider the
-problem with strict inequality.</p>
+depending on <span class="math inline">\alpha</span> being fixed. It
+would be interesting to obtain a matching upper bound for arbitrary
+<span class="math inline">\alpha</span>. Hence we can consider the
+problem with <strong>strict inequality</strong>.</p>
 <div id="approxcutconjecture" class="theorem-environment Conjecture"
 data-index="4" type="Conjecture">
 <span class="theorem-header"><span class="type">Conjecture</span><span
@@ -889,8 +893,10 @@ class="math inline">O(n^{\ceil{2\alpha}-1})</span>.</p>
 class="math inline">\alpha\leq \frac{3}{2}</span> <span class="citation"
 data-cites="HenzingerW96">[<a href="#ref-HenzingerW96"
 role="doc-biblioref">3</a>]</span>.</p>
-<h1 data-number="2" id="bounds-related-to-min-k-cut"><span
-class="header-section-number">2</span> Bounds related to min-<span
+<h1 data-number="2"
+id="bounds-related-to-alpha-approximate-min-k-cut"><span
+class="header-section-number">2</span> Bounds related to <span
+class="math inline">\alpha</span>-approximate min-<span
 class="math inline">k</span>-cut</h1>
 <p>There are multiple ways to obtain the following theorem. For example,
 directly generalize Karger’s argument for cut counting.</p>
@@ -901,180 +907,161 @@ class="index">5</span></span>
 class="math inline">c(F)\leq \lambda_k</span> is <span
 class="math inline">O(n^{2(k-1)})</span>.</p>
 </div>
-<p>There were many attempts, and people can only obtain lower bounds of
-the form <span class="math inline">{n\choose k}</span>. Again, a cycle
-would be an example of such lower bound. The min-<span
+<p>One can show a lower bounds of the form <span
+class="math inline">{n\choose k}</span>. Again, a cycle would be an
+example of such lower bound. The min-<span
 class="math inline">k</span>-cut has value <span
 class="math inline">k</span>, and can be obtained by picking any <span
-class="math inline">k</span> edges. The gap is pretty large. Hence one
-would tempt to conjecture the following.</p>
-<div id="kcutconjecture" class="theorem-environment Conjecture"
-data-index="6" type="Conjecture">
-<span class="theorem-header"><span class="type">Conjecture</span><span
+class="math inline">k</span> edges. Recently, the upper bound has been
+closed (up to constant factor if <span class="math inline">k</span> is
+fixed) <span class="citation" data-cites="GuptaHLL21">[<a
+href="#ref-GuptaHLL21" role="doc-biblioref">4</a>]</span>.</p>
+<div class="theorem-environment Theorem" data-index="6" type="Theorem">
+<span class="theorem-header"><span class="type">Theorem</span><span
 class="index">6</span></span>
 <p>The number of cuts <span class="math inline">F</span> such that <span
 class="math inline">c(F)\leq \lambda_k</span> is <span
-class="math inline">O(n^k)</span>.</p>
+class="math inline">n^k k^{O(k^2)}</span>. Namely <span
+class="math inline">O(n^k)</span> for fixed <span
+class="math inline">k</span>.</p>
 </div>
-<p>Recently, Gupta, Lee and Li almost closes the gap <span
-class="citation" data-cites="GuptaLL19">[<a href="#ref-GuptaLL19"
-role="doc-biblioref">4</a>]</span>.</p>
+<p>In fact, they proved it by prorving the stronger theorem on <span
+class="math inline">\alpha</span>-approximate min-<span
+class="math inline">k</span>-cuts.</p>
 <div class="theorem-environment Theorem" data-index="7" type="Theorem">
 <span class="theorem-header"><span class="type">Theorem</span><span
 class="index">7</span></span>
 <p>The number of cuts <span class="math inline">F</span> such that <span
-class="math inline">c(F)\leq \lambda_k</span> is <span
-class="math inline">\hat{O}(n^k)</span>.</p>
+class="math inline">c(F)\leq \alpha \lambda_k</span> is <span
+class="math inline">n^{\alpha k} k^{O(\alpha k^2)}</span>. Namely <span
+class="math inline">O(n^{\alpha k})</span> for fixed <span
+class="math inline">k</span>.</p>
 </div>
-<p>Here <span class="math inline">\hat{O}</span> hides a factor smaller
-than any <span class="math inline">n^\epsilon</span>. While closing the
-gap, they showed thhe following interesting theorem.</p>
-<div class="theorem-environment Theorem" data-index="8" type="Theorem">
-<span class="theorem-header"><span class="type">Theorem</span><span
+<p>Unlike <span class="math inline">\alpha</span>-approximate min-cuts,
+there is no floor function in the exponent. Hence a natural conjecture
+would be.</p>
+<div class="theorem-environment Conjecture" data-index="8"
+type="Conjecture">
+<span class="theorem-header"><span class="type">Conjecture</span><span
 class="index">8</span></span>
 <p>The number of cuts <span class="math inline">F</span> such that <span
-class="math inline">c(F)\leq \frac{(2-\epsilon)\lambda_k}{k}</span> is
-<span class="math inline">O(n)</span>.</p>
+class="math inline">c(F)\leq \alpha \lambda_k</span> is $O(n^{k}).</p>
 </div>
-<div class="theorem-environment Conjecture" data-index="9"
-type="Conjecture">
-<span class="theorem-header"><span class="type">Conjecture</span><span
-class="index">9</span></span>
-<p>The number of cuts <span class="math inline">F</span> such that <span
-class="math inline">c(F)&lt; \frac{2\lambda_k}{k}</span> is <span
-class="math inline">O(n)</span>.</p>
-</div>
-<p>Note this theorem is basically shows we can also obtain interesting
-results for <span class="math inline">\alpha = \frac{2-\epsilon}{k} &lt;
-1</span>.</p>
-<p>How about approximate min-<span class="math inline">k</span>-cuts?
-Chekuri, Quanrud and I extended the tree packing analysis of Karger, and
-obtained the following result for <span
-class="math inline">k</span>-cuts <span class="citation"
-data-cites="ChekuriQX19">[<a href="#ref-ChekuriQX19"
-role="doc-biblioref">5</a>]</span>.</p>
-<div class="theorem-environment Theorem" data-index="10" type="Theorem">
-<span class="theorem-header"><span class="type">Theorem</span><span
-class="index">10</span></span>
-<p>The number of cuts <span class="math inline">F</span> such that <span
-class="math inline">c(F)\leq \alpha \lambda_k</span> is <span
-class="math inline">O(n^{\floor{\alpha 2(k-1)}})</span>.</p>
-</div>
-<p>Combining the <a href="#kcutconjecture"
-title="Conjecture 6">Conjecture 6</a> and <a href="#approxcutconjecture"
-title="Conjecture 4">Conjecture 4</a>, we get a unified conjecture, even
-for <span class="math inline">\alpha&lt;1</span>.</p>
-<div class="theorem-environment Conjecture" data-index="11"
-type="Conjecture">
-<span class="theorem-header"><span class="type">Conjecture</span><span
-class="index">11</span></span>
-<p>The number of cuts <span class="math inline">F</span> such that <span
-class="math inline">c(F)&lt; \alpha \lambda_k</span> is <span
-class="math inline">O(n^{\ceil{\alpha k}-1})</span>.</p>
-</div>
-<h1 data-number="3" id="bounds-on-parametric-cuts"><span
-class="header-section-number">3</span> Bounds on parametric cuts</h1>
-<p>Now, let’s consider parametric cuts. Consider we have <span
-class="math inline">d</span> weight functions <span
-class="math inline">c_1,\ldots,c_d:E\to \R_{\geq 0}</span>. Define <span
-class="math inline">c_\mu(e) = \sum_{i=1}^d \mu_i c_i(e)</span>. We
+<h1 data-number="3" id="bounds-on-approximate-parametric-cuts"><span
+class="header-section-number">3</span> Bounds on (approximate)
+parametric cuts</h1>
+<p>Consider we have <span class="math inline">d</span> weight functions
+<span class="math inline">c_1,\ldots,c_d:E\to \R_{\geq 0}</span>. Define
+<span class="math inline">c^\mu(e) = \sum_{i=1}^d \mu_i c_i(e)</span>
+for <span class="math inline">\mu\in \R_{\geq 0}^d</span>. We are
 interested in knowing about cuts <span class="math inline">F</span> such
-that <span class="math inline">c_\mu(F)</span> is bounded by <span
+that <span class="math inline">c^\mu(F)</span> is bounded by <span
 class="math inline">\alpha \lambda_{\mu,k}</span>, where <span
 class="math inline">\lambda_{\mu,k}</span> is the min-<span
 class="math inline">k</span>-cut value when the cost function is <span
-class="math inline">c_\mu</span>.</p>
+class="math inline">c^\mu</span>.</p>
 <p>Karger showed the following <span class="citation"
 data-cites="Karger16">[<a href="#ref-Karger16"
-role="doc-biblioref">6</a>]</span>.</p>
-<div class="theorem-environment Theorem" data-index="12" type="Theorem">
+role="doc-biblioref">5</a>]</span>.</p>
+<div class="theorem-environment Theorem" data-index="9" type="Theorem">
 <span class="theorem-header"><span class="type">Theorem</span><span
-class="index">12</span></span>
+class="index">9</span></span>
 <p>The number of cuts <span class="math inline">F</span> such that <span
 class="math inline">c_\mu(F)\leq \lambda_{\mu,2}</span> for some <span
 class="math inline">\mu\in \R_{\geq 0}^d</span> is <span
 class="math inline">O(n^{d+1})</span>.</p>
 </div>
-<p>A even more general theorem follows.</p>
-<div class="theorem-environment Theorem" data-index="13" type="Theorem">
+<p>A even more general theorem follows, allowing <span
+class="math inline">\alpha</span>-approximate <span
+class="math inline">k</span>-cuts.</p>
+<div class="theorem-environment Theorem" data-index="10" type="Theorem">
 <span class="theorem-header"><span class="type">Theorem</span><span
-class="index">13</span></span>
+class="index">10</span></span>
 <p>The number of cuts <span class="math inline">F</span> such that <span
 class="math inline">c_\mu(F)\leq \alpha \lambda_{\mu,k}</span> for some
 <span class="math inline">\mu\in \R_{\geq 0}^d</span> is <span
 class="math inline">O(n^{2\alpha(k-1)+d-1})</span>.</p>
 </div>
-<p>Hence, we would have the following conjecture.</p>
-<div class="theorem-environment Conjecture" data-index="14"
+<p>Of course, knowing the current result for number of <span
+class="math inline">\alpha</span>-approximate <span
+class="math inline">k</span>-cuts, we would conjecture the following for
+parametric cuts.</p>
+<div class="theorem-environment Conjecture" data-index="11"
 type="Conjecture">
 <span class="theorem-header"><span class="type">Conjecture</span><span
-class="index">14</span></span>
+class="index">11</span></span>
 <p>The number of cuts <span class="math inline">F</span> such that <span
-class="math inline">c_\mu(F)&lt; \alpha \lambda_{\mu,k}</span> for some
+class="math inline">c_\mu(F) \leq \alpha \lambda_{\mu,k}</span> for
 <span class="math inline">\mu\in \R_{\geq 0}^d</span> is <span
-class="math inline">O(n^{\ceil{\alpha k}+d-2})</span>.</p>
+class="math inline">O(n^{\alpha k+d-1})</span>.</p>
 </div>
 <p>Note, we might relax the requirement that all <span
 class="math inline">c_i</span> and <span class="math inline">\mu</span>
 are non-negative. Aissi et. al. showed the following <span
 class="citation" data-cites="AissiMMQ15">[<a href="#ref-AissiMMQ15"
-role="doc-biblioref">7</a>]</span>.</p>
-<div class="theorem-environment Theorem" data-index="15" type="Theorem">
+role="doc-biblioref">6</a>]</span>, only assuming <span
+class="math inline">c_\mu \geq 0</span>.</p>
+<div class="theorem-environment Theorem" data-index="12" type="Theorem">
 <span class="theorem-header"><span class="type">Theorem</span><span
-class="index">15</span></span>
+class="index">12</span></span>
 <p>The number of cuts <span class="math inline">F</span> such that <span
 class="math inline">c_\mu(F)\leq \lambda_{\mu}</span> for some <span
 class="math inline">c_\mu\geq 0</span> is <span
 class="math inline">O(m^d n^2\log^{d-1} n)</span>.</p>
 </div>
-<p>The following would be even stronger conjecture.</p>
-<div class="theorem-environment Conjecture" data-index="16"
-type="Conjecture">
-<span class="theorem-header"><span class="type">Conjecture</span><span
-class="index">16</span></span>
-<p>The number of cuts <span class="math inline">F</span> such that <span
-class="math inline">c_\mu(F) &lt; \alpha \lambda_{\mu,k}</span> for some
-<span class="math inline">c_\mu\geq 0</span> is <span
-class="math inline">O(n^{\ceil{\alpha k}+d-2})</span>.</p>
-</div>
+<p>Can we obtain a stronger bound for <span class="math inline">c_\mu
+\geq 0</span>?</p>
+<p>Parametric min-cut is related to multicriteria min-cut, which also
+have a lot of open problems <span class="citation"
+data-cites="BeidemanCX23">[<a href="#ref-BeidemanCX23"
+role="doc-biblioref">7</a>]</span>.</p>
 <h1 data-number="4" id="projected-cut-bounds"><span
-class="header-section-number">4</span> Projected cut bounds</h1>
+class="header-section-number">4</span> Projected cut bounds?</h1>
 <p>Let <span class="math inline">\tau_e = \min_{U:e\in
-\delta(U)}c(\delta(U))</span>. Fung et. al. showed a projected
-generalization of the cut counting bound <span class="citation"
-data-cites="FungHHP19">[<a href="#ref-FungHHP19"
-role="doc-biblioref">8</a>]</span>. Let <span
-class="math inline">E_\lambda = \set{ e | \tau_e \geq x }</span>.</p>
-<div class="theorem-environment Theorem" data-index="17" type="Theorem">
+\delta(U)}c(\delta(U))</span>, i.e. the minimum value of a cut
+containing <span class="math inline">e</span>. Fung et. al. showed a
+projected generalization of the cut counting bound <span
+class="citation" data-cites="FungHHP19">[<a href="#ref-FungHHP19"
+role="doc-biblioref">8</a>]</span> by ignore edges appeared in small
+cuts. Let <span class="math inline">E_\lambda = \set{ e | \tau_e \geq
+\lambda }</span>.</p>
+<div class="theorem-environment Theorem" data-index="13" type="Theorem">
 <span class="theorem-header"><span class="type">Theorem</span><span
-class="index">17</span></span>
+class="index">13</span></span>
 <p>The number of sets of the form <span class="math inline">F\cap
 E_\lambda</span> where <span class="math inline">F</span> is a cut such
 that <span class="math inline">c(F)\leq \alpha \lambda</span> is <span
 class="math inline">O(n^{2\alpha})</span>.</p>
 </div>
 <p>If we let <span class="math inline">\lambda</span> be the min-cut
-value, this is precisely the approximate cut counting bound.</p>
-<p>We can of course ask if all our theorem can be applied to projected
-cuts. We don’t even know if it extends to <span
-class="math inline">k</span>-cuts. However, we can expect the following
-ultimate conjecture.</p>
-<p>Let <span class="math inline">\tau_{\mu,k,e}</span> be the minimum
-over all <span class="math inline">c_{\mu}(F)</span>, where <span
-class="math inline">F</span> is a <span class="math inline">k</span>-cut
-containing <span class="math inline">e</span>. Let <span
-class="math inline">E_{\mu,k,\lambda} = \set{e | \tau_{\mu,k,e} \geq
-\lambda}</span>.</p>
-<div class="theorem-environment Conjecture" data-index="18"
+value, this is precisely the <span
+class="math inline">\alpha</span>-approximate cut counting bound.</p>
+<p>We can ask if all our theorem can have a projected cut version. We
+don’t know if it extends to <span class="math inline">k</span>-cuts (or
+what is the correct generalization).</p>
+<h1 data-number="5" id="what-about-hypergraphs"><span
+class="header-section-number">5</span> What about hypergraphs?</h1>
+<p>Most of the above results in graphs generalizes to rank <span
+class="math inline">r</span> hypergraphs with an extra factor related to
+<span class="math inline">r</span>, often is <span
+class="math inline">2^r</span>. See the table in <span class="citation"
+data-cites="BeidemanCX23">[<a href="#ref-BeidemanCX23"
+role="doc-biblioref">7</a>]</span> for a survey. However, almost all
+<em>exact</em> min-cut counting problem are unknown for hypergraphs with
+unbounded rank.</p>
+<div class="theorem-environment Conjecture" data-index="14"
 type="Conjecture">
 <span class="theorem-header"><span class="type">Conjecture</span><span
-class="index">18</span></span>
-<p>The number of sets of the form <span class="math inline">F\cap
-E_{\mu,k,\lambda}</span> where <span class="math inline">F</span> is a
-cut such that <span class="math inline">c_{\mu}(F)&lt; \alpha
-\lambda</span> for some <span class="math inline">c_\mu\geq 0</span> is
-<span class="math inline">O(n^{\ceil{\alpha k}+d-2})</span>.</p>
+class="index">14</span></span>
+<p>All the exact min-cut counting can be generalized to hypergraphs with
+unbounded rank.</p>
 </div>
+<p>One can construct a hypergraph where every set <span
+class="math inline">\emptyset \subsetneq S\subsetneq V</span> induces a
+distinct <span class="math inline">\alpha</span>-approximate min-cut for
+all <span class="math inline">\alpha&gt;1</span>, so counting <span
+class="math inline">\alpha</span>-approximate min-cut is unintresting
+for hypergraphs of unbounded rank.</p>
 <h1 class="unnumbered" id="bibliography">References</h1>
 <div id="refs" class="references csl-bib-body" role="doc-bibliography">
 <div id="ref-KargerS96" class="csl-entry" role="doc-biblioentry">
@@ -1094,25 +1081,14 @@ Henzinger, D.P. Williamson, <strong>On the number of small cuts in a
 graph</strong>, Information Processing Letters. 59 (1996) 41–44 <a
 href="https://doi.org/10.1016/0020-0190(96)00079-8">https://doi.org/10.1016/0020-0190(96)00079-8</a>.</div>
 </div>
-<div id="ref-GuptaLL19" class="csl-entry" role="doc-biblioentry">
+<div id="ref-GuptaHLL21" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">[4] </div><div class="csl-right-inline">A.
-Gupta, E. Lee, J. Li, <strong><a
-href="https://arxiv.org/abs/1911.09165"><span class="nocase">The
-Karger-Stein Algorithm is Optimal for <span
-class="math inline">k</span>-cut</span></a></strong>, arXiv e-Prints.
-(2019) arXiv:1911.09165.</div>
-</div>
-<div id="ref-ChekuriQX19" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[5] </div><div class="csl-right-inline">C.
-Chekuri, K. Quanrud, C. Xu, <span class="nocase">LP Relaxation and Tree
-Packing for Minimum k-cuts</span>, in: J.T. Fineman, M. Mitzenmacher
-(Eds.), 2nd Symposium on Simplicity in Algorithms (<strong>SOSA</strong>
-2019), Schloss Dagstuhl–Leibniz-Zentrum fuer Informatik, Dagstuhl,
-Germany, 2018: pp. 7:1–7:18 <a
-href="https://doi.org/10.4230/OASIcs.SOSA.2019.7">10.4230/OASIcs.SOSA.2019.7</a>.</div>
+Gupta, D.G. Harris, E. Lee, J. Li, <strong>Optimal bounds for the k-cut
+problem</strong>, J. ACM. 69 (2021) <a
+href="https://doi.org/10.1145/3478018">10.1145/3478018</a>.</div>
 </div>
 <div id="ref-Karger16" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[6] </div><div
+<div class="csl-left-margin">[5] </div><div
 class="csl-right-inline">D.R. Karger, Enumerating parametric global
 minimum cuts by random interleaving, in: Proceedings of the Forty-Eighth
 Annual ACM Symposium on Theory of Computing, ACM, New York, NY, USA,
@@ -1120,12 +1096,19 @@ Annual ACM Symposium on Theory of Computing, ACM, New York, NY, USA,
 href="https://doi.org/10.1145/2897518.2897578">10.1145/2897518.2897578</a>.</div>
 </div>
 <div id="ref-AissiMMQ15" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[7] </div><div class="csl-right-inline">H.
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">H.
 Aissi, A.R. Mahjoub, S.T. McCormick, M. Queyranne, <strong>Strongly
 polynomial bounds for multiobjective and parametric global minimum cuts
 in graphs and hypergraphs</strong>, Mathematical Programming. 154 (2015)
 3–28 <a
 href="https://doi.org/10.1007/s10107-015-0944-8">10.1007/s10107-015-0944-8</a>.</div>
+</div>
+<div id="ref-BeidemanCX23" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">C.
+Beideman, K. Chandrasekaran, C. Xu, <strong>Multicriteria cuts and
+size-constrained k-cuts in hypergraphs</strong>, Mathematical
+Programming. 197 (2023) 27–69 <a
+href="https://doi.org/10.1007/s10107-021-01732-0">10.1007/s10107-021-01732-0</a>.</div>
 </div>
 <div id="ref-FungHHP19" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">[8] </div><div
