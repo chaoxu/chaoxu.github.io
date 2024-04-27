@@ -1007,7 +1007,7 @@ class="math inline">c^\mu \geq 0</span>.</p>
 class="index">12</span></span>
 <p>The number of cuts <span class="math inline">F</span> such that <span
 class="math inline">c^\mu(F)\leq \lambda_{\mu}</span> for some <span
-class="math inline">c_\mu\geq 0</span> is <span
+class="math inline">c^\mu\geq 0</span> is <span
 class="math inline">O(m^d n^2\log^{d-1} n)</span>.</p>
 </div>
 <p>Can we obtain a stronger bound for <span class="math inline">c^\mu
