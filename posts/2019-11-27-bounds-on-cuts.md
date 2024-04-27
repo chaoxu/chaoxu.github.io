@@ -120,7 +120,7 @@ Note, we might relax the requirement that all $c_i$ and $\mu$ are non-negative. 
 
 ::: Theorem
 
-  The number of cuts $F$ such that $c^\mu(F)\leq \lambda_{\mu}$ for some $c_\mu\geq 0$ is $O(m^d n^2\log^{d-1} n)$.
+  The number of cuts $F$ such that $c^\mu(F)\leq \lambda_{\mu}$ for some $c^\mu\geq 0$ is $O(m^d n^2\log^{d-1} n)$.
 
 :::
 
