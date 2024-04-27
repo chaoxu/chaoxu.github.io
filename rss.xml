@@ -968,7 +968,7 @@ role="doc-biblioref">5</a>]</span>.</p>
 <span class="theorem-header"><span class="type">Theorem</span><span
 class="index">9</span></span>
 <p>The number of cuts <span class="math inline">F</span> such that <span
-class="math inline">c_\mu(F)\leq \lambda_{\mu,2}</span> for some <span
+class="math inline">c^\mu(F)\leq \lambda_{\mu,2}</span> for some <span
 class="math inline">\mu\in \R_{\geq 0}^d</span> is <span
 class="math inline">O(n^{d+1})</span>.</p>
 </div>
@@ -979,7 +979,7 @@ class="math inline">k</span>-cuts.</p>
 <span class="theorem-header"><span class="type">Theorem</span><span
 class="index">10</span></span>
 <p>The number of cuts <span class="math inline">F</span> such that <span
-class="math inline">c_\mu(F)\leq \alpha \lambda_{\mu,k}</span> for some
+class="math inline">c^\mu(F)\leq \alpha \lambda_{\mu,k}</span> for some
 <span class="math inline">\mu\in \R_{\geq 0}^d</span> is <span
 class="math inline">O(n^{2\alpha(k-1)+d-1})</span>.</p>
 </div>
@@ -992,7 +992,7 @@ type="Conjecture">
 <span class="theorem-header"><span class="type">Conjecture</span><span
 class="index">11</span></span>
 <p>The number of cuts <span class="math inline">F</span> such that <span
-class="math inline">c_\mu(F) \leq \alpha \lambda_{\mu,k}</span> for
+class="math inline">c^\mu(F) \leq \alpha \lambda_{\mu,k}</span> for
 <span class="math inline">\mu\in \R_{\geq 0}^d</span> is <span
 class="math inline">O(n^{\alpha k+d-1})</span>.</p>
 </div>
@@ -1001,16 +1001,16 @@ class="math inline">c_i</span> and <span class="math inline">\mu</span>
 are non-negative. Aissi et. al. showed the following <span
 class="citation" data-cites="AissiMMQ15">[<a href="#ref-AissiMMQ15"
 role="doc-biblioref">6</a>]</span>, only assuming <span
-class="math inline">c_\mu \geq 0</span>.</p>
+class="math inline">c^\mu \geq 0</span>.</p>
 <div class="theorem-environment Theorem" data-index="12" type="Theorem">
 <span class="theorem-header"><span class="type">Theorem</span><span
 class="index">12</span></span>
 <p>The number of cuts <span class="math inline">F</span> such that <span
-class="math inline">c_\mu(F)\leq \lambda_{\mu}</span> for some <span
+class="math inline">c^\mu(F)\leq \lambda_{\mu}</span> for some <span
 class="math inline">c_\mu\geq 0</span> is <span
 class="math inline">O(m^d n^2\log^{d-1} n)</span>.</p>
 </div>
-<p>Can we obtain a stronger bound for <span class="math inline">c_\mu
+<p>Can we obtain a stronger bound for <span class="math inline">c^\mu
 \geq 0</span>?</p>
 <p>Parametric min-cut is related to multicriteria min-cut, which also
 have a lot of open problems <span class="citation"
