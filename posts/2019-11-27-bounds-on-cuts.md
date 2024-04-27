@@ -84,7 +84,7 @@ Unlike $\alpha$-approximate min-cuts, there is no floor function in the exponent
 
 ::: Conjecture 
 
-  The number of cuts $F$ such that $c(F)\leq \alpha \lambda_k$ is $O(n^{\lfloor \alpha k\rfloor}).
+  The number of cuts $F$ such that $c(F)\leq \alpha \lambda_k$ is $O(n^{\lfloor \alpha k\rfloor})$.
 
 :::
 
