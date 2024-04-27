@@ -945,7 +945,8 @@ type="Conjecture">
 <span class="theorem-header"><span class="type">Conjecture</span><span
 class="index">8</span></span>
 <p>The number of cuts <span class="math inline">F</span> such that <span
-class="math inline">c(F)\leq \alpha \lambda_k</span> is $O(n^{k}).</p>
+class="math inline">c(F)\leq \alpha \lambda_k</span> is <span
+class="math inline">O(n^{\lfloor \alpha k\rfloor})</span>.</p>
 </div>
 <h1 data-number="3" id="bounds-on-approximate-parametric-cuts"><span
 class="header-section-number">3</span> Bounds on (approximate)
