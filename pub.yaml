@@ -19,6 +19,7 @@ venues:
   FSTTCS: Foundations of Software Technology and Theoretical Computer Science
   COCOON: International Computing and Combinatorics Conference
   IPCO: Conference on Integer Programming and Combinatorial Optimization
+  IJTCS-FAW: International Joint Conference on Theoretical Computer Science – Frontier of Algorithmic Wisdom
 
 people:
   Chao Xu: https://chaoxu.prof
@@ -58,6 +59,8 @@ people:
   Jianbo Wang: https://wangchienbo.github.io/
   Siyun Zhou: https://lazykko.github.io/
   Siyue Liu: https://www.cmu.edu/tepper/programs/phd/program/student-profiles/phd-student-liu-siyue.html
+  Dongyu Lv:
+  Yizhi Song: https://www.linkedin.com/in/yizhi-song-24784312b/
 
 types:
   conference: Conference Publications
@@ -85,6 +88,26 @@ types:
 
 
 # conference publications
+---
+id: nested-ticketing
+title: Nested and Interlaced Ticketing for Multiple Travelers
+type: conference
+show: [d]
+year: 2024
+bib: IJTCS-FAW 2024 (To appear)
+authors: [Dongyu Lv, Yizhi Song, Chao Xu]
+abstract: >
+  Nested ticketing represents a prevalent practice in airline bookings, employed to bypass 
+  certain airline ticketing regulations with the aim of reducing costs on multiple round-trip 
+  tickets.
+  We consider the computational complexity of nested ticketing, and it is 'covert' version,
+  which we call interleaved ticketing. 
+  Consider multiple agents living in different locations and a single client who demands
+  that one agent be present each week. The objective for the company is to schedule these
+  agents and arrange their flight itineraries to minimize the cost. 
+  We show that when nested ticketing is allowed, the problem is NP-hard when there are at
+  least two agents. We also show there exists a polynomial-time algorithm if only interleaved
+  ticketing is allowed, and the number of airlines is bounded.
 ---
 id: matroid-congruency-constraint
 title: On the Congruency-Constrained Matroid Base
