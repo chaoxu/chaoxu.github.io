@@ -89,6 +89,26 @@ types:
 
 # conference publications
 ---
+id: cyclic-cover
+title: Almost optimum $\ell$-covering of $\Z_n$
+type: manuscript
+show: [d]
+year: 2024
+bib: COCOON 2024 (To appear)
+authors: [Ke Shi, Chao Xu]
+abstract: >
+  A subset $B$ of the ring $\Z_n$ is referred to as a $\ell$-covering set if
+  $\{ ab \pmod n \mid 0\leq a \leq \ell, b\in B\} = \Z_n$.
+  We show that there exists a $\ell$-covering set of $\Z_n$ of
+  size $O(\frac{n}{\ell}\log n)$ for all $n$ and $\ell$, and how to construct
+  such a set.
+  We also provide examples where any $\ell$-covering set must have a size of
+  $\Omega(\frac{n}{\ell}\frac{\log n}{\log \log n})$. The proof employs a
+  refined bound for the relative totient function obtained through sieve theory
+  and the existence of a large divisor with a linear divisor sum. The result
+  can be used to simplify a modular subset sum algorithm. 
+
+---
 id: nested-ticketing
 title: Nested and Interlaced Ticketing for Multiple Travelers
 type: conference
@@ -674,19 +694,6 @@ abstract: >
 
 
 # manuscripts
-
----
-id: cyclic-cover
-title: Almost optimum $\ell$-covering of $\Z_n$
-type: manuscript
-show: [d]
-year: 2022
-bib: <time>2022</time>, Submitted.
-authors: [Ke Shi, Chao Xu]
-abstract: >
-  A subset $B$ of ring $\Z_n$ is called a $\ell$-covering set if $\{ ab \pmod n \mid 0\leq a \leq \ell, b\in B\} = \Z_n$.
-  We show there exists a $\ell$-covering set of $\Z_n$ of size $O(\frac{n}{\ell}\log n)$ for all $n$ and $\ell$, and how to construct such set.
-  We also show examples where any $\ell$-covering set must have size $\Omega(\frac{n}{\ell}\frac{\log n}{\log \log n})$. The proof uses a refined bound for relative totient function obtained through sieve theory, and existence of a large divisor with linear divisor sum.
 
 ---
 id: airplane
