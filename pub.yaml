@@ -94,7 +94,7 @@ title: Almost optimum $\ell$-covering of $\Z_n$
 type: conference
 show: [d]
 year: 2024
-bib: COCOON 2024 (To appear)
+bib: COCOON 2024
 authors: [Ke Shi, Chao Xu]
 abstract: >
   A subset $B$ of the ring $\Z_n$ is referred to as a $\ell$-covering set if
@@ -114,7 +114,7 @@ title: Nested and Interlaced Ticketing for Multiple Travelers
 type: conference
 show: [d]
 year: 2024
-bib: IJTCS-FAW 2024 (To appear)
+bib: IJTCS-FAW 2024
 authors: [Dongyu Lv, Yizhi Song, Chao Xu]
 abstract: >
   Nested ticketing represents a prevalent practice in airline bookings, employed to bypass 
@@ -135,7 +135,7 @@ type: conference
 show: [d]
 selected: true
 year: 2024
-bib: IPCO 2024 (To appear)
+bib: IPCO 2024
 authors: [Siyue Liu, Chao Xu]
 abstract: >
   Consider a matroid where all elements are labeled with an element in $\mathbb{Z}$.
