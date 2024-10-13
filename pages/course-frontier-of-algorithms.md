@@ -6,9 +6,11 @@ title: 前沿算法
 
 Final project:
 
-Due on 10/31. 
+Due on 10/31. Please send it to `zwx2020@email.swu.edu.cn`. Together with your ID and name. 
 
-Select any one of the papers, and summarize it.
+Either select any one of the papers below and summarize it. Or, pick any STOC/FOCS/SODA paper and summarize it.
+
+It should be a 1 page summary. More pages are okey.
 
  - Cole, Richard (1987), "Slowing down sorting networks to obtain faster sorting algorithms", Journal of the ACM, 34 (1): 200–208, doi:10.1145/7531.7537
  - Chan, Timothy, "Improved Deterministic Algorithms for Linear Programming in Low Dimensions", ACM Transactions on Algorithms (TALG), Volume 14, Issue 3
