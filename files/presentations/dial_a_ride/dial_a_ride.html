@@ -8,10 +8,10 @@
 <link href="dial_a_ride_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="dial_a_ride_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="dial_a_ride_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.361">
+  <meta name="generator" content="quarto-1.5.57">
 
-  <meta name="author" content="Yike Chen, Chao Xu, Jianbo Wang">
-  <title>The Complexity of Stacker Crane Problem in Fixed Topologies</title>
+  <meta name="author" content="Yike Chen, Ke Shi, Chao Xu">
+  <title>An Optimal Algorithm for the Stacker Crane Problem on Fixed Topologies</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -33,6 +33,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -176,7 +177,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -345,12 +347,12 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">The Complexity of Stacker Crane Problem in Fixed Topologies</h1>
+  <h1 class="title">An Optimal Algorithm for the Stacker Crane Problem on Fixed Topologies</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Yike Chen, <strong>Chao Xu</strong>, Jianbo Wang 
+Yike Chen, Ke Shi, <strong>Chao Xu</strong> 
 </div>
 </div>
 </div>
@@ -367,20 +369,28 @@ So in a Stacker Crane Problem, there are some request, which is to take a passen
 </section>
 <section id="stacker-crane-on-a-graph" class="slide level2">
 <h2>Stacker Crane on a graph</h2>
-<p>For a graph <span class="math inline">\(G=(V,E)\)</span> with weights on the edges. A single vehicle with capacity 1 is at position <span class="math inline">\(s_0\in V\)</span>.</p>
+<p>For a graph <span class="math inline">\(G=(V,E)\)</span> with cost on the edges. A single vehicle with capacity 1 is at position <span class="math inline">\(s_0\in V\)</span>.</p>
 <ul>
-<li>There are <span class="math inline">\(n\)</span> requests of the form <span class="math inline">\((s_i,t_i) \in {V\choose 2}\)</span></li>
+<li>There are <span class="math inline">\(n\)</span> requests of the form <span class="math inline">\((s_i,t_i) \in R \subseteq V\times V\)</span>.</li>
 <li>The vehicle pick up item <span class="math inline">\(i\)</span> from <span class="math inline">\(s_i\)</span>, and move it to <span class="math inline">\(t_i\)</span>.</li>
 <li>The vehicle must return to <span class="math inline">\(s_0\)</span> after completing all requests.</li>
-<li>Goal: minimizes the total weight of the edges traveled by the vehicle.</li>
+<li>Goal: minimizes the total cost of the edges traveled by the vehicle (with multiplicity).</li>
+</ul>
+</section>
+<section id="alternative-view" class="slide level2">
+<h2>Alternative view</h2>
+<ul>
+<li>Permutation <span class="math inline">\(\pi:[n]\to [n]\)</span>, such that <span class="math inline">\(\pi(i)\)</span> is the <span class="math inline">\(i\)</span>th completed request.</li>
+<li>The cost of a permutation <span class="math inline">\(c(\pi)\)</span> is <span class="math inline">\(\sum_{i=0}^n d(s_{\pi(i)},t_{\pi(i)}) + d(t_{\pi(i)},s_{\pi(i+1 \pmod {n+1})})\)</span>.</li>
+<li>Find a permutation of minimum cost.</li>
 </ul>
 </section>
 <section id="stacker-crane-on-a-path" class="slide level2">
 <h2>Stacker Crane on a path</h2>
 
-<img data-src="line1.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="line1.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="stacker-crane-on-a-path-1" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Stacker crane on a path</h2>
+<h2 data-id="quarto-animate-title">Stacker Crane on a path</h2>
 <div class="absolute" data-id="s_0" style="top: 150px; left: 40px; ">
 <p><span class="math inline">\(s_0\)</span></p>
 </div>
@@ -400,7 +410,7 @@ So in a Stacker Crane Problem, there are some request, which is to take a passen
 <p><img data-src="truck.svg" class="absolute" style="top: 250px; left: 0px; width: 100px; height: 60px; " data-id="truck"></p>
 </section>
 <section id="stacker-crane-on-a-path-2" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Stacker crane on a path</h2>
+<h2 data-id="quarto-animate-title">Stacker Crane on a path</h2>
 <div class="absolute" data-id="s_0" style="top: 150px; left: 40px; ">
 <p><span class="math inline">\(s_0\)</span></p>
 </div>
@@ -423,7 +433,7 @@ So in a Stacker Crane Problem, there are some request, which is to take a passen
 </div>
 </section>
 <section id="stacker-crane-on-a-path-3" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Stacker crane on a path</h2>
+<h2 data-id="quarto-animate-title">Stacker Crane on a path</h2>
 <div class="absolute" data-id="s_0" style="top: 150px; left: 40px; ">
 <p><span class="math inline">\(s_0\)</span></p>
 </div>
@@ -449,7 +459,7 @@ So in a Stacker Crane Problem, there are some request, which is to take a passen
 </div>
 </section>
 <section id="stacker-crane-on-a-path-4" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Stacker crane on a path</h2>
+<h2 data-id="quarto-animate-title">Stacker Crane on a path</h2>
 <div class="absolute" data-id="s_0" style="top: 150px; left: 40px; ">
 <p><span class="math inline">\(s_0\)</span></p>
 </div>
@@ -478,7 +488,7 @@ So in a Stacker Crane Problem, there are some request, which is to take a passen
 </div>
 </section>
 <section id="stacker-crane-on-a-path-5" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Stacker crane on a path</h2>
+<h2 data-id="quarto-animate-title">Stacker Crane on a path</h2>
 <div class="absolute" data-id="s_0" style="top: 150px; left: 40px; ">
 <p><span class="math inline">\(s_0\)</span></p>
 </div>
@@ -510,7 +520,7 @@ So in a Stacker Crane Problem, there are some request, which is to take a passen
 </div>
 </section>
 <section id="stacker-crane-on-a-path-6" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Stacker crane on a path</h2>
+<h2 data-id="quarto-animate-title">Stacker Crane on a path</h2>
 <div class="absolute" data-id="s_0" style="top: 150px; left: 40px; ">
 <p><span class="math inline">\(s_0\)</span></p>
 </div>
@@ -545,7 +555,7 @@ So in a Stacker Crane Problem, there are some request, which is to take a passen
 </div>
 </section>
 <section id="stacker-crane-on-a-path-not-as-good" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Stacker crane on a path (Not as good)</h2>
+<h2 data-id="quarto-animate-title">Stacker Crane on a path (Not as good)</h2>
 <div class="absolute" data-id="s_0" style="top: 150px; left: 40px; ">
 <p><span class="math inline">\(s_0\)</span></p>
 </div>
@@ -582,24 +592,24 @@ So in a Stacker Crane Problem, there are some request, which is to take a passen
 <section id="stacker-crane-extensions" class="slide level2">
 <h2>Stacker Crane Extensions</h2>
 <ul>
-<li>Online <span class="citation" data-cites="LOISZ17">(<a href="#/references" role="doc-biblioref" onclick="">Lois and Ziliaskopoulos 2017</a>)</span> <span class="citation" data-cites="Baligacs22">(<a href="#/references" role="doc-biblioref" onclick="">Baligács et al. 2022</a>)</span></li>
+<li>Online <span class="citation" data-cites="LOISZ17 Baligacs22">(<a href="#/references" role="doc-biblioref" onclick="">Lois and Ziliaskopoulos 2017</a>; <a href="#/references" role="doc-biblioref" onclick="">Baligács et al. 2022</a>)</span></li>
 <li>Multiple Vehicles <span class="citation" data-cites="Desrosiers88">(<a href="#/references" role="doc-biblioref" onclick="">Desrosiers, Dumas, and Soumis 1988</a>)</span></li>
 <li>Capacities <span class="citation" data-cites="CharikarR98">(<a href="#/references" role="doc-biblioref" onclick="">Charikar and Raghavachari 1998</a>)</span></li>
 <li>Time windows <span class="citation" data-cites="DELEPLANQUE20131256">(<a href="#/references" role="doc-biblioref" onclick="">Deleplanque and Quilliot 2013</a>)</span></li>
 <li>Preemptive <span class="citation" data-cites="10.1007/11830924_20">(<a href="#/references" role="doc-biblioref" onclick="">Gørtz 2006</a>)</span></li>
-<li>Approximation algorithms. <span class="citation" data-cites="FredericksonHK78">(<a href="#/references" role="doc-biblioref" onclick="">Greg N. Frederickson, Hecht, and Kim 1978</a>)</span> <span class="citation" data-cites="CharikarR98">(<a href="#/references" role="doc-biblioref" onclick="">Charikar and Raghavachari 1998</a>)</span></li>
+<li>Approximation algorithms. <span class="citation" data-cites="FredericksonHK78 CharikarR98 10.1007/978-3-030-92681-6_32 10.1007/978-3-319-71150-8_8 yu_approximation_2023">(<a href="#/references" role="doc-biblioref" onclick="">Frederickson, Hecht, and Kim 1978</a>; <a href="#/references" role="doc-biblioref" onclick="">Charikar and Raghavachari 1998</a>; <a href="#/references" role="doc-biblioref" onclick="">Sun, Yu, and Liu 2022</a>; <a href="#/references" role="doc-biblioref" onclick="">Li et al. 2017</a>; <a href="#/references" role="doc-biblioref" onclick="">Yu, Dai, and Liu 2023</a>)</span></li>
 <li>…</li>
 </ul>
 </section>
 <section id="known-results" class="slide level2">
 <h2>Known results</h2>
-<p>Let <span class="math inline">\(MST(n)\)</span> be the time to compute a minimum spanning tree on a <span class="math inline">\(n\)</span> vertex graph. Let <span class="math inline">\(n\)</span> to be the number of requests.</p>
+<p>Let <span class="math inline">\(MST(m)\)</span> be the time to compute a minimum spanning tree on a <span class="math inline">\(m\)</span> edge graph. Let <span class="math inline">\(p\)</span> to be the number of requests.</p>
 <p>Solving the stacker crane problem on the following graphs:</p>
 <div>
 <ul>
-<li class="fragment">Path <span class="math inline">\(-\)</span>: <span class="fragment"><span class="math inline">\(O(MST(n))\)</span> time. <span class="citation" data-cites="AtallahK88">(<a href="#/references" role="doc-biblioref" onclick="">Atallah and Kosaraju 1988</a>)</span></span></li>
-<li class="fragment">Cycle <span class="math inline">\(\bigcirc\)</span>: <span class="fragment"><span class="math inline">\(O(MST(n))\)</span> time. <span class="citation" data-cites="Frederickson93">(<a href="#/references" role="doc-biblioref" onclick="">Greg N. Frederickson 1993</a>)</span></span></li>
-<li class="fragment">Trees: <span class="fragment"><strong>NP-hard</strong>! <span class="citation" data-cites="FredericksonG93">(<a href="#/references" role="doc-biblioref" onclick="">G. N. Frederickson and Guan 1993</a>)</span></span></li>
+<li class="fragment">Path <span class="math inline">\(-\)</span>: <span class="fragment"><span class="math inline">\(O(MST(m)+p)\)</span> time. <span class="citation" data-cites="AtallahK88">(<a href="#/references" role="doc-biblioref" onclick="">Atallah and Kosaraju 1988</a>)</span></span></li>
+<li class="fragment">Cycle <span class="math inline">\(\bigcirc\)</span>: <span class="fragment"><span class="math inline">\(O(MST(m)+p)\)</span> time. <span class="citation" data-cites="Frederickson93">(<a href="#/references" role="doc-biblioref" onclick="">Frederickson 1993</a>)</span></span></li>
+<li class="fragment">Trees: <span class="fragment"><strong>NP-hard</strong>! <span class="citation" data-cites="FredericksonG93">(<a href="#/references" role="doc-biblioref" onclick="">Frederickson and Guan 1993</a>)</span></span></li>
 <li class="fragment"><span class="math inline">\(\boxminus\)</span> shape: <span class="fragment">Unknown</span></li>
 <li class="fragment"><span class="math inline">\(\top\)</span> shape: <span class="fragment">Unknown</span></li>
 </ul>
@@ -609,20 +619,20 @@ So in a Stacker Crane Problem, there are some request, which is to take a passen
 <h2>Topology of Warehouses</h2>
 <p>A fixed warehouse topology is quite simple.</p>
 
-<img data-src="warehouse.png" class="r-stretch quarto-figure-center"><p>Image courtesy <span class="citation" data-cites="RoodbergenK01">(<a href="#/references" role="doc-biblioref" onclick="">Roodbergen and Koster 2001</a>)</span></p>
+<img data-src="warehouse.png" class="quarto-figure quarto-figure-center r-stretch"><p>Image courtesy <span class="citation" data-cites="RoodbergenK01">(<a href="#/references" role="doc-biblioref" onclick="">Roodbergen and Koster 2001</a>)</span></p>
 </section>
 <section id="fixed-topology" class="slide level2">
 <h2>Fixed topology</h2>
 <p>A class of graphs <span class="math inline">\(\mathcal{C}\)</span> have a fixed topology, if there exists a graph <span class="math inline">\(G\)</span> such that every graph <span class="math inline">\(H\in\mathcal{C}\)</span> can be obtained through applying subdivisions of <span class="math inline">\(G\)</span>.</p>
-<p><img data-src="subdivision1.png" data-fig-align="center"> <img data-src="subdivision2.png" data-fig-align="center"></p>
+<p><img data-src="subdivision1.png" class="quarto-figure quarto-figure-center"> <img data-src="subdivision2.png" class="quarto-figure quarto-figure-center"></p>
 </section>
 <section id="our-result" class="slide level2">
 <h2>Our result</h2>
 <div style="background: #fff1e8; padding:10px; margin:10px">
-<p>The stacker crane problem can be solved in polynomial time for fixed topologies.</p>
+<p>The stacker crane problem for a fixed topology can be solved in <span class="math inline">\(O(MST(m)+p)\)</span> time.</p>
 </div>
 <div class="fragment" style="background: #fff1e8; padding:10px; margin:10px">
-<p>The stacker crane problem can be solved in polynomial time for <span class="math inline">\(\boxminus\)</span>.</p>
+<p>The stacker crane problem can be solved in <span class="math inline">\(O(MST(m)+p)\)</span> time for <span class="math inline">\(\boxminus\)</span>.</p>
 </div>
 <!--
 ::: {style="background: #fff1e8; padding:10px;"}
@@ -637,319 +647,308 @@ Assuming the space of solutions for a certain problem is small, then stacker cra
 <li>Show how to generalize the algorithm to general graphs</li>
 </ul>
 </section>
-<section id="stacker-crane-feels-like-tsp" class="slide level2">
-<h2>Stacker crane feels like TSP</h2>
-<ul>
-<li>Permutation <span class="math inline">\(\pi:[n]\to [n]\)</span>, such that <span class="math inline">\(\pi(i)\)</span> is the <span class="math inline">\(i\)</span>th completed request.</li>
-<li>The cost of a permutation <span class="math inline">\(c(\pi)\)</span> is <span class="math inline">\(\sum_{i=0}^n d(s_{\pi(i)},t_{\pi(i)}) + d(t_{\pi(i)},s_{\pi(i+1 \pmod {n+1})})\)</span>.</li>
-<li>Find a permutation of minimum cost.</li>
-</ul>
-</section>
-<section id="stacker-crane-vs-tsp" class="slide level2">
-<h2>Stacker crane vs TSP</h2>
-<div>
-<ul>
-<li class="fragment">Finding a traveling salesman tour on a graph <span class="math inline">\(G=(V,E)\)</span> is equivalent to solving the stacker crane problem on <span class="math inline">\(G\)</span>, where the requests are <span class="math inline">\(\{(v,v)|v\in V\}\)</span>.</li>
-<li class="fragment">stacker crane is strictly harder than TSP:
-<ul>
-<li class="fragment">(Steiner) TSP is polynomial time solvable on trees</li>
-<li class="fragment">stacker crane is NP-hard on Trees.</li>
-</ul></li>
-</ul>
-</div>
-</section>
 <section>
 <section id="solve-scp-on-paths-and-cycles" class="title-slide slide level1 center">
 <h1>Solve SCP on paths and cycles</h1>
-<p>Algorithms of <span class="citation" data-cites="AtallahK88 Frederickson93">(<a href="#/references" role="doc-biblioref" onclick="">Atallah and Kosaraju 1988</a>; <a href="#/references" role="doc-biblioref" onclick="">Greg N. Frederickson 1993</a>)</span>.</p>
+<p>Algorithms of <span class="citation" data-cites="AtallahK88 Frederickson93">(<a href="#/references" role="doc-biblioref" onclick="">Atallah and Kosaraju 1988</a>; <a href="#/references" role="doc-biblioref" onclick="">Frederickson 1993</a>)</span>.</p>
 </section>
-<section id="forward-and-backward-traversal" class="slide level2">
-<h2>Forward and backward traversal</h2>
-<p>Any tour traverse through a edge forward and backward the same number of times.</p>
+<section id="flow" class="slide level2">
+<h2>Flow</h2>
+<p>The difference of the tour edge going forward and backwards is the <em>flow</em>.</p>
+<p>Any tour traverse through a edge forward and backward the same number of times, so flow is <span class="math inline">\(0\)</span> on all edges.</p>
 
-<img data-src="line4.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="line4.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="section" class="slide level2">
 <h2></h2>
 <p>The tour must traverse through <span class="math inline">\(s_i\)</span> to <span class="math inline">\(t_i\)</span>.</p>
 
-<img data-src="line5.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="line5.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="section-1" class="slide level2">
 <h2></h2>
-<p>We can add paths to make sure traverse number is equal both ways</p>
+<p>We can add paths to make sure traverse number is equal both ways. This is the flow condition.</p>
 
-<img data-src="line6.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="line6.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="section-2" class="slide level2">
 <h2></h2>
 <p>Add opposing edges to make sure the tour is connected.</p>
 
-<img data-src="line7.png" class="r-stretch quarto-figure-center"></section>
-<section id="how-to-find-the-connecting-edges" class="slide level2">
-<h2>How to find the connecting edges?</h2>
-<p>Contract all the components, and find a set of edges that connects all those components. This is a minimum Steiner tree problem.</p>
-<p>A Steiner tree for a set of terminal vertices <span class="math inline">\(T\)</span> is a tree that contains all vertices in <span class="math inline">\(T\)</span>.</p>
-<div class="callout callout-note no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Minimum Steiner Tree</strong></p>
-</div>
-<div class="callout-content">
-<p>Given a weighted <span class="math inline">\(n\)</span> vertex graph <span class="math inline">\(G=(V,E)\)</span> and a set of terminal vertices <span class="math inline">\(T\subseteq V\)</span>. Find a minimum weight Steiner tree that connects the vertices in <span class="math inline">\(T\)</span>.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="minimum-steiner-tree-problem" class="slide level2">
-<h2>Minimum Steiner Tree Problem</h2>
-<div>
-<ul>
-<li class="fragment">Finding a minimum steiner tree is NP-hard.</li>
-<li class="fragment">Our graph is special: All non-terminal vertices has degree <span class="math inline">\(2\)</span>!</li>
-<li class="fragment">Finding a minimum steiner tree when there are at most <span class="math inline">\(k\)</span> non-terminal vertices with degree at most <span class="math inline">\(3\)</span> can be reduced to <span class="math inline">\(2^k\)</span> calls finding minimum spanning tree.</li>
-<li class="fragment">The minimum Steiner tree in our graph can be found in <span class="math inline">\(MST(n)\)</span> time.</li>
-</ul>
-</div>
-</section>
+<img data-src="line7.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="section-3" class="slide level2">
+<h2></h2>
+<p>Remove some vertices not incident to any edge already in the tour.</p>
+
+<img data-src="line9.png" class="quarto-figure quarto-figure-center r-stretch"><p>Reduced to minimum spanning tree.</p>
+</section>
+<section id="section-4" class="slide level2">
 <h2></h2>
 <p>Obtain a complete solution by construct a tour through the chosen edges.</p>
 
-<img data-src="line8.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="line8.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="scp-on-a-cycle" class="slide level2">
 <h2>SCP on a cycle</h2>
-<p>forward - backward = 0?</p>
+<p>flow = 0?</p>
 
-<img data-src="cycle1.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="cycle1.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="winding-number" class="slide level2">
 <h2>Winding Number</h2>
 <ul>
-<li>the number of times forward - backward is equal. It is the <em>winding number</em>.</li>
+<li>The flow is equal on each edge! It is the <em>winding number</em>.</li>
 </ul>
 
-<img data-src="cycle2.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="cycle2.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="solution-with-winding-number-1" class="slide level2">
 <h2>Solution with winding number = 1</h2>
 <p>First, add the request paths.</p>
 
-<img data-src="cycle3.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="cycle3.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="solution-with-winding-number-1-1" class="slide level2">
 <h2>Solution with winding number = 1</h2>
 <p>Add edges to make sure each edge forward - backword = 1</p>
 
-<img data-src="cycle4.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="cycle4.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="solution-with-winding-number-1-2" class="slide level2">
 <h2>Solution with winding number = 1</h2>
 <p>Run minimum Steiner tree to get the set opposing edges to connect the tour.</p>
 
-<img data-src="cycle4.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="cycle4.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="a-complete-solution-for-cycles" class="slide level2">
 <h2>A complete solution for cycles</h2>
 <div>
 <ul>
 <li class="fragment">Guess all possible winding numbers.</li>
-<li class="fragment">The guess is in between <span class="math inline">\([-n,n]\)</span>.</li>
+<li class="fragment">The guess is in between <span class="math inline">\([-p,p]\)</span>.</li>
 <li class="fragment">For each guess <span class="math inline">\(w\)</span>, compute a optimum solution with winding number <span class="math inline">\(w\)</span>.</li>
-<li class="fragment"><span class="math inline">\(O(n MST(n))\)</span> running time.</li>
-<li class="fragment">Remove a factor of <span class="math inline">\(n\)</span> by guess a number at most <span class="math inline">\(1\)</span> away from <span class="math inline">\(w^*\)</span>.</li>
+<li class="fragment"><span class="math inline">\(O(p(MST(m)+p))\)</span> running time.</li>
 </ul>
 </div>
+</section>
+<section id="proximity-result" class="slide level2">
+<h2>Proximity Result</h2>
+<ul>
+<li>Find the flow <span class="math inline">\(f\)</span> (same as finding the winding number), so satisfy the flow condition requires minimum cost.</li>
+<li>Assume the optimum tour have flow <span class="math inline">\(g\)</span>.</li>
+<li><span class="math inline">\(\|f-g\|_\infty \leq 1\)</span> <span class="citation" data-cites="Frederickson93">(<a href="#/references" role="doc-biblioref" onclick="">Frederickson 1993</a>)</span></li>
+<li><span class="math inline">\(O(MST(m)+p)\)</span> running time.</li>
+</ul>
 </section></section>
 <section>
 <section id="scp-on-general-graphs" class="title-slide slide level1 center">
 <h1>SCP on general graphs</h1>
 
 </section>
-<section id="what-did-we-do" class="slide level2">
-<h2>What did we do?</h2>
+<section id="min-cost-tour" class="slide level2">
+<h2>Min-cost tour</h2>
 <div>
 <ul>
-<li class="fragment">Find a <em>invariant</em>.</li>
-<li class="fragment">Fix a value for this invariant.</li>
-<li class="fragment">Add the minimum possible edges to satisfy the invariant.</li>
-<li class="fragment">Connect opposing edges without violating the invariant.</li>
+<li class="fragment">Use the <em>right way</em> to look at the problem.</li>
+<li class="fragment">Operate on a mixed graph <span class="math inline">\(G=(V,E\cup R)\)</span>, where <span class="math inline">\(c(s_i,t_i)=d(s_i,t_i)\)</span>.</li>
+<li class="fragment"><img data-src="line2.png" class="quarto-figure quarto-figure-center"></li>
+<li class="fragment">Find a min-cost tour that goes thorugh each edge in <span class="math inline">\(R\)</span> exactly once.</li>
 </ul>
 </div>
 </section>
-<section id="what-is-this-invariant" class="slide level2">
-<h2>What is this invariant?</h2>
-<div>
-<ul>
-<li class="fragment">Topologists: It’s just the 1st homology group of the graph, where graph is viewed as <span class="math inline">\(1\)</span>-complex.</li>
-<li class="fragment">Graph theory: The coefficient of a linear combination of cycles.</li>
-</ul>
-</div>
-</section>
-<section id="cycle-space" class="slide level2">
-<h2>Cycle space</h2>
-<ul>
-<li><span class="math inline">\(\R^E\)</span> a vector space indexed by the edges.<br>
-</li>
-<li>Define some arbitrary orientation of the edges: a directed graph <span class="math inline">\(D=(V,\vec{E})\)</span>.</li>
-<li><span class="math inline">\(x\in \mathcal{C}\)</span> if and only if <span class="math inline">\(\sum_{uv\in \vec{E}} x_{uv} - \sum_{vu\in \vec{E}} x_{uv} = 0\)</span> for each <span class="math inline">\(v\)</span>.</li>
-<li><span class="math inline">\(x\)</span> is called a cycle.</li>
-<li><span class="math inline">\(\mathcal{C}\)</span> is the space of (real weight) cycles.</li>
-<li><span class="math inline">\(\mathcal{C}\)</span> is a subspace of <span class="math inline">\(\R^E\)</span>.</li>
-</ul>
-</section>
-<section id="cycle-space-example" class="slide level2">
-<h2>Cycle space example</h2>
+<section id="section-5" class="slide level2">
+<h2></h2>
 
-<img data-src="cycles.png" class="r-stretch quarto-figure-center"></section>
-<section id="cycle-basis-fundamental-cycles" class="slide level2">
-<h2>Cycle basis, Fundamental Cycles</h2>
+<img data-src="whoepackage.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="alternative-formulation" class="slide level2">
+<h2>Alternative Formulation</h2>
+<div style="background: #fff1e8; padding:10px; margin:10px">
+<p>Input: A base graph <span class="math inline">\(B=(V,E)\)</span>, requests <span class="math inline">\(R\subseteq V\times V\)</span>, cost <span class="math inline">\(c:E\to \R^+\)</span>. Let <span class="math inline">\(G=(V,E\cup R)\)</span>.</p>
+</div>
+<div style="background: #fff1e8; padding:10px; margin:10px">
+<p>Output: A min-cost tour of <span class="math inline">\(G\)</span> where each edge in <span class="math inline">\(R\)</span> is used exactly once.</p>
+</div>
+<ul>
+<li><span class="math inline">\(m=|E|\)</span>, <span class="math inline">\(n=|V|\)</span>, <span class="math inline">\(p=|R|\)</span></li>
+<li><span class="math inline">\(B\)</span> has cycle rank <span class="math inline">\(r := m-n+1\)</span>.</li>
+<li><span class="math inline">\(B\)</span> has <span class="math inline">\(k\)</span> branch vertices (vertex with degree at least <span class="math inline">\(3\)</span>)</li>
+</ul>
+</section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<p><span class="math inline">\(T\)</span> a spanning tree of <span class="math inline">\(G\)</span>. The <em>fundamental cycle</em> <span class="math inline">\(C_e\)</span> is a directed cycle using <span class="math inline">\(e\)</span> and path in <span class="math inline">\(T\)</span> connecting <span class="math inline">\(e\)</span>.</p>
+
+<img data-src="fundamental_cycles.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="circulations" class="slide level2">
+<h2>Circulations</h2>
+<p><span class="math inline">\(f:E\cup A\to \Z\)</span> is a flow function. <span class="math inline">\(f\)</span> is a circulation on a mixed graph <span class="math inline">\(G=(V,E\cup A)\)</span> if <span class="math inline">\(\sum_{e\in \delta^-(v)}f(e) = \sum_{e\in \delta^+(v)}f(e)\)</span>.</p>
 <div>
 <ul>
-<li class="fragment"><span class="math inline">\(\mathcal{C}\)</span> is a vector space, its dimension is the circuit rank.</li>
-<li class="fragment">For path graph, the dimension is <span class="math inline">\(0\)</span>.</li>
-<li class="fragment">For cycle graph, the dimension is <span class="math inline">\(1\)</span>.</li>
-<li class="fragment">In general: <span class="math inline">\(\dim(\mathcal{C})=|E|-|V|+1\)</span>.</li>
+<li class="fragment">The cost of a circulation <span class="math inline">\(f\)</span> is <span class="math inline">\(\sum_{e\in E} c(e)|f(e)| +\sum_{a\in A} c(a)f(a)\)</span>.</li>
+<li class="fragment">Every circulation is a sum of fundamental cycles.</li>
+<li class="fragment">A tour maps to a circulation <span class="math inline">\(f\)</span>: <span class="math inline">\(f(e)\)</span> is the flow of <span class="math inline">\(e\)</span> in the tour.</li>
+<li class="fragment"><span class="math inline">\([f]\)</span> are all the tours maps to <span class="math inline">\(f\)</span>, <span class="math inline">\([f]\)</span> is called a <em>homology class</em>.</li>
 </ul>
 </div>
-<div class="fragment">
+</section>
+<section id="goal" class="slide level2">
+<h2>Goal</h2>
+<ul>
+<li>All circulations we consider are circulations <span class="math inline">\(f\)</span> where <span class="math inline">\(f(a)=1\)</span> for all <span class="math inline">\(a\in R\)</span>.</li>
+<li>Find a collection of circulation <span class="math inline">\(\mathcal{F}\)</span>, so for some <span class="math inline">\(f\in \mathcal{F}\)</span>, the min-cost tour is in <span class="math inline">\([f]\)</span>.</li>
+</ul>
+</section>
+<section id="algorithm" class="slide level2">
+<h2>Algorithm</h2>
+<div>
+<ul>
+<li class="fragment">Find a min-cost circulation.</li>
+<li class="fragment">Find all circulations <span class="math inline">\(g\)</span> such that <span class="math inline">\(\|f-g\|_\infty\leq r\)</span>.</li>
+<li class="fragment">Find a min-cost tour in each <span class="math inline">\([g]\)</span> and returns the minimum.</li>
+</ul>
+</div>
+</section>
+<section id="min-cost-circulation" class="slide level2">
+<h2>Min-cost circulation</h2>
+<ul>
+<li>Reduces to min-cost flow on tree with <span class="math inline">\(r\)</span> more edges.</li>
+<li>Which reduces to a special kind of linear program.</li>
+<li>Let <span class="math inline">\(e_1,\ldots,e_r\)</span> be the edges outside some spanning tree <span class="math inline">\(T\)</span> of <span class="math inline">\(B\)</span>.</li>
+<li><span class="math inline">\(C_a\)</span> is the fundamental cycle of <span class="math inline">\(a\)</span>.</li>
+</ul>
+</section>
+<section id="min-cost-circulation-1" class="slide level2">
+<h2>Min-cost circulation</h2>
+<ul>
+<li><span class="math inline">\(b_e = \sum_{e \in C_a} C_a(e)\)</span>, for all <span class="math inline">\(a \in R\)</span>.</li>
+<li><span class="math inline">\(A_{e, i} = C_{e_i}(e)\)</span>, for all <span class="math inline">\(e \in E\)</span>, <span class="math inline">\(1 \leq i \leq r\)</span>. <span class="math display">\[\begin{equation*}
+  \begin{array}{ll@{}ll}
+  \text{min}_{\lambda \in \mathbb{R}^{E \setminus T}, x \in \mathbb{R}^{T}} &amp; \displaystyle\sum\limits_{e} x_e &amp; \\
+  \text{subject to} &amp; x_e \geq c(e) \left( A_e \cdot \lambda + b_e \right) &amp; \quad \forall e \in E \\
+&amp; x_e \geq -c(e) \left( A_e \cdot \lambda + b_e \right) &amp; \quad \forall e \in E \\
+  \end{array}
+\end{equation*}\]</span> <span class="math inline">\(\lambda_e\)</span> is the flow at edge <span class="math inline">\(e\)</span> in the optimum solution. There is a minimizer where <span class="math inline">\(\lambda\)</span> is integral. The minimizer can be found in <span class="math inline">\(2^{O(2^r)} m = O(m)\)</span> time <span class="citation" data-cites="zemel_on_1984">(<a href="#/references" role="doc-biblioref" onclick="">Zemel 1984</a>)</span>.</li>
+</ul>
+</section>
+<section id="proximity-theorem" class="slide level2">
+<h2>Proximity Theorem</h2>
+<div class="epic-callout-body">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Fundamental Cycle</strong></p>
+<p><strong>Theorem</strong></p>
 </div>
 <div class="callout-content">
-<p>Let <span class="math inline">\(T\)</span> be a spanning tree of <span class="math inline">\(G\)</span>. The fundamental cycle <span class="math inline">\(C_e\)</span> is the cycle consists of the edge <span class="math inline">\(e\)</span> and the unique path in <span class="math inline">\(T\)</span> connecting the end points of <span class="math inline">\(e\)</span>.</p>
+<p>Let <span class="math inline">\(f\)</span> be the min-cost circulation, the min-cost tour is in <span class="math inline">\([g]\)</span> for some <span class="math inline">\(\|f-g\|_\infty\leq r\)</span>.</p>
 </div>
 </div>
+</div>
+</div>
+<ul>
+<li>A circulation is <em>elementary</em>, if no cycle is traversed twice.</li>
+<li><span class="math inline">\(f-g\)</span> is an elementary circulation in <span class="math inline">\(B\)</span>.</li>
+<li>Proof sketch
+<ul>
+<li>no negative cycles</li>
+<li>removed cycle without changing connectivity</li>
+</ul></li>
+</ul>
+</section>
+<section id="proximity-theorem-1" class="slide level2">
+<h2>Proximity Theorem</h2>
+<div class="epic-callout-body">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <span class="math inline">\(f\)</span> be an elementary circulation, then <span class="math inline">\(\|f\|_\infty\leq r\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+
+<img data-src="bad_example2.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="proximity-theorem-tight-example" class="slide level2">
+<h2>Proximity Theorem (Tight Example)</h2>
+
+<img data-src="bad_example.png" class="quarto-figure quarto-figure-center r-stretch"><p>Let <span class="math inline">\(f=\sum_{i=1}^r C_i\)</span>, where <span class="math inline">\(C_i\)</span> is the fundamental cycle formed by <span class="math inline">\(e_i\)</span>. <span class="math inline">\(\|f\|_\infty \geq f(e_0) = r\)</span>.</p>
+</section>
+<section id="enumerate-elementary-circulations" class="slide level2">
+<h2>Enumerate elementary circulations</h2>
+<div class="epic-callout-body">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem</strong></p>
+</div>
+<div class="callout-content">
+<p>There are <span class="math inline">\(O((2r+1)^r)\)</span> elementary circulations, and can be enumerated in <span class="math inline">\(O((2r+1)^rm)\)</span> time.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Proof.(sketch) Every elementary circulation can be written as <span class="math inline">\(\sum_{i=1}^r \lambda_i C_i\)</span> where <span class="math inline">\(C_1,\ldots,C_r\)</span> is a fixed fundamental cycle basis, and <span class="math inline">\(\lambda\in \{-r,-r+1,\ldots,r\}^r\)</span>.</p>
+</section>
+<section id="min-cost-tour-in-g" class="slide level2">
+<h2>min-cost tour in <span class="math inline">\([g]\)</span></h2>
+<p>A Steiner tree for a set of terminal vertices <span class="math inline">\(T\)</span> is a tree that contains all vertices in <span class="math inline">\(T\)</span>.</p>
+<div class="epic-callout-body">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Minimum Steiner Tree</strong></p>
+</div>
+<div class="callout-content">
+<p>Given a weighted graph <span class="math inline">\(G=(V,E)\)</span> and a set of terminal vertices <span class="math inline">\(T\subseteq V\)</span>. Find a minimum weight Steiner tree that connects the vertices in <span class="math inline">\(T\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="minimum-steiner-tree-problem" class="slide level2">
+<h2>Minimum Steiner Tree Problem</h2>
+<p>NP-hard. But <span class="math inline">\(2^k\)</span> calls of MST if <span class="math inline">\(k\)</span> Steiner branch vertices.</p>
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="minsteinertree.png" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
+</figure>
 </div>
 </div>
 <div class="fragment">
-<p>The fundamental cycles for all <span class="math inline">\(e\not\in T\)</span> is the <strong><em>fundamental cycle basis</em></strong>.</p>
+<p>The minimum Steiner tree can be found in <span class="math inline">\(MST(m)\)</span> time.</p>
 </div>
-</section>
-<section id="graph-encodes-the-request-information" class="slide level2">
-<h2>Graph encodes the request information</h2>
-<p>Obtain <span class="math inline">\(G'\)</span> from <span class="math inline">\(G\)</span> by adding edges <span class="math inline">\((s_i,t_i)\)</span> for each <span class="math inline">\(i\)</span> with cost <span class="math inline">\(d(s_i,t_i)\)</span>. (request edges)</p>
-
-<img data-src="line2.png" class="r-stretch quarto-figure-center"></section>
-<section id="defining-a-tour" class="slide level2">
-<h2>Defining a tour</h2>
-<ul>
-<li>A flow is <span class="math inline">\(f:V\times V \to \N\)</span>.</li>
-<li>A tour (also called circulation) is a flow such that <span class="math inline">\(f\)</span>, so <span class="math inline">\(\sum_{v} f(u,v) - \sum_{v} f(v,u) = 0\)</span> for all <span class="math inline">\(u\)</span>.</li>
-<li>A connected tour is a tour such that <span class="math inline">\(\{ uv | f(u,v)&gt;0\}\)</span> is connected.</li>
-<li>Find a minimum cost connected tour in <span class="math inline">\(G'\)</span> such that <span class="math inline">\(f(s_i,t_i)=1\)</span> and <span class="math inline">\(f(t_i,s_i)=0\)</span>.</li>
-</ul>
-</section>
-<section id="why-cycle-basis" class="slide level2">
-<h2>Why cycle basis?</h2>
-<ul>
-<li>Every tour <span class="math inline">\(f\)</span> maps to an element <span class="math inline">\(x\in \Z^E\cap \mathcal{C}\)</span>.</li>
-<li>Take <span class="math inline">\(x_{uv} = f(u,v)-f(v,u)\)</span>, call this the natural map.</li>
-<li>Tours contain more information than <span class="math inline">\(\mathcal{C}\)</span>.</li>
-<li>Traversing an edge forward and back gets cancelled out.</li>
-</ul>
-</section>
-<section id="example-of-tour-vs-cycle" class="slide level2">
-<h2>Example of tour vs cycle</h2>
-
-<img data-src="tours.png" class="r-stretch quarto-figure-center"></section>
-<section id="the-algorithm" class="slide level2">
-<h2>The algorithm</h2>
-<ul>
-<li>For every tour where no edge gets traversed more than <span class="math inline">\(n\)</span> times
-<ul>
-<li>Find the optimum cycle with the natural map to that tour</li>
-<li>Find minimum Steiner tree to connect the tour</li>
-</ul></li>
-</ul>
-<p>How: One can show the coefficients of each fundamental cycle is at most <span class="math inline">\(|n|\)</span>, so we reduce the search space to <span class="math inline">\((2n+1)^{p}\)</span>.</p>
 </section>
 <section id="results" class="slide level2">
 <h2>Results</h2>
 <div style="background: #fff1e8; padding:10px; margin:10px">
-<p>For a graph with at most <span class="math inline">\(k\)</span> vertices with degree at least <span class="math inline">\(3\)</span>, and circuit rank <span class="math inline">\(r\)</span>, the running time of the algorithm is <span class="math inline">\(O((2n+1)^{r} 2^k MST(n))\)</span>.</p>
+<p>For a base graph with at most <span class="math inline">\(k\)</span> branch vertices and cycle rank <span class="math inline">\(r\)</span>, the running time of the SCP algorithm is <span class="math inline">\(2^{2^{O(r)}}m + O((2r+1)^{r} 2^k (MST(m) + p))\)</span>.</p>
 </div>
-<p>As a special case.</p>
-<div class="fragment" style="background: #fff1e8; padding:10px; margin:10px">
-<p>SCP can be solved in <span class="math inline">\(O(n^2 MST(n))\)</span> for <span class="math inline">\(\boxminus\)</span>.</p>
-</div>
-<div class="fragment" style="background: #fff1e8; padding:10px; margin:10px">
-<p>SCP problem can be solved in <span class="math inline">\(O(n MST(n))\)</span> for <span class="math inline">\(\bigcirc\)</span>.</p>
+<div style="background: #fff1e8; padding:10px; margin:10px">
+<p>SCP problem for fixed topology can be solved in <span class="math inline">\(O(MST(m) + p)\)</span> time.</p>
 </div>
 </section>
 <section id="open-problem" class="slide level2">
 <h2>Open problem</h2>
-<div class="callout callout-note no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Conjecture</strong></p>
+<ul>
+<li>Min-cost flow on a tree with <span class="math inline">\(r\)</span> additional edges: Better than <span class="math inline">\(2^{2^{O(r)}}\)</span> time?</li>
+<li>Proximity result: Search space smaller than <span class="math inline">\((2r+1)^r\)</span>? We did not use costs.</li>
+<li><span class="math inline">\(\Omega(2^k MST(m))\)</span> time lower bound for finding minimum Steiner tree?</li>
+</ul>
+</section>
+<section id="open-problem-1" class="slide level2">
+<h2>Open problem</h2>
+<p>FPT algorithm parametrized by number of branch vertices?</p>
+<div class="fragment">
+<p>Arbitrary large cycle rank while exactly <span class="math inline">\(1\)</span> branch vertex</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="flower.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
 </div>
-<div class="callout-content">
-<p>SCP can be solved in <span class="math inline">\(O( (2r+1)^r 2^k MST(n))\)</span> time for <span class="math inline">\(n\)</span> requests on a graph with at most <span class="math inline">\(k\)</span> degree <span class="math inline">\(\geq 3\)</span> vertices and circuit rank <span class="math inline">\(r\)</span>.</p>
 </div>
-</div>
-</div>
-<p>In particular, this would show for fixed topology graphs, the running time would be <span class="math inline">\(O(MST(n))\)</span>, matching the optimum bound.</p>
-<!--
-## The technique
-::: {.incremental}
- - The solution is a optimum connected tour of *some* homology class.
- - Find the optimum connected tour for a small collection homology class and return the minimum.
-   - how to find the optimum connected tour for a given homology class?
-   - how small is the collection?
-   - how to find the collection quickly?
-:::
-
-## Finding optimum connected tour
- - Not connected, so we have to connect them.
- - All the edges we add must be in the $0$ homology class.
- - Transforms to Steiner tree problem.
- - Different from Steiner TSP problem.
-
-## Homology class for optimum tour vs connected tour
- - $x$ is a homology class containing the optimum tour.
- 
-::: {style="background: #fff1e8; padding:10px;"}
-There exists a homology class $y$, such that $\|x-y\|_\infty \leq 2$, and $y$ contains the optimum connected tour. 
-:::
-
-Claim: We only have to test $5^p$ different homology classes after finding $x$.
-
-
-## Bounds {auto-animate=true}
-
-
-![](f1.svg){.absolute top=50 left=200 width="800" height="800" data-id="f1" .fragment}
-
-![](f2.svg){.absolute top=50 left=200 width="800" height="800" .filter_blue data-id="f2" .fragment}
-
-![](f3.svg){.absolute top=50 left=200 width="800" height="800" .filter_red data-id="f3" .fragment}
-
-
-## Nice {auto-animate=true}
-
-![](f1.svg){.absolute top=0 left=0 width="500" height="500" data-id="f1"}
-
-![](f2.svg){.absolute top=0 left=500 width="500" height="500" .filter_blue data-id="f2"}
-
-![](f3.svg){.absolute top=450 left=300 width="500" height="500" .filter_red data-id="f3"}
-
-
-## Finding the optimum tour
-
-Reduces to a min-cost flow problem?
-
-## Running time analysis
-
-
-## Open problems
-
- - Is it possible to improve the base $5$ to $3$? 
- - Is it possible to completely remove exponential dependency on $p$?
-
-
---->
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-AtallahK88" class="csl-entry" role="listitem">
 Atallah, Mikhail J., and S. Rao Kosaraju. 1988. <span>“Efficient <span>Solutions</span> to <span>Some Transportation Problems</span> with <span>Applications</span> to <span>Minimizing Robot Arm Travel</span>.”</span> <em>SIAM Journal on Computing</em> 17 (5): 849–69. <a href="https://doi.org/10.1137/0217053">https://doi.org/10.1137/0217053</a>.
 </div>
@@ -965,17 +964,20 @@ Deleplanque, Samuel, and Alain Quilliot. 2013. <span>“Dial-a-Ride Problem with
 <div id="ref-Desrosiers88" class="csl-entry" role="listitem">
 Desrosiers, Jacques, Yvan Dumas, and François Soumis. 1988. <span>“The Multiple Vehicle DIAL-a-RIDE Problem.”</span> In <em>Computer-Aided Transit Scheduling</em>, edited by Joachim R. Daduna and Anthony Wren, 15–27. Berlin, Heidelberg: Springer Berlin Heidelberg.
 </div>
-<div id="ref-FredericksonG93" class="csl-entry" role="listitem">
-Frederickson, G. N., and D. J. Guan. 1993. <span>“Nonpreemptive <span>Ensemble Motion Planning</span> on a <span>Tree</span>.”</span> <em>Journal of Algorithms</em> 15 (1): 29–60. <a href="https://doi.org/10.1006/jagm.1993.1029">https://doi.org/10.1006/jagm.1993.1029</a>.
-</div>
 <div id="ref-Frederickson93" class="csl-entry" role="listitem">
-Frederickson, Greg N. 1993. <span>“A <span>Note</span> on the <span>Complexity</span> of a <span>Simple Transportation Problem</span>.”</span> <em>SIAM Journal on Computing</em> 22 (1): 57–61. <a href="https://doi.org/10.1137/0222005">https://doi.org/10.1137/0222005</a>.
+Frederickson, Greg. 1993. <span>“A <span>Note</span> on the <span>Complexity</span> of a <span>Simple Transportation Problem</span>.”</span> <em>SIAM Journal on Computing</em> 22 (1): 57–61. <a href="https://doi.org/10.1137/0222005">https://doi.org/10.1137/0222005</a>.
+</div>
+<div id="ref-FredericksonG93" class="csl-entry" role="listitem">
+Frederickson, Greg, and D. J. Guan. 1993. <span>“Nonpreemptive <span>Ensemble Motion Planning</span> on a <span>Tree</span>.”</span> <em>Journal of Algorithms</em> 15 (1): 29–60. <a href="https://doi.org/10.1006/jagm.1993.1029">https://doi.org/10.1006/jagm.1993.1029</a>.
 </div>
 <div id="ref-FredericksonHK78" class="csl-entry" role="listitem">
-Frederickson, Greg N., Matthew S. Hecht, and Chul E. Kim. 1978. <span>“Approximation Algorithms for Some Routing Problems.”</span> <em>SIAM Journal on Computing</em> 7 (2): 178–93. <a href="https://doi.org/10.1137/0207017">https://doi.org/10.1137/0207017</a>.
+Frederickson, Greg, Matthew S. Hecht, and Chul E. Kim. 1978. <span>“Approximation Algorithms for Some Routing Problems.”</span> <em>SIAM Journal on Computing</em> 7 (2): 178–93. <a href="https://doi.org/10.1137/0207017">https://doi.org/10.1137/0207017</a>.
 </div>
 <div id="ref-10.1007/11830924_20" class="csl-entry" role="listitem">
 Gørtz, Inge Li. 2006. <span>“Hardness of Preemptive Finite Capacity Dial-a-Ride.”</span> In <em>Approximation, Randomization, and Combinatorial Optimization. Algorithms and Techniques</em>, edited by Josep Díaz, Klaus Jansen, José D. P. Rolim, and Uri Zwick, 200–211. Berlin, Heidelberg: Springer Berlin Heidelberg.
+</div>
+<div id="ref-10.1007/978-3-319-71150-8_8" class="csl-entry" role="listitem">
+Li, Jianping, Xiaofei Liu, Weidong Li, Li Guan, and Junran Lichen. 2017. <span>“Approximation Algorithms for the Generalized Stacker Crane Problem.”</span> In <em>Combinatorial Optimization and Applications</em>, edited by Xiaofeng Gao, Hongwei Du, and Meng Han, 95–102. Cham: Springer International Publishing.
 </div>
 <div id="ref-LOISZ17" class="csl-entry" role="listitem">
 Lois, Athanasios, and Athanasios Ziliaskopoulos. 2017. <span>“Online Algorithm for Dynamic Dial a Ride Problem and Its Metrics.”</span> <em>Transportation Research Procedia</em> 24: 377–84. https://doi.org/<a href="https://doi.org/10.1016/j.trpro.2017.05.097">https://doi.org/10.1016/j.trpro.2017.05.097</a>.
@@ -985,6 +987,15 @@ Roodbergen, Kees Jan, and RenÉde Koster. 2001. <span>“Routing Methods for War
 </div>
 <div id="ref-GiuliaAJ21" class="csl-entry" role="listitem">
 Siciliano, Giulia, Anna Durek-Linn, and Johannes Fottner. 2022. <span>“Development and Evaluation of Configurations and Control Strategies to Coordinate Several Stacker Cranes in a Single Aisle for a New Dynamic Hybrid Pallet Warehouse.”</span> In <em>LISS 2021</em>, edited by Xianliang Shi, Gábor Bohács, Yixuan Ma, Daqing Gong, and Xiaopu Shang, 606–26. Singapore: Springer Nature Singapore.
+</div>
+<div id="ref-10.1007/978-3-030-92681-6_32" class="csl-entry" role="listitem">
+Sun, Yuhui, Wei Yu, and Zhaohui Liu. 2022. <span>“Approximation Algorithms for Some Min–Max and Minimum Stacker Crane Cover Problems.”</span> <em>Journal of Combinatorial Optimization</em> 45 (1): 18. <a href="https://doi.org/10.1007/s10878-022-00955-x">https://doi.org/10.1007/s10878-022-00955-x</a>.
+</div>
+<div id="ref-yu_approximation_2023" class="csl-entry" role="listitem">
+Yu, Wei, Rui-Yong Dai, and Zhao-Hui Liu. 2023. <span>“Approximation <span>Algorithms</span> for <span>Multi</span>-Vehicle <span>Stacker</span> <span>Crane</span> <span>Problems</span>.”</span> <em>Journal of the Operations Research Society of China</em> 11 (1): 109–32. <a href="https://doi.org/10.1007/s40305-021-00372-7">https://doi.org/10.1007/s40305-021-00372-7</a>.
+</div>
+<div id="ref-zemel_on_1984" class="csl-entry" role="listitem">
+Zemel, Eitan. 1984. <span>“An <span>O</span>(n) Algorithm for the Linear Multiple Choice Knapsack Problem and Related Problems.”</span> <em>Information Processing Letters</em> 18 (3): 123–28. <a href="https://doi.org/10.1016/0020-0190(84)90014-0">https://doi.org/10.1016/0020-0190(84)90014-0</a>.
 </div>
 </div>
 </section></section>
@@ -1014,7 +1025,6 @@ Siciliano, Giulia, Anna Durek-Linn, and Johannes Fottner. 2022. <span>“Develop
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1231,18 +1241,7 @@ Siciliano, Giulia, Anna Durek-Linn, and Johannes Fottner. 2022. <span>“Develop
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1274,11 +1273,50 @@ Siciliano, Giulia, Anna Durek-Linn, and Johannes Fottner. 2022. <span>“Develop
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1288,8 +1326,17 @@ Siciliano, Giulia, Anna Durek-Linn, and Johannes Fottner. 2022. <span>“Develop
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1303,7 +1350,11 @@ Siciliano, Giulia, Anna Durek-Linn, and Johannes Fottner. 2022. <span>“Develop
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
