@@ -89,18 +89,13 @@ The algorithm is as follows [@ChibaN85]. Take $v$, we consider each neighbor $u$
 ::: Theorem
   One can check if there exists a $K_{2,\ell}$ in the bipartite graph $G=(A,B,E)$ in $O(\ell n^2)$ time.
 :::
-Now, we combine the two algorithms. It requires a theorem in extremal graph theory can be found in [@Furedi96]. 
-
-::: {.Theorem title="$K_{2,\ell}$-free theorem"}
-  There exists a constant $c$, such that each $n$ vertex graph with $c n^{3/2} \ell^{1/2}$ edges contains a $K_{2,\ell}$.
-:::
 
 ::: Theorem
   There is a $O(m^{4/3})$ time algorithm to find a $C_4$ in the graph.
 :::
 ::: Proof
-  If the arboricity is $t$. We use the first algorithm and we get running time $O(t m)$. Otherwise, we know there is a subgraph with minimum degree at least $t$. The subgraph can be found by repeatedly deleting vertices of minimum degree. The subgraph $G'$ with the previous property has $n'\leq n$ vertices and $m'\leq n't$ edges. One can see $n'\leq m'/t\leq m/t$. If $cn'^{3/2}\leq m' \leq n't$, then we know there exists a $C_4$ in $G'$ by the previous theorem, and we can apply the $O(n^2)$ time algorithm in the subgraph to find the $C_4$. The total running time is therefore $O(tm + n'^2) = O(tm+(m/t)^2)$.
-  We set $t=c^{3/2} m^{1/3}$. One can check after lot of algebra, it make sure the condition $cn'^{3/2}\leq n't$ is satisfied. The algorithm takes $O(m^{4/3})$ time. 
+  If the arboricity is $t$. We use the first algorithm and we get running time $O(t m)$. Otherwise, we know there is a subgraph with minimum degree at least $t$. The subgraph can be found by repeatedly deleting vertices of minimum degree. The subgraph $G'$ with the previous property has $n'\leq n$ vertices and $m'\geq \frac{n't}{2}$ edges. One can see $n'\leq m'/t\leq m/t$. We can apply the $O(n^2)$ time algorithm in the subgraph to find the $C_4$. The total running time is therefore $O(tm + n'^2) = O(tm+(m/t)^2)$.
+  We set $t=m^{1/3}$, and the algorithm takes $O(m^{4/3})$ time. 
 :::
 
 ## Finding a colored $K_{2,3}$ in bipartite graphs
@@ -118,4 +113,10 @@ Using the idea for finding $C_4$, we can mix the $((\alpha(G)m)^{4/3})$ time alg
 
 ::: Theorem
   There is a $O(m^{28/15})$ time algorithm for finding a colored $K_{2,3}$.
+:::
+
+I feel like a theorem in extremal graph theory might be useful, but I can't remember why [@Furedi96]. 
+
+::: {.Theorem title="$K_{2,\ell}$-free theorem"}
+  There exists a constant $c$, such that each $n$ vertex graph with $c n^{3/2} \ell^{1/2}$ edges contains a $K_{2,\ell}$.
 :::
