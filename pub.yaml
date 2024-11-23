@@ -8,6 +8,7 @@ venues:
   IPL: Information Processing Letters
   ORL: Operations Research Letters
   MP: Mathematical Programming
+  AOR: Annals of Operations Research
   APPROX: International Workshop on Approximation Algorithms for Combinatorial Optimization Problems
   EJOR: European Journal of Operational Research
   TALG: ACM Transactions on Algorithms
@@ -414,6 +415,18 @@ abstract: A closed curve in the plane is weakly simple if it is the limit (in th
 
 # journal publications
 ---
+id: airplane
+title: A near-linear time algorithm and a min-cost flow approach for determining the optimal landing times of a fixed sequence of planes
+type: journal
+year: 2024
+pub: AOR
+show: [d]
+authors: [Bin Cao, Chao Xu]
+abstract: >
+  The aircraft landing problem (ALP) is an important issue of assigning an airport’s runways to the arrival aircrafts as well as to schedule the landing time of these aircrafts in practice. A large number of the extant studies have tried to address such a practical problem with using various algorithms for one or more runways. For a static single-runway of the ALP, this paper proposes a new approach to develop an alternative powerful algorithm. For a given sequence of planes, we develop a faster algorithm for solving the ALP with the running time $O(n\log n)$, where n is the number of aircrafts in the schedule. Alternatively, we reduce the proposed problem of minimizing the total cost by determining the landing times for a given landing sequence into a min-cost flow problem. We conduct a set of experimental studies to compare the performance of our near-linear time algorithm to the quadratic time algorithm whose time complexity is $O(n^2)$, for computing the optimal landing times. The computational results show that the proposed heuristic based on our algorithm could be much faster than both such quadratic time algorithm and the one using linear programming.
+
+
+---
 id: sub4part-journal
 title: A polynomial time algorithm for finding a minimum 4-partition of a submodular function
 authors: [Tsuyoshi Hirayama, Yuhao Liu, Kazuhisa Makino, Ke Shi, Chao Xu]
@@ -694,14 +707,6 @@ abstract: >
 
 
 # manuscripts
-
----
-id: airplane
-title: A near-linear time algorithm for computing the optimal landing times of a fixed sequence of planes
-type: manuscript
-year: 2019
-bib: <time>2019</time>, Submitted.
-authors: [Bin Cao, Chao Xu]
 
 ---
 id: milk
