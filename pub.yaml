@@ -21,6 +21,9 @@ venues:
   COCOON: International Computing and Combinatorics Conference
   IPCO: Conference on Integer Programming and Combinatorial Optimization
   IJTCS-FAW: International Joint Conference on Theoretical Computer Science – Frontier of Algorithmic Wisdom
+  IJCAI: International Joint Conference on Artificial Intelligence
+  ISAAC: International Symposium on Algorithms and Computation
+  ECAI: European Conference on Artificial Intelligence
 
 people:
   Chao Xu: https://chaoxu.prof
@@ -65,6 +68,10 @@ people:
   Rufan Bai: https://sites.google.com/view/rufanbai
   Chenyang Xu: https://chenyang-1995.github.io/
   Ruilong Zhang: https://ruilong-zhang.github.io/
+  Yike Chen: 
+  Yu Cong: 
+  Yi Zhou: https://joey001.github.io/index_en/
+  Zhang-hua Fu: https://sse.cuhk.edu.cn/en/faculty/fuzhanghua
 
 types:
   conference: Conference Publications
@@ -89,9 +96,64 @@ types:
 # bib allow user to add extra information
 
 
-
-
 # conference publications
+
+---
+id: graph-ride
+title: An Optimal Algorithm for the Stacker Crane Problem on Fixed Topologies
+type: conference
+show: []
+year: 2025
+selected: true
+bib: ISAAC 2025
+authors: [Yike Chen, Ke Shi, Chao Xu]
+abstract: >
+  The Stacker Crane Problem (SCP) is a variant of the Traveling Salesman Problem. In SCP, 
+  pairs of pickup and delivery points are designated on a graph, and a crane must visit these
+  points to move objects from each pickup location to its respective delivery point. The goal
+  is to minimize the total distance traveled. SCP is known to be NP-hard, even on trees. The only positive results,
+  in terms of polynomial-time solvability, apply to graphs that are topologically equivalent to a path or a cycle.
+
+  We propose an algorithm that is optimal for each fixed topology, running in near-linear time. This is achieved 
+  by demonstrating that the problem is fixed-parameter tractable (FPT) when parameterized by both the cycle rank
+  and the number of branch vertices.
+
+---
+id: ecai-submodular
+title: Efficient Branch-and-Bound for Submodular Function Maximization under Knapsack Constraint
+type: conference
+show: []
+year: 2025
+bib: ECAI 2025
+authors: [Yimin Hao, Yi Zhou, Chao Xu, Zhang-Hua Fu]
+abstract: >
+  The submodular knapsack problem (SKP), which seeks to maximize a submodular set function by selecting a
+  subset of elements within a given budget, is an important discrete optimization problem. 
+  The majority of existing approaches to solving the SKP are approximation algorithms.
+  However, in domains such as health-care facility location and risk management, the need for optimal
+  solutions is still critical, necessitating the use of exact algorithms over approximation methods. 
+  In this paper, we present an optimal branch-and-bound approach, featuring a novel upper bound with
+  a worst-case tightness guarantee and an efficient dual branching method to minimize repeat computations.
+  Experiments in applications such as facility location, weighted coverage, influence maximization,
+  and so on show that the algorithms that implement the new ideas are far more efficient than conventional methods. 
+
+---
+id: incentive-allocation
+title: Large-Scale Trade-Off Curve Computation for Incentive Allocation with Cardinality and Matroid Constraints
+type: conference
+show: []
+year: 2025
+bib: IJCAI 2025
+authors: [Yu Cong, Chao Xu, Yi Zhou]
+abstract: >
+  We consider a large-scale incentive allocation problem where the entire trade-off curve
+  between budget and profit has to be maintained approximately at all time. The application
+  originally comes from assigning coupons to users of the ride-sharing apps, where each user
+  can have a limit on the number of coupons been assigned. We consider a more general
+  form, where the coupons for each user forms a matroid, and the coupon assigned to each user
+  must be an independent set.
+  We show the entire trade-off curve can be maintained approximately in near real time.
+
 ---
 id: cyclic-cover
 title: Almost optimum $\ell$-covering of $\Z_n$
