@@ -72,9 +72,8 @@
       Here is my <a href="files/cv.pdf">CV</a><!--(<a href="files/cv_chinese.pdf">chinese version</a>)-->.
     </p>
     <p>I maintain a <a href="https://github.com/chaoxu/">github account</a>, a <a href="blog.html"><strong>blog</strong></a> and a Mastodon <a rel="me" href="https://mathstodon.xyz/@chao">@chao</a>. I frequent <a href="http://cstheory.stackexchange.com/users/314/chao-xu">cstheory</a>.</p>
-    <p>Here is my <a href="/pages/academic-family">academic family</a>.</p>
+    <p>Here is the list of all who have worked in <a href="/pages/academic-family">my group</a>.</p>
     <p>You can contact me through email <a href="mailto:thechaoxu@gmail.com"><samp itemprop="email">thechaoxu@gmail.com</samp></a>.</p>
-    <div class="alert notice">I'm <a href="/pages/positions">hiring postdocs</a>. Please email if you are interested.</div>
     <p><a href="cnblog.html"><strong>中文博客</strong></a> <a href="/pages/course-frontier-of-algorithms.html"><strong>前沿算法课程</strong></a></p>
   </div>
 </div>
@@ -83,6 +82,77 @@
   <span>Selected Publications<br /><span style="font-size:0.6em" onclick="togglePublication()"><em><a>See all publications.</a></em></span></span> 
 </div>
 <div class="cv-non-selected row pubtypeheader">Conference Publications</div>
+  <!-- An Optimal Algorithm for the Stacker Crane Problem on Fixed Topologies  -->
+  <div class="cv-selected row cv-entry" id="graph-ride">
+    <input type="checkbox" class="abstract-guard" id="graph-ride-toggle">
+    <div class="cv-left">
+        <label class="showmore material-icons" for="graph-ride-toggle"></label>
+        <i class="material-icons disabled">description</i>
+        <i class="material-icons disabled">airplay</i>
+    </div>
+    <div class="cv-right">
+      <cite class="paper-title">An Optimal Algorithm for the Stacker Crane Problem on Fixed Topologies</cite>
+      <ul class="coauthor-list">
+        <li>
+            Yike Chen</li><li>
+            <a href="https://keshi.pro/">Ke Shi</a></li><li>
+            <a href="https://chaoxu.prof">Chao Xu</a></li></ul>
+      <p><em>
+        ISAAC 2025
+      </em><p>
+    </div>
+    <div class="abstract">
+      <p>The Stacker Crane Problem (SCP) is a variant of the Traveling Salesman Problem. In SCP,  pairs of pickup and delivery points are designated on a graph, and a crane must visit these points to move objects from each pickup location to its respective delivery point. The goal is to minimize the total distance traveled. SCP is known to be NP-hard, even on trees. The only positive results, in terms of polynomial-time solvability, apply to graphs that are topologically equivalent to a path or a cycle.
+We propose an algorithm that is optimal for each fixed topology, running in near-linear time. This is achieved  by demonstrating that the problem is fixed-parameter tractable (FPT) when parameterized by both the cycle rank and the number of branch vertices.</p>
+    </div>
+  </div>
+  <!-- Efficient Branch-and-Bound for Submodular Function Maximization under Knapsack Constraint  -->
+  <div class="cv-non-selected row cv-entry" id="ecai-submodular">
+    <input type="checkbox" class="abstract-guard" id="ecai-submodular-toggle">
+    <div class="cv-left">
+        <label class="showmore material-icons" for="ecai-submodular-toggle"></label>
+        <i class="material-icons disabled">description</i>
+        <i class="material-icons disabled">airplay</i>
+    </div>
+    <div class="cv-right">
+      <cite class="paper-title">Efficient Branch-and-Bound for Submodular Function Maximization under Knapsack Constraint</cite>
+      <ul class="coauthor-list">
+        <li>
+            Yimin Hao</li><li>
+            <a href="https://joey001.github.io/index_en/">Yi Zhou</a></li><li>
+            <a href="https://chaoxu.prof">Chao Xu</a></li><li>
+            Zhang-Hua Fu</li></ul>
+      <p><em>
+        ECAI 2025
+      </em><p>
+    </div>
+    <div class="abstract">
+      <p>The submodular knapsack problem (SKP), which seeks to maximize a submodular set function by selecting a subset of elements within a given budget, is an important discrete optimization problem.  The majority of existing approaches to solving the SKP are approximation algorithms. However, in domains such as health-care facility location and risk management, the need for optimal solutions is still critical, necessitating the use of exact algorithms over approximation methods.  In this paper, we present an optimal branch-and-bound approach, featuring a novel upper bound with a worst-case tightness guarantee and an efficient dual branching method to minimize repeat computations. Experiments in applications such as facility location, weighted coverage, influence maximization, and so on show that the algorithms that implement the new ideas are far more efficient than conventional methods.</p>
+    </div>
+  </div>
+  <!-- Large-Scale Trade-Off Curve Computation for Incentive Allocation with Cardinality and Matroid Constraints  -->
+  <div class="cv-non-selected row cv-entry" id="incentive-allocation">
+    <input type="checkbox" class="abstract-guard" id="incentive-allocation-toggle">
+    <div class="cv-left">
+        <label class="showmore material-icons" for="incentive-allocation-toggle"></label>
+        <i class="material-icons disabled">description</i>
+        <i class="material-icons disabled">airplay</i>
+    </div>
+    <div class="cv-right">
+      <cite class="paper-title">Large-Scale Trade-Off Curve Computation for Incentive Allocation with Cardinality and Matroid Constraints</cite>
+      <ul class="coauthor-list">
+        <li>
+            Yu Cong</li><li>
+            <a href="https://chaoxu.prof">Chao Xu</a></li><li>
+            <a href="https://joey001.github.io/index_en/">Yi Zhou</a></li></ul>
+      <p><em>
+        IJCAI 2025
+      </em><p>
+    </div>
+    <div class="abstract">
+      <p>We consider a large-scale incentive allocation problem where the entire trade-off curve between budget and profit has to be maintained approximately at all time. The application originally comes from assigning coupons to users of the ride-sharing apps, where each user can have a limit on the number of coupons been assigned. We consider a more general form, where the coupons for each user forms a matroid, and the coupon assigned to each user must be an independent set. We show the entire trade-off curve can be maintained approximately in near real time.</p>
+    </div>
+  </div>
   <!-- Almost optimum <span class="math">\ell</span>-covering of <span class="math">\Z_n</span>  -->
   <div class="cv-non-selected row cv-entry" id="cyclic-cover">
     <input type="checkbox" class="abstract-guard" id="cyclic-cover-toggle">
@@ -103,6 +173,31 @@
     </div>
     <div class="abstract">
       <p>A subset <span class="math">B</span> of the ring <span class="math">\Z_n</span> is referred to as a <span class="math">\ell</span>-covering set if <span class="math">\{ ab \pmod n \mid 0\leq a \leq \ell, b\in B\} = \Z_n</span>. We show that there exists a <span class="math">\ell</span>-covering set of <span class="math">\Z_n</span> of size <span class="math">O(\frac{n}{\ell}\log n)</span> for all <span class="math">n</span> and <span class="math">\ell</span>, and how to construct such a set. We also provide examples where any <span class="math">\ell</span>-covering set must have a size of <span class="math">\Omega(\frac{n}{\ell}\frac{\log n}{\log \log n})</span>. The proof employs a refined bound for the relative totient function obtained through sieve theory and the existence of a large divisor with a linear divisor sum. The result can be used to simplify a modular subset sum algorithm.</p>
+    </div>
+  </div>
+  <!-- Resource-Limited Network Security Games with General Contagious Attacks  -->
+  <div class="cv-non-selected row cv-entry" id="resource-limited-game">
+    <input type="checkbox" class="abstract-guard" id="resource-limited-game-toggle">
+    <div class="cv-left">
+        <label class="showmore material-icons" for="resource-limited-game-toggle"></label>
+        <i class="material-icons disabled">description</i>
+        <i class="material-icons disabled">airplay</i>
+    </div>
+    <div class="cv-right">
+      <cite class="paper-title">Resource-Limited Network Security Games with General Contagious Attacks</cite>
+      <ul class="coauthor-list">
+        <li>
+            <a href="https://sites.google.com/view/rufanbai">Rufan Bai</a></li><li>
+            <a href="https://chaoxu.prof">Chao Xu</a></li><li>
+            <a href="https://chenyang-1995.github.io/">Chenyang Xu</a></li><li>
+            <a href="https://ruilong-zhang.github.io/">Ruilong Zhang</a></li></ul>
+      <p><em>
+        COCOON 2024
+      </em><p>
+    </div>
+    <div class="abstract">
+      <p>In classic security games on the graph with contagious attacks, there is a defender and an attacker. The defender first distributes defending resources to the nodes of the graph, and each unit of defending resource incurs a cost. The attacker picks a node to attack to maximize the damage after the transmission of the attack. Generally, the attacker has two attack types—uniform attack and adaptive attack, where the uniform attacker attacks each node with uniform and the adaptive attacker can select one node to attack according to the defender’s strategy. The usual objective in the literature is to minimize the total loss of the defender, including the damage caused by the attacker and the paid cost. However, we notice that in many real-world applications, the defending resources are often limited, and the existing objective fails to capture these scenarios.
+The paper handles this issue by considering the resource-limited setting of the security game, where there is a given upper bound on the paid resource cost and the defender aims to minimize the caused damage without violating the resource cost constraint. We first discuss the hardness, proving that for both attack types, the problem is NP-hard on general graphs. Then, we focus on bounded treewidth graphs, a well-known graph class that includes many common graphs. We show that given any graph with bounded treewidth and any attack type, a dynamic programming algorithm always exists that solves the problem in polynomial time. Further, the algorithm can be easily extended to more general objective settings.  The proposed algorithm is built on an interesting connection to a graph partition problem, which could be intrigued independently.</p>
     </div>
   </div>
   <!-- Nested and Interlaced Ticketing for Multiple Travelers  -->
@@ -750,8 +845,7 @@ Our contributions improve upon the standard dynamic programming algorithm that r
         <aside class="cv-non-selected note">The paper is a combination of <a href="#hypergraph-min-cut-conf">Computing minimum cuts in hypergraphs</a> appeared in SODA 2017 and <a href="https://arxiv.org/abs/1703.03849">A note on approximate strengths of edges in a hypergraph</a>.</aside>
     </div>
     <div class="abstract">
-      <p>We study algorithmic and structural aspects of connectivity in hypergraphs. Given a hypergraph <span class="math">H=(V,E)</span> with <span class="math">n = |V|</span>, <span class="math">m = |E|</span> and <span class="math">p = \sum_{e \in E} |e|</span> the fastest known algorithm to compute a global minimum cut in <span class="math">H</span> runs in <span class="math">O(np)</span> time for the uncapacitated case, and in <span class="math">O(np + n^2 \log n)</span> time for the capacitated case. We show the following new results.
-problems in hypergraphs of small rank.</p>
+      <p>We study algorithmic and structural aspects of connectivity in hypergraphs. Given a hypergraph <span class="math">H=(V,E)</span> with <span class="math">n = |V|</span>, <span class="math">m = |E|</span> and <span class="math">p = \sum_{e \in E} |e|</span> the fastest known algorithm to compute a global minimum cut in <span class="math">H</span> runs in <span class="math">O(np)</span> time for the uncapacitated case, and in <span class="math">O(np + n^2 \log n)</span> time for the capacitated case. We show the following new results.</p>
 <ul>
 <li>Given an uncapacitated hypergraph <span class="math">H</span> and an integer <span class="math">k</span> we
 describe an algorithm that runs in <span class="math">O(p)</span> time to find a (trimmed)
@@ -773,7 +867,8 @@ graphs to hypergraphs.</li>
 all the edges of a hypergraph in <span class="math">O(p \log^2 n \log p)</span> time. This
 gives a near linear time algorithm for finding a <span class="math">(1+\e)</span>-cut
 sparsifier based on the work of Kogan and Krauthgamer. As a
-byproduct we obtain faster algorithms for various cut and flow</li>
+byproduct we obtain faster algorithms for various cut and flow
+problems in hypergraphs of small rank.</li>
 </ul>
 <p>Our results build upon properties of vertex orderings that were inspired by the maximum adjacency ordering for graphs due to Nagamochi and Ibaraki.  Unlike graphs we observe that there are several orderings for hypergraphs and these yield different insights.</p>
     </div>
