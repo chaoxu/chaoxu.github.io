@@ -8,14 +8,14 @@ People who have been affiliated and supported by my funding.
 
 ## PhD Students:
 
-1. Yu Cong
+1. [Yu Cong](https://talldoor.uk/about.html)
 
 ## Masters Students:
 
 1. Fu Chen
 2. Quanmeng Jiang
 3. Mingdong Yang
-4. Yike Chen
+4. [Yike Chen](https://stargazer-cyk.github.io/)
 5. Yajie Zhao
 
 # Previous Members
