@@ -326,6 +326,8 @@ authors: [Jingyang Zhao, Mingyu Xiao, Chao Xu]
 type: conference
 pub: MFCS
 year: 2022
+notes:
+  - The [journal version](#ttp-journal) was serialized in Theoretical Computer Science.
 abstract: >
   The Traveling Tournament Problem (TTP) is a well-known benchmark problem in the field of tournament timetabling, which asks us to design a double round-robin schedule such that each pair of teams plays one game in each other's home venue, minimizing the total distance traveled by all $n$ teams ($n$ is even).
   TTP-$k$ is the problem with one more constraint that each team can have at most $k$ consecutive home games or away games. The case where $k=3$, TTP-3, is one of the most investigated cases. In this paper, we improve the approximation ratio of TTP-3 from $(1.667+\epsilon)$ to $(1.598+\epsilon)$, for any $\epsilon>0$. Previous schedules were constructed based on a Hamiltonian cycle of the graph.
@@ -524,6 +526,8 @@ authors: [Jingyang Zhao, Mingyu Xiao, Chao Xu]
 type: conference
 pub: TCS
 year: 2025
+notes:
+  - An [extended abstract](#ttp) of this work appeared in MFCS 2022.
 abstract: >
   The Traveling Tournament Problem (TTP) is a well-known benchmark problem in the field of tournament timetabling, which asks us to design a double round-robin schedule such that each pair of teams plays one game in each other's home venue, minimizing the total distance traveled by all $n$ teams ($n$ is even).
   TTP-$k$ is the problem with one more constraint that each team can have at most $k$-consecutive home games or away games. 
