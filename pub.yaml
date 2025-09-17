@@ -103,7 +103,7 @@ types:
 id: graph-ride
 title: An Optimal Algorithm for the Stacker Crane Problem on Fixed Topologies
 type: conference
-show: []
+show: [d]
 year: 2025
 selected: true
 bib: ISAAC 2025
