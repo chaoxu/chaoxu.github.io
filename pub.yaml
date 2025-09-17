@@ -24,6 +24,7 @@ venues:
   IJCAI: International Joint Conference on Artificial Intelligence
   ISAAC: International Symposium on Algorithms and Computation
   ECAI: European Conference on Artificial Intelligence
+  TCS: Theoretical Computer Science
 
 people:
   Chao Xu: https://chaoxu.prof
@@ -515,6 +516,24 @@ abstract: A closed curve in the plane is weakly simple if it is the limit (in th
 
 
 # journal publications
+---
+id: ttp-journal
+show: []
+title: The traveling tournament problem: Improved algorithms based on cycle packing
+authors: [Jingyang Zhao, Mingyu Xiao, Chao Xu]
+type: conference
+pub: TCS
+year: 2025
+abstract: >
+  The Traveling Tournament Problem (TTP) is a well-known benchmark problem in the field of tournament timetabling, which asks us to design a double round-robin schedule such that each pair of teams plays one game in each other's home venue, minimizing the total distance traveled by all $n$ teams ($n$ is even).
+  TTP-$k$ is the problem with one more constraint that each team can have at most $k$-consecutive home games or away games. 
+  In this paper, we investigate schedules for TTP-$k$ and analyze the approximation ratio of the solutions.
+  Most previous schedules were constructed based on a Hamiltonian cycle of the graph.
+  We will propose a novel construction based on a $k$-cycle packing. Then, combining our $k$-cycle packing schedule with the Hamiltonian cycle schedule, we obtain improved approximation ratios for TTP-$k$ with deep analysis. 
+  The case where $k=3$, TTP-3, is one of the most investigated cases. We improve the approximation ratio of TTP-3 from $(1.667+\epsilon)$ to $(1.598+\epsilon)$, for any $\epsilon>0$.
+  For TTP-$4$, we improve the approximation ratio from $(1.750+\epsilon)$ to $(1.700+\epsilon)$.
+  By a refined analysis of the Hamiltonian cycle construction, we also improve the approximation ratio of TTP-$k$ from $(\frac{5k-7}{2k}+\epsilon)$ to $(\frac{5k^2-4k+3}{2k(k+1)}+\epsilon)$ for any constant $k\geq 5$.
+
 ---
 id: airplane
 title: A near-linear time algorithm and a min-cost flow approach for determining the optimal landing times of a fixed sequence of planes
