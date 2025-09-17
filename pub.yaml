@@ -521,7 +521,7 @@ abstract: A closed curve in the plane is weakly simple if it is the limit (in th
 ---
 id: ttp-journal
 show: []
-title: The traveling tournament problem: Improved algorithms based on cycle packing
+title: "The traveling tournament problem: Improved algorithms based on cycle packing"
 authors: [Jingyang Zhao, Mingyu Xiao, Chao Xu]
 type: conference
 pub: TCS
