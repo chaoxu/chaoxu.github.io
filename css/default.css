@@ -189,3 +189,28 @@ img {
     height: auto;
     margin: auto;
 }
+/* CSS for simple reactive document
+----------------------------------------------*/
+.dm-expr {
+  padding: 1px 2px;
+  font-variant-numeric: tabular-nums;
+  border-bottom: 1px dashed #ddd;
+}
+
+.dm-var {
+  border: 1px dotted #ddd;
+  background: #f5f5f5;
+  font-variant-numeric: tabular-nums;
+  cursor: text;
+  transition: background 0.2s, border-color 0.2s;
+}
+.dm-var:hover {
+  background: #fff;
+  border-color: #999;
+}
+
+.dm-var:focus {
+  outline: none;
+  border-color: #4285f4;
+  background: #fff;
+}

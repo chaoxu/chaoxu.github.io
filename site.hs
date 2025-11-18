@@ -160,7 +160,8 @@ idPages = ["favicon.ico",
            "googled46bf4e1cd540289.html",
            "CNAME",
            "index.html",
-           ".nojekyll"]
+           ".nojekyll",
+           "docmath.js"]
 
 htmlTitleField :: Context String 
 htmlTitleField = Context $ \k _ i -> 
