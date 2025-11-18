@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta property="og:title" content="IHG point value" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="The Art Gallery Guardian" />
+    <meta property="article:tag" content="" />
+    <title>IHG point value</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script src="/docmath.js"></script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+      href="https://chaoxu.prof/rss.xml">
+  </head>
+  <body>
+    <header class="hide-on-print">
+        <div id="site-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+        <div style="display: none;">
+          <img src="/files/chao/chao_thumb.jpg" >
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/cnblog.html">中文博客</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/pages/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1 id="article-title">IHG point value</h1>
+        <p>Suppose you find a cash rate at an IHG hotel and you also have the
+option to buy IHG points. How can you tell whether redeeming points is
+actually cheaper than paying cash?</p>
+<p>Assume IHG points can be purchased at <span class="dm-var"
+data-name="buy" data-value="0.5" contenteditable="true"></span> cpp.
+After factoring in a <span class="dm-var" data-name="cc_buy"
+data-value="2.625" contenteditable="true"></span>% credit-card cashback
+and a <span class="dm-var" data-name="portal_buy" data-value="2.52"
+contenteditable="true"></span>% portal cashback, your effective cost
+becomes <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span></span></span></span><strong><span class="dm-expr"
+data-name="v" data-expr="buy*(1-0.01*(portal_buy+cc_buy))"
+data-format="4"></span>cpp</strong>.</p>
+<p>Now suppose the room’s base rate is <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span></span></span></span> $<span class="dm-var" data-name="r"
+data-value="100.00" contenteditable="true" data-format="2"></span>, and
+taxes and fees add <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span></span></span></span><span
+class="dm-var" data-name="t" data-value="15"
+contenteditable="true"></span>% bringing the total cost to <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span></span></span></span><span class="dm-expr" data-name="s"
+data-expr="r*(1+t*0.01)" data-format="currency"> </span>.</p>
+<p>Paying cash earns you <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span></span></span></span><span
+class="dm-var" data-name="m" data-value="20"
+contenteditable="true"></span> points per dollar spent on the base rate,
+or <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span></span></span></span><span class="dm-expr"
+data-name="mr" data-expr="m*r"></span> points in total, worth <span
+class="dm-expr" data-name="mrv" data-expr="mr*v*0.01"
+data-format="currency"></span> at your valuation. Your shopping portal
+returns <span class="dm-var" data-name="Cr" data-value="6"
+contenteditable="true"></span>% of the base rate (<span class="dm-expr"
+data-name="Crr" data-expr="Cr*r*0.01" data-format="currency"></span>),
+and your credit card returns <span class="dm-var" data-name="Cs"
+data-value="7" contenteditable="true"></span>% of total price (<span
+class="dm-expr" data-name="Css" data-expr="Cs*s*0.01"
+data-format="currency"></span>). After subtracting all of these
+benefits, the net cost of paying cash is <span class="dm-expr"
+data-name="sv" data-expr="s-Css-Crr-mrv"
+data-format="currency"></span>.</p>
+<p>If a redemption costs <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span> points, then
+to come out ahead you need <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span></span></span></span><span
+class="dm-expr" data-name="sv" data-expr="s-Css-Crr-mrv"
+data-format="2"></span>, which gives a maximum sensible redemption cost
+of <span class="dm-expr" data-name="svv"
+data-expr="Math.floor(sv/v*100)" data-format="int"></span> points.
+Equivalently, you should only redeem points when their effective value
+is at least <strong><span class="dm-expr" data-name="sv"
+data-expr="(v*s)/sv" data-format="2"></span>cpp</strong>.</p>
+<p>Finally, suppose IHG also lets you buy a bonus bundle: <span
+class="dm-var" data-name="ep" data-value="5000" contenteditable="true"
+data-format="int"></span> points for $<span class="dm-var"
+data-name="ec" data-value="31" contenteditable="true"></span>. Applying
+the same rebate logic, you effectively spend <span class="dm-expr"
+data-name="mecv" data-expr="ec - Cs*0.01*(ec*(1+t*0.01)) - Cr*0.01*ec"
+data-format="currency"></span> for <span class="dm-expr" data-name="epp"
+data-expr="ep+m*ec" data-format="int"></span> points, or <strong><span
+class="dm-expr" data-name="eccpp" data-expr="mecv/(ep+m*ec)*100"
+data-format="4"></span>cpp</strong>.</p>
+      </article>
+    </main>
+    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxu.prof" rel="author">Chao Xu</a>. Licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+    <a href="/README.html">Blog README</a>.</footer>
+  </body>
+</html>
