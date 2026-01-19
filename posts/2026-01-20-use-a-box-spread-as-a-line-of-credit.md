@@ -14,13 +14,15 @@ Now suppose instead I start with only \$50 in the bank and invest the other \$50
 Another way to view it is a checking account that's allowed to go negative (an overdraft line), where negative balances incur interest.
 
 If you can borrow at the same rate you can earn on cash, then holding \$50 less cash and borrowing \$50 when needed does not create free profit. In frictionless form, you're mostly exchanging:
-	-	less interest earned on cash (because you keep less cash),
-	-	for interest paid on borrowing (when you're short).
+ 
+ - less interest earned on cash (because you keep less cash),
+ - for interest paid on borrowing (when you're short).
 
 Those effects can be close to offsetting only when the borrowing and lending rates are the same and the timing matches. But in practice:
-	-	borrowing rates are usually higher than deposit yields,
-	-	timing matters (you don't borrow continuously; you borrow intermittently),
-	-	there are transaction costs, bid/ask spreads, and operational risk.
+
+ - borrowing rates are usually higher than deposit yields,
+ - timing matters (you don't borrow continuously; you borrow intermittently),
+ - there are transaction costs, bid/ask spreads, and operational risk.
 
 So what's left is not a clean cancellation; it's “equity exposure minus financing frictions.” But it seems, it should still amount almost everything cancelling out in the grand scheme of things.
 
