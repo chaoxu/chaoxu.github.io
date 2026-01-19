@@ -10,24 +10,34 @@ callout-icon: false
 bibliography: dial-a-ride.bib
 ---
 
-## Stacker Crane on a graph
+## Stacker Crane Problem
+$\newcommand{\R}{\mathbb{R}}$
+$\newcommand{\Z}{\mathbb{Z}}$
+$\newcommand{\N}{\mathbb{N}}$
 
-$\newcommand{\R}{\mathbb{R}}$ $\newcommand{\Z}{\mathbb{Z}}$ $\newcommand{\N}{\mathbb{N}}$
+![](stacker_crane.webp)
+
+Image courtesy [@GiuliaAJ21]
+
+A vehicle of capacity 1, completing pick up and delivery tasks.
+<!-- 
+So in a Stacker Crane Problem, there are some request, which is to take a passenger from point a to point b. You want to schedule the vechicles so they are efficient. For example, say take the minimum distance.
+-->
+
+## Stacker Crane on a graph
 
 For a graph $G=(V,E)$ with cost on the edges. A single vehicle with capacity 1 is at position $s_0\in V$.
 
--   There are $p$ requests of the form $(s_i,t_i) \in R \subseteq V\times V$.
--   Complete a request: vehicle pick up item $i$ from $s_i$, and move it to $t_i$ without dropping it off anywhere on the way.
--   Goal: Find a tour that start and end on $s_0$, completes all requests and minimizes the total cost.
+- There are $n$ requests of the form $(s_i,t_i) \in R \subseteq V\times V$.
+- The vehicle pick up item $i$ from $s_i$, and move it to $t_i$.
+- The vehicle must return to $s_0$ after completing all requests.
+- Goal: minimizes the total cost of the edges traveled by the vehicle (with multiplicity). 
 
-
-<!--
 ## Alternative view
 
--   Permutation $\pi:[n]\to [n]$, such that $\pi(i)$ is the $i$th completed request.
--   The cost of a permutation $c(\pi)$ is $\sum_{i=0}^n d(s_{\pi(i)},t_{\pi(i)}) + d(t_{\pi(i)},s_{\pi(i+1 \pmod {n+1})})$.
--   Find a permutation of minimum cost.
--->
+ - Permutation $\pi:[n]\to [n]$, such that $\pi(i)$ is the $i$th completed request. 
+ - The cost of a permutation $c(\pi)$ is $\sum_{i=0}^n d(s_{\pi(i)},t_{\pi(i)}) + d(t_{\pi(i)},s_{\pi(i+1 \pmod {n+1})})$.
+ - Find a permutation of minimum cost.
 
 ## Stacker Crane on a path
 
@@ -288,114 +298,99 @@ $\color{red}{t_2}$
 []{.absolute style="height: 3px;background: black;" width="800"} []{.absolute .arrow .arrowleft style="border-color: black;" top=9 left=0}
 :::
 
-## Mixed Graph Formulation
-
-::: {style="background: #fff1e8; padding:10px; margin:10px"}
-Input: A base graph $B=(V,E)$, requests $R\subseteq V\times V$, cost $c:E\to \R^+$. Let $G=(V,E\cup R)$ be a mixed graph.
-:::
-
-::: {style="background: #fff1e8; padding:10px; margin:10px"}
-Output: A min-cost tour of $G$ where each edge in $R$ is used exactly once.
-:::
-
-$m=|E|$, $n=|V|$, $p=|R|$
-
-![](line2.png){fig-align="center"}
-
 ## Stacker Crane Extensions
-Generalizations are called dial-a-ride problems.
 
--   Online [@LOISZ17; @Baligacs22]
--   Multiple Vehicles [@Desrosiers88]
--   Capacities [@CharikarR98]
--   Time windows [@DELEPLANQUE20131256]
--   Preemptive [@10.1007/11830924_20]
--   Approximation algorithms. [@FredericksonHK78; @CharikarR98; @10.1007/978-3-030-92681-6_32; @10.1007/978-3-319-71150-8_8; @yu_approximation_2023]
--   ...
+ - Online [@LOISZ17;@Baligacs22]
+ - Multiple Vehicles [@Desrosiers88]
+ - Capacities [@CharikarR98]
+ - Time windows [@DELEPLANQUE20131256]
+ - Preemptive [@10.1007/11830924_20]
+ - Approximation algorithms. [@FredericksonHK78;@CharikarR98;@10.1007/978-3-030-92681-6_32;@10.1007/978-3-319-71150-8_8;@yu_approximation_2023]
+ - ...
 
 ## Known results
 
-For base graphs:
+Let $MST(m)$ be the time to compute a minimum spanning tree on a $m$ edge graph. Let $p$ to be the number of requests.
 
-::: incremental
--   Path $-$: [$O(MST(m)+p)$ time. [@AtallahK88]]{.fragment} [$\Omega(MST(m))$ time lower bound. [@Frederickson93]]{.fragment}
--   Cycle $\bigcirc$: [$O(MST(m)+p)$ time. [@Frederickson93]]{.fragment}
--   Trees: [**NP-hard**! [@FredericksonG93]]{.fragment}
--   $\boxminus$ shape: [Unknown]{.fragment}
--   $\top$ shape: [Unknown]{.fragment}
+Solving the stacker crane problem on the following graphs:
+
+::: {.incremental}
+  - Path $-$: [$O(MST(m)+p)$ time. [@AtallahK88]]{.fragment} 
+  - Cycle $\bigcirc$: [$O(MST(m)+p)$ time. [@Frederickson93]]{.fragment} 
+  - Trees: [**NP-hard**! [@FredericksonG93]]{.fragment}
+  - $\boxminus$ shape: [Unknown]{.fragment}
+  - $\top$ shape: [Unknown]{.fragment}
 :::
 
-## Motivation: Topology of Warehouses
 
+## Topology of Warehouses
+
+A fixed warehouse topology is quite simple.
 
 ![](warehouse.png){fig-align="center"}
 
 Image courtesy [@RoodbergenK01]
 
-<!--
 ## Fixed topology
 
 A class of graphs $\mathcal{C}$ have a fixed topology, if there exists a graph $G$ such that every graph $H\in\mathcal{C}$ can be obtained through applying subdivisions of $G$.
 
-![](subdivision1.png){fig-align="center"} ![](subdivision2.png){fig-align="center"}
--->
+![](subdivision1.png){fig-align="center"}
+![](subdivision2.png){fig-align="center"}
 
 ## Our result
 
 ::: {style="background: #fff1e8; padding:10px; margin:10px"}
-Stacker Crane Problem for a fixed topology can be solved in $O(MST(m)+p)$ time.
+The stacker crane problem for a fixed topology can be solved in $O(MST(m)+p)$ time.
 :::
 
 ::: {.fragment style="background: #fff1e8; padding:10px; margin:10px"}
-Stacker Crane Problem is FPT parametrized by cycle rank and branch number of the base graph.
+The stacker crane problem can be solved in $O(MST(m)+p)$ time for $\boxminus$.
 :::
 
-```{=html}
+ 
+
 <!--
 ::: {style="background: #fff1e8; padding:10px;"}
 Assuming the space of solutions for a certain problem is small, then stacker crane problem can be solved in $O(f(k,p)n^c)$ time.
 :::
 -->
-```
+
 
 ## In This talk
-
--   Review the algorithm for paths and cycles
--   Show the correct generalization to general graphs
+  
+  - Review the algorithm for paths and cycles
+  - Show how to generalize the algorithm to general graphs
 
 # Solve SCP on paths and cycles
 
-Algorithms of [@AtallahK88; @Frederickson93].
 
-## Tours and flows
+Algorithms of [@AtallahK88;@Frederickson93].
 
-Using the original formulation (no mixed graph).
+## Flow
+The difference of the tour edge going forward and backwards is the *flow*.
 
- - Every solution (tour) maps to a circulation: the difference of the tour edge going forward and backwards is the flow on the edge.
+Any tour traverse through a edge forward and backward the same number of times, so flow is $0$ on all edges. 
 
-## Paths
-
-Tour traverse through a edge forward and backward the same number of times. Flow is $0$ on all edges (flow condition).
-
-![](line4.png){fig-align="center"}
+ ![](line4.png){fig-align="center"}
 
 ## 
 
 The tour must traverse through $s_i$ to $t_i$.
 
-![](line5.png){fig-align="center"}
+ ![](line5.png){fig-align="center"}
 
 ## 
 
-Add paths to fix the flow condition.
+We can add paths to make sure traverse number is equal both ways. This is the flow condition.
 
-![](line6.png){fig-align="center"}
+ ![](line6.png){fig-align="center"}
 
 ## 
 
 Add opposing edges to make sure the tour is connected.
 
-![](line7.png){fig-align="center"}
+ ![](line7.png){fig-align="center"}
 
 ## 
 
@@ -409,7 +404,7 @@ Reduced to minimum spanning tree.
 
 Obtain a complete solution by construct a tour through the chosen edges.
 
-![](line8.png){fig-align="center"}
+ ![](line8.png){fig-align="center"}
 
 ## SCP on a cycle
 
@@ -418,101 +413,142 @@ flow = 0?
 ![](cycle1.png){fig-align="center"}
 
 ## Winding Number
-
-- The flow is equal on each edge! (the new flow condition)
-- The *winding number*.
+ - The flow is equal on each edge! It is the *winding number*.
 
 ![](cycle2.png){fig-align="center"}
 
-## Solution with winding number = 1
 
+## Solution with winding number = 1
 First, add the request paths.
 
 ![](cycle3.png){fig-align="center"}
 
 ## Solution with winding number = 1
-
 Add edges to make sure each edge forward - backword = 1
 
 ![](cycle4.png){fig-align="center"}
 
 ## Solution with winding number = 1
-
 Run minimum Steiner tree to get the set opposing edges to connect the tour.
 
 ![](cycle4.png){fig-align="center"}
 
 ## A complete solution for cycles
 
-::: incremental
--   Guess all possible winding numbers.
--   The guess is in between $[-p,p]$.
--   For each guess $w$, compute a optimum solution with winding number $w$.
--   $O(p(MST(m)+p))$ running time.
+::: {.incremental}
+ - Guess all possible winding numbers.
+ - The guess is in between $[-p,p]$.
+ - For each guess $w$, compute a optimum solution with winding number $w$.
+ - $O(p(MST(m)+p))$ running time.
 :::
 
 ## Proximity Result
 
--   Find a min-cost circulation $f$ that satisfies the flow condition.
--   Assume the optimum tour maps to circulation $g$.
--   $\|f-g\|_\infty \leq 1$ [@Frederickson93]
--   $O(MST(m)+p)$ running time.
+ - Find the flow $f$ (same as finding the winding number), so satisfy the flow condition requires minimum cost.
+ - Assume the optimum tour have flow $g$. 
+ - $\|f-g\|_\infty \leq 1$ [@Frederickson93]
+ - $O(MST(m)+p)$ running time.
 
 # SCP on general graphs
 
 ## Min-cost tour
 
-::: incremental
--  Think in mixed graph formulation.
--  A valid circulation $f$, is a circulation with flow value $f(e)=1$ on each edge $e\in R$. All circulations are valid circulations from this point on.
-- Each tour maps to a circulation. $[f]:=$ tours that maps to $f$.
-- $[f]$ is called a *homology class*.
-- $r:=m-n+1$ is the *cycle rank* of the base graph $B$.
-- Vertices with degree $\geq 3$ are branch vertices.
-- $k$ is the number of branch vertices in $B$.
+::: {.incremental}
+ - Use the *right way* to look at the problem.
+ - Operate on a mixed graph $G=(V,E\cup R)$, where $c(s_i,t_i)=d(s_i,t_i)$. 
+ - ![](line2.png){fig-align="center"}
+ - Find a min-cost tour that goes thorugh each edge in $R$ exactly once.
 :::
 
-<!--
 ## 
+
 ![](whoepackage.png){fig-align="center"}
--->
 
-## Interpertation of the algorithm
-
+## Alternative Formulation
 
 
-::: incremental
-1.  Find a min-cost circulation $f$. 
-2.  Find all circulations $g$ such that $\|f-g\|_\infty\leq r$.
-3.  Find a min-cost tour in each $[g]$ and returns the minimum.
+
+::: {style="background: #fff1e8; padding:10px; margin:10px"}
+Input: A base graph $B=(V,E)$, requests $R\subseteq V\times V$, cost $c:E\to \R^+$. Let $G=(V,E\cup R)$.
 :::
 
-. . .
+::: {style="background: #fff1e8; padding:10px; margin:10px"}
+Output: A min-cost tour of $G$ where each edge in $R$ is used exactly once.
+:::
 
+ - $m=|E|$, $n=|V|$, $p=|R|$
+ - $B$ has cycle rank $r := m-n+1$.
+ - $B$ has $k$ branch vertices (vertex with degree at least $3$)
+
+##
+
+$T$ a spanning tree of $G$. The *fundamental cycle* $C_e$ is a directed cycle using $e$ and path in $T$ connecting $e$.
+
+![](fundamental_cycles.png){fig-align="center"}
+
+## Circulations
+
+$f:E\cup A\to \Z$ is a flow function. $f$ is a circulation on a mixed graph $G=(V,E\cup A)$ if $\sum_{e\in \delta^-(v)}f(e) = \sum_{e\in \delta^+(v)}f(e)$. 
+
+::: {.incremental}
+ - The cost of a circulation $f$ is $\sum_{e\in E} c(e)|f(e)| +\sum_{a\in A} c(a)f(a)$. 
+ - Every circulation is a sum of fundamental cycles.
+ - A tour maps to a circulation $f$: $f(e)$ is the flow of $e$ in the tour. 
+ - $[f]$ are all the tours maps to $f$, $[f]$ is called a *homology class*.
+:::
+
+## Goal
+
+ - All circulations we consider are circulations $f$ where $f(a)=1$ for all $a\in R$.
+ - Find a collection of circulation $\mathcal{F}$, so for some $f\in \mathcal{F}$, the min-cost tour is in $[f]$.
+
+
+## Algorithm
+
+::: {.incremental}
+ - Find a min-cost circulation.
+ - Find all circulations $g$ such that $\|f-g\|_\infty\leq r$.
+ - Find a min-cost tour in each $[g]$ and returns the minimum.
+:::
+
+## Min-cost circulation
+
+ - Reduces to min-cost flow on tree with $r$ more edges.
+ - Which reduces to a special kind of linear program.
+ - Let $e_1,\ldots,e_r$ be the edges outside some spanning tree $T$ of $B$.
+ - $C_a$ is the fundamental cycle of $a$.
+
+## Min-cost circulation
+ - $b_e = \sum_{e \in C_a} C_a(e)$, for all $a \in R$. 
+ - $A_{e, i} = C_{e_i}(e)$, for all $e \in E$, $1 \leq i \leq r$. 
+\begin{equation*}
+  \begin{array}{ll@{}ll}
+  \text{min}_{\lambda \in \mathbb{R}^{E \setminus T}, x \in \mathbb{R}^{T}} & \displaystyle\sum\limits_{e} x_e & \\
+  \text{subject to} & x_e \geq c(e) \left( A_e \cdot \lambda + b_e \right) & \quad \forall e \in E \\
+    & x_e \geq -c(e) \left( A_e \cdot \lambda + b_e \right) & \quad \forall e \in E \\
+  \end{array}
+\end{equation*}
+$\lambda_e$ is the flow at edge $e$ in the optimum solution.
+There is a minimizer where $\lambda$ is integral. The minimizer can be found in $2^{O(2^r)} m = O(m)$ time [@zemel_on_1984].
+
+
+##  Proximity Theorem
 ::: {.callout-note .epic-callout-body}
-# Proximity Theorem
-
-Let $f$ be the min-cost circulation, the min-cost tour is in $[g]$ for some circulation $g$ such that $\|f-g\|_\infty\leq r$.
+# Theorem
+Let $f$ be the min-cost circulation, the min-cost tour is in $[g]$ for some $\|f-g\|_\infty\leq r$. 
 :::
 
-<!--
-## 
-
-
-
-Proof sketch
-
-   -  A circulation is *elementary*, if no cycle is traversed twice.
-   -  $h$ is elementary, then $\|h\|_\infty \leq r$.
-   -  $f-g$ is an elementary circulation in $B$: no negative cycles + remove cycle does not change connectvity.
-
+ - A circulation is *elementary*, if no cycle is traversed twice.
+ - $f-g$ is an elementary circulation in $B$.
+ - Proof sketch
+   - no negative cycles
+   - removed cycle without changing connectivity 
 
 ## Proximity Theorem
 
 ::: {.callout-note .epic-callout-body}
 # Theorem
-
-Let $f$ be an elementary circulation, then $\|f\|_\infty\leq r$.
+Let $f$ be an elementary circulation, then $\|f\|_\infty\leq r$. 
 :::
 
 ![](bad_example2.png){fig-align="center"}
@@ -522,81 +558,58 @@ Let $f$ be an elementary circulation, then $\|f\|_\infty\leq r$.
 ![](bad_example.png){fig-align="center"}
 
 Let $f=\sum_{i=1}^r C_i$, where $C_i$ is the fundamental cycle formed by $e_i$. $\|f\|_\infty \geq f(e_0) = r$.
--->
 
-## Min-cost circulation
-
--   Reduces to min-cost flow on tree with $r$ more edges.
--   Reduces to a special kind of linear program.
--   The minimizer can be found in $2^{O(2^r)} m = O(m)$ time [@zemel_on_1984].
-
-<!--
--   Let $e_1,\ldots,e_r$ be the edges outside some spanning tree $T$ of $B$.
--   $C_a$ is the fundamental cycle of $a$.
-
-## Min-cost circulation
-
--   $b_e = \sum_{e \in C_a} C_a(e)$, for all $a \in R$.
--   $A_{e, i} = C_{e_i}(e)$, for all $e \in E$, $1 \leq i \leq r$. \begin{equation*}
-      \begin{array}{ll@{}ll}
-      \text{min}_{\lambda \in \mathbb{R}^{E \setminus T}, x \in \mathbb{R}^{T}} & \displaystyle\sum\limits_{e} x_e & \\
-      \text{subject to} & x_e \geq c(e) \left( A_e \cdot \lambda + b_e \right) & \quad \forall e \in E \\
-     & x_e \geq -c(e) \left( A_e \cdot \lambda + b_e \right) & \quad \forall e \in E \\
-      \end{array}
-    \end{equation*} $\lambda_e$ is the flow at edge $e$ in the optimum solution. There is a minimizer where $\lambda$ is integral. The minimizer can be found in $2^{O(2^r)} m = O(m)$ time [@zemel_on_1984].
--->
-## Enumerate circulations
+## Enumerate elementary circulations
 
 ::: {.callout-note .epic-callout-body}
 # Theorem
-
-There are $O((2d+1)^r)$ circulations $g$ such that $\|f-g\|_\infty \leq d$, and can be enumerated in $O((2d+1)^rm)$ time.
+There are $O((2r+1)^r)$ elementary circulations, and can be enumerated in $O((2r+1)^rm)$ time.
 :::
 
-<!-- Proof.(sketch) Every elementary circulation can be written as $\sum_{i=1}^r \lambda_i C_i$ where $C_1,\ldots,C_r$ is a fixed fundamental cycle basis, and $\lambda\in \{-r,-r+1,\ldots,r\}^r$.-->
+Proof.(sketch) Every elementary circulation can be written as $\sum_{i=1}^r \lambda_i C_i$ where $C_1,\ldots,C_r$ is a fixed fundamental cycle basis, and $\lambda\in \{-r,-r+1,\ldots,r\}^r$. 
 
-## Minimum Steiner Tree Problem
+## min-cost tour in $[g]$
 
+A Steiner tree for a set of terminal vertices $T$ is a tree that contains all vertices in $T$.
 
 ::: {.callout-note .epic-callout-body}
 # Minimum Steiner Tree
-
-Given a weighted graph $G=(V,E)$ and a set of terminal vertices $T\subseteq V$. Find a minimum weight tree that connects all vertices in $T$.
+Given a weighted graph $G=(V,E)$ and a set of terminal vertices $T\subseteq V$. Find a minimum weight Steiner tree that connects the vertices in $T$.
 :::
 
- - NP-hard in general
- - $O(2^k MST(m))$ time if the input has at most $k$ Steiner branch vertices.
+## Minimum Steiner Tree Problem
 
-## Min-cost tour in $[g]$
+NP-hard. But $2^k$ calls of MST if $k$ Steiner branch vertices.
+  
+. . . 
 
- - $B'$ obtained from $G$ by contract all support edges in $g$.
- - $T$ be all vertices in $B'$ obtained from contraction.
- - min-cost tour in $[g]$ $\Leftrightarrow$ minimum Steiner tree in $B'$ with terminals $T$. 
- - $B'$ can have *MANY* branch vertices, but at most $k$ *Steiner* branch vertices.
- - Finding min-cost tour in $[g]$ takes $O(2^k MST(m))$ time.
+  ![](minsteinertree.png){width=50% fig-align="center"}
+  
+. . . 
+
+  The minimum Steiner tree can be found in $MST(m)$ time.
 
 ## Results
-
-::: {style="background: #fff1e8; padding:10px; margin:10px"}
-For a base graph with at most $k$ branch vertices and cycle rank $r$, the running time of the SCP algorithm is $2^{O(2^r)}m + O((2r+1)^{r} 2^k (MST(m) + p))$.
+:::{style="background: #fff1e8; padding:10px; margin:10px"}
+ For a base graph with at most $k$ branch vertices and cycle rank $r$, the running time of the SCP algorithm is $2^{2^{O(r)}}m + O((2r+1)^{r} 2^k (MST(m) + p))$.
 :::
 
-::: {style="background: #fff1e8; padding:10px; margin:10px"}
-SCP problem for fixed topologies can be solved in $O(MST(m) + p)$ time.
+:::{style="background: #fff1e8; padding:10px; margin:10px"}
+ SCP problem for fixed topology can be solved in $O(MST(m) + p)$ time.
 :::
 
 ## Open problem
 
--   Min-cost flow on a tree with $r$ additional edges: Better than $2^{O(2^r)}m$ time?
--   Proximity result: smaller search space than $(2r+1)^r$? 
+ - Min-cost flow on a tree with $r$ additional edges: Better than $2^{2^{O(r)}}$ time?
+ - Proximity result: Search space smaller than $(2r+1)^r$? We did not use costs.
+ - $\Omega(2^k MST(m))$ time lower bound for finding minimum Steiner tree?
 
 ## Open problem
+FPT algorithm parametrized by number of branch vertices? 
 
-FPT algorithm parametrized by number of branch vertices?
+. . . 
 
-. . .
-
-Arbitrary cycle rank, exactly $1$ branch vertex
+Arbitrary large cycle rank while exactly $1$ branch vertex
 
 ![](flower.png){fig-align="center"}
 

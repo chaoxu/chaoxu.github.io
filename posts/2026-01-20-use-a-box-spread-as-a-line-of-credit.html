@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Art Gallery Guardian">
+    <meta name="author" content="Chao Xu">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
+    <meta property="og:title" content="Use a box spread as a line of credit" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="The Art Gallery Guardian" />
+    <meta property="article:tag" content="finance" />
+    <title>Use a box spread as a line of credit</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script src="/docmath.js"></script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+      href="https://chaoxu.prof/rss.xml">
+  </head>
+  <body>
+    <header class="hide-on-print">
+        <div id="site-title">
+            <a href="/blog.html">The Art Gallery Guardian</a>
+        </div>
+        <div style="display: none;">
+          <img src="/files/chao/chao_thumb.jpg" >
+        </div>
+    </header>
+    <nav class="hide-on-print">
+      <ul>
+        <li><a href="/">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/cnblog.html">中文博客</a></li>
+        <li><a href="/files/cv.pdf">CV</a></li>
+        <li><a href="/pages/tools.html">Tools</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h1 id="article-title">Use a box spread as a line of credit</h1>
+        <br />
+<div>
+<p>In an idealized world, you could borrow at the Effective Federal
+Funds Rate (EFFR) and also earn roughly the same rate on cash deposits.
+For simplicity, assume the relevant short rate is fixed for a month.
+Let’s say it turns out to be 10% <em>per month</em>. Assume the stock
+will rise by 20% that month.</p>
+<p>In reality, lenders (and banks taking deposits) need to earn a
+spread, so borrowing and deposit rates won’t match. But for the sake of
+argument, assume both are close to EFFR.</p>
+<p>Suppose that over the next month, the maximum cumulative cash
+shortfall I might face is $100. Then I can keep $100 in the bank as a
+buffer. Maybe I earn $20, spend $50, then spend $70, and then my next
+paycheck of $100 arrives. My bank balance never goes negative, and
+perhaps my daily average balance is $50. Roughly speaking, I earn
+interest on $50 to be $5.</p>
+<p>Now suppose instead I start with only $50 in the bank and invest the
+other $50 elsewhere (say, in stocks). If I run short of cash, I can
+borrow quickly, transfer funds into my checking account, and later repay
+the loan. This is essentially what a line of credit (LOC) does: you draw
+when needed and pay interest only on the outstanding balance.</p>
+<p>Another way to view it is a checking account that’s allowed to go
+negative (an overdraft line), where negative balances incur
+interest.</p>
+<p>If you can borrow at the same rate you can earn on cash, then holding
+$50 less cash and borrowing $50 when needed does not create free profit.
+In frictionless form, you’re mostly exchanging: - less interest earned
+on cash (because you keep less cash), - for interest paid on borrowing
+(when you’re short).</p>
+<p>Those effects can be close to offsetting only when the borrowing and
+lending rates are the same and the timing matches. But in practice: -
+borrowing rates are usually higher than deposit yields, - timing matters
+(you don’t borrow continuously; you borrow intermittently), - there are
+transaction costs, bid/ask spreads, and operational risk.</p>
+<p>So what’s left is not a clean cancellation; it’s “equity exposure
+minus financing frictions.” But it seems, it should still amount almost
+everything cancelling out in the grand scheme of things.</p>
+<p>However, in the U.S., bank interest is generally ordinary income.
+Meanwhile, interest you pay is not automatically deductible. This breaks
+the symmetry, and needs to be further studied.</p>
+<p>A <a href="https://en.wikipedia.org/wiki/Box_spread">box spread</a>
+is (economically) a synthetic loan created from options. When priced
+efficiently, the implied financing rate tends to track a risk-free(-ish)
+rate for that tenor, often close to EFFR. In that sense, a box spread
+can approximate “borrow at a near-risk-free rate for a fixed term.”</p>
+<p>Now, a box spread is a fixed-term, fixed-principal loan. It is not a
+true revolving LOC, which is what we really want. You can’t “draw $x
+today, repay tomorrow, redraw later” flexibility.</p>
+<p>However, we can simulate it as a LOC. Just put unused borrowed cash
+in a bank.</p>
+<p>So consider I start with $100, and what happens in different
+scenarios.</p>
+<ol type="1">
+<li>I borrow $100 and “return” it immediately. I gain $10 of interest,
+and lose $10 from execute the box spread. The $100 I did not use was put
+in stock. I now have $120 (with $20 unrealized gain), and incurs a $10
+ordinary income and $10 capital loss.</li>
+<li>I borrow $100 and used them all. I lose $10 from execute the box
+spread. The $100 I did not use was put in stock. I now have $120 (with
+$20 unrealized gains), and a $10 capital loss.</li>
+<li>I $100 in the bank in the beginning, I get $110 in the end, with
+tax-wise $10 ordinary income.</li>
+</ol>
+<p>Now this means if I do believe there is something with higher
+performance than EFFR, I should always borrow for my cash needs.</p>
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2026-01-20">2026-01-20</time>. </div>
+    <div class="info">Tags: finance.</div>
+</div>
+      </article>
+    </main>
+    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxu.prof" rel="author">Chao Xu</a>. Licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+    <a href="/README.html">Blog README</a>.</footer>
+  </body>
+</html>

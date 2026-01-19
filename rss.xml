@@ -7,8 +7,85 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxu.prof/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sun, 06 Feb 2022 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Tue, 20 Jan 2026 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Use a box spread as a line of credit</title>
+    <link>https://chaoxu.prof/posts/2026-01-20-use-a-box-spread-as-a-line-of-credit.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>In an idealized world, you could borrow at the Effective Federal
+Funds Rate (EFFR) and also earn roughly the same rate on cash deposits.
+For simplicity, assume the relevant short rate is fixed for a month.
+Let’s say it turns out to be 10% <em>per month</em>. Assume the stock
+will rise by 20% that month.</p>
+<p>In reality, lenders (and banks taking deposits) need to earn a
+spread, so borrowing and deposit rates won’t match. But for the sake of
+argument, assume both are close to EFFR.</p>
+<p>Suppose that over the next month, the maximum cumulative cash
+shortfall I might face is $100. Then I can keep $100 in the bank as a
+buffer. Maybe I earn $20, spend $50, then spend $70, and then my next
+paycheck of $100 arrives. My bank balance never goes negative, and
+perhaps my daily average balance is $50. Roughly speaking, I earn
+interest on $50 to be $5.</p>
+<p>Now suppose instead I start with only $50 in the bank and invest the
+other $50 elsewhere (say, in stocks). If I run short of cash, I can
+borrow quickly, transfer funds into my checking account, and later repay
+the loan. This is essentially what a line of credit (LOC) does: you draw
+when needed and pay interest only on the outstanding balance.</p>
+<p>Another way to view it is a checking account that’s allowed to go
+negative (an overdraft line), where negative balances incur
+interest.</p>
+<p>If you can borrow at the same rate you can earn on cash, then holding
+$50 less cash and borrowing $50 when needed does not create free profit.
+In frictionless form, you’re mostly exchanging: - less interest earned
+on cash (because you keep less cash), - for interest paid on borrowing
+(when you’re short).</p>
+<p>Those effects can be close to offsetting only when the borrowing and
+lending rates are the same and the timing matches. But in practice: -
+borrowing rates are usually higher than deposit yields, - timing matters
+(you don’t borrow continuously; you borrow intermittently), - there are
+transaction costs, bid/ask spreads, and operational risk.</p>
+<p>So what’s left is not a clean cancellation; it’s “equity exposure
+minus financing frictions.” But it seems, it should still amount almost
+everything cancelling out in the grand scheme of things.</p>
+<p>However, in the U.S., bank interest is generally ordinary income.
+Meanwhile, interest you pay is not automatically deductible. This breaks
+the symmetry, and needs to be further studied.</p>
+<p>A <a href="https://en.wikipedia.org/wiki/Box_spread">box spread</a>
+is (economically) a synthetic loan created from options. When priced
+efficiently, the implied financing rate tends to track a risk-free(-ish)
+rate for that tenor, often close to EFFR. In that sense, a box spread
+can approximate “borrow at a near-risk-free rate for a fixed term.”</p>
+<p>Now, a box spread is a fixed-term, fixed-principal loan. It is not a
+true revolving LOC, which is what we really want. You can’t “draw $x
+today, repay tomorrow, redraw later” flexibility.</p>
+<p>However, we can simulate it as a LOC. Just put unused borrowed cash
+in a bank.</p>
+<p>So consider I start with $100, and what happens in different
+scenarios.</p>
+<ol type="1">
+<li>I borrow $100 and “return” it immediately. I gain $10 of interest,
+and lose $10 from execute the box spread. The $100 I did not use was put
+in stock. I now have $120 (with $20 unrealized gain), and incurs a $10
+ordinary income and $10 capital loss.</li>
+<li>I borrow $100 and used them all. I lose $10 from execute the box
+spread. The $100 I did not use was put in stock. I now have $120 (with
+$20 unrealized gains), and a $10 capital loss.</li>
+<li>I $100 in the bank in the beginning, I get $110 in the end, with
+tax-wise $10 ordinary income.</li>
+</ol>
+<p>Now this means if I do believe there is something with higher
+performance than EFFR, I should always borrow for my cash needs.</p>
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2026-01-20">2026-01-20</time>. </div>
+    <div class="info">Tags: finance.</div>
+</div>]]></description>
+    <pubDate>Tue, 20 Jan 2026 00:00:00 UT</pubDate>
+    <guid>https://chaoxu.prof/posts/2026-01-20-use-a-box-spread-as-a-line-of-credit.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title>The related employer controlled group</title>
     <link>https://chaoxu.prof/posts/2022-02-06-related-companies-and-controlled-groups.html</link>
     <description><![CDATA[<br />
@@ -1422,123 +1499,6 @@ MARRIAGES</a></strong>, National Tax Journal. 35 (1982) 507–510.</div>
 </div>]]></description>
     <pubDate>Wed, 28 Aug 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxu.prof/posts/2019-08-28-impossibility-theorm-marriage-tax.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>Long distance couple back-to-back ticketing</title>
-    <link>https://chaoxu.prof/posts/2019-06-18-long-distance-couple-back-to-back-ticketing.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>The reason I explored <a
-href="https://chaoxu.prof/posts/2019-06-15-covert-back-to-back-ticketing.html">an
-algorithm for covert back-to-back ticketing</a> in the previous blog
-post, was because as someone currently in a long distance relationship.
-It is important to save money on travel.</p>
-<p>For long distance couples, two people can fly. Consider if the couple
-decides be together each weekend, one can fly to the city of the other
-on Friday night, and comes back on Sunday night. Again we can take
-advantage of the back-to-back ticketing.</p>
-<p>Let <span class="math inline">M</span> be a matching of a graph <span
-class="math inline">G</span> where the edges are two colored. <span
-class="math inline">M</span> is called <em>valid</em> if vertex <span
-class="math inline">2i</span> and <span class="math inline">2i-1</span>
-are contained in the same colored edge in <span
-class="math inline">M</span>.</p>
-<div class="theorem-environment Problem" data-index="1" type="Problem"
-title="Couple back-to-back ticketing problem">
-<span class="theorem-header"><span class="type">Problem</span><span
-class="index">1</span><span class="name">Couple back-to-back ticketing
-problem</span></span>
-<p><strong>Input:</strong> A multigraph <span
-class="math inline">G=(V,E)</span> where <span
-class="math inline">V\subseteq [n]</span>, where each edge can be either
-red or blue, and there is an edge cost function <span
-class="math inline">c:E\to \R^+</span>.</p>
-<p><strong>Output:</strong> A valid perfect matching <span
-class="math inline">M</span> (allowing self-loops), such that the cost
-is minimized.</p>
-</div>
-<p>Unfortunately, I don’t see how to solve this problem in polynomial
-time. I could convert this problem to something that might be solved in
-polynomial time in the future.</p>
-<p>Note we can split the vertices. That is, for vertex <span
-class="math inline">i</span>, we split it into <span
-class="math inline">(i,R)</span> and <span
-class="math inline">(i,B)</span> for its blue and red counter part. A
-matching is <em>paired</em> if <span class="math inline">(2i,C)</span>
-and <span class="math inline">(2i-1,C)</span> both has to be matched,
-where <span class="math inline">C\in \set{R,B}</span>. The matching is
-<em>split</em> if <span class="math inline">(i,R)</span> and <span
-class="math inline">(i,B)</span> cannot be both in the matching.</p>
-<p>If we just enforce one property – paired or split – then it is
-solvable in polynomial time. Indeed, both are matching under
-restrictions. We are interested in finding a matching <span
-class="math inline">M</span>, such that the vertices covered by <span
-class="math inline">M</span> is in some special structure. Namely <span
-class="math inline">\Delta</span>-matroid. Since the paired property is
-a very special <span class="math inline">\Delta</span>-matroid <span
-class="citation" data-cites="KakimuraT14">[<a href="#ref-KakimuraT14"
-role="doc-biblioref">1</a>]</span>, which was first solved in <span
-class="citation" data-cites="HefnerK95">[<a href="#ref-HefnerK95"
-role="doc-biblioref">2</a>]</span>. The second property is partition
-matroid, which can be handled by <a
-href="/posts/2019-04-27-maximum-weight-hierarchical-b-matching.html">hierarchical
-<span class="math inline">b</span>-matching</a>. Reader can see each
-individual restriction, the problem can be turned into a maximum weight
-perfect matching.</p>
-<p>If we enforce both property, the problem is open. Although the
-structure is still very special, it is an <a
-href="https://en.wikipedia.org/wiki/Delta-matroid">even <span
-class="math inline">\Delta</span>-matroid</a>. <a
-href="http://www.math.keio.ac.jp/~kakimura/">Naonori Kakimura</a>
-communicated a more fundamental problem which can be solved by this
-problem.</p>
-<div class="theorem-environment Problem" data-index="2" type="Problem"
-title="Matching with disjoint pair constraints">
-<span class="theorem-header"><span class="type">Problem</span><span
-class="index">2</span><span class="name">Matching with disjoint pair
-constraints</span></span>
-<p>Given a graph where the edges are partitioned into pairs. Find a
-maximum matching where it uses at most one edge of each pair.</p>
-</div>
-<p>This problem can be used to solve special case of rainbow matching. A
-graph where each edge has a color, a matching is a rainbow matching if
-every edge in the matching has a different color. It is known that for
-graphs where each color appears twice, finding a rainbow matching is
-NP-hard <span class="citation" data-cites="LeP14">[<a href="#ref-LeP14"
-role="doc-biblioref">3</a>]</span>. The couple back-to-back ticketing
-problem is also NP-hard.</p>
-<h1 class="unnumbered" id="bibliography">References</h1>
-<div id="refs" class="references csl-bib-body" role="doc-bibliography">
-<div id="ref-KakimuraT14" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">N.
-Kakimura, M. Takamatsu, <strong><span class="nocase">Matching Problems
-with Delta-Matroid Constraints</span></strong>, SIAM Journal on Discrete
-Mathematics. 28 (2014) 942–961 <a
-href="https://doi.org/10.1137/110860070">10.1137/110860070</a>.</div>
-</div>
-<div id="ref-HefnerK95" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">A.
-Hefner, P. Kleinschmidt, <strong><span class="nocase">A constrained
-matching problem</span></strong>, Annals of Operations Research. 57
-(1995) 135–145 <a
-href="https://doi.org/10.1007/BF02099694">10.1007/BF02099694</a>.</div>
-</div>
-<div id="ref-LeP14" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[3] </div><div
-class="csl-right-inline">V.B. Le, F. Pfender, <strong>Complexity results
-for rainbow matchings</strong>, Theoretical Computer Science. 524 (2014)
-27–33 <a
-href="https://doi.org/10.1016/j.tcs.2013.12.013">https://doi.org/10.1016/j.tcs.2013.12.013</a>.</div>
-</div>
-</div>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2019-06-18">2019-06-18</time>. </div>
-    <div class="info">Tags: Optimization, algorithm, airline.</div>
-</div>]]></description>
-    <pubDate>Tue, 18 Jun 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxu.prof/posts/2019-06-18-long-distance-couple-back-to-back-ticketing.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 
