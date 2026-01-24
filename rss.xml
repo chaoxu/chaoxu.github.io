@@ -263,115 +263,160 @@ related in any way can be classified to be related.</p>
     <link>https://chaoxu.prof/posts/2022-01-30-test-conjectures-on-k-partitions.html</link>
     <description><![CDATA[<br />
 <div>
-<p>This article we consider tools one can use to quickly test
-conjectures. Testing conjectures quickly run into realm of infeasibility
-due to the combinatorial explosion. We look through an actual example
-and learn a few techniques. We use <a
+<p>This article considers tools one can use to quickly test conjectures.
+I work in combinatorial optimization, and often there are cases where
+one can phrase a problem as a conjecture over a finite domain. Testing
+conjectures using brute force quickly becomes infeasible due to
+combinatorial explosion. Here, we walk through an actual example and
+learn a few techniques. We will use <a
 href="https://www.sagemath.org/">Sage</a> and any fast linear program
-solver, like <a href="https://www.gurobi.com/">Gurobi</a>.</p>
+solver, such as <a href="https://www.gurobi.com/">Gurobi</a>.</p>
 <h1 data-number="1"
-id="a-conjecture-on-k-partitions-of-submodular-function"><span
+id="a-conjecture-on-k-partitions-of-a-submodular-function"><span
 class="header-section-number">1</span> A conjecture on <span
-class="math inline">k</span>-partitions of submodular function</h1>
-<p>A set of <span class="math inline">k</span> non-empty and disjoint
-sets that partitions <span class="math inline">V</span> is called a
-<span class="math inline">k</span>-partition. Let <span
-class="math inline">f:2^V\to \R</span> be a submodular function, a
-minimum <span class="math inline">k</span>-partition is a <span
+class="math inline">k</span>-partitions of a submodular function</h1>
+<p>A collection of <span class="math inline">k</span> non-empty,
+pairwise disjoint sets whose union is <span class="math inline">V</span>
+is called a <span class="math inline">k</span>-partition of <span
+class="math inline">V</span>.</p>
+<p>Let <span class="math inline">f:2^V\to \R</span> be a submodular
+function. A <strong>minimum <span
+class="math inline">k</span>-partition</strong> is a <span
 class="math inline">k</span>-partition <span
 class="math inline">\mathcal{X}</span> of <span
 class="math inline">V</span> such that <span
-class="math inline">\sum_{X\in \mathcal{X}} f(X)</span> is
-minimized.</p>
+class="math inline">\sum_{X\in \mathcal{X}} f(X)</span> is minimized;
+that is, the sum of the function values over the parts is minimized.</p>
 <p>A <span class="math inline">k</span>-partition <span
 class="math inline">\mathcal{X}</span> and a <span
 class="math inline">j</span>-partition <span
-class="math inline">\mathcal{Y}</span> is noncrossing, if <span
-class="math inline">X\subseteq Y</span> for some <span
-class="math inline">X\in \mathcal{X}</span> and <span
-class="math inline">Y\in \mathcal{Y}</span>. We denote it <span
-class="math inline">\mathcal{X}\lhd\mathcal{Y}</span>.</p>
-<p>For two partitions, <span class="math inline">\mathcal{X}\sqcap
-\mathcal{Y} = \set{ X\cap Y | X\in \mathcal{X},
-Y\in\mathcal{Y}}</span>.</p>
-<p>For two partitions <span class="math inline">\mathcal{X}</span> and
-<span class="math inline">\mathcal{Y}</span>, <span
-class="math inline">\mathcal{X}\leq \mathcal{Y}</span> if for each <span
-class="math inline">X\in\mathcal{X}</span>, <span
-class="math inline">X\subseteq Y</span> for some <span
-class="math inline">Y\in\mathcal{Y}</span>.</p>
+class="math inline">\mathcal{Y}</span> are <strong>noncrossing</strong>
+if there exist <span class="math inline">X\in \mathcal{X}</span> and
+<span class="math inline">Y\in \mathcal{Y}</span> such that <span
+class="math inline">X\subseteq Y</span>. We denote this relation by
+<span class="math inline">\mathcal{X}\lhd\mathcal{Y}</span>.</p>
 <div class="theorem-environment Conjecture" data-index="1"
 type="Conjecture">
 <span class="theorem-header"><span class="type">Conjecture</span><span
 class="index">1</span></span>
-<p><span class="math inline">f:2^V\to \R</span> is a submodular function
-with <span class="math inline">|V|\geq k</span>. Let <span
+<p>Let <span class="math inline">f:2^V\to \R</span> be a submodular
+function with <span class="math inline">|V|\geq k</span>. Let <span
 class="math inline">\mathcal{X}</span> be a minimum <span
-class="math inline">k-1</span>-partition and <span
+class="math inline">(k-1)</span>-partition. Then there exists a minimum
+<span class="math inline">k</span>-partition <span
+class="math inline">\mathcal{Y}</span> such that <span
+class="math inline">\mathcal{X}\lhd \mathcal{Y}</span>.</p>
+</div>
+<p>One way to prove the conjecture is to start with a minimum <span
+class="math inline">k</span>-partition that does not have the desired
+property, and then use it to construct a new minimum <span
+class="math inline">k</span>-partition that does. This requires
+introducing a few additional notions.</p>
+<p>For two partitions <span class="math inline">\mathcal{X}</span> and
+<span class="math inline">\mathcal{Y}</span>, define <span
+class="math display">
+\mathcal{X}\sqcap \mathcal{Y} = \set{X\cap Y \mid X\in \mathcal{X},\,
+Y\in\mathcal{Y}}.
+</span> That is, the new partition is obtained by intersecting every
+part of <span class="math inline">\mathcal{X}</span> with every part of
+<span class="math inline">\mathcal{Y}</span>.</p>
+<p>For two partitions <span class="math inline">\mathcal{X}</span> and
+<span class="math inline">\mathcal{Y}</span>, write <span
+class="math inline">\mathcal{X}\leq \mathcal{Y}</span> if for each <span
+class="math inline">X\in\mathcal{X}</span> there exists <span
+class="math inline">Y\in\mathcal{Y}</span> such that <span
+class="math inline">X\subseteq Y</span>. If <span
+class="math inline">\mathcal{X}\leq \mathcal{Y}</span>, then every part
+of <span class="math inline">\mathcal{Y}</span> is the union of some
+parts of <span class="math inline">\mathcal{X}</span>.</p>
+<p>Now consider the following stronger conjecture, which implies the
+previous one.</p>
+<div class="theorem-environment Conjecture" data-index="2"
+type="Conjecture">
+<span class="theorem-header"><span class="type">Conjecture</span><span
+class="index">2</span></span>
+<p>Let <span class="math inline">f:2^V\to \R</span> be a submodular
+function with <span class="math inline">|V|\geq k</span>. Let <span
+class="math inline">\mathcal{X}</span> be a minimum <span
+class="math inline">(k-1)</span>-partition, and let <span
 class="math inline">\mathcal{Y}</span> be a minimum <span
-class="math inline">k</span>-partition. There exists a minimum <span
-class="math inline">k</span>-partition <span
+class="math inline">k</span>-partition. Then there exists a minimum
+<span class="math inline">k</span>-partition <span
 class="math inline">\mathcal{Y}&#39;</span> such that <span
 class="math inline">\mathcal{X}\lhd \mathcal{Y}&#39;</span> and <span
 class="math inline">\mathcal{X}\sqcap \mathcal{Y} \leq
 \mathcal{Y}&#39;</span>.</p>
 </div>
-<p>We are interested in writing a program to test the conjecture for
-small <span class="math inline">k</span>. The idea is to find different
-ways <span class="math inline">\mathcal{X}</span> can intersect with
-<span class="math inline">\mathcal{Y}</span>, a matrix that encodes such
-information are called configurations. For each configuration, we want
-to know under such configuration, can we find the desired <span
-class="math inline">\mathcal{Y}&#39;</span>.</p>
+<p>We are interested in writing a program to test the stronger
+conjecture for small <span class="math inline">k</span>.</p>
+<p>One can first consider all possible ways <span
+class="math inline">\mathcal{X}</span> can intersect with <span
+class="math inline">\mathcal{Y}</span>. A matrix encoding how <span
+class="math inline">\mathcal{X}</span> intersects with <span
+class="math inline">\mathcal{Y}</span> is called a
+<strong>configuration</strong>. For each configuration, we want to know:
+under that configuration, can we find the desired <span
+class="math inline">\mathcal{Y}&#39;</span>?</p>
 <h1 data-number="2" id="enumerate-non-isomorphic-configurations"><span
 class="header-section-number">2</span> Enumerate non-isomorphic
 configurations</h1>
 <p>Given <span class="math inline">\mathcal{X} =
 \set{X_1,\ldots,X_{k-1}}</span> and <span
-class="math inline">\mathcal{Y} = \set{Y_1,\ldots,Y_{k}}</span>. Let
-<span class="math inline">Z_{i,j} = X_i\cap Y_j</span>.</p>
-<p>We want to show some <span
-class="math inline">\mathcal{Y}&#39;</span> is a min <span
-class="math inline">k</span>-partition, where each partition class of
-<span class="math inline">\mathcal{Y}&#39;</span> has to be the union of
-some <span class="math inline">Z_{i,j}</span>s.</p>
-<p>It doesn’t matter if <span class="math inline">Z_{i,j}</span> has
-<span class="math inline">100</span> or <span
-class="math inline">1</span> vertices, only the emptyness matters.
-Consider a matrix <span class="math inline">M_{i,j} =
-\max(1,|Z_{i,j}|)</span>. Such a matrix is called a
-<em>configuration</em>. Define two configurations are
-<em>isomorphic</em>, if one can be obtained by swapping rows and columns
-of the other.</p>
-<p>We are interested in enumerate the possible configurations up to
+class="math inline">\mathcal{Y} = \set{Y_1,\ldots,Y_{k}}</span>, let
+<span class="math display">
+Z_{i,j} = X_i\cap Y_j,
+\qquad
+\mathcal{Z} = \{Z_{i,j}\} = \mathcal{X}\sqcap \mathcal{Y}.
+</span></p>
+<p>We want to show that some minimum <span
+class="math inline">k</span>-partition <span
+class="math inline">\mathcal{Y}&#39;</span> satisfies <span
+class="math inline">\mathcal{Z}\leq \mathcal{Y}&#39;</span>.</p>
+<p>Observe that it does not matter whether <span
+class="math inline">Z_{i,j}</span> contains <span
+class="math inline">100</span> vertices or <span
+class="math inline">1</span> vertex – only whether it is empty. Hence,
+we can consider a matrix <span class="math inline">M</span> where <span
+class="math display">
+M_{i,j} = \max(1, |Z_{i,j}|).
+</span> Such a matrix is called a <strong>configuration</strong> of
+<span class="math inline">\mathcal{Z}</span>, and it encodes the
+information we care about. <span class="math inline">\mathcal{X}</span>
+and <span class="math inline">\mathcal{Y}</span> is called a realization
+of <span class="math inline">M</span>. The goal is to prove the
+conjecture for each configuration. That is, all realizations of the
+configuration.</p>
+<p>Two configurations are <strong>isomorphic</strong> if one can be
+obtained from the other by permuting rows and columns.</p>
+<p>We are interested in enumerating possible configurations up to
 isomorphism.</p>
-<p>Find integer <span class="math inline">\set{0,1}</span> matrices and
-then modulo the action of a permutation group (that defines the
-isomorphism) can be done in Sage. There is a function that generates all
-integer vectors modulo a permutation group, and the vectors has length
-<span class="math inline">\ell</span> with elements in <span
-class="math inline">\set{0,\ldots,n}</span>. See the reference on <a
+<p>This is the same as enumerating <span
+class="math inline">\{0,1\}</span>-matrices modulo the action of a
+permutation group. This part can be done in Sage. There is a function
+that generates all integer vectors modulo a permutation group; the
+vectors have length <span class="math inline">\ell</span> with elements
+in <span class="math inline">\set{0,\ldots,n}</span>. See the reference
+on <a
 href="https://doc.sagemath.org/html/en/reference/combinat/sage/combinat/integer_vectors_mod_permgroup.html">Integer
 vectors modulo the action of a permutation group</a>.</p>
 <pre><code>IntegerVectorsModPermutationGroup(P, max_part=1)</code></pre>
-<p>Once we have the output, we filter the vectors to maintain the
-required properties, for example, has at least a <span
-class="math inline">1</span> on each row.</p>
-<p>The input of the Sage function has to take the desired permutation
-group <span class="math inline">P</span>.</p>
-<p>One might think we just take <span class="math inline">S_{k-1}\times
+<p>Once we have the output, we filter it to obtain valid configurations.
+For example, a configuration must have at least one <span
+class="math inline">1</span> in each row.</p>
+<p>The Sage function requires the permutation group <span
+class="math inline">P</span> defining the desired equivalence.</p>
+<p>One might think we can take <span class="math inline">S_{k-1}\times
 S_k</span> to obtain <span class="math inline">P</span>, where <span
-class="math inline">S_k</span> is the symmetric group of order <span
-class="math inline">k</span>. Unfortunately, this is not correct. This
-gives you the action on the rows and columns, but what we really need,
-is what happens to each element in the matrix.</p>
-<p>The correct way is to use the wreath products. We want to consider
-<span class="math inline">S_{k-1} \wr S_k</span> intersect with <span
-class="math inline">S_k \wr S_{k-1}</span>. However, we have to make
-sure the mapping of the elements are correct. The following is the code
-in SAGE, and the elements are numbers <span class="math inline">1</span>
-to <span class="math inline">k(k-1)</span>. Note we made sure the
-mapping has the same labels through permutation <code>pi</code>.</p>
+class="math inline">S_k</span> is the symmetric group on <span
+class="math inline">k</span> letters. Unfortunately, this is not
+correct: it describes the action on rows and columns, but we need the
+induced action on the <em>entries</em> of the matrix.</p>
+<p>The correct way is to use wreath products. We want <span
+class="math inline">(S_{k-1} \wr S_k)\cap (S_k \wr S_{k-1})</span>.
+However, we must ensure that the element labeling is consistent. The
+following is Sage code where the elements are labeled <span
+class="math inline">1</span> to <span class="math inline">k(k-1)</span>.
+We ensure the same labeling via the permutation <code>pi</code>.</p>
 <pre><code>a = SymmetricGroup(k-1)
 b = SymmetricGroup(k)
 
@@ -389,181 +434,193 @@ H = PermutationGroup([perm_replace(pi,g) for g in Hbad.gens()])
 
 # The correct permutation group
 P = H.intersection(G)</code></pre>
-<p>At this point, we obtain all possible configurations. In particular,
-for <span class="math inline">k=3,4,5,6</span>, the number of
-configurations are <span class="math inline">13, 87, 1053,
-28576</span>.</p>
-<p>If we restrict to configurations where there is at least a <span
-class="math inline">1</span> in each row and at least a <span
-class="math inline">1</span> in each column, it cuts down the
-configurations to <span class="math inline">5,42,633,20755</span>. We
-can further observe that for some configurations, it implies <span
-class="math inline">\mathcal{X}\lhd \mathcal{Y}</span> already, so we do
-not have to check such configurations. Let’s call configurations after
-the above filtering good configurations. The number of good
-configurations for <span class="math inline">k=3,4,5,6</span> are <span
-class="math inline">3, 23, 353, 12828</span>.</p>
+<p>At this point, we obtain all matrices, some of which correspond to
+configurations. In particular, for <span
+class="math inline">k=3,4,5,6</span>, the numbers of configurations are
+<span class="math inline">13, 87, 1053, 28576</span>.</p>
+<p>If we restrict to matrices with at least one <span
+class="math inline">1</span> in each row and at least one <span
+class="math inline">1</span> in each column, this reduces the counts to
+<span class="math inline">5, 42, 633, 20755</span>. These are valid
+configurations.</p>
+<p>We can further observe that for some configurations, we already have
+<span class="math inline">\mathcal{X}\lhd \mathcal{Y}</span>, so we do
+not have to check them. Let us call the remaining configurations
+<strong>good</strong>. The numbers of good configurations for <span
+class="math inline">k=3,4,5,6</span> are <span class="math inline">3,
+23, 353, 12828</span>.</p>
 <h1 data-number="3"
 id="test-if-there-exists-a-noncrossing-mathcaly-for-a-configuration-m"><span
 class="header-section-number">3</span> Test if there exists a
 noncrossing <span class="math inline">\mathcal{Y}&#39;</span> for a
 configuration <span class="math inline">M</span></h1>
-<p>We now have a configuration <span class="math inline">M</span>, and
-now we are interested in creating a linear program to decide if there
-always exists a minimum <span class="math inline">k</span>-partition
-<span class="math inline">\mathcal{Y}&#39;</span> that is non-crossing
-with the minimum <span class="math inline">(k-1)</span>-partition <span
+<p>Fix a configuration <span class="math inline">M</span>. We now
+construct a linear program to decide whether there always exists a
+minimum <span class="math inline">k</span>-partition <span
+class="math inline">\mathcal{Y}&#39;</span> that is noncrossing with the
+minimum <span class="math inline">(k-1)</span>-partition <span
 class="math inline">\mathcal{X}</span>. For a given <span
-class="math inline">M</span>, one can always recover <span
+class="math inline">M</span>, one can recover (a minimal) <span
 class="math inline">\mathcal{X}</span> and <span
-class="math inline">\mathcal{Y}</span>.</p>
-<p>Let <span class="math inline">V</span> be the set of vertices, which
-equals to the number of <span class="math inline">1</span>s in <span
-class="math inline">M</span>. Let <span
-class="math inline">P_k(V)</span> be the set of <span
+class="math inline">\mathcal{Y}</span> that realize <span
+class="math inline">M</span>. It is easy to see that if our argument
+works for these particular <span class="math inline">\mathcal{X}</span>
+and <span class="math inline">\mathcal{Y}</span>, it works for all <span
+class="math inline">\mathcal{X}</span> and <span
+class="math inline">\mathcal{Y}</span> realizing <span
+class="math inline">M</span>.</p>
+<p>Let <span class="math inline">V</span> be the vertex set, with <span
+class="math inline">|V|</span> equal to the number of <span
+class="math inline">1</span>’s in <span class="math inline">M</span>.
+Let <span class="math inline">P_k(V)</span> be the set of <span
 class="math inline">k</span>-partitions of <span
 class="math inline">V</span>. For each <span
-class="math inline">U\subseteq V</span>, we create a variable <span
-class="math inline">x_U</span>. It represents the value of <span
-class="math inline">f(U)</span>. We also create a variable <span
+class="math inline">U\subseteq V</span>, create a variable <span
+class="math inline">x_U</span> representing the value <span
+class="math inline">f(U)</span>, and also create a variable <span
 class="math inline">z</span>.</p>
-<p>For a partition <span class="math inline">\mathcal{S}</span>, <span
-class="math inline">x_\mathcal{S}</span> is just <span
-class="math inline">\sum_{S\in \mathcal{S}} x_S</span>.</p>
-<p>Consider the following linear program.</p>
-<p><span class="math display">
+<p>For a partition <span class="math inline">\mathcal{S}</span>, write
+<span class="math inline">x_\mathcal{S} = \sum_{S\in \mathcal{S}}
+x_S</span>.</p>
+<p>Consider the following linear program: <span class="math display">
 \begin{aligned}
-&amp; \max        &amp; &amp; z &amp;\\
+&amp; \max        &amp; &amp; z \\
 &amp; \text{s.t.} &amp; &amp; x_{S\cup \{a\}} + x_{S\cup \{b\}} \geq
-x_{S\cup \{a,b\}} + x_{S} &amp; \forall S\subseteq V, a,b\in V\setminus
-S\\
+x_{S\cup \{a,b\}} + x_{S}
+&amp;&amp; \forall S\subseteq V,\ a,b\in V\setminus S\\
 &amp;             &amp; &amp; x_\mathcal{X} \leq x_{\mathcal{X}&#39;}
-&amp; \forall \mathcal{X}&#39;\in P_{k-1}(V)\\
+&amp;&amp; \forall \mathcal{X}&#39;\in P_{k-1}(V)\\
 &amp;             &amp; &amp; x_\mathcal{Y} \leq x_{\mathcal{Y}&#39;}
-&amp; \forall \mathcal{Y}&#39;\in P_{k}(V)\\
-&amp;             &amp; &amp; x_\mathcal{Y} = 1 &amp; \\
-&amp;             &amp; &amp; z \leq x_{\mathcal{Y}&#39;} &amp; \forall
-\mathcal{Y}&#39;\in P_{k}(V), \mathcal{X} \lhd \mathcal{Y}&#39;\\
+&amp;&amp; \forall \mathcal{Y}&#39;\in P_{k}(V)\\
+&amp;             &amp; &amp; x_\mathcal{Y} = 1 \\
+&amp;             &amp; &amp; z \leq x_{\mathcal{Y}&#39;} &amp;&amp;
+\forall \mathcal{Y}&#39;\in P_{k}(V)\ \text{with}\ \mathcal{X} \lhd
+\mathcal{Y}&#39;.
 \end{aligned}
 </span></p>
-<p>The first set of constraints are the submodular inequalities. The
-second shows <span class="math inline">\mathcal{X}</span> is a minimum
-<span class="math inline">k-1</span>-partition, and the third shows
-<span class="math inline">\mathcal{Y}</span> is a minimum <span
-class="math inline">k</span>-partition. We also set the value of the
-minimum <span class="math inline">k</span>-partition to be <span
-class="math inline">1</span>. Finally, we consider every <span
-class="math inline">k</span>-partition that is non-crossing with <span
-class="math inline">\mathcal{X}</span>, and <span
-class="math inline">z</span> is a lower bound of their value.</p>
-<p>If the objective value <span class="math inline">z=1</span>, then
-this means there is at least <span class="math inline">1</span> <span
-class="math inline">k</span>-partition <span
-class="math inline">\mathcal{Y}&#39;</span> that is non-crossing with
-<span class="math inline">\mathcal{X}</span> has the value same as the
-minimum <span class="math inline">k</span>-partition. Therefore the
-conjecture is true if and only for every configuration <span
+<p>The first set of constraints are the submodular inequalities, which
+enforce that <span class="math inline">x_S=f(S)</span> for some
+submodular function <span class="math inline">f</span>. The next
+constraints enforce that <span class="math inline">\mathcal{X}</span> is
+a minimum <span class="math inline">(k-1)</span>-partition and <span
+class="math inline">\mathcal{Y}</span> is a minimum <span
+class="math inline">k</span>-partition. We normalize the optimal <span
+class="math inline">k</span>-partition value to be <span
+class="math inline">1</span>. Finally, among all <span
+class="math inline">k</span>-partitions that are noncrossing with <span
+class="math inline">\mathcal{X}</span>, the variable <span
+class="math inline">z</span> is a lower bound on their objective
+values.</p>
+<p>If the optimal value is <span class="math inline">z=1</span>, then
+there exists at least one <span class="math inline">k</span>-partition
+<span class="math inline">\mathcal{Y}&#39;</span> that is noncrossing
+with <span class="math inline">\mathcal{X}</span> and has the same value
+as the minimum <span class="math inline">k</span>-partition. Therefore,
+the conjecture holds if and only if for every configuration <span
 class="math inline">M</span>, the above linear program has optimum <span
 class="math inline">1</span>.</p>
 <h1 data-number="4" id="redundant-constraints"><span
 class="header-section-number">4</span> Redundant constraints</h1>
 <p>One can easily prove the conjecture for <span
-class="math inline">k=3,4</span> by directly using the above linear
-program over all good configurations. However, it runs into difficulty
-with <span class="math inline">k=5</span>. This is because the linear
-program is way too large. The number of <span
-class="math inline">k</span> partitions for <span
-class="math inline">n</span> elements is the Stirling number of the
-second kind <span class="math inline">\left\{{n\atop k}\right\}</span>.
-<span class="math inline">\left\{{20\atop 5}\right\} =
-749206090500</span> and <span class="math inline">\left\{{20\atop
-4}\right\} = 45232115901</span>. However, it seems many constraints are
-redundant due to symmetry. It be interesting to see if we can cut it
-down to a manageable size. If so, maybe the conjecture for <span
-class="math inline">k=5</span> or even <span
-class="math inline">k=6</span> might be solvable.</p>
-<p>To do this, we consider the following definition. Consider a vector
-<span class="math inline">s=(s_1,\ldots,s_k)</span>. We say a family of
+class="math inline">k=3,4</span> by directly solving the above linear
+program over all good configurations. However, it becomes difficult for
+<span class="math inline">k=5</span> because the linear program is far
+too large. The number of <span class="math inline">k</span>-partitions
+of an <span class="math inline">n</span>-element set is the Stirling
+number of the second kind <span class="math inline">\left\{{n\atop
+k}\right\}</span>: <span class="math display">
+\left\{{20\atop 5}\right\} = 749206090500,
+\qquad
+\left\{{20\atop 4}\right\} = 45232115901.
+</span> It seems many constraints are redundant due to symmetry, and it
+would be interesting to see if we can reduce the formulation to a
+manageable size. If so, the conjecture for <span
+class="math inline">k=5</span>, or even <span
+class="math inline">k=6</span>, might become solvable.</p>
+<p>To do this, consider the following definition. For a vector <span
+class="math inline">s=(s_1,\ldots,s_k)</span>, say that a family of
 <span class="math inline">k</span>-partitions <span
-class="math inline">\mathcal{F}</span> is <span
-class="math inline">s</span>-complete, if <span
-class="math inline">f(\mathcal{P})\geq f(\mathcal{Y})</span> for all
-<span class="math inline">\mathcal{P}\in \mathcal{C}</span>, then <span
-class="math inline">f(\mathcal{P})\geq f(\mathcal{Y})</span> for all
-<span class="math inline">k</span>-partition <span
-class="math inline">\mathcal{P}</span>. Here <span
+class="math inline">\mathfrak{F}</span> is <strong><span
+class="math inline">s</span>-complete</strong> if <span
+class="math display">
+f(\mathcal{P})\geq f(\mathcal{Y})\ \forall \mathcal{P}\in \mathfrak{F}
+\quad\Longrightarrow\quad
+f(\mathcal{P})\geq f(\mathcal{Y})\ \forall \mathcal{P}\in P_k(V),
+</span> where <span
 class="math inline">\mathcal{Y}=\{Y_1,\ldots,Y_k\}</span> is a <span
-class="math inline">k</span>-partition such that <span
-class="math inline">|Y_i|=s_i</span>. Let <span
-class="math inline">\lambda(s)</span> to be the size of the minimum
-<span class="math inline">s</span>-complete family. So instead of
-considering all <span class="math inline">k</span>-partitions for the
-constraints, we just have to consider the <span
-class="math inline">s</span>-complete family for some <span
-class="math inline">s</span>. If <span
-class="math inline">\lambda(s)</span> is very small, then there is hope
-to solve the problem quickly.</p>
-<p>Let <span class="math inline">t</span> be a <span
-class="math inline">k</span>-tuple consists of only <span
-class="math inline">d</span>’s, then we define <span
-class="math inline">\lambda_k(d) = \lambda(t)</span>. It would be very
-interesting to see how large <span
-class="math inline">\lambda_k(d)</span> is.</p>
-<p>As an example, we show a simple result on <span
+class="math inline">k</span>-partition with <span
+class="math inline">|Y_i|=s_i</span>. By the previous discussion, we
+only need to consider the case <span class="math inline">\sum_i s_i \leq
+k(k-1)</span>.</p>
+<p>Let <span class="math inline">\lambda(s)</span> be the minimum size
+of an <span class="math inline">s</span>-complete family. Instead of
+including constraints for all <span
+class="math inline">k</span>-partitions, it suffices to include
+constraints for an <span class="math inline">s</span>-complete family
+(for the relevant <span class="math inline">s</span>). If <span
+class="math inline">\lambda(s)</span> is small for all relevant <span
+class="math inline">s</span>, there is hope to solve the problem
+quickly.</p>
+<p>As an example, we show a simple bound on <span
 class="math inline">\lambda(a,b)</span>.</p>
-<div class="theorem-environment Theorem" data-index="2" type="Theorem">
+<div class="theorem-environment Theorem" data-index="3" type="Theorem">
 <span class="theorem-header"><span class="type">Theorem</span><span
-class="index">2</span></span>
+class="index">3</span></span>
 <p><span class="math inline">\lambda(a,b)\leq 2^a+2^b-3</span>.</p>
 </div>
 <div class="theorem-environment Proof" type="Proof">
 <span class="theorem-header"><span class="type">Proof</span></span>
-<p>Indeed, let <span class="math inline">\mathcal{Y}=(Y_1,Y_2)</span>
-consists of <span class="math inline">a</span> and <span
-class="math inline">b</span> elements.</p>
+<p>Let <span class="math inline">\mathcal{Y}=(Y_1,Y_2)</span> consist of
+<span class="math inline">a</span> and <span
+class="math inline">b</span> elements, respectively.</p>
 <p>Consider the following family <span
-class="math inline">\mathcal{F}</span>: For each non-empty set <span
+class="math inline">\mathfrak{F}</span>: for each non-empty set <span
 class="math inline">S</span> such that either <span
 class="math inline">S\subsetneq Y_1</span> or <span
-class="math inline">S\subsetneq Y_2</span>, <span
-class="math inline">(S,V-S)\in \mathcal{F}</span>. Also, let <span
-class="math inline">\mathcal{Y}\in \mathcal{F}</span>.</p>
-<p>So there are <span class="math inline">2^a-2 + 2^b-2 + 1</span> sets
-in <span class="math inline">\mathcal{F}</span>.</p>
-<p>Next, we show <span class="math inline">\mathcal{F}</span> is an
-<span class="math inline">(a,b)</span>-complete family. Consider any
-<span class="math inline">(X_1,X_2)</span> not in <span
-class="math inline">\mathcal{F}</span> and consider the intersection
-with <span class="math inline">(Y_1,Y_2)</span>. Let <span
-class="math inline">Z_{i,j} = X_i\cap Y_j</span>.</p>
+class="math inline">S\subsetneq Y_2</span>, include the partition <span
+class="math inline">(S,V\setminus S)</span> in <span
+class="math inline">\mathfrak{F}</span>. Also include <span
+class="math inline">\mathcal{Y}</span> itself in <span
+class="math inline">\mathfrak{F}</span>.</p>
+<p>Thus, <span
+class="math inline">|\mathfrak{F}|=(2^a-2)+(2^b-2)+1=2^a+2^b-3</span>.</p>
+<p>Next, we show that <span class="math inline">\mathfrak{F}</span> is
+<span class="math inline">(a,b)</span>-complete. Consider any <span
+class="math inline">(X_1,X_2)\notin \mathfrak{F}</span> and its
+intersection with <span class="math inline">(Y_1,Y_2)</span>. Let <span
+class="math inline">Z_{i,j}=X_i\cap Y_j</span>.</p>
 <p>Let <span class="math inline">|Z_{1,1}|=x</span> and <span
-class="math inline">|Z_{2,1}|=y</span>, then we have <span
+class="math inline">|Z_{2,1}|=y</span>. Then <span
 class="math inline">|Z_{1,2}|=a-x</span> and <span
-class="math inline">|Z_{2,2}|=b-x</span>. Consider when all <span
-class="math inline">Z_{i,j}</span> is non-empty.</p>
-<p><span class="math display">\begin{align*}
-\sum_{i=1}^2 \sum_{j=1}^2 f(X_i)+f(Y_j) &amp;=
-2(f(X_1)+f(X_2)+f(Y_1)+f(Y_2))\\
-                                        &amp;\geq \sum_{i=1}^2
-\sum_{j=1}^2 f(Z_{i,j}) + f(X_i\cup Y_j)\\
-                                        &amp;=\sum_{i=1}^2 \sum_{j=1}^2
-f(Z_{i,j})+f(\bar{Z_{i,j}})\\
-                                        &amp;\geq 4(f(Y_1)+f(Y_2))
-\end{align*}</span></p>
-<p>Which shows <span class="math inline">f(X_1)+f(X_2)\geq
-f(Y_1)+f(Y_2)</span>.</p>
+class="math inline">|Z_{2,2}|=b-y</span>. Consider the case where all
+<span class="math inline">Z_{i,j}</span> are non-empty. Then <span
+class="math display">\begin{align*}
+\sum_{i=1}^2 \sum_{j=1}^2 \bigl(f(X_i)+f(Y_j)\bigr)
+  &amp;= 2\bigl(f(X_1)+f(X_2)+f(Y_1)+f(Y_2)\bigr)\\
+  &amp;\ge \sum_{i=1}^2 \sum_{j=1}^2 \bigl(f(Z_{i,j}) + f(X_i\cup
+Y_j)\bigr)\\
+  &amp;= \sum_{i=1}^2 \sum_{j=1}^2 \bigl(f(Z_{i,j}) +
+f(\overline{Z_{i,j}})\bigr)\\
+  &amp;\ge 4\bigl(f(Y_1)+f(Y_2)\bigr),
+\end{align*}</span> which implies <span
+class="math inline">f(X_1)+f(X_2)\ge f(Y_1)+f(Y_2)</span>.</p>
 <p>Otherwise, if some <span class="math inline">Z_{i,j}</span> is empty,
-then we have <span class="math inline">(X_1,X_2)=(Y_1,Y_2)\in
-\mathcal{F}</span>.</p>
+then necessarily <span class="math inline">(X_1,X_2)=(Y_1,Y_2)\in
+\mathfrak{F}</span>.</p>
 </div>
-<p>In particular, <span class="math inline">\lambda_2(d)\leq
-2^{d+1}</span>.</p>
-<div class="theorem-environment Conjecture" data-index="3"
-type="Conjecture">
-<span class="theorem-header"><span class="type">Conjecture</span><span
-class="index">3</span></span>
-<p><span class="math inline">\lambda_k(d) = O(k^d)</span>.</p>
-</div>
+<p>Currently, I do not know much about <span
+class="math inline">\lambda(s)</span> in general, so let us look at a
+special case. Define <span class="math display">
+\lambda_k(d) = \lambda((d,\ldots,d)),
+</span> where <span class="math inline">d</span> is repeated <span
+class="math inline">k</span> times. It would be very interesting to
+understand how large <span class="math inline">\lambda_k(d)</span> is,
+especially <span class="math inline">\lambda_5(4)</span>. If <span
+class="math inline">\lambda_5(4)</span> is small, then there is hope of
+solving the conjecture for <span class="math inline">k=5</span>.</p>
+<p>In particular, because we see <span
+class="math inline">\lambda_2(d)\leq 2^{d+1}</span>, I would conjecture
+<span class="math inline">\lambda_k(d) = O(k^d)</span>.</p>
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2022-01-30">2022-01-30</time>. </div>
