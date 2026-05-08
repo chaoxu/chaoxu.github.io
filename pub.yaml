@@ -100,6 +100,27 @@ types:
 # conference publications
 
 ---
+id: cart-mae-categorical
+title: Binary Split Categorical Feature with Mean Absolute Error Criteria in CART
+type: conference
+show: [d]
+year: 2026
+selected: true
+bib: AAAI 2026
+authors: [Peng Yu, Yike Chen, Chao Xu, Albert Bifet, Jesse Read]
+abstract: >
+  In the context of the Classification and Regression Trees (CART) algorithm, the
+  efficient splitting of categorical features using standard criteria like GINI and
+  Entropy is well-established. However, using the Mean Absolute Error (MAE) criterion
+  for categorical features has traditionally relied on various numerical encoding
+  methods. This paper demonstrates that unsupervised numerical encoding methods are
+  not viable for the MAE criteria. Furthermore, we present a novel and efficient
+  splitting algorithm that addresses the challenges of handling categorical features
+  with the MAE criterion. Our findings underscore the limitations of existing approaches
+  and offer a promising solution to enhance the handling of categorical data in CART
+  algorithms.
+
+---
 id: graph-ride
 title: An Optimal Algorithm for the Stacker Crane Problem on Fixed Topologies
 type: conference
