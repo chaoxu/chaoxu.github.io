@@ -523,7 +523,7 @@ id: ttp-journal
 show: []
 title: "The traveling tournament problem: Improved algorithms based on cycle packing"
 authors: [Jingyang Zhao, Mingyu Xiao, Chao Xu]
-type: conference
+type: journal
 pub: TCS
 year: 2025
 notes:
@@ -542,7 +542,7 @@ abstract: >
 id: airplane
 title: A near-linear time algorithm and a min-cost flow approach for determining the optimal landing times of a fixed sequence of planes
 type: journal
-year: 2024
+year: 2025
 pub: AOR
 show: [d]
 authors: [Bin Cao, Chao Xu]
