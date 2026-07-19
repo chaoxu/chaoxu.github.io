@@ -150,7 +150,7 @@ You can pick and choose, and ask Codex to incorporate them, Codex will figure ou
 
 # What it costs
 
-I do recommend the \$200 per month version of ChatGPT Pro, but you can scale up from Plus. It translates to about a 30 hours session for a session (with 6 subagents). If you want another model to verify the work, then I also recommend getting Claude Max, so you can use Fable 5.
+I do recommend the \$200 per month version of ChatGPT Pro, but you can scale up from Plus. It translates to about a 30 hour session (with 6 subagents). If you want another model to verify the work, then I also recommend getting Claude Max, so you can use Fable 5.
 
 # FAQs
 
