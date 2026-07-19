@@ -243,10 +243,10 @@ subagents). If you want another model to verify the work, then I also
 recommend getting Claude Max, so you can use Fable 5.</p>
 <h1 data-number="5" id="faqs"><span
 class="header-section-number">5</span> FAQs</h1>
-<p><strong>How do you know this is better than just asking
-ChatGPT?</strong> I have run an agent autonomously using gpt-5.6-sol
-ultra for 14 hours, solving a problem I was personally invested in.
-ChatGPT was not able to solve it.</p>
+<p><strong>How do you know this is better than just asking ChatGPT a few
+times?</strong> I have run an agent autonomously using gpt-5.6-sol ultra
+for 14 hours, solving a problem I was personally invested in. ChatGPT
+was not able to solve it.</p>
 <p><strong>Do I need my laptop to be on all day?</strong> If you are
 running everything locally (say in Codex), yes. Moreover, if the agents
 write a few programs to search for counterexamples, they will drain the
