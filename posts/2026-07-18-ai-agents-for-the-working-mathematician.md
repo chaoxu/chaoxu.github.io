@@ -154,7 +154,7 @@ I do recommend the \$200 per month version of ChatGPT Pro, but you can scale up 
 
 # FAQs
 
-**How do you know this is better than just asking ChatGPT?**
+**How do you know this is better than just asking ChatGPT a few times?**
 I have run an agent autonomously using gpt-5.6-sol ultra for 14 hours, solving a problem I was personally invested in.
 ChatGPT was not able to solve it.
 
