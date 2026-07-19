@@ -7,7 +7,6 @@ import sys
 from jinja2 import Template
 import io
 from bs4 import BeautifulSoup as bs
-import cgi
 
 def render_inline_math(renderer, text):
     return r'<span class="math">' + text + r'</span>'

@@ -15,7 +15,7 @@ Specifically, you can have an autonomous agent that keeps bashing on a conjectur
 
 I will use some words like token, model, and harness. If you don't know what they mean, watch the first part of [Edward Lockhart's talk](https://www.youtube.com/watch?v=XRTmhpOW1WA). I recommend it to anyone who has a math background but no idea what these new AI things are.
 
-## Use Agents
+# Use Agents
 
 An *agent* is an AI that uses tools. Here the tools are exactly what you would use on a computer: operating system, Python, a LaTeX compiler, SAGE math, a browser. Agents can interact with the environment and actually "do" things.
 
@@ -110,7 +110,7 @@ Register this task as a persistent goal (create_goal) with the success criteria 
 When I end the run: apply the reporting gate to what you present. Then append to a LESSONS.md: what you learned this session that would make future runs more efficient — preferring lessons transferable to other mathematical problems, plus any environment issues that wasted time.
 ```
 
-## Explanations and Improvements
+# Explanations and Improvements
 
 The prompt combines ideas from the [CDC prompt](https://cdn.openai.com/pdf/04d1d1e4-bc75-476a-97cf-49055cd98d31/cdc_prompt.pdf), [Danus](https://github.com/frenzymath/Danus), and things learned from my own runs. You can read it. It is not perfect but gets 90% there.
 
@@ -134,7 +134,7 @@ The idea is to run an agent that supervises other agents that work towards a sin
 
 **9. Evolve.** End every session by asking the agent what it learned. Those harvested lessons get distilled and written down, which future agents can access. The workflow effectively bootstrapped its own methodology document.
 
-## Improvements
+# Improvements
 
 You can pick and choose, and ask Codex to incorporate them, Codex will figure out how to do them. If you don't understand what something does, ask Codex to explain.
 
@@ -148,11 +148,11 @@ You can pick and choose, and ask Codex to incorporate them, Codex will figure ou
 8. Use scripts to enforce all the gates.
 9. Anything else you thought of and think "maybe the agent should do this", just ask Codex to do it.
 
-## What it costs
+# What it costs
 
 I do recommend the \$200 per month version of ChatGPT Pro, but you can scale up from Plus. It translates to about a 30 hours session for a session (with 6 subagents). If you want another model to verify the work, then I also recommend getting Claude Max, so you can use Fable 5.
 
-## FAQs
+# FAQs
 
 **How do you know this is better than just asking ChatGPT?**
 I have run an agent autonomously using gpt-5.6-sol ultra for 14 hours, solving a problem I was personally invested in.
@@ -199,7 +199,7 @@ The most popular formal proof system right now is LEAN. If you are fluent in LEA
 **ChatGPT (chat) has a gpt-5.6-sol Pro, what is that?**
 I have no idea, I also want to be enlightened.
 
-## Appendix: What this looks like in practice
+# Appendix: What this looks like in practice
 
 Here is what my past few days of running the agents actually looked like while attending [Emléktábla workshop](https://users.renyi.hu/~emlektab/), reconstructed from the session logs.
 
