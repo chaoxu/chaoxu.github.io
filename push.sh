@@ -15,7 +15,10 @@ export NODE_PATH=$(npm root --quiet -g)
 cp ~/Documents/GitHub/katex_cli/target/release/katex_cli katex_cli
 # Build new files
 # stack build --ghc-options=-O2
-# stack exec chaosite clean
+# Clean before building: incremental builds leave dependent pages (rss.xml,
+# sitemap.xml, index/listing pages, cross-referencing pages) stale, and those
+# stale pages then get force-published. Correctness beats a faster publish.
+stack exec chaosite clean || { echo "ERROR: 'stack exec chaosite clean' failed. Aborting."; git stash pop 2>/dev/null; exit 1; }
 # Abort if the site build fails (e.g. chaosite not compiled for the current
 # resolver): without this, _site is left stale and gets published silently.
 stack exec chaosite build || { echo "ERROR: 'stack exec chaosite build' failed. Run 'stack build' under lts-20.26 first? Aborting."; git stash pop 2>/dev/null; exit 1; }
