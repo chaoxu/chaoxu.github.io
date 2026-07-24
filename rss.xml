@@ -7,8 +7,357 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxu.prof/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Tue, 20 Jan 2026 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sat, 18 Jul 2026 00:00:00 UT</lastBuildDate>
         <item>
+    <title>AI Agents for the Working Mathematician</title>
+    <link>https://chaoxu.prof/posts/2026-07-18-ai-agents-for-the-working-mathematician.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>Most working mathematicians I talk to or observe have the same
+relationship with AI: they paste a question into ChatGPT, get something
+proof-shaped back, feel vaguely impressed or vaguely cheated, and go
+back to work. This makes sense, especially under the common opinion:</p>
+<blockquote>
+<p>If you ask ChatGPT a few times and it does not solve the problem,
+then AI can NEVER solve the problem by itself.</p>
+</blockquote>
+<p>This opinion was formed by mathematicians worldwide through long and
+brutal ChatGPT sessions: read the latest output, send “keep going”, wait
+for a response, repeat until the entire afternoon is wasted. If the
+opinion were true, then asking ChatGPT a few times would be the optimal
+way of using AI to do math — and to be fair, even that is occasionally
+strong enough to solve real open problems.</p>
+<p>But the opinion is <strong>wrong</strong> (see FAQ). You can use a
+system that is far more capable, with a much higher chance of success
+than the standard opinion allows.</p>
+<p>Specifically, you can have an autonomous agent that keeps bashing on
+a conjecture for hours: it keeps track of itself, learns from its
+mistakes, does not waste its time retrying something already tried, does
+not waste your time with long wrong proofs, and you can still influence
+its direction.</p>
+<p>I will use some words like token, model, and harness. If you don’t
+know what they mean, watch the first part of <a
+href="https://www.youtube.com/watch?v=XRTmhpOW1WA">Edward Lockhart’s
+talk</a>. I recommend it to anyone who has a math background but no idea
+what these new AI things are.</p>
+<h1 data-number="1" id="use-agents"><span
+class="header-section-number">1</span> Use Agents</h1>
+<p>An <em>agent</em> is an AI that uses tools. Here the tools are
+exactly what you would use on a computer: operating system, Python, a
+LaTeX compiler, SAGE math, a browser. Agents can interact with the
+environment and actually “do” things.</p>
+<p><strong>Codex</strong> is the coding harness from OpenAI. It runs
+agents on your own computer. A “chat” session in Codex would be an
+agent. <strong>ChatGPT Work</strong>, which is different from ChatGPT,
+is also an agent, and can run on OpenAI’s server. I prefer Codex as one
+can maintain even tighter control, but if you just want to explore,
+ChatGPT Work is easier as you don’t even need to download anything.
+However, this article I will assume people will be using Codex.</p>
+<p>What Codex buys you over the chat window:</p>
+<ul>
+<li><strong>Files are durable state.</strong> Your problem statement,
+definitions, proved lemmas, failed attempts — they live in a directory,
+in git if you like. Progress is not lost, you can keep advancing.</li>
+<li><strong>You control the context.</strong> The agent reads the files
+you point it at. You have much more control over what agents can do. A
+clean <code>STATEMENT.md</code> with your exact conventions beats
+re-explaining notation every conversation.</li>
+<li><strong>Tool use.</strong> Gurobi to construct counterexamples, SAGE
+to compute some polynomial, LEAN to formally verify some statement it
+proved, access to your compute cluster, and tools that help with your
+computation that you never knew existed.</li>
+<li><strong>Long autonomous runs.</strong> You can hand it a hard
+target, leave, and come back to either progress or a precise record of
+what failed.</li>
+</ul>
+<p>Step by step on how to do it.</p>
+<ol type="1">
+<li>Use an agent
+<ol type="1">
+<li>Codex: Download the Codex program and log in with your ChatGPT
+account.</li>
+<li>ChatGPT Work: Just open the ChatGPT website, and switch it to
+work.</li>
+</ol></li>
+<li>Set the model to the highest available, currently gpt-5.6-sol
+ultra.</li>
+<li>Replace <code>[STATEMENT]</code> in the prompt below with your exact
+claim — all quantifiers, your conventions, what is known, and what
+counts as an answer — then use it on a conjecture you always wanted to
+solve.</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Current task statement</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">STATEMENT</span><span class="co">]</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Success criteria</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Partial progress does not count unless it implies exactly the resolution above. In particular, proofs for special classes, reductions to another unproved conjecture, computational verification through any fixed size, and candidate counterexamples without a complete nonexistence certificate are insufficient. If the statement above is ambiguous about what counts as an answer, ask before starting; never resolve ambiguity silently.</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Durable state — create these files before searching</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>STATEMENT.md — the exact statement, conventions, and success criteria. Fixed for the whole run; never edit it to fit a result.</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>REGISTRY.md — one row per approach family: family name, exact claim attempted, exact remaining gap, smallest known obstruction, next decisive test, status.</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>FAILED.md — every closed route: what was tried, the exact obstruction, the evidence for it, and what would make a retry materially new.</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>PROVED.md — promoted results only, each with its status label and proof or certificate.</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>All mathematical work products land in these files, not only in conversation. After any context compaction, re-read these files before continuing; they are the memory, the conversation is not.</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Status vocabulary — literal, never inflated</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>Every claim carries exactly one label, with these exact meanings:</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>candidate — produced by an agent; no checks yet.</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>self-audited — re-checked only by its own author or context. For building on, this counts the same as candidate.</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>verifier-backed — survived both steps of the verification cadence below: a hostile audit by a fresh agent that tried to refute it, and an independent end-to-end reconstruction by an agent that never saw the proof.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>promoted — verifier-backed and recorded in PROVED.md; later work may cite it, and anything built on it carries at most this label.</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>independently audited — additionally checked from outside the producing model family: a different-family model or a human. Present final answers at this label when possible.</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>If no different-family model is available in this environment, do not simulate independence with another instance of the same family — that is label inflation. Instead deliver the final answer at promoted status, state prominently that the cross-family audit has not run, and list the specific claims an outside model or human referee should check first, in order of risk.</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>A claim&#39;s label only advances through the verification steps below. A later argument never inherits more certainty than its weakest premise&#39;s label. Never call a mismatched case, a global compatibility assertion, or a polynomial recurrence &quot;routine&quot; — those are where proofs hide their hard step.</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">## Orchestration</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>Use subagents aggressively and dynamically, at most 6 concurrent. Work in waves: agents push the frontier, then fresh agents verify what came back. Do not use a fixed assignment such as &quot;N agents for strategy X.&quot;</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Begin with a genuinely diverse portfolio: substantially different formulations, invariants, reductions, algebraic viewpoints, structural inductions, decompositions, embeddings, extremal arguments.</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Do not tell most agents the currently favored approach; preserve independence during early rounds so they do not converge on the same attractive but incomplete reduction. Agents may be assigned a direction, but never shown another agent&#39;s partial proof of it.</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Group approaches in REGISTRY.md by the mathematical mechanism and by their terminal missing lemma, not by terminology. If several agents converge to one family, redirect the surplus toward underexplored formulations.</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>A route that ends at a missing lemma as strong as the original conjecture is blocked, not &quot;one lemma away.&quot; Record it in FAILED.md. Reopen a blocked route only for a materially new mechanism, invariant, or construction, and say in REGISTRY.md what is new.</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Before starting any route, check FAILED.md and state either: &quot;no close prior route&quot; or &quot;closest prior route is X; this differs materially because of <span class="kw">&lt;new</span> <span class="er">lemma</span> <span class="er">/</span> <span class="er">source</span> <span class="er">/</span> <span class="er">witness</span> <span class="er">/</span> <span class="er">certificate</span> <span class="er">/</span> <span class="er">scope</span><span class="kw">&gt;</span>.&quot;</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Require every agent to return a proved lemma, an explicit construction, or a counterexample. Reject status reports, vague optimism, and claims that an unproved global compatibility statement is routine.</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## Stalled routes</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>When a route stalls, classify it explicitly in REGISTRY.md as either (a) method failure or (b) evidence against the target statement. If (b), redirect part of the effort of that family to counterexample search. Every stalled route must carry one of these two classifications; &quot;still working&quot; is not a classification.</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## Verification cadence</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>Every candidate proof gets, in order: one focused hostile audit round (a subagent instructed to refute it: find any gap, unsupported claim, quantifier slip, or misapplied citation, and be skeptical), then one independent end-to-end reconstruction by a fresh agent that has not seen the proof, working only from the statement and the claimed key ideas. Only after both does the label advance to verifier-backed. Do not re-audit after prose-only edits; re-audit only when the mathematical content changes. Final candidate results should additionally be checked by a model from a different family before being presented as the answer.</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reporting gate</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>Report a result to me only on a significant update: a complete proof or certified counterexample; a proved lemma that removes a named dependency; a minimal obstruction that closes a route; or a strictly stronger or simpler theorem with proof. New notation, restructuring, another finite computation, or a reduction to a theorem-strength lemma is not significant and goes in the files, not in a report.</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## Computation rules</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>Only write programs when essential; most work here should be proofs. When a computation is justified, it is a named finite question whose output is a small witness, certificate, or table. Never run computation through inline stdin. Every run gets a named source file, the approach-family ID it serves, a timeout, a log, and an output location, recorded in REGISTRY.md. A computation can refute a lemma or discover a certificate; it cannot prove an unbounded theorem — preserve the smallest exact certificate and then prove the resulting claim.</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="fu">## Web policy</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>Public search may be used only for ordinary mathematical background or standard named theorems, not to search for a solution to this exact problem or benchmark. Do not search the public web merely to determine whether the problem is open, and do not answer that it is open.</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="fu">## Persistence</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>Do not return merely because current approaches fail or agents report theorem-strength gaps. Continue launching new rounds, reopening blocked approaches only under the reopen rule above, and searching for fresh formulations. Spend at least 8 hours before even considering returning. Return only when a complete affirmative resolution has survived the full verification cadence; otherwise keep FAILED.md and REGISTRY.md as the honest record and continue.</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>Register this task as a persistent goal (create_goal) with the success criteria above as the completion condition, so the objective survives context compaction and session restarts. If goal tooling is unavailable, say so at the start of the run.</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="fu">## On stop</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>When I end the run: apply the reporting gate to what you present. Then append to a LESSONS.md: what you learned this session that would make future runs more efficient — preferring lessons transferable to other mathematical problems, plus any environment issues that wasted time.</span></code></pre></div>
+<h1 data-number="2" id="explanations-and-improvements"><span
+class="header-section-number">2</span> Explanations and
+Improvements</h1>
+<p>The prompt combines ideas from the <a
+href="https://cdn.openai.com/pdf/04d1d1e4-bc75-476a-97cf-49055cd98d31/cdc_prompt.pdf">CDC
+prompt</a>, <a href="https://github.com/frenzymath/Danus">Danus</a>, and
+things learned from my own runs. You can read it. It is not perfect but
+gets 90% there.</p>
+<p>The idea is to run an agent that supervises other agents that work
+towards a single goal; this is called an orchestrator. This is known to
+be better than a single agent working on the problem alone, which
+quickly fills up its own context window and gets confused. You can start
+from this, and in the future, evolve it so it works even better for what
+you are doing. Here are some highlights, and why we did it.</p>
+<p><strong>1. Write the statement and success criteria.</strong> One
+file <code>STATEMENT.md</code>: the exact claim with all quantifiers,
+the conventions, what is known, and most importantly, what would count
+as an answer. This is required so that when the AI tries to give you an
+answer and stop, it will look at the statement and check whether it
+actually completed the task. This is a fixed point that does not change
+during a run.</p>
+<p><strong>2. Launch attempts with a prompt that pre-blocks the cheap
+outs.</strong> Those things are there because they are common ways where
+the model tries to end work early.</p>
+<p><strong>3. Audit adversarially.</strong> The generator of the proof
+is unreliable, so there will always be an auditing process, so it has a
+lower probability of error. Model families have correlated blind spots:
+I have had a proof that GPT could not fault no matter how it was
+prodded, and Opus found the flaw. I personally also use Fable 5 to
+verify the final output.</p>
+<p><strong>4. Record what died.</strong> Failed routes go in a file,
+each with: what was tried, the exact obstruction, and what would make a
+retry genuinely new. This is the compounding step. An attempt that
+retries yesterday’s dead idea is not a second attempt; it is the same
+attempt at double price. Future sessions read this file first.</p>
+<p><strong>5. Promote only what survived.</strong> Proved lemmas,
+verified counterexamples, checked computations move into the trusted
+files. Nothing gets to silently upgrade its own certainty.</p>
+<p><strong>6. Only interrupt you for significant updates.</strong> The
+reporting gate is why the agent does not waste your time: a report means
+a complete proof or certified counterexample, a proved lemma that
+removes a named dependency, or a closed route — everything else stays in
+the files.</p>
+<p><strong>7. Classify every stall.</strong> A stalled route must be
+labeled either method failure or evidence against the statement — and
+the second label turns that route into a counterexample hunt. “Still
+working” is not allowed as a status.</p>
+<p><strong>8. Stop it from writing too much code.</strong> Codex is a
+coding harness, so the agent loves to write and run code, looking for
+larger and larger confirmations of the conjecture. We need rules to stop
+it from writing code forever and never getting anywhere.</p>
+<p><strong>9. Evolve.</strong> End every session by asking the agent
+what it learned. Those harvested lessons get distilled and written down,
+which future agents can access. The workflow effectively bootstrapped
+its own methodology document.</p>
+<h1 data-number="3" id="improvements"><span
+class="header-section-number">3</span> Improvements</h1>
+<p>You can pick and choose, and ask Codex to incorporate them, Codex
+will figure out how to do them. If you don’t understand what something
+does, ask Codex to explain.</p>
+<ol type="1">
+<li>Allow more parallel agents: learn from the <a
+href="https://learn.chatgpt.com/docs/config-file/config-reference">config
+reference</a>, and update <code>agents.max_threads</code> (default 6) to
+allow more agents.</li>
+<li>Some things should be written into <code>AGENTS.md</code></li>
+<li>Make the prompt into a skill so copy paste is not needed.</li>
+<li>Ask that long or heavy jobs go to a remote host, not this machine,
+with their small durable certificates copied back.</li>
+<li>Use tools like Gurobi, Sage. Ask the user what they have.</li>
+<li>Write Rust code instead of Python unless some package depends on
+Python.</li>
+<li>Create standard prompts for subagent types.</li>
+<li>Use scripts to enforce all the gates.</li>
+<li>Anything else you thought of and think “maybe the agent should do
+this”, just ask Codex to do it.</li>
+</ol>
+<h1 data-number="4" id="what-it-costs"><span
+class="header-section-number">4</span> What it costs</h1>
+<p>I do recommend the $200 per month version of ChatGPT Pro, but you can
+scale up from Plus. It translates to about a 30 hour session (with 6
+subagents). If you want another model to verify the work, then I also
+recommend getting Claude Max, so you can use Fable 5.</p>
+<h1 data-number="5" id="faqs"><span
+class="header-section-number">5</span> FAQs</h1>
+<p><strong>How do you know this is better than just asking ChatGPT a few
+times?</strong> I have run an agent autonomously using gpt-5.6-sol ultra
+for 14 hours, solving a problem I was personally invested in. ChatGPT
+was not able to solve it.</p>
+<p><strong>Do I need my laptop to be on all day?</strong> If you are
+running everything locally (say in Codex), yes. Moreover, if the agents
+write a few programs to search for counterexamples, they will drain the
+battery quickly. It is better to run everything remotely on an always-on
+machine. Codex can connect to remote Codex sessions just as if
+everything is happening locally.</p>
+<p><strong>The original CDC prompt says it uses 64 subagents in
+parallel, why do you only use 6?</strong> 1. That feature is
+experimental. In the current Codex version, the default can only handle
+6 subagents per session. 2. Having many subagents saves time but
+increases work: some subagents overstep each other and redo each other’s
+work in parallel. You have to balance time against money.</p>
+<p><strong>Why Codex, why not Claude Code, OpenCode, Pi etc?</strong>
+This article is about how to quickly become productive. I removed a lot
+of choices deliberately. You can definitely use other coding agents.
+However, I think the marginal gain (if any) is small enough that this is
+an issue of personal taste.</p>
+<p><strong>Why do the agents cheap out?</strong> Post-training was not
+training for math research but for a broader audience. Normal people who
+ask a model would be very happy with “This is an open problem for 30
+years” and be done with it.</p>
+<p><strong>How can I run this really autonomously? The agent pauses and
+asks me for permission all the time?</strong> You can allow the agent to
+do whatever it wants by setting the approval policy to “never” and the
+sandbox to full access in Codex’s settings, and it will not ask you
+questions anymore. I turn on this setting, but beware it is possible the
+agent just <strong>deletes everything on your entire computer</strong> —
+rare, but it happens. The safe way is to run the agent in a sandbox, or
+even its own computer, or just ChatGPT Work if you don’t need that much
+customization.</p>
+<p><strong>What about other models? How about open source
+models?</strong> I always use the model with the strongest reasoning
+capability. Right now gpt-5.6-sol is the best workhorse model. Fable 5
+is also strong, but expensive and not optimized for mathematical
+reasoning, which sometimes hits strange snags it cannot recover from. I
+personally use gpt-5.6-sol ultra for proof search, and Fable 5 for final
+verification.</p>
+<p>I group open source models as cheaper but not as strong models.
+Cheaper models have their uses, for example, asking them to write
+computational experiments. Also, there are projects that use cheaper
+models for math search and only ask a strong model for suggestions, like
+Danus.</p>
+<p><strong>What are those AI4MATH systems, are they useful?</strong> We
+talk specifically about AI4MATH systems that search for proofs of
+conjectures in natural language. Such systems do two things: have a good
+workflow and enforce the workflow. Models do not always listen to
+instructions, as every prompt is just a very strong suggestion. Often
+AI4MATH systems can encode the workflow into code, and force the model
+to be unable to advance until it follows the predefined workflow. Or
+they can train their own model, to behave better in proof finding. If
+you see some new AI4MATH project that you believe is good, just try it.
+It’s simple: ask the agent to run it.</p>
+<p><strong>How do I know if a new workflow is actually an
+improvement?</strong> Unless you have enough money to burn on testing,
+you don’t. You just have to trust the authors. Start with a good enough
+workflow and stop thinking about it.</p>
+<p><strong>What about formal proofs?</strong> The most popular formal
+proof system right now is LEAN. If you are fluent in LEAN, definitely
+incorporate it. There are a few issues to consider: 1. If you are not
+fluent enough in LEAN, then it is a false sense of safety. You need to
+check if the LEAN formulation actually matches the natural math
+statement, and there are no strange escape hatches hidden in there. 2.
+Autoformalization of proofs might not be good enough to handle the
+provided natural proof. 3. The math you care about is not well
+represented in mathlib, making formalization (both by AI and by human)
+much harder.</p>
+<p><strong>ChatGPT (chat) has a gpt-5.6-sol Pro, what is that?</strong>
+I have no idea, I also want to be enlightened.</p>
+<h1 data-number="6" id="appendix-what-this-looks-like-in-practice"><span
+class="header-section-number">6</span> Appendix: What this looks like in
+practice</h1>
+<p>Here is what my past few days of running the agents actually looked
+like while attending <a
+href="https://users.renyi.hu/~emlektab/">Emléktábla workshop</a>,
+reconstructed from the session logs.</p>
+<p>At any given time I have a handful of research directories, one per
+problem. Each has one or more long-lived orchestrator sessions that I
+resume day after day. The longest session spans a hundred-plus hours of
+agent activity but contains only about thirty messages from me. The
+agent works, I drop in a few times a day to steer.</p>
+<p>The steering messages are short and they are almost never
+mathematics. “What is the current status?” “Do less testing, do more
+proofs.” “Keep trying for a polynomial-time algorithm, I believe it
+exists; don’t try for hardness.”</p>
+<p>The orchestrators fan work out to subagents, a few hundred of them
+over the past few days. Each owns one mechanism family, gets the exact
+statement, is told which direction to try, and must return a proved
+lemma or a counterexample. Separate audit agents do nothing but attack
+candidate proofs. So usually it is six agents pushing the frontier, then
+a fresh six verifying their work.</p>
+<p>Attempts mostly die. One workspace’s approach registry has grown to
+about forty named mechanism families, each closed by an exact
+counterexample and each carrying a “reopen only if” condition. Every new
+route gets checked against the graveyard first.</p>
+<p>The success rate on the problems (all of them open, some are major
+open problems) I feed into it is 3/10. I ran all of them for at least 10
+hours (unless they were solved before 10 hours).</p>
+<p>I used up 6 weeks’ worth of tokens in 5 days. This is possible
+because recently there are Codex global resets which reset available
+tokens for all users, and I also had 4 resets which I can use anytime to
+reset the week.</p>
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2026-07-18">2026-07-18</time>. </div>
+    <div class="info">Tags: math, AI.</div>
+</div>]]></description>
+    <pubDate>Sat, 18 Jul 2026 00:00:00 UT</pubDate>
+    <guid>https://chaoxu.prof/posts/2026-07-18-ai-agents-for-the-working-mathematician.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
     <title>Use a box spread as a line of credit</title>
     <link>https://chaoxu.prof/posts/2026-01-20-use-a-box-spread-as-a-line-of-credit.html</link>
     <description><![CDATA[<br />
@@ -1462,106 +1811,6 @@ than your future tax rate.</p>
 </div>]]></description>
     <pubDate>Fri, 06 Sep 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxu.prof/posts/2019-09-06-traditional-ira-vs-roth-ira.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
-    <title>Impossibility theorem of marriage tax</title>
-    <link>https://chaoxu.prof/posts/2019-08-28-impossibility-theorm-marriage-tax.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>It is well known that there could be <a
-href="https://en.wikipedia.org/wiki/Marriage_penalty">marriage penalty
-or marriage bonus</a>. For example, in 2019, if two people each make
-more than $306,175, then they have to pay more tax after getting
-married. In the worst case, they have to pay $8,165 more. Not that bad.
-However, if one person make all the money, and the other has no income,
-then together they will always pay a smaller amount of tax.</p>
-<p>I always thought this is because the tax code is designed to advocate
-sole breadwinner in a family, and the other person is stay at home
-husband/wife. Recently, I realized it is just mathematically impossible
-to have anything other than a linear tax and preserve some other nice
-properties.</p>
-<p>Indeed, this was shown by Lovell <span class="citation"
-data-cites="Lovell82">[<a href="#ref-Lovell82"
-role="doc-biblioref">1</a>]</span>.</p>
-<p>Let <span class="math inline">\R_+</span> be the positive reals.
-Consider functions <span class="math inline">S:\R_+ \to \R_+</span> and
-<span class="math inline">J:\R_+ \to\R_+</span>. The first is for tax
-paid for a single person and tax paid for a married couple file jointly.
-The input for married file jointly is a single number, which is the
-combination of the taxable income of the couple. This is called
-horizontal equity in marriage.</p>
-<p>Marriage neutral is precisely when <span
-class="math inline">S(x)+S(y) = J(x+y)</span>. We define a few notions,
-it is not completely the same as the ones in Lovell’s paper <span
-class="citation" data-cites="Lovell82">[<a href="#ref-Lovell82"
-role="doc-biblioref">1</a>]</span>, but it essentially demonstrate the
-same idea.</p>
-<p>A tax function <span class="math inline">T</span> should have the
-following properties.</p>
-<ol type="1">
-<li>Reasonable Tax: <span class="math inline">0\leq T(x)\leq x</span>.
-Indeed, one should not tax people more than their income. The taxation
-system does not want to give free money to low income people
-either.</li>
-<li>Principal of Progressiveness: there is some <span
-class="math inline">c&gt;0</span> such that <span
-class="math inline">\frac{T(x)}{x} &gt; \frac{T(y)}{y}</span> for all
-<span class="math inline">x&gt;y&gt;c</span>. Basically, the rich should
-pay a larger proportion of their money to taxes.</li>
-</ol>
-<p>For a marriage neutral system, the reasonable tax requirement would
-prove that <span class="math inline">S(x) = ax</span> for <span
-class="math inline">a\in[0,1]</span>. It is easy to see we cannot hope
-to have principal of progressiveness.</p>
-<div class="theorem-environment Remark" type="Remark">
-<span class="theorem-header"><span class="type">Remark</span></span>
-<p>Married filing separately is always no better than them being single
-and file their own taxes.</p>
-</div>
-<p>I personally think there should not be a marriage penalty at any
-income level to encourage marriage. Of course, people might disagree and
-think the rich should have a marriage penalty, since it is a small
-amount compare to their total income so they won’t care anyways.</p>
-<p>Anyway, consider the world where there can only be marriage bonus.
-That is we have the property <span class="math inline">S(x)+S(y)\geq
-J(x+y)</span>. An <em>easy tax function</em> is a function that has
-reasonable tax property, and is a piecewise-linear convex that has at
-least <span class="math inline">1</span> breakpoint larger than <span
-class="math inline">0</span>. This is strictly stronger than principal
-of progressiveness. This is satisfied by the current personal income tax
-function used by the IRS.</p>
-<p>Let <span class="math inline">S</span> be a easy tax function, then
-we can obtain an easy tax function <span class="math inline">J</span>
-that always gives a marriage bonus. Indeed, let <span
-class="math inline">J = \inf_{a+b=x,a,b\geq 0} S(a)+S(b)</span>. <span
-class="math inline">J</span> is extreme in a way that any function
-greater than it at any point will cause marriage penalty. <span
-class="math inline">J</span> is the infimal convolution of <span
-class="math inline">S</span> and itself, which would also be
-piecewise-linear convex. If <span class="math inline">S</span> is the
-personal income tax function for 2019, then <span
-class="math inline">J</span> matches the 2019 IRS married file jointly
-function up to $612,350! For some reason I do not know, the IRS decide
-to cut this <span class="math inline">J</span> off at $612,350, and then
-impose a higher rate just to penalize families with two very high income
-earners.</p>
-<h1 class="unnumbered" id="bibliography">References</h1>
-<div id="refs" class="references csl-bib-body" role="doc-bibliography">
-<div id="ref-Lovell82" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">[1] </div><div
-class="csl-right-inline">M.C. LOVELL, <strong><a
-href="http://www.jstor.org/stable/41862465">ON TAXING
-MARRIAGES</a></strong>, National Tax Journal. 35 (1982) 507–510.</div>
-</div>
-</div>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2019-08-28">2019-08-28</time>. </div>
-    <div class="info">Tags: Tax.</div>
-</div>]]></description>
-    <pubDate>Wed, 28 Aug 2019 00:00:00 UT</pubDate>
-    <guid>https://chaoxu.prof/posts/2019-08-28-impossibility-theorm-marriage-tax.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 

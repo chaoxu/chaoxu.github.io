@@ -82,11 +82,11 @@ matrix decomposition revisited</strong>, <span>École Normale Supérieure
 de Lyon</span>, 2006.</div>
 </div>
 </div>
-<section class="footnotes footnotes-end-of-document"
+<section id="footnotes" class="footnotes footnotes-end-of-document"
 role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>我还在下面留言，表示 <span
+<li id="fn1"><p>我还在下面留言，表示 <span
 class="math inline">O(n^\omega)</span>的算法应该存在。不过那时我没有意识到嵌套分割（nested
 dissection）只能用在满秩矩阵。而且在有限域里，只有随机算法存在。<a
 href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
