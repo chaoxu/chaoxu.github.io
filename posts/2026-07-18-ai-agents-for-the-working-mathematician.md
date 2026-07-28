@@ -114,6 +114,8 @@ When I end the run: apply the reporting gate to what you present. Then append to
 
 The prompt combines ideas from the [CDC prompt](https://cdn.openai.com/pdf/04d1d1e4-bc75-476a-97cf-49055cd98d31/cdc_prompt.pdf), [Danus](https://github.com/frenzymath/Danus), and things learned from my own runs. You can read it. It is not perfect but gets 90% there.
 
+The prompt is only the beginning of your exploration. The prompt should evolve (under your direction) and become closer to something that matches your workflow, and maybe become even smarter. Here I describe how this prompt came about, and things you might want to do to improve it.
+
 The idea is to run an agent that supervises other agents that work towards a single goal; this is called an orchestrator. This is known to be better than a single agent working on the problem alone, which quickly fills up its own context window and gets confused. You can start from this, and in the future, evolve it so it works even better for what you are doing. Here are some highlights, and why we did it.
 
 **1. Write the statement and success criteria.** One file `STATEMENT.md`: the exact claim with all quantifiers, the conventions, what is known, and most importantly, what would count as an answer. This is required so that when the AI tries to give you an answer and stop, it will look at the statement and check whether it actually completed the task. This is a fixed point that does not change during a run.
@@ -201,7 +203,7 @@ I have no idea, I also want to be enlightened.
 
 # Appendix: What this looks like in practice
 
-Here is what my past few days of running the agents actually looked like while attending [Emléktábla workshop](https://users.renyi.hu/~emlektab/), reconstructed from the session logs.
+Here is what my past few days of running the agents actually looked like, reconstructed from the session logs.
 
 At any given time I have a handful of research directories, one per problem. Each has one or more long-lived orchestrator sessions that I resume day after day. The longest session spans a hundred-plus hours of agent activity but contains only about thirty messages from me. The agent works, I drop in a few times a day to steer.
 
