@@ -199,5 +199,5 @@ This is the exact same problem described on section 5 of [@Bein2005455]. It can 
 
 # Update
 
-We did some [more investigation into this problem](bottleneck-k-link-path). 
+We did some [more investigation into this problem](2019-01-31-bottleneck-k-link-path.html). 
 
