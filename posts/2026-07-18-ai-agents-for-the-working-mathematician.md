@@ -36,6 +36,8 @@ Step by step on how to do it.
 2. Set the model to the highest available, currently gpt-5.6-sol ultra.
 3. Replace `[STATEMENT]` in the prompt below with your exact claim — all quantifiers, your conventions, what is known, and what counts as an answer — then use it on a conjecture you always wanted to solve.
 
+*Prompt updated 2026-08-02: removed the time floor (the completion condition decides when the run ends), failed audit verdicts now stick to the exact version, new approach families get a cheap kill-check before agents are assigned, and LESSONS.md became PROCESS_LESSONS.md — process lessons only, so mathematical claims cannot hide there.*
+
 ```markdown
 Current task statement
 
@@ -77,6 +79,7 @@ Use subagents aggressively and dynamically, at most 6 concurrent. Work in waves:
 - Group approaches in REGISTRY.md by the mathematical mechanism and by their terminal missing lemma, not by terminology. If several agents converge to one family, redirect the surplus toward underexplored formulations.
 - A route that ends at a missing lemma as strong as the original conjecture is blocked, not "one lemma away." Record it in FAILED.md. Reopen a blocked route only for a materially new mechanism, invariant, or construction, and say in REGISTRY.md what is new.
 - Before starting any route, check FAILED.md and state either: "no close prior route" or "closest prior route is X; this differs materially because of <new lemma / source / witness / certificate / scope>."
+- Before assigning agents to a new approach family, spend one fresh agent trying to kill it first: check the smallest instance, and adversarially test any claimed source the approach builds on. Most families die at this step for the price of one agent.
 - Require every agent to return a proved lemma, an explicit construction, or a counterexample. Reject status reports, vague optimism, and claims that an unproved global compatibility statement is routine.
 
 ## Stalled routes
@@ -85,7 +88,7 @@ When a route stalls, classify it explicitly in REGISTRY.md as either (a) method 
 
 ## Verification cadence
 
-Every candidate proof gets, in order: one focused hostile audit round (a subagent instructed to refute it: find any gap, unsupported claim, quantifier slip, or misapplied citation, and be skeptical), then one independent end-to-end reconstruction by a fresh agent that has not seen the proof, working only from the statement and the claimed key ideas. Only after both does the label advance to verifier-backed. Do not re-audit after prose-only edits; re-audit only when the mathematical content changes. Final candidate results should additionally be checked by a model from a different family before being presented as the answer.
+Every candidate proof or refutation gets, in order: one focused hostile audit round (a subagent instructed to refute it: find any gap, unsupported claim, quantifier slip, or misapplied citation, and be skeptical), then one independent end-to-end reconstruction by a fresh agent that has not seen the proof, working only from the statement and the claimed key ideas. Only after both does the label advance to verifier-backed. A failed audit sticks to that exact version: address the specific objection or retract the claim — never resubmit an unchanged or cosmetically edited proof to a fresh auditor. Audit claimed counterexamples and impossibility conclusions with the same hostility as proofs; a wrong refutation closes a route that was alive. Do not re-audit after prose-only edits; re-audit only when the mathematical content changes. Final candidate results should additionally be checked by a model from a different family before being presented as the answer.
 
 ## Reporting gate
 
@@ -101,13 +104,13 @@ Public search may be used only for ordinary mathematical background or standard 
 
 ## Persistence
 
-Do not return merely because current approaches fail or agents report theorem-strength gaps. Continue launching new rounds, reopening blocked approaches only under the reopen rule above, and searching for fresh formulations. Spend at least 8 hours before even considering returning. Return only when a complete affirmative resolution has survived the full verification cadence; otherwise keep FAILED.md and REGISTRY.md as the honest record and continue.
+Do not return merely because current approaches fail or agents report theorem-strength gaps. Continue launching new rounds, reopening blocked approaches only under the reopen rule above, and searching for fresh formulations. There is no time budget: the completion condition, not the clock, decides when the run ends. Return only when a complete affirmative resolution has survived the full verification cadence; otherwise keep FAILED.md and REGISTRY.md as the honest record and continue.
 
 Register this task as a persistent goal (create_goal) with the success criteria above as the completion condition, so the objective survives context compaction and session restarts. If goal tooling is unavailable, say so at the start of the run.
 
 ## On stop
 
-When I end the run: apply the reporting gate to what you present. Then append to a LESSONS.md: what you learned this session that would make future runs more efficient — preferring lessons transferable to other mathematical problems, plus any environment issues that wasted time.
+When I end the run: apply the reporting gate to what you present. Then append to a PROCESS_LESSONS.md: what you learned this session that would make future runs more efficient — preferring lessons transferable to other mathematical problems, plus any environment issues that wasted time. Process lessons only, never mathematical claims — the name is the rule; math belongs in the other files at its earned label.
 ```
 
 # Explanations and Improvements
