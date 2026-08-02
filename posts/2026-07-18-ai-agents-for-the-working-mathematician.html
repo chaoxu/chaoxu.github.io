@@ -117,6 +117,11 @@ claim — all quantifiers, your conventions, what is known, and what
 counts as an answer — then use it on a conjecture you always wanted to
 solve.</li>
 </ol>
+<p><em>Prompt updated 2026-08-02: removed the time floor (the completion
+condition decides when the run ends), failed audit verdicts now stick to
+the exact version, new approach families get a cheap kill-check before
+agents are assigned, and LESSONS.md became PROCESS_LESSONS.md — process
+lessons only, so mathematical claims cannot hide there.</em></p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Current task statement</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -158,37 +163,38 @@ class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Group approaches in REGISTRY.md by the mathematical mechanism and by their terminal missing lemma, not by terminology. If several agents converge to one family, redirect the surplus toward underexplored formulations.</span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>A route that ends at a missing lemma as strong as the original conjecture is blocked, not &quot;one lemma away.&quot; Record it in FAILED.md. Reopen a blocked route only for a materially new mechanism, invariant, or construction, and say in REGISTRY.md what is new.</span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Before starting any route, check FAILED.md and state either: &quot;no close prior route&quot; or &quot;closest prior route is X; this differs materially because of <span class="kw">&lt;new</span> <span class="er">lemma</span> <span class="er">/</span> <span class="er">source</span> <span class="er">/</span> <span class="er">witness</span> <span class="er">/</span> <span class="er">certificate</span> <span class="er">/</span> <span class="er">scope</span><span class="kw">&gt;</span>.&quot;</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Require every agent to return a proved lemma, an explicit construction, or a counterexample. Reject status reports, vague optimism, and claims that an unproved global compatibility statement is routine.</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## Stalled routes</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>When a route stalls, classify it explicitly in REGISTRY.md as either (a) method failure or (b) evidence against the target statement. If (b), redirect part of the effort of that family to counterexample search. Every stalled route must carry one of these two classifications; &quot;still working&quot; is not a classification.</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## Verification cadence</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>Every candidate proof gets, in order: one focused hostile audit round (a subagent instructed to refute it: find any gap, unsupported claim, quantifier slip, or misapplied citation, and be skeptical), then one independent end-to-end reconstruction by a fresh agent that has not seen the proof, working only from the statement and the claimed key ideas. Only after both does the label advance to verifier-backed. Do not re-audit after prose-only edits; re-audit only when the mathematical content changes. Final candidate results should additionally be checked by a model from a different family before being presented as the answer.</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reporting gate</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>Report a result to me only on a significant update: a complete proof or certified counterexample; a proved lemma that removes a named dependency; a minimal obstruction that closes a route; or a strictly stronger or simpler theorem with proof. New notation, restructuring, another finite computation, or a reduction to a theorem-strength lemma is not significant and goes in the files, not in a report.</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## Computation rules</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>Only write programs when essential; most work here should be proofs. When a computation is justified, it is a named finite question whose output is a small witness, certificate, or table. Never run computation through inline stdin. Every run gets a named source file, the approach-family ID it serves, a timeout, a log, and an output location, recorded in REGISTRY.md. A computation can refute a lemma or discover a certificate; it cannot prove an unbounded theorem — preserve the smallest exact certificate and then prove the resulting claim.</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="fu">## Web policy</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>Public search may be used only for ordinary mathematical background or standard named theorems, not to search for a solution to this exact problem or benchmark. Do not search the public web merely to determine whether the problem is open, and do not answer that it is open.</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="fu">## Persistence</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>Do not return merely because current approaches fail or agents report theorem-strength gaps. Continue launching new rounds, reopening blocked approaches only under the reopen rule above, and searching for fresh formulations. Spend at least 8 hours before even considering returning. Return only when a complete affirmative resolution has survived the full verification cadence; otherwise keep FAILED.md and REGISTRY.md as the honest record and continue.</span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>Register this task as a persistent goal (create_goal) with the success criteria above as the completion condition, so the objective survives context compaction and session restarts. If goal tooling is unavailable, say so at the start of the run.</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="fu">## On stop</span></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>When I end the run: apply the reporting gate to what you present. Then append to a LESSONS.md: what you learned this session that would make future runs more efficient — preferring lessons transferable to other mathematical problems, plus any environment issues that wasted time.</span></code></pre></div>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Before assigning agents to a new approach family, spend one fresh agent trying to kill it first: check the smallest instance, and adversarially test any claimed source the approach builds on. Most families die at this step for the price of one agent.</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Require every agent to return a proved lemma, an explicit construction, or a counterexample. Reject status reports, vague optimism, and claims that an unproved global compatibility statement is routine.</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## Stalled routes</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>When a route stalls, classify it explicitly in REGISTRY.md as either (a) method failure or (b) evidence against the target statement. If (b), redirect part of the effort of that family to counterexample search. Every stalled route must carry one of these two classifications; &quot;still working&quot; is not a classification.</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## Verification cadence</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>Every candidate proof or refutation gets, in order: one focused hostile audit round (a subagent instructed to refute it: find any gap, unsupported claim, quantifier slip, or misapplied citation, and be skeptical), then one independent end-to-end reconstruction by a fresh agent that has not seen the proof, working only from the statement and the claimed key ideas. Only after both does the label advance to verifier-backed. A failed audit sticks to that exact version: address the specific objection or retract the claim — never resubmit an unchanged or cosmetically edited proof to a fresh auditor. Audit claimed counterexamples and impossibility conclusions with the same hostility as proofs; a wrong refutation closes a route that was alive. Do not re-audit after prose-only edits; re-audit only when the mathematical content changes. Final candidate results should additionally be checked by a model from a different family before being presented as the answer.</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reporting gate</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>Report a result to me only on a significant update: a complete proof or certified counterexample; a proved lemma that removes a named dependency; a minimal obstruction that closes a route; or a strictly stronger or simpler theorem with proof. New notation, restructuring, another finite computation, or a reduction to a theorem-strength lemma is not significant and goes in the files, not in a report.</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="fu">## Computation rules</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>Only write programs when essential; most work here should be proofs. When a computation is justified, it is a named finite question whose output is a small witness, certificate, or table. Never run computation through inline stdin. Every run gets a named source file, the approach-family ID it serves, a timeout, a log, and an output location, recorded in REGISTRY.md. A computation can refute a lemma or discover a certificate; it cannot prove an unbounded theorem — preserve the smallest exact certificate and then prove the resulting claim.</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="fu">## Web policy</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>Public search may be used only for ordinary mathematical background or standard named theorems, not to search for a solution to this exact problem or benchmark. Do not search the public web merely to determine whether the problem is open, and do not answer that it is open.</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="fu">## Persistence</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>Do not return merely because current approaches fail or agents report theorem-strength gaps. Continue launching new rounds, reopening blocked approaches only under the reopen rule above, and searching for fresh formulations. There is no time budget: the completion condition, not the clock, decides when the run ends. Return only when a complete affirmative resolution has survived the full verification cadence; otherwise keep FAILED.md and REGISTRY.md as the honest record and continue.</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>Register this task as a persistent goal (create_goal) with the success criteria above as the completion condition, so the objective survives context compaction and session restarts. If goal tooling is unavailable, say so at the start of the run.</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="fu">## On stop</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>When I end the run: apply the reporting gate to what you present. Then append to a PROCESS_LESSONS.md: what you learned this session that would make future runs more efficient — preferring lessons transferable to other mathematical problems, plus any environment issues that wasted time. Process lessons only, never mathematical claims — the name is the rule; math belongs in the other files at its earned label.</span></code></pre></div>
 <h1 data-number="2" id="explanations-and-improvements"><span
 class="header-section-number">2</span> Explanations and
 Improvements</h1>
