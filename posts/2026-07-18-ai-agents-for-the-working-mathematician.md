@@ -9,7 +9,7 @@ Most working mathematicians I talk to or observe have the same relationship with
 
 This opinion was formed by mathematicians worldwide through long and brutal ChatGPT sessions: read the latest output, send "keep going", wait for a response, repeat until the entire afternoon is wasted. If the opinion were true, then asking ChatGPT a few times would be the optimal way of using AI to do math — and to be fair, even that is occasionally strong enough to solve real open problems.
 
-But the opinion is **wrong** (see FAQ). You can use a system that is far more capable, with a much higher chance of success than the standard opinion allows.
+But the opinion is **wrong**. You can use a system that is far more capable, with a much higher chance of success than the standard opinion allows.
 
 Specifically, you can have an autonomous agent that keeps bashing on a conjecture for hours: it keeps track of itself, learns from its mistakes, does not waste its time retrying something already tried, does not waste your time with long wrong proofs, and you can still influence its direction.
 
@@ -117,9 +117,9 @@ When I end the run: apply the reporting gate to what you present. Then append to
 
 The prompt combines ideas from the [CDC prompt](https://cdn.openai.com/pdf/04d1d1e4-bc75-476a-97cf-49055cd98d31/cdc_prompt.pdf), [Danus](https://github.com/frenzymath/Danus), and things learned from my own runs. You can read it. It is not perfect but gets 90% there.
 
-The prompt is only the beginning of your exploration. The prompt should evolve (under your direction) and become closer to something that matches your workflow, and maybe become even smarter. Here I describe how this prompt came about, and things you might want to do to improve it.
+The prompt is **only the beginning** of your exploration. The prompt should evolve (under your direction) and become closer to something that matches your workflow, and maybe become even smarter. Here I describe how this prompt came about, and things you might want to do to improve it.
 
-The idea is to run an agent that supervises other agents that work towards a single goal; this is called an orchestrator. This is known to be better than a single agent working on the problem alone, which quickly fills up its own context window and gets confused. You can start from this, and in the future, evolve it so it works even better for what you are doing. Here are some highlights, and why we did it.
+The idea is to run an agent that supervises other agents that work towards a single goal; this is called an orchestrator. This is known to be better than a single agent working on the problem alone, which quickly fills up its own context window and gets confused. Here are some highlights, and why we did it.
 
 **1. Write the statement and success criteria.** One file `STATEMENT.md`: the exact claim with all quantifiers, the conventions, what is known, and most importantly, what would count as an answer. This is required so that when the AI tries to give you an answer and stop, it will look at the statement and check whether it actually completed the task. This is a fixed point that does not change during a run.
 
@@ -131,7 +131,7 @@ The idea is to run an agent that supervises other agents that work towards a sin
 
 **5. Promote only what survived.** Proved lemmas, verified counterexamples, checked computations move into the trusted files. Nothing gets to silently upgrade its own certainty.
 
-**6. Only interrupt you for significant updates.** The reporting gate is why the agent does not waste your time: a report means a complete proof or certified counterexample, a proved lemma that removes a named dependency, or a closed route — everything else stays in the files.
+**6. Only interrupt you for significant updates.** The reporting gate is why the agent does not waste your time: a report means a complete proof or certified counterexample — everything else stays in the files.
 
 **7. Classify every stall.** A stalled route must be labeled either method failure or evidence against the statement — and the second label turns that route into a counterexample hunt. "Still working" is not allowed as a status.
 
@@ -152,6 +152,7 @@ You can pick and choose, and ask Codex to incorporate them, Codex will figure ou
 7. Create standard prompts for subagent types.
 8. Use scripts to enforce all the gates.
 9. Anything else you thought of and think "maybe the agent should do this", just ask Codex to do it.
+10. Create your own harness (for example, using [Pi](https://pi.dev/)), so you have even more control.
 
 # What it costs
 
