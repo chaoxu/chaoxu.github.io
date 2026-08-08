@@ -360,6 +360,19 @@ hours (unless they were solved before 10 hours).</p>
 because recently there are Codex global resets which reset available
 tokens for all users, and I also had 4 resets which I can use anytime to
 reset the week.</p>
+<h1 data-number="7" id="citing-this-article"><span
+class="header-section-number">7</span> Citing this article</h1>
+<p>If this method helped your research, especially if the agent solved a
+problem that chatting with ChatGPT could not, cite this article in the
+resulting paper so more mathematicians find the method:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">@misc</span>{<span class="ot">xu2026agents</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span>       = {Chao Xu},</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span>        = {AI Agents for the Working Mathematician},</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span>         = {2026},</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">month</span>        = <span class="st">jul</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">howpublished</span> = {<span class="ch">\url</span>{https://chaoxu.prof/posts/2026-07-18-ai-agents-for-the-working-mathematician.html}}</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div class="hide-on-print">
     <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2026-07-18">2026-07-18</time>. </div>
