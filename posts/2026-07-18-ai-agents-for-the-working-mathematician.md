@@ -202,7 +202,7 @@ The most popular formal proof system right now is LEAN. If you are fluent in LEA
 3. The math you care about is not well represented in mathlib, making formalization (both by AI and by human) much harder.
 
 **ChatGPT (chat) has a gpt-5.6-sol Pro, what is that?**
-I have no idea, I also want to be enlightened.
+Pro is not an effort setting — it is itself a harness. It runs the model for a long time before answering, and its one-shot ability is likely stronger than gpt-5.6-sol at max effort. You cannot select it in Codex.
 
 # Appendix: What this looks like in practice
 
