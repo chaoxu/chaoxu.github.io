@@ -219,3 +219,18 @@ Attempts mostly die. One workspace's approach registry has grown to about forty 
 The success rate on the problems (all of them open, some are major open problems) I feed into it is 3/10. I ran all of them for at least 10 hours (unless they were solved before 10 hours).
 
 I used up 6 weeks' worth of tokens in 5 days. This is possible because recently there are Codex global resets which reset available tokens for all users, and I also had 4 resets which I can use anytime to reset the week.
+
+
+# Citing this article
+
+If this method helped your research, especially if the agent solved a problem that chatting with ChatGPT could not, cite this article in the resulting paper so more mathematicians find the method:
+
+```bibtex
+@misc{xu2026agents,
+  author       = {Chao Xu},
+  title        = {AI Agents for the Working Mathematician},
+  year         = {2026},
+  month        = jul,
+  howpublished = {\url{https://chaoxu.prof/posts/2026-07-18-ai-agents-for-the-working-mathematician.html}}
+}
+```
