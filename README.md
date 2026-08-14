@@ -22,3 +22,6 @@ title: README
 
 - I made an [syntax highlighting file](https://gist.github.com/chaoxu/195ce33124f384a2f4e4) for sublime 3, so in Markdown it can also highlight latex codes.
 
+## KB-backed pages
+
+`pages/math-harness.md` is generated from the canonical `~/kb/notes/essays/math-harness.md`. Edit the KB note, run `python3 sync-kb-math-harness.py`, commit and push the generated page on `develop`, then run `./push.sh` to update its stable URL.
