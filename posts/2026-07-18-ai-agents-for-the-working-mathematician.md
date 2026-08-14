@@ -38,6 +38,8 @@ Step by step on how to do it.
 
 *Prompt updated 2026-08-02: removed the time floor (the completion condition decides when the run ends), failed audit verdicts now stick to the exact version, new approach families get a cheap kill-check before agents are assigned, and LESSONS.md became PROCESS_LESSONS.md — process lessons only, so mathematical claims cannot hide there.*
 
+*Prompt updated 2026-08-14: restored multi-round route diversity and delayed cross-pollination from the CDC prompt, made root-agent synthesis and stop handoffs explicit, separated hostile audit from blind reconstruction, and corrected proof-or-counterexample wording that was too specific to CDC.*
+
 ```markdown
 Current task statement
 
@@ -45,58 +47,78 @@ Current task statement
 
 ## Success criteria
 
-Partial progress does not count unless it implies exactly the resolution above. In particular, proofs for special classes, reductions to another unproved conjecture, computational verification through any fixed size, and candidate counterexamples without a complete nonexistence certificate are insufficient. If the statement above is ambiguous about what counts as an answer, ask before starting; never resolve ambiguity silently.
+Partial progress does not count unless it implies exactly the resolution above. In particular, proofs for special classes, reductions to another unproved conjecture, computational verification through any fixed size, and candidate counterexamples without a complete proof that they satisfy the hypotheses and violate the conclusion are insufficient. If the statement above is ambiguous about what counts as an answer, ask before starting; never resolve ambiguity silently.
 
-## Durable state — create these files before searching
+## Durable state — create these files and directories before searching
 
-- STATEMENT.md — the exact statement, conventions, and success criteria. Fixed for the whole run; never edit it to fit a result.
-- REGISTRY.md — one row per approach family: family name, exact claim attempted, exact remaining gap, smallest known obstruction, next decisive test, status.
-- FAILED.md — every closed route: what was tried, the exact obstruction, the evidence for it, and what would make a retry materially new.
+- STATEMENT.md — the exact statement, conventions, edge cases, and success criteria. Fixed for the whole run; never edit it to fit a result.
+- RUN_STATE.md — campaign state: running, paused, cancelled, or completed; the latest user directive; the persistent-goal identifier and state; and the baseline revisions used for independent search.
+- AUDIT_CHECKLIST.md — a revision-numbered, append-only list of problem-specific failure modes and edge-case checks. Give every item a stable ID and record its source route.
+- REGISTRY.md — one row per approach family: family name, exact claim attempted, exact remaining gap, smallest known obstruction, next decisive test, independent-wave count, maturity, dependencies, exact evidence links, stall classification, and state: active, paused, blocked, or closed.
+- ROUTES/ — one directory per approach family containing its versioned briefs and search-agent deliverables.
+- FAILED.md — every blocked or closed route: what was tried, the exact obstruction, the evidence for it, and what would make a retry materially new.
+- CANDIDATES/ — immutable, versioned candidate proofs, refutations, route-closing obstructions, and their pre-audit reconstruction briefs. Any mathematical edit creates a new version; never overwrite an audited version.
+- AUDITS/ — immutable leakage, audit, reconstruction, and comparison records, each naming the exact candidate and brief versions and every input it saw.
+- EVIDENCE/ — versioned computation sources, logs, outputs, witnesses, and certificates, each linked to its approach family and any candidate it supports.
 - PROVED.md — promoted results only, each with its status label and proof or certificate.
+- PROCESS_LESSONS.md — transferable process lessons and environment failures only; never mathematical claims.
 
-All mathematical work products land in these files, not only in conversation. After any context compaction, re-read these files before continuing; they are the memory, the conversation is not.
+All mathematical work products land in these files and directories, not only in conversation. After context compaction, the root re-reads the full durable state, each search agent re-reads only its authorized route bundle, and every verification role re-reads only its explicitly authorized input bundle. These artifacts are the memory; the conversation is not.
 
 ## Status vocabulary — literal, never inflated
 
 Every claim carries exactly one label, with these exact meanings:
 
-- candidate — produced by an agent; no checks yet.
+- candidate — produced but not verifier-backed. Partial, inconclusive, failed, or protocol-only checks do not advance this label.
 - self-audited — re-checked only by its own author or context. For building on, this counts the same as candidate.
-- verifier-backed — survived both steps of the verification cadence below: a hostile audit by a fresh agent that tried to refute it, and an independent end-to-end reconstruction by an agent that never saw the proof.
+- verifier-backed — the exact candidate version whose leakage check, hostile audit, independent reconstruction, and comparison have all passed against their recorded inputs.
 - promoted — verifier-backed and recorded in PROVED.md; later work may cite it, and anything built on it carries at most this label.
-- independently audited — additionally checked from outside the producing model family: a different-family model or a human. Present final answers at this label when possible.
+- independently audited — the exact promoted version was additionally checked by a nonparticipant from outside the producing model family: a different-family model or a human. Present final answers at this label when possible.
+- retracted — a previously checked version was later shown to contain a mathematical failure. It remains in the record but may never be cited as a premise.
 
-If no different-family model is available in this environment, do not simulate independence with another instance of the same family — that is label inflation. Instead deliver the final answer at promoted status, state prominently that the cross-family audit has not run, and list the specific claims an outside model or human referee should check first, in order of risk.
+If no different-family model is available in this environment, do not simulate independence with another instance of the same family — that is label inflation. Instead deliver the final answer at promoted status, state prominently that the cross-family audit has not run, and list the specific claims an outside model or human referee should check first, in order of risk. Unavailability or a protocol failure may leave the result promoted; a substantive mathematical failure from an outside audit immediately retracts that exact version and requires repair or a new candidate. When a version is retracted, recursively retract every version whose claim contract names it as a dependency, remove the affected entries from PROVED.md, and update their approach families in REGISTRY.md.
 
 A claim's label only advances through the verification steps below. A later argument never inherits more certainty than its weakest premise's label. Never call a mismatched case, a global compatibility assertion, or a polynomial recurrence "routine" — those are where proofs hide their hard step.
 
 ## Orchestration
 
-Use subagents aggressively and dynamically, at most 6 concurrent. Work in waves: agents push the frontier, then fresh agents verify what came back. Do not use a fixed assignment such as "N agents for strategy X."
+Use subagents aggressively and dynamically, at most 6 concurrent. A search wave is one batch of search-agent work followed by root synthesis. An independent search wave is one in which a fresh search context receives no other live route's content. Verification and kill-check work do not count as search waves. Do not use a fixed assignment such as "N agents for strategy X."
+
+Before the first independent search wave, record baseline revisions of AUDIT_CHECKLIST.md, FAILED.md, and PROVED.md in RUN_STATE.md.
 
 - Begin with a genuinely diverse portfolio: substantially different formulations, invariants, reductions, algebraic viewpoints, structural inductions, decompositions, embeddings, extremal arguments.
-- Do not tell most agents the currently favored approach; preserve independence during early rounds so they do not converge on the same attractive but incomplete reduction. Agents may be assigned a direction, but never shown another agent's partial proof of it.
+- Do not tell most agents the currently favored approach; preserve independence during early rounds so they do not converge on the same attractive but incomplete reduction. Agents may be assigned a direction, but during this independent phase never show them another agent's partial proof of it.
+- Before maturity, a search agent may read only STATEMENT.md; revision-pinned, route-filtered views of the baseline AUDIT_CHECKLIST.md, FAILED.md, and PROVED.md; any later FAILED.md entry cited in its novelty check; its route brief; and its own route artifacts. The filtered views may include later entries from this same route but must exclude every entry sourced from another live route. It must not inspect other live-route rows, CANDIDATES/, or AUDITS/. The root supplies an explicit input allowlist and exact revisions with each assignment. Exposure to another live route's content invalidates the independent-wave credit.
+- Keep several mathematically incompatible routes alive through at least two independent search waves unless a verifier-backed obstruction closes a route. One independent-wave credit requires a fresh search context with a distinct recorded brief and a non-status mathematical deliverable: a proved lemma, explicit construction, counterexample, or exact obstruction with a decisive next test. A route earns at most one credit per root-synthesized wave; parallel assignments in the same batch share that single credit. Duplicate assignments and bare status reports earn no credit.
+- After a route has two independent-wave credits and its REGISTRY.md row states its exact claim, exact gap, smallest obstruction, next decisive test, dependencies, and evidence links, the root may mark it independently matured. Cross-pollination or combination may occur only between routes that have each matured. An unmatured route's briefs may use only its authorized inputs above; root synthesis may guide its assignments but must not leak content from another live route. After all participating routes pass the gate, the search side — root and search agents — may share status-labelled lemmas, mechanisms, counterexamples, and obstructions, each with its source family, version, and dependencies. Hostile auditors remain isolated from search discussion; reconstruction agents remain proof- and audit-blind.
 - Group approaches in REGISTRY.md by the mathematical mechanism and by their terminal missing lemma, not by terminology. If several agents converge to one family, redirect the surplus toward underexplored formulations.
-- A route that ends at a missing lemma as strong as the original conjecture is blocked, not "one lemma away." Record it in FAILED.md. Reopen a blocked route only for a materially new mechanism, invariant, or construction, and say in REGISTRY.md what is new.
+- At the end of each search wave, the root updates REGISTRY.md, synthesizes consequences across routes without leaking them into unmatured-route briefs, challenges the current favorite, and decides which families to continue, pause, or redirect; it may combine only matured families. It may close a route only when a verifier-backed obstruction is recorded in FAILED.md and linked to its exact evidence version.
+- Before a surviving route earns two independent-wave credits, record a stall as paused and schedule a distinct remaining independent assignment; one agent's failure cannot block the family. After maturity, a route that ends at a missing lemma as strong as the original conjecture is blocked, not "one lemma away." Record it in FAILED.md. A blocked route may reactivate only for a materially new mechanism, invariant, lemma, construction, source, witness, certificate, or scope, recorded in REGISTRY.md. A closed route remains closed only while its closing obstruction remains verifier-backed; if that version is retracted, return the route to paused. A changed mechanism or scope creates a new linked route rather than reopening the old one.
 - Before starting any route, check FAILED.md and state either: "no close prior route" or "closest prior route is X; this differs materially because of <new lemma / source / witness / certificate / scope>."
-- Before assigning agents to a new approach family, spend one fresh agent trying to kill it first: check the smallest instance, and adversarially test any claimed source the approach builds on. Most families die at this step for the price of one agent.
-- Require every agent to return a proved lemma, an explicit construction, or a counterexample. Reject status reports, vague optimism, and claims that an unproved global compatibility statement is routine.
+- Before assigning search agents to a new approach family, spend one fresh agent trying to kill it first: check the smallest instance and adversarially test any claimed source the approach builds on. The kill-check agent's inability to make the route work is inconclusive. A concrete target mismatch, violated hypothesis, circular dependency, or counterexample becomes a candidate route-closing obstruction and must pass the verification cadence before the route closes.
+- Require every search agent to return a proved lemma, an explicit construction, a counterexample, or an exact obstruction with a decisive next test. Require every kill-check, leakage-check, audit, and comparison agent to return an exact version-bound verdict with evidence; a reconstruction agent returns a complete version-bound argument and its dependencies, not a verdict on a candidate it never saw. Reject vague optimism and claims that an unproved global compatibility statement is routine.
 
 ## Stalled routes
 
-When a route stalls, classify it explicitly in REGISTRY.md as either (a) method failure or (b) evidence against the target statement. If (b), redirect part of the effort of that family to counterexample search. Every stalled route must carry one of these two classifications; "still working" is not a classification.
+Use active while a route is assigned, paused while it remains viable but is deprioritized, blocked after maturity when its exact gap has no current mechanism, and closed only when a verifier-backed obstruction rules out the route as stated. When a route stalls, also classify it in REGISTRY.md as either (a) method failure or (b) evidence against the target statement. If (b), redirect part of the effort to refutation search appropriate to the statement's logical form, such as a counterexample or impossibility proof. Every stalled route must carry one of these two classifications; "still working" is not a classification.
 
 ## Verification cadence
 
-Every candidate proof or refutation gets, in order: one focused hostile audit round (a subagent instructed to refute it: find any gap, unsupported claim, quantifier slip, or misapplied citation, and be skeptical), then one independent end-to-end reconstruction by a fresh agent that has not seen the proof, working only from the statement and the claimed key ideas. Only after both does the label advance to verifier-backed. A failed audit sticks to that exact version: address the specific objection or retract the claim — never resubmit an unchanged or cosmetically edited proof to a fresh auditor. Audit claimed counterexamples and impossibility conclusions with the same hostility as proofs; a wrong refutation closes a route that was alive. Do not re-audit after prose-only edits; re-audit only when the mathematical content changes. Final candidate results should additionally be checked by a model from a different family before being presented as the answer.
+Every candidate proof, refutation, or route-closing obstruction enters the cadence as a new immutable version in CANDIDATES/. Freeze with it an exact claim contract: statement, hypotheses, quantifier ranges, object identity, required outputs, and promoted dependencies. Before any audit, also freeze a reconstruction brief containing that contract and at most three one-sentence strategy hints. A hint may name definitions and promoted results; it may not state an unpromoted intermediate claim, ordered derivation step, case split, calculation or equation, witness value, or quotation or paraphrase from the candidate. A fresh leakage checker compares the candidate, contract, and brief; if the brief violates this boundary, replace it with a new version and repeat the check.
+
+1. A fresh hostile auditor sees only STATEMENT.md, the exact claim contract and candidate version, the exact statements of its promoted dependencies, and a named revision of AUDIT_CHECKLIST.md — not search transcripts, REGISTRY.md commentary, or the author's defense. It tries to refute the candidate, explicitly tests every listed edge case and failure mode, checks citations and quantifiers, and checks for circular use of a reformulation equivalent to the target.
+2. In a fresh context with no inherited conversation, an independent reconstruction agent sees only STATEMENT.md, the accepted pre-audit brief and claim contract, and the exact statements of its promoted dependencies — not the candidate, hostile audit, REGISTRY.md, FAILED.md, search transcripts, or other candidate files. It writes a complete argument from scratch.
+3. A fresh comparator sees STATEMENT.md, the claim contract, the exact promoted-dependency statements, the candidate, the reconstruction, and their input manifests. It checks the reconstruction's mathematical correctness; maps every hypothesis, quantified object, dependency, conclusion, and required output between the two arguments; and checks that the reconstruction implements the brief's mechanism. If the reconstruction changes the claim or mechanism, bypasses a disputed step, or relies on a different dependency, save it as a new candidate and start its own cadence; it does not validate the earlier candidate.
+
+Save the leakage verdict and all three verification records in AUDITS/, each bound to its exact inputs. Before promotion, compare the hostile audit's checklist revision with the current revision. If new items were added, a fresh hostile auditor checks the candidate against every added item and saves a supplemental version-bound record in AUDITS/. Only after every check passes does the exact candidate version become verifier-backed. A failed check sticks to that exact version: address the specific objection in a new version or retract the claim — never resubmit an unchanged or cosmetically edited proof to a fresh checker. Every edit to a candidate creates a new version and repeats the cadence. Audit counterexamples and impossibility conclusions with the same hostility as proofs. A refutation may close a live route only after that exact version becomes verifier-backed. Before final presentation, check the same exact promoted version with a nonparticipant from a different model family or a human when one is available; if none is available or the check fails for protocol reasons, deliver at promoted status with the disclosure required above.
 
 ## Reporting gate
 
-Report a result to me only on a significant update: a complete proof or certified counterexample; a proved lemma that removes a named dependency; a minimal obstruction that closes a route; or a strictly stronger or simpler theorem with proof. New notation, restructuring, another finite computation, or a reduction to a theorem-strength lemma is not significant and goes in the files, not in a report.
+Send me an unsolicited progress report only on a significant update: a promoted proof or refutation of the exact statement; a promoted lemma that removes a named dependency; a verifier-backed minimal obstruction that closes a route; or a promoted strictly stronger or simpler theorem. New notation, restructuring, another finite computation, or a reduction to a theorem-strength lemma is not significant and goes in the files, not in a report. This gate controls progress interruptions; it does not permit ending the campaign before the Persistence condition below.
 
 ## Computation rules
 
-Only write programs when essential; most work here should be proofs. When a computation is justified, it is a named finite question whose output is a small witness, certificate, or table. Never run computation through inline stdin. Every run gets a named source file, the approach-family ID it serves, a timeout, a log, and an output location, recorded in REGISTRY.md. A computation can refute a lemma or discover a certificate; it cannot prove an unbounded theorem — preserve the smallest exact certificate and then prove the resulting claim.
+Only write programs when essential; most work here should be proofs. When a computation is justified, it is a named finite question whose output is a small witness, certificate, or table. Never run computation through inline stdin. Every run gets a named source file, the approach-family ID it serves, a timeout, a log, and an output location under EVIDENCE/, recorded in REGISTRY.md. A computation can refute a lemma or discover a certificate; it cannot prove an unbounded theorem — preserve the smallest exact certificate and then prove the resulting claim.
 
 ## Web policy
 
@@ -104,13 +126,13 @@ Public search may be used only for ordinary mathematical background or standard 
 
 ## Persistence
 
-Do not return merely because current approaches fail or agents report theorem-strength gaps. Continue launching new rounds, reopening blocked approaches only under the reopen rule above, and searching for fresh formulations. There is no time budget: the completion condition, not the clock, decides when the run ends. Return only when a complete affirmative resolution has survived the full verification cadence; otherwise keep FAILED.md and REGISTRY.md as the honest record and continue.
+Do not end the campaign merely because current approaches fail or agents report theorem-strength gaps. Continue launching new rounds, reopening routes only under the rule above, and searching for fresh formulations. There is no time budget: the completion condition, not the clock, decides when the run ends. End the campaign only when a complete proof or refutation of the exact statement has reached promoted status, then mark RUN_STATE.md completed; otherwise keep FAILED.md and REGISTRY.md as the honest record and continue.
 
-Register this task as a persistent goal (create_goal) with the success criteria above as the completion condition, so the objective survives context compaction and session restarts. If goal tooling is unavailable, say so at the start of the run.
+Register this task as a persistent goal (create_goal) with "a complete proof or refutation of the exact statement has reached promoted status after the full verification cadence" as the completion condition, so the objective survives context compaction and session restarts. If goal tooling is unavailable, say so at the start of the run.
 
 ## On stop
 
-When I end the run: apply the reporting gate to what you present. Then append to a PROCESS_LESSONS.md: what you learned this session that would make future runs more efficient — preferring lessons transferable to other mathematical problems, plus any environment issues that wasted time. Process lessons only, never mathematical claims — the name is the rule; math belongs in the other files at its earned label.
+An explicit stop, pause, or cancel overrides Persistence immediately. Launch no new work, interrupt outstanding work when the tooling supports it, mark interrupted active routes paused, and record each unreturned assignment as interrupted with no claim; any preserved partial mathematical artifact remains candidate. Reconcile anything already returned into the durable state. On stop or pause, set RUN_STATE.md to paused, leave the goal incomplete, record the directive, and do not resume without an explicit user instruction. On cancel, set RUN_STATE.md to cancelled and cancel or deactivate the goal when supported; otherwise record the cancellation and likewise do not resume. Append to PROCESS_LESSONS.md what would make future runs more efficient — preferring lessons transferable to other mathematical problems, plus any environment issues that wasted time. Process lessons only, never mathematical claims. After the durable handoff is complete, report every maximal rigorously established frontier, its exact remaining gap, the earned status of every supporting claim, and the state of every live approach family, even if the reporting gate would normally keep that material in the files.
 ```
 
 # Explanations and Improvements
@@ -121,23 +143,23 @@ The prompt is **only the beginning** of your exploration. The prompt should evol
 
 The idea is to run an agent that supervises other agents that work towards a single goal; this is called an orchestrator. This is known to be better than a single agent working on the problem alone, which quickly fills up its own context window and gets confused. Here are some highlights, and why we did it.
 
-**1. Write the statement and success criteria.** One file `STATEMENT.md`: the exact claim with all quantifiers, the conventions, what is known, and most importantly, what would count as an answer. This is required so that when the AI tries to give you an answer and stop, it will look at the statement and check whether it actually completed the task. This is a fixed point that does not change during a run.
+**1. Write the statement and success criteria.** `STATEMENT.md` contains the exact claim with all quantifiers, the conventions, and what would count as an answer. It is the fixed point that prevents the target from changing during a run. Newly discovered failure modes go into the append-only audit checklist instead of changing the statement.
 
 **2. Launch attempts with a prompt that pre-blocks the cheap outs.** Those things are there because they are common ways where the model tries to end work early.
 
-**3. Audit adversarially.** The generator of the proof is unreliable, so there will always be an auditing process, so it has a lower probability of error. Model families have correlated blind spots: I have had a proof that GPT could not fault no matter how it was prodded, and Opus found the flaw. I personally also use Fable 5 to verify the final output.
+**3. Audit adversarially.** A hostile auditor sees the frozen candidate and tries to break it. A separate agent reconstructs the argument without seeing the proof or audit, and a comparator checks that the reconstruction did not silently prove something different. Model families have correlated blind spots: I have had a proof that GPT could not fault no matter how it was prodded, and Opus found the flaw. I personally also use Fable 5 to verify the final output.
 
 **4. Record what died.** Failed routes go in a file, each with: what was tried, the exact obstruction, and what would make a retry genuinely new. This is the compounding step. An attempt that retries yesterday's dead idea is not a second attempt; it is the same attempt at double price. Future sessions read this file first.
 
 **5. Promote only what survived.** Proved lemmas, verified counterexamples, checked computations move into the trusted files. Nothing gets to silently upgrade its own certainty.
 
-**6. Only interrupt you for significant updates.** The reporting gate is why the agent does not waste your time: a report means a complete proof or certified counterexample — everything else stays in the files.
+**6. Only interrupt you for significant updates.** A progress report means a promoted resolution, a promoted lemma that removes a named dependency, or a verifier-backed obstruction that closes a route. Lesser movement stays in the files, while an explicit stop still produces a full frontier handoff.
 
 **7. Classify every stall.** A stalled route must be labeled either method failure or evidence against the statement — and the second label turns that route into a counterexample hunt. "Still working" is not allowed as a status.
 
 **8. Stop it from writing too much code.** Codex is a coding harness, so the agent loves to write and run code, looking for larger and larger confirmations of the conjecture. We need rules to stop it from writing code forever and never getting anywhere.
 
-**9. Evolve.** End every session by asking the agent what it learned. Those harvested lessons get distilled and written down, which future agents can access. The workflow effectively bootstrapped its own methodology document.
+**9. Evolve.** On an explicit stop, the agent preserves the exact frontier and writes down transferable process lessons. Future runs inherit those lessons without mixing unverified mathematics into the methodology record.
 
 # Improvements
 
