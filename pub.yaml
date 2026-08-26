@@ -100,6 +100,16 @@ types:
 # conference publications
 
 ---
+id: unimodal-k-median
+title: "[Unimodal-Cost $k$-Median on a Line](https://doi.org/10.4230/LIPIcs.ESA.2026.79)"
+type: conference
+show: []
+year: 2026
+selected: true
+bib: ESA 2026, LIPIcs 388, Article 79
+authors: [Yike Chen, Chao Xu]
+
+---
 id: cart-mae-categorical
 title: Binary Split Categorical Feature with Mean Absolute Error Criteria in CART
 type: conference
@@ -910,4 +920,3 @@ abstract: >
     - We design the first randomized polynomial time algorithm for the hypergraph $k$-cut problem whose complexity has been open for over 20 years. The algorithm generalizes to hedgegraphs with constant span.
     - We address the complexity gap between global vs. fixed-terminal cuts problems in digraphs by presenting a $2-\frac{1}{448}$ approximation algorithm for the global bicut problem.
 # thesis
-
