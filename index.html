@@ -86,7 +86,7 @@
   <div class="cv-selected row cv-entry" id="unimodal-k-median">
     <input type="checkbox" class="abstract-guard" id="unimodal-k-median-toggle">
     <div class="cv-left">
-        <i class="material-icons disabled">expand_more</i>
+        <label class="showmore material-icons" for="unimodal-k-median-toggle"></label>
         <i class="material-icons disabled">description</i>
         <i class="material-icons disabled">airplay</i>
     </div>
@@ -99,6 +99,9 @@
       <p><em>
         ESA 2026, LIPIcs 388, Article 79
       </em><p>
+    </div>
+    <div class="abstract">
+      <p>Given <span class="math">n</span> piecewise-linear unimodal functions <span class="math">f_1,\ldots,f_n:\mathbb{R}\to\mathbb{R}</span> and an integer <span class="math">1\leq k\leq n</span>, the Unimodal-Cost <span class="math">k</span>-Median problem asks for <span class="math">k</span> real numbers <span class="math">y_1,\ldots,y_k</span> minimizing <span class="math">\sum_{i=1}^n\min_{1\leq r\leq k}f_i(y_r)</span>. Let <span class="math">m</span> be the number of breakpoints: the total number of affine-piece endpoint occurrences plus one occurrence at a chosen minimizer of each function. We give an exact algorithm running in <span class="math">O((m+n\log n)\log m\cdot\min\{k,\log m\sqrt{k\log m},\log m\cdot 2^{O(\sqrt{\log k\log\log m})}\})</span>. The first term inside the minimum comes from a direct <span class="math">k</span>-stage dynamic program. The other two use the minimum-weight <span class="math">k</span>-link path algorithms of Aggarwal et al. (1994) and Schieber (1998) for Monge costs, replacing their <span class="math">O(1)</span> edge-weight access by batched access to the implicit transition costs.</p>
     </div>
   </div>
   <!-- Binary Split Categorical Feature with Mean Absolute Error Criteria in CART  -->
