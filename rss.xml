@@ -13,6 +13,13 @@
     <link>https://chaoxu.prof/posts/2026-07-18-ai-agents-for-the-working-mathematician.html</link>
     <description><![CDATA[<br />
 <div>
+<blockquote>
+<p><strong>REVISED 2026-09-19.</strong></p>
+</blockquote>
+<p>This is a living document. I revise it as the mathematical AI
+frontier changes and as experience with these systems changes what we
+know about using them for mathematics. The recommendations below
+describe current practice and will keep changing.</p>
 <p>Most working mathematicians I talk to or observe have the same
 relationship with AI: they paste a question into ChatGPT, get something
 proof-shaped back, feel vaguely impressed or vaguely cheated, and go
@@ -45,7 +52,9 @@ class="header-section-number">1</span> Use Agents</h1>
 <p>An <em>agent</em> is an AI that uses tools. Here the tools are
 exactly what you would use on a computer: operating system, Python, a
 LaTeX compiler, SAGE math, a browser. Agents can interact with the
-environment and actually “do” things.</p>
+environment and actually “do” things. The model has no durable memory of
+its own; the harness manages the context it receives and the state it
+leaves behind.</p>
 <p><strong>Codex</strong> is the coding harness from OpenAI. It runs
 agents on your own computer. A “chat” session in Codex would be an
 agent. <strong>ChatGPT Work</strong>, which is different from ChatGPT,
@@ -79,150 +88,57 @@ account.</li>
 <li>ChatGPT Work: Just open the ChatGPT website, and switch it to
 work.</li>
 </ol></li>
-<li>Set the model to the highest available, currently gpt-5.6-sol
-ultra.</li>
+<li>Set the model to GPT-6 Astra with a max reasoning setting. Recheck
+this choice after every major model update: a stronger model can absorb
+yesterday’s harness advantage, while a weaker one may need more
+structure.</li>
 <li>Replace <code>[STATEMENT]</code> in the prompt below with your exact
 claim — all quantifiers, your conventions, what is known, and what
 counts as an answer — then use it on a conjecture you always wanted to
 solve.</li>
 </ol>
-<p><em>Prompt updated 2026-08-02: removed the time floor (the completion
-condition decides when the run ends), failed audit verdicts now stick to
-the exact version, new approach families get a cheap kill-check before
-agents are assigned, and LESSONS.md became PROCESS_LESSONS.md — process
-lessons only, so mathematical claims cannot hide there.</em></p>
-<p><em>Prompt updated 2026-08-14: restored multi-round route diversity
-and delayed cross-pollination from the CDC prompt, made root-agent
-synthesis and stop handoffs explicit, separated hostile audit from blind
-reconstruction, and corrected proof-or-counterexample wording that was
-too specific to CDC.</em></p>
+<p><em>Prompt updated 2026-09-12 for GPT-6 Astra: the model chooses and
+revises its approaches, while durable state and independent verification
+remain explicit.</em></p>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Current task statement</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">STATEMENT</span><span class="co">]</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Success criteria</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Partial progress does not count unless it implies exactly the resolution above. In particular, proofs for special classes, reductions to another unproved conjecture, computational verification through any fixed size, and candidate counterexamples without a complete proof that they satisfy the hypotheses and violate the conclusion are insufficient. If the statement above is ambiguous about what counts as an answer, ask before starting; never resolve ambiguity silently.</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Durable state — create these files and directories before searching</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>STATEMENT.md — the exact statement, conventions, edge cases, and success criteria. Fixed for the whole run; never edit it to fit a result.</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>RUN_STATE.md — campaign state: running, paused, cancelled, or completed; the latest user directive; the persistent-goal identifier and state; and the baseline revisions used for independent search.</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>AUDIT_CHECKLIST.md — a revision-numbered, append-only list of problem-specific failure modes and edge-case checks. Give every item a stable ID and record its source route.</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>REGISTRY.md — one row per approach family: family name, exact claim attempted, exact remaining gap, smallest known obstruction, next decisive test, independent-wave count, maturity, dependencies, exact evidence links, stall classification, and state: active, paused, blocked, or closed.</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ROUTES/ — one directory per approach family containing its versioned briefs and search-agent deliverables.</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>FAILED.md — every blocked or closed route: what was tried, the exact obstruction, the evidence for it, and what would make a retry materially new.</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>CANDIDATES/ — immutable, versioned candidate proofs, refutations, route-closing obstructions, and their pre-audit reconstruction briefs. Any mathematical edit creates a new version; never overwrite an audited version.</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>AUDITS/ — immutable leakage, audit, reconstruction, and comparison records, each naming the exact candidate and brief versions and every input it saw.</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>EVIDENCE/ — versioned computation sources, logs, outputs, witnesses, and certificates, each linked to its approach family and any candidate it supports.</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>PROVED.md — promoted results only, each with its status label and proof or certificate.</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>PROCESS_LESSONS.md — transferable process lessons and environment failures only; never mathematical claims.</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>All mathematical work products land in these files and directories, not only in conversation. After context compaction, the root re-reads the full durable state, each search agent re-reads only its authorized route bundle, and every verification role re-reads only its explicitly authorized input bundle. These artifacts are the memory; the conversation is not.</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Status vocabulary — literal, never inflated</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>Every claim carries exactly one label, with these exact meanings:</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>candidate — produced but not verifier-backed. Partial, inconclusive, failed, or protocol-only checks do not advance this label.</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>self-audited — re-checked only by its own author or context. For building on, this counts the same as candidate.</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>verifier-backed — the exact candidate version whose leakage check, hostile audit, independent reconstruction, and comparison have all passed against their recorded inputs.</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>promoted — verifier-backed and recorded in PROVED.md; later work may cite it, and anything built on it carries at most this label.</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>independently audited — the exact promoted version was additionally checked by a nonparticipant from outside the producing model family: a different-family model or a human. Present final answers at this label when possible.</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>retracted — a previously checked version was later shown to contain a mathematical failure. It remains in the record but may never be cited as a premise.</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>If no different-family model is available in this environment, do not simulate independence with another instance of the same family — that is label inflation. Instead deliver the final answer at promoted status, state prominently that the cross-family audit has not run, and list the specific claims an outside model or human referee should check first, in order of risk. Unavailability or a protocol failure may leave the result promoted; a substantive mathematical failure from an outside audit immediately retracts that exact version and requires repair or a new candidate. When a version is retracted, recursively retract every version whose claim contract names it as a dependency, remove the affected entries from PROVED.md, and update their approach families in REGISTRY.md.</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>A claim&#39;s label only advances through the verification steps below. A later argument never inherits more certainty than its weakest premise&#39;s label. Never call a mismatched case, a global compatibility assertion, or a polynomial recurrence &quot;routine&quot; — those are where proofs hide their hard step.</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## Orchestration</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>Use subagents aggressively and dynamically, at most 6 concurrent. A search wave is one batch of search-agent work followed by root synthesis. An independent search wave is one in which a fresh search context receives no other live route&#39;s content. Verification and kill-check work do not count as search waves. Do not use a fixed assignment such as &quot;N agents for strategy X.&quot;</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>Before the first independent search wave, record baseline revisions of AUDIT_CHECKLIST.md, FAILED.md, and PROVED.md in RUN_STATE.md.</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Begin with a genuinely diverse portfolio: substantially different formulations, invariants, reductions, algebraic viewpoints, structural inductions, decompositions, embeddings, extremal arguments.</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Do not tell most agents the currently favored approach; preserve independence during early rounds so they do not converge on the same attractive but incomplete reduction. Agents may be assigned a direction, but during this independent phase never show them another agent&#39;s partial proof of it.</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Before maturity, a search agent may read only STATEMENT.md; revision-pinned, route-filtered views of the baseline AUDIT_CHECKLIST.md, FAILED.md, and PROVED.md; any later FAILED.md entry cited in its novelty check; its route brief; and its own route artifacts. The filtered views may include later entries from this same route but must exclude every entry sourced from another live route. It must not inspect other live-route rows, CANDIDATES/, or AUDITS/. The root supplies an explicit input allowlist and exact revisions with each assignment. Exposure to another live route&#39;s content invalidates the independent-wave credit.</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Keep several mathematically incompatible routes alive through at least two independent search waves unless a verifier-backed obstruction closes a route. One independent-wave credit requires a fresh search context with a distinct recorded brief and a non-status mathematical deliverable: a proved lemma, explicit construction, counterexample, or exact obstruction with a decisive next test. A route earns at most one credit per root-synthesized wave; parallel assignments in the same batch share that single credit. Duplicate assignments and bare status reports earn no credit.</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>After a route has two independent-wave credits and its REGISTRY.md row states its exact claim, exact gap, smallest obstruction, next decisive test, dependencies, and evidence links, the root may mark it independently matured. Cross-pollination or combination may occur only between routes that have each matured. An unmatured route&#39;s briefs may use only its authorized inputs above; root synthesis may guide its assignments but must not leak content from another live route. After all participating routes pass the gate, the search side — root and search agents — may share status-labelled lemmas, mechanisms, counterexamples, and obstructions, each with its source family, version, and dependencies. Hostile auditors remain isolated from search discussion; reconstruction agents remain proof- and audit-blind.</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Group approaches in REGISTRY.md by the mathematical mechanism and by their terminal missing lemma, not by terminology. If several agents converge to one family, redirect the surplus toward underexplored formulations.</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>At the end of each search wave, the root updates REGISTRY.md, synthesizes consequences across routes without leaking them into unmatured-route briefs, challenges the current favorite, and decides which families to continue, pause, or redirect; it may combine only matured families. It may close a route only when a verifier-backed obstruction is recorded in FAILED.md and linked to its exact evidence version.</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Before a surviving route earns two independent-wave credits, record a stall as paused and schedule a distinct remaining independent assignment; one agent&#39;s failure cannot block the family. After maturity, a route that ends at a missing lemma as strong as the original conjecture is blocked, not &quot;one lemma away.&quot; Record it in FAILED.md. A blocked route may reactivate only for a materially new mechanism, invariant, lemma, construction, source, witness, certificate, or scope, recorded in REGISTRY.md. A closed route remains closed only while its closing obstruction remains verifier-backed; if that version is retracted, return the route to paused. A changed mechanism or scope creates a new linked route rather than reopening the old one.</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Before starting any route, check FAILED.md and state either: &quot;no close prior route&quot; or &quot;closest prior route is X; this differs materially because of <span class="kw">&lt;new</span> <span class="er">lemma</span> <span class="er">/</span> <span class="er">source</span> <span class="er">/</span> <span class="er">witness</span> <span class="er">/</span> <span class="er">certificate</span> <span class="er">/</span> <span class="er">scope</span><span class="kw">&gt;</span>.&quot;</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Before assigning search agents to a new approach family, spend one fresh agent trying to kill it first: check the smallest instance and adversarially test any claimed source the approach builds on. The kill-check agent&#39;s inability to make the route work is inconclusive. A concrete target mismatch, violated hypothesis, circular dependency, or counterexample becomes a candidate route-closing obstruction and must pass the verification cadence before the route closes.</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Require every search agent to return a proved lemma, an explicit construction, a counterexample, or an exact obstruction with a decisive next test. Require every kill-check, leakage-check, audit, and comparison agent to return an exact version-bound verdict with evidence; a reconstruction agent returns a complete version-bound argument and its dependencies, not a verdict on a candidate it never saw. Reject vague optimism and claims that an unproved global compatibility statement is routine.</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="fu">## Stalled routes</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>Use active while a route is assigned, paused while it remains viable but is deprioritized, blocked after maturity when its exact gap has no current mechanism, and closed only when a verifier-backed obstruction rules out the route as stated. When a route stalls, also classify it in REGISTRY.md as either (a) method failure or (b) evidence against the target statement. If (b), redirect part of the effort to refutation search appropriate to the statement&#39;s logical form, such as a counterexample or impossibility proof. Every stalled route must carry one of these two classifications; &quot;still working&quot; is not a classification.</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="fu">## Verification cadence</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>Every candidate proof, refutation, or route-closing obstruction enters the cadence as a new immutable version in CANDIDATES/. Freeze with it an exact claim contract: statement, hypotheses, quantifier ranges, object identity, required outputs, and promoted dependencies. Before any audit, also freeze a reconstruction brief containing that contract and at most three one-sentence strategy hints. A hint may name definitions and promoted results; it may not state an unpromoted intermediate claim, ordered derivation step, case split, calculation or equation, witness value, or quotation or paraphrase from the candidate. A fresh leakage checker compares the candidate, contract, and brief; if the brief violates this boundary, replace it with a new version and repeat the check.</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>A fresh hostile auditor sees only STATEMENT.md, the exact claim contract and candidate version, the exact statements of its promoted dependencies, and a named revision of AUDIT_CHECKLIST.md — not search transcripts, REGISTRY.md commentary, or the author&#39;s defense. It tries to refute the candidate, explicitly tests every listed edge case and failure mode, checks citations and quantifiers, and checks for circular use of a reformulation equivalent to the target.</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>In a fresh context with no inherited conversation, an independent reconstruction agent sees only STATEMENT.md, the accepted pre-audit brief and claim contract, and the exact statements of its promoted dependencies — not the candidate, hostile audit, REGISTRY.md, FAILED.md, search transcripts, or other candidate files. It writes a complete argument from scratch.</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>A fresh comparator sees STATEMENT.md, the claim contract, the exact promoted-dependency statements, the candidate, the reconstruction, and their input manifests. It checks the reconstruction&#39;s mathematical correctness; maps every hypothesis, quantified object, dependency, conclusion, and required output between the two arguments; and checks that the reconstruction implements the brief&#39;s mechanism. If the reconstruction changes the claim or mechanism, bypasses a disputed step, or relies on a different dependency, save it as a new candidate and start its own cadence; it does not validate the earlier candidate.</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>Save the leakage verdict and all three verification records in AUDITS/, each bound to its exact inputs. Before promotion, compare the hostile audit&#39;s checklist revision with the current revision. If new items were added, a fresh hostile auditor checks the candidate against every added item and saves a supplemental version-bound record in AUDITS/. Only after every check passes does the exact candidate version become verifier-backed. A failed check sticks to that exact version: address the specific objection in a new version or retract the claim — never resubmit an unchanged or cosmetically edited proof to a fresh checker. Every edit to a candidate creates a new version and repeats the cadence. Audit counterexamples and impossibility conclusions with the same hostility as proofs. A refutation may close a live route only after that exact version becomes verifier-backed. Before final presentation, check the same exact promoted version with a nonparticipant from a different model family or a human when one is available; if none is available or the check fails for protocol reasons, deliver at promoted status with the disclosure required above.</span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reporting gate</span></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>Send me an unsolicited progress report only on a significant update: a promoted proof or refutation of the exact statement; a promoted lemma that removes a named dependency; a verifier-backed minimal obstruction that closes a route; or a promoted strictly stronger or simpler theorem. New notation, restructuring, another finite computation, or a reduction to a theorem-strength lemma is not significant and goes in the files, not in a report. This gate controls progress interruptions; it does not permit ending the campaign before the Persistence condition below.</span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## Computation rules</span></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>Only write programs when essential; most work here should be proofs. When a computation is justified, it is a named finite question whose output is a small witness, certificate, or table. Never run computation through inline stdin. Every run gets a named source file, the approach-family ID it serves, a timeout, a log, and an output location under EVIDENCE/, recorded in REGISTRY.md. A computation can refute a lemma or discover a certificate; it cannot prove an unbounded theorem — preserve the smallest exact certificate and then prove the resulting claim.</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="fu">## Web policy</span></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>Public search may be used only for ordinary mathematical background or standard named theorems, not to search for a solution to this exact problem or benchmark. Do not search the public web merely to determine whether the problem is open, and do not answer that it is open.</span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="fu">## Persistence</span></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>Do not end the campaign merely because current approaches fail or agents report theorem-strength gaps. Continue launching new rounds, reopening routes only under the rule above, and searching for fresh formulations. There is no time budget: the completion condition, not the clock, decides when the run ends. End the campaign only when a complete proof or refutation of the exact statement has reached promoted status, then mark RUN_STATE.md completed; otherwise keep FAILED.md and REGISTRY.md as the honest record and continue.</span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>Register this task as a persistent goal (create_goal) with &quot;a complete proof or refutation of the exact statement has reached promoted status after the full verification cadence&quot; as the completion condition, so the objective survives context compaction and session restarts. If goal tooling is unavailable, say so at the start of the run.</span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="fu">## On stop</span></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>An explicit stop, pause, or cancel overrides Persistence immediately. Launch no new work, interrupt outstanding work when the tooling supports it, mark interrupted active routes paused, and record each unreturned assignment as interrupted with no claim; any preserved partial mathematical artifact remains candidate. Reconcile anything already returned into the durable state. On stop or pause, set RUN_STATE.md to paused, leave the goal incomplete, record the directive, and do not resume without an explicit user instruction. On cancel, set RUN_STATE.md to cancelled and cancel or deactivate the goal when supported; otherwise record the cancellation and likewise do not resume. Append to PROCESS_LESSONS.md what would make future runs more efficient — preferring lessons transferable to other mathematical problems, plus any environment issues that wasted time. Process lessons only, never mathematical claims. After the durable handoff is complete, report every maximal rigorously established frontier, its exact remaining gap, the earned status of every supporting claim, and the state of every live approach family, even if the reporting gate would normally keep that material in the files.</span></code></pre></div>
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Use the goal tool to create a persistent goal for this task.</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Solve the statement below completely; partial progress does not count.</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Use pure mathematical reasoning. Do not write or run code.</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Choose your own approaches and have a separate agent check the answer.</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">STATEMENT</span><span class="co">]</span></span></code></pre></div>
 <h1 data-number="2" id="explanations-and-improvements"><span
 class="header-section-number">2</span> Explanations and
 Improvements</h1>
 <p>The prompt combines ideas from the <a
 href="https://cdn.openai.com/pdf/04d1d1e4-bc75-476a-97cf-49055cd98d31/cdc_prompt.pdf">CDC
 prompt</a>, <a href="https://github.com/frenzymath/Danus">Danus</a>, and
-things learned from my own runs. You can read it. It is not perfect but
-gets 90% there.</p>
+things learned from my own runs. It is a starting point, not a finished
+method.</p>
 <p>The prompt is <strong>only the beginning</strong> of your
 exploration. The prompt should evolve (under your direction) and become
 closer to something that matches your workflow, and maybe become even
 smarter. Here I describe how this prompt came about, and things you
 might want to do to improve it.</p>
-<p>The idea is to run an agent that supervises other agents that work
-towards a single goal; this is called an orchestrator. This is known to
-be better than a single agent working on the problem alone, which
-quickly fills up its own context window and gets confused. Here are some
-highlights, and why we did it.</p>
-<p><strong>1. Write the statement and success criteria.</strong>
-<code>STATEMENT.md</code> contains the exact claim with all quantifiers,
-the conventions, and what would count as an answer. It is the fixed
-point that prevents the target from changing during a run. Newly
-discovered failure modes go into the append-only audit checklist instead
-of changing the statement.</p>
+<p>The idea is to run an agent that works toward a single goal and uses
+other agents when they add independent contexts or useful parallelism.
+The benefit depends on the model, the problem, and the cost of
+coordination.</p>
+<p><strong>1. Write the statement and success criteria.</strong> One
+file <code>STATEMENT.md</code>: the exact claim with all quantifiers,
+the conventions, what is known, and most importantly, what would count
+as an answer. This is required so that when the AI tries to give you an
+answer and stop, it will look at the statement and check whether it
+actually completed the task. This is a fixed point that does not change
+during a run.</p>
 <p><strong>2. Launch attempts with a prompt that pre-blocks the cheap
 outs.</strong> Those things are there because they are common ways where
 the model tries to end work early.</p>
-<p><strong>3. Audit adversarially.</strong> A hostile auditor sees the
-frozen candidate and tries to break it. A separate agent reconstructs
-the argument without seeing the proof or audit, and a comparator checks
-that the reconstruction did not silently prove something different.
-Model families have correlated blind spots: I have had a proof that GPT
-could not fault no matter how it was prodded, and Opus found the flaw. I
-personally also use Fable 5 to verify the final output.</p>
+<p><strong>3. Audit adversarially.</strong> The generator of the proof
+is unreliable, so there will always be an auditing process. Model
+families have correlated blind spots: a proof that one family cannot
+fault may still fail under a different model or a human referee. Use a
+separate reviewer when the claim matters.</p>
 <p><strong>4. Record what died.</strong> Failed routes go in a file,
 each with: what was tried, the exact obstruction, and what would make a
 retry genuinely new. This is the compounding step. An attempt that
@@ -231,11 +147,10 @@ attempt at double price. Future sessions read this file first.</p>
 <p><strong>5. Promote only what survived.</strong> Proved lemmas,
 verified counterexamples, checked computations move into the trusted
 files. Nothing gets to silently upgrade its own certainty.</p>
-<p><strong>6. Only interrupt you for significant updates.</strong> A
-progress report means a promoted resolution, a promoted lemma that
-removes a named dependency, or a verifier-backed obstruction that closes
-a route. Lesser movement stays in the files, while an explicit stop
-still produces a full frontier handoff.</p>
+<p><strong>6. Only interrupt you for significant updates.</strong> The
+reporting gate is why the agent does not waste your time: a report means
+a complete proof or certified counterexample — everything else stays in
+the files.</p>
 <p><strong>7. Classify every stall.</strong> A stalled route must be
 labeled either method failure or evidence against the statement — and
 the second label turns that route into a counterexample hunt. “Still
@@ -244,27 +159,23 @@ working” is not allowed as a status.</p>
 coding harness, so the agent loves to write and run code, looking for
 larger and larger confirmations of the conjecture. We need rules to stop
 it from writing code forever and never getting anywhere.</p>
-<p><strong>9. Evolve.</strong> On an explicit stop, the agent preserves
-the exact frontier and writes down transferable process lessons. Future
-runs inherit those lessons without mixing unverified mathematics into
-the methodology record.</p>
+<p><strong>9. Evolve.</strong> End every session by asking the agent
+what it learned. Those harvested lessons get distilled and written down,
+which future agents can access. The workflow effectively bootstrapped
+its own methodology document.</p>
 <h1 data-number="3" id="improvements"><span
 class="header-section-number">3</span> Improvements</h1>
 <p>You can pick and choose, and ask Codex to incorporate them, Codex
 will figure out how to do them. If you don’t understand what something
 does, ask Codex to explain.</p>
 <ol type="1">
-<li>Allow more parallel agents: learn from the <a
-href="https://learn.chatgpt.com/docs/config-file/config-reference">config
-reference</a>, and update <code>agents.max_threads</code> (default 6) to
-allow more agents.</li>
+<li>Measure parallel agents on your own problems. More contexts can
+help, but they also duplicate work and increase cost.</li>
 <li>Some things should be written into <code>AGENTS.md</code></li>
 <li>Make the prompt into a skill so copy paste is not needed.</li>
 <li>Ask that long or heavy jobs go to a remote host, not this machine,
 with their small durable certificates copied back.</li>
 <li>Use tools like Gurobi, Sage. Ask the user what they have.</li>
-<li>Write Rust code instead of Python unless some package depends on
-Python.</li>
 <li>Create standard prompts for subagent types.</li>
 <li>Use scripts to enforce all the gates.</li>
 <li>Anything else you thought of and think “maybe the agent should do
@@ -272,39 +183,32 @@ this”, just ask Codex to do it.</li>
 <li>Create your own harness (for example, using <a
 href="https://pi.dev/">Pi</a>), so you have even more control.</li>
 </ol>
-<h1 data-number="4" id="what-it-costs"><span
-class="header-section-number">4</span> What it costs</h1>
-<p>I do recommend the $200 per month version of ChatGPT Pro, but you can
-scale up from Plus. It translates to about a 30 hour session (with 6
-subagents). If you want another model to verify the work, then I also
-recommend getting Claude Max, so you can use Fable 5.</p>
-<h1 data-number="5" id="faqs"><span
-class="header-section-number">5</span> FAQs</h1>
+<h1 data-number="4" id="faqs"><span
+class="header-section-number">4</span> FAQs</h1>
 <p><strong>How do you know this is better than just asking ChatGPT a few
-times?</strong> I have run an agent autonomously using gpt-5.6-sol ultra
-for 14 hours, solving a problem I was personally invested in. ChatGPT
-was not able to solve it.</p>
+times?</strong> I have run an agent autonomously for 14 hours on a
+problem I was personally invested in. ChatGPT was not able to solve
+it.</p>
 <p><strong>Do I need my laptop to be on all day?</strong> If you are
 running everything locally (say in Codex), yes. Moreover, if the agents
 write a few programs to search for counterexamples, they will drain the
 battery quickly. It is better to run everything remotely on an always-on
 machine. Codex can connect to remote Codex sessions just as if
 everything is happening locally.</p>
-<p><strong>The original CDC prompt says it uses 64 subagents in
-parallel, why do you only use 6?</strong> 1. That feature is
-experimental. In the current Codex version, the default can only handle
-6 subagents per session. 2. Having many subagents saves time but
-increases work: some subagents overstep each other and redo each other’s
-work in parallel. You have to balance time against money.</p>
+<p><strong>How many subagents should I use?</strong> Start with one
+strong model and add subagents when they provide independent approaches,
+fresh verification, or useful parallelism. Measure the result on matched
+problems because extra contexts can duplicate work.</p>
 <p><strong>Why Codex, why not Claude Code, OpenCode, Pi etc?</strong>
 This article is about how to quickly become productive. I removed a lot
 of choices deliberately. You can definitely use other coding agents.
 However, I think the marginal gain (if any) is small enough that this is
 an issue of personal taste.</p>
-<p><strong>Why do the agents cheap out?</strong> Post-training was not
-training for math research but for a broader audience. Normal people who
-ask a model would be very happy with “This is an open problem for 30
-years” and be done with it.</p>
+<p><strong>Why do the agents stop early?</strong> Models are still
+inclined to declare a problem settled when the requested completion
+condition is underspecified. Write the target and the acceptance test
+precisely, and require the durable record and verification step before
+calling the task complete.</p>
 <p><strong>How can I run this really autonomously? The agent pauses and
 asks me for permission all the time?</strong> You can allow the agent to
 do whatever it wants by setting the approval policy to “never” and the
@@ -315,17 +219,11 @@ rare, but it happens. The safe way is to run the agent in a sandbox, or
 even its own computer, or just ChatGPT Work if you don’t need that much
 customization.</p>
 <p><strong>What about other models? How about open source
-models?</strong> I always use the model with the strongest reasoning
-capability. Right now gpt-5.6-sol is the best workhorse model. Fable 5
-is also strong, but expensive and not optimized for mathematical
-reasoning, which sometimes hits strange snags it cannot recover from. I
-personally use gpt-5.6-sol ultra for proof search, and Fable 5 for final
-verification.</p>
-<p>I group open source models as cheaper but not as strong models.
-Cheaper models have their uses, for example, asking them to write
-computational experiments. Also, there are projects that use cheaper
-models for math search and only ask a strong model for suggestions, like
-Danus.</p>
+models?</strong> I start with GPT-6 Astra for difficult reasoning and
+use a different model family or a human for important verification.
+Open-weight models are useful for cheaper experiments and auxiliary
+work, but compare them on the problems you care about rather than
+assuming a fixed ranking.</p>
 <p><strong>What are those AI4MATH systems, are they useful?</strong> We
 talk specifically about AI4MATH systems that search for proofs of
 conjectures in natural language. Such systems do two things: have a good
@@ -336,10 +234,17 @@ to be unable to advance until it follows the predefined workflow. Or
 they can train their own model, to behave better in proof finding. If
 you see some new AI4MATH project that you believe is good, just try it.
 It’s simple: ask the agent to run it.</p>
+<p>I wrote one: <a href="https://github.com/chaoxu/xean">Xean</a>. An
+explorer proposes, a coordinator directs, and four verifiers check each
+candidate before it is accepted. Everything is journaled, so a run
+resumes after an interruption and you can add guidance while it works.
+It runs on your Codex login, so if you have done the setup above, ask
+Codex to install Xean and point it at your statement.</p>
 <p><strong>How do I know if a new workflow is actually an
-improvement?</strong> Unless you have enough money to burn on testing,
-you don’t. You just have to trust the authors. Start with a good enough
-workflow and stop thinking about it.</p>
+improvement?</strong> Run matched problems with the same model, record
+accepted proofs and independent reviews, and include total cost and
+failed or paused runs. A workflow needs evidence from the problems you
+care about.</p>
 <p><strong>What about formal proofs?</strong> The most popular formal
 proof system right now is LEAN. If you are fluent in LEAN, definitely
 incorporate it. There are a few issues to consider: 1. If you are not
@@ -350,13 +255,14 @@ Autoformalization of proofs might not be good enough to handle the
 provided natural proof. 3. The math you care about is not well
 represented in mathlib, making formalization (both by AI and by human)
 much harder.</p>
-<p><strong>ChatGPT (chat) has a gpt-5.6-sol Pro, what is that?</strong>
-Pro is not an effort setting — it is itself a harness. It runs the model
-for a long time before answering, and its one-shot ability is likely
-stronger than gpt-5.6-sol at max effort. You cannot select it in
-Codex.</p>
-<h1 data-number="6" id="appendix-what-this-looks-like-in-practice"><span
-class="header-section-number">6</span> Appendix: What this looks like in
+<p><strong>What is Pro reasoning mode?</strong> <a
+href="https://developers.openai.com/api/docs/guides/reasoning#reasoning-mode">Reasoning
+mode and reasoning effort</a> are separate controls. Pro mode makes the
+model do more work before answering, which increases latency, token use,
+and cost. Check whether the interface you use exposes it; do not treat
+it as a property of the model itself.</p>
+<h1 data-number="5" id="appendix-what-this-looks-like-in-practice"><span
+class="header-section-number">5</span> Appendix: What this looks like in
 practice</h1>
 <p>Here is what my past few days of running the agents actually looked
 like, reconstructed from the session logs.</p>
@@ -380,14 +286,11 @@ about forty named mechanism families, each closed by an exact
 counterexample and each carrying a “reopen only if” condition. Every new
 route gets checked against the graveyard first.</p>
 <p>The success rate on the problems (all of them open, some are major
-open problems) I feed into it is 3/10. I ran all of them for at least 10
-hours (unless they were solved before 10 hours).</p>
-<p>I used up 6 weeks’ worth of tokens in 5 days. This is possible
-because recently there are Codex global resets which reset available
-tokens for all users, and I also had 4 resets which I can use anytime to
-reset the week.</p>
-<h1 data-number="7" id="citing-this-article"><span
-class="header-section-number">7</span> Citing this article</h1>
+open problems) I fed into that earlier run was 3/10. I ran all of them
+for at least 10 hours, unless they were solved sooner. Treat this as a
+record of one older run, not a current benchmark.</p>
+<h1 data-number="6" id="citing-this-article"><span
+class="header-section-number">6</span> Citing this article</h1>
 <p>If this method helped your research, especially if the agent solved a
 problem that chatting with ChatGPT could not, cite this article in the
 resulting paper so more mathematicians find the method:</p>
