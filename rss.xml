@@ -7,288 +7,8 @@
         <description><![CDATA[Mostly notes on algorithms]]></description>
         <atom:link href="https://chaoxu.prof/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sat, 29 Aug 2026 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sat, 18 Jul 2026 00:00:00 UT</lastBuildDate>
         <item>
-    <title>Lights Out on a Grid in Linear Time</title>
-    <link>https://chaoxu.prof/posts/2026-08-29-lights-out-in-linear-time.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>An <span class="math inline">r\times s</span> Lights Out board has
-<span class="math inline">N=rs</span> cells. Assume <span
-class="math inline">r\leq s</span>. Given an arbitrary initial state,
-one can find a set of buttons that turns every light off, or determine
-that none exists, in <span class="math inline">O(rs)=O(N)</span>
-operations over <span class="math inline">\F_2</span>. For an <span
-class="math inline">n\times n</span> board this is the advertised <span
-class="math inline">O(n^2)</span> bound, where <span
-class="math inline">n</span> is the side length rather than the number
-of cells.</p>
-<p>This algorithm applies to the standard rule in which a button flips
-itself and its horizontal and vertical neighbors. It does not apply to
-an arbitrary matrix merely because its nonzero pattern is a grid.</p>
-<p>The algebra behind the algorithm is old. Martín-Sánchez and
-Pareja-Flores used light chasing to reduce a rectangular board to a
-system whose dimension is the width of the board <span class="citation"
-data-cites="martin_two_2001">[<a href="#ref-martin_two_2001"
-role="doc-biblioref"><strong>martin_two_2001?</strong></a>]</span>.
-Barua and Ramakrishnan, followed by Sutner, described the row recurrence
-through binary Chebyshev polynomials and characterized the nullity by a
-polynomial greatest common divisor <span class="citation"
-data-cites="barua_sigma_1996 sutner_sigma_2000">[<a
-href="#ref-barua_sigma_1996"
-role="doc-biblioref"><strong>barua_sigma_1996?</strong></a>,<a
-href="#ref-sutner_sigma_2000"
-role="doc-biblioref"><strong>sutner_sigma_2000?</strong></a>]</span>.
-The polynomial facts used below are Lemma 4.1 and Theorems 4.1 and 5.1
-of Sutner. Goldwasser, Klostermeyer, and Ware developed the same
-Fibonacci-polynomial connection from the viewpoint of parity domination
-<span class="citation" data-cites="goldwasser_fibonacci_2002">[<a
-href="#ref-goldwasser_fibonacci_2002"
-role="doc-biblioref"><strong>goldwasser_fibonacci_2002?</strong></a>]</span>.
-Zheng Wang’s <a
-href="https://github.com/axpokl/LightsOut/tree/37c218171788a7eb4dd7864f2f9b00fcee9efe87">implementation</a>
-uses this structure to obtain the <span
-class="math inline">O(n^2)</span> bound. I have not found a paper that
-states the full arbitrary-right-hand-side running time explicitly. The
-result below is a direct algorithmic consequence of the known polynomial
-description.</p>
-<h1 data-number="1" id="chase-one-row"><span
-class="header-section-number">1</span> Chase one row</h1>
-<p>Rotate the board if necessary and regard it as <span
-class="math inline">s</span> consecutive rows, each containing <span
-class="math inline">r</span> cells. Write the button pattern as <span
-class="math inline">x_1,\ldots,x_s\in\F_2^r</span>, and write the
-initial state as <span
-class="math inline">b_1,\ldots,b_s\in\F_2^r</span>. Let <span
-class="math inline">H</span> be the adjacency matrix of the path <span
-class="math inline">P_r</span>, and set <span
-class="math inline">T:=I+H</span>. The equations for row <span
-class="math inline">i</span> are</p>
-<p><span class="math display">
-x_{i-1}+Tx_i+x_{i+1}=b_i,
-\qquad x_0=x_{s+1}=0.
-</span></p>
-<p>Once the first row <span class="math inline">x_1</span> is fixed,
-every later row is forced:</p>
-<p><span class="math display">
-x_{i+1}=b_i+x_{i-1}+Tx_i.
-</span></p>
-<p>Multiplication by <span class="math inline">T</span> takes <span
-class="math inline">O(r)</span> time, so a proposed first row can be
-chased through the board in <span class="math inline">O(rs)</span> time.
-The only question is how to find the correct first row without trying
-all <span class="math inline">2^r</span> possibilities.</p>
-<h1 data-number="2" id="the-last-row-is-one-polynomial-equation"><span
-class="header-section-number">2</span> The last row is one polynomial
-equation</h1>
-<p>Define the path polynomials by</p>
-<p><span class="math display">
-F_0(t):=0,\qquad F_1(t):=1,\qquad F_{j+1}(t):=tF_j(t)+F_{j-1}(t).
-</span></p>
-<p>If the right-hand side were zero and <span
-class="math inline">x_1=z</span>, the recurrence would give <span
-class="math inline">x_i=F_i(T)z</span>. For a general initial state,
-chasing with <span class="math inline">x_1=0</span> produces a vector
-<span class="math inline">y</span> depending linearly on <span
-class="math inline">b_1,\ldots,b_s</span>. The final boundary condition
-<span class="math inline">x_{s+1}=0</span> is therefore</p>
-<p><span class="math display">
-F_{s+1}(T)x_1=y.
-</span></p>
-<p>Since <span class="math inline">T=I+H</span>, define</p>
-<p><span class="math display">
-c(t):=F_{s+1}(t+1).
-</span></p>
-<p>The first row must satisfy</p>
-<p><span class="math display">
-c(H)x_1=y. \tag{1}
-</span></p>
-<p>Light chasing has reduced the <span class="math inline">rs</span>
-equations to <span class="math inline">r</span> equations. Treating (1)
-as an arbitrary dense system would still cost <span
-class="math inline">O(r^3)</span>. Its coefficient matrix is not
-arbitrary: it is a polynomial in the path matrix <span
-class="math inline">H</span>.</p>
-<h1 data-number="3" id="a-path-is-a-polynomial-module"><span
-class="header-section-number">3</span> A path is a polynomial
-module</h1>
-<p>Let <span class="math inline">e_1</span> be the first standard basis
-vector. The vectors</p>
-<p><span class="math display">
-e_1,He_1,H^2e_1,\ldots,H^{r-1}e_1
-</span></p>
-<p>form a basis of <span class="math inline">\F_2^r</span>. Indeed,
-<span class="math inline">H^je_1</span> has a <span
-class="math inline">1</span> in coordinate <span
-class="math inline">j+1</span> and has no nonzero coordinate beyond
-<span class="math inline">j+1</span>. The corresponding Krylov matrix is
-triangular with diagonal entries <span class="math inline">1</span>.</p>
-<p>The characteristic polynomial and the minimal polynomial of <span
-class="math inline">H</span> are both</p>
-<p><span class="math display">
-\mu(t):=F_{r+1}(t).
-</span></p>
-<p>Thus the map</p>
-<p><span class="math display">
-\Phi:\F_2[t]/(\mu)\longrightarrow\F_2^r,
-\qquad q(t)\longmapsto q(H)e_1,
-</span></p>
-<p>is a vector-space isomorphism. Reducing a polynomial modulo <span
-class="math inline">\mu</span> simply replaces it by another polynomial
-with the same action on a row. Write <span class="math inline">\widehat
-y:=\Phi^{-1}(y)</span> and <span class="math inline">\widehat
-x:=\Phi^{-1}(x_1)</span>. Equation (1) becomes the single polynomial
-congruence</p>
-<p><span class="math display">
-c(t)\widehat x(t)\equiv \widehat y(t)\pmod{\mu(t)}. \tag{2}
-</span></p>
-<p>This is the whole algorithmic simplification. The dense first-row
-matrix has become multiplication by one polynomial in a quotient of
-<span class="math inline">\F_2[t]</span>.</p>
-<h1 data-number="4" id="solve-the-congruence"><span
-class="header-section-number">4</span> Solve the congruence</h1>
-<p>Let</p>
-<p><span class="math display">
-g(t):=\gcd(c(t),\mu(t)).
-</span></p>
-<p>Equation (2) has a solution if and only if <span
-class="math inline">g</span> divides <span class="math inline">\widehat
-y</span>. If it does, write</p>
-<p><span class="math display">
-c=gc&#39;,\qquad \mu=g\mu&#39;,\qquad \widehat y=gy&#39;.
-</span></p>
-<p>Since <span class="math inline">c&#39;</span> and <span
-class="math inline">\mu&#39;</span> are coprime, the extended Euclidean
-algorithm finds a polynomial <span class="math inline">u</span>
-satisfying</p>
-<p><span class="math display">
-u(t)c&#39;(t)\equiv 1\pmod{\mu&#39;(t)}.
-</span></p>
-<p>Then</p>
-<p><span class="math display">
-\widehat x_0(t):=u(t)y&#39;(t)
-</span></p>
-<p>solves (2). Every solution is of the form</p>
-<p><span class="math display">
-\widehat x(t)=\widehat x_0(t)+\mu&#39;(t)h(t)\pmod{\mu(t)},
-\qquad \deg h&lt;\deg g.
-</span></p>
-<p>In particular, the space of quiet patterns has dimension <span
-class="math inline">\deg g</span>, recovering the classical
-common-factor formula <span class="citation"
-data-cites="sutner_sigma_2000">[<a href="#ref-sutner_sigma_2000"
-role="doc-biblioref"><strong>sutner_sigma_2000?</strong></a>]</span>.
-For the <span class="math inline">n\times n</span> board, the two
-polynomials are <span class="math inline">F_{n+1}(t)</span> and <span
-class="math inline">F_{n+1}(t+1)</span>.</p>
-<h1 data-number="5" id="running-time"><span
-class="header-section-number">5</span> Running time</h1>
-<p>The initial chase that computes <span class="math inline">y</span>
-takes <span class="math inline">O(rs)</span> operations. The polynomial
-<span class="math inline">c</span> can be generated modulo <span
-class="math inline">\mu</span> by the same recurrence in <span
-class="math inline">O(rs)</span> operations. Converting between standard
-and Krylov coordinates takes <span class="math inline">O(r^2)</span>
-operations because the change-of-basis matrix is triangular. Polynomial
-gcd, extended Euclid, division, and multiplication take <span
-class="math inline">O(r^2)</span> operations with classical arithmetic.
-The final chase that reconstructs all rows takes another <span
-class="math inline">O(rs)</span> operations.</p>
-<p>Since <span class="math inline">r\leq s</span>, every <span
-class="math inline">O(r^2)</span> term is absorbed by <span
-class="math inline">O(rs)</span>. This proves the following
-statement.</p>
-<div class="theorem-environment Theorem" data-index="1" type="Theorem">
-<span class="theorem-header"><span class="type">Theorem</span><span
-class="index">1</span></span>
-<p>For every <span class="math inline">r\leq s</span> and every initial
-state of the standard Lights Out game on an <span
-class="math inline">r\times s</span> board, one can find a solution or
-determine that none exists in <span class="math inline">O(rs)</span>
-operations over <span class="math inline">\F_2</span>.</p>
-</div>
-<p>The input and an explicit output both contain <span
-class="math inline">rs</span> bits, so this running time is optimal in
-the usual unit-cost model.</p>
-<h1 data-number="6" id="what-survives-beyond-rectangles"><span
-class="header-section-number">6</span> What survives beyond
-rectangles</h1>
-<p>The row recurrence does not require the cross-section to be a path.
-Let <span class="math inline">T</span> be any linear operator on a <span
-class="math inline">w</span>-dimensional vector space over a field <span
-class="math inline">\F</span>, and consider the repeated strip
-system</p>
-<p><span class="math display">
-x_{i-1}+Tx_i+x_{i+1}=b_i.
-</span></p>
-<p>The same chase reduces the system to</p>
-<p><span class="math display">
-F_{s+1}(T)x_1=y.
-</span></p>
-<p>This system is the Lights Out equation on <span
-class="math inline">G\mathbin\square P_s</span> when <span
-class="math inline">T=I+A(G)</span>. Lights Out on Cartesian products
-has also been studied from the viewpoint of universal solvability <span
-class="citation" data-cites="peters_cartesian_2017">[<a
-href="#ref-peters_cartesian_2017"
-role="doc-biblioref"><strong>peters_cartesian_2017?</strong></a>]</span>.
-If <span class="math inline">T</span> has an explicitly available cyclic
-vector and its minimal polynomial is <span
-class="math inline">\mu_T</span>, then the cross-section is again a copy
-of <span class="math inline">\F[t]/(\mu_T)</span>, and the boundary
-equation is again one polynomial congruence. This includes path
-cross-sections and companion matrices. Circulant systems have a similar
-one-polynomial representation because a row is naturally a polynomial
-modulo <span class="math inline">t^w-1</span>, even when <span
-class="math inline">T</span> itself is not cyclic. A fixed-width
-repeated strip is linear-time after constant-size preprocessing.</p>
-<p>Every operator admits a rational canonical decomposition into cyclic
-modules. With that decomposition in hand, the boundary equation splits
-into one congruence for each invariant factor. Computing the
-decomposition of an unstructured operator may cost as much as the
-original dense linear algebra. The useful cases are those where the
-decomposition is already visible from the graph or recurrence. This
-observation does not immediately give a linear-time algorithm for
-three-dimensional grids, whose cross-section is itself a two-dimensional
-grid.</p>
-<p>Uniform weights cause no difficulty over a field when the coupling
-between consecutive rows is nonzero. Constant horizontal, vertical, and
-diagonal coefficients give the same recurrence after rescaling, with a
-different family of path polynomials. Over a composite ring such as
-<span class="math inline">\mathbb Z/k\mathbb Z</span>, polynomial gcd is
-no longer a complete solvability test, and one needs prime-power or
-Smith-form methods.</p>
-<p>The method fails to give the same bound when the layers vary. If row
-<span class="math inline">i</span> has its own operator <span
-class="math inline">T_i</span>, chasing still reduces the system to its
-first row, but the compatibility matrix is formed by a noncommutative
-product of transfer matrices. It can be an unstructured dense matrix.
-The same obstruction appears for an arbitrary assignment of coefficients
-to the edges and diagonal entries of a grid-supported matrix.</p>
-<p>Zero forcing separates these two phenomena. A zero forcing set of
-size <span class="math inline">k</span> reduces an arbitrary sparse
-system with <span class="math inline">m</span> nonzero entries to a
-<span class="math inline">k\times k</span> core, with <span
-class="math inline">O(mk+k^\omega)</span> preprocessing and <span
-class="math inline">O(m+k^2)</span> time for each subsequent right-hand
-side <span class="citation" data-cites="wang_zero_forcing_2022">[<a
-href="#ref-wang_zero_forcing_2022"
-role="doc-biblioref"><strong>wang_zero_forcing_2022?</strong></a>]</span>.
-On a grid, the first row is such a set. The <span
-class="math inline">O(rs)</span> algorithm above is faster for a single
-solve because the uniform grid core is a polynomial in one path matrix.
-Without that extra algebraic structure, zero forcing still gives the
-reduction, but not the polynomial congruence.</p>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2026-08-29">2026-08-29</time>. </div>
-    <div class="info">Tags: algorithm, algebra.</div>
-</div>]]></description>
-    <pubDate>Sat, 29 Aug 2026 00:00:00 UT</pubDate>
-    <guid>https://chaoxu.prof/posts/2026-08-29-lights-out-in-linear-time.html</guid>
-    <dc:creator>Chao Xu</dc:creator>
-</item>
-<item>
     <title>AI Agents for the Working Mathematician</title>
     <link>https://chaoxu.prof/posts/2026-07-18-ai-agents-for-the-working-mathematician.html</link>
     <description><![CDATA[<br />
@@ -1954,6 +1674,97 @@ href="https://doi.org/10.4230/LIPIcs.ESA.2020.29">10.4230/LIPIcs.ESA.2020.29</a>
 </div>]]></description>
     <pubDate>Thu, 19 Sep 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxu.prof/posts/2019-09-19-word-break-with-cost.html</guid>
+    <dc:creator>Chao Xu</dc:creator>
+</item>
+<item>
+    <title>Traditional vs Roth IRA under fixed amount of investment</title>
+    <link>https://chaoxu.prof/posts/2019-09-06-traditional-ira-vs-roth-ira.html</link>
+    <description><![CDATA[<br />
+<div>
+<p>I’ve read a lot of articles on Traditional vs Roth IRA. One can do a
+serious mathematical analysis of which one is better, given that you
+want to invest a total of <span class="math inline">x</span> income into
+the account for a particular year. Money in excess of <span
+class="math inline">x</span> will be put in a normal investment
+account.</p>
+<p>There is a widely held belief that if your effective tax rate is
+higher today than when you cash out, it is always better to do pre-tax
+contribution (Traditional IRA). However, we can show this is not always
+the case. You need effective tax rate to be somewhat lower unless you
+are in the lowest of tax bracket. Assume for simplicity, you don’t have
+to pay state income tax.</p>
+<p>Assumption you way more than enough money to maximize the
+contribution.</p>
+<p>Here are the 3 options.</p>
+<ul>
+<li>Type 1: (Traditional IRA, 401(k)) No tax when contributing, taxed as
+ordinary income afterwards.</li>
+<li>Type 2: (Roth IRA, Roth 401(k)) Taxed when contributing, and no
+taxes with withdrawal.</li>
+<li>Type 3: Normal account, taxed when contributing, and tax with either
+ordinary income or capital gain taxes depending on type.</li>
+</ul>
+<p>Consider the simplest model. You have a stock that you buy and hold.
+It generates no dividends. At the time when you sell it, it worths <span
+class="math inline">k</span> times more. All your money will be going
+into that stock.</p>
+<p>Assume you allocate <span class="math inline">x</span> income into
+<span class="math inline">x_1,x_2,x_3</span>, which is the amount of
+income allocated into Type <span class="math inline">1,2,3</span>
+accounts, respectively.</p>
+<p>How much after tax income is generated when you sell the stock?</p>
+<p>Let <span class="math inline">\alpha</span> be the (approximate)
+effective tax rate today, <span class="math inline">\alpha&#39;</span>
+is an (approximate) effective tax rate when you sell. <span
+class="math inline">\beta&#39;</span> is the capital gain tax rate.</p>
+<p>The after-tax income contributed by each account is</p>
+<ul>
+<li>Type 1: <span class="math inline">kx_1(1-\alpha&#39;)</span></li>
+<li>Type 2: <span class="math inline">kx_2(1-\alpha)</span></li>
+<li>Type 3: <span class="math inline">(k-1)x_3(1-\alpha)(1-\beta&#39;) +
+x_3(1-\alpha) = x_3(1-\alpha)((k-1)(1-\beta&#39;)+1)</span></li>
+</ul>
+<p>Now, we also have the following constraint. <span
+class="math inline">x_1+x_2(1-\alpha)=B</span>, where <span
+class="math inline">B</span> is the maximum contribution into type 1 and
+type 2 accounts. This happens because they share the same bound (this is
+true for both 401(k) and IRA). Note that <span
+class="math inline">x_1+x_2+x_3=x</span>. Since <span
+class="math inline">B</span> and <span class="math inline">x</span> are
+fixed, we have <span class="math inline">x_2 =
+\frac{B-x_1}{1-\alpha}</span>, and <span class="math inline">x_3 =
+x-x_1-\frac{B-x_1}{1-\alpha}</span></p>
+<p>Define <span class="math inline">f(x_1)=kx_1(1-\alpha&#39;) +
+k(B-x_1) +
+(x-x_1-\frac{B-x_1}{1-\alpha})(1-\alpha)((k-1)(1-\beta&#39;)+1)</span>,
+which is a linear function. We take the derivative of <span
+class="math inline">f</span> and obtain the slope if <span
+class="math inline">k(\alpha-\alpha&#39;)- (k-1)\alpha\beta&#39;</span>.
+If the slope is positive, it means when should maximize type <span
+class="math inline">1</span> account, and if the slope is negative, we
+should maximize type <span class="math inline">2</span> account.</p>
+<p>In order for the inequality to work for all <span
+class="math inline">k&gt;1</span>, we need <span
+class="math inline">\alpha-\alpha&#39;\geq \alpha\beta&#39;</span>. In
+other words, we need <span class="math inline">\alpha&#39;\leq
+\alpha(1-\beta&#39;)</span> in order to safely say it is better to
+maximize type 1.</p>
+<p>We didn’t even consider what happens if there are dividend involved.
+It would shift the scale even more toward type 2.</p>
+<p>I think the moral of the story is you have to be careful and actually
+model everything correctly. Also, since there is no way to know the tax
+rate in the future, some people hedge the risk by putting money in both
+type 1 and type 2 accounts.</p>
+<p>It looks like this still suggest putting money in Traditional IRA is
+better than Roth IRA if your current tax rate is <em>much higher</em>
+than your future tax rate.</p>
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2019-09-06">2019-09-06</time>. </div>
+    <div class="info">Tags: Tax.</div>
+</div>]]></description>
+    <pubDate>Fri, 06 Sep 2019 00:00:00 UT</pubDate>
+    <guid>https://chaoxu.prof/posts/2019-09-06-traditional-ira-vs-roth-ira.html</guid>
     <dc:creator>Chao Xu</dc:creator>
 </item>
 
