@@ -4,7 +4,7 @@ title: 前沿算法
 
 Final project:
 
-Due on 10/31. Please send it to `zwx2020@email.swu.edu.cn`. Together with your ID and name. 
+Due on 10/31. Please send it to `814597067@qq.com`. Together with your ID and name. 
 
 Either select any one of the papers below and summarize it. Or, pick any STOC/FOCS/SODA/SOSA paper and summarize it.
 
