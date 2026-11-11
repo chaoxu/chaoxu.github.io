@@ -12,6 +12,7 @@
   --pf-essay-font-prose: var(--pf-essay-font-prose-latin);
   --pf-essay-font-ui: var(--pf-font-sans-latin, "IBM Plex Sans", system-ui, sans-serif);
   --pf-essay-font-code: "Inconsolata", "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --pf-essay-math-scale: 1.02em;
 
   --pf-essay-bg: #ffffff;
   --pf-essay-fg: #2c2724;
@@ -423,7 +424,32 @@ body.pf-essay,
   font-size: 0.86rem;
 }
 
-/* Display Mathematics */
+/* Inline & Display Mathematics (1.02em matches IBM Plex Serif 0.698em cap-height to KaTeX 0.6833em) */
+.pf-essay .katex {
+  color: inherit;
+  font-size: var(--pf-essay-math-scale);
+}
+
+.pf-essay:lang(zh-CN) .katex .cjk_fallback,
+.pf-essay:lang(zh-SG) .katex .cjk_fallback,
+.pf-essay :lang(zh-CN) .katex .cjk_fallback,
+.pf-essay :lang(zh-SG) .katex .cjk_fallback,
+.pf-essay .pf-zh-sc .katex .cjk_fallback {
+  font-family: var(--pf-essay-font-prose-sc);
+  font-style: normal;
+}
+
+.pf-essay:lang(zh-TW) .katex .cjk_fallback,
+.pf-essay:lang(zh-MO) .katex .cjk_fallback,
+.pf-essay:lang(zh-HK) .katex .cjk_fallback,
+.pf-essay :lang(zh-TW) .katex .cjk_fallback,
+.pf-essay :lang(zh-MO) .katex .cjk_fallback,
+.pf-essay :lang(zh-HK) .katex .cjk_fallback,
+.pf-essay .pf-zh-tc .katex .cjk_fallback {
+  font-family: var(--pf-essay-font-prose-tc);
+  font-style: normal;
+}
+
 .pf-essay-prose .katex-display,
 .pf-essay-prose .math.display {
   display: block;

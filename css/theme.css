@@ -17,6 +17,7 @@
   --pf-font-serif-tc: "Source Han Serif TC", "Noto Serif CJK TC", "Songti TC", serif;
   --pf-font-serif: var(--pf-font-serif-latin);
   --pf-font-math: "IBM Plex Math", "STIX Two Math", "Cambria Math", serif;
+  --pf-math-scale: 1.02em;
   --pf-font-mono: "Inconsolata", monospace;
   --pf-font-mono-sc: "Sarasa Mono SC", "Sarasa Fixed SC", "Noto Sans Mono CJK SC", monospace;
   --pf-font-mono-tc: "Sarasa Mono TC", "Sarasa Fixed TC", "Noto Sans Mono CJK TC", monospace;
@@ -150,6 +151,34 @@ code, pre, kbd, samp {
 math,
 .pf-math-native {
   font-family: var(--pf-font-math);
+}
+
+/* Harmonize KaTeX (0.6833em cap-height) with IBM Plex (0.698em cap-height) instead of KaTeX's oversized 1.21em default */
+body .katex {
+  color: inherit;
+  font-size: var(--pf-math-scale);
+}
+
+html:lang(zh-CN) .katex .cjk_fallback,
+html:lang(zh-SG) .katex .cjk_fallback,
+:lang(zh-CN) .katex .cjk_fallback,
+:lang(zh-SG) .katex .cjk_fallback {
+  font-family: var(--pf-font-sans-sc);
+  font-style: normal;
+}
+
+html:lang(zh-TW) .katex .cjk_fallback,
+html:lang(zh-MO) .katex .cjk_fallback,
+:lang(zh-TW) .katex .cjk_fallback,
+:lang(zh-MO) .katex .cjk_fallback {
+  font-family: var(--pf-font-sans-tc);
+  font-style: normal;
+}
+
+html:lang(zh-HK) .katex .cjk_fallback,
+:lang(zh-HK) .katex .cjk_fallback {
+  font-family: var(--pf-font-sans-hc);
+  font-style: normal;
 }
 
 :focus-visible {
