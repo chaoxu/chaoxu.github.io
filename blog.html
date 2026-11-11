@@ -2,6 +2,24 @@
 title: Posts
 ---
 
-<table class="postindex">
+<div class="archive-filter-bar">
+  <input type="search" class="archive-filter-input" id="post-filter" placeholder="Filter posts by title or year…" aria-label="Filter posts">
+</div>
+
+<table class="postindex" id="post-table">
 $posts$
-</table> 
+</table>
+
+<script>
+  (function() {
+    var input = document.getElementById("post-filter");
+    var rows = Array.from(document.querySelectorAll("#post-table tr"));
+    if (!input) return;
+    input.addEventListener("input", function() {
+      var q = (input.value || "").trim().toLowerCase();
+      rows.forEach(function(r) {
+        r.style.display = (!q || r.textContent.toLowerCase().indexOf(q) !== -1) ? "" : "none";
+      });
+    });
+  })();
+</script>

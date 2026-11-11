@@ -3,168 +3,255 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <title>Chao Xu</title>
+  <title>Chao Xu | 许超</title>
   <meta name="description" content="The personal webpage of Chao Xu.">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" crossorigin="anonymous">
-  <!-- Do not remove katex render. Index page is a idpage --> 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 
-    <!-- The loading of KaTeX is deferred to speed up page rendering -->
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
-
-
+  <!-- KaTeX for inline math in paper titles and abstracts -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      var macros={
-              "\\C":"\\mathbb{C}",
-              "\\F":"\\mathbb{F}",
-              "\\e": "\\varepsilon",
-              "\\eps": "\\varepsilon",
-              "\\mex": "\\mathop{\\operatorname{mex}}",
-              "\\lcm": "\\mathop{\\operatorname{lcm}}",
-              "\\dist": "\\mathop{\\operatorname{dist}}",
-              "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
-              "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
-              '\\set':'\\left\\{ #1 \\right\\}',
-              '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
-              '\\ceil':'\\left\\lceil #1 \\right\\rceil',
-              '\\abs':'\\left\\| #1 \\right\\|'
-              }
-    var mathElements = document.getElementsByClassName("math");
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
-    }}});
+      var macros = {
+        "\\C": "\\mathbb{C}",
+        "\\F": "\\mathbb{F}",
+        "\\e": "\\varepsilon",
+        "\\eps": "\\varepsilon",
+        "\\mex": "\\mathop{\\operatorname{mex}}",
+        "\\lcm": "\\mathop{\\operatorname{lcm}}",
+        "\\dist": "\\mathop{\\operatorname{dist}}",
+        "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+        "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+        "\\set": "\\left\\{ #1 \\right\\}",
+        "\\floor": "\\left\\lfloor #1 \\right\\rfloor",
+        "\\ceil": "\\left\\lceil #1 \\right\\rceil",
+        "\\abs": "\\left\\| #1 \\right\\|"
+      };
+      var mathElements = document.getElementsByClassName("math");
+      for (var i = 0; i < mathElements.length; i++) {
+        var texText = mathElements[i].firstChild;
+        if (texText && mathElements[i].tagName === "SPAN" && window.katex) {
+          katex.render(texText.data, mathElements[i], {
+            displayMode: mathElements[i].classList.contains("display"),
+            throwOnError: false,
+            macros: macros
+          });
+        }
+      }
+    });
   </script>
 
-  <!-- toggle selected publications -->
-  <script>
-    function togglePublication() {
-      var x = document.getElementsByClassName("cv-non-selected");
-      for (var i = x.length - 1; i >= 0; --i)
-        x[i].classList.remove("cv-non-selected");
-      x = document.getElementById("pub-toggle");
-      x.style.display = "none";
-    }
-  </script>
-
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-
-  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/homepage.css?v=20220803" crossorigin="anonymous">
-  
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/essay.css">
+  <link rel="stylesheet" href="/css/homepage.css">
+  <script src="/files/js/essay.js"></script>
 </head>
-<body>
-<div class="container">
+<body class="pf-essay">
+  <header class="pf-essay-topnav">
+    <a class="pf-essay-brand" href="/">chaoxu.prof</a>
+    <nav class="pf-essay-navlinks" aria-label="Primary">
+      <a href="#publications">Publications</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/cnblog.html" lang="zh-CN">中文博客</a>
+      <a href="https://cosheaf.chaoxu.prof/chao/open-problems">Open Problems</a>
+      <a href="/pages/academic-family.html">Group</a>
+      <a href="/files/cv.pdf">CV</a>
+      <button class="pf-essay-theme-btn" type="button" data-pf-theme-toggle data-pf-theme-short>☾ Dark</button>
+    </nav>
+  </header>
 
-<div class="person" itemscope="" itemtype="http://schema.org/Person">
-    <meta itemprop="gender" content="Male">
-    <meta itemprop="birthDate" content="September 12, 1989">
-    <meta itemprop="honorificPrefix" content="Dr">
-    <meta itemprop="honorificSuffix" content="PhD">
-    <meta itemprop="url" content="https://chaoxu.prof">
-<div class="row" style="display:block"><h1 id="site-title"><span itemprop="givenName">Chao</span> <span itemprop="familyName">Xu</span> <wbr>|<wbr> <ruby>
-<rb>许</rb><rp>(</rp><rt>xǔ</rt><rp>)</rp></ruby>
-<ruby><rb>超</rb><rp>(</rp><rt>chāo</rt><rp>)</rp></ruby>
-</h1></div>
+  <main class="home-shell">
+    <section class="home-masthead person" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="gender" content="Male">
+      <meta itemprop="birthDate" content="September 12, 1989">
+      <meta itemprop="honorificPrefix" content="Dr">
+      <meta itemprop="honorificSuffix" content="PhD">
+      <meta itemprop="url" content="https://chaoxu.prof">
 
-<div class="row">
-  <div class="intro-left" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-    <meta itemprop="representativeOfPage" content="True">
-    <img width="270" height="270" src="https://chaoxu.prof/files/chao/chaoxu_current.jpg" style="border-radius:50%;max-width:95%" title="Lord Chao of the House Xu, the First of His Name, Guardian of the Art Gallery" alt="Photo of Chao Xu" itemprop="contentUrl"/>
-  </div>
-  <div class="intro-right">
-    <p>
-      I'm an Associate Professor at <a href="https://en.uestc.edu.cn/">UESTC</a>, a member of the <a href="https://tcsuestc.com/">Algorithms and Logic Group</a>.
-      My research interests are <span itemprop="knowsAbout">algorithms</span>, <span itemprop="knowsAbout">combinatorial optimization</span> and <span itemprop="knowsAbout">computational geometry</span>. I'm also interested in more applied problems with nice theoretical components. 
-      Here is my <a href="files/cv.pdf">CV</a>.
-    </p>
-    <p>I maintain a <a href="https://github.com/chaoxu/">github account</a>, a <a href="blog.html"><strong>blog</strong></a> and a Mastodon <a rel="me" href="https://mathstodon.xyz/@chao">@chao</a>. I frequent <a href="http://cstheory.stackexchange.com/users/314/chao-xu">cstheory</a>. I keep a <a href="https://cosheaf.chaoxu.prof/chao/open-problems/src/branch/main/README.md">list of open problems</a> I care about.</p>
+      <div class="home-title-row">
+        <h1 class="home-name" id="site-title">
+          <span itemprop="givenName">Chao</span> <span itemprop="familyName">Xu</span>
+          <span class="home-name-sep">|</span>
+          <span class="home-name-zh" lang="zh-CN">
+            <ruby><rb>许</rb><rp>(</rp><rt>xǔ</rt><rp>)</rp></ruby><ruby><rb>超</rb><rp>(</rp><rt>chāo</rt><rp>)</rp></ruby>
+          </span>
+        </h1>
+        <span class="home-role-tag">Associate Professor · UESTC</span>
+      </div>
 
-    <p>Here is the list of all who have worked in <a href="/pages/academic-family">my group</a>.</p>
+      <div class="home-bio-grid">
+        <div class="home-portrait-wrap" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+          <meta itemprop="representativeOfPage" content="True">
+          <img width="164" height="164" src="/files/chao/chaoxu_current.jpg"
+            title="Lord Chao of the House Xu, the First of His Name, Guardian of the Art Gallery"
+            alt="Photo of Chao Xu" itemprop="contentUrl">
+        </div>
 
-    <p>You can contact me through email <a href="mailto:thechaoxu@gmail.com"><samp itemprop="email">thechaoxu@gmail.com</samp></a>.</p>
+        <div class="home-bio-copy">
+          <p>
+            I'm an Associate Professor at <a href="https://en.uestc.edu.cn/">UESTC</a>, a member of the <a href="https://tcsuestc.com/">Algorithms and Logic Group</a>.
+            My research interests are <span itemprop="knowsAbout">algorithms</span>, <span itemprop="knowsAbout">combinatorial optimization</span>, and <span itemprop="knowsAbout">computational geometry</span>. I'm also interested in more applied problems with nice theoretical components.
+            Here is my <a href="/files/cv.pdf">CV</a>.
+          </p>
+          <p>
+            I maintain a <a href="https://github.com/chaoxu/">GitHub account</a>, a <a href="/blog.html"><strong>blog</strong></a>, and a Mastodon <a rel="me" href="https://mathstodon.xyz/@chao">@chao</a>. I frequent <a href="https://cstheory.stackexchange.com/users/314/chao-xu">cstheory</a>, and keep a <a href="https://cosheaf.chaoxu.prof/chao/open-problems/src/branch/main/README.md">list of open problems</a> I care about.
+          </p>
+          <p>
+            Here is the list of all who have worked in <a href="/pages/academic-family.html">my group</a>.
+            You can contact me via <a href="mailto:thechaoxu@gmail.com"><samp itemprop="email">thechaoxu@gmail.com</samp></a>.
+          </p>
+          <div class="home-quicklinks" lang="zh-CN">
+            <a class="home-chip" href="/cnblog.html">中文博客 →</a>
+            <a class="home-chip" href="/pages/course-frontier-of-algorithms.html">前沿算法课程 →</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <p><a href="cnblog.html"><strong>中文博客</strong></a> <a href="/pages/course-frontier-of-algorithms.html"><strong>前沿算法课程</strong></a></p>
+    <section class="pub-section" id="publications" aria-labelledby="pub-heading">
+      <div class="pub-toolbar">
+        <div class="pub-heading-group">
+          <h2 id="pub-heading">Publications</h2>
+          <span class="pub-count" id="pub-count"></span>
+        </div>
+        <div class="pub-controls">
+          <div class="pub-mode-switch" role="group" aria-label="Publication filter">
+            <button type="button" class="pub-mode-btn is-active" data-pub-mode="selected">Selected</button>
+            <button type="button" class="pub-mode-btn" data-pub-mode="all">All Papers</button>
+          </div>
+          <input type="search" class="pub-search" id="pub-search" placeholder="Search papers, coauthors, venues…" aria-label="Search publications">
+        </div>
+      </div>
 
-  </div>
-</div>
-</div>
+      <div class="pub-list" id="pub-list" data-mode="selected">
+        {% for pub_type in pub_types %}
+        <div class="pub-category">
+          <div class="pub-category-title">{{pub_type.title}}</div>
+          {% for paper in pub_type.papers %}
+          <article class="pub-entry {{paper.selected}}" id="{{paper.id}}">
+            <div class="pub-year"><time>{{paper.year}}</time></div>
+            <div class="pub-body">
+              <cite class="pub-title">{{paper.title}}</cite>
+              {% if paper.authors %}
+              <ul class="pub-authors">
+                {% for author in paper.authors %}<li>{% if author.link %}<a href="{{author.link}}">{{author.name}}</a>{% else %}{{author.name}}{% endif %}</li>{% endfor %}
+              </ul>
+              {% endif %}
 
+              <div class="pub-meta-row">
+                <span class="pub-venue">
+                  {% if paper.bib %}
+                    {{paper.bib}}
+                  {% elif paper.pub %}
+                    {% if pub_type.title == "Journal Publications" %}
+                      {{paper.pub.venue}} {{paper.year}}.
+                    {% else %}
+                      <abbr title="{{paper.pub.venue}}">{{paper.pub.name}}</abbr> {{paper.year}}.
+                    {% endif %}
+                  {% else %}
+                    {{paper.year}}.
+                  {% endif %}
+                </span>
 
-<div class="row pubtypeheader" id="pub-toggle">
-  <span>Selected Publications<br /><span style="font-size:0.6em" onclick="togglePublication()"><em><a>See all publications.</a></em></span></span> 
-</div>
+                <span class="pub-actions">
+                  {% if 'a' in paper.show %}
+                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="{{paper.id}}-abs">Abstract</button>
+                  {% endif %}
+                  {% if 'd' in paper.show %}
+                  <a class="pub-pill" href="/files/papers/{{paper.id}}.pdf">PDF</a>
+                  {% endif %}
+                  {% if 'p' in paper.show %}
+                  <a class="pub-pill" href="/files/presentations/{{paper.id}}.pdf">Slides</a>
+                  {% endif %}
+                </span>
+              </div>
 
-{% for pub_type in pub_types %}
-<div class="cv-non-selected row pubtypeheader">{{pub_type.title}}</div>
-  {% for paper in pub_type.papers %}
-  <!-- {{paper.title}}  -->
-  <div class="{{paper.selected}} row cv-entry" id="{{paper.id}}">
-    <input type="checkbox" class="abstract-guard" id="{{paper.id}}-toggle">
-    <div class="cv-left">
-      {% if 'a' in paper.show %}
-        <label class="showmore material-icons" for="{{paper.id}}-toggle"></label>
-      {% else %}
-        <i class="material-icons disabled">expand_more</i>
-      {% endif %}
+              {% for note in paper.notes %}
+              <aside class="pub-note">{{note}}</aside>
+              {% endfor %}
 
-      {% if 'd' in paper.show %}
-        <a href="files/papers/{{paper.id}}.pdf"><i class="material-icons">description</i></a>
-      {% else %}
-        <i class="material-icons disabled">description</i>
-      {% endif %}
+              {% if paper.abstract %}
+              <div class="pub-abstract" id="{{paper.id}}-abs">
+                {{paper.abstract}}
+                {% if paper.dedication %}
+                <aside class="pub-dedication">{{paper.dedication}}</aside>
+                {% endif %}
+              </div>
+              {% endif %}
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+      <p class="pub-empty-msg" id="pub-empty">No matching publications.</p>
+    </section>
+  </main>
 
-      {% if 'p' in paper.show %}
-        <a href="files/presentations/{{paper.id}}.pdf"><i class="material-icons">airplay</i></a>
-      {% else %}
-        <i class="material-icons disabled">airplay</i>
-      {% endif %}
-    </div>
+  <script>
+    (function() {
+      var list = document.getElementById("pub-list");
+      var search = document.getElementById("pub-search");
+      var countEl = document.getElementById("pub-count");
+      var emptyEl = document.getElementById("pub-empty");
+      var modeBtns = Array.from(document.querySelectorAll("[data-pub-mode]"));
+      var entries = Array.from(list.querySelectorAll(".pub-entry"));
+      var categories = Array.from(list.querySelectorAll(".pub-category"));
+      var manualMode = "selected";
 
-    <div class="cv-right">
-      <cite class="paper-title">{{paper.title}}</cite>
-      {% if paper.authors %}
-      <ul class="coauthor-list">
-        {% for author in paper.authors %}<li>
-            {% if author.link %}<a href="{{author.link}}">{{author.name}}</a>{% else %}{{author.name}}{% endif %}</li>{% endfor %}</ul>
-      {% endif %}
+      function sync() {
+        var q = (search.value || "").trim().toLowerCase();
+        var effectiveMode = q ? "all" : manualMode;
+        list.setAttribute("data-mode", effectiveMode);
+        modeBtns.forEach(function(b) {
+          b.classList.toggle("is-active", b.getAttribute("data-pub-mode") === effectiveMode);
+        });
 
-      <p><em>
-      {% if paper.bib %}
-        {{paper.bib}}
-      {% elif paper.pub %}
-        {% if pub_type.title == "Journal Publications" %}
-          {{paper.pub.venue}} <time>{{paper.year}}</time>.
-        {% else %}
-          <abbr title="{{paper.pub.venue}}">{{paper.pub.name}}</abbr> <time>{{paper.year}}</time>.
-        {% endif %}
-      {% else %}
-        <time>{{paper.year}}</time>.
-      {% endif %}
-      </em><p>
+        var shown = 0;
+        entries.forEach(function(el) {
+          var inMode = effectiveMode === "all" || el.classList.contains("cv-selected");
+          var match = !q || el.textContent.toLowerCase().indexOf(q) !== -1;
+          el.classList.toggle("is-filtered-out", !match);
+          if (inMode && match) shown++;
+        });
 
-      {% for note in paper.notes %}
-        <aside class="cv-non-selected note">{{note}}</aside>
-      {% endfor %}
-    </div>
+        categories.forEach(function(cat) {
+          var visibleInCat = Array.from(cat.querySelectorAll(".pub-entry")).some(function(el) {
+            var inMode = effectiveMode === "all" || el.classList.contains("cv-selected");
+            return inMode && !el.classList.contains("is-filtered-out");
+          });
+          cat.classList.toggle("is-empty", !visibleInCat);
+        });
 
-    {% if paper.abstract %}
-    <div class="abstract">
-      {{paper.abstract}}
-      {% if paper.dedication %}
-        <aside class="dedication">{{paper.dedication}}</aside>
-      {% endif %}
-    </div>
-    {% endif %}
+        countEl.textContent = q
+          ? shown + " match" + (shown === 1 ? "" : "es")
+          : effectiveMode === "selected"
+            ? shown + " selected"
+            : shown + " total";
+        emptyEl.style.display = shown === 0 ? "block" : "none";
+      }
 
-  </div>
-  {% endfor %}
-{% endfor %}
+      modeBtns.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          manualMode = btn.getAttribute("data-pub-mode");
+          if (manualMode === "selected" && search.value) search.value = "";
+          sync();
+        });
+      });
 
+      search.addEventListener("input", sync);
 
-</div>
+      document.querySelectorAll("[data-abs-toggle]").forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          var target = document.getElementById(btn.getAttribute("data-abs-toggle"));
+          if (!target) return;
+          var open = target.classList.toggle("is-open");
+          btn.setAttribute("aria-expanded", String(open));
+        });
+      });
+
+      sync();
+    })();
+  </script>
 </body>
 </html>

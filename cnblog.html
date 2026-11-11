@@ -2,6 +2,24 @@
 title: 文章
 ---
 
-<table class="postindex">
+<div class="archive-filter-bar">
+  <input type="search" class="archive-filter-input" id="cnpost-filter" placeholder="搜索文章标题或年份…" aria-label="搜索文章">
+</div>
+
+<table class="postindex" id="cnpost-table">
 $cnposts$
-</table> 
+</table>
+
+<script>
+  (function() {
+    var input = document.getElementById("cnpost-filter");
+    var rows = Array.from(document.querySelectorAll("#cnpost-table tr"));
+    if (!input) return;
+    input.addEventListener("input", function() {
+      var q = (input.value || "").trim().toLowerCase();
+      rows.forEach(function(r) {
+        r.style.display = (!q || r.textContent.toLowerCase().indexOf(q) !== -1) ? "" : "none";
+      });
+    });
+  })();
+</script>
