@@ -424,6 +424,22 @@ body.pf-essay,
   font-size: 0.86rem;
 }
 
+.pf-essay-prose pre a {
+  border-bottom: 0;
+}
+
+.pf-essay-prose code span.kw,
+.pf-essay-prose code span.cf,
+.pf-essay-prose code span.al,
+.pf-essay-prose code span.er {
+  font-weight: 600;
+}
+
+.pf-essay-prose code span.co {
+  color: var(--pf-essay-muted);
+  font-style: italic;
+}
+
 /* Inline & Display Mathematics (1.02em matches IBM Plex Serif 0.698em cap-height to KaTeX 0.6833em) */
 .pf-essay .katex {
   color: inherit;
@@ -695,6 +711,41 @@ body.pf-essay,
   border-top: 1px solid var(--pf-essay-rule);
   font-size: 0.84rem;
   color: var(--pf-essay-muted);
+}
+
+/* Pandoc / Citeproc Bibliographies (.references, .csl-bib-body) */
+.pf-essay-prose .references,
+.pf-essay-prose .csl-bib-body {
+  display: grid;
+  gap: 0.55rem;
+  font-size: 0.9rem;
+  line-height: 1.54;
+}
+
+.pf-essay-prose .csl-left-margin,
+.pf-essay-prose .csl-right-inline {
+  display: inline;
+}
+
+.pf-essay-prose .csl-entry:has(> .csl-left-margin) {
+  display: grid;
+  grid-template-columns: minmax(1.85rem, auto) minmax(0, 1fr);
+  column-gap: 0.45rem;
+  align-items: baseline;
+}
+
+.pf-essay-prose .csl-left-margin {
+  font-variant-numeric: tabular-nums;
+  color: var(--pf-essay-muted);
+  white-space: nowrap;
+}
+
+.pf-essay-prose .csl-right-inline {
+  min-width: 0;
+}
+
+.pf-essay-prose .csl-entry strong {
+  font-weight: 500;
 }
 
 .pf-essay-footer {
