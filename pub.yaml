@@ -88,7 +88,7 @@ types:
 # year: the publication year
 # bib: this overloads everything to show as the bibliography line
 # show: d means document, p means presentation, a means abstract
-# notes: a list of notes
+# notes: a list of notes, shown beneath the paper (use one sentence per research update)
 # dedication: a dedication, appends to the abstract
 # abstract: the abstract of the paper
 
@@ -120,6 +120,9 @@ year: 2026
 selected: true
 bib: AAAI 2026
 authors: [Peng Yu, Yike Chen, Chao Xu, Albert Bifet, Jesse Read]
+notes:
+  - >
+    In the author version, the addition step after Theorem 3 is justified by the stronger Monge property of the relevant matrices, since total monotonicity alone is not closed under addition.
 abstract: >
   In the context of the Classification and Regression Trees (CART) algorithm, the
   efficient splitting of categorical features using standard criteria like GINI and
@@ -290,6 +293,9 @@ authors: [Jianbo Wang, Chao Xu, Siyun Zhou]
 type: conference
 year: 2023
 pub: COCOON
+notes:
+  - >
+    Building on [axpokl's polynomial formulation](https://github.com/axpokl/LightsOut/blob/c0f2f036d1bf1a47d037e86f04a29f7297ae924c/diandeng10_b_faster2_png_H66.pas), fast polynomial arithmetic gives a $\widetilde O(n)$-time algorithm for the first row of a solution to the initially all-on $n\times n$ Lights Out board.
 abstract: >
   Let $\mathbb{F}$ be any field, we consider solving $Ax=b$ for a matrix $A\in\mathbb{F}^{n\times n}$
   of $m$ non-zero elements and $b\in\mathbb{F}^{n}$. If we are given a zero forcing set of $A$ of size
@@ -343,6 +349,9 @@ authors: [Calvin Beideman, Karthekeyan Chandrasekaran, Chandra Chekuri, Chao Xu]
 type: conference
 year: 2022
 pub: FSTTCS
+notes:
+  - >
+    The representation factors $128$ and $64$ improve to the optimal uniform constant $2$, and the general representation lower bound improves to $\Omega(n^{1/3}/\log n)$.
 abstract: >
   Submodular functions are fundamental to combinatorial optimization. Many interesting problems can be formulated as special cases of problems involving submodular functions. 
   In this work, we consider the problem of approximating symmetric submodular functions everywhere using hypergraph cut functions. 
@@ -536,6 +545,9 @@ authors: [Chandra Chekuri, Thapanapong Rukkanchanunt, Chao Xu]
 type: conference
 pub: ESA
 year: 2015
+notes:
+  - >
+    Using [deterministic almost-linear-time maximum flow](https://arxiv.org/abs/2309.16629), the terminal Gomory–Hu representation of all element-connectivities can be constructed in $|T|(n+m)^{1+o(1)}$ time.
 abstract: The notion of _element-connectivity_ has found several important applications in network design and routing problems. We focus on a reduction step that preserves the element-connectivity, which when applied repeatedly allows one to reduce the original graph to a simpler one. This pre-processing step is a crucial ingredient in several applications. In this paper we revisit this reduction step and provide a new proof via the use of setpairs. Our main contribution is algorithmic results for several basic problems on element-connectivity including the problem of achieving the aforementioned graph simplification. We utilize the underlying submodularity properties of element-connectivity to derive faster algorithms.
 
 ---
@@ -844,6 +856,9 @@ authors: [Chao Xu]
 type: journal
 pub: ORL
 year: 2016
+notes:
+  - >
+    Using [deterministic almost-linear-time maximum flow](https://arxiv.org/abs/2309.16629), preprocessing improves to $n(m+n)^{1+o(1)}$ time, preserving the paper's space and query bounds.
 abstract: For a simple undirected graph with $n$ vertices and $m$ edges, we consider a data structure that given a query of a pair of vertices $u$, $v$ and an integer $k\geq 1$, it returns $k$ edge-disjoint $uv$-paths. The data structure takes $\tilde{O}(n^{3.375})$ time to build, using $O(mn^{1.5}\log n)$ space, and each query takes $O(kn)$ time, which is optimal and beats the previous query time of $O(kn\alpha(n))$.
 
 --- 
