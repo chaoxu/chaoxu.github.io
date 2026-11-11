@@ -41,22 +41,22 @@
   </script>
 
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/css/theme.css">
-  <link rel="stylesheet" href="/css/essay.css">
-  <link rel="stylesheet" href="/css/site-home.css">
-  <script src="/files/js/essay.js"></script>
+  <link rel="stylesheet" href="/css/theme.css?v=20261111c">
+  <link rel="stylesheet" href="/css/essay.css?v=20261111c">
+  <link rel="stylesheet" href="/css/site-home.css?v=20261111c">
+  <script src="/files/js/essay.js?v=20261111c"></script>
 </head>
 <body class="pf-essay">
   <header class="pf-essay-topnav">
     <a class="pf-essay-brand" href="/">chaoxu.prof</a>
     <nav class="pf-essay-navlinks" aria-label="Primary">
       <a href="#publications">Publications</a>
-      <a href="/blog.html">Blog</a>
+      <a href="/blog.html">Writing</a>
       <a href="/cnblog.html" lang="zh-CN">中文博客</a>
       <a href="https://cosheaf.chaoxu.prof/chao/open-problems">Open Problems</a>
       <a href="/pages/academic-family.html">Group</a>
       <a href="/files/cv.pdf">CV</a>
-      <button class="pf-essay-theme-btn" type="button" data-pf-theme-toggle data-pf-theme-short>☾ Dark</button>
+      <button class="pf-essay-theme-btn" type="button" data-pf-theme-toggle data-pf-theme-short aria-label="Switch to dark mode">☾</button>
     </nav>
   </header>
 
@@ -68,58 +68,51 @@
       <meta itemprop="honorificSuffix" content="PhD">
       <meta itemprop="url" content="https://chaoxu.prof">
 
-      <div class="home-title-row">
-        <h1 class="home-name" id="site-title">
-          <span itemprop="givenName">Chao</span> <span itemprop="familyName">Xu</span>
-          <span class="home-name-sep">|</span>
-          <span class="home-name-zh" lang="zh-CN">
-            <ruby><rb>许</rb><rp>(</rp><rt>xǔ</rt><rp>)</rp></ruby><ruby><rb>超</rb><rp>(</rp><rt>chāo</rt><rp>)</rp></ruby>
-          </span>
-        </h1>
-        <span class="home-role-tag">Associate Professor · UESTC</span>
+      <div class="home-portrait-wrap" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="representativeOfPage" content="True">
+        <img width="128" height="128" src="/files/chao/chaoxu_current.jpg"
+          title="Lord Chao of the House Xu, the First of His Name, Guardian of the Art Gallery"
+          alt="Photo of Chao Xu" itemprop="contentUrl">
       </div>
 
-      <div class="home-bio-grid">
-        <div class="home-portrait-wrap" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-          <meta itemprop="representativeOfPage" content="True">
-          <img width="164" height="164" src="/files/chao/chaoxu_current.jpg"
-            title="Lord Chao of the House Xu, the First of His Name, Guardian of the Art Gallery"
-            alt="Photo of Chao Xu" itemprop="contentUrl">
-        </div>
+      <h1 class="home-name" id="site-title">
+        <span itemprop="givenName">Chao</span> <span itemprop="familyName">Xu</span>
+        <span class="home-name-sep">·</span>
+        <span class="home-name-zh" lang="zh-CN">
+          <ruby><rb>许</rb><rp>(</rp><rt>xǔ</rt><rp>)</rp></ruby><ruby><rb>超</rb><rp>(</rp><rt>chāo</rt><rp>)</rp></ruby>
+        </span>
+      </h1>
 
-        <div class="home-bio-copy">
-          <p>
-            I'm an Associate Professor at <a href="https://en.uestc.edu.cn/">UESTC</a>, a member of the <a href="https://tcsuestc.com/">Algorithms and Logic Group</a>.
-            My research interests are <span itemprop="knowsAbout">algorithms</span>, <span itemprop="knowsAbout">combinatorial optimization</span>, and <span itemprop="knowsAbout">computational geometry</span>. I'm also interested in more applied problems with nice theoretical components.
-            Here is my <a href="/files/cv.pdf">CV</a>.
-          </p>
-          <p>
-            I maintain a <a href="https://github.com/chaoxu/">GitHub account</a>, a <a href="/blog.html"><strong>blog</strong></a>, and a Mastodon <a rel="me" href="https://mathstodon.xyz/@chao">@chao</a>. I frequent <a href="https://cstheory.stackexchange.com/users/314/chao-xu">cstheory</a>, and keep a <a href="https://cosheaf.chaoxu.prof/chao/open-problems/src/branch/main/README.md">list of open problems</a> I care about.
-          </p>
-          <p>
-            Here is the list of all who have worked in <a href="/pages/academic-family.html">my group</a>.
-            You can contact me via <a href="mailto:thechaoxu@gmail.com"><samp itemprop="email">thechaoxu@gmail.com</samp></a>.
-          </p>
-          <div class="home-quicklinks" lang="zh-CN">
-            <a class="home-chip" href="/cnblog.html">中文博客 →</a>
-            <a class="home-chip" href="/pages/course-frontier-of-algorithms.html">前沿算法课程 →</a>
-          </div>
-        </div>
+      <div class="home-bio-copy">
+        <p>
+          I'm an Associate Professor at <a href="https://en.uestc.edu.cn/">UESTC</a>, a member of the <a href="https://tcsuestc.com/">Algorithms and Logic Group</a>.
+          My research interests are <span itemprop="knowsAbout">algorithms</span>, <span itemprop="knowsAbout">combinatorial optimization</span>, and <span itemprop="knowsAbout">computational geometry</span>, along with applied problems that admit clean theoretical structure.
+          Here is my <a href="/files/cv.pdf">CV</a>.
+        </p>
+        <p>
+          I maintain a <a href="https://github.com/chaoxu/">GitHub</a>, an English <a href="/blog.html">writing archive</a> (<a href="/cnblog.html" lang="zh-CN">中文博客</a>), a <a href="/pages/course-frontier-of-algorithms.html" lang="zh-CN">前沿算法课程</a> page, and Mastodon <a rel="me" href="https://mathstodon.xyz/@chao">@chao</a>. I frequent <a href="https://cstheory.stackexchange.com/users/314/chao-xu">cstheory</a> and keep a <a href="https://cosheaf.chaoxu.prof/chao/open-problems/src/branch/main/README.md">catalog of open problems</a>.
+        </p>
+        <p>
+          Here are the members of <a href="/pages/academic-family.html">my group</a>.
+          Contact: <a href="mailto:thechaoxu@gmail.com"><samp itemprop="email">thechaoxu@gmail.com</samp></a>.
+        </p>
+      </div>
+
+      <div class="home-search-wrap">
+        <input type="search" class="pub-search" id="pub-search" placeholder="Search papers, coauthors, venues…" aria-label="Search publications">
       </div>
     </section>
 
     <section class="pub-section" id="publications" aria-labelledby="pub-heading">
       <div class="pub-toolbar">
         <div class="pub-heading-group">
-          <h2 id="pub-heading">Publications</h2>
+          <h2 id="pub-heading">Selected Publications</h2>
           <span class="pub-count" id="pub-count"></span>
         </div>
-        <div class="pub-controls">
-          <div class="pub-mode-switch" role="group" aria-label="Publication filter">
-            <button type="button" class="pub-mode-btn is-active" data-pub-mode="selected">Selected</button>
-            <button type="button" class="pub-mode-btn" data-pub-mode="all">All Papers</button>
-          </div>
-          <input type="search" class="pub-search" id="pub-search" placeholder="Search papers, coauthors, venues…" aria-label="Search publications">
+        <div class="pub-mode-switch" role="group" aria-label="Publication filter">
+          <button type="button" class="pub-mode-btn is-active" data-pub-mode="selected">Selected</button>
+          <span class="pub-mode-sep">/</span>
+          <button type="button" class="pub-mode-btn" data-pub-mode="all">All Papers</button>
         </div>
       </div>
 
@@ -132,38 +125,39 @@
             <div class="pub-year"><time>{{paper.year}}</time></div>
             <div class="pub-body">
               <cite class="pub-title">{{paper.title}}</cite>
-              {% if paper.authors %}
-              <ul class="pub-authors">
-                {% for author in paper.authors %}<li>{% if author.link %}<a href="{{author.link}}">{{author.name}}</a>{% else %}{{author.name}}{% endif %}</li>{% endfor %}
-              </ul>
-              {% endif %}
-
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                {% if paper.authors %}
+                <ul class="pub-authors">
+                  {% for author in paper.authors %}<li>{% if author.link %}<a href="{{author.link}}">{{author.name}}</a>{% else %}{{author.name}}{% endif %}</li>{% endfor %}
+                </ul>
+                <span class="pub-dot">·</span>
+                {% endif %}
                 <span class="pub-venue">
                   {% if paper.bib %}
                     {{paper.bib}}
                   {% elif paper.pub %}
                     {% if pub_type.title == "Journal Publications" %}
-                      {{paper.pub.venue}} {{paper.year}}.
+                      {{paper.pub.venue}} {{paper.year}}
                     {% else %}
-                      <abbr title="{{paper.pub.venue}}">{{paper.pub.name}}</abbr> {{paper.year}}.
+                      <abbr title="{{paper.pub.venue}}">{{paper.pub.name}}</abbr> {{paper.year}}
                     {% endif %}
                   {% else %}
-                    {{paper.year}}.
+                    {{paper.year}}
                   {% endif %}
                 </span>
-
+                {% if 'a' in paper.show or 'd' in paper.show or 'p' in paper.show %}
                 <span class="pub-actions">
                   {% if 'a' in paper.show %}
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="{{paper.id}}-abs">Abstract</button>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="{{paper.id}}-abs">abstract</button>
                   {% endif %}
                   {% if 'd' in paper.show %}
-                  <a class="pub-pill" href="/files/papers/{{paper.id}}.pdf">PDF</a>
+                  <a class="pub-action-link" href="/files/papers/{{paper.id}}.pdf">pdf</a>
                   {% endif %}
                   {% if 'p' in paper.show %}
-                  <a class="pub-pill" href="/files/presentations/{{paper.id}}.pdf">Slides</a>
+                  <a class="pub-action-link" href="/files/presentations/{{paper.id}}.pdf">slides</a>
                   {% endif %}
                 </span>
+                {% endif %}
               </div>
 
               {% for note in paper.notes %}
@@ -192,6 +186,7 @@
     (function() {
       var list = document.getElementById("pub-list");
       var search = document.getElementById("pub-search");
+      var headingEl = document.getElementById("pub-heading");
       var countEl = document.getElementById("pub-count");
       var emptyEl = document.getElementById("pub-empty");
       var modeBtns = Array.from(document.querySelectorAll("[data-pub-mode]"));
@@ -223,11 +218,12 @@
           cat.classList.toggle("is-empty", !visibleInCat);
         });
 
-        countEl.textContent = q
-          ? shown + " match" + (shown === 1 ? "" : "es")
+        headingEl.textContent = q
+          ? "Search Results"
           : effectiveMode === "selected"
-            ? shown + " selected"
-            : shown + " total";
+            ? "Selected Publications"
+            : "All Publications";
+        countEl.textContent = "(" + shown + ")";
         emptyEl.style.display = shown === 0 ? "block" : "none";
       }
 
