@@ -5,47 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="The Art Gallery Guardian">
     <meta name="author" content="Chao Xu">
-    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
-    <meta property="og:title" content="Test conjectures on $k$-partitions over submodular functions" />
-    <meta property="og:type" content="article" />
-    <meta property="og:site_name" content="The Art Gallery Guardian" />
-    <meta property="article:tag" content="Conjectures, computational experiments, submodular, partition" />
-    <title>Test conjectures on $k$-partitions over submodular functions</title>
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok">
+    <meta property="og:title" content="Test conjectures on $k$-partitions over submodular functions">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="The Art Gallery Guardian">
+    <meta property="article:tag" content="Conjectures, computational experiments, submodular, partition">
+    <title>Test conjectures on $k$-partitions over submodular functions — Chao Xu</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
     <script src="/docmath.js"></script>
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
-  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
-  <link rel="alternate" type="application/rss+xml" title="RSS"
-      href="https://chaoxu.prof/rss.xml">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/theme.css">
+    <link rel="stylesheet" href="/css/essay.css">
+    <link rel="stylesheet" href="/css/blog.css">
+    <script src="/files/js/essay.js"></script>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://chaoxu.prof/rss.xml">
   </head>
-  <body>
-    <header class="hide-on-print">
-        <div id="site-title">
-            <a href="/blog.html">The Art Gallery Guardian</a>
-        </div>
-        <div style="display: none;">
-          <img src="/files/chao/chao_thumb.jpg" >
-        </div>
+  <body class="pf-essay">
+    <header class="pf-essay-topnav hide-on-print">
+      <a class="pf-essay-brand" href="/">chaoxu.prof</a>
+      <nav class="pf-essay-navlinks" aria-label="Primary">
+        <a href="/">About</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/cnblog.html" lang="zh-CN">中文博客</a>
+        <a href="/pages/tools.html">Tools</a>
+        <a href="/files/cv.pdf">CV</a>
+        <button class="pf-essay-theme-btn" type="button" data-pf-theme-toggle data-pf-theme-short>☾ Dark</button>
+      </nav>
     </header>
-    <nav class="hide-on-print">
-      <ul>
-        <li><a href="/">About</a></li>
-        <li><a href="/blog.html">Blog</a></li>
-        <li><a href="/cnblog.html">中文博客</a></li>
-        <li><a href="/files/cv.pdf">CV</a></li>
-        <li><a href="/pages/tools.html">Tools</a></li>
-      </ul>
-    </nav>
-    <main>
+
+    <main class="pf-essay-shell">
       <article>
-        <h1 id="article-title">Test conjectures on <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>-partitions
+        <header class="pf-essay-masthead">
+          <div class="pf-essay-kicker">The Art Gallery Guardian</div>
+          <h1 class="pf-essay-title" id="article-title">Test conjectures on <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>-partitions
 over submodular functions</h1>
-        <br />
-<div>
-<p>This article considers tools one can use to quickly test conjectures.
+          
+          
+          <div class="pf-essay-byline">
+            <a href="/">Chao Xu</a>
+            <time datetime="2022-01-30">2022-01-30</time>
+          </div>
+          
+        </header>
+
+        
+
+        <div class="pf-essay-grid">
+          <aside class="pf-essay-toc hide-on-print" aria-label="Table of contents"></aside>
+
+          <div class="pf-essay-prose">
+            <p>This article considers tools one can use to quickly test conjectures.
 I work in combinatorial optimization, and often there are cases where
 one can phrase a problem as a conjecture over a finite domain. Testing
 conjectures using brute force quickly becomes infeasible due to
@@ -238,14 +249,19 @@ especially <span class="katex"><span class="katex-html" aria-hidden="true"><span
 solving the conjecture for <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5</span></span></span></span>.</p>
 <p>In particular, because we see <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8491em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>, I would conjecture
 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0991em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>.</p>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2022-01-30">2022-01-30</time>. </div>
-    <div class="info">Tags: Conjectures, computational experiments, submodular, partition.</div>
-</div>
+
+
+            <footer class="pf-essay-footer hide-on-print">
+              <span>© 2010–2026 <a href="/" rel="author">Chao Xu</a> · <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span>
+              <span><a href="/blog.html">All Posts</a> · <a href="/rss.xml">RSS</a></span>
+            </footer>
+          </div>
+
+          <aside class="pf-essay-sidenotes hide-on-print" aria-label="Margin notes"></aside>
+        </div>
       </article>
     </main>
-    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxu.prof" rel="author">Chao Xu</a>. Licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
-    <a href="/README.html">Blog README</a>.</footer>
+
+    
   </body>
 </html>

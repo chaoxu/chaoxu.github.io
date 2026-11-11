@@ -11,9 +11,7 @@
         <item>
     <title>逼零集，点灯游戏和解线性方程组</title>
     <link>https://chaoxu.prof/cnposts/2022-08-18-zero-forcing.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>axpokl 3年前写下了<a
+    <description><![CDATA[<p>axpokl 3年前写下了<a
 href="https://zhuanlan.zhihu.com/p/53646257">点灯游戏Flip Game的<span
 class="math inline">O(n^3)</span>算法</a>，感觉颇为神奇<a href="#fn1"
 class="footnote-ref" id="fnref1"
@@ -92,11 +90,7 @@ dissection）只能用在满秩矩阵。而且在有限域里，只有随机算�
 href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
-</div>
-<div class="hide-on-print">
-    <div class="info"><a href="https://chaoxu.prof">许超</a>与<time datetime="2022-08-18">2022-08-18</time>发布</div>
-    <div class="info">标签: </div>
-</div>]]></description>
+]]></description>
     <pubDate>Thu, 18 Aug 2022 00:00:00 UT</pubDate>
     <guid>https://chaoxu.prof/cnposts/2022-08-18-zero-forcing.html</guid>
     <dc:creator>Chao Xu</dc:creator>
@@ -104,9 +98,7 @@ href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <item>
     <title>一个覆盖问题</title>
     <link>https://chaoxu.prof/cnposts/2022-07-10-a-covering-problem.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>让<span class="math inline">A</span>为<span
+    <description><![CDATA[<p>让<span class="math inline">A</span>为<span
 class="math inline">\{0,\ldots,\ell\}</span>，最小的<span
 class="math inline">B</span>有多大，使得<span
 class="math inline">AB=\{ab\pmod n | a\in A, b\in B\}=\Z_n</span>?</p>
@@ -125,11 +117,7 @@ class="math inline">\ell</span>不是太大的需求。那个时候史可就在�
 href="https://tcsuestc.com/2022/06/10/almost-tight-ell-covering-of-z_n/">每周seminar上做了个presentation（有slides）</a>。最近一个月突然想通了如何再消掉一个<span
 class="math inline">\log \log
 n</span>，并且大大简化之前的结论。有兴趣的可以看全文。</p>
-</div>
-<div class="hide-on-print">
-    <div class="info"><a href="https://chaoxu.prof">许超</a>与<time datetime="2022-07-10">2022-07-10</time>发布</div>
-    <div class="info">标签: </div>
-</div>]]></description>
+]]></description>
     <pubDate>Sun, 10 Jul 2022 00:00:00 UT</pubDate>
     <guid>https://chaoxu.prof/cnposts/2022-07-10-a-covering-problem.html</guid>
     <dc:creator>Chao Xu</dc:creator>

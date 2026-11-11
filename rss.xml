@@ -11,9 +11,7 @@
         <item>
     <title>AI Agents for the Working Mathematician</title>
     <link>https://chaoxu.prof/posts/2026-07-18-ai-agents-for-the-working-mathematician.html</link>
-    <description><![CDATA[<br />
-<div>
-<blockquote>
+    <description><![CDATA[<blockquote>
 <p><strong>REVISED 2026-09-19.</strong></p>
 </blockquote>
 <p>This is a living document. I revise it as the mathematical AI
@@ -302,11 +300,7 @@ class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb2-1"><a hr
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">month</span>        = <span class="st">jul</span>,</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">howpublished</span> = {<span class="ch">\url</span>{https://chaoxu.prof/posts/2026-07-18-ai-agents-for-the-working-mathematician.html}}</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2026-07-18">2026-07-18</time>. </div>
-    <div class="info">Tags: math, AI.</div>
-</div>]]></description>
+]]></description>
     <pubDate>Sat, 18 Jul 2026 00:00:00 UT</pubDate>
     <guid>https://chaoxu.prof/posts/2026-07-18-ai-agents-for-the-working-mathematician.html</guid>
     <dc:creator>Chao Xu</dc:creator>
@@ -314,9 +308,7 @@ class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb2-1"><a hr
 <item>
     <title>Use a box spread as a line of credit</title>
     <link>https://chaoxu.prof/posts/2026-01-20-use-a-box-spread-as-a-line-of-credit.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>In an idealized world, you could borrow at the Effective Federal
+    <description><![CDATA[<p>In an idealized world, you could borrow at the Effective Federal
 Funds Rate (EFFR) and also earn roughly the same rate on cash deposits.
 For simplicity, assume the relevant short rate is fixed for a month.
 Let’s say it turns out to be 10% <em>per month</em>. Assume the stock
@@ -385,11 +377,7 @@ tax-wise $10 ordinary income.</li>
 </ol>
 <p>Now this means if I do believe there is something with higher
 performance than EFFR, I should always borrow for my cash needs.</p>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2026-01-20">2026-01-20</time>. </div>
-    <div class="info">Tags: finance.</div>
-</div>]]></description>
+]]></description>
     <pubDate>Tue, 20 Jan 2026 00:00:00 UT</pubDate>
     <guid>https://chaoxu.prof/posts/2026-01-20-use-a-box-spread-as-a-line-of-credit.html</guid>
     <dc:creator>Chao Xu</dc:creator>
@@ -397,9 +385,7 @@ performance than EFFR, I should always borrow for my cash needs.</p>
 <item>
     <title>The related employer controlled group</title>
     <link>https://chaoxu.prof/posts/2022-02-06-related-companies-and-controlled-groups.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>Disclaimer: Not an accountant nor a lawyer.</p>
+    <description><![CDATA[<p>Disclaimer: Not an accountant nor a lawyer.</p>
 <p>For employees in the US, employers (not just the employee) can
 contribute to the employee’s retirement fund 401(k). There is an maximum
 limit. It is <span class="math inline">M = \$61,000</span> for 2022.</p>
@@ -552,11 +538,7 @@ C-set.</li>
 <p>Looking at the letter of the law, any C-set together with some other
 P-set and B-set is still a C-set. This means two companies that is not
 related in any way can be classified to be related.</p>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2022-02-06">2022-02-06</time>. </div>
-    <div class="info">Tags: tax, 401(k).</div>
-</div>]]></description>
+]]></description>
     <pubDate>Sun, 06 Feb 2022 00:00:00 UT</pubDate>
     <guid>https://chaoxu.prof/posts/2022-02-06-related-companies-and-controlled-groups.html</guid>
     <dc:creator>Chao Xu</dc:creator>
@@ -564,9 +546,7 @@ related in any way can be classified to be related.</p>
 <item>
     <title>Test conjectures on $k$-partitions over submodular functions</title>
     <link>https://chaoxu.prof/posts/2022-01-30-test-conjectures-on-k-partitions.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>This article considers tools one can use to quickly test conjectures.
+    <description><![CDATA[<p>This article considers tools one can use to quickly test conjectures.
 I work in combinatorial optimization, and often there are cases where
 one can phrase a problem as a conjecture over a finite domain. Testing
 conjectures using brute force quickly becomes infeasible due to
@@ -924,11 +904,7 @@ solving the conjecture for <span class="math inline">k=5</span>.</p>
 <p>In particular, because we see <span
 class="math inline">\lambda_2(d)\leq 2^{d+1}</span>, I would conjecture
 <span class="math inline">\lambda_k(d) = O(k^d)</span>.</p>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2022-01-30">2022-01-30</time>. </div>
-    <div class="info">Tags: Conjectures, computational experiments, submodular, partition.</div>
-</div>]]></description>
+]]></description>
     <pubDate>Sun, 30 Jan 2022 00:00:00 UT</pubDate>
     <guid>https://chaoxu.prof/posts/2022-01-30-test-conjectures-on-k-partitions.html</guid>
     <dc:creator>Chao Xu</dc:creator>
@@ -936,9 +912,7 @@ class="math inline">\lambda_2(d)\leq 2^{d+1}</span>, I would conjecture
 <item>
     <title>Yotta Savings and covering designs</title>
     <link>https://chaoxu.prof/posts/2020-07-11-yotta-savings-and-covering-designs.html</link>
-    <description><![CDATA[<br />
-<div>
-<p><a href="https://www.withyotta.com/">Yotta Savings</a> is a FDIC
+    <description><![CDATA[<p><a href="https://www.withyotta.com/">Yotta Savings</a> is a FDIC
 insured savings account that gives you “interest” in another way. It has
 a 0.2% APR. It is much better than the APR of many banks, but much worse
 than actual high APR savings accounts, e.g. Marcus, Ally. However, for
@@ -1080,11 +1054,7 @@ problem exactly.</p>
 crazy amount</em> of work, and clearly not worth the time. It is better
 to be not paranoid and let the algorithm give you random numbers. Or
 hope one day Yotta allows one to import a list of numbers.</p>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2020-07-11">2020-07-11</time>. </div>
-    <div class="info">Tags: banking, probability.</div>
-</div>]]></description>
+]]></description>
     <pubDate>Sat, 11 Jul 2020 00:00:00 UT</pubDate>
     <guid>https://chaoxu.prof/posts/2020-07-11-yotta-savings-and-covering-designs.html</guid>
     <dc:creator>Chao Xu</dc:creator>
@@ -1092,9 +1062,7 @@ hope one day Yotta allows one to import a list of numbers.</p>
 <item>
     <title>The value of a gift card in beancount</title>
     <link>https://chaoxu.prof/posts/2020-06-05-the-value-of-a-gift-card.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>I’m using beancount to do accounting. In beancount, you are allowed
+    <description><![CDATA[<p>I’m using beancount to do accounting. In beancount, you are allowed
 to have commodities. One can view gift card as commodity, but also as a
 currency.</p>
 <p>Say, I bought an $100 Amazon gift card for $90, I would write
@@ -1126,11 +1094,7 @@ $z per unit, you record a profit/loss of $z-$x.</p>
 But for simplifying calculation, 1 is sufficient. Setting it to <span
 class="math inline">1</span> is the best option since it simplifies the
 computation.</p>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2020-06-05">2020-06-05</time>. </div>
-    <div class="info">Tags: accounting.</div>
-</div>]]></description>
+]]></description>
     <pubDate>Fri, 05 Jun 2020 00:00:00 UT</pubDate>
     <guid>https://chaoxu.prof/posts/2020-06-05-the-value-of-a-gift-card.html</guid>
     <dc:creator>Chao Xu</dc:creator>
@@ -1138,9 +1102,7 @@ computation.</p>
 <item>
     <title>Maximize Cash Back</title>
     <link>https://chaoxu.prof/posts/2020-04-10-maximize-cash-back.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>Credit cards often offers rewards for purchases. For example, a card
+    <description><![CDATA[<p>Credit cards often offers rewards for purchases. For example, a card
 that gives 5% cash back for grocery stores. Also, credit cards often can
 be used to buy gift cards for specific stores.</p>
 <p>For example, one can use Chase Ink Cash (CIC) and go to Staples and
@@ -1227,11 +1189,7 @@ gas. However, there is only so much gas one can use (unless you selling
 it to others). So one can view grocery stores as having a higher
 discount up to a certain limit. This can also be modeled in the
 graph.</p>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2020-04-10">2020-04-10</time>. </div>
-    <div class="info">Tags: math, life.</div>
-</div>]]></description>
+]]></description>
     <pubDate>Fri, 10 Apr 2020 00:00:00 UT</pubDate>
     <guid>https://chaoxu.prof/posts/2020-04-10-maximize-cash-back.html</guid>
     <dc:creator>Chao Xu</dc:creator>
@@ -1239,9 +1197,7 @@ graph.</p>
 <item>
     <title>Bounds on number of cuts</title>
     <link>https://chaoxu.prof/posts/2019-11-27-bounds-on-cuts.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>Consider we have an undirected graph <span
+    <description><![CDATA[<p>Consider we have an undirected graph <span
 class="math inline">G=(V,E)</span> of <span class="math inline">n</span>
 vertices, and there are <em>positive</em> cost <span
 class="math inline">c:E\to \R^+</span> on the edges. We define <span
@@ -1563,11 +1519,7 @@ sparsification</strong>, SIAM Journal on Computing. 48 (2019) 1196–1223
 href="https://doi.org/10.1137/16M1091666">10.1137/16M1091666</a>.</div>
 </div>
 </div>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2019-11-27">2019-11-27</time>. </div>
-    <div class="info">Tags: Graph Theory.</div>
-</div>]]></description>
+]]></description>
     <pubDate>Wed, 27 Nov 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxu.prof/posts/2019-11-27-bounds-on-cuts.html</guid>
     <dc:creator>Chao Xu</dc:creator>
@@ -1575,9 +1527,7 @@ href="https://doi.org/10.1137/16M1091666">10.1137/16M1091666</a>.</div>
 <item>
     <title>Word break with cost</title>
     <link>https://chaoxu.prof/posts/2019-09-19-word-break-with-cost.html</link>
-    <description><![CDATA[<br />
-<div>
-<div class="theorem-environment Problem" data-index="1" type="Problem">
+    <description><![CDATA[<div class="theorem-environment Problem" data-index="1" type="Problem">
 <span class="theorem-header"><span class="type">Problem</span><span
 class="index">1</span></span>
 <p>Given a set of strings <span class="math inline">W</span>, a cost
@@ -1667,11 +1617,7 @@ Dagstuhl, Germany, 2020: pp. 29:1–29:14 <a
 href="https://doi.org/10.4230/LIPIcs.ESA.2020.29">10.4230/LIPIcs.ESA.2020.29</a>.</div>
 </div>
 </div>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2019-09-19">2019-09-19</time>. </div>
-    <div class="info">Tags: Algorithm.</div>
-</div>]]></description>
+]]></description>
     <pubDate>Thu, 19 Sep 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxu.prof/posts/2019-09-19-word-break-with-cost.html</guid>
     <dc:creator>Chao Xu</dc:creator>
@@ -1679,9 +1625,7 @@ href="https://doi.org/10.4230/LIPIcs.ESA.2020.29">10.4230/LIPIcs.ESA.2020.29</a>
 <item>
     <title>Traditional vs Roth IRA under fixed amount of investment</title>
     <link>https://chaoxu.prof/posts/2019-09-06-traditional-ira-vs-roth-ira.html</link>
-    <description><![CDATA[<br />
-<div>
-<p>I’ve read a lot of articles on Traditional vs Roth IRA. One can do a
+    <description><![CDATA[<p>I’ve read a lot of articles on Traditional vs Roth IRA. One can do a
 serious mathematical analysis of which one is better, given that you
 want to invest a total of <span class="math inline">x</span> income into
 the account for a particular year. Money in excess of <span
@@ -1758,11 +1702,7 @@ type 1 and type 2 accounts.</p>
 <p>It looks like this still suggest putting money in Traditional IRA is
 better than Roth IRA if your current tax rate is <em>much higher</em>
 than your future tax rate.</p>
-</div>
-<div class="hide-on-print">
-    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="2019-09-06">2019-09-06</time>. </div>
-    <div class="info">Tags: Tax.</div>
-</div>]]></description>
+]]></description>
     <pubDate>Fri, 06 Sep 2019 00:00:00 UT</pubDate>
     <guid>https://chaoxu.prof/posts/2019-09-06-traditional-ira-vs-roth-ira.html</guid>
     <dc:creator>Chao Xu</dc:creator>

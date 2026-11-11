@@ -1,49 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="The Art Gallery Guardian">
-    <meta name="author" content="Chao Xu">
-    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok" />
-    <meta property="og:title" content="逼零集，点灯游戏和解线性方程组" />
-    <meta property="og:type" content="article" />
-    <meta property="og:site_name" content="The Art Gallery Guardian" />
-    <meta property="article:tag" content="" />
-    <title>逼零集，点灯游戏和解线性方程组</title>
+    <meta name="description" content="艺术画廊守护者">
+    <meta name="author" content="许超">
+    <meta name="google-site-verification" content="YE2oeW4OwVOPdVVfdpYIakOuD0A2Qo80W_sUbMJDGok">
+    <meta property="og:title" content="逼零集，点灯游戏和解线性方程组">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="艺术画廊守护者">
+    <meta property="article:tag" content="">
+    <title>逼零集，点灯游戏和解线性方程组 — 许超</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
-  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/blog.css" crossorigin="anonymous">
-  <link rel="alternate" type="application/rss+xml" title="RSS"
-      href="https://chaoxu.prof/cnrss.xml">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/theme.css">
+    <link rel="stylesheet" href="/css/essay.css">
+    <link rel="stylesheet" href="/css/blog.css">
+    <script src="/files/js/essay.js"></script>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://chaoxu.prof/cnrss.xml">
   </head>
-  <body>
-    <header class="hide-on-print">
-        <div id="site-title">
-            <a href="/cnblog.html">艺术画廊守护者</a>
-        </div>
-        <div style="display: none;">
-          <img src="/files/chao/chao_thumb.jpg" >
-        </div>
+  <body class="pf-essay">
+    <header class="pf-essay-topnav hide-on-print">
+      <a class="pf-essay-brand" href="/">chaoxu.prof</a>
+      <nav class="pf-essay-navlinks" aria-label="Primary">
+        <a href="/">关于</a>
+        <a href="/blog.html" lang="en">English Blog</a>
+        <a href="/cnblog.html">中文博客</a>
+        <a href="/pages/tools.html" lang="en">Tools</a>
+        <a href="/files/cv.pdf" lang="en">CV</a>
+        <button class="pf-essay-theme-btn" type="button" data-pf-theme-toggle data-pf-theme-short>☾ Dark</button>
+      </nav>
     </header>
-    <nav class="hide-on-print">
-      <ul>
-        <li><a href="/">About</a></li>
-        <li><a href="/blog.html">英文博客</a></li>
-        <li><a href="/cnblog.html">中文博客</a></li>
-        <li><a href="/files/cv.pdf">CV</a></li>
-        <li><a href="/pages/tools.html">Tools</a></li>
-      </ul>
-    </nav>
-    <main>
+
+    <main class="pf-essay-shell">
       <article>
-        <h1 id="article-title">逼零集，点灯游戏和解线性方程组</h1>
-        <br />
-<div>
-<p>axpokl 3年前写下了<a
+        <header class="pf-essay-masthead">
+          <div class="pf-essay-kicker">艺术画廊守护者</div>
+          <h1 class="pf-essay-title" id="article-title">逼零集，点灯游戏和解线性方程组</h1>
+          
+          
+          <div class="pf-essay-byline">
+            <a href="/">许超</a>
+            <time datetime="2022-08-18">2022-08-18</time>
+          </div>
+          
+        </header>
+
+        <div class="pf-essay-grid">
+          <aside class="pf-essay-toc hide-on-print" aria-label="目录"></aside>
+
+          <div class="pf-essay-prose">
+            <p>axpokl 3年前写下了<a
 href="https://zhuanlan.zhihu.com/p/53646257">点灯游戏Flip Game的<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>算法</a>，感觉颇为神奇<a href="#fn1"
 class="footnote-ref" id="fnref1"
 role="doc-noteref"><sup>1</sup></a>。文章的算法很巧妙，但是算法的正确性并不显然。想象整个算法抽象成为了两个矩阵<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span>和<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>。
@@ -90,14 +98,19 @@ dissection）只能用在满秩矩阵。而且在有限域里，只有随机算�
 href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
-</div>
-<div class="hide-on-print">
-    <div class="info"><a href="https://chaoxu.prof">许超</a>与<time datetime="2022-08-18">2022-08-18</time>发布</div>
-    <div class="info">标签: </div>
-</div>
+
+
+            <footer class="pf-essay-footer hide-on-print">
+              <span>© 2010–2026 <a href="/" rel="author">许超</a> · <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC BY 4.0</a></span>
+              <span><a href="/cnblog.html">全部文章</a> · <a href="/cnrss.xml">RSS</a></span>
+            </footer>
+          </div>
+
+          <aside class="pf-essay-sidenotes hide-on-print" aria-label="旁注"></aside>
+        </div>
       </article>
     </main>
-    <footer class="hide-on-print">© 2010 - <time><script>document.write(new Date().getFullYear())</script></time> <a href="https://chaoxu.prof" rel="author">许超</a>。 <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">知识共享许可协议 署名 4.0 国际</a>。
-    <a href="/README.html">博客README</a>。</footer>
+
+    
   </body>
 </html>
