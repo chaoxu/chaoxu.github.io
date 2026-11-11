@@ -36,8 +36,10 @@
     document.querySelectorAll("[data-pf-theme-toggle]").forEach((btn) => {
       const isDark = mode === "dark";
       btn.setAttribute("aria-pressed", String(isDark));
+      btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+      btn.setAttribute("title", isDark ? "Switch to light mode" : "Switch to dark mode");
       const short = btn.hasAttribute("data-pf-theme-short");
-      btn.textContent = short ? (isDark ? "☼ Light" : "☾ Dark") : isDark ? "☼ Light Mode" : "☾ Dark Mode";
+      btn.textContent = short ? (isDark ? "☀" : "☾") : isDark ? "☀ Light Mode" : "☾ Dark Mode";
     });
     window.dispatchEvent(new CustomEvent("chao-theme-change", { detail: { theme: mode } }));
   }
@@ -81,13 +83,19 @@
       const nav = document.createElement("nav");
       nav.setAttribute("aria-label", "Table of contents");
 
-      const label = document.createElement("div");
-      label.className = "pf-essay-toc-label";
-      label.textContent = document.documentElement.lang.startsWith("zh") ? "目录" : "Contents";
-      nav.appendChild(label);
-
       const rootUl = document.createElement("ul");
       let currentSubUl = null;
+
+      // Prepend quiet "Introduction" anchor pointing to #article-title when present
+      const articleTitle = document.getElementById("article-title");
+      if (articleTitle) {
+        const introLi = document.createElement("li");
+        const introA = document.createElement("a");
+        introA.href = "#article-title";
+        introA.textContent = document.documentElement.lang.startsWith("zh") ? "引言" : "Introduction";
+        introLi.appendChild(introA);
+        rootUl.appendChild(introLi);
+      }
 
       headings.forEach((h) => {
         const level = Number(h.tagName.slice(1));
@@ -95,16 +103,14 @@
         a.href = "#" + h.id;
         const syncLabel = () => {
           const clone = h.cloneNode(true);
-          clone.querySelectorAll("a.anchor").forEach((el) => el.remove());
+          clone.querySelectorAll("a.anchor, .header-section-number").forEach((el) => el.remove());
           clone.querySelectorAll("[id]").forEach((el) => el.removeAttribute("id"));
-          // Unwrap any nested <a> inside heading so TOC <a> stays valid HTML
           clone.querySelectorAll("a").forEach((nested) => {
             nested.replaceWith(...nested.childNodes);
           });
           a.innerHTML = clone.innerHTML.trim();
         };
         syncLabel();
-        // Re-sync after deferred KaTeX auto-render finishes on headings
         window.addEventListener("load", syncLabel, { once: true });
 
         const li = document.createElement("li");
@@ -223,7 +229,7 @@
 
         const anchorY = ref.getBoundingClientRect().top + window.scrollY - gridTop - 2;
         const prev = placed[placed.length - 1];
-        const top = prev ? Math.max(anchorY, prev.top + prev.height + 16) : Math.max(0, anchorY);
+        const top = prev ? Math.max(anchorY, prev.top + prev.height + 14) : Math.max(0, anchorY);
         note.style.top = `${Math.round(top)}px`;
         placed.push({ top, height: note.offsetHeight });
 

@@ -39,22 +39,22 @@
     });
   </script>
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/css/theme.css">
-  <link rel="stylesheet" href="/css/essay.css">
-  <link rel="stylesheet" href="/css/site-home.css">
-  <script src="/files/js/essay.js"></script>
+  <link rel="stylesheet" href="/css/theme.css?v=20261111c">
+  <link rel="stylesheet" href="/css/essay.css?v=20261111c">
+  <link rel="stylesheet" href="/css/site-home.css?v=20261111c">
+  <script src="/files/js/essay.js?v=20261111c"></script>
 </head>
 <body class="pf-essay">
   <header class="pf-essay-topnav">
     <a class="pf-essay-brand" href="/">chaoxu.prof</a>
     <nav class="pf-essay-navlinks" aria-label="Primary">
       <a href="#publications">Publications</a>
-      <a href="/blog.html">Blog</a>
+      <a href="/blog.html">Writing</a>
       <a href="/cnblog.html" lang="zh-CN">中文博客</a>
       <a href="https://cosheaf.chaoxu.prof/chao/open-problems">Open Problems</a>
       <a href="/pages/academic-family.html">Group</a>
       <a href="/files/cv.pdf">CV</a>
-      <button class="pf-essay-theme-btn" type="button" data-pf-theme-toggle data-pf-theme-short>☾ Dark</button>
+      <button class="pf-essay-theme-btn" type="button" data-pf-theme-toggle data-pf-theme-short aria-label="Switch to dark mode">☾</button>
     </nav>
   </header>
   <main class="home-shell">
@@ -64,55 +64,47 @@
       <meta itemprop="honorificPrefix" content="Dr">
       <meta itemprop="honorificSuffix" content="PhD">
       <meta itemprop="url" content="https://chaoxu.prof">
-      <div class="home-title-row">
-        <h1 class="home-name" id="site-title">
-          <span itemprop="givenName">Chao</span> <span itemprop="familyName">Xu</span>
-          <span class="home-name-sep">|</span>
-          <span class="home-name-zh" lang="zh-CN">
-            <ruby><rb>许</rb><rp>(</rp><rt>xǔ</rt><rp>)</rp></ruby><ruby><rb>超</rb><rp>(</rp><rt>chāo</rt><rp>)</rp></ruby>
-          </span>
-        </h1>
-        <span class="home-role-tag">Associate Professor · UESTC</span>
+      <div class="home-portrait-wrap" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="representativeOfPage" content="True">
+        <img width="128" height="128" src="/files/chao/chaoxu_current.jpg"
+          title="Lord Chao of the House Xu, the First of His Name, Guardian of the Art Gallery"
+          alt="Photo of Chao Xu" itemprop="contentUrl">
       </div>
-      <div class="home-bio-grid">
-        <div class="home-portrait-wrap" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-          <meta itemprop="representativeOfPage" content="True">
-          <img width="164" height="164" src="/files/chao/chaoxu_current.jpg"
-            title="Lord Chao of the House Xu, the First of His Name, Guardian of the Art Gallery"
-            alt="Photo of Chao Xu" itemprop="contentUrl">
-        </div>
-        <div class="home-bio-copy">
-          <p>
-            I'm an Associate Professor at <a href="https://en.uestc.edu.cn/">UESTC</a>, a member of the <a href="https://tcsuestc.com/">Algorithms and Logic Group</a>.
-            My research interests are <span itemprop="knowsAbout">algorithms</span>, <span itemprop="knowsAbout">combinatorial optimization</span>, and <span itemprop="knowsAbout">computational geometry</span>. I'm also interested in more applied problems with nice theoretical components.
-            Here is my <a href="/files/cv.pdf">CV</a>.
-          </p>
-          <p>
-            I maintain a <a href="https://github.com/chaoxu/">GitHub account</a>, a <a href="/blog.html"><strong>blog</strong></a>, and a Mastodon <a rel="me" href="https://mathstodon.xyz/@chao">@chao</a>. I frequent <a href="https://cstheory.stackexchange.com/users/314/chao-xu">cstheory</a>, and keep a <a href="https://cosheaf.chaoxu.prof/chao/open-problems/src/branch/main/README.md">list of open problems</a> I care about.
-          </p>
-          <p>
-            Here is the list of all who have worked in <a href="/pages/academic-family.html">my group</a>.
-            You can contact me via <a href="mailto:thechaoxu@gmail.com"><samp itemprop="email">thechaoxu@gmail.com</samp></a>.
-          </p>
-          <div class="home-quicklinks" lang="zh-CN">
-            <a class="home-chip" href="/cnblog.html">中文博客 →</a>
-            <a class="home-chip" href="/pages/course-frontier-of-algorithms.html">前沿算法课程 →</a>
-          </div>
-        </div>
+      <h1 class="home-name" id="site-title">
+        <span itemprop="givenName">Chao</span> <span itemprop="familyName">Xu</span>
+        <span class="home-name-sep">·</span>
+        <span class="home-name-zh" lang="zh-CN">
+          <ruby><rb>许</rb><rp>(</rp><rt>xǔ</rt><rp>)</rp></ruby><ruby><rb>超</rb><rp>(</rp><rt>chāo</rt><rp>)</rp></ruby>
+        </span>
+      </h1>
+      <div class="home-bio-copy">
+        <p>
+          I'm an Associate Professor at <a href="https://en.uestc.edu.cn/">UESTC</a>, a member of the <a href="https://tcsuestc.com/">Algorithms and Logic Group</a>.
+          My research interests are <span itemprop="knowsAbout">algorithms</span>, <span itemprop="knowsAbout">combinatorial optimization</span>, and <span itemprop="knowsAbout">computational geometry</span>, along with applied problems that admit clean theoretical structure.
+          Here is my <a href="/files/cv.pdf">CV</a>.
+        </p>
+        <p>
+          I maintain a <a href="https://github.com/chaoxu/">GitHub</a>, an English <a href="/blog.html">writing archive</a> (<a href="/cnblog.html" lang="zh-CN">中文博客</a>), a <a href="/pages/course-frontier-of-algorithms.html" lang="zh-CN">前沿算法课程</a> page, and Mastodon <a rel="me" href="https://mathstodon.xyz/@chao">@chao</a>. I frequent <a href="https://cstheory.stackexchange.com/users/314/chao-xu">cstheory</a> and keep a <a href="https://cosheaf.chaoxu.prof/chao/open-problems/src/branch/main/README.md">catalog of open problems</a>.
+        </p>
+        <p>
+          Here are the members of <a href="/pages/academic-family.html">my group</a>.
+          Contact: <a href="mailto:thechaoxu@gmail.com"><samp itemprop="email">thechaoxu@gmail.com</samp></a>.
+        </p>
+      </div>
+      <div class="home-search-wrap">
+        <input type="search" class="pub-search" id="pub-search" placeholder="Search papers, coauthors, venues…" aria-label="Search publications">
       </div>
     </section>
     <section class="pub-section" id="publications" aria-labelledby="pub-heading">
       <div class="pub-toolbar">
         <div class="pub-heading-group">
-          <h2 id="pub-heading">Publications</h2>
+          <h2 id="pub-heading">Selected Publications</h2>
           <span class="pub-count" id="pub-count"></span>
         </div>
-        <div class="pub-controls">
-          <div class="pub-mode-switch" role="group" aria-label="Publication filter">
-            <button type="button" class="pub-mode-btn is-active" data-pub-mode="selected">Selected</button>
-            <button type="button" class="pub-mode-btn" data-pub-mode="all">All Papers</button>
-          </div>
-          <input type="search" class="pub-search" id="pub-search" placeholder="Search papers, coauthors, venues…" aria-label="Search publications">
+        <div class="pub-mode-switch" role="group" aria-label="Publication filter">
+          <button type="button" class="pub-mode-btn is-active" data-pub-mode="selected">Selected</button>
+          <span class="pub-mode-sep">/</span>
+          <button type="button" class="pub-mode-btn" data-pub-mode="all">All Papers</button>
         </div>
       </div>
       <div class="pub-list" id="pub-list" data-mode="selected">
@@ -122,15 +114,16 @@
             <div class="pub-year"><time>2026</time></div>
             <div class="pub-body">
               <cite class="pub-title"><a href="https://doi.org/10.4230/LIPIcs.ESA.2026.79">Unimodal-Cost <span class="math">k</span>-Median on a Line</a></cite>
-              <ul class="pub-authors">
-                <li><a href="https://stargazer-cyk.github.io/">Yike Chen</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://stargazer-cyk.github.io/">Yike Chen</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
                     ESA 2026, LIPIcs 388, Article 79
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="unimodal-k-median-abs">Abstract</button>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="unimodal-k-median-abs">abstract</button>
                 </span>
               </div>
               <div class="pub-abstract" id="unimodal-k-median-abs">
@@ -142,16 +135,17 @@
             <div class="pub-year"><time>2026</time></div>
             <div class="pub-body">
               <cite class="pub-title">Binary Split Categorical Feature with Mean Absolute Error Criteria in CART</cite>
-              <ul class="pub-authors">
-                <li><a href="https://yupbank.github.io/">Peng Yu</a></li><li><a href="https://stargazer-cyk.github.io/">Yike Chen</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li><li><a href="https://albertbifet.com/">Albert Bifet</a></li><li><a href="https://jmread.github.io/">Jesse Read</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://yupbank.github.io/">Peng Yu</a></li><li><a href="https://stargazer-cyk.github.io/">Yike Chen</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li><li><a href="https://albertbifet.com/">Albert Bifet</a></li><li><a href="https://jmread.github.io/">Jesse Read</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
                     AAAI 2026
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="cart-mae-categorical-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/cart-mae-categorical.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="cart-mae-categorical-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/cart-mae-categorical.pdf">pdf</a>
                 </span>
               </div>
               <aside class="pub-note">In the author version, the addition step after Theorem 3 is justified by the stronger Monge property of the relevant matrices, since total monotonicity alone is not closed under addition.</aside>
@@ -164,16 +158,17 @@
             <div class="pub-year"><time>2025</time></div>
             <div class="pub-body">
               <cite class="pub-title">An Optimal Algorithm for the Stacker Crane Problem on Fixed Topologies</cite>
-              <ul class="pub-authors">
-                <li><a href="https://stargazer-cyk.github.io/">Yike Chen</a></li><li><a href="https://keshi.pro/">Ke Shi</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://stargazer-cyk.github.io/">Yike Chen</a></li><li><a href="https://keshi.pro/">Ke Shi</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
                     ISAAC 2025
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="graph-ride-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/graph-ride.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="graph-ride-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/graph-ride.pdf">pdf</a>
                 </span>
               </div>
               <div class="pub-abstract" id="graph-ride-abs">
@@ -186,15 +181,16 @@ We propose an algorithm that is optimal for each fixed topology, running in near
             <div class="pub-year"><time>2025</time></div>
             <div class="pub-body">
               <cite class="pub-title">Efficient Branch-and-Bound for Submodular Function Maximization under Knapsack Constraint</cite>
-              <ul class="pub-authors">
-                <li>Yimin Hao</li><li><a href="https://joey001.github.io/index_en/">Yi Zhou</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li><li>Zhang-Hua Fu</li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li>Yimin Hao</li><li><a href="https://joey001.github.io/index_en/">Yi Zhou</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li><li>Zhang-Hua Fu</li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
                     ECAI 2025
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="ecai-submodular-abs">Abstract</button>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="ecai-submodular-abs">abstract</button>
                 </span>
               </div>
               <div class="pub-abstract" id="ecai-submodular-abs">
@@ -206,15 +202,16 @@ We propose an algorithm that is optimal for each fixed topology, running in near
             <div class="pub-year"><time>2025</time></div>
             <div class="pub-body">
               <cite class="pub-title">Large-Scale Trade-Off Curve Computation for Incentive Allocation with Cardinality and Matroid Constraints</cite>
-              <ul class="pub-authors">
-                <li><a href="https://talldoor.uk/about.html">Yu Cong</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li><li><a href="https://joey001.github.io/index_en/">Yi Zhou</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://talldoor.uk/about.html">Yu Cong</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li><li><a href="https://joey001.github.io/index_en/">Yi Zhou</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
                     IJCAI 2025
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="incentive-allocation-abs">Abstract</button>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="incentive-allocation-abs">abstract</button>
                 </span>
               </div>
               <div class="pub-abstract" id="incentive-allocation-abs">
@@ -226,16 +223,17 @@ We propose an algorithm that is optimal for each fixed topology, running in near
             <div class="pub-year"><time>2024</time></div>
             <div class="pub-body">
               <cite class="pub-title">Almost optimum <span class="math">\ell</span>-covering of <span class="math">\Z_n</span></cite>
-              <ul class="pub-authors">
-                <li><a href="https://keshi.pro/">Ke Shi</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://keshi.pro/">Ke Shi</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
                     COCOON 2024
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="cyclic-cover-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/cyclic-cover.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="cyclic-cover-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/cyclic-cover.pdf">pdf</a>
                 </span>
               </div>
               <div class="pub-abstract" id="cyclic-cover-abs">
@@ -247,15 +245,16 @@ We propose an algorithm that is optimal for each fixed topology, running in near
             <div class="pub-year"><time>2024</time></div>
             <div class="pub-body">
               <cite class="pub-title">Resource-Limited Network Security Games with General Contagious Attacks</cite>
-              <ul class="pub-authors">
-                <li><a href="https://sites.google.com/view/rufanbai">Rufan Bai</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li><li><a href="https://chenyang-1995.github.io/">Chenyang Xu</a></li><li><a href="https://ruilong-zhang.github.io/">Ruilong Zhang</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://sites.google.com/view/rufanbai">Rufan Bai</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li><li><a href="https://chenyang-1995.github.io/">Chenyang Xu</a></li><li><a href="https://ruilong-zhang.github.io/">Ruilong Zhang</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
                     COCOON 2024
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="resource-limited-game-abs">Abstract</button>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="resource-limited-game-abs">abstract</button>
                 </span>
               </div>
               <div class="pub-abstract" id="resource-limited-game-abs">
@@ -268,16 +267,17 @@ The paper handles this issue by considering the resource-limited setting of the 
             <div class="pub-year"><time>2024</time></div>
             <div class="pub-body">
               <cite class="pub-title">Nested and Interlaced Ticketing for Multiple Travelers</cite>
-              <ul class="pub-authors">
-                <li>Dongyu Lv</li><li><a href="https://www.linkedin.com/in/yizhi-song-24784312b/">Yizhi Song</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li>Dongyu Lv</li><li><a href="https://www.linkedin.com/in/yizhi-song-24784312b/">Yizhi Song</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
                     IJTCS-FAW 2024
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="nested-ticketing-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/nested-ticketing.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="nested-ticketing-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/nested-ticketing.pdf">pdf</a>
                 </span>
               </div>
               <div class="pub-abstract" id="nested-ticketing-abs">
@@ -289,16 +289,17 @@ The paper handles this issue by considering the resource-limited setting of the 
             <div class="pub-year"><time>2024</time></div>
             <div class="pub-body">
               <cite class="pub-title">On the Congruency-Constrained Matroid Base</cite>
-              <ul class="pub-authors">
-                <li><a href="https://siyueliu112.github.io/">Siyue Liu</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://siyueliu112.github.io/">Siyue Liu</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
                     IPCO 2024
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="matroid-congruency-constraint-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/matroid-congruency-constraint.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="matroid-congruency-constraint-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/matroid-congruency-constraint.pdf">pdf</a>
                 </span>
               </div>
               <div class="pub-abstract" id="matroid-congruency-constraint-abs">
@@ -310,16 +311,17 @@ The paper handles this issue by considering the resource-limited setting of the 
             <div class="pub-year"><time>2023</time></div>
             <div class="pub-body">
               <cite class="pub-title">Solving systems of linear equations through zero forcing sets</cite>
-              <ul class="pub-authors">
-                <li><a href="https://wangchienbo.github.io/">Jianbo Wang</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li><li><a href="https://lazykko.github.io/">Siyun Zhou</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://wangchienbo.github.io/">Jianbo Wang</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li><li><a href="https://lazykko.github.io/">Siyun Zhou</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      <abbr title="International Computing and Combinatorics Conference">COCOON</abbr> 2023.
+                      <abbr title="International Computing and Combinatorics Conference">COCOON</abbr> 2023
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="zeroforcing-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/zeroforcing.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="zeroforcing-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/zeroforcing.pdf">pdf</a>
                 </span>
               </div>
               <aside class="pub-note">Building on <a href="https://github.com/axpokl/LightsOut/blob/c0f2f036d1bf1a47d037e86f04a29f7297ae924c/diandeng10_b_faster2_png_H66.pas">axpokl's polynomial formulation</a>, fast polynomial arithmetic gives a <span class="math">\widetilde O(n)</span>-time algorithm for the first row of a solution to the initially all-on <span class="math">n\times n</span> Lights Out board.</aside>
@@ -332,17 +334,18 @@ The paper handles this issue by considering the resource-limited setting of the 
             <div class="pub-year"><time>2023</time></div>
             <div class="pub-body">
               <cite class="pub-title">A Polynomial Time Algorithm for Finding a Minimum 4-Partition of a Submodular Function</cite>
-              <ul class="pub-authors">
-                <li>Tsuyoshi Hirayama</li><li><a href="https://yhliu126.github.io/">Yuhao Liu</a></li><li><a href="https://www.kurims.kyoto-u.ac.jp/en/list/makino.html">Kazuhisa Makino</a></li><li><a href="https://keshi.pro/">Ke Shi</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li>Tsuyoshi Hirayama</li><li><a href="https://yhliu126.github.io/">Yuhao Liu</a></li><li><a href="https://www.kurims.kyoto-u.ac.jp/en/list/makino.html">Kazuhisa Makino</a></li><li><a href="https://keshi.pro/">Ke Shi</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      <abbr title="ACM-SIAM Symposium on Discrete Algorithms">SODA</abbr> 2023.
+                      <abbr title="ACM-SIAM Symposium on Discrete Algorithms">SODA</abbr> 2023
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="sub4part-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/sub4part.pdf">PDF</a>
-                  <a class="pub-pill" href="/files/presentations/sub4part.pdf">Slides</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="sub4part-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/sub4part.pdf">pdf</a>
+                  <a class="pub-action-link" href="/files/presentations/sub4part.pdf">slides</a>
                 </span>
               </div>
               <div class="pub-abstract" id="sub4part-abs">
@@ -354,16 +357,17 @@ The paper handles this issue by considering the resource-limited setting of the 
             <div class="pub-year"><time>2022</time></div>
             <div class="pub-body">
               <cite class="pub-title">Linear TreeShap</cite>
-              <ul class="pub-authors">
-                <li><a href="https://yupbank.github.io/">Peng Yu</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li><li><a href="https://albertbifet.com/">Albert Bifet</a></li><li><a href="https://jmread.github.io/">Jesse Read</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://yupbank.github.io/">Peng Yu</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li><li><a href="https://albertbifet.com/">Albert Bifet</a></li><li><a href="https://jmread.github.io/">Jesse Read</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      <abbr title="Conference on Neural Information Processing Systems">NeurIPS</abbr> 2022.
+                      <abbr title="Conference on Neural Information Processing Systems">NeurIPS</abbr> 2022
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="lineartreeshap-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/lineartreeshap.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="lineartreeshap-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/lineartreeshap.pdf">pdf</a>
                 </span>
               </div>
               <aside class="pub-note">Selected as Oral.</aside>
@@ -376,15 +380,16 @@ The paper handles this issue by considering the resource-limited setting of the 
             <div class="pub-year"><time>2022</time></div>
             <div class="pub-body">
               <cite class="pub-title">Approximate Representation of Symmetric Submodular Functions via Hypergraph Cut Functions</cite>
-              <ul class="pub-authors">
-                <li><a href="https://www.calvinbeideman.com/">Calvin Beideman</a></li><li><a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a></li><li><a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://www.calvinbeideman.com/">Calvin Beideman</a></li><li><a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a></li><li><a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      <abbr title="Foundations of Software Technology and Theoretical Computer Science">FSTTCS</abbr> 2022.
+                      <abbr title="Foundations of Software Technology and Theoretical Computer Science">FSTTCS</abbr> 2022
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="approxbyhypergraph-abs">Abstract</button>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="approxbyhypergraph-abs">abstract</button>
                 </span>
               </div>
               <aside class="pub-note">The representation factors <span class="math">128</span> and <span class="math">64</span> improve to the optimal uniform constant <span class="math">2</span>, and the general representation lower bound improves to <span class="math">\Omega(n^{1/3}/\log n)</span>.</aside>
@@ -397,16 +402,17 @@ The paper handles this issue by considering the resource-limited setting of the 
             <div class="pub-year"><time>2022</time></div>
             <div class="pub-body">
               <cite class="pub-title">Improved Approximation Algorithms for The Traveling Tournament Problem</cite>
-              <ul class="pub-authors">
-                <li><a href="https://scholar.google.com/citations?user=s55SLpgAAAAJ&hl=en">Jingyang Zhao</a></li><li><a href="https://sites.google.com/site/myxiao/">Mingyu Xiao</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://scholar.google.com/citations?user=s55SLpgAAAAJ&hl=en">Jingyang Zhao</a></li><li><a href="https://sites.google.com/site/myxiao/">Mingyu Xiao</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      <abbr title="International Symposium on Mathematical Foundations of Computer Science">MFCS</abbr> 2022.
+                      <abbr title="International Symposium on Mathematical Foundations of Computer Science">MFCS</abbr> 2022
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="ttp-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/ttp.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="ttp-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/ttp.pdf">pdf</a>
                 </span>
               </div>
               <aside class="pub-note">The <a href="#ttp-journal">journal version</a> was serialized in Theoretical Computer Science.</aside>
@@ -419,16 +425,17 @@ The paper handles this issue by considering the resource-limited setting of the 
             <div class="pub-year"><time>2020</time></div>
             <div class="pub-body">
               <cite class="pub-title">Marking Streets to Improve Parking Density</cite>
-              <ul class="pub-authors">
-                <li><a href="https://www3.cs.stonybrook.edu/~skiena/">Steven Skiena</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://www3.cs.stonybrook.edu/~skiena/">Steven Skiena</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      <abbr title="Urban Complex Systems">Urban Complex Systems</abbr> 2020.
+                      <abbr title="Urban Complex Systems">Urban Complex Systems</abbr> 2020
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="parking-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/parking.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="parking-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/parking.pdf">pdf</a>
                 </span>
               </div>
               <div class="pub-abstract" id="parking-abs">
@@ -440,16 +447,17 @@ The paper handles this issue by considering the resource-limited setting of the 
             <div class="pub-year"><time>2020</time></div>
             <div class="pub-body">
               <cite class="pub-title">Multicritera Cuts and Size-Constrained <span class="math">k</span>-cuts in Hypergraphs</cite>
-              <ul class="pub-authors">
-                <li><a href="https://www.calvinbeideman.com/">Calvin Beideman</a></li><li><a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://www.calvinbeideman.com/">Calvin Beideman</a></li><li><a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      <abbr title="International Conference on Randomization and Computation">RANDOM</abbr> 2020.
+                      <abbr title="International Conference on Randomization and Computation">RANDOM</abbr> 2020
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="multicritera-cuts-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/multicritera-cuts.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="multicritera-cuts-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/multicritera-cuts.pdf">pdf</a>
                 </span>
               </div>
               <aside class="pub-note">The <a href="#multicritera-cuts-journal">journal version</a> was serialized in Mathematical Programming.</aside>
@@ -468,17 +476,18 @@ All of our results build on the random contraction approach of Karger (SODA, 199
             <div class="pub-year"><time>2019</time></div>
             <div class="pub-body">
               <cite class="pub-title">LP Relaxation and Tree Packing for Minimum <span class="math">k</span>-cuts</cite>
-              <ul class="pub-authors">
-                <li><a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a></li><li><a href="https://kentquanrud.com/">Kent Quanrud</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a></li><li><a href="https://kentquanrud.com/">Kent Quanrud</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      <abbr title="Symposium on Simplicity in Algorithms">SOSA</abbr> 2019.
+                      <abbr title="Symposium on Simplicity in Algorithms">SOSA</abbr> 2019
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="kcut-revisited-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/kcut-revisited.pdf">PDF</a>
-                  <a class="pub-pill" href="/files/presentations/kcut-revisited.pdf">Slides</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="kcut-revisited-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/kcut-revisited.pdf">pdf</a>
+                  <a class="pub-action-link" href="/files/presentations/kcut-revisited.pdf">slides</a>
                 </span>
               </div>
               <aside class="pub-note">The <a href="#kcut-revisited-journal">journal version</a> was serialized in SIAM Journal on Discrete Mathematics.</aside>
@@ -492,17 +501,18 @@ In this paper we revisit properties of an LP relaxation for <span class="math">k
             <div class="pub-year"><time>2018</time></div>
             <div class="pub-body">
               <cite class="pub-title">Hypergraph <span class="math">k</span>-Cut in Randomized Polynomial Time</cite>
-              <ul class="pub-authors">
-                <li><a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li><li><a href="http://xilinyu2.web.engr.illinois.edu/">Xilin Yu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li><li><a href="http://xilinyu2.web.engr.illinois.edu/">Xilin Yu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      <abbr title="ACM-SIAM Symposium on Discrete Algorithms">SODA</abbr> 2018.
+                      <abbr title="ACM-SIAM Symposium on Discrete Algorithms">SODA</abbr> 2018
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="hypergraph-k-cut-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/hypergraph-k-cut.pdf">PDF</a>
-                  <a class="pub-pill" href="/files/presentations/hypergraph-k-cut.pdf">Slides</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="hypergraph-k-cut-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/hypergraph-k-cut.pdf">pdf</a>
+                  <a class="pub-action-link" href="/files/presentations/hypergraph-k-cut.pdf">slides</a>
                 </span>
               </div>
               <aside class="pub-note">The <a href="#hypergraph-k-cut-journal">journal version</a> was serialized in Mathematical Programming.</aside>
@@ -517,17 +527,18 @@ Our algorithm is based on random contractions akin to Karger's min cut algorithm
             <div class="pub-year"><time>2017</time></div>
             <div class="pub-body">
               <cite class="pub-title">Global and fixed-terminal cuts in digraphs</cite>
-              <ul class="pub-authors">
-                <li><a href="https://berkri.web.elte.hu/">Kristóf Bérczi</a></li><li><a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a></li><li><a href="http://www.cs.elte.hu/~tkiraly/">Tamás Király</a></li><li><a href="http://www.cs.cmu.edu/~euiwoonl/">Euiwoong Lee</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://berkri.web.elte.hu/">Kristóf Bérczi</a></li><li><a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a></li><li><a href="http://www.cs.elte.hu/~tkiraly/">Tamás Király</a></li><li><a href="http://www.cs.cmu.edu/~euiwoonl/">Euiwoong Lee</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      <abbr title="International Workshop on Approximation Algorithms for Combinatorial Optimization Problems">APPROX</abbr> 2017.
+                      <abbr title="International Workshop on Approximation Algorithms for Combinatorial Optimization Problems">APPROX</abbr> 2017
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="global-cuts-digraphs-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/global-cuts-digraphs.pdf">PDF</a>
-                  <a class="pub-pill" href="/files/presentations/global-cuts-digraphs.pdf">Slides</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="global-cuts-digraphs-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/global-cuts-digraphs.pdf">pdf</a>
+                  <a class="pub-action-link" href="/files/presentations/global-cuts-digraphs.pdf">slides</a>
                 </span>
               </div>
               <aside class="pub-note">The results on global bicut was serialized as <a href="#global-bicut">Beating the 2-approximation factor for global bicut</a> in Mathematical Programming.</aside>
@@ -546,17 +557,18 @@ Our algorithm is based on random contractions akin to Karger's min cut algorithm
             <div class="pub-year"><time>2017</time></div>
             <div class="pub-body">
               <cite class="pub-title">A Faster Pseudopolynomial Time Algorithm for Subset Sum</cite>
-              <ul class="pub-authors">
-                <li><a href="https://koiliaris.com/">Konstantinos Koiliaris</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://koiliaris.com/">Konstantinos Koiliaris</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      <abbr title="ACM-SIAM Symposium on Discrete Algorithms">SODA</abbr> 2017.
+                      <abbr title="ACM-SIAM Symposium on Discrete Algorithms">SODA</abbr> 2017
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="subset-sum-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/subset-sum.pdf">PDF</a>
-                  <a class="pub-pill" href="/files/presentations/subset-sum.pdf">Slides</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="subset-sum-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/subset-sum.pdf">pdf</a>
+                  <a class="pub-action-link" href="/files/presentations/subset-sum.pdf">slides</a>
                 </span>
               </div>
               <aside class="pub-note">Not practical. <a href="https://gist.github.com/chaoxu/c9350bcdd4d7f44ca1a1d7e9c8c905d9">Discussion/implementation</a>.</aside>
@@ -570,17 +582,18 @@ Our algorithm is based on random contractions akin to Karger's min cut algorithm
             <div class="pub-year"><time>2017</time></div>
             <div class="pub-body">
               <cite class="pub-title">Computing minimum cuts in hypergraphs</cite>
-              <ul class="pub-authors">
-                <li><a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      <abbr title="ACM-SIAM Symposium on Discrete Algorithms">SODA</abbr> 2017.
+                      <abbr title="ACM-SIAM Symposium on Discrete Algorithms">SODA</abbr> 2017
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="hypergraph-min-cut-conf-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/hypergraph-min-cut-conf.pdf">PDF</a>
-                  <a class="pub-pill" href="/files/presentations/hypergraph-min-cut-conf.pdf">Slides</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="hypergraph-min-cut-conf-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/hypergraph-min-cut-conf.pdf">pdf</a>
+                  <a class="pub-action-link" href="/files/presentations/hypergraph-min-cut-conf.pdf">slides</a>
                 </span>
               </div>
               <aside class="pub-note">The SODA camera ready version has a bug in the sparsification section that is fixed in the arXiv update.</aside>
@@ -600,17 +613,18 @@ We utilize vertex ordering based ideas to obtain our results. Unlike graphs we o
             <div class="pub-year"><time>2015</time></div>
             <div class="pub-body">
               <cite class="pub-title">On Element-Connectivity Preserving Graph Simplification</cite>
-              <ul class="pub-authors">
-                <li><a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a></li><li><a href="https://www2.cs.science.cmu.ac.th/staff/THAPANAPONG/doku.php">Thapanapong Rukkanchanunt</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a></li><li><a href="https://www2.cs.science.cmu.ac.th/staff/THAPANAPONG/doku.php">Thapanapong Rukkanchanunt</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      <abbr title="European Symposium on Algorithms">ESA</abbr> 2015.
+                      <abbr title="European Symposium on Algorithms">ESA</abbr> 2015
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="elem-connectivity-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/elem-connectivity.pdf">PDF</a>
-                  <a class="pub-pill" href="/files/presentations/elem-connectivity.pdf">Slides</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="elem-connectivity-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/elem-connectivity.pdf">pdf</a>
+                  <a class="pub-action-link" href="/files/presentations/elem-connectivity.pdf">slides</a>
                 </span>
               </div>
               <aside class="pub-note">Using <a href="https://arxiv.org/abs/2309.16629">deterministic almost-linear-time maximum flow</a>, the terminal Gomory–Hu representation of all element-connectivities can be constructed in <span class="math">|T|(n+m)^{1+o(1)}</span> time.</aside>
@@ -623,17 +637,18 @@ We utilize vertex ordering based ideas to obtain our results. Unlike graphs we o
             <div class="pub-year"><time>2015</time></div>
             <div class="pub-body">
               <cite class="pub-title">Detecting Weakly Simple Polygons</cite>
-              <ul class="pub-authors">
-                <li><a href="https://users.cs.duke.edu/~hc252/">Hsien-Chih Chang</a></li><li><a href="http://jeffe.cs.illinois.edu/">Jeff Erickson</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://users.cs.duke.edu/~hc252/">Hsien-Chih Chang</a></li><li><a href="http://jeffe.cs.illinois.edu/">Jeff Erickson</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      <abbr title="ACM-SIAM Symposium on Discrete Algorithms">SODA</abbr> 2015.
+                      <abbr title="ACM-SIAM Symposium on Discrete Algorithms">SODA</abbr> 2015
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="wspolygon-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/wspolygon.pdf">PDF</a>
-                  <a class="pub-pill" href="/files/presentations/wspolygon.pdf">Slides</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="wspolygon-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/wspolygon.pdf">pdf</a>
+                  <a class="pub-action-link" href="/files/presentations/wspolygon.pdf">slides</a>
                 </span>
               </div>
               <div class="pub-abstract" id="wspolygon-abs">
@@ -649,15 +664,16 @@ We utilize vertex ordering based ideas to obtain our results. Unlike graphs we o
             <div class="pub-year"><time>2025</time></div>
             <div class="pub-body">
               <cite class="pub-title">The traveling tournament problem: Improved algorithms based on cycle packing</cite>
-              <ul class="pub-authors">
-                <li><a href="https://scholar.google.com/citations?user=s55SLpgAAAAJ&hl=en">Jingyang Zhao</a></li><li><a href="https://sites.google.com/site/myxiao/">Mingyu Xiao</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://scholar.google.com/citations?user=s55SLpgAAAAJ&hl=en">Jingyang Zhao</a></li><li><a href="https://sites.google.com/site/myxiao/">Mingyu Xiao</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      Theoretical Computer Science 2025.
+                      Theoretical Computer Science 2025
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="ttp-journal-abs">Abstract</button>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="ttp-journal-abs">abstract</button>
                 </span>
               </div>
               <aside class="pub-note">An <a href="#ttp">extended abstract</a> of this work appeared in MFCS 2022.</aside>
@@ -670,16 +686,17 @@ We utilize vertex ordering based ideas to obtain our results. Unlike graphs we o
             <div class="pub-year"><time>2025</time></div>
             <div class="pub-body">
               <cite class="pub-title">A near-linear time algorithm and a min-cost flow approach for determining the optimal landing times of a fixed sequence of planes</cite>
-              <ul class="pub-authors">
-                <li><a href="https://scholar.google.com/citations?user=4DRkxEoAAAAJ&hl=en">Bin Cao</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://scholar.google.com/citations?user=4DRkxEoAAAAJ&hl=en">Bin Cao</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      Annals of Operations Research 2025.
+                      Annals of Operations Research 2025
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="airplane-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/airplane.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="airplane-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/airplane.pdf">pdf</a>
                 </span>
               </div>
               <div class="pub-abstract" id="airplane-abs">
@@ -691,16 +708,17 @@ We utilize vertex ordering based ideas to obtain our results. Unlike graphs we o
             <div class="pub-year"><time>2024</time></div>
             <div class="pub-body">
               <cite class="pub-title">A polynomial time algorithm for finding a minimum 4-partition of a submodular function</cite>
-              <ul class="pub-authors">
-                <li>Tsuyoshi Hirayama</li><li><a href="https://yhliu126.github.io/">Yuhao Liu</a></li><li><a href="https://www.kurims.kyoto-u.ac.jp/en/list/makino.html">Kazuhisa Makino</a></li><li><a href="https://keshi.pro/">Ke Shi</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li>Tsuyoshi Hirayama</li><li><a href="https://yhliu126.github.io/">Yuhao Liu</a></li><li><a href="https://www.kurims.kyoto-u.ac.jp/en/list/makino.html">Kazuhisa Makino</a></li><li><a href="https://keshi.pro/">Ke Shi</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      Mathematical Programming 2024.
+                      Mathematical Programming 2024
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="sub4part-journal-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/sub4part-journal.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="sub4part-journal-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/sub4part-journal.pdf">pdf</a>
                 </span>
               </div>
               <aside class="pub-note">An <a href="#sub4part">extended abstract</a> of this work appeared in SODA 2023.</aside>
@@ -713,16 +731,17 @@ We utilize vertex ordering based ideas to obtain our results. Unlike graphs we o
             <div class="pub-year"><time>2021</time></div>
             <div class="pub-body">
               <cite class="pub-title">Multicritera Cuts and Size-Constrained <span class="math">k</span>-cuts in Hypergraphs</cite>
-              <ul class="pub-authors">
-                <li><a href="https://www.calvinbeideman.com/">Calvin Beideman</a></li><li><a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://www.calvinbeideman.com/">Calvin Beideman</a></li><li><a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      Mathematical Programming 2021.
+                      Mathematical Programming 2021
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="multicritera-cuts-journal-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/multicritera-cuts-journal.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="multicritera-cuts-journal-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/multicritera-cuts-journal.pdf">pdf</a>
                 </span>
               </div>
               <aside class="pub-note">An <a href="#multicritera-cuts">extended abstract</a> of this work appeared in RANDOM 2020.</aside>
@@ -741,17 +760,18 @@ All of our results build on the random contraction approach of Karger  (Proceedi
             <div class="pub-year"><time>2021</time></div>
             <div class="pub-body">
               <cite class="pub-title">High multiplicity asymmetric traveling salesman problem with feedback vertex set and its application to storage/retrieval system</cite>
-              <ul class="pub-authors">
-                <li><a href="https://www.csun.edu/som/amir-gharehgozli">Amir Gharehgozli</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li><li><a href="https://www.linkedin.com/in/wenda-zhang-a5359a36/">Wenda Zhang</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://www.csun.edu/som/amir-gharehgozli">Amir Gharehgozli</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li><li><a href="https://www.linkedin.com/in/wenda-zhang-a5359a36/">Wenda Zhang</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      European Journal of Operational Research 2021.
+                      European Journal of Operational Research 2021
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="kdepots-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/kdepots.pdf">PDF</a>
-                  <a class="pub-pill" href="/files/presentations/kdepots.pdf">Slides</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="kdepots-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/kdepots.pdf">pdf</a>
+                  <a class="pub-action-link" href="/files/presentations/kdepots.pdf">slides</a>
                 </span>
               </div>
               <div class="pub-abstract" id="kdepots-abs">
@@ -763,17 +783,18 @@ All of our results build on the random contraction approach of Karger  (Proceedi
             <div class="pub-year"><time>2020</time></div>
             <div class="pub-body">
               <cite class="pub-title">Minimum violation vertex maps and their applications to cut problems</cite>
-              <ul class="pub-authors">
-                <li><a href="http://research.nii.ac.jp/~k_keniti/">Ken-ichi Kawarabayashi</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="http://research.nii.ac.jp/~k_keniti/">Ken-ichi Kawarabayashi</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      SIAM Journal on Discrete Mathematics 2020.
+                      SIAM Journal on Discrete Mathematics 2020
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="min-violation-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/min-violation.pdf">PDF</a>
-                  <a class="pub-pill" href="/files/presentations/min-violation.pdf">Slides</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="min-violation-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/min-violation.pdf">pdf</a>
+                  <a class="pub-action-link" href="/files/presentations/min-violation.pdf">slides</a>
                 </span>
               </div>
               <div class="pub-abstract" id="min-violation-abs">
@@ -785,16 +806,17 @@ All of our results build on the random contraction approach of Karger  (Proceedi
             <div class="pub-year"><time>2020</time></div>
             <div class="pub-body">
               <cite class="pub-title">LP Relaxation and Tree Packing for Minimum <span class="math">k</span>-Cut</cite>
-              <ul class="pub-authors">
-                <li><a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a></li><li><a href="https://kentquanrud.com/">Kent Quanrud</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a></li><li><a href="https://kentquanrud.com/">Kent Quanrud</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      SIAM Journal on Discrete Mathematics 2020.
+                      SIAM Journal on Discrete Mathematics 2020
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="kcut-revisited-journal-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/kcut-revisited-journal.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="kcut-revisited-journal-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/kcut-revisited-journal.pdf">pdf</a>
                 </span>
               </div>
               <aside class="pub-note">An <a href="#kcut-revisited">extended abstract</a> of this work appeared in SOSA 2019.</aside>
@@ -808,17 +830,18 @@ In this paper we revisit properties of an LP relaxation for cͅut proposed by Na
             <div class="pub-year"><time>2019</time></div>
             <div class="pub-body">
               <cite class="pub-title">Hypergraph <span class="math">k</span>-Cut in Randomized Polynomial Time</cite>
-              <ul class="pub-authors">
-                <li><a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li><li><a href="http://xilinyu2.web.engr.illinois.edu/">Xilin Yu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li><li><a href="http://xilinyu2.web.engr.illinois.edu/">Xilin Yu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      Mathematical Programming 2019.
+                      Mathematical Programming 2019
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="hypergraph-k-cut-journal-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/hypergraph-k-cut-journal.pdf">PDF</a>
-                  <a class="pub-pill" href="/files/presentations/hypergraph-k-cut-journal.pdf">Slides</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="hypergraph-k-cut-journal-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/hypergraph-k-cut-journal.pdf">pdf</a>
+                  <a class="pub-action-link" href="/files/presentations/hypergraph-k-cut-journal.pdf">slides</a>
                 </span>
               </div>
               <aside class="pub-note">An <a href="#hypergraph-k-cut">extended abstract</a> of this work appeared in SODA 2018.</aside>
@@ -831,16 +854,17 @@ In this paper we revisit properties of an LP relaxation for cͅut proposed by Na
             <div class="pub-year"><time>2019</time></div>
             <div class="pub-body">
               <cite class="pub-title">Faster Pseudopolynomial Time Algorithms for Subset Sum</cite>
-              <ul class="pub-authors">
-                <li><a href="https://koiliaris.com/">Konstantinos Koiliaris</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://koiliaris.com/">Konstantinos Koiliaris</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      ACM Transactions on Algorithms 2019.
+                      ACM Transactions on Algorithms 2019
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="subset-sum-journal-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/subset-sum-journal.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="subset-sum-journal-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/subset-sum-journal.pdf">pdf</a>
                 </span>
               </div>
               <aside class="pub-note">The paper is a combination of <a href="#subset-sum">A Faster Pseudopolynomial Time Algorithm for Subset Sum</a> appeared in SODA 2017 and <a href="https://arxiv.org/abs/1807.08248">Subset Sum Made Simple</a>. This full version among other additions, simplifies the <span class="math">\tilde{O}(\sqrt{n}u)</span> time algorithm and improves the bound from <span class="math">\tilde{O}(u^{4/3})</span> to <span class="math">\tilde{O}(u^{5/4})</span> time.</aside>
@@ -855,16 +879,17 @@ Our contributions improve upon the standard dynamic programming algorithm that r
             <div class="pub-year"><time>2019</time></div>
             <div class="pub-body">
               <cite class="pub-title">Beating the 2-approximation factor for global bicut</cite>
-              <ul class="pub-authors">
-                <li><a href="https://berkri.web.elte.hu/">Kristóf Bérczi</a></li><li><a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a></li><li><a href="http://www.cs.elte.hu/~tkiraly/">Tamás Király</a></li><li><a href="http://www.cs.cmu.edu/~euiwoonl/">Euiwoong Lee</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://berkri.web.elte.hu/">Kristóf Bérczi</a></li><li><a href="http://karthik.ise.illinois.edu/">Karthekeyan Chandrasekaran</a></li><li><a href="http://www.cs.elte.hu/~tkiraly/">Tamás Király</a></li><li><a href="http://www.cs.cmu.edu/~euiwoonl/">Euiwoong Lee</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      Mathematical Programming 2019.
+                      Mathematical Programming 2019
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="global-bicut-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/global-bicut.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="global-bicut-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/global-bicut.pdf">pdf</a>
                 </span>
               </div>
               <aside class="pub-note">The preliminary version <a href="#global-cuts-digraphs">Global and fixed-terminal cuts in digraphs</a> appeared in APPROX 2017.</aside>
@@ -877,16 +902,17 @@ Our contributions improve upon the standard dynamic programming algorithm that r
             <div class="pub-year"><time>2018</time></div>
             <div class="pub-body">
               <cite class="pub-title">Minimum cuts and sparsification in hypergraphs</cite>
-              <ul class="pub-authors">
-                <li><a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="http://chekuri.cs.illinois.edu/">Chandra Chekuri</a></li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      SIAM Journal on Computing 2018.
+                      SIAM Journal on Computing 2018
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="hypergraph-min-cut-journal-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/hypergraph-min-cut-journal.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="hypergraph-min-cut-journal-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/hypergraph-min-cut-journal.pdf">pdf</a>
                 </span>
               </div>
               <aside class="pub-note">The paper is a combination of <a href="#hypergraph-min-cut-conf">Computing minimum cuts in hypergraphs</a> appeared in SODA 2017 and <a href="https://arxiv.org/abs/1703.03849">A note on approximate strengths of edges in a hypergraph</a>.</aside>
@@ -924,17 +950,18 @@ problems in hypergraphs of small rank.</li>
             <div class="pub-year"><time>2018</time></div>
             <div class="pub-body">
               <cite class="pub-title">The shortest kinship description problem</cite>
-              <ul class="pub-authors">
-                <li><a href="https://chaoxu.prof">Chao Xu</a></li><li><a href="http://qianzhang.me/">Qian Zhang</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://chaoxu.prof">Chao Xu</a></li><li><a href="http://qianzhang.me/">Qian Zhang</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      Information Processing Letters 2018.
+                      Information Processing Letters 2018
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="kinship-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/kinship.pdf">PDF</a>
-                  <a class="pub-pill" href="/files/presentations/kinship.pdf">Slides</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="kinship-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/kinship.pdf">pdf</a>
+                  <a class="pub-action-link" href="/files/presentations/kinship.pdf">slides</a>
                 </span>
               </div>
               <div class="pub-abstract" id="kinship-abs">
@@ -947,16 +974,17 @@ problems in hypergraphs of small rank.</li>
             <div class="pub-year"><time>2016</time></div>
             <div class="pub-body">
               <cite class="pub-title">Reconstructing edge-disjoint paths faster</cite>
-              <ul class="pub-authors">
-                <li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      Operations Research Letters 2016.
+                      Operations Research Letters 2016
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="edgedisjoint-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/edgedisjoint.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="edgedisjoint-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/edgedisjoint.pdf">pdf</a>
                 </span>
               </div>
               <aside class="pub-note">Using <a href="https://arxiv.org/abs/2309.16629">deterministic almost-linear-time maximum flow</a>, preprocessing improves to <span class="math">n(m+n)^{1+o(1)}</span> time, preserving the paper's space and query bounds.</aside>
@@ -969,16 +997,17 @@ problems in hypergraphs of small rank.</li>
             <div class="pub-year"><time>2013</time></div>
             <div class="pub-body">
               <cite class="pub-title">Champion spiders in the game of Graph Nim</cite>
-              <ul class="pub-authors">
-                <li><a href="https://www.math.clemson.edu/~calkin/">Neil J. Calkin</a></li><li>Janine E. Janoski</li><li>Allison Nelson</li><li>Sydney Ryan</li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://www.math.clemson.edu/~calkin/">Neil J. Calkin</a></li><li>Janine E. Janoski</li><li>Allison Nelson</li><li>Sydney Ryan</li><li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                      Congressus Numerantium 2013.
+                      Congressus Numerantium 2013
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="spider-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/spider.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="spider-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/spider.pdf">pdf</a>
                 </span>
               </div>
               <div class="pub-abstract" id="spider-abs">
@@ -993,16 +1022,17 @@ problems in hypergraphs of small rank.</li>
             <div class="pub-year"><time>2019</time></div>
             <div class="pub-body">
               <cite class="pub-title">An algorithm for the metric multiple depots capacitated vehicle routing problem with restocking and capacity two</cite>
-              <ul class="pub-authors">
-                <li><a href="https://chaoxu.prof">Chao Xu</a></li><li>Yichen Yang</li><li><a href="http://qianzhang.me/">Qian Zhang</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://chaoxu.prof">Chao Xu</a></li><li>Yichen Yang</li><li><a href="http://qianzhang.me/">Qian Zhang</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
                     2019, Submitted.
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="milk-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/milk.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="milk-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/milk.pdf">pdf</a>
                 </span>
               </div>
               <div class="pub-abstract" id="milk-abs">
@@ -1017,16 +1047,17 @@ problems in hypergraphs of small rank.</li>
             <div class="pub-year"><time>2018</time></div>
             <div class="pub-body">
               <cite class="pub-title">Cuts and Connectivity in Graphs and Hypergraphs</cite>
-              <ul class="pub-authors">
-                <li><a href="https://chaoxu.prof">Chao Xu</a></li>
-              </ul>
-              <div class="pub-meta-row">
+              <div class="pub-subline">
+                <ul class="pub-authors">
+                  <li><a href="https://chaoxu.prof">Chao Xu</a></li>
+                </ul>
+                <span class="pub-dot">·</span>
                 <span class="pub-venue">
-                    2018.
+                    2018
                 </span>
                 <span class="pub-actions">
-                  <button type="button" class="pub-pill" aria-expanded="false" data-abs-toggle="thesis-abs">Abstract</button>
-                  <a class="pub-pill" href="/files/papers/thesis.pdf">PDF</a>
+                  <button type="button" class="pub-action-link" aria-expanded="false" data-abs-toggle="thesis-abs">abstract</button>
+                  <a class="pub-action-link" href="/files/papers/thesis.pdf">pdf</a>
                 </span>
               </div>
               <aside class="pub-note">Nominated for the <a href="https://awards.acm.org/doctoral-dissertation">ACM Doctoral Dissertation Award</a> by Department of Computer Science at UIUC.</aside>
@@ -1051,6 +1082,7 @@ problems in hypergraphs of small rank.</li>
     (function() {
       var list = document.getElementById("pub-list");
       var search = document.getElementById("pub-search");
+      var headingEl = document.getElementById("pub-heading");
       var countEl = document.getElementById("pub-count");
       var emptyEl = document.getElementById("pub-empty");
       var modeBtns = Array.from(document.querySelectorAll("[data-pub-mode]"));
@@ -1078,11 +1110,12 @@ problems in hypergraphs of small rank.</li>
           });
           cat.classList.toggle("is-empty", !visibleInCat);
         });
-        countEl.textContent = q
-          ? shown + " match" + (shown === 1 ? "" : "es")
+        headingEl.textContent = q
+          ? "Search Results"
           : effectiveMode === "selected"
-            ? shown + " selected"
-            : shown + " total";
+            ? "Selected Publications"
+            : "All Publications";
+        countEl.textContent = "(" + shown + ")";
         emptyEl.style.display = shown === 0 ? "block" : "none";
       }
       modeBtns.forEach(function(btn) {
