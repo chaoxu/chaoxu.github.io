@@ -65,16 +65,17 @@ Markdown</a>, I call it <a
 href="https://github.com/chaoxu/chaoxu.github.io/blob/develop/ChaoDoc.hs">ChaoDoc</a>.</li>
 <li>Coded most of the things in <a
 href="http://www.sublimetext.com/3">Sublime Text 3</a>.</li>
-<li>The theme is <a href="http://tarskitheme.com/">Tarski</a> with few
-changes.</li>
+<li>The site uses <a
+href="https://github.com/chaoxu/chao-ui">chao-ui</a>’s technical essay
+profile. Shared styles live in <code>css/theme.css</code> and
+<code>css/essay.css</code>. Site-specific layout lives in
+<code>css/site-home.css</code> and <code>css/site-blog.css</code>.</li>
 <li>The math are shown with <a href="https://katex.org/">KaTex</a>,
 rendered offline.</li>
-<li>The heading themes are similar to <a
-href="http://www.amazon.com/gp/product/0199205272/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0199205272&amp;linkCode=as2&amp;tag=fighterempire-20">Connections
-in Combinatorial Optimization</a>, and the remaining themes are similar
-to <a
-href="http://www.amazon.com/gp/product/0387984038/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0387984038&amp;linkCode=as2&amp;tag=fighterempire-20">Categories
-for the Working Mathematician</a>. The symbols are of KaTeX.</li>
+<li>Typography and reusable visual components follow the <a
+href="https://github.com/chaoxu/chao-ui/blob/main/docs/essay.md">chao-ui
+essay guidance</a>. Mathematical notation uses KaTeX’s coordinated
+fonts.</li>
 <li>To compile just <code>ChaoDoc.hs</code>, you need
 <code>pandoc</code> and <code>citeproc</code>. To compile the
 <code>site.hs</code>, additionally you need <code>hakyll</code>.</li>
@@ -99,7 +100,7 @@ highlight latex codes.</li>
 <h2 data-number="2.1" id="kb-backed-pages"><span
 class="header-section-number">2.1</span> KB-backed pages</h2>
 <p><code>pages/math-harness.md</code> is generated from the canonical
-<code>~/kb/notes/essays/math-harness.md</code>. Edit the KB note, run
+math-harness essay in the author’s Knowledge Base. Edit that source, run
 <code>python3 sync-kb-math-harness.py</code>, commit and push the
 generated page on <code>develop</code>, then run <code>./push.sh</code>
 to update its stable URL.</p>
