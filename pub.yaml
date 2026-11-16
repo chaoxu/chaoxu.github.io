@@ -136,6 +136,19 @@ abstract: >
   algorithms.
 
 ---
+id: milk
+show: [d]
+title: Exact Algorithms for Low-Capacity Multi-Depot Vehicle Routing with Restocking
+authors: [Chao Xu, Yichen Yang, Qian Zhang]
+type: conference
+pub: ISAAC
+year: 2026
+bib: ISAAC 2026, LIPIcs 399, Article 20
+abstract: >
+  We study metric multi-depot vehicle routing with restocking. A single vehicle starts and ends at a designated depot, may replenish at any depot, and must serve every customer. We focus on capacities $Q\in\{1,2\}$ and parameterize by the number of depots $k$.
+  For capacity $1$, we give deterministic fixed-parameter algorithms for directed and undirected metrics. For undirected capacity $2$, we give a deterministic algorithm that is polynomial for every fixed $k$ under arbitrary metric costs, and a randomized fixed-parameter algorithm when costs are polynomially bounded integers. For directed capacity $2$, we prove W[1]-hardness in $k$ and polynomial-time equivalence to min-cost exact matching for every fixed $k\geq2$. With polynomially bounded integer costs, the latter equivalence is to exact matching and yields a randomized polynomial-time algorithm for fixed $k$. The algorithms use block-structured integer programming, representative-family dynamic programming, constrained $T$-joins, and matching with parity or balance constraints.
+
+---
 id: graph-ride
 title: An Optimal Algorithm for the Stacker Crane Problem on Fixed Topologies
 type: conference
@@ -877,22 +890,7 @@ abstract: >
   various spider graphs when the number of paths or length of paths increase.
 
 
-
 # manuscripts
-
----
-id: milk
-show: [d]
-title: An algorithm for the metric multiple depots capacitated vehicle routing problem with restocking and capacity two
-authors: [Chao Xu, Yichen Yang, Qian Zhang]
-type: manuscript
-year: 2019
-bib: 2019, Submitted.
-abstract: >
-  The capacitated vehicle routing problem (CVRP) is one of the most well known NP-hard combinatorial optimization problems. Single depot CVRP with a general metric is NP-hard even for fixed capacity 3, while polynomial time solvable for fixed capacity 2. We consider the variant of CVRP where restocking is available.
-  We show that if there is a constant number of depots, then the problem can be solved in polynomial time when capacity is $2$.
-
-
 # --- 
 # id: subset-sum-simple
 # show: [d]
