@@ -891,6 +891,97 @@ abstract: >
 
 
 # manuscripts
+
+---
+id: turing-agent
+title: '[Turing Agent: Agentic Formal Verification for Mathematical Research](https://arxiv.org/abs/2611.21299)'
+authors: [Yang Chen, Qianyi Wang, Ronghui Yang, Zhanhao Li, Yu Cong, Chen Zhang, Hangfan Zhang, Shao Zhang, Shuai Li, Toru Takisaka, Chao Xu, Yi Zhou, Zhihao Tang, Xiao Wang, Bo Zhang, Shuyue Hu]
+type: manuscript
+show: []
+year: 2026
+bib: arXiv:2611.21299
+
+---
+id: submodular-5-partition
+title: '[A Polynomial Time Algorithm for Finding a Minimum 5-Partition of a Submodular Function](https://arxiv.org/abs/2611.21187)'
+authors: [Yuhao Liu, Ke Shi, Chao Xu]
+type: manuscript
+show: []
+year: 2026
+bib: arXiv:2611.21187
+
+---
+id: cogirth-strength-rank-reduction
+title: '[Cogirth-Strength Ratios and Matroid Rank Reduction](https://arxiv.org/abs/2611.19447)'
+authors: [Yu Cong, Chao Xu, Yajie Zhao]
+type: manuscript
+show: []
+year: 2026
+bib: arXiv:2611.19447
+
+---
+id: all-minimum-submodular-cuts
+title: '[All minimum cuts of symmetric submodular functions](https://arxiv.org/abs/2611.08253)'
+authors: [Chao Xu]
+type: manuscript
+show: []
+year: 2026
+bib: arXiv:2611.08253
+
+---
+id: destroying-rigidity
+title: '[Destroying Rigidity in the Plane](https://arxiv.org/abs/2610.38396)'
+authors: [Yu Cong, Chao Xu, Yajie Zhao]
+type: manuscript
+show: []
+year: 2026
+bib: arXiv:2610.38396
+
+---
+id: group-labeled-matroid-bases
+title: '[Proximity Theorem and FPT Algorithm for Minimum Group-labeled Matroid Bases](https://arxiv.org/abs/2610.32798)'
+authors: [Siyue Liu, Taihei Oki, Chao Xu]
+type: manuscript
+show: []
+year: 2026
+bib: arXiv:2610.32798
+
+---
+id: transformer-context-compression
+title: '[Provable Transformer Context Compression for In-Context Reinforcement Learning](https://arxiv.org/abs/2610.20004)'
+authors: [Yajie Zhao, Yingjun Mo, Zhiyong Wang, Bo Tang, Chao Xu, Fang Kong]
+type: manuscript
+show: []
+year: 2026
+bib: arXiv:2610.20004
+
+---
+id: small-cuts
+title: '[Sharp Bounds on the Number of Small Cuts](https://arxiv.org/abs/2609.10255)'
+authors: [Yu Cong, Chao Xu]
+type: manuscript
+show: []
+year: 2026
+bib: arXiv:2609.10255
+
+---
+id: derandomizing-matroid-contraction
+title: '[Derandomizing Karger''s Contraction Algorithm for Matroids](https://arxiv.org/abs/2608.16298)'
+authors: [Yu Cong, Chao Xu, Yajie Zhao]
+type: manuscript
+show: []
+year: 2026
+bib: arXiv:2608.16298
+
+---
+id: cardinality-constrained-diameter-partitioning
+title: '[An Optimal Algorithm for Cardinality-Constrained Diameter Partitioning](https://arxiv.org/abs/2605.03431)'
+authors: [Chao Xu, Mingdong Yang]
+type: manuscript
+show: []
+year: 2026
+bib: arXiv:2605.03431
+
 # --- 
 # id: subset-sum-simple
 # show: [d]

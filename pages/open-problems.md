@@ -4,12 +4,6 @@ title: Open problems
 
 These questions remain open to my knowledge. Last status check: 16 November 2026. Solved problems will be removed, and no history of this list will be maintained here.
 
-::: {.Problem #problem-ocdc title="Oriented cycle double cover"}
-Does every finite bridgeless multigraph admit a multiset of oriented circuits traversing every edge exactly once in each direction? Parallel edges may form a $2$-cycle, whereas traversing one edge forward and immediately back is not a circuit.
-:::
-
-See [Gáborik et al. (p. 9)](https://epub.uni-bayreuth.de/id/eprint/8626/1/Multidimensional_flows%20%281%29.pdf#page=9).
-
 ::: {.Problem #problem-hedge-min-cut-derandomization title="Deterministic hedge min-cut"}
 Fix an integer $k\ge2$. Let $G=(V,E)$ be a finite connected undirected multigraph with $|V|\ge2$, with $E$ partitioned into nonempty *hedges* such that the subgraph formed by each hedge and its incident vertices has at most $k$ connected components. Can a minimum-cardinality set of hedges whose removal disconnects $G$ be found in deterministic polynomial time?
 :::
@@ -45,18 +39,6 @@ For every fixed integer $k\ge6$, is there a polynomial $p_k$ such that, given an
 :::
 
 For background on fixed-$k$ submodular partitioning, see [Hirayama et al. (§7)](https://chaoxu.prof/files/papers/sub4part-journal.pdf#page=12).
-
-::: {.Problem #problem-separated-submodular-3-partition title="Minimum separated submodular 3-partition"}
-Is there a polynomial $p$ such that, given an arbitrary submodular function $f:2^U\to\mathbb R$ via a value oracle on an $n$-element set $U$ with $n\ge3$ and distinct $s,t\in U$, one can partition $U$ into three nonempty parts $A,B,C$ with $s\in A$ and $t\in B$ minimizing $f(A)+f(B)+f(C)$ using at most $p(n)$ oracle calls and arithmetic and comparison operations?
-:::
-
-Approximation and variable-part variants are studied in [Bérczi et al. (§1.1.1)](https://arxiv.org/html/2510.25664v3).
-
-::: {.Problem #problem-ranked-submodular-3-partition title="Ranked enumeration of submodular 3-partitions"}
-Is there a polynomial $p$ such that, given any submodular function $f:2^U\to\mathbb R$ via a value oracle on an $n$-element set $U$ with $n\ge3$, one can output every unordered partition $\mathcal P$ of $U$ into three nonempty parts once in nondecreasing order of $\sum_{P\in\mathcal P}f(P)$ (ties broken arbitrarily), where producing the first $r$ outputs takes at most $(r+1)p(n)$ oracle calls and arithmetic and comparison operations for each $r$ up to the number of such partitions, and reporting termination takes at most $p(n)$ more?
-:::
-
-Ranked enumeration of submodular $2$-partitions appears in [Hirayama et al. (Lemma 5.2)](https://chaoxu.prof/files/papers/sub4part-journal.pdf#page=10).
 
 ::: {.Problem #problem-exact-matching title="Deterministic Exact Matching"}
 Given a finite undirected graph $G=(V,E)$, a set $R\subseteq E$ of red edges, and an integer $r$, is there a deterministic polynomial-time algorithm deciding whether $G$ has a perfect matching $M$ with $|M\cap R|=r$?
