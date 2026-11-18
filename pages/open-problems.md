@@ -16,8 +16,8 @@ Given a finite digraph $G=(V,E)$ with $|V|\ge2$ and binary-encoded nonnegative r
 
 Stated as open in [Bérczi et al. (p. 413)](https://karthik.ise.illinois.edu/pubs/linear-3-cut.pdf#page=3).
 
-::: {.Problem #problem-global-linear-3-cut title="Global linear 3-cut"}
-Given a finite digraph $G=(V,E)$ with $|V|\ge3$ and no prescribed terminals, find a minimum-cardinality arc set $F\subseteq E$ such that $G-F$ has at least three strongly connected components. Is this problem polynomial-time solvable or NP-hard?
+::: {.Problem #problem-global-linear-k-cut title="Global linear k-cut for fixed k"}
+Fix an integer $k\ge2$. Given a finite digraph $G=(V,E)$ with $|V|\ge k$ and no prescribed terminals, find a minimum-cardinality arc set $F\subseteq E$ such that $G-F$ has at least $k$ strongly connected components. Is this problem solvable in polynomial time for every fixed $k$, with the polynomial's degree allowed to depend on $k$, or is it NP-hard for some fixed $k$?
 :::
 
 See [my thesis (Definition 1.2 and Table 1.2)](https://chaoxu.prof/files/papers/thesis.pdf#page=17).
