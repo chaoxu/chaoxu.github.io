@@ -78,9 +78,3 @@ Is this problem solvable in polynomial time for each fixed $n\ge3$ (even when $n
 :::
 
 See my [question on filling bins with minimum moves](https://cs.stackexchange.com/questions/12441/is-it-np-hard-to-fill-up-bins-with-minimum-moves).
-
-::: {.Problem #problem-six-square-cover title="Covering a square by six unit squares"}
-Can six closed unit squares in the Euclidean plane, translated and rotated independently with overlaps allowed, cover an entire square of side length strictly greater than $2$?
-:::
-
-Five unit squares cannot, while seven suffice ([Dósa et al., Conjecture 1.1 and Theorem 1.3](https://arxiv.org/abs/2601.16535v3)).
