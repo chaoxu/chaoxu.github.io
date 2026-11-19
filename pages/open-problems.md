@@ -10,12 +10,6 @@ Fix an integer $k\ge2$. Let $G=(V,E)$ be a finite connected undirected multigrap
 
 Randomized polynomial time is known ([Chandrasekaran et al., Theorem 1.1](https://chaoxu.prof/files/papers/hypergraph-k-cut.pdf#page=3)).
 
-::: {.Problem #problem-global-dicut title="Global edge-bicut"}
-Given a finite digraph $G=(V,E)$ with $|V|\ge2$ and binary-encoded nonnegative rational arc costs, find a minimum-cost arc set $F\subseteq E$ such that $G-F$ has two distinct vertices with no directed path between them in either direction. Unlike $s$-$t$ bicut, the separated pair is not prescribed. Is this problem polynomial-time solvable or NP-hard?
-:::
-
-Stated as open in [Bérczi et al. (p. 413)](https://karthik.ise.illinois.edu/pubs/linear-3-cut.pdf#page=3).
-
 ::: {.Problem #problem-global-linear-k-cut title="Global linear k-cut for fixed k"}
 Fix an integer $k\ge2$. Given a finite digraph $G=(V,E)$ with $|V|\ge k$ and no prescribed terminals, find a minimum-cardinality arc set $F\subseteq E$ such that $G-F$ has at least $k$ strongly connected components. Is this problem solvable in polynomial time for every fixed $k$, with the polynomial's degree allowed to depend on $k$, or is it NP-hard for some fixed $k$?
 :::
