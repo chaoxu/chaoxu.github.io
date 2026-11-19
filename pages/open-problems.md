@@ -22,18 +22,6 @@ Fix an integer $k\ge2$. Given a finite digraph $G=(V,E)$ with $|V|\ge k$ and no 
 
 See [my thesis (Definition 1.2 and Table 1.2)](https://chaoxu.prof/files/papers/thesis.pdf#page=17).
 
-::: {.Problem #problem-s-tractability-dichotomy title="Dichotomy for surjective minimum violation"}
-Fix a finite digraph $H=(D,F)$ with $D\ne\varnothing$, allowing loops. Given a finite digraph $G=(V,E)$ with $|V|\ge|D|$ and binary-encoded weights $w:E\to\mathbb Z_{\ge0}$, minimize $\sum_{(u,v)\in E:\,(\phi(u),\phi(v))\notin F}w(u,v)$ over surjections $\phi:V\twoheadrightarrow D$. Characterize the patterns $H$ for which this problem is polynomial-time solvable, and determine whether it is polynomial-time solvable or NP-hard for every $H$.
-:::
-
-Formulated in [Kawarabayashi and Xu (§1, §7)](https://chaoxu.prof/files/papers/min-violation.pdf), which settles reflexive trees.
-
-::: {.Problem #problem-rooted-connectivity-certificate title="Fast rooted connectivity certificates"}
-Let $G=(V,E)$ be a finite $n$-vertex, $m$-arc digraph with root $r\in V$, and for $x\in V\setminus\{r\}$ let $\lambda_G(r,x)$ be the maximum number of arc-disjoint directed $r$-to-$x$ paths. Given an integer $k\ge1$, can one construct a spanning subgraph $H=(V,F)$ with $F\subseteq E$, $|F|=O(kn)$, and $\lambda_H(r,x)\ge\min\{k,\lambda_G(r,x)\}$ for all $x\in V\setminus\{r\}$ in $O(n+km)$ time, or even $O(n+m)$ time?
-:::
-
-Existence of such subgraphs follows from [Szeszlér (Theorem 8)](https://arxiv.org/pdf/2502.10052#page=8).
-
 ::: {.Problem #problem-submodular-k-partition title="Minimum submodular k-partition"}
 For every fixed integer $k\ge6$, is there a polynomial $p_k$ such that, given an arbitrary submodular function $f:2^U\to\mathbb R$ via a value oracle on an $n$-element set $U$ with $n\ge k$, one can partition $U$ into $k$ nonempty parts $P_1,\dots,P_k$ minimizing $\sum_{i=1}^k f(P_i)$ using at most $p_k(n)$ oracle calls and arithmetic and comparison operations?
 :::
@@ -45,12 +33,6 @@ Given a finite undirected graph $G=(V,E)$, a set $R\subseteq E$ of red edges, an
 :::
 
 Randomized polynomial time is known (see [Sebő, p. 6](https://arxiv.org/pdf/2602.03966v2#page=6)).
-
-::: {.Problem #problem-min-cost-exact-matching title="Minimum-cost Exact Matching"}
-Given a finite undirected graph $G=(V,E)$, a set $R\subseteq E$ of red edges, an integer $r$, and binary-encoded costs $c:E\to\mathbb Z_{\ge0}$, can one find a perfect matching $M$ minimizing $\sum_{e\in M}c(e)$ subject to $|M\cap R|=r$, or report that none exists, in time polynomial in the input bit length (allowing randomized algorithms with success probability at least $2/3$ on every input)?
-:::
-
-Open even for bipartite graphs ([Armbruster et al., §§5.2–5.3](https://drops.dagstuhl.de/storage/00lipics/lipics-vol374-icalp2026/LIPIcs.ICALP.2026.13/LIPIcs.ICALP.2026.13.pdf#page=16)).
 
 ::: {.Problem #problem-gabow title="Gabow's serial symmetric exchange conjecture"}
 Let $B_1$ and $B_2$ be disjoint bases of a finite rank-$r$ matroid. Can their elements be ordered as $B_1=\{x_1,\dots,x_r\}$ and $B_2=\{y_1,\dots,y_r\}$ so that $(B_1\setminus\{x_1,\dots,x_i\})\cup\{y_1,\dots,y_i\}$ and $(B_2\setminus\{y_1,\dots,y_i\})\cup\{x_1,\dots,x_i\}$ are both bases for every $1\le i\le r$?
@@ -74,7 +56,7 @@ $$
 $$
 or report infeasibility.
 
-Is this problem solvable in polynomial time for each fixed $n\ge3$ (even when $n=3$ and $w_j=2^{j-1}$)? More strongly, is it solvable in $g(n)N^{O(1)}$ time for some computable $g$, or is the decision version with a binary-encoded cost threshold W[1]-hard parameterized by $n$? For unrestricted $n$ and $m$, is there an exact $\operatorname{poly}(N,w_m)$-time algorithm?
+Is this problem solvable in polynomial time for each fixed $n\ge3$ (even when $n=3$ and $w_j=2^{j-1}$)? For unrestricted $n$ and $m$, is there an exact $\operatorname{poly}(N,w_m)$-time algorithm?
 :::
 
 See my [question on filling bins with minimum moves](https://cs.stackexchange.com/questions/12441/is-it-np-hard-to-fill-up-bins-with-minimum-moves).
