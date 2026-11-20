@@ -28,18 +28,6 @@ Given a finite undirected graph $G=(V,E)$, a set $R\subseteq E$ of red edges, an
 
 Randomized polynomial time is known (see [Sebő, p. 6](https://arxiv.org/pdf/2602.03966v2#page=6)).
 
-::: {.Problem #problem-gabow title="Gabow's serial symmetric exchange conjecture"}
-Let $B_1$ and $B_2$ be disjoint bases of a finite rank-$r$ matroid. Can their elements be ordered as $B_1=\{x_1,\dots,x_r\}$ and $B_2=\{y_1,\dots,y_r\}$ so that $(B_1\setminus\{x_1,\dots,x_i\})\cup\{y_1,\dots,y_i\}$ and $(B_2\setminus\{y_1,\dots,y_i\})\cup\{x_1,\dots,x_i\}$ are both bases for every $1\le i\le r$?
-:::
-
-Stated in [Akrami et al. (Conjecture 1.14)](https://link.springer.com/article/10.1007/s00493-026-00217-y) and proved for [split](https://real.mtak.hu/236600/1/13537-PDFfile-58658-1-10-20260115.pdf) and [regular](https://doi.org/10.1016/j.jctb.2025.10.009) matroids.
-
-::: {.Problem #problem-even-delta-proximity title="Finite-forbidden-set proximity for even delta-matroids"}
-Let $(E,\mathcal D)$ be a finite even delta-matroid, $\Gamma$ an abelian group, $\gamma\in\Gamma^E$, $c\in\mathbb R^E$, and $F\subseteq\Gamma$ a finite forbidden set. Set $\lambda(X)=\sum_{e\in X}\gamma_e$ and $c(X)=\sum_{e\in X}c_e$, and suppose $\mathcal D_F=\{X\in\mathcal D:\lambda(X)\notin F\}$ is nonempty. For every minimizer $A$ of $c$ over $\mathcal D$, must there exist a minimizer $B$ of $c$ over $\mathcal D_F$ with symmetric difference $|A\triangle B|\le 2|F|$?
-:::
-
-Proved for matroid bases in [Liu et al. (Theorem 1)](https://arxiv.org/html/2610.32798v1).
-
 ::: {.Problem #problem-labelled-bin-filling title="Labelled-bin filling"}
 Given $n$ bins, $m$ item types ($n,m\ge1$), and binary-encoded integers $1\le w_1<\cdots<w_m$ with $w_1\mid\cdots\mid w_m$, targets $h_i\ge0$, supplies $B_j\ge0$, and preferred counts $a_{ij}\ge0$ (of total input bit length $N$), find integers $x_{ij}\ge0$ minimizing $\sum_{i=1}^n\sum_{j=1}^m|x_{ij}-a_{ij}|$ subject to
 $$
