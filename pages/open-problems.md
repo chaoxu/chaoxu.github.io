@@ -2,7 +2,7 @@
 title: Open problems
 ---
 
-These questions remain open to my knowledge. Last status check: 16 November 2026. These are the only three problems I still care deeply about. They are ordered below by how much I care about them, from most to least. Solved problems will be removed, and no history of this list will be maintained here.
+These questions remain open to my knowledge. Last status check: 16 November 2026. These are the only three combinatorial optimization problems I still care deeply about. Since the rise of AI, the problems I care about have been solved one by one. Once these are solved, I will probably take a long break and do something else. They are ordered below by how much I care about them, from most to least. Solved problems will be removed, and no history of this list will be maintained here.
 
 ::: {.Problem #problem-exact-matching title="Deterministic Exact Matching"}
 Given a finite undirected graph $G=(V,E)$, a set $R\subseteq E$ of red edges, and an integer $r$, is there a deterministic polynomial-time algorithm deciding whether $G$ has a perfect matching $M$ with $|M\cap R|=r$?
